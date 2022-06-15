@@ -1037,8 +1037,13 @@
                 $("#AS1_screening_ID").focus();
                 return false;
             }
-            else if ($("#AS1_rand_id").val() == "") {
+            else if ($("#AS1_rand_id").val() == "_-_-_-____") {
                 alert("Please enter randomization id");
+                $("#AS1_rand_id").focus();
+                return false;
+            }
+            else if ($("#AS1_rand_id").val().indexOf("_") != -1) {
+                alert("Please enter full randomization id");
                 $("#AS1_rand_id").focus();
                 return false;
             }
@@ -1261,7 +1266,7 @@
                 return false;
             }
             else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true) {
-                alert("Please enter Temperature of the Coleman upon arrival at the NRL lab ");
+                alert("Please enter Temperature of the Coleman upon arrival at the IDRL lab ");
                 $("#AS3_Q16").focus();
                 return false;
             }
@@ -1310,68 +1315,68 @@
                 $("#AS4_Q24").focus();
                 return false;
             }
-            else if ($("#AS5_Q25a").val() == "" && $("#AS5_Q25a").is(":visible") == true) {
+            else if ($("#AS5_Q25a").val() == "" && $("#AS5_Q25a").is(":visible") == true && $("#AS5_Q25a").attr("disabled") != "disabled") {
                 alert("Please enter Name of staff CRP Performed ");
                 $("#AS5_Q25a").focus();
                 return false;
             }
-            else if ($("#AS5_Q25b").val() == "" && $("#AS5_Q25b").is(":visible") == true) {
+            else if ($("#AS5_Q25b").val() == "" && $("#AS5_Q25b").is(":visible") == true && $("#AS5_Q25b").attr("disabled") != "disabled") {
                 alert("Please enter Code of staff CRP Performed ");
                 $("#AS5_Q25b").focus();
                 return false;
             }
-            else if ($("#AS5_Q26").val() == "" && $("#AS5_Q26").is(":visible") == true) {
+            else if ($("#AS5_Q26").val() == "" && $("#AS5_Q26").is(":visible") == true && $("#AS5_Q26").attr("disabled") != "disabled") {
                 alert("Please enter Kit Lot Number ");
                 $("#AS5_Q26").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q27]:checked').length <= 0 && ($('#AS5_Q27_1').is(':visible') == true ||
-                $('#AS5_Q27_2').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q27]:checked').length <= 0 && ($('#AS5_Q27_1').is(':visible') == true && $('#AS5_Q27_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q27_2').is(':visible') == true && $('#AS5_Q27_2').attr("disabled") != "disabled")) {
                 alert("Please enter Kit Quality Control ");
                 $("#AS5_Q27_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q28]:checked').length <= 0 && ($('#AS5_Q28_1').is(':visible') == true ||
-                $('#AS5_Q28_2').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q28]:checked').length <= 0 && ($('#AS5_Q28_1').is(':visible') == true && $('#AS5_Q28_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q28_2').is(':visible') == true && $('#AS5_Q28_2').attr("disabled") != "disabled")) {
                 alert("Please enter Kit brought to Room Temperature for 30 minutes ");
                 $("#AS5_Q28_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true ||
-                $('#AS5_Q29_2').is(':visible') == true ||
-                $('#AS5_Q29_3').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true && $('#AS5_Q29_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q29_2').is(':visible') == true && $('#AS5_Q29_2').attr("disabled" != "disabled") ||
+                $('#AS5_Q29_3').is(':visible') == true && $('#AS5_Q29_3').attr("disabled" != "disabled"))) {
                 alert("Please enter CRP Control line Result (test device) ");
                 $("#AS5_Q29_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q30]:checked').length <= 0 && ($('#AS5_Q30_1').is(':visible') == true ||
-                $('#AS5_Q30_2').is(':visible') == true ||
-                $('#AS5_Q30_3').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q30]:checked').length <= 0 && ($('#AS5_Q30_1').is(':visible') == true && $('#AS5_Q30_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q30_2').is(':visible') == true && $('#AS5_Q30_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q30_3').is(':visible') == true && $('#AS5_Q30_3').attr("disabled") != "disabled")) {
                 alert("Please enter CRP Test Line ");
                 $("#AS5_Q30_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q31]:checked').length <= 0 && ($('#AS5_Q31_1').is(':visible') == true ||
-                $('#AS5_Q31_2').is(':visible') == true ||
-                $('#AS5_Q31_3').is(':visible') == true ||
-                $('#AS5_Q31_4').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q31]:checked').length <= 0 && ($('#AS5_Q31_1').is(':visible') == true && $('#AS5_Q31_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_2').is(':visible') == true && $('#AS5_Q31_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_3').is(':visible') == true && $('#AS5_Q31_3').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_4').is(':visible') == true && $('#AS5_Q31_4').attr("disabled") != "disabled")) {
                 alert("Please enter CRP Test Level ");
                 $("#AS5_Q31_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q32]:checked').length <= 0 && ($('#AS5_Q32_1').is(':visible') == true ||
-                $('#AS5_Q32_2').is(':visible') == true ||
-                $('#AS5_Q32_3').is(':visible') == true)) {
+            else if ($('input[name=AS5_Q32]:checked').length <= 0 && ($('#AS5_Q32_1').is(':visible') == true && $('#AS5_Q32_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q32_2').is(':visible') == true && $('#AS5_Q32_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q32_3').is(':visible') == true && $('#AS5_Q32_3').attr("disabled") != "disabled")) {
                 alert("Please enter CRP (RDT) Result ");
                 $("#AS5_Q32_1").focus();
                 return false;
             }
-            else if ($("#AS5_Q33a").val() == "" && $("#AS5_Q33a").is(":visible") == true) {
+            else if ($("#AS5_Q33a").val() == "" && $("#AS5_Q33a").is(":visible") == true && $("#AS5_Q33a").attr("disabled") != "disabled") {
                 alert("Please enter Name of Staff Reading CRP (RDT) Result ");
                 $("#AS5_Q33a").focus();
                 return false;
             }
-            else if ($("#AS5_Q33b").val() == "" && $("#AS5_Q33b").is(":visible") == true) {
+            else if ($("#AS5_Q33b").val() == "" && $("#AS5_Q33b").is(":visible") == true && $("#AS5_Q33b").attr("disabled") != "disabled") {
                 alert("Please enter Code of Staff Reading CRP (RDT) Result ");
                 $("#AS5_Q33b").focus();
                 return false;
@@ -1659,7 +1664,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">Screening number</label>
                                                         <div class="col-md-9">
-                                                            <asp:TextBox runat="server" ID="AS1_screening_ID" class="form-control" name="AS1_screening_ID" onkeypress="return numeralsOnly(event);"></asp:TextBox>                                                            
+                                                            <asp:TextBox runat="server" ID="AS1_screening_ID" class="form-control" name="AS1_screening_ID" onkeypress="return numeralsOnly(event);"></asp:TextBox>
                                                             <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="AS1_screening_ID" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
                                                         </div>
                                                     </div>
@@ -1669,6 +1674,7 @@
                                                         <label class="col-md-3 label-control" for="projectinput5">Randomization ID</label>
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" ID="AS1_rand_id" MaxLength="10" class="form-control" name="AS1_rand_id" onkeypress="return numeralsOnly(event);"></asp:TextBox>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender2" TargetControlID="AS1_rand_id" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="9-9-9-9999" runat="server"></cc1:MaskedEditExtender>
                                                         </div>
                                                     </div>
 
@@ -2213,7 +2219,7 @@
 
 
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Temperature of the Coleman upon arrival at the NRL lab</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">Temperature of the Coleman upon arrival at the IDRL lab</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" ID="AS3_Q16" MaxLength="6" class="form-control" name="AS3_Q16" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
