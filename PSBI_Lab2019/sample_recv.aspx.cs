@@ -165,7 +165,7 @@ public partial class sample_recv : System.Web.UI.Page
 
                 pnl_AS2_Q12_1.Visible = false;
 
-                DisableControls(AS2_Q12_1);
+                //DisableControls(AS2_Q12_1);
                 DisableControls(AS2_Q12_2);
                 DisableControls(AS2_Q12_3);
 
@@ -705,7 +705,7 @@ public partial class sample_recv : System.Web.UI.Page
             {
                 var_AS5_Q30 = "2";
             }
-            else if (AS5_Q30_2.Checked == true)
+            else if (AS5_Q30_3.Checked == true)
             {
                 var_AS5_Q30 = "3";
             }

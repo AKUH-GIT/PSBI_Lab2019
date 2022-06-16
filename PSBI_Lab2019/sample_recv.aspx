@@ -366,6 +366,12 @@
 
                     $("#pnl_AS4_Q21a").css("display", "none");
 
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
                     DisableControls1("AS4_Q21a", "rdo");
 
                     DisableControls1("AS4_Q22a", "txt");
@@ -391,6 +397,13 @@
                 else {
 
                     $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
 
                     EnableControls1("AS4_Q21a", "rdo");
 
@@ -441,6 +454,13 @@
 
                     $("#pnl_AS4_Q21a").css("display", "none");
 
+
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
                     DisableControls1("AS4_Q21a", "rdo");
 
                     DisableControls1("AS4_Q22a", "txt");
@@ -466,6 +486,13 @@
                 else {
 
                     $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
 
                     EnableControls1("AS4_Q21a", "rdo");
 
@@ -518,6 +545,13 @@
 
                     $("#pnl_AS4_Q21a").css("display", "none");
 
+
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
                     DisableControls1("AS4_Q21a", "rdo");
 
                     DisableControls1("AS4_Q22a", "txt");
@@ -543,6 +577,13 @@
                 else {
 
                     $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
 
                     EnableControls1("AS4_Q21a", "rdo");
 
@@ -1270,22 +1311,22 @@
                 $("#AS3_Q16").focus();
                 return false;
             }
-            else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true) {
+            else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true && $("#AS3_Q17").attr("disabled") != "disabled") {
                 alert("Please enter Time of Serum separation ");
                 $("#AS3_Q17").focus();
                 return false;
             }
-            else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true) {
+            else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true && $("#AS3_Q18").attr("disabled") != "disabled") {
                 alert("Please enter No. of Aliquots made ");
                 $("#AS3_Q18").focus();
                 return false;
             }
-            else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true) {
+            else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true && $("#AS3_Q19").attr("disabled") != "disabled") {
                 alert("Please enter Volume in each aliquot ");
                 $("#AS3_Q19").focus();
                 return false;
             }
-            else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true) {
+            else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true && $("#AS3_Q20").attr("disabled") != "disabled") {
                 alert("Please enter Time Aliquots placed in ULT Freezer ");
                 $("#AS3_Q20").focus();
                 return false;
@@ -2108,7 +2149,7 @@
 
                                                     <asp:Panel ID="pnl_AS2_Q12_1" runat="server">
 
-                                                        <div class="form-group row">
+                                                        <div class="form-group row" style="display: none;">
                                                             <label class="col-md-3 label-control" for="projectinput5">Temperature of the Coleman upon arrival at the lab (CBC tube)</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" ID="AS2_Q12_1" class="form-control" MaxLength="6" name="AS2_Q12_1" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
@@ -2468,7 +2509,7 @@
                                                                 </fieldset>
                                                                 <fieldset>
                                                                     <asp:RadioButton runat="server" class=".radiocls16" GroupName="AS5_Q31" name="AS5_Q31" ID="AS5_Q31_4" />
-                                                                    <label for="input-radio-12">Three blue lines = CRP >80mg/l</label>
+                                                                    <label for="input-radio-12">No Blue Lines=CRP < 10mg/l</label>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
