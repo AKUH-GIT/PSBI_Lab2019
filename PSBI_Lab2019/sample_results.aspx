@@ -1,9 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results.aspx.cs" Inherits="sample_results" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,37 +12,27 @@
     <meta name="author" content="ThemeSelect">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>PSBI Lab Management System</title>
-
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/bootstrap-extended.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/colors.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/components.min.css">
     <!-- END: Theme CSS-->
-
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/core/colors/palette-gradient.min.css">
     <!-- END: Page CSS-->
-
     <!-- BEGIN: Custom CSS-->
     <link href="Content/demo/chameleon-admin-template/assets/css/style.css" rel="stylesheet" />
     <link href="Content/demo/chameleon-admin-template/assets/feather/style.min.css" rel="stylesheet" />
     <!-- END: Custom CSS-->
-
-
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-
     <link href="Scripts/timepicker/css/timepicki.css" rel="stylesheet" />
     <script src="Scripts/timepicker/timepicki.js"></script>
-
-
     <script type="text/javascript">
         function lettersOnly(evt) {
             evt = (evt) ? evt : event;
@@ -10921,12 +10909,6 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
-
-
-
-
-
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Vancomycin(VA) 30ug</label>
                                                             <div class="col-md-6 col-sm-12">
@@ -10944,17 +10926,12 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
-
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52a_a">Zone Diameter (mm) Vancomycin(VA) 30ug</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" MaxLength="15" ID="LA_52a_a" class="form-control" name="LA_52a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
-
-
-
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52b">Vancomycin(VA) 30ug Interpretation</label>
                                                             <div class="col-md-6 col-sm-12">
@@ -10972,13 +10949,8 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
                                                     </asp:Panel>
-
-
                                                 </div>
-
-
                                                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                     <ContentTemplate>
@@ -10987,11 +10959,8 @@
                                                             <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>
-
-
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
-
                                                 <%--<div class="form-actions right">
                                     <button type="button" class="btn btn-danger mr-1">
                                         <i class="ft-x"></i>Cancel
@@ -11010,14 +10979,10 @@
                         </section>
                         <!-- // Basic form layout section end -->
                     </div>
-
-
                 </div>
             </div>
         </div>
         <!-- END: Content-->
-
-
         <!-- BEGIN: Footer-->
         <%--<a class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white" href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">Try Layout Builder</a>--%>
         <footer class="footer footer-static footer-light navbar-border navbar-shadow">
@@ -11030,32 +10995,21 @@
             </div>
         </footer>
         <!-- END: Footer-->
-
-
         <!-- BEGIN: Vendor JS-->
         <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/forms/toggle/switchery.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/scripts/forms/switch.min.js" type="text/javascript"></script>
         <!-- BEGIN Vendor JS-->
-
-
         <!-- END: Page Vendor JS-->
         <script src="Content/demo/chameleon-admin-template/app-assets/js/core/app-menu.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/core/app.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/scripts/customizer.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/jquery.sharrre.js" type="text/javascript"></script>
         <!-- END: Theme JS-->
-
-
-
         <!-- END: Body-->
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
-
-
     </form>
 </body>
 </html>
-
