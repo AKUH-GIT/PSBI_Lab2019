@@ -5402,63 +5402,9 @@
                             <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
                             <li class="dropdown nav-item mega-dropdown d-none d-md-block"><%--<a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Mega</a>--%>
                                 <ul class="mega-dropdown-menu dropdown-menu row">
-                                    <li class="col-md-2">
-                                        <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-link"></i>Quick Links</h6>
-                                        <ul>
-                                            <li><a class="my-1" href="chat-application.html"><i class="ft-home"></i>Chat</a></li>
-                                            <li><a class="my-1" href="table-bootstrap.html"><i class="ft-grid"></i>Tables</a></li>
-                                            <li><a class="my-1" href="chartist-charts.html"><i class="ft-bar-chart"></i>Charts</a></li>
-                                            <li><a class="my-1" href="gallery-grid.html"><i class="ft-sidebar"></i>Gallery</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-star"></i>My Bookmarks</h6>
-                                        <ul class="ml-2">
-                                            <li class="list-style-circle"><a class="my-1" href="card-bootstrap.html">Cards</a></li>
-                                            <li class="list-style-circle"><a class="my-1" href="full-calender.html">Calender</a></li>
-                                            <li class="list-style-circle"><a class="my-1" href="invoice-template.html">Invoice</a></li>
-                                            <li class="list-style-circle"><a class="my-1" href="users-contacts.html">Contact</a></li>
-                                        </ul>
-                                    </li>
                                     <li class="col-md-4">
                                         <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="ft-thumbs-up"></i>Get in touch</h6>
                                         <div class="form-body">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 form-control-label" for="inputName1">Name</label>
-                                                <div class="col-sm-9">
-                                                    <div class="position-relative has-icon-left">
-                                                        <input class="form-control" id="inputName1" runat="server" type="text">
-                                                        <div class="form-control-position pl-1"><i class="ft-user"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 form-control-label" for="inputContact1">Contact</label>
-                                                <div class="col-sm-9">
-                                                    <div class="position-relative has-icon-left">
-                                                        <input class="form-control" id="inputContact1" type="text" placeholder="(123)-456-7890">
-                                                        <div class="form-control-position pl-1"><i class="ft-smartphone"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 form-control-label" for="inputEmail1">Email</label>
-                                                <div class="col-sm-9">
-                                                    <div class="position-relative has-icon-left">
-                                                        <input class="form-control" id="inputEmail1" type="email" placeholder="john@example.com">
-                                                        <div class="form-control-position pl-1"><i class="ft-mail"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 form-control-label" for="inputMessage1">Message</label>
-                                                <div class="col-sm-9">
-                                                    <div class="position-relative has-icon-left">
-                                                        <textarea class="form-control" id="inputMessage1" rows="2" placeholder="Simple Textarea"></textarea>
-                                                        <div class="form-control-position pl-1"><i class="ft-message-circle"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-12 mb-1">
                                                     <button class="btn btn-danger float-right" type="button"><i class="ft-arrow-right"></i>Submit</button>
@@ -5856,7 +5802,7 @@
 
 
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">W.B.C</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">W.B.C Count</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
                                                                     <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_10" name="LA_10_v" ID="LA_10_v" />
@@ -6031,7 +5977,7 @@
 
 
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Platelets</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">Platelets Count</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
                                                                     <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_16" name="LA_16_v" ID="LA_16_v" />
@@ -6818,7 +6764,7 @@
 
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">WET PREPARATION FOR NAEGLERIA</label>
-                                                            <div class="col-md-6 col-sm-12">
+                                                            <div class="col-md-9">
                                                                 <fieldset>
                                                                     <asp:RadioButton runat="server" class=".radiocls2" GroupName="CS_10" name="CS_10_v" ID="CS_10_v" />
                                                                     <label for="input-radio-11">WET PREPARATION FOR NAEGLERIA Value</label>
@@ -6848,8 +6794,6 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label_heading" for="projectinput5">Urine Detail Report</label>
                                                         </div>
-
-
 
 
 
@@ -9049,7 +8993,7 @@
 
 
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5" id="lbl_uc_33b">Amoxicillin/Clavulanic Acid 2:1 33ug Interpretation</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5" id="lbl_uc_33b">Vancomycin 30ug Interpretation</label>
                                                             <div class="col-md-6 col-sm-33">
                                                                 <fieldset>
                                                                     <asp:RadioButton runat="server" class=".radiocls2" GroupName="uc_33b" name="uc_33b_a" ID="uc_33b_a" />

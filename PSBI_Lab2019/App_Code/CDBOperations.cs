@@ -129,7 +129,7 @@ public class CDBOperations
 
             if (formno == "")
             {
-                IsError = true;
+                IsError = false;
             }
             else
             {
