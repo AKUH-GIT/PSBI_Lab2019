@@ -297,7 +297,7 @@ public class CDBOperations
                         }
                         else
                         {
-                            if (formno.ToString().IndexOf('.') == -1)
+                            if (formno.ToString().IndexOf('.') == -1 && ds.Tables[0].Rows[0]["MinValue"].ToString().IndexOf(".") == -1)
                             {
                                 if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["MinValue"].ToString()) == false && string.IsNullOrEmpty(ds.Tables[0].Rows[0]["MaxValue"].ToString()) == false)
                                 {
@@ -306,6 +306,14 @@ public class CDBOperations
                                         IsError = true;
                                     }
                                 }
+                            }
+                            else if (formno.ToString().IndexOf('.') != -1 && ds.Tables[0].Rows[0]["MinValue"].ToString().IndexOf(".") == -1)
+                            {
+                                IsError = true;
+                            }
+                            else if (formno.ToString().IndexOf('.') == -1 && ds.Tables[0].Rows[0]["MinValue"].ToString().IndexOf(".") != -1)
+                            {
+                                IsError = true;
                             }
                             else
                             {
