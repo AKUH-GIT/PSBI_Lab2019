@@ -3633,690 +3633,1371 @@ public partial class sample_results : System.Web.UI.Page
 
 
             DateTime dt_entry = new DateTime();
+
+            string[] arr_entry = null;
+            string val_entry = null;
+
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
             dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
 
+            arr_entry = dt_entry.ToShortDateString().Split('/');
+            val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
 
 
-            string[] fldname = {
-"la_sno",
-"LA_01",
-"LA_02",
-"LA_03_b",
-"LA_03_a",
-"LA_04_b",
-"LA_04_a",
-"LA_05_b",
-"LA_05_a",
-"LA_06_b",
-"LA_06_a",
-"LA_07_b",
-"LA_07_a",
-"LA_08_b",
-"LA_08_a",
-"LA_09_b",
-"LA_09_a",
-"LA_10_b",
-"LA_10_a",
-"LA_11_b",
-"LA_11_a",
-"LA_12_b",
-"LA_12_a",
-"LA_13_b",
-"LA_13_a",
-"LA_14_b",
-"LA_14_a",
-"LA_15_b",
-"LA_15_a",
-"LA_16_b",
-"LA_16_a",
-"LF_01",
-"LF_01_a",
-"LF_02",
-"LF_02_a",
-"LF_03",
-"LF_03_a",
-"LF_04",
-"LF_04_a",
-"LF_05",
-"LF_05_a",
-"LF_06",
-"LF_06_a",
-"LF_07",
-"LF_07_a",
-"RF_01",
-"RF_01_a",
-"RF_02",
-"RF_02_a",
-"RF_03",
-"RF_03_a",
-"RF_04",
-"RF_04_a",
-"SE_01",
-"SE_01_a",
-"SE_02",
-"SE_02_a",
-"SE_03",
-"SE_03_a",
-"SE_04",
-"SE_04_a",
-"CS_01",
-"CS_01_a",
-"CS_02",
-"CS_02_a",
-"CS_03",
-"CS_03_a",
-"CS_04",
-"CS_04_a",
-"CS_05",
-"CS_05_a",
-"CS_06",
-"CS_06_a",
-"CS_07",
-"CS_07_a",
-"CS_08",
-"CS_08_a",
-"CS_09",
-"CS_09_a",
-"CS_10",
-"CS_10_a",
-"UR_01",
-"UR_01_a",
-"UR_02",
-"UR_02_a",
-"UR_03",
-"UR_03_a",
-"UR_04",
-"UR_04_a",
-"UR_05",
-"UR_05_a",
-"UR_06",
-"UR_06_a",
-"UR_07",
-"UR_07_a",
-"UR_08",
-"UR_08_a",
-"UR_10",
-"UR_10_a",
-"UR_11",
-"UR_11_a",
-"UR_12",
-"UR_12_a",
-"UR_13",
-"UR_13_a",
-"UR_14",
-"UR_14_a",
-"UR_15",
-"UR_15_a",
-"UR_16",
-"UR_16_a",
-"UR_17",
-"UR_17_a",
-"UR_18",
-"UR_18_a",
-"UR_19",
-"UR_19_a",
-"UR_20",
-"UR_20_a",
-"UR_21",
-"UR_21_a",
-"uc_01a",
-"uc_02a",
-"uc_02a_a",
-"uc_02b",
-"uc_03a",
-"uc_03a_a",
-"uc_03b",
-"uc_04a",
-"uc_04a_a",
-"uc_04b",
-"uc_05a",
-"uc_05a_a",
-"uc_05b",
-"uc_06a",
-"uc_06a_a",
-"uc_06b",
-"uc_07a",
-"uc_07a_a",
-"uc_07b",
-"uc_08a",
-"uc_08a_a",
-"uc_08b",
-"uc_09a",
-"uc_09a_a",
-"uc_09b",
-"uc_10a",
-"uc_10a_a",
-"uc_10b",
-"uc_11a",
-"uc_11a_a",
-"uc_11b",
-"uc_12a",
-"uc_12a_a",
-"uc_12b",
-"uc_13a",
-"uc_13a_a",
-"uc_13b",
-"uc_14a",
-"uc_14a_a",
-"uc_14b",
-"uc_15a",
-"uc_15a_a",
-"uc_15b",
-"uc_16a",
-"uc_16a_a",
-"uc_16b",
-"uc_17a",
-"uc_17a_a",
-"uc_17b",
-"uc_18a",
-"uc_18a_a",
-"uc_18b",
-"uc_19a",
-"uc_19a_a",
-"uc_19b",
-"uc_20a",
-"uc_20a_a",
-"uc_20b",
-"uc_21a",
-"uc_21a_a",
-"uc_21b",
-"uc_22a",
-"uc_22a_a",
-"uc_22b",
-"uc_23a",
-"uc_23a_a",
-"uc_23b",
-"uc_24a",
-"uc_24a_a",
-"uc_24b",
-"uc_25a",
-"uc_25a_a",
-"uc_25b",
-"uc_26a",
-"uc_26a_a",
-"uc_26b",
-"uc_27a",
-"uc_27a_a",
-"uc_27b",
-"uc_28a",
-"uc_28a_a",
-"uc_28b",
-"uc_29a",
-"uc_29a_a",
-"uc_29b",
-"uc_30a",
-"uc_30a_a",
-"uc_30b",
-"uc_31a",
-"uc_31a_a",
-"uc_31b",
-"uc_32a",
-"uc_32a_a",
-"uc_32b",
-"uc_33a",
-"uc_33a_a",
-"uc_33b",
-"uc_34a",
-"uc_34a_a",
-"uc_34b",
-"uc_35a",
-"uc_35a_a",
-"uc_35b",
-"uc_36a",
-"uc_36a_a",
-"uc_36b",
-"uc_37a",
-"uc_37a_a",
-"uc_37b",
-"LA_17",
-"LA_18",
-"LA_19",
-"LA_20a_b",
-"LA_20a_a",
-"LA_20b_a",
-"LA_21a_b",
-"LA_21a_a",
-"LA_21b_a",
-"LA_22a_b",
-"LA_22a_a",
-"LA_22b_a",
-"LA_23a_b",
-"LA_23a_a",
-"LA_23b_a",
-"LA_24a_b",
-"LA_24a_a",
-"LA_24b_a",
-"LA_25a_b",
-"LA_25a_a",
-"LA_25b_a",
-"LA_26a_b",
-"LA_26a_a",
-"LA_26b_a",
-"LA_27a_b",
-"LA_27a_a",
-"LA_27b_a",
-"LA_28a_b",
-"LA_28a_a",
-"LA_28b_a",
-"LA_29a_b",
-"LA_29a_a",
-"LA_29b_a",
-"LA_30a_b",
-"LA_30a_a",
-"LA_30b_a",
-"LA_31a_b",
-"LA_31a_a",
-"LA_31b_a",
-"LA_32a_b",
-"LA_32a_a",
-"LA_32b_a",
-"LA_33a_b",
-"LA_33a_a",
-"LA_33b_a",
-"LA_34a_b",
-"LA_34a_a",
-"LA_34b_a",
-"LA_35a_b",
-"LA_35a_a",
-"LA_35b_a",
-"LA_36a_b",
-"LA_36a_a",
-"LA_36b_a",
-"LA_37a_b",
-"LA_37a_a",
-"LA_37b_a",
-"LA_38a_b",
-"LA_38a_a",
-"LA_38b_a",
-"LA_39a_b",
-"LA_39a_a",
-"LA_39b_a",
-"LA_40a_b",
-"LA_40a_a",
-"LA_40b_a",
-"LA_41a_b",
-"LA_41a_a",
-"LA_41b_a",
-"LA_42a_b",
-"LA_42a_a",
-"LA_42b_a",
-"LA_43a_b",
-"LA_43a_a",
-"LA_43b_a",
-"LA_44a_b",
-"LA_44a_a",
-"LA_44b_a",
-"LA_45a_b",
-"LA_45a_a",
-"LA_45b_a",
-"LA_46a_b",
-"LA_46a_a",
-"LA_46b_a",
-"LA_47a_b",
-"LA_47a_a",
-"LA_47b_a",
-"LA_48a_b",
-"LA_48a_a",
-"LA_48b_a",
-"LA_49a_b",
-"LA_49a_a",
-"LA_49b_a",
-"LA_50a_b",
-"LA_50a_a",
-"LA_50b_a",
-"LA_51a_b",
-"LA_51a_a",
-"LA_51b_a",
-"LA_52a_b",
-"LA_52a_a",
-"LA_52b_a",
-"UserID",
-"EntryDate",
-"labid"
-};
+            //            string[] fldname = {
+            //"la_sno",
+            //"LA_01",
+            //"LA_02",
+            //"LA_03_b",
+            //"LA_03_a",
+            //"LA_04_b",
+            //"LA_04_a",
+            //"LA_05_b",
+            //"LA_05_a",
+            //"LA_06_b",
+            //"LA_06_a",
+            //"LA_07_b",
+            //"LA_07_a",
+            //"LA_08_b",
+            //"LA_08_a",
+            //"LA_09_b",
+            //"LA_09_a",
+            //"LA_10_b",
+            //"LA_10_a",
+            //"LA_11_b",
+            //"LA_11_a",
+            //"LA_12_b",
+            //"LA_12_a",
+            //"LA_13_b",
+            //"LA_13_a",
+            //"LA_14_b",
+            //"LA_14_a",
+            //"LA_15_b",
+            //"LA_15_a",
+            //"LA_16_b",
+            //"LA_16_a",
+            //"LF_01",
+            //"LF_01_a",
+            //"LF_02",
+            //"LF_02_a",
+            //"LF_03",
+            //"LF_03_a",
+            //"LF_04",
+            //"LF_04_a",
+            //"LF_05",
+            //"LF_05_a",
+            //"LF_06",
+            //"LF_06_a",
+            //"LF_07",
+            //"LF_07_a",
+            //"RF_01",
+            //"RF_01_a",
+            //"RF_02",
+            //"RF_02_a",
+            //"RF_03",
+            //"RF_03_a",
+            //"RF_04",
+            //"RF_04_a",
+            //"SE_01",
+            //"SE_01_a",
+            //"SE_02",
+            //"SE_02_a",
+            //"SE_03",
+            //"SE_03_a",
+            //"SE_04",
+            //"SE_04_a",
+            //"CS_01",
+            //"CS_01_a",
+            //"CS_02",
+            //"CS_02_a",
+            //"CS_03",
+            //"CS_03_a",
+            //"CS_04",
+            //"CS_04_a",
+            //"CS_05",
+            //"CS_05_a",
+            //"CS_06",
+            //"CS_06_a",
+            //"CS_07",
+            //"CS_07_a",
+            //"CS_08",
+            //"CS_08_a",
+            //"CS_09",
+            //"CS_09_a",
+            //"CS_10",
+            //"CS_10_a",
+            //"UR_01",
+            //"UR_01_a",
+            //"UR_02",
+            //"UR_02_a",
+            //"UR_03",
+            //"UR_03_a",
+            //"UR_04",
+            //"UR_04_a",
+            //"UR_05",
+            //"UR_05_a",
+            //"UR_06",
+            //"UR_06_a",
+            //"UR_07",
+            //"UR_07_a",
+            //"UR_08",
+            //"UR_08_a",
+            //"UR_10",
+            //"UR_10_a",
+            //"UR_11",
+            //"UR_11_a",
+            //"UR_12",
+            //"UR_12_a",
+            //"UR_13",
+            //"UR_13_a",
+            //"UR_14",
+            //"UR_14_a",
+            //"UR_15",
+            //"UR_15_a",
+            //"UR_16",
+            //"UR_16_a",
+            //"UR_17",
+            //"UR_17_a",
+            //"UR_18",
+            //"UR_18_a",
+            //"UR_19",
+            //"UR_19_a",
+            //"UR_20",
+            //"UR_20_a",
+            //"UR_21",
+            //"UR_21_a",
+            //"uc_01a",
+            //"uc_02a",
+            //"uc_02a_a",
+            //"uc_02b",
+            //"uc_03a",
+            //"uc_03a_a",
+            //"uc_03b",
+            //"uc_04a",
+            //"uc_04a_a",
+            //"uc_04b",
+            //"uc_05a",
+            //"uc_05a_a",
+            //"uc_05b",
+            //"uc_06a",
+            //"uc_06a_a",
+            //"uc_06b",
+            //"uc_07a",
+            //"uc_07a_a",
+            //"uc_07b",
+            //"uc_08a",
+            //"uc_08a_a",
+            //"uc_08b",
+            //"uc_09a",
+            //"uc_09a_a",
+            //"uc_09b",
+            //"uc_10a",
+            //"uc_10a_a",
+            //"uc_10b",
+            //"uc_11a",
+            //"uc_11a_a",
+            //"uc_11b",
+            //"uc_12a",
+            //"uc_12a_a",
+            //"uc_12b",
+            //"uc_13a",
+            //"uc_13a_a",
+            //"uc_13b",
+            //"uc_14a",
+            //"uc_14a_a",
+            //"uc_14b",
+            //"uc_15a",
+            //"uc_15a_a",
+            //"uc_15b",
+            //"uc_16a",
+            //"uc_16a_a",
+            //"uc_16b",
+            //"uc_17a",
+            //"uc_17a_a",
+            //"uc_17b",
+            //"uc_18a",
+            //"uc_18a_a",
+            //"uc_18b",
+            //"uc_19a",
+            //"uc_19a_a",
+            //"uc_19b",
+            //"uc_20a",
+            //"uc_20a_a",
+            //"uc_20b",
+            //"uc_21a",
+            //"uc_21a_a",
+            //"uc_21b",
+            //"uc_22a",
+            //"uc_22a_a",
+            //"uc_22b",
+            //"uc_23a",
+            //"uc_23a_a",
+            //"uc_23b",
+            //"uc_24a",
+            //"uc_24a_a",
+            //"uc_24b",
+            //"uc_25a",
+            //"uc_25a_a",
+            //"uc_25b",
+            //"uc_26a",
+            //"uc_26a_a",
+            //"uc_26b",
+            //"uc_27a",
+            //"uc_27a_a",
+            //"uc_27b",
+            //"uc_28a",
+            //"uc_28a_a",
+            //"uc_28b",
+            //"uc_29a",
+            //"uc_29a_a",
+            //"uc_29b",
+            //"uc_30a",
+            //"uc_30a_a",
+            //"uc_30b",
+            //"uc_31a",
+            //"uc_31a_a",
+            //"uc_31b",
+            //"uc_32a",
+            //"uc_32a_a",
+            //"uc_32b",
+            //"uc_33a",
+            //"uc_33a_a",
+            //"uc_33b",
+            //"uc_34a",
+            //"uc_34a_a",
+            //"uc_34b",
+            //"uc_35a",
+            //"uc_35a_a",
+            //"uc_35b",
+            //"uc_36a",
+            //"uc_36a_a",
+            //"uc_36b",
+            //"uc_37a",
+            //"uc_37a_a",
+            //"uc_37b",
+            //"LA_17",
+            //"LA_18",
+            //"LA_19",
+            //"LA_20a_b",
+            //"LA_20a_a",
+            //"LA_20b_a",
+            //"LA_21a_b",
+            //"LA_21a_a",
+            //"LA_21b_a",
+            //"LA_22a_b",
+            //"LA_22a_a",
+            //"LA_22b_a",
+            //"LA_23a_b",
+            //"LA_23a_a",
+            //"LA_23b_a",
+            //"LA_24a_b",
+            //"LA_24a_a",
+            //"LA_24b_a",
+            //"LA_25a_b",
+            //"LA_25a_a",
+            //"LA_25b_a",
+            //"LA_26a_b",
+            //"LA_26a_a",
+            //"LA_26b_a",
+            //"LA_27a_b",
+            //"LA_27a_a",
+            //"LA_27b_a",
+            //"LA_28a_b",
+            //"LA_28a_a",
+            //"LA_28b_a",
+            //"LA_29a_b",
+            //"LA_29a_a",
+            //"LA_29b_a",
+            //"LA_30a_b",
+            //"LA_30a_a",
+            //"LA_30b_a",
+            //"LA_31a_b",
+            //"LA_31a_a",
+            //"LA_31b_a",
+            //"LA_32a_b",
+            //"LA_32a_a",
+            //"LA_32b_a",
+            //"LA_33a_b",
+            //"LA_33a_a",
+            //"LA_33b_a",
+            //"LA_34a_b",
+            //"LA_34a_a",
+            //"LA_34b_a",
+            //"LA_35a_b",
+            //"LA_35a_a",
+            //"LA_35b_a",
+            //"LA_36a_b",
+            //"LA_36a_a",
+            //"LA_36b_a",
+            //"LA_37a_b",
+            //"LA_37a_a",
+            //"LA_37b_a",
+            //"LA_38a_b",
+            //"LA_38a_a",
+            //"LA_38b_a",
+            //"LA_39a_b",
+            //"LA_39a_a",
+            //"LA_39b_a",
+            //"LA_40a_b",
+            //"LA_40a_a",
+            //"LA_40b_a",
+            //"LA_41a_b",
+            //"LA_41a_a",
+            //"LA_41b_a",
+            //"LA_42a_b",
+            //"LA_42a_a",
+            //"LA_42b_a",
+            //"LA_43a_b",
+            //"LA_43a_a",
+            //"LA_43b_a",
+            //"LA_44a_b",
+            //"LA_44a_a",
+            //"LA_44b_a",
+            //"LA_45a_b",
+            //"LA_45a_a",
+            //"LA_45b_a",
+            //"LA_46a_b",
+            //"LA_46a_a",
+            //"LA_46b_a",
+            //"LA_47a_b",
+            //"LA_47a_a",
+            //"LA_47b_a",
+            //"LA_48a_b",
+            //"LA_48a_a",
+            //"LA_48b_a",
+            //"LA_49a_b",
+            //"LA_49a_a",
+            //"LA_49b_a",
+            //"LA_50a_b",
+            //"LA_50a_a",
+            //"LA_50b_a",
+            //"LA_51a_b",
+            //"LA_51a_a",
+            //"LA_51b_a",
+            //"LA_52a_b",
+            //"LA_52a_a",
+            //"LA_52b_a",
+            //"UserID",
+            //"EntryDate",
+            //"labid"
+            //};
 
-            string[] fldvalue = {
-la_sno.Text,
-LA_01.Text,
-LA_02.Text,
-var_LA_03_b,
-LA_03_a.Text,
-var_LA_04_b,
-LA_04_a.Text,
-var_LA_05_b,
-LA_05_a.Text,
-var_LA_06_b,
-LA_06_a.Text,
-var_LA_07_b,
-LA_07_a.Text,
-var_LA_08_b,
-LA_08_a.Text,
-var_LA_09_b,
-LA_09_a.Text,
-var_LA_10_b,
-LA_10_a.Text,
-var_LA_11_b,
-LA_11_a.Text,
-var_LA_12_b,
-LA_12_a.Text,
-var_LA_13_b,
-LA_13_a.Text,
-var_LA_14_b,
-LA_14_a.Text,
-var_LA_15_b,
-LA_15_a.Text,
-var_LA_16_b,
-LA_16_a.Text,
-var_LF_01,
-LF_01_a.Text,
-var_LF_02,
-LF_02_a.Text,
-var_LF_03,
-LF_03_a.Text,
-var_LF_04,
-LF_04_a.Text,
-var_LF_05,
-LF_05_a.Text,
-var_LF_06,
-LF_06_a.Text,
-var_LF_07,
-LF_07_a.Text,
-var_RF_01,
-RF_01_a.Text,
-var_RF_02,
-RF_02_a.Text,
-var_RF_03,
-RF_03_a.Text,
-var_RF_04,
-RF_04_a.Text,
-var_SE_01,
-SE_01_a.Text,
-var_SE_02,
-SE_02_a.Text,
-var_SE_03,
-SE_03_a.Text,
-var_SE_04,
-SE_04_a.Text,
-var_CS_01,
-CS_01_a.Text,
-var_CS_02,
-CS_02_a.Text,
-var_CS_03,
-CS_03_a.Text,
-var_CS_04,
-CS_04_a.Text,
-var_CS_05,
-CS_05_a.Text,
-var_CS_06,
-CS_06_a.Text,
-var_CS_07,
-CS_07_a.Text,
-var_CS_08,
-CS_08_a.Text,
-var_CS_09,
-CS_09_a.Text,
-var_CS_10,
-CS_10_a.Text,
-var_UR_01,
-UR_01_a.Text,
-var_UR_02,
-UR_02_a.Text,
-var_UR_03,
-UR_03_a.Text,
-var_UR_04,
-UR_04_a.Text,
-var_UR_05,
-UR_05_a.Text,
-var_UR_06,
-UR_06_a.Text,
-var_UR_07,
-UR_07_a.Text,
-var_UR_08,
-UR_08_a.Text,
-var_UR_10,
-UR_10_a.Text,
-var_UR_11,
-UR_11_a.Text,
-var_UR_12,
-UR_12_a.Text,
-var_UR_13,
-UR_13_a.Text,
-var_UR_14,
-UR_14_a.Text,
-var_UR_15,
-UR_15_a.Text,
-var_UR_16,
-UR_16_a.Text,
-var_UR_17,
-UR_17_a.Text,
-var_UR_18,
-UR_18_a.Text,
-var_UR_19,
-UR_19_a.Text,
-var_UR_20,
-UR_20_a.Text,
-var_UR_21,
-UR_21_a.Text,
-var_uc_01a,
-var_uc_02a,
-uc_02a_a.Text,
-var_uc_02b,
-var_uc_03a,
-uc_03a_a.Text,
-var_uc_03b,
-var_uc_04a,
-uc_04a_a.Text,
-var_uc_04b,
-var_uc_05a,
-uc_05a_a.Text,
-var_uc_05b,
-var_uc_06a,
-uc_06a_a.Text,
-var_uc_06b,
-var_uc_07a,
-uc_07a_a.Text,
-var_uc_07b,
-var_uc_08a,
-uc_08a_a.Text,
-var_uc_08b,
-var_uc_09a,
-uc_09a_a.Text,
-var_uc_09b,
-var_uc_10a,
-uc_10a_a.Text,
-var_uc_10b,
-var_uc_11a,
-uc_11a_a.Text,
-var_uc_11b,
-var_uc_12a,
-uc_12a_a.Text,
-var_uc_12b,
-var_uc_13a,
-uc_13a_a.Text,
-var_uc_13b,
-var_uc_14a,
-uc_14a_a.Text,
-var_uc_14b,
-var_uc_15a,
-uc_15a_a.Text,
-var_uc_15b,
-var_uc_16a,
-uc_16a_a.Text,
-var_uc_16b,
-var_uc_17a,
-uc_17a_a.Text,
-var_uc_17b,
-var_uc_18a,
-uc_18a_a.Text,
-var_uc_18b,
-var_uc_19a,
-uc_19a_a.Text,
-var_uc_19b,
-var_uc_20a,
-uc_20a_a.Text,
-var_uc_20b,
-var_uc_21a,
-uc_21a_a.Text,
-var_uc_21b,
-var_uc_22a,
-uc_22a_a.Text,
-var_uc_22b,
-var_uc_23a,
-uc_23a_a.Text,
-var_uc_23b,
-var_uc_24a,
-uc_24a_a.Text,
-var_uc_24b,
-var_uc_25a,
-uc_25a_a.Text,
-var_uc_25b,
-var_uc_26a,
-uc_26a_a.Text,
-var_uc_26b,
-var_uc_27a,
-uc_27a_a.Text,
-var_uc_27b,
-var_uc_28a,
-uc_28a_a.Text,
-var_uc_28b,
-var_uc_29a,
-uc_29a_a.Text,
-var_uc_29b,
-var_uc_30a,
-uc_30a_a.Text,
-var_uc_30b,
-var_uc_31a,
-uc_31a_a.Text,
-var_uc_31b,
-var_uc_32a,
-uc_32a_a.Text,
-var_uc_32b,
-var_uc_33a,
-uc_33a_a.Text,
-var_uc_33b,
-var_uc_34a,
-uc_34a_a.Text,
-var_uc_34b,
-var_uc_35a,
-uc_35a_a.Text,
-var_uc_35b,
-var_uc_36a,
-uc_36a_a.Text,
-var_uc_36b,
-var_uc_37a,
-uc_37a_a.Text,
-var_uc_37b,
-LA_17.Text,
-LA_18.Text,
-LA_19.Text,
-var_LA_20a_b,
-LA_20a_a.Text,
-var_LA_20b_a,
-var_LA_21a_b,
-LA_21a_a.Text,
-var_LA_21b_a,
-var_LA_22a_b,
-LA_22a_a.Text,
-var_LA_22b_a,
-var_LA_23a_b,
-LA_23a_a.Text,
-var_LA_23b_a,
-var_LA_24a_b,
-LA_24a_a.Text,
-var_LA_24b_a,
-var_LA_25a_b,
-LA_25a_a.Text,
-var_LA_25b_a,
-var_LA_26a_b,
-LA_26a_a.Text,
-var_LA_26b_a,
-var_LA_27a_b,
-LA_27a_a.Text,
-var_LA_27b_a,
-var_LA_28a_b,
-LA_28a_a.Text,
-var_LA_28b_a,
-var_LA_29a_b,
-LA_29a_a.Text,
-var_LA_29b_a,
-var_LA_30a_b,
-LA_30a_a.Text,
-var_LA_30b_a,
-var_LA_31a_b,
-LA_31a_a.Text,
-var_LA_31b_a,
-var_LA_32a_b,
-LA_32a_a.Text,
-var_LA_32b_a,
-var_LA_33a_b,
-LA_33a_a.Text,
-var_LA_33b_a,
-var_LA_34a_b,
-LA_34a_a.Text,
-var_LA_34b_a,
-var_LA_35a_b,
-LA_35a_a.Text,
-var_LA_35b_a,
-var_LA_36a_b,
-LA_36a_a.Text,
-var_LA_36b_a,
-var_LA_37a_b,
-LA_37a_a.Text,
-var_LA_37b_a,
-var_LA_38a_b,
-LA_38a_a.Text,
-var_LA_38b_a,
-var_LA_39a_b,
-LA_39a_a.Text,
-var_LA_39b_a,
-var_LA_40a_b,
-LA_40a_a.Text,
-var_LA_40b_a,
-var_LA_41a_b,
-LA_41a_a.Text,
-var_LA_41b_a,
-var_LA_42a_b,
-LA_42a_a.Text,
-var_LA_42b_a,
-var_LA_43a_b,
-LA_43a_a.Text,
-var_LA_43b_a,
-var_LA_44a_b,
-LA_44a_a.Text,
-var_LA_44b_a,
-var_LA_45a_b,
-LA_45a_a.Text,
-var_LA_45b_a,
-var_LA_46a_b,
-LA_46a_a.Text,
-var_LA_46b_a,
-var_LA_47a_b,
-LA_47a_a.Text,
-var_LA_47b_a,
-var_LA_48a_b,
-LA_48a_a.Text,
-var_LA_48b_a,
-var_LA_49a_b,
-LA_49a_a.Text,
-var_LA_49b_a,
-var_LA_50a_b,
-LA_50a_a.Text,
-var_LA_50b_a,
-var_LA_51a_b,
-LA_51a_a.Text,
-var_LA_51b_a,
-var_LA_52a_b,
-LA_52a_a.Text,
-var_LA_52b_a,
-Session["userid"].ToString(),
-dt_entry.ToShortDateString(),
-HttpContext.Current.Request["labid"].ToString()
+            //            string[] fldvalue = {
+            //la_sno.Text,
+            //LA_01.Text,
+            //LA_02.Text,
+            //var_LA_03_b,
+            //LA_03_a.Text,
+            //var_LA_04_b,
+            //LA_04_a.Text,
+            //var_LA_05_b,
+            //LA_05_a.Text,
+            //var_LA_06_b,
+            //LA_06_a.Text,
+            //var_LA_07_b,
+            //LA_07_a.Text,
+            //var_LA_08_b,
+            //LA_08_a.Text,
+            //var_LA_09_b,
+            //LA_09_a.Text,
+            //var_LA_10_b,
+            //LA_10_a.Text,
+            //var_LA_11_b,
+            //LA_11_a.Text,
+            //var_LA_12_b,
+            //LA_12_a.Text,
+            //var_LA_13_b,
+            //LA_13_a.Text,
+            //var_LA_14_b,
+            //LA_14_a.Text,
+            //var_LA_15_b,
+            //LA_15_a.Text,
+            //var_LA_16_b,
+            //LA_16_a.Text,
+            //var_LF_01,
+            //LF_01_a.Text,
+            //var_LF_02,
+            //LF_02_a.Text,
+            //var_LF_03,
+            //LF_03_a.Text,
+            //var_LF_04,
+            //LF_04_a.Text,
+            //var_LF_05,
+            //LF_05_a.Text,
+            //var_LF_06,
+            //LF_06_a.Text,
+            //var_LF_07,
+            //LF_07_a.Text,
+            //var_RF_01,
+            //RF_01_a.Text,
+            //var_RF_02,
+            //RF_02_a.Text,
+            //var_RF_03,
+            //RF_03_a.Text,
+            //var_RF_04,
+            //RF_04_a.Text,
+            //var_SE_01,
+            //SE_01_a.Text,
+            //var_SE_02,
+            //SE_02_a.Text,
+            //var_SE_03,
+            //SE_03_a.Text,
+            //var_SE_04,
+            //SE_04_a.Text,
+            //var_CS_01,
+            //CS_01_a.Text,
+            //var_CS_02,
+            //CS_02_a.Text,
+            //var_CS_03,
+            //CS_03_a.Text,
+            //var_CS_04,
+            //CS_04_a.Text,
+            //var_CS_05,
+            //CS_05_a.Text,
+            //var_CS_06,
+            //CS_06_a.Text,
+            //var_CS_07,
+            //CS_07_a.Text,
+            //var_CS_08,
+            //CS_08_a.Text,
+            //var_CS_09,
+            //CS_09_a.Text,
+            //var_CS_10,
+            //CS_10_a.Text,
+            //var_UR_01,
+            //UR_01_a.Text,
+            //var_UR_02,
+            //UR_02_a.Text,
+            //var_UR_03,
+            //UR_03_a.Text,
+            //var_UR_04,
+            //UR_04_a.Text,
+            //var_UR_05,
+            //UR_05_a.Text,
+            //var_UR_06,
+            //UR_06_a.Text,
+            //var_UR_07,
+            //UR_07_a.Text,
+            //var_UR_08,
+            //UR_08_a.Text,
+            //var_UR_10,
+            //UR_10_a.Text,
+            //var_UR_11,
+            //UR_11_a.Text,
+            //var_UR_12,
+            //UR_12_a.Text,
+            //var_UR_13,
+            //UR_13_a.Text,
+            //var_UR_14,
+            //UR_14_a.Text,
+            //var_UR_15,
+            //UR_15_a.Text,
+            //var_UR_16,
+            //UR_16_a.Text,
+            //var_UR_17,
+            //UR_17_a.Text,
+            //var_UR_18,
+            //UR_18_a.Text,
+            //var_UR_19,
+            //UR_19_a.Text,
+            //var_UR_20,
+            //UR_20_a.Text,
+            //var_UR_21,
+            //UR_21_a.Text,
+            //var_uc_01a,
+            //var_uc_02a,
+            //uc_02a_a.Text,
+            //var_uc_02b,
+            //var_uc_03a,
+            //uc_03a_a.Text,
+            //var_uc_03b,
+            //var_uc_04a,
+            //uc_04a_a.Text,
+            //var_uc_04b,
+            //var_uc_05a,
+            //uc_05a_a.Text,
+            //var_uc_05b,
+            //var_uc_06a,
+            //uc_06a_a.Text,
+            //var_uc_06b,
+            //var_uc_07a,
+            //uc_07a_a.Text,
+            //var_uc_07b,
+            //var_uc_08a,
+            //uc_08a_a.Text,
+            //var_uc_08b,
+            //var_uc_09a,
+            //uc_09a_a.Text,
+            //var_uc_09b,
+            //var_uc_10a,
+            //uc_10a_a.Text,
+            //var_uc_10b,
+            //var_uc_11a,
+            //uc_11a_a.Text,
+            //var_uc_11b,
+            //var_uc_12a,
+            //uc_12a_a.Text,
+            //var_uc_12b,
+            //var_uc_13a,
+            //uc_13a_a.Text,
+            //var_uc_13b,
+            //var_uc_14a,
+            //uc_14a_a.Text,
+            //var_uc_14b,
+            //var_uc_15a,
+            //uc_15a_a.Text,
+            //var_uc_15b,
+            //var_uc_16a,
+            //uc_16a_a.Text,
+            //var_uc_16b,
+            //var_uc_17a,
+            //uc_17a_a.Text,
+            //var_uc_17b,
+            //var_uc_18a,
+            //uc_18a_a.Text,
+            //var_uc_18b,
+            //var_uc_19a,
+            //uc_19a_a.Text,
+            //var_uc_19b,
+            //var_uc_20a,
+            //uc_20a_a.Text,
+            //var_uc_20b,
+            //var_uc_21a,
+            //uc_21a_a.Text,
+            //var_uc_21b,
+            //var_uc_22a,
+            //uc_22a_a.Text,
+            //var_uc_22b,
+            //var_uc_23a,
+            //uc_23a_a.Text,
+            //var_uc_23b,
+            //var_uc_24a,
+            //uc_24a_a.Text,
+            //var_uc_24b,
+            //var_uc_25a,
+            //uc_25a_a.Text,
+            //var_uc_25b,
+            //var_uc_26a,
+            //uc_26a_a.Text,
+            //var_uc_26b,
+            //var_uc_27a,
+            //uc_27a_a.Text,
+            //var_uc_27b,
+            //var_uc_28a,
+            //uc_28a_a.Text,
+            //var_uc_28b,
+            //var_uc_29a,
+            //uc_29a_a.Text,
+            //var_uc_29b,
+            //var_uc_30a,
+            //uc_30a_a.Text,
+            //var_uc_30b,
+            //var_uc_31a,
+            //uc_31a_a.Text,
+            //var_uc_31b,
+            //var_uc_32a,
+            //uc_32a_a.Text,
+            //var_uc_32b,
+            //var_uc_33a,
+            //uc_33a_a.Text,
+            //var_uc_33b,
+            //var_uc_34a,
+            //uc_34a_a.Text,
+            //var_uc_34b,
+            //var_uc_35a,
+            //uc_35a_a.Text,
+            //var_uc_35b,
+            //var_uc_36a,
+            //uc_36a_a.Text,
+            //var_uc_36b,
+            //var_uc_37a,
+            //uc_37a_a.Text,
+            //var_uc_37b,
+            //LA_17.Text,
+            //LA_18.Text,
+            //LA_19.Text,
+            //var_LA_20a_b,
+            //LA_20a_a.Text,
+            //var_LA_20b_a,
+            //var_LA_21a_b,
+            //LA_21a_a.Text,
+            //var_LA_21b_a,
+            //var_LA_22a_b,
+            //LA_22a_a.Text,
+            //var_LA_22b_a,
+            //var_LA_23a_b,
+            //LA_23a_a.Text,
+            //var_LA_23b_a,
+            //var_LA_24a_b,
+            //LA_24a_a.Text,
+            //var_LA_24b_a,
+            //var_LA_25a_b,
+            //LA_25a_a.Text,
+            //var_LA_25b_a,
+            //var_LA_26a_b,
+            //LA_26a_a.Text,
+            //var_LA_26b_a,
+            //var_LA_27a_b,
+            //LA_27a_a.Text,
+            //var_LA_27b_a,
+            //var_LA_28a_b,
+            //LA_28a_a.Text,
+            //var_LA_28b_a,
+            //var_LA_29a_b,
+            //LA_29a_a.Text,
+            //var_LA_29b_a,
+            //var_LA_30a_b,
+            //LA_30a_a.Text,
+            //var_LA_30b_a,
+            //var_LA_31a_b,
+            //LA_31a_a.Text,
+            //var_LA_31b_a,
+            //var_LA_32a_b,
+            //LA_32a_a.Text,
+            //var_LA_32b_a,
+            //var_LA_33a_b,
+            //LA_33a_a.Text,
+            //var_LA_33b_a,
+            //var_LA_34a_b,
+            //LA_34a_a.Text,
+            //var_LA_34b_a,
+            //var_LA_35a_b,
+            //LA_35a_a.Text,
+            //var_LA_35b_a,
+            //var_LA_36a_b,
+            //LA_36a_a.Text,
+            //var_LA_36b_a,
+            //var_LA_37a_b,
+            //LA_37a_a.Text,
+            //var_LA_37b_a,
+            //var_LA_38a_b,
+            //LA_38a_a.Text,
+            //var_LA_38b_a,
+            //var_LA_39a_b,
+            //LA_39a_a.Text,
+            //var_LA_39b_a,
+            //var_LA_40a_b,
+            //LA_40a_a.Text,
+            //var_LA_40b_a,
+            //var_LA_41a_b,
+            //LA_41a_a.Text,
+            //var_LA_41b_a,
+            //var_LA_42a_b,
+            //LA_42a_a.Text,
+            //var_LA_42b_a,
+            //var_LA_43a_b,
+            //LA_43a_a.Text,
+            //var_LA_43b_a,
+            //var_LA_44a_b,
+            //LA_44a_a.Text,
+            //var_LA_44b_a,
+            //var_LA_45a_b,
+            //LA_45a_a.Text,
+            //var_LA_45b_a,
+            //var_LA_46a_b,
+            //LA_46a_a.Text,
+            //var_LA_46b_a,
+            //var_LA_47a_b,
+            //LA_47a_a.Text,
+            //var_LA_47b_a,
+            //var_LA_48a_b,
+            //LA_48a_a.Text,
+            //var_LA_48b_a,
+            //var_LA_49a_b,
+            //LA_49a_a.Text,
+            //var_LA_49b_a,
+            //var_LA_50a_b,
+            //LA_50a_a.Text,
+            //var_LA_50b_a,
+            //var_LA_51a_b,
+            //LA_51a_a.Text,
+            //var_LA_51b_a,
+            //var_LA_52a_b,
+            //LA_52a_a.Text,
+            //var_LA_52b_a,
+            //Session["userid"].ToString(),
+            //dt_entry.ToShortDateString(),
+            //HttpContext.Current.Request["labid"].ToString()
 
-};
+            //};
 
 
-            string msg = obj_op.ExecuteNonQuery_Message(fldname, fldvalue, "sp_AddSampleResult");
+
+            string qry = "insert into sample_result(" +
+"la_sno," +
+"LA_01," +
+"LA_02," +
+"LA_03_b," +
+"LA_03_a," +
+"LA_04_b," +
+"LA_04_a," +
+"LA_05_b," +
+"LA_05_a," +
+"LA_06_b," +
+"LA_06_a," +
+"LA_07_b," +
+"LA_07_a," +
+"LA_08_b," +
+"LA_08_a," +
+"LA_09_b," +
+"LA_09_a," +
+"LA_10_b," +
+"LA_10_a," +
+"LA_11_b," +
+"LA_11_a," +
+"LA_12_b," +
+"LA_12_a," +
+"LA_13_b," +
+"LA_13_a," +
+"LA_14_b," +
+"LA_14_a," +
+"LA_15_b," +
+"LA_15_a," +
+"LA_16_b," +
+"LA_16_a," +
+"LF_01," +
+"LF_01_a," +
+"LF_02," +
+"LF_02_a," +
+"LF_03," +
+"LF_03_a," +
+"LF_04," +
+"LF_04_a," +
+"LF_05," +
+"LF_05_a," +
+"LF_06," +
+"LF_06_a," +
+"LF_07," +
+"LF_07_a," +
+"RF_01," +
+"RF_01_a," +
+"RF_02," +
+"RF_02_a," +
+"RF_03," +
+"RF_03_a," +
+"RF_04," +
+"RF_04_a," +
+"SE_01," +
+"SE_01_a," +
+"SE_02," +
+"SE_02_a," +
+"SE_03," +
+"SE_03_a," +
+"SE_04," +
+"SE_04_a," +
+"CS_01," +
+"CS_01_a," +
+"CS_02," +
+"CS_02_a," +
+"CS_03," +
+"CS_03_a," +
+"CS_04," +
+"CS_04_a," +
+"CS_05," +
+"CS_05_a," +
+"CS_06," +
+"CS_06_a," +
+"CS_07," +
+"CS_07_a," +
+"CS_08," +
+"CS_08_a," +
+"CS_09," +
+"CS_09_a," +
+"CS_10," +
+"CS_10_a," +
+"UR_01," +
+"UR_01_a," +
+"UR_02," +
+"UR_02_a," +
+"UR_03," +
+"UR_03_a," +
+"UR_04," +
+"UR_04_a," +
+"UR_05," +
+"UR_05_a," +
+"UR_06," +
+"UR_06_a," +
+"UR_07," +
+"UR_07_a," +
+"UR_08," +
+"UR_08_a," +
+"UR_10," +
+"UR_10_a," +
+"UR_11," +
+"UR_11_a," +
+"UR_12," +
+"UR_12_a," +
+"UR_13," +
+"UR_13_a," +
+"UR_14," +
+"UR_14_a," +
+"UR_15," +
+"UR_15_a," +
+"UR_16," +
+"UR_16_a," +
+"UR_17," +
+"UR_17_a," +
+"UR_18," +
+"UR_18_a," +
+"UR_19," +
+"UR_19_a," +
+"UR_20," +
+"UR_20_a," +
+"UR_21," +
+"UR_21_a," +
+"uc_01a," +
+"uc_02a," +
+"uc_02a_a," +
+"uc_02b," +
+"uc_03a," +
+"uc_03a_a," +
+"uc_03b," +
+"uc_04a," +
+"uc_04a_a," +
+"uc_04b," +
+"uc_05a," +
+"uc_05a_a," +
+"uc_05b," +
+"uc_06a," +
+"uc_06a_a," +
+"uc_06b," +
+"uc_07a," +
+"uc_07a_a," +
+"uc_07b," +
+"uc_08a," +
+"uc_08a_a," +
+"uc_08b," +
+"uc_09a," +
+"uc_09a_a," +
+"uc_09b," +
+"uc_10a," +
+"uc_10a_a," +
+"uc_10b," +
+"uc_11a," +
+"uc_11a_a," +
+"uc_11b," +
+"uc_12a," +
+"uc_12a_a," +
+"uc_12b," +
+"uc_13a," +
+"uc_13a_a," +
+"uc_13b," +
+"uc_14a," +
+"uc_14a_a," +
+"uc_14b," +
+"uc_15a," +
+"uc_15a_a," +
+"uc_15b," +
+"uc_16a," +
+"uc_16a_a," +
+"uc_16b," +
+"uc_17a," +
+"uc_17a_a," +
+"uc_17b," +
+"uc_18a," +
+"uc_18a_a," +
+"uc_18b," +
+"uc_19a," +
+"uc_19a_a," +
+"uc_19b," +
+"uc_20a," +
+"uc_20a_a," +
+"uc_20b," +
+"uc_21a," +
+"uc_21a_a," +
+"uc_21b," +
+"uc_22a," +
+"uc_22a_a," +
+"uc_22b," +
+"uc_23a," +
+"uc_23a_a," +
+"uc_23b," +
+"uc_24a," +
+"uc_24a_a," +
+"uc_24b," +
+"uc_25a," +
+"uc_25a_a," +
+"uc_25b," +
+"uc_26a," +
+"uc_26a_a," +
+"uc_26b," +
+"uc_27a," +
+"uc_27a_a," +
+"uc_27b," +
+"uc_28a," +
+"uc_28a_a," +
+"uc_28b," +
+"uc_29a," +
+"uc_29a_a," +
+"uc_29b," +
+"uc_30a," +
+"uc_30a_a," +
+"uc_30b," +
+"uc_31a," +
+"uc_31a_a," +
+"uc_31b," +
+"uc_32a," +
+"uc_32a_a," +
+"uc_32b," +
+"uc_33a," +
+"uc_33a_a," +
+"uc_33b," +
+"uc_34a," +
+"uc_34a_a," +
+"uc_34b," +
+"uc_35a," +
+"uc_35a_a," +
+"uc_35b," +
+"uc_36a," +
+"uc_36a_a," +
+"uc_36b," +
+"uc_37a," +
+"uc_37a_a," +
+"uc_37b," +
+"LA_17," +
+"LA_18," +
+"LA_19," +
+"LA_20a_b," +
+"LA_20a_a," +
+"LA_20b_a," +
+"LA_21a_b," +
+"LA_21a_a," +
+"LA_21b_a," +
+"LA_22a_b," +
+"LA_22a_a," +
+"LA_22b_a," +
+"LA_23a_b," +
+"LA_23a_a," +
+"LA_23b_a," +
+"LA_24a_b," +
+"LA_24a_a," +
+"LA_24b_a," +
+"LA_25a_b," +
+"LA_25a_a," +
+"LA_25b_a," +
+"LA_26a_b," +
+"LA_26a_a," +
+"LA_26b_a," +
+"LA_27a_b," +
+"LA_27a_a," +
+"LA_27b_a," +
+"LA_28a_b," +
+"LA_28a_a," +
+"LA_28b_a," +
+"LA_29a_b," +
+"LA_29a_a," +
+"LA_29b_a," +
+"LA_30a_b," +
+"LA_30a_a," +
+"LA_30b_a," +
+"LA_31a_b," +
+"LA_31a_a," +
+"LA_31b_a," +
+"LA_32a_b," +
+"LA_32a_a," +
+"LA_32b_a," +
+"LA_33a_b," +
+"LA_33a_a," +
+"LA_33b_a," +
+"LA_34a_b," +
+"LA_34a_a," +
+"LA_34b_a," +
+"LA_35a_b," +
+"LA_35a_a," +
+"LA_35b_a," +
+"LA_36a_b," +
+"LA_36a_a," +
+"LA_36b_a," +
+"LA_37a_b," +
+"LA_37a_a," +
+"LA_37b_a," +
+"LA_38a_b," +
+"LA_38a_a," +
+"LA_38b_a," +
+"LA_39a_b," +
+"LA_39a_a," +
+"LA_39b_a," +
+"LA_40a_b," +
+"LA_40a_a," +
+"LA_40b_a," +
+"LA_41a_b," +
+"LA_41a_a," +
+"LA_41b_a," +
+"LA_42a_b," +
+"LA_42a_a," +
+"LA_42b_a," +
+"LA_43a_b," +
+"LA_43a_a," +
+"LA_43b_a," +
+"LA_44a_b," +
+"LA_44a_a," +
+"LA_44b_a," +
+"LA_45a_b," +
+"LA_45a_a," +
+"LA_45b_a," +
+"LA_46a_b," +
+"LA_46a_a," +
+"LA_46b_a," +
+"LA_47a_b," +
+"LA_47a_a," +
+"LA_47b_a," +
+"LA_48a_b," +
+"LA_48a_a," +
+"LA_48b_a," +
+"LA_49a_b," +
+"LA_49a_a," +
+"LA_49b_a," +
+"LA_50a_b," +
+"LA_50a_a," +
+"LA_50b_a," +
+"LA_51a_b," +
+"LA_51a_a," +
+"LA_51b_a," +
+"LA_52a_b," +
+"LA_52a_a," +
+"LA_52b_a," +
+"UserID," +
+"EntryDate," +
+"labid) values('" +
+la_sno.Text + "', '" +
+LA_01.Text + "', '" +
+LA_02.Text + "', '" +
+var_LA_03_b + "', '" +
+LA_03_a.Text + "', '" +
+var_LA_04_b + "', '" +
+LA_04_a.Text + "', '" +
+var_LA_05_b + "', '" +
+LA_05_a.Text + "', '" +
+var_LA_06_b + "', '" +
+LA_06_a.Text + "', '" +
+var_LA_07_b + "', '" +
+LA_07_a.Text + "', '" +
+var_LA_08_b + "', '" +
+LA_08_a.Text + "', '" +
+var_LA_09_b + "', '" +
+LA_09_a.Text + "', '" +
+var_LA_10_b + "', '" +
+LA_10_a.Text + "', '" +
+var_LA_11_b + "', '" +
+LA_11_a.Text + "', '" +
+var_LA_12_b + "', '" +
+LA_12_a.Text + "', '" +
+var_LA_13_b + "', '" +
+LA_13_a.Text + "', '" +
+var_LA_14_b + "', '" +
+LA_14_a.Text + "', '" +
+var_LA_15_b + "', '" +
+LA_15_a.Text + "', '" +
+var_LA_16_b + "', '" +
+LA_16_a.Text + "', '" +
+var_LF_01 + "', '" +
+LF_01_a.Text + "', '" +
+var_LF_02 + "', '" +
+LF_02_a.Text + "', '" +
+var_LF_03 + "', '" +
+LF_03_a.Text + "', '" +
+var_LF_04 + "', '" +
+LF_04_a.Text + "', '" +
+var_LF_05 + "', '" +
+LF_05_a.Text + "', '" +
+var_LF_06 + "', '" +
+LF_06_a.Text + "', '" +
+var_LF_07 + "', '" +
+LF_07_a.Text + "', '" +
+var_RF_01 + "', '" +
+RF_01_a.Text + "', '" +
+var_RF_02 + "', '" +
+RF_02_a.Text + "', '" +
+var_RF_03 + "', '" +
+RF_03_a.Text + "', '" +
+var_RF_04 + "', '" +
+RF_04_a.Text + "', '" +
+var_SE_01 + "', '" +
+SE_01_a.Text + "', '" +
+var_SE_02 + "', '" +
+SE_02_a.Text + "', '" +
+var_SE_03 + "', '" +
+SE_03_a.Text + "', '" +
+var_SE_04 + "', '" +
+SE_04_a.Text + "', '" +
+var_CS_01 + "', '" +
+CS_01_a.Text + "', '" +
+var_CS_02 + "', '" +
+CS_02_a.Text + "', '" +
+var_CS_03 + "', '" +
+CS_03_a.Text + "', '" +
+var_CS_04 + "', '" +
+CS_04_a.Text + "', '" +
+var_CS_05 + "', '" +
+CS_05_a.Text + "', '" +
+var_CS_06 + "', '" +
+CS_06_a.Text + "', '" +
+var_CS_07 + "', '" +
+CS_07_a.Text + "', '" +
+var_CS_08 + "', '" +
+CS_08_a.Text + "', '" +
+var_CS_09 + "', '" +
+CS_09_a.Text + "', '" +
+var_CS_10 + "', '" +
+CS_10_a.Text + "', '" +
+var_UR_01 + "', '" +
+UR_01_a.Text + "', '" +
+var_UR_02 + "', '" +
+UR_02_a.Text + "', '" +
+var_UR_03 + "', '" +
+UR_03_a.Text + "', '" +
+var_UR_04 + "', '" +
+UR_04_a.Text + "', '" +
+var_UR_05 + "', '" +
+UR_05_a.Text + "', '" +
+var_UR_06 + "', '" +
+UR_06_a.Text + "', '" +
+var_UR_07 + "', '" +
+UR_07_a.Text + "', '" +
+var_UR_08 + "', '" +
+UR_08_a.Text + "', '" +
+var_UR_10 + "', '" +
+UR_10_a.Text + "', '" +
+var_UR_11 + "', '" +
+UR_11_a.Text + "', '" +
+var_UR_12 + "', '" +
+UR_12_a.Text + "', '" +
+var_UR_13 + "', '" +
+UR_13_a.Text + "', '" +
+var_UR_14 + "', '" +
+UR_14_a.Text + "', '" +
+var_UR_15 + "', '" +
+UR_15_a.Text + "', '" +
+var_UR_16 + "', '" +
+UR_16_a.Text + "', '" +
+var_UR_17 + "', '" +
+UR_17_a.Text + "', '" +
+var_UR_18 + "', '" +
+UR_18_a.Text + "', '" +
+var_UR_19 + "', '" +
+UR_19_a.Text + "', '" +
+var_UR_20 + "', '" +
+UR_20_a.Text + "', '" +
+var_UR_21 + "', '" +
+UR_21_a.Text + "', '" +
+var_uc_01a + "', '" +
+var_uc_02a + "', '" +
+uc_02a_a.Text + "', '" +
+var_uc_02b + "', '" +
+var_uc_03a + "', '" +
+uc_03a_a.Text + "', '" +
+var_uc_03b + "', '" +
+var_uc_04a + "', '" +
+uc_04a_a.Text + "', '" +
+var_uc_04b + "', '" +
+var_uc_05a + "', '" +
+uc_05a_a.Text + "', '" +
+var_uc_05b + "', '" +
+var_uc_06a + "', '" +
+uc_06a_a.Text + "', '" +
+var_uc_06b + "', '" +
+var_uc_07a + "', '" +
+uc_07a_a.Text + "', '" +
+var_uc_07b + "', '" +
+var_uc_08a + "', '" +
+uc_08a_a.Text + "', '" +
+var_uc_08b + "', '" +
+var_uc_09a + "', '" +
+uc_09a_a.Text + "', '" +
+var_uc_09b + "', '" +
+var_uc_10a + "', '" +
+uc_10a_a.Text + "', '" +
+var_uc_10b + "', '" +
+var_uc_11a + "', '" +
+uc_11a_a.Text + "', '" +
+var_uc_11b + "', '" +
+var_uc_12a + "', '" +
+uc_12a_a.Text + "', '" +
+var_uc_12b + "', '" +
+var_uc_13a + "', '" +
+uc_13a_a.Text + "', '" +
+var_uc_13b + "', '" +
+var_uc_14a + "', '" +
+uc_14a_a.Text + "', '" +
+var_uc_14b + "', '" +
+var_uc_15a + "', '" +
+uc_15a_a.Text + "', '" +
+var_uc_15b + "', '" +
+var_uc_16a + "', '" +
+uc_16a_a.Text + "', '" +
+var_uc_16b + "', '" +
+var_uc_17a + "', '" +
+uc_17a_a.Text + "', '" +
+var_uc_17b + "', '" +
+var_uc_18a + "', '" +
+uc_18a_a.Text + "', '" +
+var_uc_18b + "', '" +
+var_uc_19a + "', '" +
+uc_19a_a.Text + "', '" +
+var_uc_19b + "', '" +
+var_uc_20a + "', '" +
+uc_20a_a.Text + "', '" +
+var_uc_20b + "', '" +
+var_uc_21a + "', '" +
+uc_21a_a.Text + "', '" +
+var_uc_21b + "', '" +
+var_uc_22a + "', '" +
+uc_22a_a.Text + "', '" +
+var_uc_22b + "', '" +
+var_uc_23a + "', '" +
+uc_23a_a.Text + "', '" +
+var_uc_23b + "', '" +
+var_uc_24a + "', '" +
+uc_24a_a.Text + "', '" +
+var_uc_24b + "', '" +
+var_uc_25a + "', '" +
+uc_25a_a.Text + "', '" +
+var_uc_25b + "', '" +
+var_uc_26a + "', '" +
+uc_26a_a.Text + "', '" +
+var_uc_26b + "', '" +
+var_uc_27a + "', '" +
+uc_27a_a.Text + "', '" +
+var_uc_27b + "', '" +
+var_uc_28a + "', '" +
+uc_28a_a.Text + "', '" +
+var_uc_28b + "', '" +
+var_uc_29a + "', '" +
+uc_29a_a.Text + "', '" +
+var_uc_29b + "', '" +
+var_uc_30a + "', '" +
+uc_30a_a.Text + "', '" +
+var_uc_30b + "', '" +
+var_uc_31a + "', '" +
+uc_31a_a.Text + "', '" +
+var_uc_31b + "', '" +
+var_uc_32a + "', '" +
+uc_32a_a.Text + "', '" +
+var_uc_32b + "', '" +
+var_uc_33a + "', '" +
+uc_33a_a.Text + "', '" +
+var_uc_33b + "', '" +
+var_uc_34a + "', '" +
+uc_34a_a.Text + "', '" +
+var_uc_34b + "', '" +
+var_uc_35a + "', '" +
+uc_35a_a.Text + "', '" +
+var_uc_35b + "', '" +
+var_uc_36a + "', '" +
+uc_36a_a.Text + "', '" +
+var_uc_36b + "', '" +
+var_uc_37a + "', '" +
+uc_37a_a.Text + "', '" +
+var_uc_37b + "', '" +
+LA_17.Text + "', '" +
+LA_18.Text + "', '" +
+LA_19.Text + "', '" +
+var_LA_20a_b + "', '" +
+LA_20a_a.Text + "', '" +
+var_LA_20b_a + "', '" +
+var_LA_21a_b + "', '" +
+LA_21a_a.Text + "', '" +
+var_LA_21b_a + "', '" +
+var_LA_22a_b + "', '" +
+LA_22a_a.Text + "', '" +
+var_LA_22b_a + "', '" +
+var_LA_23a_b + "', '" +
+LA_23a_a.Text + "', '" +
+var_LA_23b_a + "', '" +
+var_LA_24a_b + "', '" +
+LA_24a_a.Text + "', '" +
+var_LA_24b_a + "', '" +
+var_LA_25a_b + "', '" +
+LA_25a_a.Text + "', '" +
+var_LA_25b_a + "', '" +
+var_LA_26a_b + "', '" +
+LA_26a_a.Text + "', '" +
+var_LA_26b_a + "', '" +
+var_LA_27a_b + "', '" +
+LA_27a_a.Text + "', '" +
+var_LA_27b_a + "', '" +
+var_LA_28a_b + "', '" +
+LA_28a_a.Text + "', '" +
+var_LA_28b_a + "', '" +
+var_LA_29a_b + "', '" +
+LA_29a_a.Text + "', '" +
+var_LA_29b_a + "', '" +
+var_LA_30a_b + "', '" +
+LA_30a_a.Text + "', '" +
+var_LA_30b_a + "', '" +
+var_LA_31a_b + "', '" +
+LA_31a_a.Text + "', '" +
+var_LA_31b_a + "', '" +
+var_LA_32a_b + "', '" +
+LA_32a_a.Text + "', '" +
+var_LA_32b_a + "', '" +
+var_LA_33a_b + "', '" +
+LA_33a_a.Text + "', '" +
+var_LA_33b_a + "', '" +
+var_LA_34a_b + "', '" +
+LA_34a_a.Text + "', '" +
+var_LA_34b_a + "', '" +
+var_LA_35a_b + "', '" +
+LA_35a_a.Text + "', '" +
+var_LA_35b_a + "', '" +
+var_LA_36a_b + "', '" +
+LA_36a_a.Text + "', '" +
+var_LA_36b_a + "', '" +
+var_LA_37a_b + "', '" +
+LA_37a_a.Text + "', '" +
+var_LA_37b_a + "', '" +
+var_LA_38a_b + "', '" +
+LA_38a_a.Text + "', '" +
+var_LA_38b_a + "', '" +
+var_LA_39a_b + "', '" +
+LA_39a_a.Text + "', '" +
+var_LA_39b_a + "', '" +
+var_LA_40a_b + "', '" +
+LA_40a_a.Text + "', '" +
+var_LA_40b_a + "', '" +
+var_LA_41a_b + "', '" +
+LA_41a_a.Text + "', '" +
+var_LA_41b_a + "', '" +
+var_LA_42a_b + "', '" +
+LA_42a_a.Text + "', '" +
+var_LA_42b_a + "', '" +
+var_LA_43a_b + "', '" +
+LA_43a_a.Text + "', '" +
+var_LA_43b_a + "', '" +
+var_LA_44a_b + "', '" +
+LA_44a_a.Text + "', '" +
+var_LA_44b_a + "', '" +
+var_LA_45a_b + "', '" +
+LA_45a_a.Text + "', '" +
+var_LA_45b_a + "', '" +
+var_LA_46a_b + "', '" +
+LA_46a_a.Text + "', '" +
+var_LA_46b_a + "', '" +
+var_LA_47a_b + "', '" +
+LA_47a_a.Text + "', '" +
+var_LA_47b_a + "', '" +
+var_LA_48a_b + "', '" +
+LA_48a_a.Text + "', '" +
+var_LA_48b_a + "', '" +
+var_LA_49a_b + "', '" +
+LA_49a_a.Text + "', '" +
+var_LA_49b_a + "', '" +
+var_LA_50a_b + "', '" +
+LA_50a_a.Text + "', '" +
+var_LA_50b_a + "', '" +
+var_LA_51a_b + "', '" +
+LA_51a_a.Text + "', '" +
+var_LA_51b_a + "', '" +
+var_LA_52a_b + "', '" +
+LA_52a_a.Text + "', '" +
+var_LA_52b_a + "', '" +
+Session["userid"].ToString() + "', '" +
+val_entry + "', '" +
+HttpContext.Current.Request["labid"].ToString() + "')";
+
+
+            //string msg = obj_op.ExecuteNonQuery_Message(fldname, fldvalue, "sp_AddSampleResult");
+            string msg = obj_op.ExecuteNonQuery_Message_Qry(qry);
 
             if (string.IsNullOrEmpty(msg))
             {
@@ -4357,10 +5038,36 @@ HttpContext.Current.Request["labid"].ToString()
 
         try
         {
-            string[] fldname = { "screeningid", "fldvalue", "visitid" };
-            string[] fldvalue = { screeningid, "0", labid };
+            //string[] fldname = { "screeningid", "fldvalue", "visitid" };
+            //string[] fldvalue = { screeningid, "0", labid };
 
-            DataSet ds = ExecuteNonQuery(fldname, fldvalue, "sp_GetRecords");
+            //DataSet ds = ExecuteNonQuery(fldname, fldvalue, "sp_GetRecords");
+
+            CConnection cn = new CConnection();
+
+
+            SqlCommand cmd = new SqlCommand("SELECT [AS1_screening_ID]" +
+      ",[AS1_rand_id]" +
+      ",[AS1_name]" +
+      ",case when[AS1_sex] = 1 then 'Male'" +
+      "when[AS1_sex] = 2 then 'Female'" +
+      "end[AS1_sex]" +
+      ",[AS1_age]" +
+      ",[AS1_barcode]" +
+      ",case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
+      "when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
+      "when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
+      "end[AS1_fsite]" +
+      ",case when AS1_Q1_1 = 1 then 'RCT1'" +
+      "when AS1_Q1_1 = 2 then 'RCT2'" +
+      "end[AS1_Q1_1]" +
+        "FROM [form1] where[AS1_screening_ID] = '" + screeningid + "' and labid = '" + labid + "'", cn.cn);
+
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
 
             if (ds != null)
             {
@@ -4534,902 +5241,904 @@ HttpContext.Current.Request["labid"].ToString()
 
         try
         {
-            if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_03_a'", LA_03_a.Text) == true)
+
+            if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_03_a'", LA_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_04_a'", LA_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_04_a'", LA_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_05_a'", LA_05_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_05_a'", LA_05_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_05_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_06_a'", LA_06_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_06_a'", LA_06_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_06_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_07_a'", LA_07_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_07_a'", LA_07_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_07_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_08_a'", LA_08_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_08_a'", LA_08_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_08_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_09_a'", LA_09_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_09_a'", LA_09_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_09_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_10_a'", LA_10_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_10_a'", LA_10_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_10_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_11_a'", LA_11_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_11_a'", LA_11_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_11_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_12_a'", LA_12_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_12_a'", LA_12_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_12_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_13_a'", LA_13_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_13_a'", LA_13_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_13_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_14_a'", LA_14_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_14_a'", LA_14_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_14_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_15_a'", LA_15_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_15_a'", LA_15_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_15_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_16_a'", LA_16_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_16_a'", LA_16_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_16_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_01_a'", LF_01_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_01_a'", LF_01_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_01_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_02_a'", LF_02_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_02_a'", LF_02_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_02_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_03_a'", LF_03_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_03_a'", LF_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_04_a'", LF_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_04_a'", LF_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_05_a'", LF_05_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_05_a'", LF_05_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_05_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_06_a'", LF_06_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_06_a'", LF_06_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_06_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LF_07_a'", LF_07_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LF_07_a'", LF_07_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LF_07_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'RF_01_a'", RF_01_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'RF_01_a'", RF_01_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 RF_01_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'RF_02_a'", RF_02_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'RF_02_a'", RF_02_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 RF_02_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'RF_03_a'", RF_03_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'RF_03_a'", RF_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 RF_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'RF_04_a'", RF_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'RF_04_a'", RF_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 RF_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'SE_01_a'", SE_01_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'SE_01_a'", SE_01_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 SE_01_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'SE_02_a'", SE_02_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'SE_02_a'", SE_02_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 SE_02_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'SE_03_a'", SE_03_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'SE_03_a'", SE_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 SE_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'SE_04_a'", SE_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'SE_04_a'", SE_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 SE_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_01_a'", CS_01_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_01_a'", CS_01_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_01_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_02_a'", CS_02_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_02_a'", CS_02_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_02_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_03_a'", CS_03_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_03_a'", CS_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_04_a'", CS_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_04_a'", CS_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_05_a'", CS_05_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_05_a'", CS_05_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_05_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_06_a'", CS_06_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_06_a'", CS_06_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_06_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_07_a'", CS_07_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_07_a'", CS_07_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_07_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_08_a'", CS_08_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_08_a'", CS_08_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_08_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_09_a'", CS_09_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_09_a'", CS_09_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_09_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'CS_10_a'", CS_10_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'CS_10_a'", CS_10_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 CS_10_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_01_a'", UR_01_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_01_a'", UR_01_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_01_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_02_a'", UR_02_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_02_a'", UR_02_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_02_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_03_a'", UR_03_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_03_a'", UR_03_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_03_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_04_a'", UR_04_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_04_a'", UR_04_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_04_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_05_a'", UR_05_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_05_a'", UR_05_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_05_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_06_a'", UR_06_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_06_a'", UR_06_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_06_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_07_a'", UR_07_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_07_a'", UR_07_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_07_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_08_a'", UR_08_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_08_a'", UR_08_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_08_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_10_a'", UR_10_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_10_a'", UR_10_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_10_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_11_a'", UR_11_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_11_a'", UR_11_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_11_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_12_a'", UR_12_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_12_a'", UR_12_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_12_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_13_a'", UR_13_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_13_a'", UR_13_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_13_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_14_a'", UR_14_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_14_a'", UR_14_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_14_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_15_a'", UR_15_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_15_a'", UR_15_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_15_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_16_a'", UR_16_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_16_a'", UR_16_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_16_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_17_a'", UR_17_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_17_a'", UR_17_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_17_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_18_a'", UR_18_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_18_a'", UR_18_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_18_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_19_a'", UR_19_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_19_a'", UR_19_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_19_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_20_a'", UR_20_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_20_a'", UR_20_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_20_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'UR_21_a'", UR_21_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'UR_21_a'", UR_21_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 UR_21_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_02a_a'", uc_02a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_02a_a'", uc_02a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_02a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_03a_a'", uc_03a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_03a_a'", uc_03a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_03a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_04a_a'", uc_04a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_04a_a'", uc_04a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_04a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_05a_a'", uc_05a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_05a_a'", uc_05a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_05a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_06a_a'", uc_06a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_06a_a'", uc_06a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_06a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_07a_a'", uc_07a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_07a_a'", uc_07a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_07a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_08a_a'", uc_08a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_08a_a'", uc_08a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_08a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_09a_a'", uc_09a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_09a_a'", uc_09a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_09a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_10a_a'", uc_10a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_10a_a'", uc_10a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_10a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_11a_a'", uc_11a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_11a_a'", uc_11a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_11a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_12a_a'", uc_12a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_12a_a'", uc_12a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_12a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_13a_a'", uc_13a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_13a_a'", uc_13a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_13a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_14a_a'", uc_14a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_14a_a'", uc_14a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_14a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_15a_a'", uc_15a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_15a_a'", uc_15a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_15a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_16a_a'", uc_16a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_16a_a'", uc_16a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_16a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_17a_a'", uc_17a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_17a_a'", uc_17a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_17a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_18a_a'", uc_18a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_18a_a'", uc_18a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_18a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_19a_a'", uc_19a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_19a_a'", uc_19a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_19a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_20a_a'", uc_20a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_20a_a'", uc_20a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_20a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_21a_a'", uc_21a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_21a_a'", uc_21a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_21a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_22a_a'", uc_22a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_22a_a'", uc_22a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_22a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_23a_a'", uc_23a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_23a_a'", uc_23a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_23a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_24a_a'", uc_24a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_24a_a'", uc_24a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_24a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_25a_a'", uc_25a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_25a_a'", uc_25a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_25a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_26a_a'", uc_26a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_26a_a'", uc_26a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_26a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_27a_a'", uc_27a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_27a_a'", uc_27a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_27a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_28a_a'", uc_28a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_28a_a'", uc_28a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_28a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_29a_a'", uc_29a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_29a_a'", uc_29a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_29a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_30a_a'", uc_30a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_30a_a'", uc_30a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_30a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_31a_a'", uc_31a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_31a_a'", uc_31a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_31a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_32a_a'", uc_32a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_32a_a'", uc_32a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_32a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_33a_a'", uc_33a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_33a_a'", uc_33a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_33a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_34a_a'", uc_34a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_34a_a'", uc_34a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_34a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_35a_a'", uc_35a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_35a_a'", uc_35a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_35a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_36a_a'", uc_36a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_36a_a'", uc_36a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_36a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'uc_37a_a'", uc_37a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'uc_37a_a'", uc_37a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 uc_37a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_20a_a'", LA_20a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_20a_a'", LA_20a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_20a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_21a_a'", LA_21a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_21a_a'", LA_21a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_21a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_22a_a'", LA_22a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_22a_a'", LA_22a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_22a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_23a_a'", LA_23a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_23a_a'", LA_23a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_23a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_24a_a'", LA_24a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_24a_a'", LA_24a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_24a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_25a_a'", LA_25a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_25a_a'", LA_25a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_25a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_26a_a'", LA_26a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_26a_a'", LA_26a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_26a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_27a_a'", LA_27a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_27a_a'", LA_27a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_27a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_28a_a'", LA_28a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_28a_a'", LA_28a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_28a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_29a_a'", LA_29a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_29a_a'", LA_29a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_29a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_30a_a'", LA_30a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_30a_a'", LA_30a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_30a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_31a_a'", LA_31a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_31a_a'", LA_31a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_31a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_32a_a'", LA_32a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_32a_a'", LA_32a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_32a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_33a_a'", LA_33a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_33a_a'", LA_33a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_33a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_34a_a'", LA_34a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_34a_a'", LA_34a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_34a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_35a_a'", LA_35a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_35a_a'", LA_35a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_35a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_36a_a'", LA_36a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_36a_a'", LA_36a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_36a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_37a_a'", LA_37a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_37a_a'", LA_37a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_37a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_38a_a'", LA_38a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_38a_a'", LA_38a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_38a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_39a_a'", LA_39a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_39a_a'", LA_39a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_39a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_40a_a'", LA_40a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_40a_a'", LA_40a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_40a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_41a_a'", LA_41a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_41a_a'", LA_41a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_41a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_42a_a'", LA_42a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_42a_a'", LA_42a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_42a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_43a_a'", LA_43a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_43a_a'", LA_43a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_43a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_44a_a'", LA_44a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_44a_a'", LA_44a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_44a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_45a_a'", LA_45a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_45a_a'", LA_45a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_45a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_46a_a'", LA_46a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_46a_a'", LA_46a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_46a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_47a_a'", LA_47a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_47a_a'", LA_47a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_47a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_48a_a'", LA_48a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_48a_a'", LA_48a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_48a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_49a_a'", LA_49a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_49a_a'", LA_49a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_49a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_50a_a'", LA_50a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_50a_a'", LA_50a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_50a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_51a_a'", LA_51a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_51a_a'", LA_51a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_51a_a.Focus();
                 return false;
             }
-            else if (obj_op.Validate_Dictionary("0", "sp_ValidateDictionary", " where tabname = 'sample_resu' and var_id = 'LA_52a_a'", LA_52a_a.Text) == true)
+            else if (obj_op.Validate_Dictionary_Qry("0", "sp_ValidateDictionary", "select * from tbldict where tabname = 'sample_resu' and var_id = 'LA_52a_a'", LA_52a_a.Text) == true)
             {
                 string message = "alert('Invalid value');";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                 LA_52a_a.Focus();
                 return false;
             }
+
 
         }
         catch (Exception ex)

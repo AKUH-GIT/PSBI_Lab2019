@@ -212,11 +212,12 @@ public partial class login : System.Web.UI.Page
             //string str_pass1 = StringUtil.Decrypt(str_pass);
 
             string[] fldname = { "UserID", "Passwd" };
-            string[] fldvalue = { txtUserID.Text, str_pass };
-            //string[] fldvalue = { txtUserID.Text, txtpasswd.Text };
+            //string[] fldvalue = { txtUserID.Text, str_pass };
+            string[] fldvalue = { txtUserID.Text, txtpasswd.Text };
 
 
-            DataSet ds = ExecuteNonQuery(fldname, fldvalue, "sp_Login");
+            //DataSet ds = ExecuteNonQuery(fldname, fldvalue, "sp_Login");
+            DataSet ds = ExecuteNonQuery_Qry(fldname, fldvalue, "select * from tblLogin where userid='" + txtUserID.Text + "' and passwd='" + txtpasswd.Text + "' and userstatus = 1");
 
 
             if (ds != null)
@@ -457,6 +458,76 @@ public partial class login : System.Web.UI.Page
 
         return ds;
     }
+
+
+
+    public static DataSet ExecuteNonQuery_Qry(string[] fieldName, string[] fieldValues, string qry)
+    {
+        SqlCommand cmd = null;
+        CConnection cn = null;
+        SqlDataAdapter da = null;
+        DataSet ds = null;
+
+        string[] dt;
+
+
+        try
+        {
+            cn = new CConnection();
+
+            cmd = new SqlCommand();
+            cmd.Connection = cn.cn;
+            cmd.CommandText = qry;
+            cmd.CommandType = CommandType.Text;
+
+            for (int a = 0; a <= fieldName.Length - 1; a++)
+            {
+                if (fieldValues[a] == "" || fieldValues[a] == " -" || fieldValues[a] == "  /  /" || fieldValues[a] == "  :" || fieldValues[a] == "" || fieldValues[a] == "  -   -  -      -  - -" || fieldValues[a] == "3-     -" || fieldValues[a] == "  ." || fieldValues[a] == "  -   -  -    -  - -")
+                {
+                    cmd.Parameters.AddWithValue(fieldName[a], DBNull.Value);
+                }
+                else
+                {
+                    if (fieldName[a] == "DOP" || fieldName[a] == "StartDate" || fieldName[a] == "EndDate" || fieldName[a] == "AADOP")
+                    {
+                        if (fieldValues[a].ToString() == "01/01/0001")
+                        {
+                            cmd.Parameters.AddWithValue(fieldName[a], DBNull.Value);
+                        }
+                        else
+                        {
+                            dt = fieldValues[a].Split('/');
+                            cmd.Parameters.AddWithValue(fieldName[a], dt[1] + "/" + dt[0] + "/" + dt[2]);
+                        }
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue(fieldName[a], fieldValues[a]);
+                    }
+                }
+            }
+
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds);
+
+        }
+
+        catch (Exception ex)
+        {
+
+        }
+
+        finally
+        {
+            cn.MConnClose();
+            cmd = null;
+            cn = null;
+        }
+
+        return ds;
+    }
+
 
 
 }
