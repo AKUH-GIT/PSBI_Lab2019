@@ -1107,6 +1107,11 @@
                 $("#AS1_mrno").focus();
                 return false;
             }
+            else if ($("#AS1_lno").val() == "") {
+                alert("Please enter L Number ");
+                $("#AS1_lno").focus();
+                return false;
+            }
             else if ($("#AS1_barcode1").val() == "") {
                 alert("Please enter form Barcode ");
                 $("#AS1_barcode1").focus();
@@ -1578,9 +1583,11 @@
                             </li>
                         </ul>--%>
                     </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a>
+                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
+                    <li class="nav-item"><a href="rpt_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Report Viewer</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1673,6 +1680,12 @@
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" ID="AS1_mrno" class="form-control" MaxLength="50" name="AS1_mrno" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             <cc1:MaskedEditExtender ID="MaskedEditExtender3" TargetControlID="AS1_mrno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput5">L Number</label>
+                                                        <div class="col-md-9">
+                                                            <asp:TextBox runat="server" ID="AS1_lno" class="form-control" MaxLength="50" name="AS1_lno" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">

@@ -5456,9 +5456,11 @@
                             </li>
                         </ul>--%>
                     </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a>
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
+                    <li class="nav-item"><a href="rpt_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Report Viewer</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -5550,7 +5552,7 @@
 
 
                                                     <div class="form-group row">
-                                                        <label class="col-md-3 label-control" for="projectinput5">Age</label>
+                                                        <label class="col-md-3 label-control" for="projectinput5">Age (days)</label>
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" MaxLength="15" ID="la_age" class="form-control" name="la_age" ReadOnly="true"></asp:TextBox>
                                                         </div>
@@ -6007,7 +6009,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Peripheral Film</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_17" class="form-control" name="LA_17" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_17" class="form-control" name="LA_17" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6756,7 +6758,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_CS_09_a">GRAM STAIN RESULT</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
