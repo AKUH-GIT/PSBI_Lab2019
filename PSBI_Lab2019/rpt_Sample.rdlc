@@ -437,7 +437,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Age</Value>
+                              <Value>Age (Days)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -727,7 +727,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(14-22)</Value>
+                              <Value>(11.5-16.5)</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>Calibri</FontFamily>
@@ -871,7 +871,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(45-75)</Value>
+                              <Value>(33-53)</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>Calibri</FontFamily>
@@ -1015,7 +1015,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(5.0-7.0)</Value>
+                              <Value>(3.0-5.4)</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>Calibri</FontFamily>
@@ -1159,7 +1159,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(100.0-120.0)</Value>
+                              <Value>(92-116)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1297,7 +1297,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(31-37)</Value>
+                              <Value>(30-36)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1435,7 +1435,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(30-36)</Value>
+                              <Value>(29-37)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1699,7 +1699,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(10.0-26.0)</Value>
+                              <Value>(5.0-19.0)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1831,7 +1831,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(37-57)</Value>
+                              <Value>(25-35)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1963,7 +1963,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(25-35)</Value>
+                              <Value>(45-65)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2227,7 +2227,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(4-8)</Value>
+                              <Value>(4-9)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2491,7 +2491,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(150-450)</Value>
+                              <Value>(210-500)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2642,6 +2642,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>

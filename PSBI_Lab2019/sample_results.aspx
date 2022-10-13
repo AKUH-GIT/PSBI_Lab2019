@@ -6009,7 +6009,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Peripheral Film</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_17" class="form-control" name="LA_17" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="LA_17" class="form-control" name="LA_17" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6758,7 +6758,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_CS_09_a">GRAM STAIN RESULT</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -9217,7 +9217,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Blood Culture Gram Stain Result</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_18" class="form-control" name="LA_18" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="LA_18" class="form-control" name="LA_18" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -9226,7 +9226,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Blood Culture Result</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_19" class="form-control" name="LA_19" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="LA_19" class="form-control" name="LA_19" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 

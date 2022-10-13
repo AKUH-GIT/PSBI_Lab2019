@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeFile="rpt_sample.aspx.cs" Inherits="rpt_sample" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <!DOCTYPE html>
@@ -29,6 +31,24 @@
     <link href="Content/demo/chameleon-admin-template/assets/css/style.css" rel="stylesheet" />
     <link href="Content/demo/chameleon-admin-template/assets/feather/style.min.css" rel="stylesheet" />
     <!-- END: Custom CSS-->
+
+
+    <script>
+
+        function numeralsOnly(evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                alert("Please enter Numeric value ");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
 </head>
 <body class="vertical-layout vertical-menu 2-columns fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-blue" data-col="2-columns">
     <form id="form1" name="form1" runat="server" autocomplete="off" enctype="multipart/form-data">
@@ -112,6 +132,20 @@
                                         <div class="card-content collpase show">
                                             <div class="card-body">
                                                 <div class="form-body">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2 label-control" for="projectinput5">Screening number</label>
+                                                        <div class="col-md-2">
+                                                            <asp:TextBox runat="server" ID="AS1_screening_ID" class="form-control" name="AS1_screening_ID" onkeypress="return numeralsOnly(event);"></asp:TextBox>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="AS1_screening_ID" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>                                                            
+                                                        </div>
+                                                        <div>
+                                                            <asp:Button runat="server" ID="cmdSave" class="btn btn-primary" Text=" Preview Report " OnClick="cmdSave_Click"></asp:Button>
+                                                        </div>
+                                                    </div>
+
+
+
                                                     <rsweb:ReportViewer ID="ReportViewer1" Width="840px" Height="1024" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ShowPrintButton="true" ShowBackButton="False">
                                                         <LocalReport ReportPath="rpt_Sample.rdlc">
                                                             <DataSources>

@@ -616,7 +616,17 @@
 
         $(document).on("change", "input[name='AS1_fsite']:checked", function () {
 
-            //var rdo_value = $(this).val();
+            var rdo_value = $(this).val();
+
+            if (rdo_value === "AS1_fsite_1") {
+                EnableControls("AS1_mrno");
+                DisableControls("AS1_lno");
+            }
+            else {
+                DisableControls("AS1_mrno");
+                EnableControls("AS1_lno");
+            }
+
 
             //if (rdo_value === "AS1_fsite_3") {
             //    $("#pnl_lyari_sample").show();
@@ -1092,28 +1102,41 @@
                 $("#AS1_barcode").focus();
                 return false;
             }
-            else if ($("#AS1_mrno").val() == "") {
+            else if ($("#AS1_mrno").val() == "" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
                 alert("Please enter MR No. ");
                 $("#AS1_mrno").focus();
                 return false;
             }
-            else if ($("#AS1_mrno").val() == "_-_-_-____") {
+            else if ($("#AS1_mrno").val() == "_-_-_-____" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
                 alert("Please enter valid MR No");
                 $("#AS1_mrno").focus();
                 return false;
             }
-            else if ($("#AS1_mrno").val().indexOf("_") != -1) {
+            else if ($("#AS1_mrno").val().indexOf("_") != -1 && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
                 alert("Please enter full MR No");
                 $("#AS1_mrno").focus();
                 return false;
             }
-            else if ($("#AS1_lno").val() == "") {
+            else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":disabled") == false) {
                 alert("Please enter L Number ");
                 $("#AS1_lno").focus();
                 return false;
             }
             else if ($("#AS1_barcode1").val() == "") {
                 alert("Please enter form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val() == "__-_-_-_-____") {
+                alert("Please enter valid form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val().indexOf("_") != -1) {
+                alert("Please enter full form Barcode ");
                 $("#AS1_barcode1").focus();
                 return false;
             }
@@ -1125,7 +1148,10 @@
             else if ($('input[name=AS1_Samp_1]:checked').length <= 0
                 && $('input[name=AS1_Samp_2]:checked').length <= 0
                 && $('input[name=AS1_Samp_3]:checked').length <= 0
-                && $('input[name=AS1_Samp_4]:checked').length <= 0) {
+                && $('input[name=AS1_Samp_4]:checked').length <= 0
+                && $('input[name=AS1_Samp_5]:checked').length <= 0
+                && $('input[name=AS1_Samp_6]:checked').length <= 0
+            ) {
                 alert("Please select sample collected ");
 
                 if ($("#AS1_Samp_1").is(':visible') == true) {
@@ -1212,6 +1238,16 @@
                 $("#AS2_Q7_11").focus();
                 return false;
             }
+            else if ($("#AS2_Q7_2a").val() == "" && $("#AS2_Q7_2a").is(":visible") == true) {
+                alert("Please enter CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
+                $("#AS2_Q7_2a").focus();
+                return false;
+            }
+            else if ($("#AS2_Q7_2a").val() == "___-__-__" && $("#AS2_Q7_2a").is(":visible") == true) {
+                alert("Please enter valid CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
+                $("#AS2_Q7_2a").focus();
+                return false;
+            }            
             else if ($("#AS2_Q7_2").val() == "" && $("#AS2_Q7_2").is(":visible") == true) {
                 alert("Please enter CBC EDTA tube Charged at AKU clinical lab (L Number) ");
                 $("#AS2_Q7_2").focus();
@@ -1222,19 +1258,14 @@
                 $("#AS2_Q7_CBC_CODE").focus();
                 return false;
             }
-            else if ($("#AS2_Q7_CBC_CODE").val() == "__-_-_-_-____") {
+            else if ($("#AS2_Q7_CBC_CODE").val() == "__-_-_-_-____" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
                 alert("Please enter valid sample id ");
                 $("#AS2_Q7_CBC_CODE").focus();
                 return false;
-            }
-            else if ($("#AS2_Q7_CBC_CODE").val().indexOf("_") != -1) {
-                alert("Please enter full sample id");
-                $("#AS2_Q7_CBC_CODE").focus();
-                return false;
-            }
+            }            
             else if ($('input[name=AS2_Q8]:checked').length <= 0
                 && ($("#AS2_Q8_1").is(":visible") == true || $("#AS2_Q8_2").is(":visible") == true)) {
-                alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before –Weight after) ");
+                alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after) ");
                 $("#AS2_Q8_1").focus();
                 return false;
             }
@@ -1320,22 +1351,22 @@
                 $("#AS3_Q16").focus();
                 return false;
             }
-            else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true && $("#AS3_Q17").attr("disabled") != "disabled") {
+            else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true && $("#AS3_Q17").is(":disabled") == false) {
                 alert("Please enter Time of Serum separation ");
                 $("#AS3_Q17").focus();
                 return false;
             }
-            else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true && $("#AS3_Q18").attr("disabled") != "disabled") {
+            else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true && $("#AS3_Q18").is(":disabled") == false) {
                 alert("Please enter No. of Aliquots made ");
                 $("#AS3_Q18").focus();
                 return false;
             }
-            else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true && $("#AS3_Q19").attr("disabled") != "disabled") {
+            else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true && $("#AS3_Q19").is(":disabled") == false) {
                 alert("Please enter Volume in each aliquot ");
                 $("#AS3_Q19").focus();
                 return false;
             }
-            else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true && $("#AS3_Q20").attr("disabled") != "disabled") {
+            else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true && $("#AS3_Q20").is(":disabled") == false) {
                 alert("Please enter Time Aliquots placed in ULT Freezer ");
                 $("#AS3_Q20").focus();
                 return false;
@@ -1392,7 +1423,8 @@
                 $("#AS5_Q28_1").focus();
                 return false;
             }
-            else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true && $('#AS5_Q29_1').attr("disabled") != "disabled" ||
+            else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true &&
+                $('#AS5_Q29_1').attr("disabled") != "disabled" ||
                 $('#AS5_Q29_2').is(':visible') == true && $('#AS5_Q29_2').attr("disabled" != "disabled") ||
                 $('#AS5_Q29_3').is(':visible') == true && $('#AS5_Q29_3').attr("disabled" != "disabled"))) {
                 alert("Please enter CRP Control line Result (test device) ");
@@ -1527,6 +1559,30 @@
                     alert("Age must be 0 - 59 days ");
                     $("#AS1_age").focus();
                     return false;
+                }
+                else {
+
+                    if ($("#AS2_Q7_2a").val() != "" && $("#AS2_Q7_2a").is(":visible") == true) {
+
+                        if ($("#AS2_Q7_2a").val().indexOf("_") != -1) {
+                            alert("Please enter full (MR Number) 3 ");
+                            $("#AS2_Q7_2a").focus();
+                            return false;
+                        }
+                        else {
+
+                            if ($("#AS2_Q7_CBC_CODE").val() != "" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
+
+                                if ($("#AS2_Q7_CBC_CODE").val().indexOf("_") != -1) {
+                                    alert("Please enter full sample id");
+                                    $("#AS2_Q7_CBC_CODE").focus();
+                                    return false;
+                                }
+                            }
+
+                        }
+                    }
+
                 }
             }
 
@@ -1692,6 +1748,7 @@
                                                         <label class="col-md-3 label-control" for="projectinput5">Form Barcode ID</label>
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" ID="AS1_barcode1" class="form-control" MaxLength="50" name="AS1_barcode1" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender5" TargetControlID="AS1_barcode1" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="LL-9-9-9-9999" runat="server"></cc1:MaskedEditExtender>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -1703,7 +1760,7 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_2" ID="AS1_fsite_2" />
-                                                                <label for="input-radio-12">Sindh Govt. Childres Hospital</label>
+                                                                <label for="input-radio-12">Sindh Govt. Children Hospital</label>
                                                             </fieldset>
                                                             <fieldset>
                                                                 <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_3" ID="AS1_fsite_3" />
@@ -1712,6 +1769,14 @@
                                                             <fieldset>
                                                                 <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_4" ID="AS1_fsite_4" />
                                                                 <label for="input-radio-12">Indus Korangi Hospital</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_5" ID="AS1_fsite_5" />
+                                                                <label for="input-radio-12">NICH</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_6" ID="AS1_fsite_6" />
+                                                                <label for="input-radio-12">Sheikh Saeed Memorial Hospital</label>
                                                             </fieldset>
                                                         </div>
                                                     </div>
@@ -1892,6 +1957,13 @@
                                                                     <asp:RadioButton runat="server" class=".radiocls8" GroupName="AS2_Q7_1" name="AS2_Q7_12" ID="AS2_Q7_12" />
                                                                     <label for="input-radio-12">No</label>
                                                                 </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Charged at AKU clinical lab (MR Number)</label>
+                                                            <div class="col-md-9">
+                                                                <asp:TextBox runat="server" ID="AS2_Q7_2a" class="form-control" MaxLength="20" name="AS2_Q7_2a" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
+                                                                <cc1:MaskedEditExtender ID="MaskedEditExtender6" TargetControlID="AS2_Q7_2a" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

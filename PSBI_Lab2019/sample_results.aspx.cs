@@ -5057,6 +5057,9 @@ HttpContext.Current.Request["labid"].ToString() + "')";
       ",case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
       "when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
       "when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
+      "when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
+      "when[AS1_fsite] = 5 then 'NICH'" +
+      "when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
       "end[AS1_fsite]" +
       ",case when AS1_Q1_1 = 1 then 'RCT1'" +
       "when AS1_Q1_1 = 2 then 'RCT2'" +

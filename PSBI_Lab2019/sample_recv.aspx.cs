@@ -532,6 +532,14 @@ public partial class sample_recv : System.Web.UI.Page
             {
                 var_AS1_fsite = "4";
             }
+            else if (AS1_fsite_5.Checked == true)
+            {
+                var_AS1_fsite = "5";
+            }
+            else if (AS1_fsite_6.Checked == true)
+            {
+                var_AS1_fsite = "6";
+            }
 
 
 
@@ -994,6 +1002,7 @@ public partial class sample_recv : System.Web.UI.Page
 "AS1_age," +
 "AS1_barcode," +
 "AS1_mrno," +
+"AS1_lno," +
 "AS1_barcode1," +
 "AS1_fsite," +
 "AS1_Samp_1," +
@@ -1014,6 +1023,7 @@ public partial class sample_recv : System.Web.UI.Page
 "AS1_Q6b," +
 "AS1_Q6c," +
 "AS2_Q7_1," +
+"AS2_Q7_2a," +
 "AS2_Q7_2," +
 "AS2_Q7_CBC_CODE," +
 "AS2_Q8," +
@@ -1083,6 +1093,7 @@ var_AS1_sex + "', '" +
 AS1_age.Text + "', '" +
 AS1_barcode.Text + "', '" +
 AS1_mrno.Text + "', '" +
+AS1_lno.Text + "', '" +
 AS1_barcode1.Text + "', '" +
 var_AS1_fsite + "', '" +
 var_AS1_Samp_1 + "', '" +
@@ -1103,6 +1114,7 @@ AS1_Q6a.Text + "', '" +
 AS1_Q6b.Text + "', '" +
 val_AS1_Q6c + "', '" +
 var_AS2_Q7_1 + "', '" +
+AS2_Q7_2a.Text + "', '" +
 AS2_Q7_2.Text + "', '" +
 AS2_Q7_CBC_CODE.Text + "', '" +
 var_AS2_Q8 + "', '" +
@@ -1948,6 +1960,7 @@ HttpContext.Current.Request["labid"].ToString()
         AS1_age.Text = "";
         AS1_barcode.Text = "";
         AS1_mrno.Text = "";
+        AS1_lno.Text = "";
         AS1_barcode1.Text = "";
 
         AS1_fsite_1.Checked = false;

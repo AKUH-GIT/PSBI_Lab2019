@@ -25,14 +25,7 @@ public partial class rpt_sample : System.Web.UI.Page
                 lnkUser.CssClass = "dropdown-toggle nav-link";
                 lnkUser = null;
 
-
-                ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportViewer1.LocalReport.ReportPath = Server.MapPath("rpt_Sample.rdlc");                
-                DataSet ds = GetData();
-                ReportDataSource datasource = new ReportDataSource("ds", ds.Tables[0]);
-                ReportViewer1.LocalReport.DataSources.Clear();
-                ReportViewer1.LocalReport.DataSources.Add(datasource);
-                
+                ReportViewer1.Visible = false;
             }
         }
     }
@@ -45,7 +38,7 @@ public partial class rpt_sample : System.Web.UI.Page
         try
         {
             CConnection cn = new CConnection();
-            SqlDataAdapter da = new SqlDataAdapter("select * from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '16-1-2222'", cn.cn);
+            SqlDataAdapter da = new SqlDataAdapter("select * from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '" + AS1_screening_ID.Text + "' and b.userid='usernrl'", cn.cn);
             ds = new DataSet();
             da.Fill(ds);
         }
@@ -69,5 +62,17 @@ public partial class rpt_sample : System.Web.UI.Page
         Session.Remove("UserID");
         Session.Abandon();
         Response.Redirect("login.aspx");
+    }
+
+    protected void cmdSave_Click(object sender, EventArgs e)
+    {
+        ReportViewer1.ProcessingMode = ProcessingMode.Local;
+        ReportViewer1.LocalReport.ReportPath = Server.MapPath("rpt_Sample.rdlc");
+        DataSet ds = GetData();
+        ReportDataSource datasource = new ReportDataSource("ds", ds.Tables[0]);
+        ReportViewer1.LocalReport.DataSources.Clear();
+        ReportViewer1.LocalReport.DataSources.Add(datasource);
+
+        ReportViewer1.Visible = true;
     }
 }
