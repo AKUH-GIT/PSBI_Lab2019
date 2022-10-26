@@ -2004,6 +2004,7 @@ HttpContext.Current.Request["labid"].ToString()
         AS2_Q7_12.Checked = false;
 
 
+        AS2_Q7_2a.Text = "";
         AS2_Q7_2.Text = "";
         AS2_Q7_CBC_CODE.Text = "";
 

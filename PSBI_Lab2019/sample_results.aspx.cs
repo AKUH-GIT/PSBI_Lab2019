@@ -898,10 +898,10 @@ public partial class sample_results : System.Web.UI.Page
     protected void cmdSave_Click(object sender, EventArgs e)
     {
 
-        if (IsValid(sender, e) == false)
-        {
-            return;
-        }
+        //if (IsValid(sender, e) == false)
+        //{
+        //    return;
+        //}
 
 
         CDBOperations obj_op = new CDBOperations();

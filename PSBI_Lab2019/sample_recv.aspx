@@ -349,6 +349,38 @@
 
                 if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
 
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
                     $("#pnl_AS4_Q21a").css("display", "none");
 
                     DisableControls1("AS3_Q17", "txt");
@@ -377,39 +409,6 @@
                     DisableControls1("AS5_Q33a", "txt");
                     DisableControls1("AS5_Q33b", "txt");
                     DisableControls1("AS3_Remarks", "txt");
-
-                }
-                else {
-
-                    $("#pnl_AS4_Q21a").css("display", "block");
-
-
-                    EnableControls1("AS3_Q17", "txt");
-                    EnableControls1("AS3_Q18", "txt");
-                    EnableControls1("AS3_Q19", "txt");
-                    EnableControls1("AS3_Q20", "txt");
-
-
-                    EnableControls1("AS4_Q21a", "rdo");
-
-                    EnableControls1("AS4_Q22a", "txt");
-                    EnableControls1("AS4_Q22b", "txt");
-                    EnableControls1("AS4_Q23", "txt");
-                    EnableControls1("AS4_Q24", "txt");
-                    EnableControls1("AS5_Q25a", "txt");
-                    EnableControls1("AS5_Q25b", "txt");
-                    EnableControls1("AS5_Q26", "txt");
-
-                    EnableControls1("AS5_Q27", "rdo");
-                    EnableControls1("AS5_Q28", "rdo");
-                    EnableControls1("AS5_Q29", "rdo");
-                    EnableControls1("AS5_Q30", "rdo");
-                    EnableControls1("AS5_Q31", "rdo");
-                    EnableControls1("AS5_Q32", "rdo");
-
-                    EnableControls1("AS5_Q33a", "txt");
-                    EnableControls1("AS5_Q33b", "txt");
-                    EnableControls1("AS3_Remarks", "txt");
 
                 }
 
@@ -437,39 +436,6 @@
 
                 if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
 
-                    $("#pnl_AS4_Q21a").css("display", "none");
-
-
-                    DisableControls1("AS3_Q17", "txt");
-                    DisableControls1("AS3_Q18", "txt");
-                    DisableControls1("AS3_Q19", "txt");
-                    DisableControls1("AS3_Q20", "txt");
-
-
-                    DisableControls1("AS4_Q21a", "rdo");
-
-                    DisableControls1("AS4_Q22a", "txt");
-                    DisableControls1("AS4_Q22b", "txt");
-                    DisableControls1("AS4_Q23", "txt");
-                    DisableControls1("AS4_Q24", "txt");
-                    DisableControls1("AS5_Q25a", "txt");
-                    DisableControls1("AS5_Q25b", "txt");
-                    DisableControls1("AS5_Q26", "txt");
-
-                    DisableControls1("AS5_Q27", "rdo");
-                    DisableControls1("AS5_Q28", "rdo");
-                    DisableControls1("AS5_Q29", "rdo");
-                    DisableControls1("AS5_Q30", "rdo");
-                    DisableControls1("AS5_Q31", "rdo");
-                    DisableControls1("AS5_Q32", "rdo");
-
-                    DisableControls1("AS5_Q33a", "txt");
-                    DisableControls1("AS5_Q33b", "txt");
-                    DisableControls1("AS3_Remarks", "txt");
-
-                }
-                else {
-
                     $("#pnl_AS4_Q21a").css("display", "block");
 
 
@@ -499,6 +465,38 @@
                     EnableControls1("AS5_Q33a", "txt");
                     EnableControls1("AS5_Q33b", "txt");
                     EnableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
 
                 }
 
@@ -528,39 +526,6 @@
 
                 if (arr[2] === "1" && arr1[2] === "11" && arr2[2] === "11") {
 
-                    $("#pnl_AS4_Q21a").css("display", "none");
-
-
-                    DisableControls1("AS3_Q17", "txt");
-                    DisableControls1("AS3_Q18", "txt");
-                    DisableControls1("AS3_Q19", "txt");
-                    DisableControls1("AS3_Q20", "txt");
-
-
-                    DisableControls1("AS4_Q21a", "rdo");
-
-                    DisableControls1("AS4_Q22a", "txt");
-                    DisableControls1("AS4_Q22b", "txt");
-                    DisableControls1("AS4_Q23", "txt");
-                    DisableControls1("AS4_Q24", "txt");
-                    DisableControls1("AS5_Q25a", "txt");
-                    DisableControls1("AS5_Q25b", "txt");
-                    DisableControls1("AS5_Q26", "txt");
-
-                    DisableControls1("AS5_Q27", "rdo");
-                    DisableControls1("AS5_Q28", "rdo");
-                    DisableControls1("AS5_Q29", "rdo");
-                    DisableControls1("AS5_Q30", "rdo");
-                    DisableControls1("AS5_Q31", "rdo");
-                    DisableControls1("AS5_Q32", "rdo");
-
-                    DisableControls1("AS5_Q33a", "txt");
-                    DisableControls1("AS5_Q33b", "txt");
-                    DisableControls1("AS3_Remarks", "txt");
-
-                }
-                else {
-
                     $("#pnl_AS4_Q21a").css("display", "block");
 
 
@@ -592,6 +557,39 @@
                     EnableControls1("AS3_Remarks", "txt");
 
                 }
+                else {
+
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
 
             }
 
@@ -615,18 +613,6 @@
 
 
         $(document).on("change", "input[name='AS1_fsite']:checked", function () {
-
-            var rdo_value = $(this).val();
-
-            if (rdo_value === "AS1_fsite_1") {
-                EnableControls("AS1_mrno");
-                DisableControls("AS1_lno");
-            }
-            else {
-                DisableControls("AS1_mrno");
-                EnableControls("AS1_lno");
-            }
-
 
             //if (rdo_value === "AS1_fsite_3") {
             //    $("#pnl_lyari_sample").show();
@@ -1198,7 +1184,7 @@
                 return false;
             }
             else if ($("#AS1_Q3a_2").val() == "" && $("#AS1_Q3a_2").is(":visible") == true) {
-                alert("Please enter Volume of blood for CBC ml ");
+                alert("Please enter Volume of blood for Metagenomics");
                 $("#AS1_Q3a_2").focus();
                 return false;
             }
@@ -1247,7 +1233,7 @@
                 alert("Please enter valid CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
                 $("#AS2_Q7_2a").focus();
                 return false;
-            }            
+            }
             else if ($("#AS2_Q7_2").val() == "" && $("#AS2_Q7_2").is(":visible") == true) {
                 alert("Please enter CBC EDTA tube Charged at AKU clinical lab (L Number) ");
                 $("#AS2_Q7_2").focus();
@@ -1262,7 +1248,7 @@
                 alert("Please enter valid sample id ");
                 $("#AS2_Q7_CBC_CODE").focus();
                 return false;
-            }            
+            }
             else if ($('input[name=AS2_Q8]:checked').length <= 0
                 && ($("#AS2_Q8_1").is(":visible") == true || $("#AS2_Q8_2").is(":visible") == true)) {
                 alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after) ");
@@ -1875,7 +1861,7 @@
                                                     </asp:Panel>
                                                     <asp:Panel runat="server" ID="pnl_AS1_Q3a_2">
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Volume of blood for CBC ml</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">Volume of blood for Metagenomics</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" ID="AS1_Q3a_2" MaxLength="6" class="form-control" name="AS1_Q3a_2" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>

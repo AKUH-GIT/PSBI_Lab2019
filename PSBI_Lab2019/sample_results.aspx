@@ -167,6 +167,21 @@
 
     <script>
 
+
+        $(document).on("change", "input[name='uc_01a']:checked", function () {
+
+            var rdo_value = $(this).val();
+
+            if (rdo_value === "uc_01_a") {
+                EnableControls3("uc_01_ca", "");
+            }
+            else {
+                DisableControls3("uc_01_ca", "");
+            }
+
+        });
+
+
         function EnableControls_Loop() {
 
             $('#form1 input').each(
@@ -449,6 +464,30 @@
                 $("#" + txt).attr("disabled", "disabled");
             }
         }
+
+
+
+
+        function EnableControls3(txt, controlType) {
+            if (controlType == "rdo") {
+                $(txt).removeAttr("disabled");
+            }
+            else {
+                $("#" + txt).removeAttr("disabled");
+            }
+        }
+
+
+        function DisableControls3(txt, controlType) {
+            if (controlType == "rdo") {
+                $(txt).attr("disabled", "disabled");
+            } else {
+                $("#" + txt).attr("disabled", "disabled");
+                $("#" + txt).val("");
+            }
+        }
+
+
 
 
         function getCookie(name) {
@@ -4203,6 +4242,19 @@
                 $("#UR_21_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_01a]:checked').length <= 0 && ($("#uc_01_a").is(":visible") == true
+                || $("#uc_01_b").is(":visible") == true
+                || $("#uc_01_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_01_a").focus();
+                return false;
+            }
+            else if ($("#uc_01_ca").val() == "" && $("#uc_01_ca").is(":visible") == true) {
+                alert("Please enter organism name ");
+                $("#uc_01_ca").focus();
+                return false;
+            }
             else if ($('input[name=uc_02a]:checked').length <= 0 && ($("#uc_02a_v").is(":visible") == true
                 || $("#uc_02a_b").is(":visible") == true
                 || $("#uc_02a_c").is(":visible") == true
@@ -6821,7 +6873,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_01_a">Color</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_01_a" class="form-control" name="UR_01_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_01_a" class="form-control" name="UR_01_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7448,6 +7500,18 @@
                                                                     <asp:RadioButton runat="server" class=".radiocls2" GroupName="uc_01a" name="uc_01_b" ID="uc_01_b" />
                                                                     <label for="input-radio-11">No Uropathogen Isolated</label>
                                                                 </fieldset>
+                                                                <fieldset>
+                                                                    <asp:RadioButton runat="server" class=".radiocls2" GroupName="uc_01a" name="uc_01_c" ID="uc_01_c" />
+                                                                    <label for="input-radio-11">NA</label>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 label-control" for="projectinput5" id="lbl_uc_01_ca">Name of organism</label>
+                                                            <div class="col-md-9">
+                                                                <asp:TextBox runat="server" ID="uc_01_ca" class="form-control" name="uc_01_ca" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
