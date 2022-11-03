@@ -349,12 +349,46 @@
 
                 if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
 
-                    $("#pnl_AS4_Q21a").css("display", "block");
+                    $("#pnl_AS4_Q21a").css("display", "none");
 
+                    EnableControls1("AS3_Q16", "txt");
                     EnableControls1("AS3_Q17", "txt");
                     EnableControls1("AS3_Q18", "txt");
                     EnableControls1("AS3_Q19", "txt");
                     EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
 
 
                     EnableControls1("AS4_Q21a", "rdo");
@@ -378,37 +412,6 @@
                     EnableControls1("AS5_Q33b", "txt");
                     EnableControls1("AS3_Remarks", "txt");
 
-                }
-                else {
-
-                    $("#pnl_AS4_Q21a").css("display", "none");
-
-                    DisableControls1("AS3_Q17", "txt");
-                    DisableControls1("AS3_Q18", "txt");
-                    DisableControls1("AS3_Q19", "txt");
-                    DisableControls1("AS3_Q20", "txt");
-
-
-                    DisableControls1("AS4_Q21a", "rdo");
-
-                    DisableControls1("AS4_Q22a", "txt");
-                    DisableControls1("AS4_Q22b", "txt");
-                    DisableControls1("AS4_Q23", "txt");
-                    DisableControls1("AS4_Q24", "txt");
-                    DisableControls1("AS5_Q25a", "txt");
-                    DisableControls1("AS5_Q25b", "txt");
-                    DisableControls1("AS5_Q26", "txt");
-
-                    DisableControls1("AS5_Q27", "rdo");
-                    DisableControls1("AS5_Q28", "rdo");
-                    DisableControls1("AS5_Q29", "rdo");
-                    DisableControls1("AS5_Q30", "rdo");
-                    DisableControls1("AS5_Q31", "rdo");
-                    DisableControls1("AS5_Q32", "rdo");
-
-                    DisableControls1("AS5_Q33a", "txt");
-                    DisableControls1("AS5_Q33b", "txt");
-                    DisableControls1("AS3_Remarks", "txt");
 
                 }
 
@@ -436,13 +439,47 @@
 
                 if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
 
-                    $("#pnl_AS4_Q21a").css("display", "block");
+                    $("#pnl_AS4_Q21a").css("display", "none");
 
-
+                    EnableControls1("AS3_Q16", "txt");
                     EnableControls1("AS3_Q17", "txt");
                     EnableControls1("AS3_Q18", "txt");
                     EnableControls1("AS3_Q19", "txt");
                     EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
 
 
                     EnableControls1("AS4_Q21a", "rdo");
@@ -466,37 +503,7 @@
                     EnableControls1("AS5_Q33b", "txt");
                     EnableControls1("AS3_Remarks", "txt");
 
-                }
-                else {
 
-                    $("#pnl_AS4_Q21a").css("display", "none");
-
-                    DisableControls1("AS3_Q17", "txt");
-                    DisableControls1("AS3_Q18", "txt");
-                    DisableControls1("AS3_Q19", "txt");
-                    DisableControls1("AS3_Q20", "txt");
-
-
-                    DisableControls1("AS4_Q21a", "rdo");
-
-                    DisableControls1("AS4_Q22a", "txt");
-                    DisableControls1("AS4_Q22b", "txt");
-                    DisableControls1("AS4_Q23", "txt");
-                    DisableControls1("AS4_Q24", "txt");
-                    DisableControls1("AS5_Q25a", "txt");
-                    DisableControls1("AS5_Q25b", "txt");
-                    DisableControls1("AS5_Q26", "txt");
-
-                    DisableControls1("AS5_Q27", "rdo");
-                    DisableControls1("AS5_Q28", "rdo");
-                    DisableControls1("AS5_Q29", "rdo");
-                    DisableControls1("AS5_Q30", "rdo");
-                    DisableControls1("AS5_Q31", "rdo");
-                    DisableControls1("AS5_Q32", "rdo");
-
-                    DisableControls1("AS5_Q33a", "txt");
-                    DisableControls1("AS5_Q33b", "txt");
-                    DisableControls1("AS3_Remarks", "txt");
 
                 }
 
@@ -526,46 +533,13 @@
 
                 if (arr[2] === "1" && arr1[2] === "11" && arr2[2] === "11") {
 
-                    $("#pnl_AS4_Q21a").css("display", "block");
+                    $("#pnl_AS4_Q21a").css("display", "none");
 
-
+                    EnableControls1("AS3_Q16", "txt");
                     EnableControls1("AS3_Q17", "txt");
                     EnableControls1("AS3_Q18", "txt");
                     EnableControls1("AS3_Q19", "txt");
                     EnableControls1("AS3_Q20", "txt");
-
-
-                    EnableControls1("AS4_Q21a", "rdo");
-
-                    EnableControls1("AS4_Q22a", "txt");
-                    EnableControls1("AS4_Q22b", "txt");
-                    EnableControls1("AS4_Q23", "txt");
-                    EnableControls1("AS4_Q24", "txt");
-                    EnableControls1("AS5_Q25a", "txt");
-                    EnableControls1("AS5_Q25b", "txt");
-                    EnableControls1("AS5_Q26", "txt");
-
-                    EnableControls1("AS5_Q27", "rdo");
-                    EnableControls1("AS5_Q28", "rdo");
-                    EnableControls1("AS5_Q29", "rdo");
-                    EnableControls1("AS5_Q30", "rdo");
-                    EnableControls1("AS5_Q31", "rdo");
-                    EnableControls1("AS5_Q32", "rdo");
-
-                    EnableControls1("AS5_Q33a", "txt");
-                    EnableControls1("AS5_Q33b", "txt");
-                    EnableControls1("AS3_Remarks", "txt");
-
-                }
-                else {
-
-
-                    $("#pnl_AS4_Q21a").css("display", "none");
-
-                    DisableControls1("AS3_Q17", "txt");
-                    DisableControls1("AS3_Q18", "txt");
-                    DisableControls1("AS3_Q19", "txt");
-                    DisableControls1("AS3_Q20", "txt");
 
 
                     DisableControls1("AS4_Q21a", "rdo");
@@ -590,6 +564,42 @@
                     DisableControls1("AS3_Remarks", "txt");
 
                 }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+
+                }
 
             }
 
@@ -612,7 +622,7 @@
 
 
 
-        $(document).on("change", "input[name='AS1_fsite']:checked", function () {
+        $(document).on("change", "input[name='AS1_fsite']:checked", function () {            
 
             //if (rdo_value === "AS1_fsite_3") {
             //    $("#pnl_lyari_sample").show();
@@ -1333,7 +1343,7 @@
                 return false;
             }
             else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true) {
-                alert("Please enter Temperature of the Coleman upon arrival at the IDRL lab ");
+                alert("Please enter Temperature of the Coleman upon arrival at the lab ");
                 $("#AS3_Q16").focus();
                 return false;
             }
@@ -2136,7 +2146,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Temperature of the Coleman upon arrival at the IDRL lab</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">Temperature of the Coleman upon arrival at the lab</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" ID="AS3_Q16" MaxLength="6" class="form-control" name="AS3_Q16" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
@@ -2371,85 +2381,85 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Urine DR</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q34" MaxLength="5" class="form-control" name="AS6_Q34" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q34" MaxLength="20" class="form-control" name="AS6_Q34" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Urine CS</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q35" MaxLength="5" class="form-control" name="AS6_Q35" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q35" MaxLength="20" class="form-control" name="AS6_Q35" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Serum Bilirubin (Adult)</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q36" MaxLength="5" class="form-control" name="AS6_Q36" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q36" MaxLength="20" class="form-control" name="AS6_Q36" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Liver function test (Serum)</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q37" MaxLength="5" class="form-control" name="AS6_Q37" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q37" MaxLength="20" class="form-control" name="AS6_Q37" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Urea</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q38" MaxLength="5" class="form-control" name="AS6_Q38" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q38" MaxLength="20" class="form-control" name="AS6_Q38" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Creatinine</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q39" MaxLength="5" class="form-control" name="AS6_Q39" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q39" MaxLength="20" class="form-control" name="AS6_Q39" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Electrolytes</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q40" MaxLength="5" class="form-control" name="AS6_Q40" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q40" MaxLength="20" class="form-control" name="AS6_Q40" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">CSF DR</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q41" MaxLength="5" class="form-control" name="AS6_Q41" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q41" MaxLength="20" class="form-control" name="AS6_Q41" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">CSF CS</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q42" MaxLength="5" class="form-control" name="AS6_Q42" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q42" MaxLength="20" class="form-control" name="AS6_Q42" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Chest Xray</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q43" MaxLength="5" class="form-control" name="AS6_Q43" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q43" MaxLength="20" class="form-control" name="AS6_Q43" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Ultrasound whole abdomen</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q44" MaxLength="5" class="form-control" name="AS6_Q44" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q44" MaxLength="20" class="form-control" name="AS6_Q44" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Ultrasound upper abdomen</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q45" MaxLength="5" class="form-control" name="AS6_Q45" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q45" MaxLength="20" class="form-control" name="AS6_Q45" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Ultrasound pelvis</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q46" MaxLength="5" class="form-control" name="AS6_Q46" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q46" MaxLength="20" class="form-control" name="AS6_Q46" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Ultrasound brain</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS6_Q47" MaxLength="5" class="form-control" name="AS6_Q47" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="AS6_Q47" MaxLength="20" class="form-control" name="AS6_Q47" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

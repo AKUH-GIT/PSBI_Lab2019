@@ -6052,7 +6052,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_16_a">Platelets x10E9/L</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_16_a" class="form-control" name="LA_16_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="LA_16_a" class="form-control" name="LA_16_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6810,7 +6810,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_CS_09_a">GRAM STAIN RESULT</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="CS_09_a" class="form-control" name="CS_09_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6838,7 +6838,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_CS_10_a">WET PREPARATION FOR NAEGLERIA (Seen / Not Seen)</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_10_a" class="form-control" name="CS_10_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="CS_10_a" class="form-control" name="CS_10_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6903,7 +6903,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_02_a">Appearance</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_02_a" class="form-control" name="UR_02_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_02_a" class="form-control" name="UR_02_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7419,7 +7419,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_19_a">Cast HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="19" ID="UR_19_a" class="form-control" name="UR_19_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_19_a" class="form-control" name="UR_19_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7448,7 +7448,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_20_a">Crystals HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_20_a" class="form-control" name="UR_20_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_20_a" class="form-control" name="UR_20_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7477,7 +7477,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_21_a">Mucus</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_21_a" class="form-control" name="UR_21_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_21_a" class="form-control" name="UR_21_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
