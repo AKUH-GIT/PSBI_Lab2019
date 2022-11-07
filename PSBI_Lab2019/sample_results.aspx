@@ -7299,7 +7299,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_15_a">Squamous Epith Cell HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_15_a" class="form-control" name="UR_15_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_15_a" class="form-control" name="UR_15_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7329,7 +7329,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_16_a">Non Squamous Epith Cell HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="16" ID="UR_16_a" class="form-control" name="UR_16_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_16_a" class="form-control" name="UR_16_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7359,7 +7359,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_17_a">Bacteria HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="17" ID="UR_17_a" class="form-control" name="UR_17_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_17_a" class="form-control" name="UR_17_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7389,7 +7389,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_18_a">Yeast HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="18" ID="UR_18_a" class="form-control" name="UR_18_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_18_a" class="form-control" name="UR_18_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
