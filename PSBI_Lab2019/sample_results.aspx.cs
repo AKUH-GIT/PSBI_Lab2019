@@ -943,6 +943,7 @@ public partial class sample_results : System.Web.UI.Page
         string var_UR_02 = "";
         string var_UR_03 = "";
         string var_UR_04 = "";
+        string var_UR_04a = "";
         string var_UR_05 = "";
         string var_UR_06 = "";
         string var_UR_07 = "";
@@ -1595,6 +1596,18 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_UR_04 = "888";
             }
+
+
+
+            if (UR_04a_b.Checked == true)
+            {
+                var_UR_04a = "999";
+            }
+            else if (UR_04a_c.Checked == true)
+            {
+                var_UR_04a = "888";
+            }
+
 
 
 
@@ -4413,6 +4426,8 @@ public partial class sample_results : System.Web.UI.Page
 "UR_03_a," +
 "UR_04," +
 "UR_04_a," +
+"UR_04a," +
+"UR_04a_a," +
 "UR_05," +
 "UR_05_a," +
 "UR_06," +
@@ -4446,6 +4461,7 @@ public partial class sample_results : System.Web.UI.Page
 "UR_21," +
 "UR_21_a," +
 "uc_01a," +
+"uc_01_ca," +
 "uc_02a," +
 "uc_02a_a," +
 "uc_02b," +
@@ -4748,6 +4764,8 @@ var_UR_03 + "', '" +
 UR_03_a.Text + "', '" +
 var_UR_04 + "', '" +
 UR_04_a.Text + "', '" +
+var_UR_04a + "', '" +
+UR_04a_a.Text + "', '" +
 var_UR_05 + "', '" +
 UR_05_a.Text + "', '" +
 var_UR_06 + "', '" +
@@ -4781,6 +4799,7 @@ UR_20_a.Text + "', '" +
 var_UR_21 + "', '" +
 UR_21_a.Text + "', '" +
 var_uc_01a + "', '" +
+uc_01_ca.Text + "', '" +
 var_uc_02a + "', '" +
 uc_02a_a.Text + "', '" +
 var_uc_02b + "', '" +

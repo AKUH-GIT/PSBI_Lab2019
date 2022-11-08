@@ -1170,7 +1170,7 @@
                     $("#AS1_mrno").focus();
                     return false;
                 }
-                else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":visible") == false
+                else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":visible") == true
                     && $("#AS1_lno").is(":disabled") == false) {
                     alert("Please enter L Number ");
                     $("#AS1_lno").focus();
@@ -1288,12 +1288,7 @@
                     alert("Please select CBC EDTA tube Received ");
                     $("#AS2_Q7_11").focus();
                     return false;
-                }
-                else if ($("#AS2_Q7_2a").val() == "" && $("#AS2_Q7_2a").is(":visible") == true) {
-                    alert("Please enter CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
-                    $("#AS2_Q7_2a").focus();
-                    return false;
-                }
+                }                
                 else if ($("#AS2_Q7_2a").val() == "___-__-__" && $("#AS2_Q7_2a").is(":visible") == true
                     && $("#AS2_Q7_2a").is(":disabled") == false) {
                     alert("Please enter valid CBC EDTA tube Charged at AKU clinical lab (MR Number) ");

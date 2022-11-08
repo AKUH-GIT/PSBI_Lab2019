@@ -3748,19 +3748,19 @@
                 $("#RF_01_a").focus();
                 return false;
             }
-            else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
-                || $("#RF_02_b").is(":visible") == true
-                || $("#RF_02_c").is(":visible") == true
-            )) {
-                alert("Please select   ");
-                $("#RF_02_v").focus();
-                return false;
-            }
-            else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
-                alert("Please enter value ");
-                $("#RF_02_a").focus();
-                return false;
-            }
+            //else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
+            //    || $("#RF_02_b").is(":visible") == true
+            //    || $("#RF_02_c").is(":visible") == true
+            //)) {
+            //    alert("Please select   ");
+            //    $("#RF_02_v").focus();
+            //    return false;
+            //}
+            //else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
+            //    alert("Please enter value ");
+            //    $("#RF_02_a").focus();
+            //    return false;
+            //}
             else if ($('input[name=RF_03]:checked').length <= 0 && ($("#RF_03_v").is(":visible") == true
                 || $("#RF_03_b").is(":visible") == true
                 || $("#RF_03_c").is(":visible") == true
@@ -6321,7 +6321,7 @@
 
 
 
-                                                        <div class="form-group row">
+                                                        <div style="display: none;">
                                                             <label class="col-md-3 label-control" for="projectinput5">UREA=BUN x 2.14</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
@@ -6343,7 +6343,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_RF_02_a">UREA=BUN x 2.14 mg/dL</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="RF_02_a" class="form-control" name="RF_02_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="15" ID="RF_02_a" Visible="false" Enabled="false" class="form-control" name="RF_02_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6780,7 +6780,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_CS_08_a">CSF PUS CELLS mm3</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="CS_08_a" class="form-control" name="CS_08_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="CS_08_a" class="form-control" name="CS_08_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6933,7 +6933,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_03_a">Specific Gravity</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_03_a" class="form-control" name="UR_03_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_03_a" class="form-control" name="UR_03_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6962,7 +6962,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_04_a">pH</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_04_a" class="form-control" name="UR_04_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_04_a" class="form-control" name="UR_04_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -6992,7 +6992,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_04a_a">Glucose mg/dL</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_04a_a" class="form-control" name="UR_04a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_04a_a" class="form-control" name="UR_04a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7022,7 +7022,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_05_a">Protein g/L</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_05_a" class="form-control" name="UR_05_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_05_a" class="form-control" name="UR_05_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7054,7 +7054,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_06_a">Ketone mmol/L</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_06_a" class="form-control" name="UR_06_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_06_a" class="form-control" name="UR_06_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7084,7 +7084,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_07_a">Urobilinogen µmol/L</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_07_a" class="form-control" name="UR_07_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_07_a" class="form-control" name="UR_07_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7115,7 +7115,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_08_a">Bilirubin</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_08_a" class="form-control" name="UR_08_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_08_a" class="form-control" name="UR_08_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7147,7 +7147,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_10_a">Hemoglobin</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_10_a" class="form-control" name="UR_10_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_10_a" class="form-control" name="UR_10_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7179,7 +7179,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_11_a">Nitrite x21E9/L</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="21" ID="UR_11_a" class="form-control" name="UR_11_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" MaxLength="20" ID="UR_11_a" class="form-control" name="UR_11_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7209,7 +7209,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_12_a">Leucocyte Esterase uL</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_12_a" class="form-control" name="UR_12_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_12_a" class="form-control" name="UR_12_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7239,7 +7239,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_13_a">Red Blood Cells HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_13_a" class="form-control" name="UR_13_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_13_a" class="form-control" name="UR_13_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
@@ -7269,7 +7269,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5" id="lbl_UR_14_a">Leucocytes HPF</label>
                                                             <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="UR_14_a" class="form-control" name="UR_14_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="UR_14_a" class="form-control" name="UR_14_a" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
 
