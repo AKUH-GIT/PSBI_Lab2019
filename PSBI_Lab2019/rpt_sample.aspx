@@ -134,13 +134,16 @@
                                                 <div class="form-body">
 
                                                     <div class="form-group row">
-                                                        <label class="col-md-2 label-control" for="projectinput5">Screening number</label>
+                                                        <label class="col-md-3 label-control" for="projectinput5">Screening number</label>
                                                         <div class="col-md-2">
                                                             <asp:TextBox runat="server" ID="AS1_screening_ID" class="form-control" name="AS1_screening_ID" onkeypress="return numeralsOnly(event);"></asp:TextBox>
-                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="AS1_screening_ID" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>                                                            
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="AS1_screening_ID" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <asp:Button runat="server" ID="cmdSave" class="btn btn-primary" Text=" Preview Report " OnClick="cmdSave_Click"></asp:Button>
                                                         </div>
                                                         <div>
-                                                            <asp:Button runat="server" ID="cmdSave" class="btn btn-primary" Text=" Preview Report " OnClick="cmdSave_Click"></asp:Button>
+                                                            <asp:Button runat="server" ID="cmdPrint" class="btn btn-primary" Text="Print Report" OnClick="cmdPrint_Click"></asp:Button>
                                                         </div>
                                                     </div>
 

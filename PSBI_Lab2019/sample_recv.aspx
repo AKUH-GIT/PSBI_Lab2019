@@ -1394,7 +1394,7 @@
                     $("#AS3_Q15").focus();
                     return false;
                 }
-                else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true) {
+                else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true && $("#AS3_Q16").is(":disabled") == false) {
                     alert("Please enter Temperature of the Coleman upon arrival at the lab ");
                     $("#AS3_Q16").focus();
                     return false;

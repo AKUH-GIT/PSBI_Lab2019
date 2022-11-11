@@ -28,6 +28,11 @@ if not exists (select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where COLUMN_N
 alter table sample_result add UR_04a_a varchar(20)
 
 
+if not exists (select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where COLUMN_NAME = 'UR_04a')
+alter table sample_result add UR_04a varchar(20)
+
+
+
 alter table sample_result alter column UR_12_a varchar(max)
 alter table sample_result alter column UR_13_a varchar(max)
 alter table sample_result alter column UR_14_a varchar(max)

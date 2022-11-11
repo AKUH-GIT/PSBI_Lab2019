@@ -4250,7 +4250,7 @@
                 $("#uc_01_a").focus();
                 return false;
             }
-            else if ($("#uc_01_ca").val() == "" && $("#uc_01_ca").is(":visible") == true) {
+            else if ($("#uc_01_ca").val() == "" && $("#uc_01_ca").is(":visible") == true && $("#uc_01_ca").is(":disabled") == false) {
                 alert("Please enter organism name ");
                 $("#uc_01_ca").focus();
                 return false;
