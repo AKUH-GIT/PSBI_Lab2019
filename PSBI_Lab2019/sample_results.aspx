@@ -4021,6 +4021,19 @@
                 $("#UR_04_a").focus();
                 return false;
             }
+            else if ($('input[name=UR_04a]:checked').length <= 0 && ($("#UR_04a_v").is(":visible") == true
+                || $("#UR_04a_b").is(":visible") == true
+                || $("#UR_04a_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#UR_04a_v").focus();
+                return false;
+            }
+            else if ($("#UR_04a_a").val() == "") {
+                alert("Please enter value ");
+                $("#UR_04a_a").focus();
+                return false;
+            }
             else if ($('input[name=UR_05]:checked').length <= 0 && ($("#UR_05_v").is(":visible") == true
                 || $("#UR_05_b").is(":visible") == true
                 || $("#UR_05_c").is(":visible") == true
@@ -4268,6 +4281,14 @@
                 $("#uc_02a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_02b]:checked').length <= 0 && ($("#uc_02b_a").is(":visible") == true
+                || $("#uc_02b_b").is(":visible") == true
+                || $("#uc_02b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_02b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_03a]:checked').length <= 0 && ($("#uc_03a_v").is(":visible") == true
                 || $("#uc_03a_b").is(":visible") == true
                 || $("#uc_03a_c").is(":visible") == true
@@ -4279,6 +4300,14 @@
             else if ($("#uc_03a_a").val() == "" && $("#uc_03a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_03a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_03b]:checked').length <= 0 && ($("#uc_03b_a").is(":visible") == true
+                || $("#uc_03b_b").is(":visible") == true
+                || $("#uc_03b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_03b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_04a]:checked').length <= 0 && ($("#uc_04a_v").is(":visible") == true
@@ -4294,6 +4323,14 @@
                 $("#uc_04a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_04b]:checked').length <= 0 && ($("#uc_04b_a").is(":visible") == true
+                || $("#uc_04b_b").is(":visible") == true
+                || $("#uc_04b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_04b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_05a]:checked').length <= 0 && ($("#uc_05a_v").is(":visible") == true
                 || $("#uc_05a_b").is(":visible") == true
                 || $("#uc_05a_c").is(":visible") == true
@@ -4305,6 +4342,14 @@
             else if ($("#uc_05a_a").val() == "" && $("#uc_05a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_05a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_05b]:checked').length <= 0 && ($("#uc_05b_a").is(":visible") == true
+                || $("#uc_05b_b").is(":visible") == true
+                || $("#uc_05b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_05b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_06a]:checked').length <= 0 && ($("#uc_06a_v").is(":visible") == true
@@ -4320,6 +4365,14 @@
                 $("#uc_06a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_06b]:checked').length <= 0 && ($("#uc_06b_a").is(":visible") == true
+                || $("#uc_06b_b").is(":visible") == true
+                || $("#uc_06b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_06b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_07a]:checked').length <= 0 && ($("#uc_07a_v").is(":visible") == true
                 || $("#uc_07a_b").is(":visible") == true
                 || $("#uc_07a_c").is(":visible") == true
@@ -4331,6 +4384,14 @@
             else if ($("#uc_07a_a").val() == "" && $("#uc_07a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_07a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_07b]:checked').length <= 0 && ($("#uc_07b_a").is(":visible") == true
+                || $("#uc_07b_b").is(":visible") == true
+                || $("#uc_07b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_07b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_08a]:checked').length <= 0 && ($("#uc_08a_v").is(":visible") == true
@@ -4346,6 +4407,14 @@
                 $("#uc_08a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_08b]:checked').length <= 0 && ($("#uc_08b_a").is(":visible") == true
+                || $("#uc_08b_b").is(":visible") == true
+                || $("#uc_08b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_08b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_09a]:checked').length <= 0 && ($("#uc_09a_v").is(":visible") == true
                 || $("#uc_09a_b").is(":visible") == true
                 || $("#uc_09a_c").is(":visible") == true
@@ -4357,6 +4426,14 @@
             else if ($("#uc_09a_a").val() == "" && $("#uc_09a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_09a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_09b]:checked').length <= 0 && ($("#uc_09b_a").is(":visible") == true
+                || $("#uc_09b_b").is(":visible") == true
+                || $("#uc_09b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_09b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_10a]:checked').length <= 0 && ($("#uc_10a_v").is(":visible") == true
@@ -4372,6 +4449,14 @@
                 $("#uc_10a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_10b]:checked').length <= 0 && ($("#uc_10b_a").is(":visible") == true
+                || $("#uc_10b_b").is(":visible") == true
+                || $("#uc_10b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_10b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_11a]:checked').length <= 0 && ($("#uc_11a_v").is(":visible") == true
                 || $("#uc_11a_b").is(":visible") == true
                 || $("#uc_11a_c").is(":visible") == true
@@ -4383,6 +4468,14 @@
             else if ($("#uc_11a_a").val() == "" && $("#uc_11a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_11a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_11b]:checked').length <= 0 && ($("#uc_11b_a").is(":visible") == true
+                || $("#uc_11b_b").is(":visible") == true
+                || $("#uc_11b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_11b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_12a]:checked').length <= 0 && ($("#uc_12a_v").is(":visible") == true
@@ -4398,6 +4491,14 @@
                 $("#uc_12a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_12b]:checked').length <= 0 && ($("#uc_12b_a").is(":visible") == true
+                || $("#uc_12b_b").is(":visible") == true
+                || $("#uc_12b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_12b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_13a]:checked').length <= 0 && ($("#uc_13a_v").is(":visible") == true
                 || $("#uc_13a_b").is(":visible") == true
                 || $("#uc_13a_c").is(":visible") == true
@@ -4409,6 +4510,14 @@
             else if ($("#uc_13a_a").val() == "" && $("#uc_13a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_13a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_13b]:checked').length <= 0 && ($("#uc_13b_a").is(":visible") == true
+                || $("#uc_13b_b").is(":visible") == true
+                || $("#uc_13b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_13b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_14a]:checked').length <= 0 && ($("#uc_14a_v").is(":visible") == true
@@ -4424,6 +4533,14 @@
                 $("#uc_14a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_14b]:checked').length <= 0 && ($("#uc_14b_a").is(":visible") == true
+                || $("#uc_14b_b").is(":visible") == true
+                || $("#uc_14b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_14b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_15a]:checked').length <= 0 && ($("#uc_15a_v").is(":visible") == true
                 || $("#uc_15a_b").is(":visible") == true
                 || $("#uc_15a_c").is(":visible") == true
@@ -4435,6 +4552,14 @@
             else if ($("#uc_15a_a").val() == "" && $("#uc_15a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_15a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_15b]:checked').length <= 0 && ($("#uc_15b_a").is(":visible") == true
+                || $("#uc_15b_b").is(":visible") == true
+                || $("#uc_15b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_15b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_16a]:checked').length <= 0 && ($("#uc_16a_v").is(":visible") == true
@@ -4450,6 +4575,14 @@
                 $("#uc_16a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_16b]:checked').length <= 0 && ($("#uc_16b_a").is(":visible") == true
+                || $("#uc_16b_b").is(":visible") == true
+                || $("#uc_16b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_16b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_17a]:checked').length <= 0 && ($("#uc_17a_v").is(":visible") == true
                 || $("#uc_17a_b").is(":visible") == true
                 || $("#uc_17a_c").is(":visible") == true
@@ -4461,6 +4594,14 @@
             else if ($("#uc_17a_a").val() == "" && $("#uc_17a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_17a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_17b]:checked').length <= 0 && ($("#uc_17b_a").is(":visible") == true
+                || $("#uc_17b_b").is(":visible") == true
+                || $("#uc_17b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_17b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_18a]:checked').length <= 0 && ($("#uc_18a_v").is(":visible") == true
@@ -4476,6 +4617,14 @@
                 $("#uc_18a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_18b]:checked').length <= 0 && ($("#uc_18b_a").is(":visible") == true
+                || $("#uc_18b_b").is(":visible") == true
+                || $("#uc_18b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_18b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_19a]:checked').length <= 0 && ($("#uc_19a_v").is(":visible") == true
                 || $("#uc_19a_b").is(":visible") == true
                 || $("#uc_19a_c").is(":visible") == true
@@ -4487,6 +4636,14 @@
             else if ($("#uc_19a_a").val() == "" && $("#uc_19a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_19a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_19b]:checked').length <= 0 && ($("#uc_19b_a").is(":visible") == true
+                || $("#uc_19b_b").is(":visible") == true
+                || $("#uc_19b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_19b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_20a]:checked').length <= 0 && ($("#uc_20a_v").is(":visible") == true
@@ -4502,6 +4659,14 @@
                 $("#uc_20a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_20b]:checked').length <= 0 && ($("#uc_20b_a").is(":visible") == true
+                || $("#uc_20b_b").is(":visible") == true
+                || $("#uc_20b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_20b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_21a]:checked').length <= 0 && ($("#uc_21a_v").is(":visible") == true
                 || $("#uc_21a_b").is(":visible") == true
                 || $("#uc_21a_c").is(":visible") == true
@@ -4513,6 +4678,14 @@
             else if ($("#uc_21a_a").val() == "" && $("#uc_21a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_21a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_21b]:checked').length <= 0 && ($("#uc_21b_a").is(":visible") == true
+                || $("#uc_21b_b").is(":visible") == true
+                || $("#uc_21b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_21b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_22a]:checked').length <= 0 && ($("#uc_22a_v").is(":visible") == true
@@ -4528,6 +4701,14 @@
                 $("#uc_22a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_22b]:checked').length <= 0 && ($("#uc_22b_a").is(":visible") == true
+                || $("#uc_22b_b").is(":visible") == true
+                || $("#uc_22b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_22b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_23a]:checked').length <= 0 && ($("#uc_23a_v").is(":visible") == true
                 || $("#uc_23a_b").is(":visible") == true
                 || $("#uc_23a_c").is(":visible") == true
@@ -4539,6 +4720,14 @@
             else if ($("#uc_23a_a").val() == "" && $("#uc_23a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_23a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_23b]:checked').length <= 0 && ($("#uc_23b_a").is(":visible") == true
+                || $("#uc_23b_b").is(":visible") == true
+                || $("#uc_23b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_23b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_24a]:checked').length <= 0 && ($("#uc_24a_v").is(":visible") == true
@@ -4554,6 +4743,14 @@
                 $("#uc_24a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_24b]:checked').length <= 0 && ($("#uc_24b_a").is(":visible") == true
+                || $("#uc_24b_b").is(":visible") == true
+                || $("#uc_24b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_24b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_25a]:checked').length <= 0 && ($("#uc_25a_v").is(":visible") == true
                 || $("#uc_25a_b").is(":visible") == true
                 || $("#uc_25a_c").is(":visible") == true
@@ -4565,6 +4762,14 @@
             else if ($("#uc_25a_a").val() == "" && $("#uc_25a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_25a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_25b]:checked').length <= 0 && ($("#uc_25b_a").is(":visible") == true
+                || $("#uc_25b_b").is(":visible") == true
+                || $("#uc_25b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_25b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_26a]:checked').length <= 0 && ($("#uc_26a_v").is(":visible") == true
@@ -4580,6 +4785,14 @@
                 $("#uc_26a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_26b]:checked').length <= 0 && ($("#uc_26b_a").is(":visible") == true
+                || $("#uc_26b_b").is(":visible") == true
+                || $("#uc_26b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_26b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_27a]:checked').length <= 0 && ($("#uc_27a_v").is(":visible") == true
                 || $("#uc_27a_b").is(":visible") == true
                 || $("#uc_27a_c").is(":visible") == true
@@ -4591,6 +4804,14 @@
             else if ($("#uc_27a_a").val() == "" && $("#uc_27a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_27a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_27b]:checked').length <= 0 && ($("#uc_27b_a").is(":visible") == true
+                || $("#uc_27b_b").is(":visible") == true
+                || $("#uc_27b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_27b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_28a]:checked').length <= 0 && ($("#uc_28a_v").is(":visible") == true
@@ -4606,6 +4827,14 @@
                 $("#uc_28a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_28b]:checked').length <= 0 && ($("#uc_28b_a").is(":visible") == true
+                || $("#uc_28b_b").is(":visible") == true
+                || $("#uc_28b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_28b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_29a]:checked').length <= 0 && ($("#uc_29a_v").is(":visible") == true
                 || $("#uc_29a_b").is(":visible") == true
                 || $("#uc_29a_c").is(":visible") == true
@@ -4617,6 +4846,14 @@
             else if ($("#uc_29a_a").val() == "" && $("#uc_29a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_29a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_29b]:checked').length <= 0 && ($("#uc_29b_a").is(":visible") == true
+                || $("#uc_29b_b").is(":visible") == true
+                || $("#uc_29b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_29b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_30a]:checked').length <= 0 && ($("#uc_30a_v").is(":visible") == true
@@ -4632,6 +4869,14 @@
                 $("#uc_30a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_30b]:checked').length <= 0 && ($("#uc_30b_a").is(":visible") == true
+                || $("#uc_30b_b").is(":visible") == true
+                || $("#uc_30b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_30b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_31a]:checked').length <= 0 && ($("#uc_31a_v").is(":visible") == true
                 || $("#uc_31a_b").is(":visible") == true
                 || $("#uc_31a_c").is(":visible") == true
@@ -4643,6 +4888,14 @@
             else if ($("#uc_31a_a").val() == "" && $("#uc_31a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_31a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_31b]:checked').length <= 0 && ($("#uc_31b_a").is(":visible") == true
+                || $("#uc_31b_b").is(":visible") == true
+                || $("#uc_31b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_31b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_32a]:checked').length <= 0 && ($("#uc_32a_v").is(":visible") == true
@@ -4658,6 +4911,14 @@
                 $("#uc_32a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_32b]:checked').length <= 0 && ($("#uc_32b_a").is(":visible") == true
+                || $("#uc_32b_b").is(":visible") == true
+                || $("#uc_32b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_32b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_33a]:checked').length <= 0 && ($("#uc_33a_v").is(":visible") == true
                 || $("#uc_33a_b").is(":visible") == true
                 || $("#uc_33a_c").is(":visible") == true
@@ -4669,6 +4930,14 @@
             else if ($("#uc_33a_a").val() == "" && $("#uc_33a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_33a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_33b]:checked').length <= 0 && ($("#uc_33b_a").is(":visible") == true
+                || $("#uc_33b_b").is(":visible") == true
+                || $("#uc_33b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_33b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_34a]:checked').length <= 0 && ($("#uc_34a_v").is(":visible") == true
@@ -4684,6 +4953,14 @@
                 $("#uc_34a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_34b]:checked').length <= 0 && ($("#uc_34b_a").is(":visible") == true
+                || $("#uc_34b_b").is(":visible") == true
+                || $("#uc_34b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_34b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_35a]:checked').length <= 0 && ($("#uc_35a_v").is(":visible") == true
                 || $("#uc_35a_b").is(":visible") == true
                 || $("#uc_35a_c").is(":visible") == true
@@ -4695,6 +4972,14 @@
             else if ($("#uc_35a_a").val() == "" && $("#uc_35a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_35a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_35b]:checked').length <= 0 && ($("#uc_35b_a").is(":visible") == true
+                || $("#uc_35b_b").is(":visible") == true
+                || $("#uc_35b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_35b_a").focus();
                 return false;
             }
             else if ($('input[name=uc_36a]:checked').length <= 0 && ($("#uc_36a_v").is(":visible") == true
@@ -4710,6 +4995,14 @@
                 $("#uc_36a_a").focus();
                 return false;
             }
+            else if ($('input[name=uc_36b]:checked').length <= 0 && ($("#uc_36b_a").is(":visible") == true
+                || $("#uc_36b_b").is(":visible") == true
+                || $("#uc_36b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_36b_a").focus();
+                return false;
+            }
             else if ($('input[name=uc_37a]:checked').length <= 0 && ($("#uc_37a_v").is(":visible") == true
                 || $("#uc_37a_b").is(":visible") == true
                 || $("#uc_37a_c").is(":visible") == true
@@ -4721,6 +5014,14 @@
             else if ($("#uc_37a_a").val() == "" && $("#uc_37a_a").is(":visible") == true) {
                 alert("Please enter value ");
                 $("#uc_37a_a").focus();
+                return false;
+            }
+            else if ($('input[name=uc_37b]:checked').length <= 0 && ($("#uc_37b_a").is(":visible") == true
+                || $("#uc_37b_b").is(":visible") == true
+                || $("#uc_37b_c").is(":visible") == true
+            )) {
+                alert("Please select   ");
+                $("#uc_37b_a").focus();
                 return false;
             }
             else if ($("#LA_18").val() == "" && $("#LA_18").is(":visible") == true) {
