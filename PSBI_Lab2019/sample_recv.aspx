@@ -170,1474 +170,1474 @@
 
         $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
 
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
 
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
 
-                    var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+                var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
 
-                    if (arr[2] != arr1[2]) {
-                        alert("RCT 1 must be selected for all samples ");
+                if (arr[2] != arr1[2]) {
+                    alert("RCT 1 must be selected for all samples ");
 
-                        $("#AS1_Q2_11").removeAttr("checked");
-                        $("#AS1_Q2_12").removeAttr("checked");
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
 
-                        $("#AS1_Q3_1").removeAttr("checked");
-                        $("#AS1_Q3_2").removeAttr("checked");
-                    }
-                }
-
-
-                var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
-
-
-                if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
-
-
-                    if (arr[2] == 11 && arr1[2] == 2) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q2_11").removeAttr("checked");
-                        $("#AS1_Q2_12").removeAttr("checked");
-
-                        $("#AS1_Q3_1").removeAttr("checked");
-                        $("#AS1_Q3_2").removeAttr("checked");
-
-                    } else if (arr[2] == 12 && arr1[2] == 1) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q2_11").removeAttr("checked");
-                        $("#AS1_Q2_12").removeAttr("checked");
-
-                        $("#AS1_Q3_1").removeAttr("checked");
-                        $("#AS1_Q3_2").removeAttr("checked");
-
-                    }
-                }
-
-
-            });
-
-
-            $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
-
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
-
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
-
-                    if (arr[2] != arr1[2]) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q1_11").removeAttr("checked");
-                        $("#AS1_Q1_12").removeAttr("checked");
-                    }
-                }
-
-
-
-
-                var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
-
-                if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
-
-
-                    if (arr[2] == 11 && arr1[2] == 2) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q1_11").removeAttr("checked");
-                        $("#AS1_Q1_12").removeAttr("checked");
-
-                        $("#AS1_Q3_1").removeAttr("checked");
-                        $("#AS1_Q3_2").removeAttr("checked");
-
-                    } else if (arr[2] == 12 && arr1[2] == 1) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q1_11").removeAttr("checked");
-                        $("#AS1_Q1_12").removeAttr("checked");
-
-                        $("#AS1_Q3_1").removeAttr("checked");
-                        $("#AS1_Q3_2").removeAttr("checked");
-
-                    }
-                }
-
-            });
-
-
-
-
-            $(document).on("click", "input[name='AS1_Q3']:checked", function () {
-
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
-
-
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
-
-                    if (arr[2] == 2 && arr1[2] == 11) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q2_11").removeAttr("checked");
-                        $("#AS1_Q2_12").removeAttr("checked");
-                    } else if (arr[2] == 1 && arr1[2] == 12) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        $("#AS1_Q2_11").removeAttr("checked");
-                        $("#AS1_Q2_12").removeAttr("checked");
-                    }
-                }
-
-
-
-
-                var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
-
-                if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
-
-
-                    if (arr[2] == 2 && arr1[2] == 11) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        //$("#AS1_Q2_11").removeAttr("checked");
-                        //$("#AS1_Q2_12").removeAttr("checked");
-
-                        $("#AS1_Q1_11").removeAttr("checked");
-                        $("#AS1_Q1_12").removeAttr("checked");
-
-                    } else if (arr[2] == 1 && arr1[2] == 12) {
-                        alert("RCT 1 must be selected for all samples ");
-
-                        //$("#AS1_Q2_11").removeAttr("checked");
-                        //$("#AS1_Q2_12").removeAttr("checked");
-
-                        $("#AS1_Q1_11").removeAttr("checked");
-                        $("#AS1_Q1_12").removeAttr("checked");
-                    }
-                }
-
-            });
-
-
-
-
-            $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
-
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q3']:checked").val();
-                var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
-
-
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
-                    rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
-                    var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
-
-
-                    if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
-
-                        $("#pnl_AS4_Q21a").css("display", "none");
-
-                        EnableControls1("AS3_Q16", "txt");
-                        EnableControls1("AS3_Q17", "txt");
-                        EnableControls1("AS3_Q18", "txt");
-                        EnableControls1("AS3_Q19", "txt");
-                        EnableControls1("AS3_Q20", "txt");
-
-
-                        DisableControls1("AS4_Q21a", "rdo");
-
-                        DisableControls1("AS4_Q22a", "txt");
-                        DisableControls1("AS4_Q22b", "txt");
-                        DisableControls1("AS4_Q23", "txt");
-                        DisableControls1("AS4_Q24", "txt");
-                        DisableControls1("AS5_Q25a", "txt");
-                        DisableControls1("AS5_Q25b", "txt");
-                        DisableControls1("AS5_Q26", "txt");
-
-                        DisableControls1("AS5_Q27", "rdo");
-                        DisableControls1("AS5_Q28", "rdo");
-                        DisableControls1("AS5_Q29", "rdo");
-                        DisableControls1("AS5_Q30", "rdo");
-                        DisableControls1("AS5_Q31", "rdo");
-                        DisableControls1("AS5_Q32", "rdo");
-
-                        DisableControls1("AS5_Q33a", "txt");
-                        DisableControls1("AS5_Q33b", "txt");
-                        DisableControls1("AS3_Remarks", "txt");
-
-                    }
-                    else {
-
-                        $("#pnl_AS4_Q21a").css("display", "block");
-
-                        DisableControls1("AS3_Q16", "txt");
-                        DisableControls1("AS3_Q17", "txt");
-                        DisableControls1("AS3_Q18", "txt");
-                        DisableControls1("AS3_Q19", "txt");
-                        DisableControls1("AS3_Q20", "txt");
-
-
-                        EnableControls1("AS4_Q21a", "rdo");
-
-                        EnableControls1("AS4_Q22a", "txt");
-                        EnableControls1("AS4_Q22b", "txt");
-                        EnableControls1("AS4_Q23", "txt");
-                        EnableControls1("AS4_Q24", "txt");
-                        EnableControls1("AS5_Q25a", "txt");
-                        EnableControls1("AS5_Q25b", "txt");
-                        EnableControls1("AS5_Q26", "txt");
-
-                        EnableControls1("AS5_Q27", "rdo");
-                        EnableControls1("AS5_Q28", "rdo");
-                        EnableControls1("AS5_Q29", "rdo");
-                        EnableControls1("AS5_Q30", "rdo");
-                        EnableControls1("AS5_Q31", "rdo");
-                        EnableControls1("AS5_Q32", "rdo");
-
-                        EnableControls1("AS5_Q33a", "txt");
-                        EnableControls1("AS5_Q33b", "txt");
-                        EnableControls1("AS3_Remarks", "txt");
-
-
-                    }
-
-                }
-
-            });
-
-
-
-
-
-            $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
-
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q3']:checked").val();
-                var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
-
-
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
-                    rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
-                    var arr2 = $("input[name='AS1_Q1_1']:checked").val().split('_');
-
-
-                    if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
-
-                        $("#pnl_AS4_Q21a").css("display", "none");
-
-                        EnableControls1("AS3_Q16", "txt");
-                        EnableControls1("AS3_Q17", "txt");
-                        EnableControls1("AS3_Q18", "txt");
-                        EnableControls1("AS3_Q19", "txt");
-                        EnableControls1("AS3_Q20", "txt");
-
-
-                        DisableControls1("AS4_Q21a", "rdo");
-
-                        DisableControls1("AS4_Q22a", "txt");
-                        DisableControls1("AS4_Q22b", "txt");
-                        DisableControls1("AS4_Q23", "txt");
-                        DisableControls1("AS4_Q24", "txt");
-                        DisableControls1("AS5_Q25a", "txt");
-                        DisableControls1("AS5_Q25b", "txt");
-                        DisableControls1("AS5_Q26", "txt");
-
-                        DisableControls1("AS5_Q27", "rdo");
-                        DisableControls1("AS5_Q28", "rdo");
-                        DisableControls1("AS5_Q29", "rdo");
-                        DisableControls1("AS5_Q30", "rdo");
-                        DisableControls1("AS5_Q31", "rdo");
-                        DisableControls1("AS5_Q32", "rdo");
-
-                        DisableControls1("AS5_Q33a", "txt");
-                        DisableControls1("AS5_Q33b", "txt");
-                        DisableControls1("AS3_Remarks", "txt");
-
-                    }
-                    else {
-
-                        $("#pnl_AS4_Q21a").css("display", "block");
-
-
-                        DisableControls1("AS3_Q16", "txt");
-                        DisableControls1("AS3_Q17", "txt");
-                        DisableControls1("AS3_Q18", "txt");
-                        DisableControls1("AS3_Q19", "txt");
-                        DisableControls1("AS3_Q20", "txt");
-
-
-                        EnableControls1("AS4_Q21a", "rdo");
-
-                        EnableControls1("AS4_Q22a", "txt");
-                        EnableControls1("AS4_Q22b", "txt");
-                        EnableControls1("AS4_Q23", "txt");
-                        EnableControls1("AS4_Q24", "txt");
-                        EnableControls1("AS5_Q25a", "txt");
-                        EnableControls1("AS5_Q25b", "txt");
-                        EnableControls1("AS5_Q26", "txt");
-
-                        EnableControls1("AS5_Q27", "rdo");
-                        EnableControls1("AS5_Q28", "rdo");
-                        EnableControls1("AS5_Q29", "rdo");
-                        EnableControls1("AS5_Q30", "rdo");
-                        EnableControls1("AS5_Q31", "rdo");
-                        EnableControls1("AS5_Q32", "rdo");
-
-                        EnableControls1("AS5_Q33a", "txt");
-                        EnableControls1("AS5_Q33b", "txt");
-                        EnableControls1("AS3_Remarks", "txt");
-
-
-
-                    }
-
-                }
-
-            });
-
-
-
-            $(document).on("click", "#chkMRNo", function () {
-                if ($(this).is(":checked") == true) {
-                    DisableControls1("AS1_mrno", "txt");
-                    EnableControls1("AS1_lno", "txt");
-                    $("#chkLNumber").removeAttr("checked");
-                }
-                else {
-                    EnableControls1("AS1_mrno", "txt");
-                    //DisableControls1("AS1_lno", "txt");
-                }
-            });
-
-
-
-            $(document).on("click", "#chkLNumber", function () {
-                if ($(this).is(":checked") == true) {
-                    DisableControls1("AS1_lno", "txt");
-                    EnableControls1("AS1_mrno", "txt");
-                    $("#chkMRNo").removeAttr("checked");
-                }
-                else {
-                    EnableControls1("AS1_lno", "txt");
-                    //DisableControls1("AS1_mrno", "txt");
-                }
-            });
-
-
-
-
-            $(document).on("click", "#chk_AS2_Q7_2a", function () {
-                if ($(this).is(":checked") == true) {
-                    DisableControls1("AS2_Q7_2a", "txt");
-                    EnableControls1("AS2_Q7_2", "txt");
-                    $("#chk_AS2_Q7_2").removeAttr("checked");
-                }
-                else {
-                    EnableControls1("AS2_Q7_2a", "txt");
-                    //DisableControls1("AS1_lno", "txt");
-                }
-            });
-
-
-
-            $(document).on("click", "#chk_AS2_Q7_2", function () {
-                if ($(this).is(":checked") == true) {
-                    DisableControls1("AS2_Q7_2", "txt");
-                    EnableControls1("AS2_Q7_2a", "txt");
-                    $("#chk_AS2_Q7_2a").removeAttr("checked");
-                }
-                else {
-                    EnableControls1("AS2_Q7_2", "txt");
-                    //DisableControls1("AS1_mrno", "txt");
-                }
-            });
-
-
-
-
-            $(document).on("click", "input[name='AS1_Q3']:checked", function () {
-
-                var arr = $(this).val().split('_');
-                var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
-                var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
-
-
-                if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
-                    rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
-
-                    var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
-                    var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
-
-
-                    if (arr[2] === "1" && arr1[2] === "11" && arr2[2] === "11") {
-
-                        $("#pnl_AS4_Q21a").css("display", "none");
-
-                        EnableControls1("AS3_Q16", "txt");
-                        EnableControls1("AS3_Q17", "txt");
-                        EnableControls1("AS3_Q18", "txt");
-                        EnableControls1("AS3_Q19", "txt");
-                        EnableControls1("AS3_Q20", "txt");
-
-
-                        DisableControls1("AS4_Q21a", "rdo");
-
-                        DisableControls1("AS4_Q22a", "txt");
-                        DisableControls1("AS4_Q22b", "txt");
-                        DisableControls1("AS4_Q23", "txt");
-                        DisableControls1("AS4_Q24", "txt");
-                        DisableControls1("AS5_Q25a", "txt");
-                        DisableControls1("AS5_Q25b", "txt");
-                        DisableControls1("AS5_Q26", "txt");
-
-                        DisableControls1("AS5_Q27", "rdo");
-                        DisableControls1("AS5_Q28", "rdo");
-                        DisableControls1("AS5_Q29", "rdo");
-                        DisableControls1("AS5_Q30", "rdo");
-                        DisableControls1("AS5_Q31", "rdo");
-                        DisableControls1("AS5_Q32", "rdo");
-
-                        DisableControls1("AS5_Q33a", "txt");
-                        DisableControls1("AS5_Q33b", "txt");
-                        DisableControls1("AS3_Remarks", "txt");
-
-                    }
-                    else {
-
-                        $("#pnl_AS4_Q21a").css("display", "block");
-
-
-                        DisableControls1("AS3_Q16", "txt");
-                        DisableControls1("AS3_Q17", "txt");
-                        DisableControls1("AS3_Q18", "txt");
-                        DisableControls1("AS3_Q19", "txt");
-                        DisableControls1("AS3_Q20", "txt");
-
-
-                        EnableControls1("AS4_Q21a", "rdo");
-
-                        EnableControls1("AS4_Q22a", "txt");
-                        EnableControls1("AS4_Q22b", "txt");
-                        EnableControls1("AS4_Q23", "txt");
-                        EnableControls1("AS4_Q24", "txt");
-                        EnableControls1("AS5_Q25a", "txt");
-                        EnableControls1("AS5_Q25b", "txt");
-                        EnableControls1("AS5_Q26", "txt");
-
-                        EnableControls1("AS5_Q27", "rdo");
-                        EnableControls1("AS5_Q28", "rdo");
-                        EnableControls1("AS5_Q29", "rdo");
-                        EnableControls1("AS5_Q30", "rdo");
-                        EnableControls1("AS5_Q31", "rdo");
-                        EnableControls1("AS5_Q32", "rdo");
-
-                        EnableControls1("AS5_Q33a", "txt");
-                        EnableControls1("AS5_Q33b", "txt");
-                        EnableControls1("AS3_Remarks", "txt");
-
-
-
-                    }
-
-                }
-
-            });
-
-
-
-
-
-            $(document).on("change", "#AS2_Q8_2", function () {
-                $("#lbl_AS2_Q8_3").hide();
-                $("#AS2_Q8_3").val("");
-                $("#AS2_Q8_3").hide();
-            });
-
-            $(document).on("change", "#AS2_Q8_1", function () {
-                $("#lbl_AS2_Q8_3").show();
-                $("#AS2_Q8_3").show();
-            });
-
-
-
-            $(document).on("change", "input[name='AS1_fsite']:checked", function () {
-
-                //if (rdo_value === "AS1_fsite_3") {
-                //    $("#pnl_lyari_sample").show();
-
-                //    EnableControls("AS6_Q34");
-                //    EnableControls("AS6_Q35");
-                //    EnableControls("AS6_Q36");
-                //    EnableControls("AS6_Q37");
-                //    EnableControls("AS6_Q38");
-                //    EnableControls("AS6_Q39");
-                //    EnableControls("AS6_Q40");
-                //    EnableControls("AS6_Q41");
-                //    EnableControls("AS6_Q42");
-                //    EnableControls("AS6_Q43");
-                //    EnableControls("AS6_Q44");
-                //    EnableControls("AS6_Q45");
-                //    EnableControls("AS6_Q46");
-                //    EnableControls("AS6_Q47");
-                //    EnableControls("AS5_R1");
-
-                //}
-                //else {
-                //    $("#pnl_lyari_sample").hide();
-
-                //    DisableControls("AS6_Q34");
-                //    DisableControls("AS6_Q35");
-                //    DisableControls("AS6_Q36");
-                //    DisableControls("AS6_Q37");
-                //    DisableControls("AS6_Q38");
-                //    DisableControls("AS6_Q39");
-                //    DisableControls("AS6_Q40");
-                //    DisableControls("AS6_Q41");
-                //    DisableControls("AS6_Q42");
-                //    DisableControls("AS6_Q43");
-                //    DisableControls("AS6_Q44");
-                //    DisableControls("AS6_Q45");
-                //    DisableControls("AS6_Q46");
-                //    DisableControls("AS6_Q47");
-                //    DisableControls("AS5_R1");
-                //}
-
-            });
-
-
-
-            function EnableControls(txt, controlType) {
-                if (controlType == "rdo") {
-                    $(txt).removeAttr("disabled");
-                }
-                else {
-                    $("#" + txt).removeAttr("disabled");
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
                 }
             }
 
 
-            function DisableControls(txt, controlType) {
-                if (controlType == "rdo") {
-                    $(txt).attr("disabled", "disabled");
-                } else {
-                    $("#" + txt).attr("disabled", "disabled");
-                    $("#" + txt).val("");
+            var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
+
+
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+
+
+                if (arr[2] == 11 && arr1[2] == 2) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                } else if (arr[2] == 12 && arr1[2] == 1) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                }
+            }
+
+
+        });
+
+
+        $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+                if (arr[2] != arr1[2]) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
                 }
             }
 
 
 
-            function EnableControls1(txt, controlType) {
-                if (controlType == "rdo") {
-                    $("input[name=" + txt + "]").removeAttr("disabled");
+
+            var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
+
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+
+
+                if (arr[2] == 11 && arr1[2] == 2) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                } else if (arr[2] == 12 && arr1[2] == 1) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                }
+            }
+
+        });
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q3']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+                if (arr[2] == 2 && arr1[2] == 11) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+                } else if (arr[2] == 1 && arr1[2] == 12) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+                }
+            }
+
+
+
+
+            var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
+
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+
+                if (arr[2] == 2 && arr1[2] == 11) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    //$("#AS1_Q2_11").removeAttr("checked");
+                    //$("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                } else if (arr[2] == 1 && arr1[2] == 12) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    //$("#AS1_Q2_11").removeAttr("checked");
+                    //$("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+                }
+            }
+
+        });
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q3']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+
+                if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
                 }
                 else {
-                    $("#" + txt).removeAttr("disabled");
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
                 }
+
             }
 
+        });
 
-            function DisableControls1(txt, controlType) {
-                if (controlType == "rdo") {
-                    $("input[name=" + txt + "]").removeAttr("checked");
-                    $("input[name=" + txt + "]").attr("disabled", "disabled");
-                } else {
-                    $("#" + txt).attr("disabled", "disabled");
-                    $("#" + txt).val("");
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q3']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+
+                if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
                 }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+
+                }
+
             }
 
+        });
 
 
-            function EnableControls_Loop() {
 
-                $('#form1 input, textarea').each(
-                    function (index) {
-                        var input = $(this);
+        $(document).on("click", "#chkMRNo", function () {
+            if ($(this).is(":checked") == true) {
+                DisableControls1("AS1_mrno", "txt");
+                EnableControls1("AS1_lno", "txt");
+                $("#chkLNumber").removeAttr("checked");
+            }
+            else {
+                EnableControls1("AS1_mrno", "txt");
+                //DisableControls1("AS1_lno", "txt");
+            }
+        });
 
-                        if (input.attr("id") != "AS1_screening_ID") {
 
-                            if (input.attr('type') == "text"
-                                || input.attr('type') == "number") {
-                                input.removeAttr("disabled", "disabled");
 
-                            } else if (input.attr('type') == "radio") {
-                                $("input[name='" + input.attr('name') + "']").removeAttr("disabled");
+        $(document).on("click", "#chkLNumber", function () {
+            if ($(this).is(":checked") == true) {
+                DisableControls1("AS1_lno", "txt");
+                EnableControls1("AS1_mrno", "txt");
+                $("#chkMRNo").removeAttr("checked");
+            }
+            else {
+                EnableControls1("AS1_lno", "txt");
+                //DisableControls1("AS1_mrno", "txt");
+            }
+        });
 
-                                //var radstates = {};
-                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
 
-                                //$.each(radioButtons, function (index, rd) {
-                                //    if (radioButtons[index].checked == false) {
-                                //        radstates[index] = false;
-                                //    } else {
-                                //        radstates[index] = true;
-                                //    }
-                                //});
 
-                            } else if (input.attr('type') == "checkbox") {
 
-                                $("input[name='" + input.attr('name') + "']").removeAttr("disabled");
+        $(document).on("click", "#chk_AS2_Q7_2a", function () {
+            if ($(this).is(":checked") == true) {
+                DisableControls1("AS2_Q7_2a", "txt");
+                EnableControls1("AS2_Q7_2", "txt");
+                $("#chk_AS2_Q7_2").removeAttr("checked");
+            }
+            else {
+                EnableControls1("AS2_Q7_2a", "txt");
+                //DisableControls1("AS1_lno", "txt");
+            }
+        });
 
-                                //var radstates = {};
-                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
 
-                                //$.each(radioButtons, function (index, rd) {
-                                //    if (radioButtons[index].checked == false) {
-                                //        radstates[index] = false;
-                                //    } else {
-                                //        radstates[index] = true;
-                                //    }
-                                //});
 
-                            } else if (input.is("textarea")) {
-                                input.removeAttr("disabled");
-                            }
+        $(document).on("click", "#chk_AS2_Q7_2", function () {
+            if ($(this).is(":checked") == true) {
+                DisableControls1("AS2_Q7_2", "txt");
+                EnableControls1("AS2_Q7_2a", "txt");
+                $("#chk_AS2_Q7_2a").removeAttr("checked");
+            }
+            else {
+                EnableControls1("AS2_Q7_2", "txt");
+                //DisableControls1("AS1_mrno", "txt");
+            }
+        });
 
+
+
+
+        $(document).on("click", "input[name='AS1_Q3']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+
+                if (arr[2] === "1" && arr1[2] === "11" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+
+                }
+
+            }
+
+        });
+
+
+
+
+
+        $(document).on("change", "#AS2_Q8_2", function () {
+            $("#lbl_AS2_Q8_3").hide();
+            $("#AS2_Q8_3").val("");
+            $("#AS2_Q8_3").hide();
+        });
+
+        $(document).on("change", "#AS2_Q8_1", function () {
+            $("#lbl_AS2_Q8_3").show();
+            $("#AS2_Q8_3").show();
+        });
+
+
+
+        $(document).on("change", "input[name='AS1_fsite']:checked", function () {
+
+            //if (rdo_value === "AS1_fsite_3") {
+            //    $("#pnl_lyari_sample").show();
+
+            //    EnableControls("AS6_Q34");
+            //    EnableControls("AS6_Q35");
+            //    EnableControls("AS6_Q36");
+            //    EnableControls("AS6_Q37");
+            //    EnableControls("AS6_Q38");
+            //    EnableControls("AS6_Q39");
+            //    EnableControls("AS6_Q40");
+            //    EnableControls("AS6_Q41");
+            //    EnableControls("AS6_Q42");
+            //    EnableControls("AS6_Q43");
+            //    EnableControls("AS6_Q44");
+            //    EnableControls("AS6_Q45");
+            //    EnableControls("AS6_Q46");
+            //    EnableControls("AS6_Q47");
+            //    EnableControls("AS5_R1");
+
+            //}
+            //else {
+            //    $("#pnl_lyari_sample").hide();
+
+            //    DisableControls("AS6_Q34");
+            //    DisableControls("AS6_Q35");
+            //    DisableControls("AS6_Q36");
+            //    DisableControls("AS6_Q37");
+            //    DisableControls("AS6_Q38");
+            //    DisableControls("AS6_Q39");
+            //    DisableControls("AS6_Q40");
+            //    DisableControls("AS6_Q41");
+            //    DisableControls("AS6_Q42");
+            //    DisableControls("AS6_Q43");
+            //    DisableControls("AS6_Q44");
+            //    DisableControls("AS6_Q45");
+            //    DisableControls("AS6_Q46");
+            //    DisableControls("AS6_Q47");
+            //    DisableControls("AS5_R1");
+            //}
+
+        });
+
+
+
+        function EnableControls(txt, controlType) {
+            if (controlType == "rdo") {
+                $(txt).removeAttr("disabled");
+            }
+            else {
+                $("#" + txt).removeAttr("disabled");
+            }
+        }
+
+
+        function DisableControls(txt, controlType) {
+            if (controlType == "rdo") {
+                $(txt).attr("disabled", "disabled");
+            } else {
+                $("#" + txt).attr("disabled", "disabled");
+                $("#" + txt).val("");
+            }
+        }
+
+
+
+        function EnableControls1(txt, controlType) {
+            if (controlType == "rdo") {
+                $("input[name=" + txt + "]").removeAttr("disabled");
+            }
+            else {
+                $("#" + txt).removeAttr("disabled");
+            }
+        }
+
+
+        function DisableControls1(txt, controlType) {
+            if (controlType == "rdo") {
+                $("input[name=" + txt + "]").removeAttr("checked");
+                $("input[name=" + txt + "]").attr("disabled", "disabled");
+            } else {
+                $("#" + txt).attr("disabled", "disabled");
+                $("#" + txt).val("");
+            }
+        }
+
+
+
+        function EnableControls_Loop() {
+
+            $('#form1 input, textarea').each(
+                function (index) {
+                    var input = $(this);
+
+                    if (input.attr("id") != "AS1_screening_ID") {
+
+                        if (input.attr('type') == "text"
+                            || input.attr('type') == "number") {
+                            input.removeAttr("disabled", "disabled");
+
+                        } else if (input.attr('type') == "radio") {
+                            $("input[name='" + input.attr('name') + "']").removeAttr("disabled");
+
+                            //var radstates = {};
+                            //var radioButtons = $("input[name='" + input.attr('name') + "']");
+
+                            //$.each(radioButtons, function (index, rd) {
+                            //    if (radioButtons[index].checked == false) {
+                            //        radstates[index] = false;
+                            //    } else {
+                            //        radstates[index] = true;
+                            //    }
+                            //});
+
+                        } else if (input.attr('type') == "checkbox") {
+
+                            $("input[name='" + input.attr('name') + "']").removeAttr("disabled");
+
+                            //var radstates = {};
+                            //var radioButtons = $("input[name='" + input.attr('name') + "']");
+
+                            //$.each(radioButtons, function (index, rd) {
+                            //    if (radioButtons[index].checked == false) {
+                            //        radstates[index] = false;
+                            //    } else {
+                            //        radstates[index] = true;
+                            //    }
+                            //});
+
+                        } else if (input.is("textarea")) {
+                            input.removeAttr("disabled");
                         }
 
-                    }, errorValidate);
+                    }
 
-            }
+                }, errorValidate);
 
-            function DisableControls_Loop() {
+        }
 
-                $('#form1 input, textarea').each(
-                    function (index) {
-                        var input = $(this);
+        function DisableControls_Loop() {
 
-                        if (input.attr("id") != "AS1_screening_ID") {
+            $('#form1 input, textarea').each(
+                function (index) {
+                    var input = $(this);
 
-                            if (input.attr('type') == "text"
-                                || input.attr('type') == "number") {
+                    if (input.attr("id") != "AS1_screening_ID") {
 
-                                input.val("");
-                                input.attr("disabled", "disabled");
+                        if (input.attr('type') == "text"
+                            || input.attr('type') == "number") {
 
-                            } else if (input.attr('type') == "radio") {
+                            input.val("");
+                            input.attr("disabled", "disabled");
 
-                                $("input[name='" + input.attr('name') + "']").removeAttr("checked");
-                                $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
+                        } else if (input.attr('type') == "radio") {
 
-                                //var radstates = {};
-                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
+                            $("input[name='" + input.attr('name') + "']").removeAttr("checked");
+                            $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
 
-                                //$.each(radioButtons, function (index, rd) {
-                                //    if (radioButtons[index].checked == false) {
-                                //        radstates[index] = false;
-                                //    } else {
-                                //        radstates[index] = true;
-                                //    }
-                                //});
+                            //var radstates = {};
+                            //var radioButtons = $("input[name='" + input.attr('name') + "']");
 
-                            } else if (input.attr('type') == "checkbox") {
+                            //$.each(radioButtons, function (index, rd) {
+                            //    if (radioButtons[index].checked == false) {
+                            //        radstates[index] = false;
+                            //    } else {
+                            //        radstates[index] = true;
+                            //    }
+                            //});
 
-                                $("input[name='" + input.attr('name') + "']").removeAttr("checked");
-                                $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
+                        } else if (input.attr('type') == "checkbox") {
 
-                                //var radstates = {};
-                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
+                            $("input[name='" + input.attr('name') + "']").removeAttr("checked");
+                            $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
 
-                                //$.each(radioButtons, function (index, rd) {
-                                //    if (radioButtons[index].checked == false) {
-                                //        radstates[index] = false;
-                                //    } else {
-                                //        radstates[index] = true;
-                                //    }
-                                //});
+                            //var radstates = {};
+                            //var radioButtons = $("input[name='" + input.attr('name') + "']");
 
-                            } else if (input.is("textarea")) {
-                                input.val("");
-                                input.attr("disabled", "disabled");
-                            }
+                            //$.each(radioButtons, function (index, rd) {
+                            //    if (radioButtons[index].checked == false) {
+                            //        radstates[index] = false;
+                            //    } else {
+                            //        radstates[index] = true;
+                            //    }
+                            //});
 
+                        } else if (input.is("textarea")) {
+                            input.val("");
+                            input.attr("disabled", "disabled");
                         }
 
-                    }, errorValidate);
+                    }
 
-            }
+                }, errorValidate);
+
+        }
 
 
-            function errorValidate(err) {
-                alert("Error: " + err.code);
-            }
+        function errorValidate(err) {
+            alert("Error: " + err.code);
+        }
 
 
     </script>
 
     <script>
 
-            $(document).on("click", "#cmdCancel", function (e) {
+        $(document).on("click", "#cmdCancel", function (e) {
 
-                EnableControls_Loop();
+            EnableControls_Loop();
 
-                //$("#AS1_rand_id").removeAttr("disabled");
-                //$("#AS1_name").removeAttr("disabled", "disabled");
-                //$('input[name=AS1_sex]').removeAttr("disabled", "disabled");
-                //$("#AS1_age").removeAttr("disabled", "disabled");
-                //$("#AS1_barcode").removeAttr("disabled", "disabled");
-                //$('input[name=AS1_fsite]').removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Samp_1]').removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Samp_2]').removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Samp_3]').removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Samp_4]').removeAttr("disabled", "disabled");
+            //$("#AS1_rand_id").removeAttr("disabled");
+            //$("#AS1_name").removeAttr("disabled", "disabled");
+            //$('input[name=AS1_sex]').removeAttr("disabled", "disabled");
+            //$("#AS1_age").removeAttr("disabled", "disabled");
+            //$("#AS1_barcode").removeAttr("disabled", "disabled");
+            //$('input[name=AS1_fsite]').removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Samp_1]').removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Samp_2]').removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Samp_3]').removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Samp_4]').removeAttr("disabled", "disabled");
 
-                //$('input[name=AS1_Q1_1]').removeAttr("disabled", "disabled");
-                //$("#AS1_Q1_2").removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Q2_1]').removeAttr("disabled", "disabled");
-                //$("#AS1_Q2_2").removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Q3]').removeAttr("disabled", "disabled");
-                //$('input[name=AS1_Q3a_1]').removeAttr("disabled", "disabled");
-                //$("#AS1_Q3a_2").removeAttr("disabled", "disabled");
-                //$("#AS1_Q4").removeAttr("disabled", "disabled");
-                //$("#AS1_Q5").removeAttr("disabled", "disabled");
-                //$("#AS1_Q6").removeAttr("disabled", "disabled");
-                //$("#AS1_Q7").removeAttr("disabled", "disabled");
-                //$('input[name=AS2_Q7_11]').removeAttr("disabled", "disabled");
-                //$("#AS2_Q7_2").removeAttr("disabled", "disabled");
-                //$('input[name=AS2_Q8]').removeAttr("disabled", "disabled");
-                //$('input[name=AS2_Q8a]').removeAttr("disabled", "disabled");
-                //$("#AS2_Q8_3").removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Q1_1]').removeAttr("disabled", "disabled");
+            //$("#AS1_Q1_2").removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Q2_1]').removeAttr("disabled", "disabled");
+            //$("#AS1_Q2_2").removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Q3]').removeAttr("disabled", "disabled");
+            //$('input[name=AS1_Q3a_1]').removeAttr("disabled", "disabled");
+            //$("#AS1_Q3a_2").removeAttr("disabled", "disabled");
+            //$("#AS1_Q4").removeAttr("disabled", "disabled");
+            //$("#AS1_Q5").removeAttr("disabled", "disabled");
+            //$("#AS1_Q6").removeAttr("disabled", "disabled");
+            //$("#AS1_Q7").removeAttr("disabled", "disabled");
+            //$('input[name=AS2_Q7_11]').removeAttr("disabled", "disabled");
+            //$("#AS2_Q7_2").removeAttr("disabled", "disabled");
+            //$('input[name=AS2_Q8]').removeAttr("disabled", "disabled");
+            //$('input[name=AS2_Q8a]').removeAttr("disabled", "disabled");
+            //$("#AS2_Q8_3").removeAttr("disabled", "disabled");
 
-                //$("#AS2_Q8a").removeAttr("disabled", "disabled");
-                //$("#AS2_Q9").removeAttr("disabled", "disabled");
-                //$("#AS2_Q10").removeAttr("disabled", "disabled");
-                //$('input[name=AS2_Q11]').removeAttr("disabled", "disabled");
+            //$("#AS2_Q8a").removeAttr("disabled", "disabled");
+            //$("#AS2_Q9").removeAttr("disabled", "disabled");
+            //$("#AS2_Q10").removeAttr("disabled", "disabled");
+            //$('input[name=AS2_Q11]').removeAttr("disabled", "disabled");
 
-                //$("#AS2_Q12_1").removeAttr("disabled", "disabled");
-                //$("#AS2_Q12_2").removeAttr("disabled", "disabled");
-                //$("#AS2_Q12_3").removeAttr("disabled", "disabled");
-                //$("#AS2_Q12_4").removeAttr("disabled", "disabled");
+            //$("#AS2_Q12_1").removeAttr("disabled", "disabled");
+            //$("#AS2_Q12_2").removeAttr("disabled", "disabled");
+            //$("#AS2_Q12_3").removeAttr("disabled", "disabled");
+            //$("#AS2_Q12_4").removeAttr("disabled", "disabled");
 
-                //$("#AS2_Q13").removeAttr("disabled", "disabled");
-                //$("#AS3_Q14").removeAttr("disabled", "disabled");
-                //$("#AS3_Q15").removeAttr("disabled", "disabled");
-                //$("#AS3_Q16").removeAttr("disabled", "disabled");
-                //$("#AS3_Q17").removeAttr("disabled", "disabled");
-                //$("#AS3_Q18").removeAttr("disabled", "disabled");
-                //$("#AS3_Q19").removeAttr("disabled", "disabled");
-                //$("#AS3_Q20").removeAttr("disabled", "disabled");
-                //$("#AS3_Remarks").removeAttr("disabled", "disabled");
-                //$("#AS3_A1").removeAttr("disabled", "disabled");
-                //$("#AS3_A2").removeAttr("disabled", "disabled");
-                //$("#AS3_B1").removeAttr("disabled", "disabled");
-                //$("#AS3_B2").removeAttr("disabled", "disabled");
+            //$("#AS2_Q13").removeAttr("disabled", "disabled");
+            //$("#AS3_Q14").removeAttr("disabled", "disabled");
+            //$("#AS3_Q15").removeAttr("disabled", "disabled");
+            //$("#AS3_Q16").removeAttr("disabled", "disabled");
+            //$("#AS3_Q17").removeAttr("disabled", "disabled");
+            //$("#AS3_Q18").removeAttr("disabled", "disabled");
+            //$("#AS3_Q19").removeAttr("disabled", "disabled");
+            //$("#AS3_Q20").removeAttr("disabled", "disabled");
+            //$("#AS3_Remarks").removeAttr("disabled", "disabled");
+            //$("#AS3_A1").removeAttr("disabled", "disabled");
+            //$("#AS3_A2").removeAttr("disabled", "disabled");
+            //$("#AS3_B1").removeAttr("disabled", "disabled");
+            //$("#AS3_B2").removeAttr("disabled", "disabled");
 
-                $("#cmdSave").show();
-                $("#AS1_screening_ID").val("");
+            $("#cmdSave").show();
+            $("#AS1_screening_ID").val("");
+            $("#AS1_screening_ID").focus();
+
+        });
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+
+        $(document).on("blur", "#AS1_screening_ID", function (e) {
+
+
+            if ($('#AS1_screening_ID').val() != "__-_-____") {
+
+                $
+                    .ajax({
+                        url: "sample_results.aspx/CheckScreeningID",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: "{ screeningid: '" + $('#AS1_screening_ID').val() + "', labid: '" + getCookie("labid") + "'}",
+
+                        success: function (data) {
+
+                            if (data.d == "") {
+
+                                EnableControls_Loop();
+
+                                //$("#AS1_rand_id").removeAttr("disabled");
+                                //$("#AS1_name").removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_sex]').removeAttr("disabled", "disabled");
+                                //$("#AS1_age").removeAttr("disabled", "disabled");
+                                //$("#AS1_barcode").removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_fsite]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_1]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_2]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_3]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_4]').removeAttr("disabled", "disabled");
+
+                                //$('input[name=AS1_Q1_1]').removeAttr("disabled", "disabled");
+                                //$("#AS1_Q1_2").removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Q2_1]').removeAttr("disabled", "disabled");
+                                //$("#AS1_Q2_2").removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Q3]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS1_Q3a_1]').removeAttr("disabled", "disabled");
+                                //$("#AS1_Q3a_2").removeAttr("disabled", "disabled");
+                                //$("#AS1_Q4").removeAttr("disabled", "disabled");
+                                //$("#AS1_Q5").removeAttr("disabled", "disabled");
+                                //$("#AS1_Q6").removeAttr("disabled", "disabled");
+                                //$("#AS1_Q7").removeAttr("disabled", "disabled");
+                                //$('input[name=AS2_Q7_11]').removeAttr("disabled", "disabled");
+                                //$("#AS2_Q7_2").removeAttr("disabled", "disabled");
+                                //$('input[name=AS2_Q8]').removeAttr("disabled", "disabled");
+                                //$('input[name=AS2_Q8a]').removeAttr("disabled", "disabled");
+                                //$("#AS2_Q8_3").removeAttr("disabled", "disabled");
+
+                                //$("#AS2_Q8a").removeAttr("disabled", "disabled");
+                                //$("#AS2_Q9").removeAttr("disabled", "disabled");
+                                //$("#AS2_Q10").removeAttr("disabled", "disabled");
+                                //$('input[name=AS2_Q11]').removeAttr("disabled", "disabled");
+
+                                //$("#AS2_Q12_1").removeAttr("disabled", "disabled");
+                                //$("#AS2_Q12_2").removeAttr("disabled", "disabled");
+                                //$("#AS2_Q12_3").removeAttr("disabled", "disabled");
+                                //$("#AS2_Q12_4").removeAttr("disabled", "disabled");
+
+                                //$("#AS2_Q13").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q14").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q15").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q16").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q17").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q18").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q19").removeAttr("disabled", "disabled");
+                                //$("#AS3_Q20").removeAttr("disabled", "disabled");
+                                //$("#AS3_Remarks").removeAttr("disabled", "disabled");
+                                //$("#AS3_A1").removeAttr("disabled", "disabled");
+                                //$("#AS3_A2").removeAttr("disabled", "disabled");
+                                //$("#AS3_B1").removeAttr("disabled", "disabled");
+                                //$("#AS3_B2").removeAttr("disabled", "disabled");
+
+                                $("#cmdSave").show();
+
+                                $("#AS1_rand_id").focus();
+
+                            } else {
+                                alert("Screening id already exists");
+
+                                DisableControls_Loop();
+
+                                //$("#AS1_rand_id").attr("disabled", "disabled");
+                                //$("#AS1_name").attr("disabled", "disabled");
+                                //$('input[name=AS1_sex]').attr("disabled", "disabled");
+                                //$("#AS1_age").attr("disabled", "disabled");
+                                //$("#AS1_barcode").attr("disabled", "disabled");
+                                //$('input[name=AS1_fsite]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_1]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_2]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_3]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Samp_4]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Q1_1]').attr("disabled", "disabled");
+                                //$("#AS1_Q1_2").attr("disabled", "disabled");
+                                //$('input[name=AS1_Q2_1]').attr("disabled", "disabled");
+                                //$("#AS1_Q2_2").attr("disabled", "disabled");
+                                //$('input[name=AS1_Q3]').attr("disabled", "disabled");
+                                //$('input[name=AS1_Q3a_1]').attr("disabled", "disabled");
+                                //$("#AS1_Q3a_2").attr("disabled", "disabled");
+                                //$("#AS1_Q4").attr("disabled", "disabled");
+                                //$("#AS1_Q5").attr("disabled", "disabled");
+                                //$("#AS1_Q6").attr("disabled", "disabled");
+                                //$("input[name=AS2_Q7_1]").attr("disabled", "disabled");
+                                //$("#AS2_Q7_2").attr("disabled", "disabled");
+                                //$('input[name=AS2_Q8]').attr("disabled", "disabled");
+                                //$('input[name=AS2_Q8a]').attr("disabled", "disabled");
+                                //$("#AS2_Q8_3").attr("disabled", "disabled");
+
+                                //$("#input[name=AS2_Q8a]").attr("disabled", "disabled");
+                                //$("#AS2_Q9").attr("disabled", "disabled");
+                                //$("#AS2_Q10").attr("disabled", "disabled");
+                                //$('input[name=AS2_Q11]').attr("disabled", "disabled");
+
+                                //$("#AS2_Q12_1").attr("disabled", "disabled");
+                                //$("#AS2_Q12_2").attr("disabled", "disabled");
+                                //$("#AS2_Q12_3").attr("disabled", "disabled");
+                                //$("#AS2_Q12_4").attr("disabled", "disabled");
+
+                                //$("#AS2_Q13").attr("disabled", "disabled");
+                                //$("#AS3_Q14").attr("disabled", "disabled");
+                                //$("#AS3_Q15").attr("disabled", "disabled");
+                                //$("#AS3_Q16").attr("disabled", "disabled");
+                                //$("#AS3_Q17").attr("disabled", "disabled");
+                                //$("#AS3_Q18").attr("disabled", "disabled");
+                                //$("#AS3_Q19").attr("disabled", "disabled");
+                                //$("#AS3_Q20").attr("disabled", "disabled");
+                                //$("#AS3_Remarks").attr("disabled", "disabled");
+                                //$("#AS3_A1").attr("disabled", "disabled");
+                                //$("#AS3_A2").attr("disabled", "disabled");
+                                //$("#AS3_B1").attr("disabled", "disabled");
+                                //$("#AS3_B2").attr("disabled", "disabled");
+
+                                $("#cmdSave").hide();
+                            }
+
+                        },
+                        error: function (
+                            xhr,
+                            ajaxOptions,
+                            thrownError) {
+
+                            alert('Error: ');
+
+                        }
+                    });
+
+            }
+
+
+        });
+
+    </script>
+
+    <script>
+
+        function ValidateForm() {
+
+            if ($("#AS1_screening_ID").val() == "__-_-____") {
+                alert("Please enter valid screening id");
                 $("#AS1_screening_ID").focus();
-
-            });
-
-            function getCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
+                return false;
             }
+            else if ($("#AS1_screening_ID").val().indexOf("_") != -1) {
+                alert("Please enter full screening id");
+                $("#AS1_screening_ID").focus();
+                return false;
+            }
+            else if ($("#AS1_rand_id").val() == "_-_-_-____") {
+                alert("Please enter valid randomization id");
+                $("#AS1_rand_id").focus();
+                return false;
+            }
+            else if ($("#AS1_rand_id").val().indexOf("_") != -1) {
+                alert("Please enter full randomization id");
+                $("#AS1_rand_id").focus();
+                return false;
+            }
+            else if ($("#AS1_name").val() == "") {
+                alert("Please enter name ");
+                $("#AS1_name").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_sex]:checked').length <= 0) {
+                alert("Please select gender");
+                $("#AS1_sex_a").focus();
+                return false;
+            }
+            else if ($("#AS1_age").val() == "") {
+                alert("Please enter age ");
+                $("#AS1_age").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode").val() == "") {
+                alert("Please enter sample id ");
+                $("#AS1_barcode").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val() == "" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter MR No. ");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val() == "_-_-_-____" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter valid MR No");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val().indexOf("_") != -1 && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter full MR No");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":visible") == true
+                && $("#AS1_lno").is(":disabled") == false) {
+                alert("Please enter L Number ");
+                $("#AS1_lno").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val() == "") {
+                alert("Please enter form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val() == "__-_-_-_-____") {
+                alert("Please enter valid form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val().indexOf("_") != -1) {
+                alert("Please enter full form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_fsite]:checked').length <= 0) {
+                alert("Please select field site hospital");
+                $("#AS1_fsite_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Samp_1]:checked').length <= 0
+                && $('input[name=AS1_Samp_2]:checked').length <= 0
+                && $('input[name=AS1_Samp_3]:checked').length <= 0
+                && $('input[name=AS1_Samp_4]:checked').length <= 0
+                && $('input[name=AS1_Samp_5]:checked').length <= 0
+                && $('input[name=AS1_Samp_6]:checked').length <= 0
+            ) {
+                alert("Please select sample collected ");
 
-
-            $(document).on("blur", "#AS1_screening_ID", function (e) {
-
-
-                if ($('#AS1_screening_ID').val() != "__-_-____") {
-
-                    $
-                        .ajax({
-                            url: "sample_results.aspx/CheckScreeningID",
-                            type: "POST",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            data: "{ screeningid: '" + $('#AS1_screening_ID').val() + "', labid: '" + getCookie("labid") + "'}",
-
-                            success: function (data) {
-
-                                if (data.d == "") {
-
-                                    EnableControls_Loop();
-
-                                    //$("#AS1_rand_id").removeAttr("disabled");
-                                    //$("#AS1_name").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_sex]').removeAttr("disabled", "disabled");
-                                    //$("#AS1_age").removeAttr("disabled", "disabled");
-                                    //$("#AS1_barcode").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_fsite]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_1]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_2]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_3]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_4]').removeAttr("disabled", "disabled");
-
-                                    //$('input[name=AS1_Q1_1]').removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q1_2").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Q2_1]').removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q2_2").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Q3]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS1_Q3a_1]').removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q3a_2").removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q4").removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q5").removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q6").removeAttr("disabled", "disabled");
-                                    //$("#AS1_Q7").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS2_Q7_11]').removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q7_2").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS2_Q8]').removeAttr("disabled", "disabled");
-                                    //$('input[name=AS2_Q8a]').removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q8_3").removeAttr("disabled", "disabled");
-
-                                    //$("#AS2_Q8a").removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q9").removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q10").removeAttr("disabled", "disabled");
-                                    //$('input[name=AS2_Q11]').removeAttr("disabled", "disabled");
-
-                                    //$("#AS2_Q12_1").removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q12_2").removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q12_3").removeAttr("disabled", "disabled");
-                                    //$("#AS2_Q12_4").removeAttr("disabled", "disabled");
-
-                                    //$("#AS2_Q13").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q14").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q15").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q16").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q17").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q18").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q19").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Q20").removeAttr("disabled", "disabled");
-                                    //$("#AS3_Remarks").removeAttr("disabled", "disabled");
-                                    //$("#AS3_A1").removeAttr("disabled", "disabled");
-                                    //$("#AS3_A2").removeAttr("disabled", "disabled");
-                                    //$("#AS3_B1").removeAttr("disabled", "disabled");
-                                    //$("#AS3_B2").removeAttr("disabled", "disabled");
-
-                                    $("#cmdSave").show();
-
-                                    $("#AS1_rand_id").focus();
-
-                                } else {
-                                    alert("Screening id already exists");
-
-                                    DisableControls_Loop();
-
-                                    //$("#AS1_rand_id").attr("disabled", "disabled");
-                                    //$("#AS1_name").attr("disabled", "disabled");
-                                    //$('input[name=AS1_sex]').attr("disabled", "disabled");
-                                    //$("#AS1_age").attr("disabled", "disabled");
-                                    //$("#AS1_barcode").attr("disabled", "disabled");
-                                    //$('input[name=AS1_fsite]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_1]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_2]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_3]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Samp_4]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Q1_1]').attr("disabled", "disabled");
-                                    //$("#AS1_Q1_2").attr("disabled", "disabled");
-                                    //$('input[name=AS1_Q2_1]').attr("disabled", "disabled");
-                                    //$("#AS1_Q2_2").attr("disabled", "disabled");
-                                    //$('input[name=AS1_Q3]').attr("disabled", "disabled");
-                                    //$('input[name=AS1_Q3a_1]').attr("disabled", "disabled");
-                                    //$("#AS1_Q3a_2").attr("disabled", "disabled");
-                                    //$("#AS1_Q4").attr("disabled", "disabled");
-                                    //$("#AS1_Q5").attr("disabled", "disabled");
-                                    //$("#AS1_Q6").attr("disabled", "disabled");
-                                    //$("input[name=AS2_Q7_1]").attr("disabled", "disabled");
-                                    //$("#AS2_Q7_2").attr("disabled", "disabled");
-                                    //$('input[name=AS2_Q8]').attr("disabled", "disabled");
-                                    //$('input[name=AS2_Q8a]').attr("disabled", "disabled");
-                                    //$("#AS2_Q8_3").attr("disabled", "disabled");
-
-                                    //$("#input[name=AS2_Q8a]").attr("disabled", "disabled");
-                                    //$("#AS2_Q9").attr("disabled", "disabled");
-                                    //$("#AS2_Q10").attr("disabled", "disabled");
-                                    //$('input[name=AS2_Q11]').attr("disabled", "disabled");
-
-                                    //$("#AS2_Q12_1").attr("disabled", "disabled");
-                                    //$("#AS2_Q12_2").attr("disabled", "disabled");
-                                    //$("#AS2_Q12_3").attr("disabled", "disabled");
-                                    //$("#AS2_Q12_4").attr("disabled", "disabled");
-
-                                    //$("#AS2_Q13").attr("disabled", "disabled");
-                                    //$("#AS3_Q14").attr("disabled", "disabled");
-                                    //$("#AS3_Q15").attr("disabled", "disabled");
-                                    //$("#AS3_Q16").attr("disabled", "disabled");
-                                    //$("#AS3_Q17").attr("disabled", "disabled");
-                                    //$("#AS3_Q18").attr("disabled", "disabled");
-                                    //$("#AS3_Q19").attr("disabled", "disabled");
-                                    //$("#AS3_Q20").attr("disabled", "disabled");
-                                    //$("#AS3_Remarks").attr("disabled", "disabled");
-                                    //$("#AS3_A1").attr("disabled", "disabled");
-                                    //$("#AS3_A2").attr("disabled", "disabled");
-                                    //$("#AS3_B1").attr("disabled", "disabled");
-                                    //$("#AS3_B2").attr("disabled", "disabled");
-
-                                    $("#cmdSave").hide();
-                                }
-
-                            },
-                            error: function (
-                                xhr,
-                                ajaxOptions,
-                                thrownError) {
-
-                                alert('Error: ');
-
-                            }
-                        });
-
+                if ($("#AS1_Samp_1").is(':visible') == true) {
+                    $("#AS1_Samp_1").focus();
+                }
+                else if ($("#AS1_Samp_4").is(':visible') == true) {
+                    $("#AS1_Samp_4").focus();
                 }
 
+                return false;
+            }
+            else if ($('input[name=AS1_Q1_1]:checked').length <= 0
+                && ($("#AS1_Q1_11").is(":visible") == true || $("#AS1_Q1_12").is(":visible") == true)) {
+                alert("Please select CBC Sample Collected In EDTA tube ");
+                $("#AS1_Q1_11").focus();
+                return false;
+            }
+            else if ($("#AS1_Q1_2").val() == "" && ($("#AS1_Q1_2").is(":visible") == true)) {
+                alert("Please enter Volume of blood for CBC mL ");
+                $("#AS1_Q1_2").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q2_1]:checked').length <= 0
+                && ($("#AS1_Q2_11").is(":visible") == true || $("#AS1_Q2_12").is(":visible") == true)) {
+                alert("Please select Blood Culture Sample collection ");
+                $("#AS1_Q2_11").focus();
+                return false;
+            }
+            else if ($("#AS1_Q2_2").val() == "" && ($("#AS1_Q2_2").is(":visible") == true)) {
+                alert("Please enter Volume of blood in Paeds BacT Alert Paeds bottle ml ");
+                $("#AS1_Q2_2").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3]:checked').length <= 0
+                && ($("#AS1_Q3_1").is(":visible") == true || $("#AS1_Q3_2").is(":visible") == true)) {
+                alert("Please select Metagenomics Sample collection ");
+                $("#AS1_Q3_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3a_1]:checked').length <= 0
+                && ($("#AS1_Q3a_11").is(":visible") == true || $("#AS1_Q3a_12").is(":visible") == true)) {
+                alert("Please select CRP Sample Collected In Gel tube ");
+                $("#AS1_Q3a_11").focus();
+                return false;
+            }
+            else if ($("#AS1_Q3a_2").val() == "" && $("#AS1_Q3a_2").is(":visible") == true) {
+                alert("Please enter Volume of blood for Metagenomics");
+                $("#AS1_Q3a_2").focus();
+                return false;
+            }
+            else if ($("#AS1_Q4").val() == "" && $("#AS1_Q4").is(":visible") == true) {
+                alert("Please enter collection time ");
+                $("#AS1_Q4").focus();
+                return false;
+            }
+            else if ($("#AS1_Q5").val() == "" && $("#AS1_Q5").is(":visible") == true) {
+                alert("Please enter collection date ");
+                $("#AS1_Q5").focus();
+                return false;
+            }
+            else if ($("#AS1_Q6").val() == "" && $("#AS1_Q6").is(":visible") == true) {
+                alert("Please enter Time of Serum separation ");
+                $("#AS1_Q6").focus();
+                return false;
+            }
+            else if ($("#AS1_Q6a").val() == "" && $("#AS1_Q6a").is(":visible") == true) {
+                alert("Please enter No. of Aliquots made ");
+                $("#AS1_Q6a").focus();
+                return false;
+            }
+            else if ($("#AS1_Q6b").val() == "" && $("#AS1_Q6b").is(":visible") == true) {
+                alert("Please enter Volume in each aliquot ");
+                $("#AS1_Q6b").focus();
+                return false;
+            }
+            else if ($("#AS1_Q6c").val() == "" && $("#AS1_Q6c").is(":visible") == true) {
+                alert("Please enter Time of sample handed over to NRL ");
+                $("#AS1_Q6c").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q7_1]:checked').length <= 0
+                && ($("#AS2_Q7_11").is(":visible") == true || $("#AS2_Q7_12").is(":visible") == true)) {
+                alert("Please select CBC EDTA tube Received ");
+                $("#AS2_Q7_11").focus();
+                return false;
+            }
+            else if ($("#AS2_Q7_2a").val() == "___-__-__" && $("#AS2_Q7_2a").is(":visible") == true
+                && $("#AS2_Q7_2a").is(":disabled") == false) {
+                alert("Please enter valid CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
+                $("#AS2_Q7_2a").focus();
+                return false;
+            }
+            else if ($("#AS2_Q7_2").val() == "" && $("#AS2_Q7_2").is(":visible") == true
+                && $("#AS2_Q7_2").is(":disabled") == false) {
+                alert("Please enter CBC EDTA tube Charged at AKU clinical lab (L Number) ");
+                $("#AS2_Q7_2").focus();
+                return false;
+            }
+            else if ($("#AS2_Q7_CBC_CODE").val() == "" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
+                alert("Please enter CBC EDTA tube barcode ");
+                $("#AS2_Q7_CBC_CODE").focus();
+                return false;
+            }
+            else if ($("#AS2_Q7_CBC_CODE").val() == "__-_-_-_-____" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
+                alert("Please enter valid sample id ");
+                $("#AS2_Q7_CBC_CODE").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q8]:checked').length <= 0
+                && ($("#AS2_Q8_1").is(":visible") == true || $("#AS2_Q8_2").is(":visible") == true)) {
+                alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after) ");
+                $("#AS2_Q8_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q8_BacT").val() == "" && $("#AS2_Q8_BacT").is(":visible") == true) {
+                alert("Please enter BacT Alert Paeds Bottle Bar Code ");
+                $("#AS2_Q8_BacT").focus();
+                return false;
+            }
+            else if ($("#AS2_Q8_3").val() == "" && $("#AS2_Q8_3").is(":visible") == true) {
+                alert("Please enter Weight in gm ");
+                $("#AS2_Q8_3").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q8a]:checked').length <= 0 && ($("#AS2_Q8a_1").is(":visible") == true ||
+                $("#AS2_Q8a_2").is(":visible") == true)) {
+                alert("Please select CRP Gel tube Received ");
+                $("#AS2_Q8a_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q9").val() == "" && $("#AS2_Q9").is(":visible") == true) {
+                alert("Please enter date received ");
+                $("#AS2_Q9").focus();
+                return false;
+            }
+            else if ($("#AS2_Q10").val() == "" && $("#AS2_Q10").is(":visible") == true) {
+                alert("Please enter time received ");
+                $("#AS2_Q10").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q11]:checked').length <= 0 && ($('#AS2_Q11_1').is(':visible') == true ||
+                $('#AS2_Q11_2').is(':visible') == true)) {
+                alert("Please enter Condition of sample container received ");
+                $("#AS2_Q11_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q12_1").val() == "" && $("#AS2_Q12_1").is(":visible") == true) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab (CBC tube)  ");
+                $("#AS2_Q12_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q12_2").val() == "" && $("#AS2_Q12_2").is(":visible") == true) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab (BacT Alert Peads bottle)  ");
+                $("#AS2_Q12_2").focus();
+                return false;
+            }
+            else if ($("#AS2_Q12_3").val() == "" && $("#AS2_Q12_3").is(":visible") == true) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab (Metagenomics)  ");
+                $("#AS2_Q12_3").focus();
+                return false;
+            }
+            else if ($("#AS2_Q12_4").val() == "" && $("#AS2_Q12_4").is(":visible") == true) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab (CRP Gel tube)  ");
+                $("#AS2_Q12_4").focus();
+                return false;
+            }
+            else if ($("#AS2_Q13").val() == "" && $("#AS2_Q13").is(":visible") == true) {
+                alert("Please enter Name of the laboratory person receiving the sample ");
+                $("#AS2_Q13").focus();
+                return false;
+            }
+            else if ($("#AS2_Q13a").val() == "" && $("#AS2_Q13a").is(":visible") == true) {
+                alert("Please enter Time result reported (must be within 20 min - 2 hours of sample receiving) ");
+                $("#AS2_Q13a").focus();
+                return false;
+            }
+            else if ($("#AS3_Q14").val() == "" && $("#AS3_Q14").is(":visible") == true) {
+                alert("Please enter Name of IDRL laboratory person receiving the sample ");
+                $("#AS3_Q14").focus();
+                return false;
+            }
+            else if ($("#AS3_Q14a").val() == "" && $("#AS3_Q14a").is(":visible") == true) {
+                alert("Please enter Date received (dd/mm/yyyy) ");
+                $("#AS3_Q14a").focus();
+                return false;
+            }
+            else if ($("#AS3_Q15").val() == "" && $("#AS3_Q15").is(":visible") == true) {
+                alert("Please enter Time received ");
+                $("#AS3_Q15").focus();
+                return false;
+            }
+            else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true && $("#AS3_Q16").is(":disabled") == false) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab ");
+                $("#AS3_Q16").focus();
+                return false;
+            }
+            else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true && $("#AS3_Q17").is(":disabled") == false) {
+                alert("Please enter Time of Serum separation ");
+                $("#AS3_Q17").focus();
+                return false;
+            }
+            else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true && $("#AS3_Q18").is(":disabled") == false) {
+                alert("Please enter No. of Aliquots made ");
+                $("#AS3_Q18").focus();
+                return false;
+            }
+            else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true && $("#AS3_Q19").is(":disabled") == false) {
+                alert("Please enter Volume in each aliquot ");
+                $("#AS3_Q19").focus();
+                return false;
+            }
+            else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true && $("#AS3_Q20").is(":disabled") == false) {
+                alert("Please enter Time Aliquots placed in ULT Freezer ");
+                $("#AS3_Q20").focus();
+                return false;
+            }
+            else if ($('input[name=AS4_Q21a]:checked').length <= 0 && ($('#AS4_Q21a').is(':visible') == true)) {
+                alert("Please select CRP Sample Collected in Capillary ");
+                $("#AS4_Q21a").focus();
+                return false;
+            }
+            else if ($("#AS4_Q22a").val() == "" && $("#AS4_Q22a").is(":visible") == true) {
+                alert("Please enter Collection time (hh:mm 24 hr clock) ");
+                $("#AS4_Q22a").focus();
+                return false;
+            }
+            else if ($("#AS4_Q22b").val() == "" && $("#AS4_Q22b").is(":visible") == true) {
+                alert("Please enter Collection date (dd/mm/yy) ");
+                $("#AS4_Q22b").focus();
+                return false;
+            }
+            else if ($("#AS4_Q23").val() == "" && $("#AS4_Q23").is(":visible") == true) {
+                alert("Please enter Name of Phlebotomist ");
+                $("#AS4_Q23").focus();
+                return false;
+            }
+            else if ($("#AS4_Q24").val() == "" && $("#AS4_Q24").is(":visible") == true) {
+                alert("Please enter Time of test performed (hh:mm 24 hr clock) ");
+                $("#AS4_Q24").focus();
+                return false;
+            }
+            else if ($("#AS5_Q25a").val() == "" && $("#AS5_Q25a").is(":visible") == true && $("#AS5_Q25a").attr("disabled") != "disabled") {
+                alert("Please enter Name of staff CRP Performed ");
+                $("#AS5_Q25a").focus();
+                return false;
+            }
+            else if ($("#AS5_Q25b").val() == "" && $("#AS5_Q25b").is(":visible") == true && $("#AS5_Q25b").attr("disabled") != "disabled") {
+                alert("Please enter Code of staff CRP Performed ");
+                $("#AS5_Q25b").focus();
+                return false;
+            }
+            else if ($("#AS5_Q26").val() == "" && $("#AS5_Q26").is(":visible") == true && $("#AS5_Q26").attr("disabled") != "disabled") {
+                alert("Please enter Kit Lot Number ");
+                $("#AS5_Q26").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q27]:checked').length <= 0 && ($('#AS5_Q27_1').is(':visible') == true && $('#AS5_Q27_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q27_2').is(':visible') == true && $('#AS5_Q27_2').attr("disabled") != "disabled")) {
+                alert("Please enter Kit Quality Control ");
+                $("#AS5_Q27_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q28]:checked').length <= 0 && ($('#AS5_Q28_1').is(':visible') == true && $('#AS5_Q28_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q28_2').is(':visible') == true && $('#AS5_Q28_2').attr("disabled") != "disabled")) {
+                alert("Please enter Kit brought to Room Temperature for 30 minutes ");
+                $("#AS5_Q28_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true &&
+                $('#AS5_Q29_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q29_2').is(':visible') == true && $('#AS5_Q29_2').attr("disabled" != "disabled") ||
+                $('#AS5_Q29_3').is(':visible') == true && $('#AS5_Q29_3').attr("disabled" != "disabled"))) {
+                alert("Please enter CRP Control line Result (test device) ");
+                $("#AS5_Q29_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q30]:checked').length <= 0 && ($('#AS5_Q30_1').is(':visible') == true && $('#AS5_Q30_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q30_2').is(':visible') == true && $('#AS5_Q30_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q30_3').is(':visible') == true && $('#AS5_Q30_3').attr("disabled") != "disabled")) {
+                alert("Please enter CRP Test Line ");
+                $("#AS5_Q30_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q31]:checked').length <= 0 && ($('#AS5_Q31_1').is(':visible') == true && $('#AS5_Q31_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_2').is(':visible') == true && $('#AS5_Q31_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_3').is(':visible') == true && $('#AS5_Q31_3').attr("disabled") != "disabled" ||
+                $('#AS5_Q31_4').is(':visible') == true && $('#AS5_Q31_4').attr("disabled") != "disabled")) {
+                alert("Please enter CRP Test Level ");
+                $("#AS5_Q31_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS5_Q32]:checked').length <= 0 && ($('#AS5_Q32_1').is(':visible') == true && $('#AS5_Q32_1').attr("disabled") != "disabled" ||
+                $('#AS5_Q32_2').is(':visible') == true && $('#AS5_Q32_2').attr("disabled") != "disabled" ||
+                $('#AS5_Q32_3').is(':visible') == true && $('#AS5_Q32_3').attr("disabled") != "disabled")) {
+                alert("Please enter CRP (RDT) Result ");
+                $("#AS5_Q32_1").focus();
+                return false;
+            }
+            else if ($("#AS5_Q33a").val() == "" && $("#AS5_Q33a").is(":visible") == true && $("#AS5_Q33a").attr("disabled") != "disabled") {
+                alert("Please enter Name of Staff Reading CRP (RDT) Result ");
+                $("#AS5_Q33a").focus();
+                return false;
+            }
+            else if ($("#AS5_Q33b").val() == "" && $("#AS5_Q33b").is(":visible") == true && $("#AS5_Q33b").attr("disabled") != "disabled") {
+                alert("Please enter Code of Staff Reading CRP (RDT) Result ");
+                $("#AS5_Q33b").focus();
+                return false;
+            }
+            else if ($("#AS6_Q34").val() == "" && $("#AS6_Q34").is(":visible") == true) {
+                alert("Please enter Urine DR ");
+                $("#AS6_Q34").focus();
+                return false;
+            }
+            else if ($("#AS6_Q35").val() == "" && $("#AS6_Q35").is(":visible") == true) {
+                alert("Please enter Urine CS ");
+                $("#AS6_Q35").focus();
+                return false;
+            }
+            else if ($("#AS6_Q36").val() == "" && $("#AS6_Q36").is(":visible") == true) {
+                alert("Please enter Serum Bilirubin (Adult) ");
+                $("#AS6_Q36").focus();
+                return false;
+            }
+            else if ($("#AS6_Q37").val() == "" && $("#AS6_Q37").is(":visible") == true) {
+                alert("Please enter Liver function test (Serum) ");
+                $("#AS6_Q37").focus();
+                return false;
+            }
+            else if ($("#AS6_Q38").val() == "" && $("#AS6_Q38").is(":visible") == true) {
+                alert("Please enter Urea ");
+                $("#AS6_Q38").focus();
+                return false;
+            }
+            else if ($("#AS6_Q39").val() == "" && $("#AS6_Q39").is(":visible") == true) {
+                alert("Please enter Creatinine ");
+                $("#AS6_Q39").focus();
+                return false;
+            }
+            else if ($("#AS6_Q40").val() == "" && $("#AS6_Q40").is(":visible") == true) {
+                alert("Please enter Electrolytes ");
+                $("#AS6_Q40").focus();
+                return false;
+            }
+            else if ($("#AS6_Q41").val() == "" && $("#AS6_Q41").is(":visible") == true) {
+                alert("Please enter CSF DR ");
+                $("#AS6_Q41").focus();
+                return false;
+            }
+            else if ($("#AS6_Q42").val() == "" && $("#AS6_Q42").is(":visible") == true) {
+                alert("Please enter CSF CS ");
+                $("#AS6_Q42").focus();
+                return false;
+            }
+            else if ($("#AS6_Q43").val() == "" && $("#AS6_Q43").is(":visible") == true) {
+                alert("Please enter Chest Xray ");
+                $("#AS6_Q43").focus();
+                return false;
+            }
+            else if ($("#AS6_Q44").val() == "" && $("#AS6_Q44").is(":visible") == true) {
+                alert("Please enter Ultrasound whole abdomen ");
+                $("#AS6_Q44").focus();
+                return false;
+            }
+            else if ($("#AS6_Q45").val() == "" && $("#AS6_Q45").is(":visible") == true) {
+                alert("Please enter Ultrasound upper abdomen ");
+                $("#AS6_Q45").focus();
+                return false;
+            }
+            else if ($("#AS6_Q46").val() == "" && $("#AS6_Q46").is(":visible") == true) {
+                alert("Please enter Ultrasound pelvis ");
+                $("#AS6_Q46").focus();
+                return false;
+            }
+            else if ($("#AS6_Q47").val() == "" && $("#AS6_Q47").is(":visible") == true) {
+                alert("Please enter Ultrasound brain ");
+                $("#AS6_Q47").focus();
+                return false;
+            }
+            else if ($("#AS3_A1").val() == "" && $("#AS3_A1").is(":visible") == true) {
+                alert("Please enter Form checked by PSBI Laboratory Person ");
+                $("#AS3_A1").focus();
+                return false;
+            }
+            else if ($("#AS3_A2").val() == "" && $("#AS3_A2").is(":visible") == true) {
+                alert("Please enter date of Form checked by PSBI Laboratory Person ");
+                $("#AS3_A2").focus();
+                return false;
+            }
+            else if ($("#AS3_B1").val() == "" && $("#AS3_B1").is(":visible") == true) {
+                alert("Please enter Form checked by PSBI Study Physician ");
+                $("#AS3_B1").focus();
+                return false;
+            }
+            else if ($("#AS3_B2").val() == "" && $("#AS3_B2").is(":visible") == true) {
+                alert("Please enter date of Form checked by PSBI Study Physician ");
+                $("#AS3_B2").focus();
+                return false;
+            }
+            else if ($("#AS1_age").val() != "") {
 
-            });
-
-    </script>
-
-    <script>
-
-            function ValidateForm() {
-
-                if ($("#AS1_screening_ID").val() == "__-_-____") {
-                    alert("Please enter valid screening id");
-                    $("#AS1_screening_ID").focus();
-                    return false;
-                }
-                else if ($("#AS1_screening_ID").val().indexOf("_") != -1) {
-                    alert("Please enter full screening id");
-                    $("#AS1_screening_ID").focus();
-                    return false;
-                }
-                else if ($("#AS1_rand_id").val() == "_-_-_-____") {
-                    alert("Please enter valid randomization id");
-                    $("#AS1_rand_id").focus();
-                    return false;
-                }
-                else if ($("#AS1_rand_id").val().indexOf("_") != -1) {
-                    alert("Please enter full randomization id");
-                    $("#AS1_rand_id").focus();
-                    return false;
-                }
-                else if ($("#AS1_name").val() == "") {
-                    alert("Please enter name ");
-                    $("#AS1_name").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_sex]:checked').length <= 0) {
-                    alert("Please select gender");
-                    $("#AS1_sex_a").focus();
-                    return false;
-                }
-                else if ($("#AS1_age").val() == "") {
-                    alert("Please enter age ");
+                if (eval($("#AS1_age").val()) < 0 && eval($("#AS1_age").val()) > 59) {
+                    alert("Age must be 0 - 59 days ");
                     $("#AS1_age").focus();
                     return false;
                 }
-                else if ($("#AS1_barcode").val() == "") {
-                    alert("Please enter sample id ");
-                    $("#AS1_barcode").focus();
-                    return false;
-                }
-                else if ($("#AS1_mrno").val() == "" && $("#AS1_mrno").is(":visible") == true
-                    && $("#AS1_mrno").is(":disabled") == false) {
-                    alert("Please enter MR No. ");
-                    $("#AS1_mrno").focus();
-                    return false;
-                }
-                else if ($("#AS1_mrno").val() == "_-_-_-____" && $("#AS1_mrno").is(":visible") == true
-                    && $("#AS1_mrno").is(":disabled") == false) {
-                    alert("Please enter valid MR No");
-                    $("#AS1_mrno").focus();
-                    return false;
-                }
-                else if ($("#AS1_mrno").val().indexOf("_") != -1 && $("#AS1_mrno").is(":visible") == true
-                    && $("#AS1_mrno").is(":disabled") == false) {
-                    alert("Please enter full MR No");
-                    $("#AS1_mrno").focus();
-                    return false;
-                }
-                else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":visible") == true
-                    && $("#AS1_lno").is(":disabled") == false) {
-                    alert("Please enter L Number ");
-                    $("#AS1_lno").focus();
-                    return false;
-                }
-                else if ($("#AS1_barcode1").val() == "") {
-                    alert("Please enter form Barcode ");
-                    $("#AS1_barcode1").focus();
-                    return false;
-                }
-                else if ($("#AS1_barcode1").val() == "__-_-_-_-____") {
-                    alert("Please enter valid form Barcode ");
-                    $("#AS1_barcode1").focus();
-                    return false;
-                }
-                else if ($("#AS1_barcode1").val().indexOf("_") != -1) {
-                    alert("Please enter full form Barcode ");
-                    $("#AS1_barcode1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_fsite]:checked').length <= 0) {
-                    alert("Please select field site hospital");
-                    $("#AS1_fsite_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_Samp_1]:checked').length <= 0
-                    && $('input[name=AS1_Samp_2]:checked').length <= 0
-                    && $('input[name=AS1_Samp_3]:checked').length <= 0
-                    && $('input[name=AS1_Samp_4]:checked').length <= 0
-                    && $('input[name=AS1_Samp_5]:checked').length <= 0
-                    && $('input[name=AS1_Samp_6]:checked').length <= 0
-                ) {
-                    alert("Please select sample collected ");
+                else {
 
-                    if ($("#AS1_Samp_1").is(':visible') == true) {
-                        $("#AS1_Samp_1").focus();
-                    }
-                    else if ($("#AS1_Samp_4").is(':visible') == true) {
-                        $("#AS1_Samp_4").focus();
-                    }
+                    if ($("#AS2_Q7_2a").val() != "" && $("#AS2_Q7_2a").is(":visible") == true) {
 
-                    return false;
-                }
-                else if ($('input[name=AS1_Q1_1]:checked').length <= 0
-                    && ($("#AS1_Q1_11").is(":visible") == true || $("#AS1_Q1_12").is(":visible") == true)) {
-                    alert("Please select CBC Sample Collected In EDTA tube ");
-                    $("#AS1_Q1_11").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q1_2").val() == "" && ($("#AS1_Q1_2").is(":visible") == true)) {
-                    alert("Please enter Volume of blood for CBC mL ");
-                    $("#AS1_Q1_2").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_Q2_1]:checked').length <= 0
-                    && ($("#AS1_Q2_11").is(":visible") == true || $("#AS1_Q2_12").is(":visible") == true)) {
-                    alert("Please select Blood Culture Sample collection ");
-                    $("#AS1_Q2_11").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q2_2").val() == "" && ($("#AS1_Q2_2").is(":visible") == true)) {
-                    alert("Please enter Volume of blood in Paeds BacT Alert Paeds bottle ml ");
-                    $("#AS1_Q2_2").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_Q3]:checked').length <= 0
-                    && ($("#AS1_Q3_1").is(":visible") == true || $("#AS1_Q3_2").is(":visible") == true)) {
-                    alert("Please select Metagenomics Sample collection ");
-                    $("#AS1_Q3_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS1_Q3a_1]:checked').length <= 0
-                    && ($("#AS1_Q3a_11").is(":visible") == true || $("#AS1_Q3a_12").is(":visible") == true)) {
-                    alert("Please select CRP Sample Collected In Gel tube ");
-                    $("#AS1_Q3a_11").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q3a_2").val() == "" && $("#AS1_Q3a_2").is(":visible") == true) {
-                    alert("Please enter Volume of blood for Metagenomics");
-                    $("#AS1_Q3a_2").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q4").val() == "" && $("#AS1_Q4").is(":visible") == true) {
-                    alert("Please enter collection time ");
-                    $("#AS1_Q4").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q5").val() == "" && $("#AS1_Q5").is(":visible") == true) {
-                    alert("Please enter collection date ");
-                    $("#AS1_Q5").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q6").val() == "" && $("#AS1_Q6").is(":visible") == true) {
-                    alert("Please enter Time of Serum separation ");
-                    $("#AS1_Q6").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q6a").val() == "" && $("#AS1_Q6a").is(":visible") == true) {
-                    alert("Please enter No. of Aliquots made ");
-                    $("#AS1_Q6a").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q6b").val() == "" && $("#AS1_Q6b").is(":visible") == true) {
-                    alert("Please enter Volume in each aliquot ");
-                    $("#AS1_Q6b").focus();
-                    return false;
-                }
-                else if ($("#AS1_Q6c").val() == "" && $("#AS1_Q6c").is(":visible") == true) {
-                    alert("Please enter Time of sample handed over to NRL ");
-                    $("#AS1_Q6c").focus();
-                    return false;
-                }
-                else if ($('input[name=AS2_Q7_1]:checked').length <= 0
-                    && ($("#AS2_Q7_11").is(":visible") == true || $("#AS2_Q7_12").is(":visible") == true)) {
-                    alert("Please select CBC EDTA tube Received ");
-                    $("#AS2_Q7_11").focus();
-                    return false;
-                }                
-                else if ($("#AS2_Q7_2a").val() == "___-__-__" && $("#AS2_Q7_2a").is(":visible") == true
-                    && $("#AS2_Q7_2a").is(":disabled") == false) {
-                    alert("Please enter valid CBC EDTA tube Charged at AKU clinical lab (MR Number) ");
-                    $("#AS2_Q7_2a").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q7_2").val() == "" && $("#AS2_Q7_2").is(":visible") == true
-                    && $("#AS2_Q7_2").is(":disabled") == false) {
-                    alert("Please enter CBC EDTA tube Charged at AKU clinical lab (L Number) ");
-                    $("#AS2_Q7_2").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q7_CBC_CODE").val() == "" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
-                    alert("Please enter CBC EDTA tube barcode ");
-                    $("#AS2_Q7_CBC_CODE").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q7_CBC_CODE").val() == "__-_-_-_-____" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
-                    alert("Please enter valid sample id ");
-                    $("#AS2_Q7_CBC_CODE").focus();
-                    return false;
-                }
-                else if ($('input[name=AS2_Q8]:checked').length <= 0
-                    && ($("#AS2_Q8_1").is(":visible") == true || $("#AS2_Q8_2").is(":visible") == true)) {
-                    alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after) ");
-                    $("#AS2_Q8_1").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q8_BacT").val() == "" && $("#AS2_Q8_BacT").is(":visible") == true) {
-                    alert("Please enter BacT Alert Paeds Bottle Bar Code ");
-                    $("#AS2_Q8_BacT").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q8_3").val() == "" && $("#AS2_Q8_3").is(":visible") == true) {
-                    alert("Please enter Weight in gm ");
-                    $("#AS2_Q8_3").focus();
-                    return false;
-                }
-                else if ($('input[name=AS2_Q8a]:checked').length <= 0 && ($("#AS2_Q8a_1").is(":visible") == true ||
-                    $("#AS2_Q8a_2").is(":visible") == true)) {
-                    alert("Please select CRP Gel tube Received ");
-                    $("#AS2_Q8a_1").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q9").val() == "" && $("#AS2_Q9").is(":visible") == true) {
-                    alert("Please enter date received ");
-                    $("#AS2_Q9").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q10").val() == "" && $("#AS2_Q10").is(":visible") == true) {
-                    alert("Please enter time received ");
-                    $("#AS2_Q10").focus();
-                    return false;
-                }
-                else if ($('input[name=AS2_Q11]:checked').length <= 0 && ($('#AS2_Q11_1').is(':visible') == true ||
-                    $('#AS2_Q11_2').is(':visible') == true)) {
-                    alert("Please enter Condition of sample container received ");
-                    $("#AS2_Q11_1").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q12_1").val() == "" && $("#AS2_Q12_1").is(":visible") == true) {
-                    alert("Please enter Temperature of the Coleman upon arrival at the lab (CBC tube)  ");
-                    $("#AS2_Q12_1").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q12_2").val() == "" && $("#AS2_Q12_2").is(":visible") == true) {
-                    alert("Please enter Temperature of the Coleman upon arrival at the lab (BacT Alert Peads bottle)  ");
-                    $("#AS2_Q12_2").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q12_3").val() == "" && $("#AS2_Q12_3").is(":visible") == true) {
-                    alert("Please enter Temperature of the Coleman upon arrival at the lab (Metagenomics)  ");
-                    $("#AS2_Q12_3").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q12_4").val() == "" && $("#AS2_Q12_4").is(":visible") == true) {
-                    alert("Please enter Temperature of the Coleman upon arrival at the lab (CRP Gel tube)  ");
-                    $("#AS2_Q12_4").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q13").val() == "" && $("#AS2_Q13").is(":visible") == true) {
-                    alert("Please enter Name of the laboratory person receiving the sample ");
-                    $("#AS2_Q13").focus();
-                    return false;
-                }
-                else if ($("#AS2_Q13a").val() == "" && $("#AS2_Q13a").is(":visible") == true) {
-                    alert("Please enter Time result reported (must be within 20 min - 2 hours of sample receiving) ");
-                    $("#AS2_Q13a").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q14").val() == "" && $("#AS3_Q14").is(":visible") == true) {
-                    alert("Please enter Name of IDRL laboratory person receiving the sample ");
-                    $("#AS3_Q14").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q14a").val() == "" && $("#AS3_Q14a").is(":visible") == true) {
-                    alert("Please enter Date received (dd/mm/yyyy) ");
-                    $("#AS3_Q14a").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q15").val() == "" && $("#AS3_Q15").is(":visible") == true) {
-                    alert("Please enter Time received ");
-                    $("#AS3_Q15").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q16").val() == "" && $("#AS3_Q16").is(":visible") == true && $("#AS3_Q16").is(":disabled") == false) {
-                    alert("Please enter Temperature of the Coleman upon arrival at the lab ");
-                    $("#AS3_Q16").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q17").val() == "" && $("#AS3_Q17").is(":visible") == true && $("#AS3_Q17").is(":disabled") == false) {
-                    alert("Please enter Time of Serum separation ");
-                    $("#AS3_Q17").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q18").val() == "" && $("#AS3_Q18").is(":visible") == true && $("#AS3_Q18").is(":disabled") == false) {
-                    alert("Please enter No. of Aliquots made ");
-                    $("#AS3_Q18").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q19").val() == "" && $("#AS3_Q19").is(":visible") == true && $("#AS3_Q19").is(":disabled") == false) {
-                    alert("Please enter Volume in each aliquot ");
-                    $("#AS3_Q19").focus();
-                    return false;
-                }
-                else if ($("#AS3_Q20").val() == "" && $("#AS3_Q20").is(":visible") == true && $("#AS3_Q20").is(":disabled") == false) {
-                    alert("Please enter Time Aliquots placed in ULT Freezer ");
-                    $("#AS3_Q20").focus();
-                    return false;
-                }
-                else if ($('input[name=AS4_Q21a]:checked').length <= 0 && ($('#AS4_Q21a').is(':visible') == true)) {
-                    alert("Please select CRP Sample Collected in Capillary ");
-                    $("#AS4_Q21a").focus();
-                    return false;
-                }
-                else if ($("#AS4_Q22a").val() == "" && $("#AS4_Q22a").is(":visible") == true) {
-                    alert("Please enter Collection time (hh:mm 24 hr clock) ");
-                    $("#AS4_Q22a").focus();
-                    return false;
-                }
-                else if ($("#AS4_Q22b").val() == "" && $("#AS4_Q22b").is(":visible") == true) {
-                    alert("Please enter Collection date (dd/mm/yy) ");
-                    $("#AS4_Q22b").focus();
-                    return false;
-                }
-                else if ($("#AS4_Q23").val() == "" && $("#AS4_Q23").is(":visible") == true) {
-                    alert("Please enter Name of Phlebotomist ");
-                    $("#AS4_Q23").focus();
-                    return false;
-                }
-                else if ($("#AS4_Q24").val() == "" && $("#AS4_Q24").is(":visible") == true) {
-                    alert("Please enter Time of test performed (hh:mm 24 hr clock) ");
-                    $("#AS4_Q24").focus();
-                    return false;
-                }
-                else if ($("#AS5_Q25a").val() == "" && $("#AS5_Q25a").is(":visible") == true && $("#AS5_Q25a").attr("disabled") != "disabled") {
-                    alert("Please enter Name of staff CRP Performed ");
-                    $("#AS5_Q25a").focus();
-                    return false;
-                }
-                else if ($("#AS5_Q25b").val() == "" && $("#AS5_Q25b").is(":visible") == true && $("#AS5_Q25b").attr("disabled") != "disabled") {
-                    alert("Please enter Code of staff CRP Performed ");
-                    $("#AS5_Q25b").focus();
-                    return false;
-                }
-                else if ($("#AS5_Q26").val() == "" && $("#AS5_Q26").is(":visible") == true && $("#AS5_Q26").attr("disabled") != "disabled") {
-                    alert("Please enter Kit Lot Number ");
-                    $("#AS5_Q26").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q27]:checked').length <= 0 && ($('#AS5_Q27_1').is(':visible') == true && $('#AS5_Q27_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q27_2').is(':visible') == true && $('#AS5_Q27_2').attr("disabled") != "disabled")) {
-                    alert("Please enter Kit Quality Control ");
-                    $("#AS5_Q27_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q28]:checked').length <= 0 && ($('#AS5_Q28_1').is(':visible') == true && $('#AS5_Q28_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q28_2').is(':visible') == true && $('#AS5_Q28_2').attr("disabled") != "disabled")) {
-                    alert("Please enter Kit brought to Room Temperature for 30 minutes ");
-                    $("#AS5_Q28_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q29]:checked').length <= 0 && ($('#AS5_Q29_1').is(':visible') == true &&
-                    $('#AS5_Q29_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q29_2').is(':visible') == true && $('#AS5_Q29_2').attr("disabled" != "disabled") ||
-                    $('#AS5_Q29_3').is(':visible') == true && $('#AS5_Q29_3').attr("disabled" != "disabled"))) {
-                    alert("Please enter CRP Control line Result (test device) ");
-                    $("#AS5_Q29_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q30]:checked').length <= 0 && ($('#AS5_Q30_1').is(':visible') == true && $('#AS5_Q30_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q30_2').is(':visible') == true && $('#AS5_Q30_2').attr("disabled") != "disabled" ||
-                    $('#AS5_Q30_3').is(':visible') == true && $('#AS5_Q30_3').attr("disabled") != "disabled")) {
-                    alert("Please enter CRP Test Line ");
-                    $("#AS5_Q30_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q31]:checked').length <= 0 && ($('#AS5_Q31_1').is(':visible') == true && $('#AS5_Q31_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q31_2').is(':visible') == true && $('#AS5_Q31_2').attr("disabled") != "disabled" ||
-                    $('#AS5_Q31_3').is(':visible') == true && $('#AS5_Q31_3').attr("disabled") != "disabled" ||
-                    $('#AS5_Q31_4').is(':visible') == true && $('#AS5_Q31_4').attr("disabled") != "disabled")) {
-                    alert("Please enter CRP Test Level ");
-                    $("#AS5_Q31_1").focus();
-                    return false;
-                }
-                else if ($('input[name=AS5_Q32]:checked').length <= 0 && ($('#AS5_Q32_1').is(':visible') == true && $('#AS5_Q32_1').attr("disabled") != "disabled" ||
-                    $('#AS5_Q32_2').is(':visible') == true && $('#AS5_Q32_2').attr("disabled") != "disabled" ||
-                    $('#AS5_Q32_3').is(':visible') == true && $('#AS5_Q32_3').attr("disabled") != "disabled")) {
-                    alert("Please enter CRP (RDT) Result ");
-                    $("#AS5_Q32_1").focus();
-                    return false;
-                }
-                else if ($("#AS5_Q33a").val() == "" && $("#AS5_Q33a").is(":visible") == true && $("#AS5_Q33a").attr("disabled") != "disabled") {
-                    alert("Please enter Name of Staff Reading CRP (RDT) Result ");
-                    $("#AS5_Q33a").focus();
-                    return false;
-                }
-                else if ($("#AS5_Q33b").val() == "" && $("#AS5_Q33b").is(":visible") == true && $("#AS5_Q33b").attr("disabled") != "disabled") {
-                    alert("Please enter Code of Staff Reading CRP (RDT) Result ");
-                    $("#AS5_Q33b").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q34").val() == "" && $("#AS6_Q34").is(":visible") == true) {
-                    alert("Please enter Urine DR ");
-                    $("#AS6_Q34").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q35").val() == "" && $("#AS6_Q35").is(":visible") == true) {
-                    alert("Please enter Urine CS ");
-                    $("#AS6_Q35").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q36").val() == "" && $("#AS6_Q36").is(":visible") == true) {
-                    alert("Please enter Serum Bilirubin (Adult) ");
-                    $("#AS6_Q36").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q37").val() == "" && $("#AS6_Q37").is(":visible") == true) {
-                    alert("Please enter Liver function test (Serum) ");
-                    $("#AS6_Q37").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q38").val() == "" && $("#AS6_Q38").is(":visible") == true) {
-                    alert("Please enter Urea ");
-                    $("#AS6_Q38").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q39").val() == "" && $("#AS6_Q39").is(":visible") == true) {
-                    alert("Please enter Creatinine ");
-                    $("#AS6_Q39").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q40").val() == "" && $("#AS6_Q40").is(":visible") == true) {
-                    alert("Please enter Electrolytes ");
-                    $("#AS6_Q40").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q41").val() == "" && $("#AS6_Q41").is(":visible") == true) {
-                    alert("Please enter CSF DR ");
-                    $("#AS6_Q41").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q42").val() == "" && $("#AS6_Q42").is(":visible") == true) {
-                    alert("Please enter CSF CS ");
-                    $("#AS6_Q42").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q43").val() == "" && $("#AS6_Q43").is(":visible") == true) {
-                    alert("Please enter Chest Xray ");
-                    $("#AS6_Q43").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q44").val() == "" && $("#AS6_Q44").is(":visible") == true) {
-                    alert("Please enter Ultrasound whole abdomen ");
-                    $("#AS6_Q44").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q45").val() == "" && $("#AS6_Q45").is(":visible") == true) {
-                    alert("Please enter Ultrasound upper abdomen ");
-                    $("#AS6_Q45").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q46").val() == "" && $("#AS6_Q46").is(":visible") == true) {
-                    alert("Please enter Ultrasound pelvis ");
-                    $("#AS6_Q46").focus();
-                    return false;
-                }
-                else if ($("#AS6_Q47").val() == "" && $("#AS6_Q47").is(":visible") == true) {
-                    alert("Please enter Ultrasound brain ");
-                    $("#AS6_Q47").focus();
-                    return false;
-                }
-                else if ($("#AS3_A1").val() == "" && $("#AS3_A1").is(":visible") == true) {
-                    alert("Please enter Form checked by PSBI Laboratory Person ");
-                    $("#AS3_A1").focus();
-                    return false;
-                }
-                else if ($("#AS3_A2").val() == "" && $("#AS3_A2").is(":visible") == true) {
-                    alert("Please enter date of Form checked by PSBI Laboratory Person ");
-                    $("#AS3_A2").focus();
-                    return false;
-                }
-                else if ($("#AS3_B1").val() == "" && $("#AS3_B1").is(":visible") == true) {
-                    alert("Please enter Form checked by PSBI Study Physician ");
-                    $("#AS3_B1").focus();
-                    return false;
-                }
-                else if ($("#AS3_B2").val() == "" && $("#AS3_B2").is(":visible") == true) {
-                    alert("Please enter date of Form checked by PSBI Study Physician ");
-                    $("#AS3_B2").focus();
-                    return false;
-                }
-                else if ($("#AS1_age").val() != "") {
-
-                    if (eval($("#AS1_age").val()) < 0 && eval($("#AS1_age").val()) > 59) {
-                        alert("Age must be 0 - 59 days ");
-                        $("#AS1_age").focus();
-                        return false;
-                    }
-                    else {
-
-                        if ($("#AS2_Q7_2a").val() != "" && $("#AS2_Q7_2a").is(":visible") == true) {
-
-                            if ($("#AS2_Q7_2a").val().indexOf("_") != -1) {
-                                alert("Please enter full (MR Number) 3 ");
-                                $("#AS2_Q7_2a").focus();
-                                return false;
-                            }
-                            else {
-
-                                if ($("#AS2_Q7_CBC_CODE").val() != "" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
-
-                                    if ($("#AS2_Q7_CBC_CODE").val().indexOf("_") != -1) {
-                                        alert("Please enter full sample id");
-                                        $("#AS2_Q7_CBC_CODE").focus();
-                                        return false;
-                                    }
-                                }
-
-                            }
+                        if ($("#AS2_Q7_2a").val().indexOf("_") != -1) {
+                            alert("Please enter full (MR Number) 3 ");
+                            $("#AS2_Q7_2a").focus();
+                            return false;
                         }
+                        else {
 
+                            if ($("#AS2_Q7_CBC_CODE").val() != "" && $("#AS2_Q7_CBC_CODE").is(":visible") == true) {
+
+                                if ($("#AS2_Q7_CBC_CODE").val().indexOf("_") != -1) {
+                                    alert("Please enter full sample id");
+                                    $("#AS2_Q7_CBC_CODE").focus();
+                                    return false;
+                                }
+                            }
+
+                        }
                     }
+
                 }
-
-
-                return true;
-
             }
+
+
+            return true;
+
+        }
 
     </script>
 </head>
@@ -1689,6 +1689,7 @@
                     </li>
                     <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
                     <li class="nav-item"><a href="rpt_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Report Viewer</span></span></a></li>
+                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
@@ -1944,7 +1945,7 @@
                                                                 <asp:TextBox runat="server" ID="AS1_Q4" class="form-control" name="AS1_Q4"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS1_Q4.ClientID%>').timepicki();
+                                                                    $('#<%=AS1_Q4.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -1954,8 +1955,8 @@
                                                                 <asp:TextBox runat="server" ID="AS1_Q5" class="form-control" name="AS1_Q5"></asp:TextBox>
                                                                 <div id="Div1" runat="server">
                                                                     <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS1_Q5.ClientID%>').datepicker({
+                                                                        $(document).ready(function () {
+                                                                            $('#<%=AS1_Q5.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -1974,7 +1975,7 @@
                                                                 <asp:TextBox runat="server" ID="AS1_Q6" class="form-control" name="AS1_Q6"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS1_Q6.ClientID%>').timepicki();
+                                                                    $('#<%=AS1_Q6.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -1996,7 +1997,7 @@
                                                                 <asp:TextBox runat="server" ID="AS1_Q6c" class="form-control" name="AS1_Q6c"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS1_Q6c.ClientID%>').timepicki();
+                                                                    $('#<%=AS1_Q6c.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2090,8 +2091,8 @@
                                                             <asp:TextBox runat="server" ID="AS2_Q9" class="form-control" name="AS2_Q9"></asp:TextBox>
                                                             <div id="Div4662" runat="server">
                                                                 <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS2_Q9.ClientID%>').datepicker({
+                                                                    $(document).ready(function () {
+                                                                        $('#<%=AS2_Q9.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -2112,7 +2113,7 @@
                                                             <asp:TextBox runat="server" ID="AS2_Q10" class="form-control" name="AS2_Q10"></asp:TextBox>
                                                             <script src="Scripts/timepicker/timepicki.js"></script>
                                                             <script>
-            $('#<%=AS2_Q10.ClientID%>').timepicki();
+                                                                $('#<%=AS2_Q10.ClientID%>').timepicki();
                                                             </script>
                                                         </div>
                                                     </div>
@@ -2171,7 +2172,7 @@
                                                                 <asp:TextBox runat="server" ID="AS2_Q13a" class="form-control" name="AS2_Q13a"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS2_Q13a.ClientID%>').timepicki();
+                                                                    $('#<%=AS2_Q13a.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2189,8 +2190,8 @@
                                                                 <asp:TextBox runat="server" ID="AS3_Q14a" class="form-control" name="AS3_Q14a"></asp:TextBox>
                                                                 <div id="Div982" runat="server">
                                                                     <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS3_Q14a.ClientID%>').datepicker({
+                                                                        $(document).ready(function () {
+                                                                            $('#<%=AS3_Q14a.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -2209,7 +2210,7 @@
                                                                 <asp:TextBox runat="server" ID="AS3_Q15" class="form-control" name="AS3_Q15"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS3_Q15.ClientID%>').timepicki();
+                                                                    $('#<%=AS3_Q15.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2225,7 +2226,7 @@
                                                                 <asp:TextBox runat="server" ID="AS3_Q17" class="form-control" name="AS3_Q17"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS3_Q17.ClientID%>').timepicki();
+                                                                    $('#<%=AS3_Q17.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2247,7 +2248,7 @@
                                                                 <asp:TextBox runat="server" ID="AS3_Q20" class="form-control" name="AS3_Q20"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS3_Q20.ClientID%>').timepicki();
+                                                                    $('#<%=AS3_Q20.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2268,7 +2269,7 @@
                                                                 <asp:TextBox runat="server" ID="AS4_Q22a" class="form-control" name="AS4_Q22a"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS4_Q22a.ClientID%>').timepicki();
+                                                                    $('#<%=AS4_Q22a.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2278,8 +2279,8 @@
                                                                 <asp:TextBox runat="server" ID="AS4_Q22b" class="form-control" name="AS4_Q22b"></asp:TextBox>
                                                                 <div id="Div92" runat="server">
                                                                     <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS4_Q22b.ClientID%>').datepicker({
+                                                                        $(document).ready(function () {
+                                                                            $('#<%=AS4_Q22b.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -2304,7 +2305,7 @@
                                                                 <asp:TextBox runat="server" ID="AS4_Q24" class="form-control" name="AS4_Q24"></asp:TextBox>
                                                                 <script src="Scripts/timepicker/timepicki.js"></script>
                                                                 <script>
-            $('#<%=AS4_Q24.ClientID%>').timepicki();
+                                                                    $('#<%=AS4_Q24.ClientID%>').timepicki();
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2550,8 +2551,8 @@
                                                                 <asp:TextBox runat="server" ID="AS3_A2" class="form-control" name="AS3_A2"></asp:TextBox>
                                                                 <div id="Div288" runat="server">
                                                                     <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS3_A2.ClientID%>').datepicker({
+                                                                        $(document).ready(function () {
+                                                                            $('#<%=AS3_A2.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -2576,8 +2577,8 @@
                                                                 <asp:TextBox runat="server" ID="AS3_B2" class="form-control" name="AS3_B2"></asp:TextBox>
                                                                 <div id="Div42" runat="server">
                                                                     <script type="text/javascript">
-            $(document).ready(function () {
-                $('#<%=AS3_B2.ClientID%>').datepicker({
+                                                                        $(document).ready(function () {
+                                                                            $('#<%=AS3_B2.ClientID%>').datepicker({
                     minDate: -100,
                     maxDate: "+0D",
                     dateFormat: 'dd/mm/yy',
@@ -2629,7 +2630,7 @@
         <%--<a class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white" href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">Try Layout Builder</a>--%>
         <footer class="footer footer-static footer-light navbar-border navbar-shadow">
             <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://themeselection.com/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
+                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://www.aku.edu/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
                 <%--<ul class="list-inline float-md-right d-block d-md-inline-blockd-none d-lg-block mb-0">
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/" target="_blank">More themes</a></li>
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/support" target="_blank">Support</a></li>

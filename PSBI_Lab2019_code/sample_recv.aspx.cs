@@ -43,6 +43,14 @@ public partial class sample_recv : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            if (Request.Cookies["labid"].Value == "3")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Permission Error", "alert('You are not authorize to view this web page')", false);                
+                Response.Redirect("login.aspx?errmsg=You are not authorize to view this web page");
+                return;
+            }
+
+
             if (Request.Cookies["labid"].Value == "2")
             {
                 AS1_Q3a_11.Visible = true;

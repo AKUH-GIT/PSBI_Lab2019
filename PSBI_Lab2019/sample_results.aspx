@@ -188,7 +188,7 @@
                 function (index) {
                     var input = $(this);
 
-                    if (input.attr("id") != "la_sno") {
+                    if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1") {
 
                         if (input.attr('type') == "text"
                             || input.attr('type') == "number") {
@@ -221,16 +221,88 @@
                 function (index) {
                     var input = $(this);
 
-                    if (input.attr("id") != "la_sno") {
+                    if (getCookie("labid") == "3") {
+
+                        if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1" && input.attr("id") != "txthistory") {
+
+                            if (input.attr('type') == "text"
+                                || input.attr('type') == "number") {
+                                input.val("");
+                                input.attr("disabled", "disabled");
+
+                            } else if (input.attr('type') == "radio") {
+
+                                $("input[name='" + input.attr('name') + "']").removeAttr("checked");
+                                $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
+
+                                //var radstates = {};
+                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
+
+                                //$.each(radioButtons, function (index, rd) {
+                                //    if (radioButtons[index].checked == false) {
+                                //        radstates[index] = false;
+                                //    } else {
+                                //        radstates[index] = true;
+                                //    }
+                                //});
+
+                            }
+
+                        }
+
+                    }
+                    else {
+
+                        if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1" && input.attr("id") != "txthistory") {
+
+                            if (input.attr('type') == "text"
+                                || input.attr('type') == "number") {
+                                input.val("");
+                                input.attr("disabled", "disabled");
+
+                            } else if (input.attr('type') == "radio") {
+
+                                $("input[name='" + input.attr('name') + "']").removeAttr("checked");
+                                $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
+
+                                //var radstates = {};
+                                //var radioButtons = $("input[name='" + input.attr('name') + "']");
+
+                                //$.each(radioButtons, function (index, rd) {
+                                //    if (radioButtons[index].checked == false) {
+                                //        radstates[index] = false;
+                                //    } else {
+                                //        radstates[index] = true;
+                                //    }
+                                //});
+
+                            }
+
+                        }
+
+                    }
+
+
+
+                }, errorValidate);
+        }
+
+
+
+        function DisableControls_Loop1() {
+
+            $('#form1 input').each(
+                function (index) {
+                    var input = $(this);
+
+                    if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1") {
 
                         if (input.attr('type') == "text"
                             || input.attr('type') == "number") {
-                            input.val("");
                             input.attr("disabled", "disabled");
 
                         } else if (input.attr('type') == "radio") {
 
-                            $("input[name='" + input.attr('name') + "']").removeAttr("checked");
                             $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
 
                             //var radstates = {};
@@ -501,6 +573,20 @@
             return null;
         }
 
+        $(document).ready(function (e) {
+            var labid = getCookie("labid");
+
+            if (labid == 3) {
+                DisableControls_Loop1();
+                $("#cmdSave").hide();
+            }
+            else {
+                EnableControls_Loop();
+                $("#cmdSave").show();
+            }
+
+        });
+
 
         $(document).on("blur", "#la_sno", function (e) {
 
@@ -541,186 +627,6 @@
 
                                 DisableControls_Loop();
 
-                                //DisableControls("LA_01", "txt");
-                                //DisableControls("LA_02", "txt");
-                                //DisableControls("input[name=LA_03]", "rdo");
-                                //DisableControls("LA_03_a", "txt");
-
-                                //DisableControls("input[name=LA_04]", "rdo");
-                                //DisableControls("LA_04_a", "txt");
-
-                                //DisableControls("input[name=LA_05]", "rdo");
-                                //DisableControls("LA_05_a", "txt");
-
-                                //DisableControls("input[name=LA_06]", "rdo");
-                                //DisableControls("LA_06_a", "txt");
-
-                                //DisableControls("input[name=LA_07]", "rdo");
-                                //DisableControls("LA_07_a", "txt");
-
-                                //DisableControls("input[name=LA_08]", "rdo");
-                                //DisableControls("LA_08_a", "txt");
-
-                                //DisableControls("input[name=LA_09]", "rdo");
-                                //DisableControls("LA_09_a", "txt");
-
-                                //DisableControls("input[name=LA_10]", "rdo");
-                                //DisableControls("LA_10_a", "txt");
-
-                                //DisableControls("input[name=LA_11]", "rdo");
-                                //DisableControls("LA_11_a", "txt");
-
-                                //DisableControls("input[name=LA_12]", "rdo");
-                                //DisableControls("LA_12_a", "txt");
-
-                                //DisableControls("input[name=LA_13]", "rdo");
-                                //DisableControls("LA_13_a", "txt");
-
-                                //DisableControls("input[name=LA_14]", "rdo");
-                                //DisableControls("LA_14_a", "txt");
-
-                                //DisableControls("input[name=LA_15]", "rdo");
-                                //DisableControls("LA_15_a", "txt");
-
-                                //DisableControls("input[name=LA_16]", "rdo");
-                                //DisableControls("LA_16_a", "txt");
-
-                                //DisableControls("LA_17", "txt");
-                                //DisableControls("LA_18", "txt");
-                                //DisableControls("LA_19", "txt");
-
-                                //DisableControls("input[name=LA_20a]", "rdo");
-                                //DisableControls("LA_20a_a", "txt");
-                                //DisableControls("input[name=LA_20b]", "rdo");
-
-                                //DisableControls("input[name=LA_21a]", "rdo");
-                                //DisableControls("LA_21a_a", "txt");
-                                //DisableControls("input[name=LA_21b]", "rdo");
-
-                                //DisableControls("input[name=LA_22a]", "rdo");
-                                //DisableControls("LA_22a_a", "txt");
-                                //DisableControls("input[name=LA_22b]", "rdo");
-
-                                //DisableControls("input[name=LA_23a]", "rdo");
-                                //DisableControls("LA_23a_a", "txt");
-                                //DisableControls("input[name=LA_23b]", "rdo");
-
-                                //DisableControls("input[name=LA_24a]", "rdo");
-                                //DisableControls("LA_24a_a", "txt");
-                                //DisableControls("input[name=LA_24b]", "rdo");
-
-                                //DisableControls("input[name=LA_25a]", "rdo");
-                                //DisableControls("LA_25a_a", "txt");
-                                //DisableControls("input[name=LA_25b]", "rdo");
-
-                                //DisableControls("input[name=LA_26a]", "rdo");
-                                //DisableControls("LA_26a_a", "txt");
-                                //DisableControls("input[name=LA_26b]", "rdo");
-
-                                //DisableControls("input[name=LA_27a]", "rdo");
-                                //DisableControls("LA_27a_a", "txt");
-                                //DisableControls("input[name=LA_27b]", "rdo");
-
-                                //DisableControls("input[name=LA_28a]", "rdo");
-                                //DisableControls("LA_28a_a", "txt");
-                                //DisableControls("input[name=LA_28b]", "rdo");
-
-                                //DisableControls("input[name=LA_29a]", "rdo");
-                                //DisableControls("LA_29a_a", "txt");
-                                //DisableControls("input[name=LA_29b]", "rdo");
-
-                                //DisableControls("input[name=LA_30a]", "rdo");
-                                //DisableControls("LA_30a_a", "txt");
-                                //DisableControls("input[name=LA_30b]", "rdo");
-
-                                //DisableControls("input[name=LA_31a]", "rdo");
-                                //DisableControls("LA_31a_a", "txt");
-                                //DisableControls("input[name=LA_31b]", "rdo");
-
-                                //DisableControls("input[name=LA_32a]", "rdo");
-                                //DisableControls("LA_32a_a", "txt");
-                                //DisableControls("input[name=LA_32b]", "rdo");
-
-                                //DisableControls("input[name=LA_33a]", "rdo");
-                                //DisableControls("LA_33a_a", "txt");
-                                //DisableControls("input[name=LA_33b]", "rdo");
-
-                                //DisableControls("input[name=LA_34a]", "rdo");
-                                //DisableControls("LA_34a_a", "txt");
-                                //DisableControls("input[name=LA_34b]", "rdo");
-
-                                //DisableControls("input[name=LA_35a]", "rdo");
-                                //DisableControls("LA_35a_a", "txt");
-                                //DisableControls("input[name=LA_35b]", "rdo");
-
-                                //DisableControls("input[name=LA_36a]", "rdo");
-                                //DisableControls("LA_36a_a", "txt");
-                                //DisableControls("input[name=LA_36b]", "rdo");
-
-                                //DisableControls("input[name=LA_37a]", "rdo");
-                                //DisableControls("LA_37a_a", "txt");
-                                //DisableControls("input[name=LA_37b]", "rdo");
-
-                                //DisableControls("input[name=LA_38a]", "rdo");
-                                //DisableControls("LA_38a_a", "txt");
-                                //DisableControls("input[name=LA_38b]", "rdo");
-
-                                //DisableControls("input[name=LA_39a]", "rdo");
-                                //DisableControls("LA_39a_a", "txt");
-                                //DisableControls("input[name=LA_39b]", "rdo");
-
-                                //DisableControls("input[name=LA_40a]", "rdo");
-                                //DisableControls("LA_40a_a", "txt");
-                                //DisableControls("input[name=LA_40b]", "rdo");
-
-                                //DisableControls("input[name=LA_41a]", "rdo");
-                                //DisableControls("LA_41a_a", "txt");
-                                //DisableControls("input[name=LA_41b]", "rdo");
-
-                                //DisableControls("input[name=LA_42a]", "rdo");
-                                //DisableControls("LA_42a_a", "txt");
-                                //DisableControls("input[name=LA_42b]", "rdo");
-
-                                //DisableControls("input[name=LA_43a]", "rdo");
-                                //DisableControls("LA_43a_a", "txt");
-                                //DisableControls("input[name=LA_43b]", "rdo");
-
-                                //DisableControls("input[name=LA_44a]", "rdo");
-                                //DisableControls("LA_44a_a", "txt");
-                                //DisableControls("input[name=LA_44b]", "rdo");
-
-                                //DisableControls("input[name=LA_45a]", "rdo");
-                                //DisableControls("LA_45a_a", "txt");
-                                //DisableControls("input[name=LA_45b]", "rdo");
-
-                                //DisableControls("input[name=LA_46a]", "rdo");
-                                //DisableControls("LA_46a_a", "txt");
-                                //DisableControls("input[name=LA_46b]", "rdo");
-
-                                //DisableControls("input[name=LA_47a]", "rdo");
-                                //DisableControls("LA_47a_a", "txt");
-                                //DisableControls("input[name=LA_47b]", "rdo");
-
-                                //DisableControls("input[name=LA_48a]", "rdo");
-                                //DisableControls("LA_48a_a", "txt");
-                                //DisableControls("input[name=LA_48b]", "rdo");
-
-                                //DisableControls("input[name=LA_49a]", "rdo");
-                                //DisableControls("LA_49a_a", "txt");
-                                //DisableControls("input[name=LA_49b]", "rdo");
-
-                                //DisableControls("input[name=LA_50a]", "rdo");
-                                //DisableControls("LA_50a_a", "txt");
-                                //DisableControls("input[name=LA_50b]", "rdo");
-
-                                //DisableControls("input[name=LA_51a]", "rdo");
-                                //DisableControls("LA_51a_a", "txt");
-                                //DisableControls("input[name=LA_51b]", "rdo");
-
-                                //DisableControls("input[name=LA_52a]", "rdo");
-                                //DisableControls("LA_52a_a", "txt");
-                                //DisableControls("input[name=LA_52b]", "rdo");
-
 
                                 $("#cmdSave").hide();
                             }
@@ -735,6 +641,9 @@
 
                         }
                     });
+
+
+
 
                 if (isexist == false) {
 
@@ -763,190 +672,6 @@
                                     DisableControls_Loop();
 
 
-                                    //DisableControls("LA_01", "txt");
-                                    //DisableControls("LA_02", "txt");
-                                    //DisableControls("input[name=LA_03]", "rdo");
-                                    //DisableControls("LA_03_a", "txt");
-
-                                    //DisableControls("input[name=LA_04]", "rdo");
-                                    //DisableControls("LA_04_a", "txt");
-
-
-                                    //DisableControls("input[name=LA_05]", "rdo");
-                                    //DisableControls("LA_05_a", "txt");
-
-
-                                    //DisableControls("input[name=LA_06]", "rdo");
-                                    //DisableControls("LA_06_a", "txt");
-
-                                    //DisableControls("input[name=LA_07]", "rdo");
-                                    //DisableControls("LA_07_a", "txt");
-
-                                    //DisableControls("input[name=LA_08]", "rdo");
-                                    //DisableControls("LA_08_a", "txt");
-
-                                    //DisableControls("input[name=LA_09]", "rdo");
-                                    //DisableControls("LA_09_a", "txt");
-
-                                    //DisableControls("input[name=LA_10]", "rdo");
-                                    //DisableControls("LA_10_a", "txt");
-
-                                    //DisableControls("input[name=LA_11]", "rdo");
-                                    //DisableControls("LA_11_a", "txt");
-
-                                    //DisableControls("input[name=LA_12]", "rdo");
-                                    //DisableControls("LA_12_a", "txt");
-
-                                    //DisableControls("input[name=LA_13]", "rdo");
-                                    //DisableControls("LA_13_a", "txt");
-
-                                    //DisableControls("input[name=LA_14]", "rdo");
-                                    //DisableControls("LA_14_a", "txt");
-
-                                    //DisableControls("input[name=LA_15]", "rdo");
-                                    //DisableControls("LA_15_a", "txt");
-
-                                    //DisableControls("input[name=LA_16]", "rdo");
-                                    //DisableControls("LA_16_a", "txt");
-
-                                    //DisableControls("LA_17", "txt");
-                                    //DisableControls("LA_18", "txt");
-                                    //DisableControls("LA_19", "txt");
-
-                                    //DisableControls("input[name=LA_20a]", "rdo");
-                                    //DisableControls("LA_20a_a", "txt");
-                                    //DisableControls("input[name=LA_20b]", "rdo");
-
-
-                                    //DisableControls("input[name=LA_21a]", "rdo");
-                                    //DisableControls("LA_21a_a", "txt");
-                                    //DisableControls("input[name=LA_21b]", "rdo");
-
-                                    //DisableControls("input[name=LA_22a]", "rdo");
-                                    //DisableControls("LA_22a_a", "txt");
-                                    //DisableControls("input[name=LA_22b]", "rdo");
-
-                                    //DisableControls("input[name=LA_23a]", "rdo");
-                                    //DisableControls("LA_23a_a", "txt");
-                                    //DisableControls("input[name=LA_23b]", "rdo");
-
-                                    //DisableControls("input[name=LA_24a]", "rdo");
-                                    //DisableControls("LA_24a_a", "txt");
-                                    //DisableControls("input[name=LA_24b]", "rdo");
-
-                                    //DisableControls("input[name=LA_25a]", "rdo");
-                                    //DisableControls("LA_25a_a", "txt");
-                                    //DisableControls("input[name=LA_25b]", "rdo");
-
-                                    //DisableControls("input[name=LA_26a]", "rdo");
-                                    //DisableControls("LA_26a_a", "txt");
-                                    //DisableControls("input[name=LA_26b]", "rdo");
-
-                                    //DisableControls("input[name=LA_27a]", "rdo");
-                                    //DisableControls("LA_27a_a", "txt");
-                                    //DisableControls("input[name=LA_27b]", "rdo");
-
-                                    //DisableControls("input[name=LA_28a]", "rdo");
-                                    //DisableControls("LA_28a_a", "txt");
-                                    //DisableControls("input[name=LA_28b]", "rdo");
-
-                                    //DisableControls("input[name=LA_29a]", "rdo");
-                                    //DisableControls("LA_29a_a", "txt");
-                                    //DisableControls("input[name=LA_29b]", "rdo");
-
-                                    //DisableControls("input[name=LA_30a]", "rdo");
-                                    //DisableControls("LA_30a_a", "txt");
-                                    //DisableControls("input[name=LA_30b]", "rdo");
-
-                                    //DisableControls("input[name=LA_31a]", "rdo");
-                                    //DisableControls("LA_31a_a", "txt");
-                                    //DisableControls("input[name=LA_31b]", "rdo");
-
-                                    //DisableControls("input[name=LA_32a]", "rdo");
-                                    //DisableControls("LA_32a_a", "txt");
-                                    //DisableControls("input[name=LA_32b]", "rdo");
-
-                                    //DisableControls("input[name=LA_33a]", "rdo");
-                                    //DisableControls("LA_33a_a", "txt");
-                                    //DisableControls("input[name=LA_33b]", "rdo");
-
-                                    //DisableControls("input[name=LA_34a]", "rdo");
-                                    //DisableControls("LA_34a_a", "txt");
-                                    //DisableControls("input[name=LA_34b]", "rdo");
-
-                                    //DisableControls("input[name=LA_35a]", "rdo");
-                                    //DisableControls("LA_35a_a", "txt");
-                                    //DisableControls("input[name=LA_35b]", "rdo");
-
-                                    //DisableControls("input[name=LA_36a]", "rdo");
-                                    //DisableControls("LA_36a_a", "txt");
-                                    //DisableControls("input[name=LA_36b]", "rdo");
-
-                                    //DisableControls("input[name=LA_37a]", "rdo");
-                                    //DisableControls("LA_37a_a", "txt");
-                                    //DisableControls("input[name=LA_37b]", "rdo");
-
-                                    //DisableControls("input[name=LA_38a]", "rdo");
-                                    //DisableControls("LA_38a_a", "txt");
-                                    //DisableControls("input[name=LA_38b]", "rdo");
-
-                                    //DisableControls("input[name=LA_39a]", "rdo");
-                                    //DisableControls("LA_39a_a", "txt");
-                                    //DisableControls("input[name=LA_39b]", "rdo");
-
-                                    //DisableControls("input[name=LA_40a]", "rdo");
-                                    //DisableControls("LA_40a_a", "txt");
-                                    //DisableControls("input[name=LA_40b]", "rdo");
-
-                                    //DisableControls("input[name=LA_41a]", "rdo");
-                                    //DisableControls("LA_41a_a", "txt");
-                                    //DisableControls("input[name=LA_41b]", "rdo");
-
-                                    //DisableControls("input[name=LA_42a]", "rdo");
-                                    //DisableControls("LA_42a_a", "txt");
-                                    //DisableControls("input[name=LA_42b]", "rdo");
-
-                                    //DisableControls("input[name=LA_43a]", "rdo");
-                                    //DisableControls("LA_43a_a", "txt");
-                                    //DisableControls("input[name=LA_43b]", "rdo");
-
-                                    //DisableControls("input[name=LA_44a]", "rdo");
-                                    //DisableControls("LA_44a_a", "txt");
-                                    //DisableControls("input[name=LA_44b]", "rdo");
-
-                                    //DisableControls("input[name=LA_45a]", "rdo");
-                                    //DisableControls("LA_45a_a", "txt");
-                                    //DisableControls("input[name=LA_45b]", "rdo");
-
-                                    //DisableControls("input[name=LA_46a]", "rdo");
-                                    //DisableControls("LA_46a_a", "txt");
-                                    //DisableControls("input[name=LA_46b]", "rdo");
-
-                                    //DisableControls("input[name=LA_47a]", "rdo");
-                                    //DisableControls("LA_47a_a", "txt");
-                                    //DisableControls("input[name=LA_47b]", "rdo");
-
-                                    //DisableControls("input[name=LA_48a]", "rdo");
-                                    //DisableControls("LA_48a_a", "txt");
-                                    //DisableControls("input[name=LA_48b]", "rdo");
-
-                                    //DisableControls("input[name=LA_49a]", "rdo");
-                                    //DisableControls("LA_49a_a", "txt");
-                                    //DisableControls("input[name=LA_49b]", "rdo");
-
-                                    //DisableControls("input[name=LA_50a]", "rdo");
-                                    //DisableControls("LA_50a_a", "txt");
-                                    //DisableControls("input[name=LA_50b]", "rdo");
-
-                                    //DisableControls("input[name=LA_51a]", "rdo");
-                                    //DisableControls("LA_51a_a", "txt");
-                                    //DisableControls("input[name=LA_51b]", "rdo");
-
-                                    //DisableControls("input[name=LA_52a]", "rdo");
-                                    //DisableControls("LA_52a_a", "txt");
-                                    //DisableControls("input[name=LA_52b]", "rdo");
-
-
                                     $("#cmdSave").hide();
                                 }
                                 else {
@@ -954,186 +679,6 @@
                                     if (isexist == false) {
 
                                         EnableControls_Loop();
-
-                                        //EnableControls("LA_01", "txt");
-                                        //EnableControls("LA_02", "txt");
-                                        //EnableControls("input[name=LA_03]", "rdo");
-                                        //EnableControls("LA_03_a", "txt");
-
-                                        //EnableControls("input[name=LA_04]", "rdo");
-                                        //EnableControls("LA_04_a", "txt");
-
-                                        //EnableControls("input[name=LA_05]", "rdo");
-                                        //EnableControls("LA_05_a", "txt");
-
-                                        //EnableControls("input[name=LA_06]", "rdo");
-                                        //EnableControls("LA_06_a", "txt");
-
-                                        //EnableControls("input[name=LA_07]", "rdo");
-                                        //EnableControls("LA_07_a", "txt");
-
-                                        //EnableControls("input[name=LA_08]", "rdo");
-                                        //EnableControls("LA_08_a", "txt");
-
-                                        //EnableControls("input[name=LA_09]", "rdo");
-                                        //EnableControls("LA_09_a", "txt");
-
-                                        //EnableControls("input[name=LA_10]", "rdo");
-                                        //EnableControls("LA_10_a", "txt");
-
-                                        //EnableControls("input[name=LA_11]", "rdo");
-                                        //EnableControls("LA_11_a", "txt");
-
-                                        //EnableControls("input[name=LA_12]", "rdo");
-                                        //EnableControls("LA_12_a", "txt");
-
-                                        //EnableControls("input[name=LA_13]", "rdo");
-                                        //EnableControls("LA_13_a", "txt");
-
-                                        //EnableControls("input[name=LA_14]", "rdo");
-                                        //EnableControls("LA_14_a", "txt");
-
-                                        //EnableControls("input[name=LA_15]", "rdo");
-                                        //EnableControls("LA_15_a", "txt");
-
-                                        //EnableControls("input[name=LA_16]", "rdo");
-                                        //EnableControls("LA_16_a", "txt");
-
-                                        //EnableControls("LA_17", "txt");
-                                        //EnableControls("LA_18", "txt");
-                                        //EnableControls("LA_19", "txt");
-
-                                        //EnableControls("input[name=LA_20a]", "rdo");
-                                        //EnableControls("LA_20a_a", "txt");
-                                        //EnableControls("input[name=LA_20b]", "rdo");
-
-                                        //EnableControls("input[name=LA_21a]", "rdo");
-                                        //EnableControls("LA_21a_a", "txt");
-                                        //EnableControls("input[name=LA_21b]", "rdo");
-
-                                        //EnableControls("input[name=LA_22a]", "rdo");
-                                        //EnableControls("LA_22a_a", "txt");
-                                        //EnableControls("input[name=LA_22b]", "rdo");
-
-                                        //EnableControls("input[name=LA_23a]", "rdo");
-                                        //EnableControls("LA_23a_a", "txt");
-                                        //EnableControls("input[name=LA_23b]", "rdo");
-
-                                        //EnableControls("input[name=LA_24a]", "rdo");
-                                        //EnableControls("LA_24a_a", "txt");
-                                        //EnableControls("input[name=LA_24b]", "rdo");
-
-                                        //EnableControls("input[name=LA_25a]", "rdo");
-                                        //EnableControls("LA_25a_a", "txt");
-                                        //EnableControls("input[name=LA_25b]", "rdo");
-
-                                        //EnableControls("input[name=LA_26a]", "rdo");
-                                        //EnableControls("LA_26a_a", "txt");
-                                        //EnableControls("input[name=LA_26b]", "rdo");
-
-                                        //EnableControls("input[name=LA_27a]", "rdo");
-                                        //EnableControls("LA_27a_a", "txt");
-                                        //EnableControls("input[name=LA_27b]", "rdo");
-
-                                        //EnableControls("input[name=LA_28a]", "rdo");
-                                        //EnableControls("LA_28a_a", "txt");
-                                        //EnableControls("input[name=LA_28b]", "rdo");
-
-                                        //EnableControls("input[name=LA_29a]", "rdo");
-                                        //EnableControls("LA_29a_a", "txt");
-                                        //EnableControls("input[name=LA_29b]", "rdo");
-
-                                        //EnableControls("input[name=LA_30a]", "rdo");
-                                        //EnableControls("LA_30a_a", "txt");
-                                        //EnableControls("input[name=LA_30b]", "rdo");
-
-                                        //EnableControls("input[name=LA_31a]", "rdo");
-                                        //EnableControls("LA_31a_a", "txt");
-                                        //EnableControls("input[name=LA_31b]", "rdo");
-
-                                        //EnableControls("input[name=LA_32a]", "rdo");
-                                        //EnableControls("LA_32a_a", "txt");
-                                        //EnableControls("input[name=LA_32b]", "rdo");
-
-                                        //EnableControls("input[name=LA_33a]", "rdo");
-                                        //EnableControls("LA_33a_a", "txt");
-                                        //EnableControls("input[name=LA_33b]", "rdo");
-
-                                        //EnableControls("input[name=LA_34a]", "rdo");
-                                        //EnableControls("LA_34a_a", "txt");
-                                        //EnableControls("input[name=LA_34b]", "rdo");
-
-                                        //EnableControls("input[name=LA_35a]", "rdo");
-                                        //EnableControls("LA_35a_a", "txt");
-                                        //EnableControls("input[name=LA_35b]", "rdo");
-
-                                        //EnableControls("input[name=LA_36a]", "rdo");
-                                        //EnableControls("LA_36a_a", "txt");
-                                        //EnableControls("input[name=LA_36b]", "rdo");
-
-                                        //EnableControls("input[name=LA_37a]", "rdo");
-                                        //EnableControls("LA_37a_a", "txt");
-                                        //EnableControls("input[name=LA_37b]", "rdo");
-
-                                        //EnableControls("input[name=LA_38a]", "rdo");
-                                        //EnableControls("LA_38a_a", "txt");
-                                        //EnableControls("input[name=LA_38b]", "rdo");
-
-                                        //EnableControls("input[name=LA_39a]", "rdo");
-                                        //EnableControls("LA_39a_a", "txt");
-                                        //EnableControls("input[name=LA_39b]", "rdo");
-
-                                        //EnableControls("input[name=LA_40a]", "rdo");
-                                        //EnableControls("LA_40a_a", "txt");
-                                        //EnableControls("input[name=LA_40b]", "rdo");
-
-                                        //EnableControls("input[name=LA_41a]", "rdo");
-                                        //EnableControls("LA_41a_a", "txt");
-                                        //EnableControls("input[name=LA_41b]", "rdo");
-
-                                        //EnableControls("input[name=LA_42a]", "rdo");
-                                        //EnableControls("LA_42a_a", "txt");
-                                        //EnableControls("input[name=LA_42b]", "rdo");
-
-                                        //EnableControls("input[name=LA_43a]", "rdo");
-                                        //EnableControls("LA_43a_a", "txt");
-                                        //EnableControls("input[name=LA_43b]", "rdo");
-
-                                        //EnableControls("input[name=LA_44a]", "rdo");
-                                        //EnableControls("LA_44a_a", "txt");
-                                        //EnableControls("input[name=LA_44b]", "rdo");
-
-                                        //EnableControls("input[name=LA_45a]", "rdo");
-                                        //EnableControls("LA_45a_a", "txt");
-                                        //EnableControls("input[name=LA_45b]", "rdo");
-
-                                        //EnableControls("input[name=LA_46a]", "rdo");
-                                        //EnableControls("LA_46a_a", "txt");
-                                        //EnableControls("input[name=LA_46b]", "rdo");
-
-                                        //EnableControls("input[name=LA_47a]", "rdo");
-                                        //EnableControls("LA_47a_a", "txt");
-                                        //EnableControls("input[name=LA_47b]", "rdo");
-
-                                        //EnableControls("input[name=LA_48a]", "rdo");
-                                        //EnableControls("LA_48a_a", "txt");
-                                        //EnableControls("input[name=LA_48b]", "rdo");
-
-                                        //EnableControls("input[name=LA_49a]", "rdo");
-                                        //EnableControls("LA_49a_a", "txt");
-                                        //EnableControls("input[name=LA_49b]", "rdo");
-
-                                        //EnableControls("input[name=LA_50a]", "rdo");
-                                        //EnableControls("LA_50a_a", "txt");
-                                        //EnableControls("input[name=LA_50b]", "rdo");
-
-                                        //EnableControls("input[name=LA_51a]", "rdo");
-                                        //EnableControls("LA_51a_a", "txt");
-                                        //EnableControls("input[name=LA_51b]", "rdo");
-
-                                        //EnableControls("input[name=LA_52a]", "rdo");
-                                        //EnableControls("LA_52a_a", "txt");
-                                        //EnableControls("input[name=LA_52b]", "rdo");
 
 
                                         $("#la_fsite").val(data.d[0]["AS1_fsite"]);
@@ -1177,7 +722,6 @@
             }
 
         });
-
 
     </script>
 
@@ -3434,7 +2978,7 @@
     </script>
 
     <script>
-        
+
         function ValidateForm() {
 
             if ($("#la_sno").val() == "__-_-____") {
@@ -3748,19 +3292,19 @@
                 $("#RF_01_a").focus();
                 return false;
             }
-                //else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
-                //    || $("#RF_02_b").is(":visible") == true
-                //    || $("#RF_02_c").is(":visible") == true
-                //)) {
-                //    alert("Please select   ");
-                //    $("#RF_02_v").focus();
-                //    return false;
-                //}
-                //else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
-                //    alert("Please enter value ");
-                //    $("#RF_02_a").focus();
-                //    return false;
-                //}
+            //else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
+            //    || $("#RF_02_b").is(":visible") == true
+            //    || $("#RF_02_c").is(":visible") == true
+            //)) {
+            //    alert("Please select   ");
+            //    $("#RF_02_v").focus();
+            //    return false;
+            //}
+            //else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
+            //    alert("Please enter value ");
+            //    $("#RF_02_a").focus();
+            //    return false;
+            //}
             else if ($('input[name=RF_03]:checked').length <= 0 && ($("#RF_03_v").is(":visible") == true
                 || $("#RF_03_b").is(":visible") == true
                 || $("#RF_03_c").is(":visible") == true
@@ -5799,6 +5343,19 @@
             <div class="navigation-background"></div>
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                        { %>
+
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
+                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                    <li class="nav-item">
+                        <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
+
+                    <% }
+                        else
+                        {  %>
+
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
                         <%--<ul class="menu-content">
                             <li><a class="active" href="form.aspx">Employee Entry</a>
@@ -5811,9 +5368,14 @@
                     </li>
                     <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
                     <li class="nav-item"><a href="rpt_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Report Viewer</span></span></a></li>
+                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
+
+
+                    <% }
+                    %>
                 </ul>
             </div>
         </div>
@@ -5860,7 +5422,14 @@
                                                         <label class="col-md-3 label-control" for="projectinput5">Screening Number</label>
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" MaxLength="15" ID="la_sno" class="form-control" name="la_sno" onkeypress="return numeralsOnly(event);"></asp:TextBox>
-                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="la_sno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender2" TargetControlID="la_sno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput5">History</label>
+                                                        <div class="col-md-4">
+                                                            <asp:TextBox runat="server" MaxLength="15" ID="txthistory" class="form-control" name="txthistory" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
                                                         </div>
                                                     </div>
 
@@ -5944,14 +5513,17 @@
                                                     </asp:Panel>
 
 
+                                                    <div class="form-body">
+                                                        <h4 class="card-title1">Complete Blood Count (CBC)</h4>
+                                                    </div>
+
+
                                                     <asp:Panel runat="server" ID="pnl_idrl">
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">CBC Result</label>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Complete Blood Count (CBC)</label>
-                                                        </div>
+
 
 
                                                         <div class="form-group row">
@@ -6367,8 +5939,8 @@
                                                         </div>
 
 
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Liver Profile Test (LFT)</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Liver Profile Test (LFT)</h4>
                                                         </div>
 
 
@@ -6399,8 +5971,6 @@
                                                                 <asp:TextBox runat="server" MaxLength="15" ID="LF_01_a" class="form-control" name="LF_01_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
-
-
 
 
 
@@ -6583,11 +6153,9 @@
 
 
 
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Renal Function Test</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Renal Function Test</h4>
                                                         </div>
-
 
 
 
@@ -6710,13 +6278,9 @@
                                                         </div>
 
 
-
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Serum Electrolytes</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Serum Electrolytes</h4>
                                                         </div>
-
-
 
 
                                                         <div class="form-group row">
@@ -6838,13 +6402,9 @@
                                                         </div>
 
 
-
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">CSF Detail Report</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">CSF Detail Report</h4>
                                                         </div>
-
-
 
 
                                                         <div class="form-group row">
@@ -7144,12 +6704,9 @@
                                                         </div>
 
 
-
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Urine Detail Report</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Urine Detail Report</h4>
                                                         </div>
-
 
 
                                                         <div class="form-group row">
@@ -7783,11 +7340,9 @@
                                                         </div>
 
 
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Urine Culture and Sensitivity (Urine C/S)</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Urine Culture and Sensitivity (Urine C/S)</h4>
                                                         </div>
-
 
 
                                                         <div class="form-group row">
@@ -9570,13 +9125,9 @@
                                                         </div>
 
 
-
-
-
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label_heading" for="projectinput5">Blood Culture Result / Antibiotic Susceptibility</label>
+                                                        <div class="form-body">
+                                                            <h4 class="card-title1">Blood Culture Result / Antibiotic Susceptibility</h4>
                                                         </div>
-
 
 
                                                         <div class="form-group row">
@@ -11267,6 +10818,7 @@
                                                     <ContentTemplate>
 
                                                         <div class="form-actions left">
+                                                            <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-cyan mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
                                                             <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>
@@ -11298,7 +10850,7 @@
         <%--<a class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white" href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">Try Layout Builder</a>--%>
         <footer class="footer footer-static footer-light navbar-border navbar-shadow">
             <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://themeselection.com/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
+                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://www.aku.edu/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
                 <%--<ul class="list-inline float-md-right d-block d-md-inline-blockd-none d-lg-block mb-0">
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/" target="_blank">More themes</a></li>
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/support" target="_blank">Support</a></li>

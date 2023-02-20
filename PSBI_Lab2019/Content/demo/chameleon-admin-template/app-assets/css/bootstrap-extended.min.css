@@ -3,55 +3,55 @@
 }
 
 .font-small-1 {
-    font-size: .7rem!important;
+    font-size: .7rem !important;
 }
 
 .font-small-2 {
-    font-size: .8rem!important;
+    font-size: .8rem !important;
 }
 
 .font-small-3 {
-    font-size: .9rem!important;
+    font-size: .9rem !important;
 }
 
 .font-medium-1 {
-    font-size: 1.1rem!important;
+    font-size: 1.1rem !important;
 }
 
 .font-medium-2 {
-    font-size: 1.2rem!important;
+    font-size: 1.2rem !important;
 }
 
 .font-medium-3 {
-    font-size: 1.3rem!important;
+    font-size: 1.3rem !important;
 }
 
 .font-medium-4 {
-    font-size: 1.4rem!important;
+    font-size: 1.4rem !important;
 }
 
 .font-medium-5 {
-    font-size: 1.5rem!important;
+    font-size: 1.5rem !important;
 }
 
 .font-large-1 {
-    font-size: 2rem!important;
+    font-size: 2rem !important;
 }
 
 .font-large-2 {
-    font-size: 3rem!important;
+    font-size: 3rem !important;
 }
 
 .font-large-3 {
-    font-size: 4rem!important;
+    font-size: 4rem !important;
 }
 
 .font-large-4 {
-    font-size: 5rem!important;
+    font-size: 5rem !important;
 }
 
 .font-large-5 {
-    font-size: 6rem!important;
+    font-size: 6rem !important;
 }
 
 .text-bold-300 {
@@ -99,7 +99,7 @@ pre {
 }
 
     pre code {
-        background-color: transparent!important;
+        background-color: transparent !important;
     }
 
 .bd-example-row .row + .row {
@@ -383,7 +383,7 @@ form .form-actions {
 
 @media (max-width:767.98px) {
     form .form-actions .buttons-group {
-        float: left!important;
+        float: left !important;
         margin-bottom: 10px;
     }
 }
@@ -461,8 +461,8 @@ form .custom-control-indicator {
 }
 
 select.form-control {
-    padding-top: 0!important;
-    padding-bottom: 0!important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .custom-checkbox {
@@ -520,8 +520,8 @@ select.form-control {
 
     .btn.active, .btn.focus, .btn:active, .btn:focus {
         outline: 0;
-        -webkit-box-shadow: none!important;
-        box-shadow: none!important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
     }
 
     .btn.btn-icon i {
@@ -673,8 +673,8 @@ select.form-control {
     animation: menu-header-fade-in .3s ease 1,menu-header-move-up .3s ease-out 1;
     border: none;
     border-radius: .35rem;
-    -webkit-box-shadow: 0 0 15px 1px rgba(64,70,74,.25)!important;
-    box-shadow: 0 0 15px 1px rgba(64,70,74,.25)!important;
+    -webkit-box-shadow: 0 0 15px 1px rgba(64,70,74,.25) !important;
+    box-shadow: 0 0 15px 1px rgba(64,70,74,.25) !important;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
@@ -708,7 +708,7 @@ select.form-control {
     top: 0;
     padding: 0 2px 0 6px;
     vertical-align: 0;
-    border: none!important;
+    border: none !important;
     position: relative;
     font-family: LineAwesome;
 }
@@ -731,7 +731,7 @@ select.form-control {
 .dropdown-toggle::after {
     right: 4px;
     margin: 0 .3em 0 0;
-    content: '\f110'!important;
+    content: '\f110' !important;
 }
 
 .dropdown-toggle.nav-hide-arrow::after {
@@ -739,14 +739,14 @@ select.form-control {
 }
 
 .dropright .dropdown-toggle::after {
-    content: '\f112'!important;
+    content: '\f112' !important;
 }
 
 .dropleft .dropdown-toggle::before {
     left: 0;
     display: inline-block;
     margin: 0 .9em 0 0;
-    content: '\f111'!important;
+    content: '\f111' !important;
 }
 
 .icon-shadow, .table-middle td {
@@ -759,7 +759,7 @@ select.form-control {
 }
 
 .navbar-horizontal .dropdown-toggle::after {
-    top: 12px!important;
+    top: 12px !important;
 }
 
 .navbar-horizontal .nav .dropdown-divider {
@@ -788,8 +788,8 @@ select.form-control {
             left: 100%;
             margin-top: -6px;
             background: 0 0;
-            -webkit-box-shadow: none!important;
-            box-shadow: none!important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
         }
 
             .dropdown-menu .dropdown-submenu > .dropdown-menu.open-left {
@@ -815,7 +815,7 @@ select.form-control {
             position: absolute;
             right: 15px;
             float: right;
-            content: '\f112'!important;
+            content: '\f112' !important;
             border: none;
         }
 
@@ -887,7 +887,7 @@ select.form-control {
     }
 
 .dropdown-menu .arrow-left {
-    margin-left: 7px!important;
+    margin-left: 7px !important;
 }
 
     .dropdown-menu .arrow-left:after, .dropdown-menu .arrow-left:before {
@@ -907,7 +907,7 @@ select.form-control {
     }
 
 .dropdown-menu .arrow-right {
-    margin-right: 7px!important;
+    margin-right: 7px !important;
 }
 
     .dropdown-menu .arrow-right:after, .dropdown-menu .arrow-right:before {
@@ -927,7 +927,7 @@ select.form-control {
     }
 
 .dropup .dropdown-toggle::after {
-    content: '\f113'!important;
+    content: '\f113' !important;
 }
 
 .dropup .dropdown-menu {
@@ -1301,7 +1301,7 @@ select.form-control {
 
 @media (max-width:767.98px) {
     .header-navbar .navbar-header {
-        width: 100%!important;
+        width: 100% !important;
         padding: .5rem 1rem;
     }
 
@@ -1357,7 +1357,7 @@ select.form-control {
     }
 
     .navbar-dark .navbar-brand .brand-text {
-        color: #fff!important;
+        color: #fff !important;
     }
 
     .navbar-dark .navbar-nav .active.nav-link {
@@ -1413,7 +1413,7 @@ select.form-control {
     }
 
 .mega-dropdown {
-    position: static!important;
+    position: static !important;
 }
 
     .mega-dropdown .dropdown-menu {
@@ -1479,7 +1479,7 @@ select.form-control {
     }
 
 .horizontal-top-icon-menu .mega-dropdown-menu {
-    margin: 0 25px!important;
+    margin: 0 25px !important;
 }
 
 @media (min-width:576px) {
@@ -1562,7 +1562,7 @@ select.form-control {
 .navbar-menu-icon {
     position: relative;
     width: 24px;
-    margin: 16px 2px!important;
+    margin: 16px 2px !important;
     cursor: pointer;
     -webkit-transition: .5s ease-in-out;
     -moz-transition: .5s ease-in-out;
@@ -1645,7 +1645,7 @@ select.form-control {
 
     .header-navbar .navbar-container .show .dropdown-menu {
         right: 0;
-        left: 0!important;
+        left: 0 !important;
         float: none;
         overflow-x: hidden;
         overflow-y: hidden;
@@ -1810,7 +1810,7 @@ select.form-control {
     margin-bottom: .75rem;
 }
 
-.card {    
+.card {
     margin-bottom: 1.875rem;
     border: none;
     -webkit-box-shadow: 0 1px 15px 1px rgba(62,57,107,.07);
@@ -1830,14 +1830,23 @@ select.form-control {
 }
 
 .card .card {
-    -webkit-box-shadow: none!important;
-    box-shadow: none!important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .card .card-title {
     font-size: 1.12rem;
     font-weight: 700;
     letter-spacing: .05rem;
+}
+
+.card-title1 {
+    font-family: Verdana;
+    font-size: 1.12rem;
+    font-weight: 700;
+    letter-spacing: .05rem;
+    align-items: center;
+    text-align: center;
 }
 
 .card .card-bordered {
@@ -1854,11 +1863,11 @@ select.form-control {
     display: block;
     overflow: auto;
     width: 100% !important;
-    height: 100% !important;    
+    height: 100% !important;
 }
 
-.card .card-body[class*=border-bottom-] {    
-    border-bottom-width: 2px!important;
+.card .card-body[class*=border-bottom-] {
+    border-bottom-width: 2px !important;
 }
 
 .card .card-img-overlay.bg-overlay {
@@ -1866,7 +1875,7 @@ select.form-control {
 }
 
 .card .card-img-overlay .text-muted {
-    color: #464855!important;
+    color: #464855 !important;
 }
 
 .card.card-minimal {
@@ -1930,7 +1939,7 @@ select.form-control {
 }
 
 .text-white .card-img-overlay .text-muted {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .text-white code {
@@ -2162,7 +2171,7 @@ select.form-control {
 
     .badge.badge-border {
         font-size: 85%;
-        border-width: 2px!important;
+        border-width: 2px !important;
         background-color: transparent;
     }
 
@@ -2651,11 +2660,11 @@ code[class*=language-], pre[class*=language-] {
     }
 
     .alert.alert-icon-left[class*=bg-] {
-        border-left-color: rgba(0,0,0,.15)!important;
+        border-left-color: rgba(0,0,0,.15) !important;
     }
 
     .alert.alert-icon-right[class*=bg-] {
-        border-right-color: rgba(0,0,0,.15)!important;
+        border-right-color: rgba(0,0,0,.15) !important;
     }
 
     .alert[class*=alert-icon-] .alert-icon {
@@ -2735,13 +2744,13 @@ code[class*=language-], pre[class*=language-] {
     }
 
 .media-list a.media {
-    color: #6b6f80!important;
+    color: #6b6f80 !important;
 }
 
 .media [class*=avatar-] {
     position: relative;
     margin-right: 0;
-    padding-right: 0!important;
+    padding-right: 0 !important;
 }
 
     .media [class*=avatar-] i {
@@ -2771,23 +2780,23 @@ ul.media-list li {
     }
 
     .progress.progress-xl {
-        height: 2rem!important;
+        height: 2rem !important;
     }
 
     .progress.progress-lg {
-        height: 1.5rem!important;
+        height: 1.5rem !important;
     }
 
     .progress.progress-md {
-        height: 1rem!important;
+        height: 1rem !important;
     }
 
     .progress.progress-sm {
-        height: .5rem!important;
+        height: .5rem !important;
     }
 
     .progress.progress-xs {
-        height: .25rem!important;
+        height: .25rem !important;
     }
 
     .progress.box-shadow {
@@ -2805,7 +2814,7 @@ ul.list-inline.list-inline-pipe > li + li:before {
 }
 
 .list-group .list-group-item.active {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .list-group .list-group-item-action:active {
@@ -2901,8 +2910,8 @@ ul.list-inline.list-inline-pipe > li + li:before {
 }
 
 .modal-content {
-    -webkit-box-shadow: 0 10px 50px 0 rgba(70,72,85,.8)!important;
-    box-shadow: 0 10px 50px 0 rgba(70,72,85,.8)!important;
+    -webkit-box-shadow: 0 10px 50px 0 rgba(70,72,85,.8) !important;
+    box-shadow: 0 10px 50px 0 rgba(70,72,85,.8) !important;
 }
 
 .modal-sm {
@@ -3009,11 +3018,11 @@ ul.list-inline.list-inline-pipe > li + li:before {
 }
 
 .blockOverlay {
-    z-index: 1050!important;
+    z-index: 1050 !important;
 }
 
 .blockElement, .blockPage {
-    z-index: 1051!important;
+    z-index: 1051 !important;
 }
 
 .embed-responsive:before {
@@ -3089,7 +3098,7 @@ a:hover {
     }
 
 .icon-line-height {
-    line-height: 1.5rem!important;
+    line-height: 1.5rem !important;
 }
 
 .spinner {

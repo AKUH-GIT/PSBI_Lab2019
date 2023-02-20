@@ -188,7 +188,7 @@
                 function (index) {
                     var input = $(this);
 
-                    if (input.attr("id") != "la_sno") {
+                    if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1") {
 
                         if (input.attr('type') == "text"
                             || input.attr('type') == "number") {
@@ -221,7 +221,7 @@
                 function (index) {
                     var input = $(this);
 
-                    if (input.attr("id") != "la_sno") {
+                    if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1") {
 
                         if (input.attr('type') == "text"
                             || input.attr('type') == "number") {
@@ -231,6 +231,42 @@
                         } else if (input.attr('type') == "radio") {
 
                             $("input[name='" + input.attr('name') + "']").removeAttr("checked");
+                            $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
+
+                            //var radstates = {};
+                            //var radioButtons = $("input[name='" + input.attr('name') + "']");
+
+                            //$.each(radioButtons, function (index, rd) {
+                            //    if (radioButtons[index].checked == false) {
+                            //        radstates[index] = false;
+                            //    } else {
+                            //        radstates[index] = true;
+                            //    }
+                            //});
+
+                        }
+
+                    }
+
+                }, errorValidate);
+        }
+
+
+
+        function DisableControls_Loop1() {
+
+            $('#form1 input').each(
+                function (index) {
+                    var input = $(this);
+
+                    if (input.attr("id") != "la_sno" && input.attr("id") != "la_sno1") {
+
+                        if (input.attr('type') == "text"
+                            || input.attr('type') == "number") {
+                            input.attr("disabled", "disabled");
+
+                        } else if (input.attr('type') == "radio") {
+
                             $("input[name='" + input.attr('name') + "']").attr("disabled", "disabled");
 
                             //var radstates = {};
@@ -500,6 +536,20 @@
             }
             return null;
         }
+
+        $(document).ready(function (e) {
+            var labid = getCookie("labid");
+
+            if (labid == 3) {
+                DisableControls_Loop1();
+                $("#cmdSave").hide();
+            }
+            else {
+                EnableControls_Loop();
+                $("#cmdSave").show();
+            }
+
+        });
 
 
         $(document).on("blur", "#la_sno", function (e) {
@@ -1177,6 +1227,57 @@
             }
 
         });
+
+
+
+
+
+        $(document).on("blur", "#la_sno1", function (e) {
+
+            if ($("#la_sno1").val() != "__-_-____") {                
+
+                $
+                    .ajax({
+                        url: "sample_results.aspx/IsScreeningIDExists",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: "{ screeningid: '" + $('#la_sno1').val() + "'}",
+
+                        success: function (
+                            data) {
+
+                            if (data.d == "") {
+
+                                $("#la_fsite").val("");
+                                $("#la_rand").val("");
+                                $("#la_spec").val("");
+                                $("#la_name").val("");
+                                $("#la_gen").val("");
+                                $("#la_age").val("");
+                                $("#la_obj").val("");
+
+                                alert("Results does not exists against this Screening id ");
+
+                                DisableControls_Loop();
+
+                            }                            
+
+                        },
+                        error: function (
+                            xhr,
+                            ajaxOptions,
+                            thrownError) {
+
+                            alert('Error: ');
+
+                        }
+                    });
+
+            }
+
+        });
+
 
 
     </script>
@@ -3434,7 +3535,7 @@
     </script>
 
     <script>
-        
+
         function ValidateForm() {
 
             if ($("#la_sno").val() == "__-_-____") {
@@ -3748,19 +3849,19 @@
                 $("#RF_01_a").focus();
                 return false;
             }
-                //else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
-                //    || $("#RF_02_b").is(":visible") == true
-                //    || $("#RF_02_c").is(":visible") == true
-                //)) {
-                //    alert("Please select   ");
-                //    $("#RF_02_v").focus();
-                //    return false;
-                //}
-                //else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
-                //    alert("Please enter value ");
-                //    $("#RF_02_a").focus();
-                //    return false;
-                //}
+            //else if ($('input[name=RF_02]:checked').length <= 0 && ($("#RF_02_v").is(":visible") == true
+            //    || $("#RF_02_b").is(":visible") == true
+            //    || $("#RF_02_c").is(":visible") == true
+            //)) {
+            //    alert("Please select   ");
+            //    $("#RF_02_v").focus();
+            //    return false;
+            //}
+            //else if ($("#RF_02_a").val() == "" && $("#RF_02_a").is(":visible") == true) {
+            //    alert("Please enter value ");
+            //    $("#RF_02_a").focus();
+            //    return false;
+            //}
             else if ($('input[name=RF_03]:checked').length <= 0 && ($("#RF_03_v").is(":visible") == true
                 || $("#RF_03_b").is(":visible") == true
                 || $("#RF_03_c").is(":visible") == true
@@ -5799,6 +5900,18 @@
             <div class="navigation-background"></div>
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                        { %>
+
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
+                    <li class="nav-item">
+                        <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
+
+                    <% }
+                        else
+                        {  %>
+
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
                         <%--<ul class="menu-content">
                             <li><a class="active" href="form.aspx">Employee Entry</a>
@@ -5814,6 +5927,10 @@
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
+
+
+                    <% }
+                    %>
                 </ul>
             </div>
         </div>
@@ -5856,13 +5973,34 @@
 
                                                     <br />
 
+                                                    <%if (Request.Cookies["labid"].Value.ToString() == "3")
+                                                        { %>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput5">Screening Number</label>
+                                                        <div class="col-md-2">
+                                                            <asp:TextBox runat="server" MaxLength="15" ID="la_sno1" class="form-control" name="la_sno1" onkeypress="return numeralsOnly(event);"></asp:TextBox>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="la_sno1" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <asp:Button ID="cmdSearch" runat="server" class="btn btn-primary" Text="Search" OnClick="cmdSearch_Click"></asp:Button>
+                                                        </div>
+                                                    </div>
+
+                                                    <% }
+                                                        else
+                                                        {  %>
+
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">Screening Number</label>
                                                         <div class="col-md-9">
                                                             <asp:TextBox runat="server" MaxLength="15" ID="la_sno" class="form-control" name="la_sno" onkeypress="return numeralsOnly(event);"></asp:TextBox>
-                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender1" TargetControlID="la_sno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                            <cc1:MaskedEditExtender ID="MaskedEditExtender2" TargetControlID="la_sno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="99-9-9999" runat="server"></cc1:MaskedEditExtender>
                                                         </div>
                                                     </div>
+
+
+                                                    <% } %>
 
 
                                                     <div class="form-group row">
@@ -11298,7 +11436,7 @@
         <%--<a class="btn btn-try-builder btn-bg-gradient-x-purple-red btn-glow white" href="https://www.themeselection.com/layout-builder/horizontal" target="_blank">Try Layout Builder</a>--%>
         <footer class="footer footer-static footer-light navbar-border navbar-shadow">
             <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://themeselection.com/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
+                <span class="float-none d-block d-md-inline-block">Designed and developed by <a class="text-bold-800 grey darken-2" href="https://www.aku.edu/" target="_blank">Paeds Department</a> &copy; Copyright <% Response.Write(DateTime.Now.Year.ToString()); %></span>
                 <%--<ul class="list-inline float-md-right d-block d-md-inline-blockd-none d-lg-block mb-0">
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/" target="_blank">More themes</a></li>
                     <li class="list-inline-item"><a class="my-1" href="https://themeselection.com/support" target="_blank">Support</a></li>

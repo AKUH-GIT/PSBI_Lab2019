@@ -111,14 +111,11 @@
                             </button>--%>
                         </div>
                     </div>
-                    <%--<p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 "><span>OR Sign Up Using</span></p>--%>
-                    <%--<div class="text-center">
-                        <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-facebook"><span class="ft-facebook"></span></a>
-                        <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-twitter"><span class="ft-twitter"></span></a>
-                        <a href="#" class="btn btn-social-icon round mr-1 mb-1 btn-instagram"><span class="ft-instagram"></span></a>
+                    <%--<p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-2 "><span>OR Sign in Using Administrator Panel</span></p>
+                    <div class="text-center">
+                        <asp:ImageButton ID="lnkregister" Height="50" ImageUrl="~/Content/demo/chameleon-admin-template/app-assets/images/portrait/small/admin_icon.png" OnClick="lnkregister_Click" runat="server" />
                     </div>--%>
 
-                    <%--<p class="card-subtitle text-muted text-right font-small-3 mx-2 my-1"><span>Don't have an account ? <a href="register.html" class="card-link">Sign Up</a></span></p>--%>
                 </div>
             </div>
         </ContentTemplate>
