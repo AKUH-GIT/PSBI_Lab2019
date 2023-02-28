@@ -133,7 +133,6 @@
                                         <div class="card-content collpase show">
                                             <div class="card-body">
                                                 <div class="form-body">
-
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">Screening number</label>
                                                         <div class="col-md-2">
@@ -147,17 +146,14 @@
                                                             <asp:Button runat="server" ID="cmdPrint" class="btn btn-primary" Text="Print Report" OnClick="cmdPrint_Click"></asp:Button>
                                                         </div>
                                                     </div>
-
-
-
-                                                    <rsweb:ReportViewer ID="ReportViewer1" Width="840px" Height="1024" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ShowPrintButton="true" ShowBackButton="False">
+                                                    <rsweb:ReportViewer ID="ReportViewer1" Width="840px" Height="1024px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ShowBackButton="False">
                                                         <LocalReport ReportPath="rpt_Sample.rdlc">
                                                             <DataSources>
                                                                 <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="ds" />
                                                             </DataSources>
                                                         </LocalReport>
                                                     </rsweb:ReportViewer>
-                                                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetData" TypeName="psbi_labDataSetTableAdapters.sample_resultTableAdapter"></asp:ObjectDataSource>
+                                                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetData" TypeName="psbi_labDataSetTableAdapters.sample_resultTableAdapter" OldValuesParameterFormatString="original_{0}"></asp:ObjectDataSource>
                                                 </div>
                                                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                             </div>

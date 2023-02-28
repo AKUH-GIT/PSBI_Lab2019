@@ -30,7 +30,7 @@ public partial class search_sample_20230220 : System.Web.UI.Page
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Permission Error", "alert('You are not authorize to view this web page')", false);
                 Response.Redirect("login.aspx?errmsg=You are not authorize to view this web page");
                 return;
-            }
+            }           
 
         }
     }
@@ -3958,7 +3958,7 @@ public partial class search_sample_20230220 : System.Web.UI.Page
         }
     }
 
-
+    
 
     protected void dg_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

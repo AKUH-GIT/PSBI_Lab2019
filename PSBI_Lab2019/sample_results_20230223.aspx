@@ -1,9 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results.aspx.cs" Inherits="sample_results" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results_20230223.aspx.cs" Inherits="sample_results_20230223" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-
 <!DOCTYPE html>
 <html>
 <head runat="server">
@@ -547,31 +544,14 @@
             var labid = getCookie("labid");
 
             if (labid == 3) {
-                $("#txthistory").removeAttr("readonly");
+                $("#txthistory").removeAttr("disabled");
                 DisableControls_Loop1();
-                $("#pnl_draft").hide();
-                $("#pnl_save").show();
-                //$("#cmdSaveDraft").hide();
-                ///$("#cmdSave").hide();
-            }
-            else if (labid == 2) {
-                $("#txthistory").attr("readonly", "readonly");
-                $("#pnl_draft").hide();
-                $("#pnl_save").show();
-                $("#cmdPrintPreview").hide();
-                $("#cmdPrint").hide();
-
-                //$("#cmdSaveDraft").hide();
-                ///$("#cmdSave").hide();
+                $("#cmdSaveDraft").hide();
             }
             else {
                 EnableControls_Loop();
-                $("#txthistory").attr("readonly", "readonly");
-                $("#pnl_save").show();
-                $("#pnl_draft").show();
-                $("#cmdPrintPreview").hide();
-                $("#cmdPrint").hide();
-                //$("#cmdSaveDraft").show();
+                $("#txthistory").attr("disabled", "disabled");
+                $("#cmdSaveDraft").show();
             }
 
         });
@@ -601,7 +581,7 @@
                             }
                             else {
 
-                                isexist = true;                                
+                                isexist = true;
 
                                 alert("Results already entered against this Screening id ");
 
@@ -5286,35 +5266,11 @@
 
         }
 
-        function hideModal() {
-            $("#ModalPopupExtender1").hide();
-        }
-
-        function showModal() {
-            $("#ModalPopupExtender1").show();
-        }
-
     </script>
 
     <style>
         .lblerr {
             color: #FF0000;
-        }
-
-
-        .modalBackground {
-            background-color: Gray;
-            filter: alpha(opacity=70);
-            opacity: 0.7;
-        }
-
-        .modalPopup {
-            background-color: #ffffdd;
-            border-width: 3px;
-            border-style: solid;
-            border-color: Gray;
-            padding: 3px;
-            width: 250px;
         }
     </style>
 
@@ -5448,16 +5404,7 @@
 
                                                     <h4 class="form-section"><i class="ft-clipboard"></i>Lab Results</h4>
 
-                                                    <br />
-
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-9">
-                                                            <asp:Button runat="server" ID="cmdPrintPreview" class="btn btn-primary" Text="Print Preview" OnClick="cmdPrintPreview_Click"></asp:Button>
-                                                            <asp:Button runat="server" ID="cmdPrint" class="btn btn-primary" Text="Print" OnClick="cmdPrint_Click"></asp:Button>
-                                                        </div>
-                                                    </div>
-
+                                                    <br />                                                    
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">Screening Number</label>
@@ -5467,30 +5414,10 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-9">
-                                                            <asp:Panel ID="pnl_viewer" runat="server" Style="display: none;" BackColor="White" Height="900px">
-                                                                <asp:ImageButton ID="lnkclose" runat="server" ImageUrl="~/Content/demo/chameleon-admin-template/app-assets/images/logo/close.gif" />
-                                                                <rsweb:ReportViewer ID="ReportViewer1" Width="840px" Height="1024px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" ShowBackButton="False">
-                                                                    <LocalReport ReportPath="rpt_Sample.rdlc">
-                                                                        <DataSources>
-                                                                            <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="ds" />
-                                                                        </DataSources>
-                                                                    </LocalReport>
-                                                                </rsweb:ReportViewer>
-                                                                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetData" TypeName="psbi_labDataSetTableAdapters.sample_resultTableAdapter" OldValuesParameterFormatString="original_{0}"></asp:ObjectDataSource>
-                                                                <cc1:ModalPopupExtender CancelControlID="lnkclose" ID="ModalPopupExtender1" BackgroundCssClass="modalBackground" TargetControlID="cmdPrintPreview" PopupControlID="pnl_viewer" runat="server"></cc1:ModalPopupExtender>
-                                                            </asp:Panel>
-                                                        </div>
-                                                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                                                    </div>
-
-
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">History</label>
                                                         <div class="col-md-9">
-                                                            <asp:TextBox runat="server" TextMode="MultiLine" Rows="20" ID="txthistory" class="form-control" name="txthistory" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                            <asp:TextBox runat="server" TextMode="MultiLine" Rows="20" ID="txthistory" class="form-control" name="txthistory" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
                                                         </div>
                                                     </div>
 
@@ -10873,28 +10800,18 @@
                                                         </div>
                                                     </asp:Panel>
                                                 </div>
+                                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                     <ContentTemplate>
-                                                        <div class="row">
-                                                            <asp:Panel ID="pnl_draft" runat="server">
-                                                                &nbsp;
-                                                                <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-cyan mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
-                                                            </asp:Panel>
-                                                            <asp:Panel ID="pnl_save" runat="server">
-                                                                &nbsp;
-                                                                <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
-                                                            </asp:Panel>
-                                                            <asp:Panel ID="pnl_cancel" runat="server">
-                                                                &nbsp;
-                                                                <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
-                                                            </asp:Panel>
+                                                        <div class="form-actions left">
+                                                            <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-cyan mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
+                                                            <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
+                                                            <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>
                                                     </ContentTemplate>
                                                     <Triggers>
                                                         <asp:PostBackTrigger ControlID="cmdSaveDraft" />
                                                         <asp:PostBackTrigger ControlID="cmdSave" />
-                                                        <asp:PostBackTrigger ControlID="cmdPrintPreview" />
-                                                        <asp:PostBackTrigger ControlID="cmdPrint" />
                                                     </Triggers>
                                                 </asp:UpdatePanel>
                                                 <%--<div class="form-actions right">

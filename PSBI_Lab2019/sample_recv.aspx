@@ -1668,7 +1668,7 @@
         <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="Content/demo/chameleon-admin-template/app-assets/images/backgrounds/02.jpg">
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="main.aspx">
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="default.aspx">
                         <h3 class="brand-text">Sample Forms</h3>
                     </a></li>
                     <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
@@ -1677,22 +1677,41 @@
             <div class="navigation-background"></div>
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                        { %>
+
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
-                        <%--<ul class="menu-content">
-                            <li><a class="active" href="form.aspx">Employee Entry</a>
-                            </li>
-                            <li><a class="menu-item" href="emplist.aspx">Employee List</a>
-                            </li>
-                            <li><a class="menu-item" href="form-switch.html">Change Password</a>
-                            </li>
-                        </ul>--%>
                     </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
-                    <li class="nav-item"><a href="rpt_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Report Viewer</span></span></a></li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>                    
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
+
+                    <% }
+                        else if (HttpContext.Current.Request.Cookies["labid"].Value == "2")
+                        { %>
+
+                    <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
+                    </li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>                    
+                    <li class="nav-item">
+                        <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
+
+                    <% }
+                        else
+                        { %>
+
+                    <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a></li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>                    
+                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                    <li class="nav-item">
+                        <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
+                    </li>
+
+                    <% } %>
                 </ul>
             </div>
         </div>
@@ -1957,14 +1976,14 @@
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             $('#<%=AS1_Q5.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                                minDate: -100,
+                                                                                maxDate: "+0D",
+                                                                                dateFormat: 'dd/mm/yy',
+                                                                                focusOn: 'button',
+                                                                                onSelect: function () { },
+                                                                                onClose: function () { $(this).focus(); }
+                                                                            });
+                                                                        });
                                                                     </script>
                                                                 </div>
                                                             </div>
@@ -2093,14 +2112,14 @@
                                                                 <script type="text/javascript">
                                                                     $(document).ready(function () {
                                                                         $('#<%=AS2_Q9.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                            minDate: -100,
+                                                                            maxDate: "+0D",
+                                                                            dateFormat: 'dd/mm/yy',
+                                                                            focusOn: 'button',
+                                                                            onSelect: function () { },
+                                                                            onClose: function () { $(this).focus(); }
+                                                                        });
+                                                                    });
                                                                 </script>
                                                             </div>
                                                         </div>
@@ -2192,14 +2211,14 @@
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             $('#<%=AS3_Q14a.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                                minDate: -100,
+                                                                                maxDate: "+0D",
+                                                                                dateFormat: 'dd/mm/yy',
+                                                                                focusOn: 'button',
+                                                                                onSelect: function () { },
+                                                                                onClose: function () { $(this).focus(); }
+                                                                            });
+                                                                        });
                                                                     </script>
                                                                 </div>
                                                             </div>
@@ -2281,14 +2300,14 @@
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             $('#<%=AS4_Q22b.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                                minDate: -100,
+                                                                                maxDate: "+0D",
+                                                                                dateFormat: 'dd/mm/yy',
+                                                                                focusOn: 'button',
+                                                                                onSelect: function () { },
+                                                                                onClose: function () { $(this).focus(); }
+                                                                            });
+                                                                        });
                                                                     </script>
                                                                 </div>
                                                             </div>
@@ -2553,14 +2572,14 @@
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             $('#<%=AS3_A2.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                                minDate: -100,
+                                                                                maxDate: "+0D",
+                                                                                dateFormat: 'dd/mm/yy',
+                                                                                focusOn: 'button',
+                                                                                onSelect: function () { },
+                                                                                onClose: function () { $(this).focus(); }
+                                                                            });
+                                                                        });
                                                                     </script>
                                                                 </div>
                                                             </div>
@@ -2579,14 +2598,14 @@
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             $('#<%=AS3_B2.ClientID%>').datepicker({
-                    minDate: -100,
-                    maxDate: "+0D",
-                    dateFormat: 'dd/mm/yy',
-                    focusOn: 'button',
-                    onSelect: function () { },
-                    onClose: function () { $(this).focus(); }
-                });
-            });
+                                                                                minDate: -100,
+                                                                                maxDate: "+0D",
+                                                                                dateFormat: 'dd/mm/yy',
+                                                                                focusOn: 'button',
+                                                                                onSelect: function () { },
+                                                                                onClose: function () { $(this).focus(); }
+                                                                            });
+                                                                        });
                                                                     </script>
                                                                 </div>
                                                             </div>

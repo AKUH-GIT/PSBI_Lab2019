@@ -244,15 +244,17 @@ public partial class login : System.Web.UI.Page
                         HttpContext.Current.Session["userid"] = ds.Tables[0].Rows[0]["UserID"].ToString();
                         HttpContext.Current.Response.Cookies["labid"].Value = ds.Tables[0].Rows[0]["labid"].ToString();
 
+                        Response.Redirect("default.aspx");
 
-                        if (HttpContext.Current.Response.Cookies["labid"].Value == "3")
-                        {
-                            Response.Redirect("search_sample.aspx");
-                        }
-                        else
-                        {
-                            Response.Redirect("sample_recv.aspx");
-                        }
+
+                        //if (HttpContext.Current.Response.Cookies["labid"].Value == "3")
+                        //{
+                        //    Response.Redirect("search_sample.aspx");
+                        //}
+                        //else
+                        //{
+                        //    Response.Redirect("sample_recv.aspx");
+                        //}
 
                     }
                     else

@@ -11,9 +11,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using Microsoft.Reporting.WebForms;
 
-public partial class sample_results : System.Web.UI.Page
+public partial class sample_results_20230223 : System.Web.UI.Page
 {
     public List<CountryInfo> CountryInformation { get; set; }
     public List<SampleResults> SampleResultsInfo { get; set; }
@@ -384,17 +383,8 @@ public partial class sample_results : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.Cookies["labid"] != null)
-        {
-            if (Request.Cookies["labid"].Value != "3")
-            {
-                cmdSave.OnClientClick = "return ValidateForm();";
-            }
-        }
-
-
+        cmdSave.OnClientClick = "return ValidateForm();";
         cmdSaveDraft.OnClientClick = "return ValidateForm1();";
-
 
         if (Session["userid"] == null)
         {
@@ -416,17 +406,11 @@ public partial class sample_results : System.Web.UI.Page
             {
                 ViewState["id"] = Request.QueryString["id"].ToString();
                 getData1(ViewState["id"].ToString());
-                cmdSave.Visible = false;
-                //txthistory.ReadOnly = true;
-
-
                 ViewState["isupdate"] = "1";
 
                 pnl_LA_01.Visible = false;
                 pnl_LA_02.Visible = false;
                 pnl_idrl.Visible = true;
-
-                previewReport();
 
             }
             else
@@ -437,14 +421,11 @@ public partial class sample_results : System.Web.UI.Page
                     ViewState["id"] = Request.QueryString["id"].ToString();
                     getData1(ViewState["id"].ToString());
                     ViewState["isupdate"] = "1";
-                    cmdSave.Visible = true;
-                    txthistory.ReadOnly = false;
+
 
                     pnl_LA_01.Visible = false;
                     pnl_LA_02.Visible = false;
                     pnl_idrl.Visible = true;
-
-                    previewReport();
 
                 }
                 else
@@ -1320,17 +1301,17 @@ public partial class sample_results : System.Web.UI.Page
 
         if (ViewState["isupdate"] == null)
         {
-            SaveData("Done");
+            SaveData();
         }
         else
         {
-            if (Request.Cookies["labid"].Value == "3")
+            if (Request.Cookies["labid"].ToString() == "3")
             {
-                UpdateData_historyonly("history");
+                UpdateData_historyonly();
             }
             else
             {
-                UpdateData("Done");
+                UpdateData();
             }
 
         }
@@ -1338,7 +1319,7 @@ public partial class sample_results : System.Web.UI.Page
     }
 
 
-    private void UpdateData_historyonly(string formstatus)
+    private void UpdateData_historyonly()
     {
         CDBOperations obj_op = new CDBOperations();
 
@@ -1369,15 +1350,13 @@ public partial class sample_results : System.Web.UI.Page
             if (string.IsNullOrEmpty(msg1))
             {
 
-                qry1 = "UPDATE sample_result set history = '" + txthistory.Text + "' where id='" + ViewState["id"] + "'";
-                msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
+                //qry1 = "UPDATE sample_result set history = '" + txthistory.Text + "' where id='" + ViewState["id"] + "'";
+                //msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
 
 
                 if (string.IsNullOrEmpty(msg1))
                 {
-                    UpdateFormStatus(formstatus);
-
-                    string message = "alert('Record saved successfully');";
+                    string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
                 }
                 else
@@ -1407,7 +1386,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-    private void UpdateData(string formstatus)
+    private void UpdateData()
     {
         CDBOperations obj_op = new CDBOperations();
 
@@ -1635,11 +1614,8 @@ public partial class sample_results : System.Web.UI.Page
         try
         {
 
-            if (LA_03_v.Checked == true)
-            {
-                var_LA_03_b = "";
-            }
-            else if (LA_03_b.Checked == true)
+
+            if (LA_03_b.Checked == true)
             {
                 var_LA_03_b = "999";
             }
@@ -1649,11 +1625,8 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (LA_04_v.Checked == true)
-            {
-                var_LA_04_b = "";
-            }
-            else if (LA_04_b.Checked == true)
+
+            if (LA_04_b.Checked == true)
             {
                 var_LA_04_b = "999";
             }
@@ -1663,11 +1636,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (LA_05_v.Checked == true)
-            {
-                var_LA_05_b = "";
-            }
-            else if (LA_05_b.Checked == true)
+            if (LA_05_b.Checked == true)
             {
                 var_LA_05_b = "999";
             }
@@ -1677,12 +1646,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_06_v.Checked == true)
-            {
-                var_LA_06_b = "";
-            }
-            else if (LA_06_b.Checked == true)
+            if (LA_06_b.Checked == true)
             {
                 var_LA_06_b = "999";
             }
@@ -1692,12 +1656,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_07_v.Checked == true)
-            {
-                var_LA_07_b = "";
-            }
-            else if (LA_07_b.Checked == true)
+            if (LA_07_b.Checked == true)
             {
                 var_LA_07_b = "999";
             }
@@ -1707,12 +1666,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_08_v.Checked == true)
-            {
-                var_LA_08_b = "";
-            }
-            else if (LA_08_b.Checked == true)
+            if (LA_08_b.Checked == true)
             {
                 var_LA_08_b = "999";
             }
@@ -1723,11 +1677,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_09_v.Checked == true)
-            {
-                var_LA_09_b = "";
-            }
-            else if (LA_09_b.Checked == true)
+            if (LA_09_b.Checked == true)
             {
                 var_LA_09_b = "999";
             }
@@ -1737,12 +1687,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_10_v.Checked == true)
-            {
-                var_LA_10_b = "";
-            }
-            else if (LA_10_b.Checked == true)
+            if (LA_10_b.Checked == true)
             {
                 var_LA_10_b = "999";
             }
@@ -1755,10 +1700,6 @@ public partial class sample_results : System.Web.UI.Page
 
             if (LA_11_b.Checked == true)
             {
-                var_LA_11_b = "";
-            }
-            else if (LA_11_b.Checked == true)
-            {
                 var_LA_11_b = "999";
             }
             else if (LA_11_c.Checked == true)
@@ -1767,12 +1708,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_12_v.Checked == true)
-            {
-                var_LA_12_b = "";
-            }
-            else if (LA_12_b.Checked == true)
+            if (LA_12_b.Checked == true)
             {
                 var_LA_12_b = "999";
             }
@@ -1782,13 +1718,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-
-            if (LA_13_v.Checked == true)
-            {
-                var_LA_13_b = "";
-            }
-            else if (LA_13_b.Checked == true)
+            if (LA_13_b.Checked == true)
             {
                 var_LA_13_b = "999";
             }
@@ -1798,12 +1728,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_14_v.Checked == true)
-            {
-                var_LA_14_b = "";
-            }
-            else if (LA_14_b.Checked == true)
+            if (LA_14_b.Checked == true)
             {
                 var_LA_14_b = "999";
             }
@@ -1814,11 +1739,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_15_v.Checked == true)
-            {
-                var_LA_15_b = "";
-            }
-            else if (LA_15_b.Checked == true)
+            if (LA_15_b.Checked == true)
             {
                 var_LA_15_b = "999";
             }
@@ -1828,12 +1749,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_16_v.Checked == true)
-            {
-                var_LA_16_b = "";
-            }
-            else if (LA_16_b.Checked == true)
+            if (LA_16_b.Checked == true)
             {
                 var_LA_16_b = "999";
             }
@@ -1845,11 +1761,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_01_v.Checked == true)
-            {
-                var_LF_01 = "";
-            }
-            else if (LF_01_b.Checked == true)
+
+            if (LF_01_b.Checked == true)
             {
                 var_LF_01 = "999";
             }
@@ -1860,11 +1773,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_02_v.Checked == true)
-            {
-                var_LF_02 = "";
-            }
-            else if (LF_02_b.Checked == true)
+            if (LF_02_b.Checked == true)
             {
                 var_LF_02 = "999";
             }
@@ -1875,11 +1784,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_03_v.Checked == true)
-            {
-                var_LF_03 = "";
-            }
-            else if (LF_03_b.Checked == true)
+            if (LF_03_b.Checked == true)
             {
                 var_LF_03 = "999";
             }
@@ -1890,11 +1795,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_04_v.Checked == true)
-            {
-                var_LF_04 = "";
-            }
-            else if (LF_04_b.Checked == true)
+            if (LF_04_b.Checked == true)
             {
                 var_LF_04 = "999";
             }
@@ -1905,11 +1806,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_05_v.Checked == true)
-            {
-                var_LF_05 = "";
-            }
-            else if (LF_05_b.Checked == true)
+            if (LF_05_b.Checked == true)
             {
                 var_LF_05 = "999";
             }
@@ -1920,12 +1817,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LF_06_v.Checked == true)
-            {
-                var_LF_06 = "";
-            }
-            else if (LF_06_b.Checked == true)
+            if (LF_06_b.Checked == true)
             {
                 var_LF_06 = "999";
             }
@@ -1935,12 +1827,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LF_07_v.Checked == true)
-            {
-                var_LF_07 = "";
-            }
-            else if (LF_07_b.Checked == true)
+            if (LF_07_b.Checked == true)
             {
                 var_LF_07 = "999";
             }
@@ -1951,11 +1838,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_01_v.Checked == true)
-            {
-                var_RF_01 = "";
-            }
-            else if (RF_01_b.Checked == true)
+            if (RF_01_b.Checked == true)
             {
                 var_RF_01 = "999";
             }
@@ -1966,11 +1849,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_02_v.Checked == true)
-            {
-                var_RF_02 = "";
-            }
-            else if (RF_02_b.Checked == true)
+            if (RF_02_b.Checked == true)
             {
                 var_RF_02 = "999";
             }
@@ -1981,11 +1860,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_03_v.Checked == true)
-            {
-                var_RF_03 = "";
-            }
-            else if (RF_03_b.Checked == true)
+            if (RF_03_b.Checked == true)
             {
                 var_RF_03 = "999";
             }
@@ -1996,11 +1871,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_04_v.Checked == true)
-            {
-                var_RF_04 = "";
-            }
-            else if (RF_04_b.Checked == true)
+            if (RF_04_b.Checked == true)
             {
                 var_RF_04 = "999";
             }
@@ -2011,11 +1882,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_01_v.Checked == true)
-            {
-                var_SE_01 = "";
-            }
-            else if (SE_01_b.Checked == true)
+            if (SE_01_b.Checked == true)
             {
                 var_SE_01 = "999";
             }
@@ -2026,11 +1893,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_02_v.Checked == true)
-            {
-                var_SE_02 = "";
-            }
-            else if (SE_02_b.Checked == true)
+            if (SE_02_b.Checked == true)
             {
                 var_SE_02 = "999";
             }
@@ -2042,11 +1905,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_03_v.Checked == true)
-            {
-                var_SE_03 = "";
-            }
-            else if (SE_03_b.Checked == true)
+            if (SE_03_b.Checked == true)
             {
                 var_SE_03 = "999";
             }
@@ -2057,11 +1916,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_04_v.Checked == true)
-            {
-                var_SE_04 = "";
-            }
-            else if (SE_04_b.Checked == true)
+            if (SE_04_b.Checked == true)
             {
                 var_SE_04 = "999";
             }
@@ -2072,11 +1927,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_01_v.Checked == true)
-            {
-                var_CS_01 = "";
-            }
-            else if (CS_01_b.Checked == true)
+            if (CS_01_b.Checked == true)
             {
                 var_CS_01 = "999";
             }
@@ -2087,11 +1938,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_02_v.Checked == true)
-            {
-                var_CS_02 = "";
-            }
-            else if (CS_02_b.Checked == true)
+            if (CS_02_b.Checked == true)
             {
                 var_CS_02 = "999";
             }
@@ -2102,12 +1949,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (CS_03_v.Checked == true)
-            {
-                var_CS_03 = "";
-            }
-            else if (CS_03_b.Checked == true)
+            if (CS_03_b.Checked == true)
             {
                 var_CS_03 = "999";
             }
@@ -2118,11 +1960,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_04_v.Checked == true)
-            {
-                var_CS_04 = "";
-            }
-            else if (CS_04_b.Checked == true)
+            if (CS_04_b.Checked == true)
             {
                 var_CS_04 = "999";
             }
@@ -2133,11 +1971,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_05_v.Checked == true)
-            {
-                var_CS_05 = "";
-            }
-            else if (CS_05_b.Checked == true)
+
+            if (CS_05_b.Checked == true)
             {
                 var_CS_05 = "999";
             }
@@ -2148,11 +1983,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_06_v.Checked == true)
-            {
-                var_CS_06 = "";
-            }
-            else if (CS_06_b.Checked == true)
+            if (CS_06_b.Checked == true)
             {
                 var_CS_06 = "999";
             }
@@ -2163,11 +1994,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_07_v.Checked == true)
-            {
-                var_CS_07 = "";
-            }
-            else if (CS_07_b.Checked == true)
+            if (CS_07_b.Checked == true)
             {
                 var_CS_07 = "999";
             }
@@ -2178,11 +2005,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_08_v.Checked == true)
-            {
-                var_CS_08 = "";
-            }
-            else if (CS_08_b.Checked == true)
+            if (CS_08_b.Checked == true)
             {
                 var_CS_08 = "999";
             }
@@ -2193,11 +2016,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_09_v.Checked == true)
-            {
-                var_CS_09 = "";
-            }
-            else if (CS_09_b.Checked == true)
+            if (CS_09_b.Checked == true)
             {
                 var_CS_09 = "999";
             }
@@ -2208,11 +2027,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_10_v.Checked == true)
-            {
-                var_CS_10 = "";
-            }
-            else if (CS_10_b.Checked == true)
+            if (CS_10_b.Checked == true)
             {
                 var_CS_10 = "999";
             }
@@ -2223,11 +2038,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_01_v.Checked == true)
-            {
-                var_UR_01 = "";
-            }
-            else if (UR_01_b.Checked == true)
+
+            if (UR_01_b.Checked == true)
             {
                 var_UR_01 = "999";
             }
@@ -2238,11 +2050,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_02_v.Checked == true)
-            {
-                var_UR_02 = "";
-            }
-            else if (UR_02_b.Checked == true)
+            if (UR_02_b.Checked == true)
             {
                 var_UR_02 = "999";
             }
@@ -2253,11 +2061,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_03_v.Checked == true)
-            {
-                var_UR_03 = "";
-            }
-            else if (UR_03_b.Checked == true)
+            if (UR_03_b.Checked == true)
             {
                 var_UR_03 = "999";
             }
@@ -2268,11 +2072,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_04_v.Checked == true)
-            {
-                var_UR_04 = "";
-            }
-            else if (UR_04_b.Checked == true)
+            if (UR_04_b.Checked == true)
             {
                 var_UR_04 = "999";
             }
@@ -2283,11 +2083,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_04a_v.Checked == true)
-            {
-                var_UR_04a = "";
-            }
-            else if (UR_04a_b.Checked == true)
+            if (UR_04a_b.Checked == true)
             {
                 var_UR_04a = "999";
             }
@@ -2299,11 +2095,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_05_v.Checked == true)
-            {
-                var_UR_05 = "";
-            }
-            else if (UR_05_b.Checked == true)
+            if (UR_05_b.Checked == true)
             {
                 var_UR_05 = "999";
             }
@@ -2315,11 +2107,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_06_v.Checked == true)
-            {
-                var_UR_06 = "";
-            }
-            else if (UR_06_b.Checked == true)
+            if (UR_06_b.Checked == true)
             {
                 var_UR_06 = "999";
             }
@@ -2330,11 +2118,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_07_v.Checked == true)
-            {
-                var_UR_07 = "";
-            }
-            else if (UR_07_b.Checked == true)
+            if (UR_07_b.Checked == true)
             {
                 var_UR_07 = "999";
             }
@@ -2345,11 +2129,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_08_v.Checked == true)
-            {
-                var_UR_08 = "";
-            }
-            else if (UR_08_b.Checked == true)
+            if (UR_08_b.Checked == true)
             {
                 var_UR_08 = "999";
             }
@@ -2360,11 +2140,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_10_v.Checked == true)
-            {
-                var_UR_10 = "";
-            }
-            else if (UR_10_b.Checked == true)
+            if (UR_10_b.Checked == true)
             {
                 var_UR_10 = "999";
             }
@@ -2375,11 +2151,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_11_v.Checked == true)
-            {
-                var_UR_11 = "";
-            }
-            else if (UR_11_b.Checked == true)
+            if (UR_11_b.Checked == true)
             {
                 var_UR_11 = "999";
             }
@@ -2390,11 +2162,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_12_v.Checked == true)
-            {
-                var_UR_12 = "";
-            }
-            else if (UR_12_b.Checked == true)
+
+            if (UR_12_b.Checked == true)
             {
                 var_UR_12 = "999";
             }
@@ -2406,11 +2175,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_13_v.Checked == true)
-            {
-                var_UR_13 = "";
-            }
-            else if (UR_13_b.Checked == true)
+            if (UR_13_b.Checked == true)
             {
                 var_UR_13 = "999";
             }
@@ -2422,11 +2187,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_14_v.Checked == true)
-            {
-                var_UR_14 = "";
-            }
-            else if (UR_14_b.Checked == true)
+            if (UR_14_b.Checked == true)
             {
                 var_UR_14 = "999";
             }
@@ -2437,12 +2198,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (UR_15_v.Checked == true)
-            {
-                var_UR_15 = "";
-            }
-            else if (UR_15_b.Checked == true)
+            if (UR_15_b.Checked == true)
             {
                 var_UR_15 = "999";
             }
@@ -2453,11 +2209,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_16_v.Checked == true)
-            {
-                var_UR_16 = "";
-            }
-            else if (UR_16_b.Checked == true)
+
+            if (UR_16_b.Checked == true)
             {
                 var_UR_16 = "999";
             }
@@ -2468,11 +2221,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_17_v.Checked == true)
-            {
-                var_UR_17 = "";
-            }
-            else if (UR_17_b.Checked == true)
+            if (UR_17_b.Checked == true)
             {
                 var_UR_17 = "999";
             }
@@ -2483,11 +2232,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_18_v.Checked == true)
-            {
-                var_UR_18 = "";
-            }
-            else if (UR_18_b.Checked == true)
+            if (UR_18_b.Checked == true)
             {
                 var_UR_18 = "999";
             }
@@ -2498,11 +2243,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_19_v.Checked == true)
-            {
-                var_UR_19 = "";
-            }
-            else if (UR_19_b.Checked == true)
+
+            if (UR_19_b.Checked == true)
             {
                 var_UR_19 = "999";
             }
@@ -2514,11 +2256,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_20_v.Checked == true)
-            {
-                var_UR_20 = "";
-            }
-            else if (UR_20_b.Checked == true)
+            if (UR_20_b.Checked == true)
             {
                 var_UR_20 = "999";
             }
@@ -2529,11 +2267,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_21_v.Checked == true)
-            {
-                var_UR_21 = "";
-            }
-            else if (UR_21_b.Checked == true)
+            if (UR_21_b.Checked == true)
             {
                 var_UR_21 = "999";
             }
@@ -2559,11 +2293,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_02a_v.Checked == true)
-            {
-                var_uc_02a = "";
-            }
-            else if (uc_02a_b.Checked == true)
+            if (uc_02a_b.Checked == true)
             {
                 var_uc_02a = "999";
             }
@@ -2589,11 +2319,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_03a_v.Checked == true)
-            {
-                var_uc_03a = "";
-            }
-            else if (uc_03a_b.Checked == true)
+            if (uc_03a_b.Checked == true)
             {
                 var_uc_03a = "999";
             }
@@ -2620,11 +2346,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_04a_v.Checked == true)
-            {
-                var_uc_04a = "";
-            }
-            else if (uc_04a_b.Checked == true)
+            if (uc_04a_b.Checked == true)
             {
                 var_uc_04a = "999";
             }
@@ -2650,11 +2372,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_05a_v.Checked == true)
-            {
-                var_uc_05a = "";
-            }
-            else if (uc_05a_b.Checked == true)
+            if (uc_05a_b.Checked == true)
             {
                 var_uc_05a = "999";
             }
@@ -2681,11 +2399,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_06a_v.Checked == true)
-            {
-                var_uc_06a = "";
-            }
-            else if (uc_06a_b.Checked == true)
+            if (uc_06a_b.Checked == true)
             {
                 var_uc_06a = "999";
             }
@@ -2711,11 +2425,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_07a_v.Checked == true)
-            {
-                var_uc_07a = "";
-            }
-            else if (uc_07a_b.Checked == true)
+            if (uc_07a_b.Checked == true)
             {
                 var_uc_07a = "999";
             }
@@ -2741,11 +2451,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_08a_v.Checked == true)
-            {
-                var_uc_08a = "";
-            }
-            else if (uc_08a_b.Checked == true)
+            if (uc_08a_b.Checked == true)
             {
                 var_uc_08a = "999";
             }
@@ -2772,11 +2478,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_09a_v.Checked == true)
-            {
-                var_uc_09a = "";
-            }
-            else if (uc_09a_b.Checked == true)
+            if (uc_09a_b.Checked == true)
             {
                 var_uc_09a = "999";
             }
@@ -2803,11 +2505,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_10a_v.Checked == true)
-            {
-                var_uc_10a = "";
-            }
-            else if (uc_10a_b.Checked == true)
+            if (uc_10a_b.Checked == true)
             {
                 var_uc_10a = "999";
             }
@@ -2833,11 +2531,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_11a_v.Checked == true)
-            {
-                var_uc_11a = "";
-            }
-            else if (uc_11a_b.Checked == true)
+            if (uc_11a_b.Checked == true)
             {
                 var_uc_11a = "999";
             }
@@ -2864,11 +2558,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_12a_v.Checked == true)
-            {
-                var_uc_12a = "";
-            }
-            else if (uc_12a_b.Checked == true)
+            if (uc_12a_b.Checked == true)
             {
                 var_uc_12a = "999";
             }
@@ -2894,11 +2584,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_13a_v.Checked == true)
-            {
-                var_uc_13a = "";
-            }
-            else if (uc_13a_b.Checked == true)
+            if (uc_13a_b.Checked == true)
             {
                 var_uc_13a = "999";
             }
@@ -2925,11 +2611,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_14a_v.Checked == true)
-            {
-                var_uc_14a = "";
-            }
-            else if (uc_14a_b.Checked == true)
+            if (uc_14a_b.Checked == true)
             {
                 var_uc_14a = "999";
             }
@@ -2956,11 +2638,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_15a_v.Checked == true)
-            {
-                var_uc_15a = "";
-            }
-            else if (uc_15a_b.Checked == true)
+            if (uc_15a_b.Checked == true)
             {
                 var_uc_15a = "999";
             }
@@ -2987,11 +2665,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_16a_v.Checked == true)
-            {
-                var_uc_16a = "";
-            }
-            else if (uc_16a_b.Checked == true)
+            if (uc_16a_b.Checked == true)
             {
                 var_uc_16a = "999";
             }
@@ -3019,11 +2693,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_17a_v.Checked == true)
-            {
-                var_uc_17a = "";
-            }
-            else if (uc_17a_b.Checked == true)
+            if (uc_17a_b.Checked == true)
             {
                 var_uc_17a = "999";
             }
@@ -3050,11 +2720,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_18a_v.Checked == true)
-            {
-                var_uc_18a = "";
-            }
-            else if (uc_18a_b.Checked == true)
+            if (uc_18a_b.Checked == true)
             {
                 var_uc_18a = "999";
             }
@@ -3081,11 +2747,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_19a_v.Checked == true)
-            {
-                var_uc_19a = "";
-            }
-            else if (uc_19a_b.Checked == true)
+            if (uc_19a_b.Checked == true)
             {
                 var_uc_19a = "999";
             }
@@ -3112,11 +2774,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_20a_v.Checked == true)
-            {
-                var_uc_20a = "";
-            }
-            else if (uc_20a_b.Checked == true)
+            if (uc_20a_b.Checked == true)
             {
                 var_uc_20a = "999";
             }
@@ -3143,11 +2801,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_21a_v.Checked == true)
-            {
-                var_uc_21a = "";
-            }
-            else if (uc_21a_b.Checked == true)
+            if (uc_21a_b.Checked == true)
             {
                 var_uc_21a = "999";
             }
@@ -3174,11 +2828,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_22a_v.Checked == true)
-            {
-                var_uc_22a = "";
-            }
-            else if (uc_22a_b.Checked == true)
+            if (uc_22a_b.Checked == true)
             {
                 var_uc_22a = "999";
             }
@@ -3205,11 +2855,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_23a_v.Checked == true)
-            {
-                var_uc_23a = "";
-            }
-            else if (uc_23a_b.Checked == true)
+            if (uc_23a_b.Checked == true)
             {
                 var_uc_23a = "999";
             }
@@ -3236,11 +2882,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_24a_v.Checked == true)
-            {
-                var_uc_24a = "";
-            }
-            else if (uc_24a_b.Checked == true)
+            if (uc_24a_b.Checked == true)
             {
                 var_uc_24a = "999";
             }
@@ -3267,11 +2909,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_25a_v.Checked == true)
-            {
-                var_uc_25a = "";
-            }
-            else if (uc_25a_b.Checked == true)
+            if (uc_25a_b.Checked == true)
             {
                 var_uc_25a = "999";
             }
@@ -3298,11 +2936,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_26a_v.Checked == true)
-            {
-                var_uc_26a = "";
-            }
-            else if (uc_26a_b.Checked == true)
+            if (uc_26a_b.Checked == true)
             {
                 var_uc_26a = "999";
             }
@@ -3329,11 +2963,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_27a_v.Checked == true)
-            {
-                var_uc_27a = "";
-            }
-            else if (uc_27a_b.Checked == true)
+            if (uc_27a_b.Checked == true)
             {
                 var_uc_27a = "999";
             }
@@ -3360,11 +2990,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_28a_v.Checked == true)
-            {
-                var_uc_28a = "";
-            }
-            else if (uc_28a_b.Checked == true)
+
+            if (uc_28a_b.Checked == true)
             {
                 var_uc_28a = "999";
             }
@@ -3391,11 +3018,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_29a_v.Checked == true)
-            {
-                var_uc_29a = "";
-            }
-            else if (uc_29a_b.Checked == true)
+            if (uc_29a_b.Checked == true)
             {
                 var_uc_29a = "999";
             }
@@ -3422,11 +3045,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_30a_v.Checked == true)
-            {
-                var_uc_30a = "";
-            }
-            else if (uc_30a_b.Checked == true)
+
+            if (uc_30a_b.Checked == true)
             {
                 var_uc_30a = "999";
             }
@@ -3452,11 +3072,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_31a_v.Checked == true)
-            {
-                var_uc_31a = "";
-            }
-            else if (uc_31a_b.Checked == true)
+
+            if (uc_31a_b.Checked == true)
             {
                 var_uc_31a = "999";
             }
@@ -3482,11 +3099,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_32a_v.Checked == true)
-            {
-                var_uc_32a = "";
-            }
-            else if (uc_32a_b.Checked == true)
+
+            if (uc_32a_b.Checked == true)
             {
                 var_uc_32a = "999";
             }
@@ -3513,11 +3127,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_33a_v.Checked == true)
-            {
-                var_uc_33a = "";
-            }
-            else if (uc_33a_b.Checked == true)
+
+            if (uc_33a_b.Checked == true)
             {
                 var_uc_33a = "999";
             }
@@ -3543,11 +3154,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_34a_v.Checked == true)
-            {
-                var_uc_34a = "";
-            }
-            else if (uc_34a_b.Checked == true)
+
+            if (uc_34a_b.Checked == true)
             {
                 var_uc_34a = "999";
             }
@@ -3574,11 +3182,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_35a_v.Checked == true)
-            {
-                var_uc_35a = "";
-            }
-            else if (uc_35a_b.Checked == true)
+            if (uc_35a_b.Checked == true)
             {
                 var_uc_35a = "999";
             }
@@ -3606,11 +3210,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_36a_v.Checked == true)
-            {
-                var_uc_36a = "";
-            }
-            else if (uc_36a_b.Checked == true)
+            if (uc_36a_b.Checked == true)
             {
                 var_uc_36a = "999";
             }
@@ -3638,11 +3238,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_37a_v.Checked == true)
-            {
-                var_uc_37a = "";
-            }
-            else if (uc_37a_b.Checked == true)
+            if (uc_37a_b.Checked == true)
             {
                 var_uc_37a = "999";
             }
@@ -3671,11 +3267,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_20a_v.Checked == true)
-            {
-                var_LA_20a_b = "";
-            }
-            else if (LA_20a_b.Checked == true)
+
+            if (LA_20a_b.Checked == true)
             {
                 var_LA_20a_b = "999";
             }
@@ -3702,11 +3295,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_21a_v.Checked == true)
-            {
-                var_LA_21a_b = "";
-            }
-            else if (LA_21a_b.Checked == true)
+            if (LA_21a_b.Checked == true)
             {
                 var_LA_21a_b = "999";
             }
@@ -3732,11 +3321,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_22a_v.Checked == true)
-            {
-                var_LA_22a_b = "";
-            }
-            else if (LA_22a_b.Checked == true)
+            if (LA_22a_b.Checked == true)
             {
                 var_LA_22a_b = "999";
             }
@@ -3762,11 +3347,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_23a_v.Checked == true)
-            {
-                var_LA_23a_b = "";
-            }
-            else if (LA_23a_b.Checked == true)
+            if (LA_23a_b.Checked == true)
             {
                 var_LA_23a_b = "999";
             }
@@ -3792,11 +3373,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_24a_v.Checked == true)
-            {
-                var_LA_24a_b = "";
-            }
-            else if (LA_24a_b.Checked == true)
+            if (LA_24a_b.Checked == true)
             {
                 var_LA_24a_b = "999";
             }
@@ -3822,11 +3399,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_25a_v.Checked == true)
-            {
-                var_LA_25a_b = "";
-            }
-            else if (LA_25a_b.Checked == true)
+            if (LA_25a_b.Checked == true)
             {
                 var_LA_25a_b = "999";
             }
@@ -3852,11 +3425,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_26a_v.Checked == true)
-            {
-                var_LA_26a_b = "";
-            }
-            else if (LA_26a_b.Checked == true)
+            if (LA_26a_b.Checked == true)
             {
                 var_LA_26a_b = "999";
             }
@@ -3883,11 +3452,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_27a_v.Checked == true)
-            {
-                var_LA_27a_b = "";
-            }
-            else if (LA_27a_b.Checked == true)
+            if (LA_27a_b.Checked == true)
             {
                 var_LA_27a_b = "999";
             }
@@ -3914,11 +3479,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_28a_v.Checked == true)
-            {
-                var_LA_28a_b = "";
-            }
-            else if (LA_28a_b.Checked == true)
+            if (LA_28a_b.Checked == true)
             {
                 var_LA_28a_b = "999";
             }
@@ -3944,11 +3505,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_29a_v.Checked == true)
-            {
-                var_LA_29a_b = "";
-            }
-            else if (LA_29a_b.Checked == true)
+            if (LA_29a_b.Checked == true)
             {
                 var_LA_29a_b = "999";
             }
@@ -3974,11 +3531,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_30a_v.Checked == true)
-            {
-                var_LA_30a_b = "";
-            }
-            else if (LA_30a_b.Checked == true)
+            if (LA_30a_b.Checked == true)
             {
                 var_LA_30a_b = "999";
             }
@@ -4004,11 +3557,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_31a_v.Checked == true)
-            {
-                var_LA_31a_b = "";
-            }
-            else if (LA_31a_b.Checked == true)
+            if (LA_31a_b.Checked == true)
             {
                 var_LA_31a_b = "999";
             }
@@ -4034,11 +3583,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_32a_v.Checked == true)
-            {
-                var_LA_32a_b = "";
-            }
-            else if (LA_32a_b.Checked == true)
+            if (LA_32a_b.Checked == true)
             {
                 var_LA_32a_b = "999";
             }
@@ -4065,11 +3610,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_33a_v.Checked == true)
-            {
-                var_LA_33a_b = "";
-            }
-            else if (LA_33a_b.Checked == true)
+            if (LA_33a_b.Checked == true)
             {
                 var_LA_33a_b = "999";
             }
@@ -4096,11 +3637,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_34a_v.Checked == true)
-            {
-                var_LA_34a_b = "";
-            }
-            else if (LA_34a_b.Checked == true)
+            if (LA_34a_b.Checked == true)
             {
                 var_LA_34a_b = "999";
             }
@@ -4126,12 +3663,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_35a_v.Checked == true)
-            {
-                var_LA_35a_b = "";
-            }
-            else if (LA_35a_b.Checked == true)
+            if (LA_35a_b.Checked == true)
             {
                 var_LA_35a_b = "999";
             }
@@ -4139,7 +3671,6 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_LA_35a_b = "888";
             }
-
 
 
 
@@ -4158,12 +3689,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_36a_v.Checked == true)
-            {
-                var_LA_36a_b = "";
-            }
-            else if (LA_36a_b.Checked == true)
+            if (LA_36a_b.Checked == true)
             {
                 var_LA_36a_b = "999";
             }
@@ -4190,11 +3716,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_37a_v.Checked == true)
-            {
-                var_LA_37a_b = "";
-            }
-            else if (LA_37a_b.Checked == true)
+            if (LA_37a_b.Checked == true)
             {
                 var_LA_37a_b = "999";
             }
@@ -4220,12 +3742,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_38a_v.Checked == true)
-            {
-                var_LA_38a_b = "";
-            }
-            else if (LA_38a_b.Checked == true)
+            if (LA_38a_b.Checked == true)
             {
                 var_LA_38a_b = "999";
             }
@@ -4251,12 +3768,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_39a_v.Checked == true)
-            {
-                var_LA_39a_b = "";
-            }
-            else if (LA_39a_b.Checked == true)
+            if (LA_39a_b.Checked == true)
             {
                 var_LA_39a_b = "999";
             }
@@ -4282,11 +3794,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_40a_v.Checked == true)
-            {
-                var_LA_40a_b = "";
-            }
-            else if (LA_40a_b.Checked == true)
+            if (LA_40a_b.Checked == true)
             {
                 var_LA_40a_b = "999";
             }
@@ -4312,11 +3820,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_41a_v.Checked == true)
-            {
-                var_LA_41a_b = "";
-            }
-            else if (LA_41a_b.Checked == true)
+            if (LA_41a_b.Checked == true)
             {
                 var_LA_41a_b = "999";
             }
@@ -4342,11 +3846,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_42a_v.Checked == true)
-            {
-                var_LA_42a_b = "";
-            }
-            else if (LA_42a_b.Checked == true)
+            if (LA_42a_b.Checked == true)
             {
                 var_LA_42a_b = "999";
             }
@@ -4372,11 +3872,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_43a_v.Checked == true)
-            {
-                var_LA_43a_b = "";
-            }
-            else if (LA_43a_b.Checked == true)
+            if (LA_43a_b.Checked == true)
             {
                 var_LA_43a_b = "999";
             }
@@ -4402,11 +3898,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_44a_v.Checked == true)
-            {
-                var_LA_44a_b = "";
-            }
-            else if (LA_44a_b.Checked == true)
+            if (LA_44a_b.Checked == true)
             {
                 var_LA_44a_b = "999";
             }
@@ -4432,11 +3924,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_45a_v.Checked == true)
-            {
-                var_LA_45a_b = "";
-            }
-            else if (LA_45a_b.Checked == true)
+            if (LA_45a_b.Checked == true)
             {
                 var_LA_45a_b = "999";
             }
@@ -4462,11 +3950,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_46a_v.Checked == true)
-            {
-                var_LA_46a_b = "";
-            }
-            else if (LA_46a_b.Checked == true)
+            if (LA_46a_b.Checked == true)
             {
                 var_LA_46a_b = "999";
             }
@@ -4492,11 +3976,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_47a_v.Checked == true)
-            {
-                var_LA_47a_b = "";
-            }
-            else if (LA_47a_b.Checked == true)
+            if (LA_47a_b.Checked == true)
             {
                 var_LA_47a_b = "999";
             }
@@ -4523,11 +4003,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_48a_v.Checked == true)
-            {
-                var_LA_48a_b = "";
-            }
-            else if (LA_48a_b.Checked == true)
+            if (LA_48a_b.Checked == true)
             {
                 var_LA_48a_b = "999";
             }
@@ -4553,11 +4029,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_49a_v.Checked == true)
-            {
-                var_LA_49a_b = "";
-            }
-            else if (LA_49a_b.Checked == true)
+            if (LA_49a_b.Checked == true)
             {
                 var_LA_49a_b = "999";
             }
@@ -4583,11 +4055,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_50a_v.Checked == true)
-            {
-                var_LA_50a_b = "";
-            }
-            else if (LA_50a_b.Checked == true)
+            if (LA_50a_b.Checked == true)
             {
                 var_LA_50a_b = "999";
             }
@@ -4614,11 +4082,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_51a_v.Checked == true)
-            {
-                var_LA_51a_b = "";
-            }
-            else if (LA_51a_b.Checked == true)
+            if (LA_51a_b.Checked == true)
             {
                 var_LA_51a_b = "999";
             }
@@ -4644,12 +4108,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_52a_v.Checked == true)
-            {
-                var_LA_52a_b = "";
-            }
-            else if (LA_52a_b.Checked == true)
+            if (LA_52a_b.Checked == true)
             {
                 var_LA_52a_b = "999";
             }
@@ -4698,340 +4157,340 @@ public partial class sample_results : System.Web.UI.Page
             {
 
                 qry1 = "UPDATE sample_result set " +
-    "LA_01 = '" + LA_01.Text + "', " +
-    "LA_02 = '" + LA_02.Text + "', " +
-    "LA_03_b = '" + var_LA_03_b + "', " +
-    "LA_03_a = '" + LA_03_a.Text + "', " +
-    "LA_04_b = '" + var_LA_04_b + "', " +
-    "LA_04_a = '" + LA_04_a.Text + "', " +
-    "LA_05_b = '" + var_LA_05_b + "', " +
-    "LA_05_a = '" + LA_05_a.Text + "', " +
-    "LA_06_b = '" + var_LA_06_b + "', " +
-    "LA_06_a = '" + LA_06_a.Text + "', " +
-    "LA_07_b = '" + var_LA_07_b + "', " +
-    "LA_07_a = '" + LA_07_a.Text + "', " +
-    "LA_08_b = '" + var_LA_08_b + "', " +
-    "LA_08_a = '" + LA_08_a.Text + "', " +
-    "LA_09_b = '" + var_LA_09_b + "', " +
-    "LA_09_a = '" + LA_09_a.Text + "', " +
-    "LA_10_b = '" + var_LA_10_b + "', " +
-    "LA_10_a = '" + LA_10_a.Text + "', " +
-    "LA_11_b = '" + var_LA_11_b + "', " +
-    "LA_11_a = '" + LA_11_a.Text + "', " +
-    "LA_12_b = '" + var_LA_12_b + "', " +
-    "LA_12_a = '" + LA_12_a.Text + "', " +
-    "LA_13_b = '" + var_LA_13_b + "', " +
-    "LA_13_a = '" + LA_13_a.Text + "', " +
-    "LA_14_b = '" + var_LA_14_b + "', " +
-    "LA_14_a = '" + LA_14_a.Text + "', " +
-    "LA_15_b = '" + var_LA_15_b + "', " +
-    "LA_15_a = '" + LA_15_a.Text + "', " +
-    "LA_16_b = '" + var_LA_16_b + "', " +
-    "LA_16_a = '" + LA_16_a.Text + "', " +
-    "LF_01 = '" + var_LF_01 + "', " +
-    "LF_01_a = '" + LF_01_a.Text + "', " +
-    "LF_02 = '" + var_LF_02 + "', " +
-    "LF_02_a = '" + LF_02_a.Text + "', " +
-    "LF_03 = '" + var_LF_03 + "', " +
-    "LF_03_a = '" + LF_03_a.Text + "', " +
-    "LF_04 = '" + var_LF_04 + "', " +
-    "LF_04_a = '" + LF_04_a.Text + "', " +
-    "LF_05 = '" + var_LF_05 + "', " +
-    "LF_05_a = '" + LF_05_a.Text + "', " +
-    "LF_06 = '" + var_LF_06 + "', " +
-    "LF_06_a = '" + LF_06_a.Text + "', " +
-    "LF_07 = '" + var_LF_07 + "', " +
-    "LF_07_a = '" + LF_07_a.Text + "', " +
-    "RF_01 = '" + var_RF_01 + "', " +
-    "RF_01_a = '" + RF_01_a.Text + "', " +
-    "RF_02 = '" + var_RF_02 + "', " +
-    "RF_02_a = '" + RF_02_a.Text + "', " +
-    "RF_03 = '" + var_RF_03 + "', " +
-    "RF_03_a = '" + RF_03_a.Text + "', " +
-    "RF_04 = '" + var_RF_04 + "', " +
-    "RF_04_a = '" + RF_04_a.Text + "', " +
-    "SE_01 = '" + var_SE_01 + "', " +
-    "SE_01_a = '" + SE_01_a.Text + "', " +
-    "SE_02 = '" + var_SE_02 + "', " +
-    "SE_02_a = '" + SE_02_a.Text + "', " +
-    "SE_03 = '" + var_SE_03 + "', " +
-    "SE_03_a = '" + SE_03_a.Text + "', " +
-    "SE_04 = '" + var_SE_04 + "', " +
-    "SE_04_a = '" + SE_04_a.Text + "', " +
-    "CS_01 = '" + var_CS_01 + "', " +
-    "CS_01_a = '" + CS_01_a.Text + "', " +
-    "CS_02 = '" + var_CS_02 + "', " +
-    "CS_02_a = '" + CS_02_a.Text + "', " +
-    "CS_03 = '" + var_CS_03 + "', " +
-    "CS_03_a = '" + CS_03_a.Text + "', " +
-    "CS_04 = '" + var_CS_04 + "', " +
-    "CS_04_a = '" + CS_04_a.Text + "', " +
-    "CS_05 = '" + var_CS_05 + "', " +
-    "CS_05_a = '" + CS_05_a.Text + "', " +
-    "CS_06 = '" + var_CS_06 + "', " +
-    "CS_06_a = '" + CS_06_a.Text + "', " +
-    "CS_07 = '" + var_CS_07 + "', " +
-    "CS_07_a = '" + CS_07_a.Text + "', " +
-    "CS_08 = '" + var_CS_08 + "', " +
-    "CS_08_a = '" + CS_08_a.Text + "', " +
-    "CS_09 = '" + var_CS_09 + "', " +
-    "CS_09_a = '" + CS_09_a.Text + "', " +
-    "CS_10 = '" + var_CS_10 + "', " +
-    "CS_10_a = '" + CS_10_a.Text + "', " +
-    "UR_01 = '" + var_UR_01 + "', " +
-    "UR_01_a = '" + UR_01_a.Text + "', " +
-    "UR_02 = '" + var_UR_02 + "', " +
-    "UR_02_a = '" + UR_02_a.Text + "', " +
-    "UR_03 = '" + var_UR_03 + "', " +
-    "UR_03_a = '" + UR_03_a.Text + "', " +
-    "UR_04 = '" + var_UR_04 + "', " +
-    "UR_04_a = '" + UR_04_a.Text + "', " +
-    "UR_05 = '" + var_UR_05 + "', " +
-    "UR_05_a = '" + UR_05_a.Text + "', " +
-    "UR_06 = '" + var_UR_06 + "', " +
-    "UR_06_a = '" + UR_06_a.Text + "', " +
-    "UR_07 = '" + var_UR_07 + "', " +
-    "UR_07_a = '" + UR_07_a.Text + "', " +
-    "UR_08 = '" + var_UR_08 + "', " +
-    "UR_08_a = '" + UR_08_a.Text + "', " +
-    "UR_10 = '" + var_UR_10 + "', " +
-    "UR_10_a = '" + UR_10_a.Text + "', " +
-    "UR_11 = '" + var_UR_11 + "', " +
-    "UR_11_a = '" + UR_11_a.Text + "', " +
-    "UR_12 = '" + var_UR_12 + "', " +
-    "UR_12_a = '" + UR_12_a.Text + "', " +
-    "UR_13 = '" + var_UR_13 + "', " +
-    "UR_13_a = '" + UR_13_a.Text + "', " +
-    "UR_14 = '" + var_UR_14 + "', " +
-    "UR_14_a = '" + UR_14_a.Text + "', " +
-    "UR_15 = '" + var_UR_15 + "', " +
-    "UR_15_a = '" + UR_15_a.Text + "', " +
-    "UR_16 = '" + var_UR_16 + "', " +
-    "UR_16_a = '" + UR_16_a.Text + "', " +
-    "UR_17 = '" + var_UR_17 + "', " +
-    "UR_17_a = '" + UR_17_a.Text + "', " +
-    "UR_18 = '" + var_UR_18 + "', " +
-    "UR_18_a = '" + UR_18_a.Text + "', " +
-    "UR_19 = '" + var_UR_19 + "', " +
-    "UR_19_a = '" + UR_19_a.Text + "', " +
-    "UR_20 = '" + var_UR_20 + "', " +
-    "UR_20_a = '" + UR_20_a.Text + "', " +
-    "UR_21 = '" + var_UR_21 + "', " +
-    "UR_21_a = '" + UR_21_a.Text + "', " +
-    "uc_01a = '" + var_uc_01a + "', " +
-    "uc_02a = '" + var_uc_02a + "', " +
-    "uc_02a_a = '" + uc_02a_a.Text + "', " +
-    "uc_02b = '" + var_uc_02b + "', " +
-    "uc_03a = '" + var_uc_03a + "', " +
-    "uc_03a_a = '" + uc_03a_a.Text + "', " +
-    "uc_03b = '" + var_uc_03b + "', " +
-    "uc_04a = '" + var_uc_04a + "', " +
-    "uc_04a_a = '" + uc_04a_a.Text + "', " +
-    "uc_04b = '" + var_uc_04b + "', " +
-    "uc_05a = '" + var_uc_05a + "', " +
-    "uc_05a_a = '" + uc_05a_a.Text + "', " +
-    "uc_05b = '" + var_uc_05b + "', " +
-    "uc_06a = '" + var_uc_06a + "', " +
-    "uc_06a_a = '" + uc_06a_a.Text + "', " +
-    "uc_06b = '" + var_uc_06b + "', " +
-    "uc_07a = '" + var_uc_07a + "', " +
-    "uc_07a_a = '" + uc_07a_a.Text + "', " +
-    "uc_07b = '" + var_uc_07b + "', " +
-    "uc_08a = '" + var_uc_08a + "', " +
-    "uc_08a_a = '" + uc_08a_a.Text + "', " +
-    "uc_08b = '" + var_uc_08b + "', " +
-    "uc_09a = '" + var_uc_09a + "', " +
-    "uc_09a_a = '" + uc_09a_a.Text + "', " +
-    "uc_09b = '" + var_uc_09b + "', " +
-    "uc_10a = '" + var_uc_10a + "', " +
-    "uc_10a_a = '" + uc_10a_a.Text + "', " +
-    "uc_10b = '" + var_uc_10b + "', " +
-    "uc_11a = '" + var_uc_11a + "', " +
-    "uc_11a_a = '" + uc_11a_a.Text + "', " +
-    "uc_11b = '" + var_uc_11b + "', " +
-    "uc_12a = '" + var_uc_12a + "', " +
-    "uc_12a_a = '" + uc_12a_a.Text + "', " +
-    "uc_12b = '" + var_uc_12b + "', " +
-    "uc_13a = '" + var_uc_13a + "', " +
-    "uc_13a_a = '" + uc_13a_a.Text + "', " +
-    "uc_13b = '" + var_uc_13b + "', " +
-    "uc_14a = '" + var_uc_14a + "', " +
-    "uc_14a_a = '" + uc_14a_a.Text + "', " +
-    "uc_14b = '" + var_uc_14b + "', " +
-    "uc_15a = '" + var_uc_15a + "', " +
-    "uc_15a_a = '" + uc_15a_a.Text + "', " +
-    "uc_15b = '" + var_uc_15b + "', " +
-    "uc_16a = '" + var_uc_16a + "', " +
-    "uc_16a_a = '" + uc_16a_a.Text + "', " +
-    "uc_16b = '" + var_uc_16b + "', " +
-    "uc_17a = '" + var_uc_17a + "', " +
-    "uc_17a_a = '" + uc_17a_a.Text + "', " +
-    "uc_17b = '" + var_uc_17b + "', " +
-    "uc_18a = '" + var_uc_18a + "', " +
-    "uc_18a_a = '" + uc_18a_a.Text + "', " +
-    "uc_18b = '" + var_uc_18b + "', " +
-    "uc_19a = '" + var_uc_19a + "', " +
-    "uc_19a_a = '" + uc_19a_a.Text + "', " +
-    "uc_19b = '" + var_uc_19b + "', " +
-    "uc_20a = '" + var_uc_20a + "', " +
-    "uc_20a_a = '" + uc_20a_a.Text + "', " +
-    "uc_20b = '" + var_uc_20b + "', " +
-    "uc_21a = '" + var_uc_21a + "', " +
-    "uc_21a_a = '" + uc_21a_a.Text + "', " +
-    "uc_21b = '" + var_uc_21b + "', " +
-    "uc_22a = '" + var_uc_22a + "', " +
-    "uc_22a_a = '" + uc_22a_a.Text + "', " +
-    "uc_22b = '" + var_uc_22b + "', " +
-    "uc_23a = '" + var_uc_23a + "', " +
-    "uc_23a_a = '" + uc_23a_a.Text + "', " +
-    "uc_23b = '" + var_uc_23b + "', " +
-    "uc_24a = '" + var_uc_24a + "', " +
-    "uc_24a_a = '" + uc_24a_a.Text + "', " +
-    "uc_24b = '" + var_uc_24b + "', " +
-    "uc_25a = '" + var_uc_25a + "', " +
-    "uc_25a_a = '" + uc_25a_a.Text + "', " +
-    "uc_25b = '" + var_uc_25b + "', " +
-    "uc_26a = '" + var_uc_26a + "', " +
-    "uc_26a_a = '" + uc_26a_a.Text + "', " +
-    "uc_26b = '" + var_uc_26b + "', " +
-    "uc_27a = '" + var_uc_27a + "', " +
-    "uc_27a_a = '" + uc_27a_a.Text + "', " +
-    "uc_27b = '" + var_uc_27b + "', " +
-    "uc_28a = '" + var_uc_28a + "', " +
-    "uc_28a_a = '" + uc_28a_a.Text + "', " +
-    "uc_28b = '" + var_uc_28b + "', " +
-    "uc_29a = '" + var_uc_29a + "', " +
-    "uc_29a_a = '" + uc_29a_a.Text + "', " +
-    "uc_29b = '" + var_uc_29b + "', " +
-    "uc_30a = '" + var_uc_30a + "', " +
-    "uc_30a_a = '" + uc_30a_a.Text + "', " +
-    "uc_30b = '" + var_uc_30b + "', " +
-    "uc_31a = '" + var_uc_31a + "', " +
-    "uc_31a_a = '" + uc_31a_a.Text + "', " +
-    "uc_31b = '" + var_uc_31b + "', " +
-    "uc_32a = '" + var_uc_32a + "', " +
-    "uc_32a_a = '" + uc_32a_a.Text + "', " +
-    "uc_32b = '" + var_uc_32b + "', " +
-    "uc_33a = '" + var_uc_33a + "', " +
-    "uc_33a_a = '" + uc_33a_a.Text + "', " +
-    "uc_33b = '" + var_uc_33b + "', " +
-    "uc_34a = '" + var_uc_34a + "', " +
-    "uc_34a_a = '" + uc_34a_a.Text + "', " +
-    "uc_34b = '" + var_uc_34b + "', " +
-    "uc_35a = '" + var_uc_35a + "', " +
-    "uc_35a_a = '" + uc_35a_a.Text + "', " +
-    "uc_35b = '" + var_uc_35b + "', " +
-    "uc_36a = '" + var_uc_36a + "', " +
-    "uc_36a_a = '" + uc_36a_a.Text + "', " +
-    "uc_36b = '" + var_uc_36b + "', " +
-    "uc_37a = '" + var_uc_37a + "', " +
-    "uc_37a_a = '" + uc_37a_a.Text + "', " +
-    "uc_37b = '" + var_uc_37b + "', " +
-    "LA_17 = '" + LA_17.Text + "', " +
-    "LA_18 = '" + LA_18.Text + "', " +
-    "LA_19 = '" + LA_19.Text + "', " +
-    "LA_20a_b = '" + var_LA_20a_b + "', " +
-    "LA_20a_a = '" + LA_20a_a.Text + "', " +
-    "LA_20b_a = '" + var_LA_20b_a + "', " +
-    "LA_21a_b = '" + var_LA_21a_b + "', " +
-    "LA_21a_a = '" + LA_21a_a.Text + "', " +
-    "LA_21b_a = '" + var_LA_21b_a + "', " +
-    "LA_22a_b = '" + var_LA_22a_b + "', " +
-    "LA_22a_a = '" + LA_22a_a.Text + "', " +
-    "LA_22b_a = '" + var_LA_22b_a + "', " +
-    "LA_23a_b = '" + var_LA_23a_b + "', " +
-    "LA_23a_a = '" + LA_23a_a.Text + "', " +
-    "LA_23b_a = '" + var_LA_23b_a + "', " +
-    "LA_24a_b = '" + var_LA_24a_b + "', " +
-    "LA_24a_a = '" + LA_24a_a.Text + "', " +
-    "LA_24b_a = '" + var_LA_24b_a + "', " +
-    "LA_25a_b = '" + var_LA_25a_b + "', " +
-    "LA_25a_a = '" + LA_25a_a.Text + "', " +
-    "LA_25b_a = '" + var_LA_25b_a + "', " +
-    "LA_26a_b = '" + var_LA_26a_b + "', " +
-    "LA_26a_a = '" + LA_26a_a.Text + "', " +
-    "LA_26b_a = '" + var_LA_26b_a + "', " +
-    "LA_27a_b = '" + var_LA_27a_b + "', " +
-    "LA_27a_a = '" + LA_27a_a.Text + "', " +
-    "LA_27b_a = '" + var_LA_27b_a + "', " +
-    "LA_28a_b = '" + var_LA_28a_b + "', " +
-    "LA_28a_a = '" + LA_28a_a.Text + "', " +
-    "LA_28b_a = '" + var_LA_28b_a + "', " +
-    "LA_29a_b = '" + var_LA_29a_b + "', " +
-    "LA_29a_a = '" + LA_29a_a.Text + "', " +
-    "LA_29b_a = '" + var_LA_29b_a + "', " +
-    "LA_30a_b = '" + var_LA_30a_b + "', " +
-    "LA_30a_a = '" + LA_30a_a.Text + "', " +
-    "LA_30b_a = '" + var_LA_30b_a + "', " +
-    "LA_31a_b = '" + var_LA_31a_b + "', " +
-    "LA_31a_a = '" + LA_31a_a.Text + "', " +
-    "LA_31b_a = '" + var_LA_31b_a + "', " +
-    "LA_32a_b = '" + var_LA_32a_b + "', " +
-    "LA_32a_a = '" + LA_32a_a.Text + "', " +
-    "LA_32b_a = '" + var_LA_32b_a + "', " +
-    "LA_33a_b = '" + var_LA_33a_b + "', " +
-    "LA_33a_a = '" + LA_33a_a.Text + "', " +
-    "LA_33b_a = '" + var_LA_33b_a + "', " +
-    "LA_34a_b = '" + var_LA_34a_b + "', " +
-    "LA_34a_a = '" + LA_34a_a.Text + "', " +
-    "LA_34b_a = '" + var_LA_34b_a + "', " +
-    "LA_35a_b = '" + var_LA_35a_b + "', " +
-    "LA_35a_a = '" + LA_35a_a.Text + "', " +
-    "LA_35b_a = '" + var_LA_35b_a + "', " +
-    "LA_36a_b = '" + var_LA_36a_b + "', " +
-    "LA_36a_a = '" + LA_36a_a.Text + "', " +
-    "LA_36b_a = '" + var_LA_36b_a + "', " +
-    "LA_37a_b = '" + var_LA_37a_b + "', " +
-    "LA_37a_a = '" + LA_37a_a.Text + "', " +
-    "LA_37b_a = '" + var_LA_37b_a + "', " +
-    "LA_38a_b = '" + var_LA_38a_b + "', " +
-    "LA_38a_a = '" + LA_38a_a.Text + "', " +
-    "LA_38b_a = '" + var_LA_38b_a + "', " +
-    "LA_39a_b = '" + var_LA_39a_b + "', " +
-    "LA_39a_a = '" + LA_39a_a.Text + "', " +
-    "LA_39b_a = '" + var_LA_39b_a + "', " +
-    "LA_40a_b = '" + var_LA_40a_b + "', " +
-    "LA_40a_a = '" + LA_40a_a.Text + "', " +
-    "LA_40b_a = '" + var_LA_40b_a + "', " +
-    "LA_41a_b = '" + var_LA_41a_b + "', " +
-    "LA_41a_a = '" + LA_41a_a.Text + "', " +
-    "LA_41b_a = '" + var_LA_41b_a + "', " +
-    "LA_42a_b = '" + var_LA_42a_b + "', " +
-    "LA_42a_a = '" + LA_42a_a.Text + "', " +
-    "LA_42b_a = '" + var_LA_42b_a + "', " +
-    "LA_43a_b = '" + var_LA_43a_b + "', " +
-    "LA_43a_a = '" + LA_43a_a.Text + "', " +
-    "LA_43b_a = '" + var_LA_43b_a + "', " +
-    "LA_44a_b = '" + var_LA_44a_b + "', " +
-    "LA_44a_a = '" + LA_44a_a.Text + "', " +
-    "LA_44b_a = '" + var_LA_44b_a + "', " +
-    "LA_45a_b = '" + var_LA_45a_b + "', " +
-    "LA_45a_a = '" + LA_45a_a.Text + "', " +
-    "LA_45b_a = '" + var_LA_45b_a + "', " +
-    "LA_46a_b = '" + var_LA_46a_b + "', " +
-    "LA_46a_a = '" + LA_46a_a.Text + "', " +
-    "LA_46b_a = '" + var_LA_46b_a + "', " +
-    "LA_47a_b = '" + var_LA_47a_b + "', " +
-    "LA_47a_a = '" + LA_47a_a.Text + "', " +
-    "LA_47b_a = '" + var_LA_47b_a + "', " +
-    "LA_48a_b = '" + var_LA_48a_b + "', " +
-    "LA_48a_a = '" + LA_48a_a.Text + "', " +
-    "LA_48b_a = '" + var_LA_48b_a + "', " +
-    "LA_49a_b = '" + var_LA_49a_b + "', " +
-    "LA_49a_a = '" + LA_49a_a.Text + "', " +
-    "LA_49b_a = '" + var_LA_49b_a + "', " +
-    "LA_50a_b = '" + var_LA_50a_b + "', " +
-    "LA_50a_a = '" + LA_50a_a.Text + "', " +
-    "LA_50b_a = '" + var_LA_50b_a + "', " +
-    "LA_51a_b = '" + var_LA_51a_b + "', " +
-    "LA_51a_a = '" + LA_51a_a.Text + "', " +
-    "LA_51b_a = '" + var_LA_51b_a + "', " +
-    "LA_52a_b = '" + var_LA_52a_b + "', " +
-    "LA_52a_a = '" + LA_52a_a.Text + "', " +
-    "LA_52b_a = '" + var_LA_52b_a + "', " +
-    "uc_01_ca = '" + uc_01_ca.Text + "', " +
-    "UR_04a_a = '" + UR_04a_a.Text + "', " +
-    "UR_04a = '" + var_UR_04a + "' where id='" + ViewState["id"] + "'";
+ "LA_01 = '" + LA_01.Text + "', " +
+ "LA_02 = '" + LA_02.Text + "', " +
+ "LA_03_b = '" + LA_03_b.Text + "', " +
+ "LA_03_a = '" + LA_03_a.Text + "', " +
+ "LA_04_b = '" + LA_04_b.Text + "', " +
+ "LA_04_a = '" + LA_04_a.Text + "', " +
+ "LA_05_b = '" + LA_05_b.Text + "', " +
+ "LA_05_a = '" + LA_05_a.Text + "', " +
+ "LA_06_b = '" + LA_06_b.Text + "', " +
+ "LA_06_a = '" + LA_06_a.Text + "', " +
+ "LA_07_b = '" + LA_07_b.Text + "', " +
+ "LA_07_a = '" + LA_07_a.Text + "', " +
+ "LA_08_b = '" + LA_08_b.Text + "', " +
+ "LA_08_a = '" + LA_08_a.Text + "', " +
+ "LA_09_b = '" + LA_09_b.Text + "', " +
+ "LA_09_a = '" + LA_09_a.Text + "', " +
+ "LA_10_b = '" + LA_10_b.Text + "', " +
+ "LA_10_a = '" + LA_10_a.Text + "', " +
+ "LA_11_b = '" + LA_11_b.Text + "', " +
+ "LA_11_a = '" + LA_11_a.Text + "', " +
+ "LA_12_b = '" + LA_12_b.Text + "', " +
+ "LA_12_a = '" + LA_12_a.Text + "', " +
+ "LA_13_b = '" + LA_13_b.Text + "', " +
+ "LA_13_a = '" + LA_13_a.Text + "', " +
+ "LA_14_b = '" + LA_14_b.Text + "', " +
+ "LA_14_a = '" + LA_14_a.Text + "', " +
+ "LA_15_b = '" + LA_15_b.Text + "', " +
+ "LA_15_a = '" + LA_15_a.Text + "', " +
+ "LA_16_b = '" + LA_16_b.Text + "', " +
+ "LA_16_a = '" + LA_16_a.Text + "', " +
+ "LF_01 = '" + var_LF_01 + "', " +
+ "LF_01_a = '" + LF_01_a.Text + "', " +
+ "LF_02 = '" + var_LF_02 + "', " +
+ "LF_02_a = '" + LF_02_a.Text + "', " +
+ "LF_03 = '" + var_LF_03 + "', " +
+ "LF_03_a = '" + LF_03_a.Text + "', " +
+ "LF_04 = '" + var_LF_04 + "', " +
+ "LF_04_a = '" + LF_04_a.Text + "', " +
+ "LF_05 = '" + var_LF_05 + "', " +
+ "LF_05_a = '" + LF_05_a.Text + "', " +
+ "LF_06 = '" + var_LF_06 + "', " +
+ "LF_06_a = '" + LF_06_a.Text + "', " +
+ "LF_07 = '" + var_LF_07 + "', " +
+ "LF_07_a = '" + LF_07_a.Text + "', " +
+ "RF_01 = '" + var_RF_01 + "', " +
+ "RF_01_a = '" + RF_01_a.Text + "', " +
+ "RF_02 = '" + var_RF_02 + "', " +
+ "RF_02_a = '" + RF_02_a.Text + "', " +
+ "RF_03 = '" + var_RF_03 + "', " +
+ "RF_03_a = '" + RF_03_a.Text + "', " +
+ "RF_04 = '" + var_RF_04 + "', " +
+ "RF_04_a = '" + RF_04_a.Text + "', " +
+ "SE_01 = '" + var_SE_01 + "', " +
+ "SE_01_a = '" + SE_01_a.Text + "', " +
+ "SE_02 = '" + var_SE_02 + "', " +
+ "SE_02_a = '" + SE_02_a.Text + "', " +
+ "SE_03 = '" + var_SE_03 + "', " +
+ "SE_03_a = '" + SE_03_a.Text + "', " +
+ "SE_04 = '" + var_SE_04 + "', " +
+ "SE_04_a = '" + SE_04_a.Text + "', " +
+ "CS_01 = '" + var_CS_01 + "', " +
+ "CS_01_a = '" + CS_01_a.Text + "', " +
+ "CS_02 = '" + var_CS_02 + "', " +
+ "CS_02_a = '" + CS_02_a.Text + "', " +
+ "CS_03 = '" + var_CS_03 + "', " +
+ "CS_03_a = '" + CS_03_a.Text + "', " +
+ "CS_04 = '" + var_CS_04 + "', " +
+ "CS_04_a = '" + CS_04_a.Text + "', " +
+ "CS_05 = '" + var_CS_05 + "', " +
+ "CS_05_a = '" + CS_05_a.Text + "', " +
+ "CS_06 = '" + var_CS_06 + "', " +
+ "CS_06_a = '" + CS_06_a.Text + "', " +
+ "CS_07 = '" + var_CS_07 + "', " +
+ "CS_07_a = '" + CS_07_a.Text + "', " +
+ "CS_08 = '" + var_CS_08 + "', " +
+ "CS_08_a = '" + CS_08_a.Text + "', " +
+ "CS_09 = '" + var_CS_09 + "', " +
+ "CS_09_a = '" + CS_09_a.Text + "', " +
+ "CS_10 = '" + var_CS_10 + "', " +
+ "CS_10_a = '" + CS_10_a.Text + "', " +
+ "UR_01 = '" + var_UR_01 + "', " +
+ "UR_01_a = '" + UR_01_a.Text + "', " +
+ "UR_02 = '" + var_UR_02 + "', " +
+ "UR_02_a = '" + UR_02_a.Text + "', " +
+ "UR_03 = '" + var_UR_03 + "', " +
+ "UR_03_a = '" + UR_03_a.Text + "', " +
+ "UR_04 = '" + var_UR_04 + "', " +
+ "UR_04_a = '" + UR_04_a.Text + "', " +
+ "UR_05 = '" + var_UR_05 + "', " +
+ "UR_05_a = '" + UR_05_a.Text + "', " +
+ "UR_06 = '" + var_UR_06 + "', " +
+ "UR_06_a = '" + UR_06_a.Text + "', " +
+ "UR_07 = '" + var_UR_07 + "', " +
+ "UR_07_a = '" + UR_07_a.Text + "', " +
+ "UR_08 = '" + var_UR_08 + "', " +
+ "UR_08_a = '" + UR_08_a.Text + "', " +
+ "UR_10 = '" + var_UR_10 + "', " +
+ "UR_10_a = '" + UR_10_a.Text + "', " +
+ "UR_11 = '" + var_UR_11 + "', " +
+ "UR_11_a = '" + UR_11_a.Text + "', " +
+ "UR_12 = '" + var_UR_12 + "', " +
+ "UR_12_a = '" + UR_12_a.Text + "', " +
+ "UR_13 = '" + var_UR_13 + "', " +
+ "UR_13_a = '" + UR_13_a.Text + "', " +
+ "UR_14 = '" + var_UR_14 + "', " +
+ "UR_14_a = '" + UR_14_a.Text + "', " +
+ "UR_15 = '" + var_UR_15 + "', " +
+ "UR_15_a = '" + UR_15_a.Text + "', " +
+ "UR_16 = '" + var_UR_16 + "', " +
+ "UR_16_a = '" + UR_16_a.Text + "', " +
+ "UR_17 = '" + var_UR_17 + "', " +
+ "UR_17_a = '" + UR_17_a.Text + "', " +
+ "UR_18 = '" + var_UR_18 + "', " +
+ "UR_18_a = '" + UR_18_a.Text + "', " +
+ "UR_19 = '" + var_UR_19 + "', " +
+ "UR_19_a = '" + UR_19_a.Text + "', " +
+ "UR_20 = '" + var_UR_20 + "', " +
+ "UR_20_a = '" + UR_20_a.Text + "', " +
+ "UR_21 = '" + var_UR_21 + "', " +
+ "UR_21_a = '" + UR_21_a.Text + "', " +
+ "uc_01a = '" + var_uc_01a + "', " +
+ "uc_02a = '" + var_uc_02a + "', " +
+ "uc_02a_a = '" + uc_02a_a.Text + "', " +
+ "uc_02b = '" + var_uc_02b + "', " +
+ "uc_03a = '" + var_uc_03a + "', " +
+ "uc_03a_a = '" + uc_03a_a.Text + "', " +
+ "uc_03b = '" + var_uc_03b + "', " +
+ "uc_04a = '" + var_uc_04a + "', " +
+ "uc_04a_a = '" + uc_04a_a.Text + "', " +
+ "uc_04b = '" + var_uc_04b + "', " +
+ "uc_05a = '" + var_uc_05a + "', " +
+ "uc_05a_a = '" + uc_05a_a.Text + "', " +
+ "uc_05b = '" + var_uc_05b + "', " +
+ "uc_06a = '" + var_uc_06a + "', " +
+ "uc_06a_a = '" + uc_06a_a.Text + "', " +
+ "uc_06b = '" + var_uc_06b + "', " +
+ "uc_07a = '" + var_uc_07a + "', " +
+ "uc_07a_a = '" + uc_07a_a.Text + "', " +
+ "uc_07b = '" + var_uc_07b + "', " +
+ "uc_08a = '" + var_uc_08a + "', " +
+ "uc_08a_a = '" + uc_08a_a.Text + "', " +
+ "uc_08b = '" + var_uc_08b + "', " +
+ "uc_09a = '" + var_uc_09a + "', " +
+ "uc_09a_a = '" + uc_09a_a.Text + "', " +
+ "uc_09b = '" + var_uc_09b + "', " +
+ "uc_10a = '" + var_uc_10a + "', " +
+ "uc_10a_a = '" + uc_10a_a.Text + "', " +
+ "uc_10b = '" + var_uc_10b + "', " +
+ "uc_11a = '" + var_uc_11a + "', " +
+ "uc_11a_a = '" + uc_11a_a.Text + "', " +
+ "uc_11b = '" + var_uc_11b + "', " +
+ "uc_12a = '" + var_uc_12a + "', " +
+ "uc_12a_a = '" + uc_12a_a.Text + "', " +
+ "uc_12b = '" + var_uc_12b + "', " +
+ "uc_13a = '" + var_uc_13a + "', " +
+ "uc_13a_a = '" + uc_13a_a.Text + "', " +
+ "uc_13b = '" + var_uc_13b + "', " +
+ "uc_14a = '" + var_uc_14a + "', " +
+ "uc_14a_a = '" + uc_14a_a.Text + "', " +
+ "uc_14b = '" + var_uc_14b + "', " +
+ "uc_15a = '" + var_uc_15a + "', " +
+ "uc_15a_a = '" + uc_15a_a.Text + "', " +
+ "uc_15b = '" + var_uc_15b + "', " +
+ "uc_16a = '" + var_uc_16a + "', " +
+ "uc_16a_a = '" + uc_16a_a.Text + "', " +
+ "uc_16b = '" + var_uc_16b + "', " +
+ "uc_17a = '" + var_uc_17a + "', " +
+ "uc_17a_a = '" + uc_17a_a.Text + "', " +
+ "uc_17b = '" + var_uc_17b + "', " +
+ "uc_18a = '" + var_uc_18a + "', " +
+ "uc_18a_a = '" + uc_18a_a.Text + "', " +
+ "uc_18b = '" + var_uc_18b + "', " +
+ "uc_19a = '" + var_uc_19a + "', " +
+ "uc_19a_a = '" + uc_19a_a.Text + "', " +
+ "uc_19b = '" + var_uc_19b + "', " +
+ "uc_20a = '" + var_uc_20a + "', " +
+ "uc_20a_a = '" + uc_20a_a.Text + "', " +
+ "uc_20b = '" + var_uc_20b + "', " +
+ "uc_21a = '" + var_uc_21a + "', " +
+ "uc_21a_a = '" + uc_21a_a.Text + "', " +
+ "uc_21b = '" + var_uc_21b + "', " +
+ "uc_22a = '" + var_uc_22a + "', " +
+ "uc_22a_a = '" + uc_22a_a.Text + "', " +
+ "uc_22b = '" + var_uc_22b + "', " +
+ "uc_23a = '" + var_uc_23a + "', " +
+ "uc_23a_a = '" + uc_23a_a.Text + "', " +
+ "uc_23b = '" + var_uc_23b + "', " +
+ "uc_24a = '" + var_uc_24a + "', " +
+ "uc_24a_a = '" + uc_24a_a.Text + "', " +
+ "uc_24b = '" + var_uc_24b + "', " +
+ "uc_25a = '" + var_uc_25a + "', " +
+ "uc_25a_a = '" + uc_25a_a.Text + "', " +
+ "uc_25b = '" + var_uc_25b + "', " +
+ "uc_26a = '" + var_uc_26a + "', " +
+ "uc_26a_a = '" + uc_26a_a.Text + "', " +
+ "uc_26b = '" + var_uc_26b + "', " +
+ "uc_27a = '" + var_uc_27a + "', " +
+ "uc_27a_a = '" + uc_27a_a.Text + "', " +
+ "uc_27b = '" + var_uc_27b + "', " +
+ "uc_28a = '" + var_uc_28a + "', " +
+ "uc_28a_a = '" + uc_28a_a.Text + "', " +
+ "uc_28b = '" + var_uc_28b + "', " +
+ "uc_29a = '" + var_uc_29a + "', " +
+ "uc_29a_a = '" + uc_29a_a.Text + "', " +
+ "uc_29b = '" + var_uc_29b + "', " +
+ "uc_30a = '" + var_uc_30a + "', " +
+ "uc_30a_a = '" + uc_30a_a.Text + "', " +
+ "uc_30b = '" + var_uc_30b + "', " +
+ "uc_31a = '" + var_uc_31a + "', " +
+ "uc_31a_a = '" + uc_31a_a.Text + "', " +
+ "uc_31b = '" + var_uc_31b + "', " +
+ "uc_32a = '" + var_uc_32a + "', " +
+ "uc_32a_a = '" + uc_32a_a.Text + "', " +
+ "uc_32b = '" + var_uc_32b + "', " +
+ "uc_33a = '" + var_uc_33a + "', " +
+ "uc_33a_a = '" + uc_33a_a.Text + "', " +
+ "uc_33b = '" + var_uc_33b + "', " +
+ "uc_34a = '" + var_uc_34a + "', " +
+ "uc_34a_a = '" + uc_34a_a.Text + "', " +
+ "uc_34b = '" + var_uc_34b + "', " +
+ "uc_35a = '" + var_uc_35a + "', " +
+ "uc_35a_a = '" + uc_35a_a.Text + "', " +
+ "uc_35b = '" + var_uc_35b + "', " +
+ "uc_36a = '" + var_uc_36a + "', " +
+ "uc_36a_a = '" + uc_36a_a.Text + "', " +
+ "uc_36b = '" + var_uc_36b + "', " +
+ "uc_37a = '" + var_uc_37a + "', " +
+ "uc_37a_a = '" + uc_37a_a.Text + "', " +
+ "uc_37b = '" + var_uc_37b + "', " +
+ "LA_17 = '" + LA_17.Text + "', " +
+ "LA_18 = '" + LA_18.Text + "', " +
+ "LA_19 = '" + LA_19.Text + "', " +
+ "LA_20a_b = '" + LA_20a_b.Text + "', " +
+ "LA_20a_a = '" + LA_20a_a.Text + "', " +
+ "LA_20b_a = '" + LA_20b_a.Text + "', " +
+ "LA_21a_b = '" + LA_21a_b.Text + "', " +
+ "LA_21a_a = '" + LA_21a_a.Text + "', " +
+ "LA_21b_a = '" + LA_21b_a.Text + "', " +
+ "LA_22a_b = '" + LA_22a_b.Text + "', " +
+ "LA_22a_a = '" + LA_22a_a.Text + "', " +
+ "LA_22b_a = '" + LA_22b_a.Text + "', " +
+ "LA_23a_b = '" + LA_23a_b.Text + "', " +
+ "LA_23a_a = '" + LA_23a_a.Text + "', " +
+ "LA_23b_a = '" + LA_23b_a.Text + "', " +
+ "LA_24a_b = '" + LA_24a_b.Text + "', " +
+ "LA_24a_a = '" + LA_24a_a.Text + "', " +
+ "LA_24b_a = '" + LA_24b_a.Text + "', " +
+ "LA_25a_b = '" + LA_25a_b.Text + "', " +
+ "LA_25a_a = '" + LA_25a_a.Text + "', " +
+ "LA_25b_a = '" + LA_25b_a.Text + "', " +
+ "LA_26a_b = '" + LA_26a_b.Text + "', " +
+ "LA_26a_a = '" + LA_26a_a.Text + "', " +
+ "LA_26b_a = '" + LA_26b_a.Text + "', " +
+ "LA_27a_b = '" + LA_27a_b.Text + "', " +
+ "LA_27a_a = '" + LA_27a_a.Text + "', " +
+ "LA_27b_a = '" + LA_27b_a.Text + "', " +
+ "LA_28a_b = '" + LA_28a_b.Text + "', " +
+ "LA_28a_a = '" + LA_28a_a.Text + "', " +
+ "LA_28b_a = '" + LA_28b_a.Text + "', " +
+ "LA_29a_b = '" + LA_29a_b.Text + "', " +
+ "LA_29a_a = '" + LA_29a_a.Text + "', " +
+ "LA_29b_a = '" + LA_29b_a.Text + "', " +
+ "LA_30a_b = '" + LA_30a_b.Text + "', " +
+ "LA_30a_a = '" + LA_30a_a.Text + "', " +
+ "LA_30b_a = '" + LA_30b_a.Text + "', " +
+ "LA_31a_b = '" + LA_31a_b.Text + "', " +
+ "LA_31a_a = '" + LA_31a_a.Text + "', " +
+ "LA_31b_a = '" + LA_31b_a.Text + "', " +
+ "LA_32a_b = '" + LA_32a_b.Text + "', " +
+ "LA_32a_a = '" + LA_32a_a.Text + "', " +
+ "LA_32b_a = '" + LA_32b_a.Text + "', " +
+ "LA_33a_b = '" + LA_33a_b.Text + "', " +
+ "LA_33a_a = '" + LA_33a_a.Text + "', " +
+ "LA_33b_a = '" + LA_33b_a.Text + "', " +
+ "LA_34a_b = '" + LA_34a_b.Text + "', " +
+ "LA_34a_a = '" + LA_34a_a.Text + "', " +
+ "LA_34b_a = '" + LA_34b_a.Text + "', " +
+ "LA_35a_b = '" + LA_35a_b.Text + "', " +
+ "LA_35a_a = '" + LA_35a_a.Text + "', " +
+ "LA_35b_a = '" + LA_35b_a.Text + "', " +
+ "LA_36a_b = '" + LA_36a_b.Text + "', " +
+ "LA_36a_a = '" + LA_36a_a.Text + "', " +
+ "LA_36b_a = '" + LA_36b_a.Text + "', " +
+ "LA_37a_b = '" + LA_37a_b.Text + "', " +
+ "LA_37a_a = '" + LA_37a_a.Text + "', " +
+ "LA_37b_a = '" + LA_37b_a.Text + "', " +
+ "LA_38a_b = '" + LA_38a_b.Text + "', " +
+ "LA_38a_a = '" + LA_38a_a.Text + "', " +
+ "LA_38b_a = '" + LA_38b_a.Text + "', " +
+ "LA_39a_b = '" + LA_39a_b.Text + "', " +
+ "LA_39a_a = '" + LA_39a_a.Text + "', " +
+ "LA_39b_a = '" + LA_39b_a.Text + "', " +
+ "LA_40a_b = '" + LA_40a_b.Text + "', " +
+ "LA_40a_a = '" + LA_40a_a.Text + "', " +
+ "LA_40b_a = '" + LA_40b_a.Text + "', " +
+ "LA_41a_b = '" + LA_41a_b.Text + "', " +
+ "LA_41a_a = '" + LA_41a_a.Text + "', " +
+ "LA_41b_a = '" + LA_41b_a.Text + "', " +
+ "LA_42a_b = '" + LA_42a_b.Text + "', " +
+ "LA_42a_a = '" + LA_42a_a.Text + "', " +
+ "LA_42b_a = '" + LA_42b_a.Text + "', " +
+ "LA_43a_b = '" + LA_43a_b.Text + "', " +
+ "LA_43a_a = '" + LA_43a_a.Text + "', " +
+ "LA_43b_a = '" + LA_43b_a.Text + "', " +
+ "LA_44a_b = '" + LA_44a_b.Text + "', " +
+ "LA_44a_a = '" + LA_44a_a.Text + "', " +
+ "LA_44b_a = '" + LA_44b_a.Text + "', " +
+ "LA_45a_b = '" + LA_45a_b.Text + "', " +
+ "LA_45a_a = '" + LA_45a_a.Text + "', " +
+ "LA_45b_a = '" + LA_45b_a.Text + "', " +
+ "LA_46a_b = '" + LA_46a_b.Text + "', " +
+ "LA_46a_a = '" + LA_46a_a.Text + "', " +
+ "LA_46b_a = '" + LA_46b_a.Text + "', " +
+ "LA_47a_b = '" + LA_47a_b.Text + "', " +
+ "LA_47a_a = '" + LA_47a_a.Text + "', " +
+ "LA_47b_a = '" + LA_47b_a.Text + "', " +
+ "LA_48a_b = '" + LA_48a_b.Text + "', " +
+ "LA_48a_a = '" + LA_48a_a.Text + "', " +
+ "LA_48b_a = '" + LA_48b_a.Text + "', " +
+ "LA_49a_b = '" + LA_49a_b.Text + "', " +
+ "LA_49a_a = '" + LA_49a_a.Text + "', " +
+ "LA_49b_a = '" + LA_49b_a.Text + "', " +
+ "LA_50a_b = '" + LA_50a_b.Text + "', " +
+ "LA_50a_a = '" + LA_50a_a.Text + "', " +
+ "LA_50b_a = '" + LA_50b_a.Text + "', " +
+ "LA_51a_b = '" + LA_51a_b.Text + "', " +
+ "LA_51a_a = '" + LA_51a_a.Text + "', " +
+ "LA_51b_a = '" + LA_51b_a.Text + "', " +
+ "LA_52a_b = '" + LA_52a_b.Text + "', " +
+ "LA_52a_a = '" + LA_52a_a.Text + "', " +
+ "LA_52b_a = '" + LA_52b_a.Text + "', " +
+ "uc_01_ca = '" + uc_01_ca.Text + "', " +
+ "UR_04a_a = '" + UR_04a_a.Text + "', " +
+ "UR_04a = '" + var_UR_04a + "' where id='" + ViewState["id"] + "'";
 
 
                 msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
@@ -5039,8 +4498,6 @@ public partial class sample_results : System.Web.UI.Page
 
                 if (string.IsNullOrEmpty(msg1))
                 {
-                    UpdateFormStatus(formstatus);
-
                     string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
                 }
@@ -5070,7 +4527,7 @@ public partial class sample_results : System.Web.UI.Page
     }
 
 
-    private void SaveData(string formstatus)
+    private void SaveData()
     {
         CDBOperations obj_op = new CDBOperations();
 
@@ -5299,11 +4756,7 @@ public partial class sample_results : System.Web.UI.Page
         {
 
 
-            if (LA_03_v.Checked == true)
-            {
-                var_LA_03_b = "";
-            }
-            else if (LA_03_b.Checked == true)
+            if (LA_03_b.Checked == true)
             {
                 var_LA_03_b = "999";
             }
@@ -5313,11 +4766,8 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (LA_04_v.Checked == true)
-            {
-                var_LA_04_b = "";
-            }
-            else if (LA_04_b.Checked == true)
+
+            if (LA_04_b.Checked == true)
             {
                 var_LA_04_b = "999";
             }
@@ -5327,11 +4777,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (LA_05_v.Checked == true)
-            {
-                var_LA_05_b = "";
-            }
-            else if (LA_05_b.Checked == true)
+            if (LA_05_b.Checked == true)
             {
                 var_LA_05_b = "999";
             }
@@ -5341,12 +4787,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_06_v.Checked == true)
-            {
-                var_LA_06_b = "";
-            }
-            else if (LA_06_b.Checked == true)
+            if (LA_06_b.Checked == true)
             {
                 var_LA_06_b = "999";
             }
@@ -5356,12 +4797,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_07_v.Checked == true)
-            {
-                var_LA_07_b = "";
-            }
-            else if (LA_07_b.Checked == true)
+            if (LA_07_b.Checked == true)
             {
                 var_LA_07_b = "999";
             }
@@ -5371,12 +4807,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_08_v.Checked == true)
-            {
-                var_LA_08_b = "";
-            }
-            else if (LA_08_b.Checked == true)
+            if (LA_08_b.Checked == true)
             {
                 var_LA_08_b = "999";
             }
@@ -5387,11 +4818,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_09_v.Checked == true)
-            {
-                var_LA_09_b = "";
-            }
-            else if (LA_09_b.Checked == true)
+            if (LA_09_b.Checked == true)
             {
                 var_LA_09_b = "999";
             }
@@ -5401,12 +4828,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_10_v.Checked == true)
-            {
-                var_LA_10_b = "";
-            }
-            else if (LA_10_b.Checked == true)
+            if (LA_10_b.Checked == true)
             {
                 var_LA_10_b = "999";
             }
@@ -5419,10 +4841,6 @@ public partial class sample_results : System.Web.UI.Page
 
             if (LA_11_b.Checked == true)
             {
-                var_LA_11_b = "";
-            }
-            else if (LA_11_b.Checked == true)
-            {
                 var_LA_11_b = "999";
             }
             else if (LA_11_c.Checked == true)
@@ -5431,12 +4849,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_12_v.Checked == true)
-            {
-                var_LA_12_b = "";
-            }
-            else if (LA_12_b.Checked == true)
+            if (LA_12_b.Checked == true)
             {
                 var_LA_12_b = "999";
             }
@@ -5446,13 +4859,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-
-            if (LA_13_v.Checked == true)
-            {
-                var_LA_13_b = "";
-            }
-            else if (LA_13_b.Checked == true)
+            if (LA_13_b.Checked == true)
             {
                 var_LA_13_b = "999";
             }
@@ -5462,12 +4869,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_14_v.Checked == true)
-            {
-                var_LA_14_b = "";
-            }
-            else if (LA_14_b.Checked == true)
+            if (LA_14_b.Checked == true)
             {
                 var_LA_14_b = "999";
             }
@@ -5478,11 +4880,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_15_v.Checked == true)
-            {
-                var_LA_15_b = "";
-            }
-            else if (LA_15_b.Checked == true)
+            if (LA_15_b.Checked == true)
             {
                 var_LA_15_b = "999";
             }
@@ -5492,12 +4890,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LA_16_v.Checked == true)
-            {
-                var_LA_16_b = "";
-            }
-            else if (LA_16_b.Checked == true)
+            if (LA_16_b.Checked == true)
             {
                 var_LA_16_b = "999";
             }
@@ -5509,11 +4902,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_01_v.Checked == true)
-            {
-                var_LF_01 = "";
-            }
-            else if (LF_01_b.Checked == true)
+
+            if (LF_01_b.Checked == true)
             {
                 var_LF_01 = "999";
             }
@@ -5524,11 +4914,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_02_v.Checked == true)
-            {
-                var_LF_02 = "";
-            }
-            else if (LF_02_b.Checked == true)
+            if (LF_02_b.Checked == true)
             {
                 var_LF_02 = "999";
             }
@@ -5539,11 +4925,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_03_v.Checked == true)
-            {
-                var_LF_03 = "";
-            }
-            else if (LF_03_b.Checked == true)
+            if (LF_03_b.Checked == true)
             {
                 var_LF_03 = "999";
             }
@@ -5554,11 +4936,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_04_v.Checked == true)
-            {
-                var_LF_04 = "";
-            }
-            else if (LF_04_b.Checked == true)
+            if (LF_04_b.Checked == true)
             {
                 var_LF_04 = "999";
             }
@@ -5569,11 +4947,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LF_05_v.Checked == true)
-            {
-                var_LF_05 = "";
-            }
-            else if (LF_05_b.Checked == true)
+            if (LF_05_b.Checked == true)
             {
                 var_LF_05 = "999";
             }
@@ -5584,12 +4958,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LF_06_v.Checked == true)
-            {
-                var_LF_06 = "";
-            }
-            else if (LF_06_b.Checked == true)
+            if (LF_06_b.Checked == true)
             {
                 var_LF_06 = "999";
             }
@@ -5599,12 +4968,7 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-
-            if (LF_07_v.Checked == true)
-            {
-                var_LF_07 = "";
-            }
-            else if (LF_07_b.Checked == true)
+            if (LF_07_b.Checked == true)
             {
                 var_LF_07 = "999";
             }
@@ -5615,11 +4979,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_01_v.Checked == true)
-            {
-                var_RF_01 = "";
-            }
-            else if (RF_01_b.Checked == true)
+            if (RF_01_b.Checked == true)
             {
                 var_RF_01 = "999";
             }
@@ -5630,11 +4990,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_02_v.Checked == true)
-            {
-                var_RF_02 = "";
-            }
-            else if (RF_02_b.Checked == true)
+            if (RF_02_b.Checked == true)
             {
                 var_RF_02 = "999";
             }
@@ -5645,11 +5001,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_03_v.Checked == true)
-            {
-                var_RF_03 = "";
-            }
-            else if (RF_03_b.Checked == true)
+            if (RF_03_b.Checked == true)
             {
                 var_RF_03 = "999";
             }
@@ -5660,11 +5012,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (RF_04_v.Checked == true)
-            {
-                var_RF_04 = "";
-            }
-            else if (RF_04_b.Checked == true)
+            if (RF_04_b.Checked == true)
             {
                 var_RF_04 = "999";
             }
@@ -5675,11 +5023,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_01_v.Checked == true)
-            {
-                var_SE_01 = "";
-            }
-            else if (SE_01_b.Checked == true)
+            if (SE_01_b.Checked == true)
             {
                 var_SE_01 = "999";
             }
@@ -5690,11 +5034,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_02_v.Checked == true)
-            {
-                var_SE_02 = "";
-            }
-            else if (SE_02_b.Checked == true)
+            if (SE_02_b.Checked == true)
             {
                 var_SE_02 = "999";
             }
@@ -5706,11 +5046,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_03_v.Checked == true)
-            {
-                var_SE_03 = "";
-            }
-            else if (SE_03_b.Checked == true)
+            if (SE_03_b.Checked == true)
             {
                 var_SE_03 = "999";
             }
@@ -5721,11 +5057,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (SE_04_v.Checked == true)
-            {
-                var_SE_04 = "";
-            }
-            else if (SE_04_b.Checked == true)
+            if (SE_04_b.Checked == true)
             {
                 var_SE_04 = "999";
             }
@@ -5736,11 +5068,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_01_v.Checked == true)
-            {
-                var_CS_01 = "";
-            }
-            else if (CS_01_b.Checked == true)
+            if (CS_01_b.Checked == true)
             {
                 var_CS_01 = "999";
             }
@@ -5751,11 +5079,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_02_v.Checked == true)
-            {
-                var_CS_02 = "";
-            }
-            else if (CS_02_b.Checked == true)
+            if (CS_02_b.Checked == true)
             {
                 var_CS_02 = "999";
             }
@@ -5766,12 +5090,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (CS_03_v.Checked == true)
-            {
-                var_CS_03 = "";
-            }
-            else if (CS_03_b.Checked == true)
+            if (CS_03_b.Checked == true)
             {
                 var_CS_03 = "999";
             }
@@ -5782,11 +5101,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_04_v.Checked == true)
-            {
-                var_CS_04 = "";
-            }
-            else if (CS_04_b.Checked == true)
+            if (CS_04_b.Checked == true)
             {
                 var_CS_04 = "999";
             }
@@ -5797,11 +5112,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_05_v.Checked == true)
-            {
-                var_CS_05 = "";
-            }
-            else if (CS_05_b.Checked == true)
+
+            if (CS_05_b.Checked == true)
             {
                 var_CS_05 = "999";
             }
@@ -5812,11 +5124,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_06_v.Checked == true)
-            {
-                var_CS_06 = "";
-            }
-            else if (CS_06_b.Checked == true)
+            if (CS_06_b.Checked == true)
             {
                 var_CS_06 = "999";
             }
@@ -5827,11 +5135,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_07_v.Checked == true)
-            {
-                var_CS_07 = "";
-            }
-            else if (CS_07_b.Checked == true)
+            if (CS_07_b.Checked == true)
             {
                 var_CS_07 = "999";
             }
@@ -5842,11 +5146,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_08_v.Checked == true)
-            {
-                var_CS_08 = "";
-            }
-            else if (CS_08_b.Checked == true)
+            if (CS_08_b.Checked == true)
             {
                 var_CS_08 = "999";
             }
@@ -5857,11 +5157,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_09_v.Checked == true)
-            {
-                var_CS_09 = "";
-            }
-            else if (CS_09_b.Checked == true)
+            if (CS_09_b.Checked == true)
             {
                 var_CS_09 = "999";
             }
@@ -5872,11 +5168,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (CS_10_v.Checked == true)
-            {
-                var_CS_10 = "";
-            }
-            else if (CS_10_b.Checked == true)
+            if (CS_10_b.Checked == true)
             {
                 var_CS_10 = "999";
             }
@@ -5887,11 +5179,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_01_v.Checked == true)
-            {
-                var_UR_01 = "";
-            }
-            else if (UR_01_b.Checked == true)
+
+            if (UR_01_b.Checked == true)
             {
                 var_UR_01 = "999";
             }
@@ -5902,11 +5191,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_02_v.Checked == true)
-            {
-                var_UR_02 = "";
-            }
-            else if (UR_02_b.Checked == true)
+            if (UR_02_b.Checked == true)
             {
                 var_UR_02 = "999";
             }
@@ -5917,11 +5202,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_03_v.Checked == true)
-            {
-                var_UR_03 = "";
-            }
-            else if (UR_03_b.Checked == true)
+            if (UR_03_b.Checked == true)
             {
                 var_UR_03 = "999";
             }
@@ -5932,11 +5213,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_04_v.Checked == true)
-            {
-                var_UR_04 = "";
-            }
-            else if (UR_04_b.Checked == true)
+            if (UR_04_b.Checked == true)
             {
                 var_UR_04 = "999";
             }
@@ -5947,11 +5224,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_04a_v.Checked == true)
-            {
-                var_UR_04a = "";
-            }
-            else if (UR_04a_b.Checked == true)
+            if (UR_04a_b.Checked == true)
             {
                 var_UR_04a = "999";
             }
@@ -5963,11 +5236,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_05_v.Checked == true)
-            {
-                var_UR_05 = "";
-            }
-            else if (UR_05_b.Checked == true)
+            if (UR_05_b.Checked == true)
             {
                 var_UR_05 = "999";
             }
@@ -5979,11 +5248,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_06_v.Checked == true)
-            {
-                var_UR_06 = "";
-            }
-            else if (UR_06_b.Checked == true)
+            if (UR_06_b.Checked == true)
             {
                 var_UR_06 = "999";
             }
@@ -5994,11 +5259,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_07_v.Checked == true)
-            {
-                var_UR_07 = "";
-            }
-            else if (UR_07_b.Checked == true)
+            if (UR_07_b.Checked == true)
             {
                 var_UR_07 = "999";
             }
@@ -6009,11 +5270,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_08_v.Checked == true)
-            {
-                var_UR_08 = "";
-            }
-            else if (UR_08_b.Checked == true)
+            if (UR_08_b.Checked == true)
             {
                 var_UR_08 = "999";
             }
@@ -6024,11 +5281,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_10_v.Checked == true)
-            {
-                var_UR_10 = "";
-            }
-            else if (UR_10_b.Checked == true)
+            if (UR_10_b.Checked == true)
             {
                 var_UR_10 = "999";
             }
@@ -6039,11 +5292,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_11_v.Checked == true)
-            {
-                var_UR_11 = "";
-            }
-            else if (UR_11_b.Checked == true)
+            if (UR_11_b.Checked == true)
             {
                 var_UR_11 = "999";
             }
@@ -6054,11 +5303,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_12_v.Checked == true)
-            {
-                var_UR_12 = "";
-            }
-            else if (UR_12_b.Checked == true)
+
+            if (UR_12_b.Checked == true)
             {
                 var_UR_12 = "999";
             }
@@ -6070,11 +5316,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_13_v.Checked == true)
-            {
-                var_UR_13 = "";
-            }
-            else if (UR_13_b.Checked == true)
+            if (UR_13_b.Checked == true)
             {
                 var_UR_13 = "999";
             }
@@ -6086,11 +5328,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_14_v.Checked == true)
-            {
-                var_UR_14 = "";
-            }
-            else if (UR_14_b.Checked == true)
+            if (UR_14_b.Checked == true)
             {
                 var_UR_14 = "999";
             }
@@ -6101,12 +5339,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (UR_15_v.Checked == true)
-            {
-                var_UR_15 = "";
-            }
-            else if (UR_15_b.Checked == true)
+            if (UR_15_b.Checked == true)
             {
                 var_UR_15 = "999";
             }
@@ -6117,11 +5350,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_16_v.Checked == true)
-            {
-                var_UR_16 = "";
-            }
-            else if (UR_16_b.Checked == true)
+
+            if (UR_16_b.Checked == true)
             {
                 var_UR_16 = "999";
             }
@@ -6132,11 +5362,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_17_v.Checked == true)
-            {
-                var_UR_17 = "";
-            }
-            else if (UR_17_b.Checked == true)
+            if (UR_17_b.Checked == true)
             {
                 var_UR_17 = "999";
             }
@@ -6147,11 +5373,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_18_v.Checked == true)
-            {
-                var_UR_18 = "";
-            }
-            else if (UR_18_b.Checked == true)
+            if (UR_18_b.Checked == true)
             {
                 var_UR_18 = "999";
             }
@@ -6162,11 +5384,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_19_v.Checked == true)
-            {
-                var_UR_19 = "";
-            }
-            else if (UR_19_b.Checked == true)
+
+            if (UR_19_b.Checked == true)
             {
                 var_UR_19 = "999";
             }
@@ -6178,11 +5397,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_20_v.Checked == true)
-            {
-                var_UR_20 = "";
-            }
-            else if (UR_20_b.Checked == true)
+            if (UR_20_b.Checked == true)
             {
                 var_UR_20 = "999";
             }
@@ -6193,11 +5408,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (UR_21_v.Checked == true)
-            {
-                var_UR_21 = "";
-            }
-            else if (UR_21_b.Checked == true)
+            if (UR_21_b.Checked == true)
             {
                 var_UR_21 = "999";
             }
@@ -6223,11 +5434,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_02a_v.Checked == true)
-            {
-                var_uc_02a = "";
-            }
-            else if (uc_02a_b.Checked == true)
+            if (uc_02a_b.Checked == true)
             {
                 var_uc_02a = "999";
             }
@@ -6253,11 +5460,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_03a_v.Checked == true)
-            {
-                var_uc_03a = "";
-            }
-            else if (uc_03a_b.Checked == true)
+            if (uc_03a_b.Checked == true)
             {
                 var_uc_03a = "999";
             }
@@ -6284,11 +5487,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_04a_v.Checked == true)
-            {
-                var_uc_04a = "";
-            }
-            else if (uc_04a_b.Checked == true)
+            if (uc_04a_b.Checked == true)
             {
                 var_uc_04a = "999";
             }
@@ -6314,11 +5513,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_05a_v.Checked == true)
-            {
-                var_uc_05a = "";
-            }
-            else if (uc_05a_b.Checked == true)
+            if (uc_05a_b.Checked == true)
             {
                 var_uc_05a = "999";
             }
@@ -6345,11 +5540,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_06a_v.Checked == true)
-            {
-                var_uc_06a = "";
-            }
-            else if (uc_06a_b.Checked == true)
+            if (uc_06a_b.Checked == true)
             {
                 var_uc_06a = "999";
             }
@@ -6375,11 +5566,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_07a_v.Checked == true)
-            {
-                var_uc_07a = "";
-            }
-            else if (uc_07a_b.Checked == true)
+            if (uc_07a_b.Checked == true)
             {
                 var_uc_07a = "999";
             }
@@ -6405,11 +5592,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_08a_v.Checked == true)
-            {
-                var_uc_08a = "";
-            }
-            else if (uc_08a_b.Checked == true)
+            if (uc_08a_b.Checked == true)
             {
                 var_uc_08a = "999";
             }
@@ -6436,11 +5619,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_09a_v.Checked == true)
-            {
-                var_uc_09a = "";
-            }
-            else if (uc_09a_b.Checked == true)
+            if (uc_09a_b.Checked == true)
             {
                 var_uc_09a = "999";
             }
@@ -6467,11 +5646,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_10a_v.Checked == true)
-            {
-                var_uc_10a = "";
-            }
-            else if (uc_10a_b.Checked == true)
+            if (uc_10a_b.Checked == true)
             {
                 var_uc_10a = "999";
             }
@@ -6497,11 +5672,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_11a_v.Checked == true)
-            {
-                var_uc_11a = "";
-            }
-            else if (uc_11a_b.Checked == true)
+            if (uc_11a_b.Checked == true)
             {
                 var_uc_11a = "999";
             }
@@ -6528,11 +5699,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_12a_v.Checked == true)
-            {
-                var_uc_12a = "";
-            }
-            else if (uc_12a_b.Checked == true)
+            if (uc_12a_b.Checked == true)
             {
                 var_uc_12a = "999";
             }
@@ -6558,11 +5725,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_13a_v.Checked == true)
-            {
-                var_uc_13a = "";
-            }
-            else if (uc_13a_b.Checked == true)
+            if (uc_13a_b.Checked == true)
             {
                 var_uc_13a = "999";
             }
@@ -6589,11 +5752,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_14a_v.Checked == true)
-            {
-                var_uc_14a = "";
-            }
-            else if (uc_14a_b.Checked == true)
+            if (uc_14a_b.Checked == true)
             {
                 var_uc_14a = "999";
             }
@@ -6620,11 +5779,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_15a_v.Checked == true)
-            {
-                var_uc_15a = "";
-            }
-            else if (uc_15a_b.Checked == true)
+            if (uc_15a_b.Checked == true)
             {
                 var_uc_15a = "999";
             }
@@ -6651,11 +5806,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_16a_v.Checked == true)
-            {
-                var_uc_16a = "";
-            }
-            else if (uc_16a_b.Checked == true)
+            if (uc_16a_b.Checked == true)
             {
                 var_uc_16a = "999";
             }
@@ -6683,11 +5834,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_17a_v.Checked == true)
-            {
-                var_uc_17a = "";
-            }
-            else if (uc_17a_b.Checked == true)
+            if (uc_17a_b.Checked == true)
             {
                 var_uc_17a = "999";
             }
@@ -6714,11 +5861,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_18a_v.Checked == true)
-            {
-                var_uc_18a = "";
-            }
-            else if (uc_18a_b.Checked == true)
+            if (uc_18a_b.Checked == true)
             {
                 var_uc_18a = "999";
             }
@@ -6745,11 +5888,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_19a_v.Checked == true)
-            {
-                var_uc_19a = "";
-            }
-            else if (uc_19a_b.Checked == true)
+            if (uc_19a_b.Checked == true)
             {
                 var_uc_19a = "999";
             }
@@ -6776,11 +5915,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_20a_v.Checked == true)
-            {
-                var_uc_20a = "";
-            }
-            else if (uc_20a_b.Checked == true)
+            if (uc_20a_b.Checked == true)
             {
                 var_uc_20a = "999";
             }
@@ -6807,11 +5942,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_21a_v.Checked == true)
-            {
-                var_uc_21a = "";
-            }
-            else if (uc_21a_b.Checked == true)
+            if (uc_21a_b.Checked == true)
             {
                 var_uc_21a = "999";
             }
@@ -6838,11 +5969,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_22a_v.Checked == true)
-            {
-                var_uc_22a = "";
-            }
-            else if (uc_22a_b.Checked == true)
+            if (uc_22a_b.Checked == true)
             {
                 var_uc_22a = "999";
             }
@@ -6869,11 +5996,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_23a_v.Checked == true)
-            {
-                var_uc_23a = "";
-            }
-            else if (uc_23a_b.Checked == true)
+            if (uc_23a_b.Checked == true)
             {
                 var_uc_23a = "999";
             }
@@ -6900,11 +6023,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_24a_v.Checked == true)
-            {
-                var_uc_24a = "";
-            }
-            else if (uc_24a_b.Checked == true)
+            if (uc_24a_b.Checked == true)
             {
                 var_uc_24a = "999";
             }
@@ -6931,11 +6050,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_25a_v.Checked == true)
-            {
-                var_uc_25a = "";
-            }
-            else if (uc_25a_b.Checked == true)
+            if (uc_25a_b.Checked == true)
             {
                 var_uc_25a = "999";
             }
@@ -6962,11 +6077,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_26a_v.Checked == true)
-            {
-                var_uc_26a = "";
-            }
-            else if (uc_26a_b.Checked == true)
+            if (uc_26a_b.Checked == true)
             {
                 var_uc_26a = "999";
             }
@@ -6993,11 +6104,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_27a_v.Checked == true)
-            {
-                var_uc_27a = "";
-            }
-            else if (uc_27a_b.Checked == true)
+            if (uc_27a_b.Checked == true)
             {
                 var_uc_27a = "999";
             }
@@ -7024,11 +6131,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_28a_v.Checked == true)
-            {
-                var_uc_28a = "";
-            }
-            else if (uc_28a_b.Checked == true)
+
+            if (uc_28a_b.Checked == true)
             {
                 var_uc_28a = "999";
             }
@@ -7055,11 +6159,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_29a_v.Checked == true)
-            {
-                var_uc_29a = "";
-            }
-            else if (uc_29a_b.Checked == true)
+            if (uc_29a_b.Checked == true)
             {
                 var_uc_29a = "999";
             }
@@ -7086,11 +6186,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_30a_v.Checked == true)
-            {
-                var_uc_30a = "";
-            }
-            else if (uc_30a_b.Checked == true)
+
+            if (uc_30a_b.Checked == true)
             {
                 var_uc_30a = "999";
             }
@@ -7116,11 +6213,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_31a_v.Checked == true)
-            {
-                var_uc_31a = "";
-            }
-            else if (uc_31a_b.Checked == true)
+
+            if (uc_31a_b.Checked == true)
             {
                 var_uc_31a = "999";
             }
@@ -7146,11 +6240,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_32a_v.Checked == true)
-            {
-                var_uc_32a = "";
-            }
-            else if (uc_32a_b.Checked == true)
+
+            if (uc_32a_b.Checked == true)
             {
                 var_uc_32a = "999";
             }
@@ -7177,11 +6268,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_33a_v.Checked == true)
-            {
-                var_uc_33a = "";
-            }
-            else if (uc_33a_b.Checked == true)
+
+            if (uc_33a_b.Checked == true)
             {
                 var_uc_33a = "999";
             }
@@ -7207,11 +6295,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_34a_v.Checked == true)
-            {
-                var_uc_34a = "";
-            }
-            else if (uc_34a_b.Checked == true)
+
+            if (uc_34a_b.Checked == true)
             {
                 var_uc_34a = "999";
             }
@@ -7238,11 +6323,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_35a_v.Checked == true)
-            {
-                var_uc_35a = "";
-            }
-            else if (uc_35a_b.Checked == true)
+            if (uc_35a_b.Checked == true)
             {
                 var_uc_35a = "999";
             }
@@ -7270,11 +6351,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_36a_v.Checked == true)
-            {
-                var_uc_36a = "";
-            }
-            else if (uc_36a_b.Checked == true)
+            if (uc_36a_b.Checked == true)
             {
                 var_uc_36a = "999";
             }
@@ -7302,11 +6379,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (uc_37a_v.Checked == true)
-            {
-                var_uc_37a = "";
-            }
-            else if (uc_37a_b.Checked == true)
+            if (uc_37a_b.Checked == true)
             {
                 var_uc_37a = "999";
             }
@@ -7335,11 +6408,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_20a_v.Checked == true)
-            {
-                var_LA_20a_b = "";
-            }
-            else if (LA_20a_b.Checked == true)
+
+            if (LA_20a_b.Checked == true)
             {
                 var_LA_20a_b = "999";
             }
@@ -7366,11 +6436,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_21a_v.Checked == true)
-            {
-                var_LA_21a_b = "";
-            }
-            else if (LA_21a_b.Checked == true)
+            if (LA_21a_b.Checked == true)
             {
                 var_LA_21a_b = "999";
             }
@@ -7396,11 +6462,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_22a_v.Checked == true)
-            {
-                var_LA_22a_b = "";
-            }
-            else if (LA_22a_b.Checked == true)
+            if (LA_22a_b.Checked == true)
             {
                 var_LA_22a_b = "999";
             }
@@ -7426,11 +6488,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_23a_v.Checked == true)
-            {
-                var_LA_23a_b = "";
-            }
-            else if (LA_23a_b.Checked == true)
+            if (LA_23a_b.Checked == true)
             {
                 var_LA_23a_b = "999";
             }
@@ -7456,11 +6514,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_24a_v.Checked == true)
-            {
-                var_LA_24a_b = "";
-            }
-            else if (LA_24a_b.Checked == true)
+            if (LA_24a_b.Checked == true)
             {
                 var_LA_24a_b = "999";
             }
@@ -7486,11 +6540,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_25a_v.Checked == true)
-            {
-                var_LA_25a_b = "";
-            }
-            else if (LA_25a_b.Checked == true)
+            if (LA_25a_b.Checked == true)
             {
                 var_LA_25a_b = "999";
             }
@@ -7516,11 +6566,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_26a_v.Checked == true)
-            {
-                var_LA_26a_b = "";
-            }
-            else if (LA_26a_b.Checked == true)
+            if (LA_26a_b.Checked == true)
             {
                 var_LA_26a_b = "999";
             }
@@ -7547,11 +6593,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_27a_v.Checked == true)
-            {
-                var_LA_27a_b = "";
-            }
-            else if (LA_27a_b.Checked == true)
+            if (LA_27a_b.Checked == true)
             {
                 var_LA_27a_b = "999";
             }
@@ -7578,11 +6620,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_28a_v.Checked == true)
-            {
-                var_LA_28a_b = "";
-            }
-            else if (LA_28a_b.Checked == true)
+            if (LA_28a_b.Checked == true)
             {
                 var_LA_28a_b = "999";
             }
@@ -7608,11 +6646,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_29a_v.Checked == true)
-            {
-                var_LA_29a_b = "";
-            }
-            else if (LA_29a_b.Checked == true)
+            if (LA_29a_b.Checked == true)
             {
                 var_LA_29a_b = "999";
             }
@@ -7638,11 +6672,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_30a_v.Checked == true)
-            {
-                var_LA_30a_b = "";
-            }
-            else if (LA_30a_b.Checked == true)
+            if (LA_30a_b.Checked == true)
             {
                 var_LA_30a_b = "999";
             }
@@ -7668,11 +6698,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_31a_v.Checked == true)
-            {
-                var_LA_31a_b = "";
-            }
-            else if (LA_31a_b.Checked == true)
+            if (LA_31a_b.Checked == true)
             {
                 var_LA_31a_b = "999";
             }
@@ -7698,11 +6724,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_32a_v.Checked == true)
-            {
-                var_LA_32a_b = "";
-            }
-            else if (LA_32a_b.Checked == true)
+            if (LA_32a_b.Checked == true)
             {
                 var_LA_32a_b = "999";
             }
@@ -7729,11 +6751,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_33a_v.Checked == true)
-            {
-                var_LA_33a_b = "";
-            }
-            else if (LA_33a_b.Checked == true)
+            if (LA_33a_b.Checked == true)
             {
                 var_LA_33a_b = "999";
             }
@@ -7760,11 +6778,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_34a_v.Checked == true)
-            {
-                var_LA_34a_b = "";
-            }
-            else if (LA_34a_b.Checked == true)
+            if (LA_34a_b.Checked == true)
             {
                 var_LA_34a_b = "999";
             }
@@ -7790,12 +6804,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_35a_v.Checked == true)
-            {
-                var_LA_35a_b = "";
-            }
-            else if (LA_35a_b.Checked == true)
+            if (LA_35a_b.Checked == true)
             {
                 var_LA_35a_b = "999";
             }
@@ -7803,7 +6812,6 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_LA_35a_b = "888";
             }
-
 
 
 
@@ -7822,12 +6830,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_36a_v.Checked == true)
-            {
-                var_LA_36a_b = "";
-            }
-            else if (LA_36a_b.Checked == true)
+            if (LA_36a_b.Checked == true)
             {
                 var_LA_36a_b = "999";
             }
@@ -7854,11 +6857,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_37a_v.Checked == true)
-            {
-                var_LA_37a_b = "";
-            }
-            else if (LA_37a_b.Checked == true)
+            if (LA_37a_b.Checked == true)
             {
                 var_LA_37a_b = "999";
             }
@@ -7884,12 +6883,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_38a_v.Checked == true)
-            {
-                var_LA_38a_b = "";
-            }
-            else if (LA_38a_b.Checked == true)
+            if (LA_38a_b.Checked == true)
             {
                 var_LA_38a_b = "999";
             }
@@ -7915,12 +6909,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_39a_v.Checked == true)
-            {
-                var_LA_39a_b = "";
-            }
-            else if (LA_39a_b.Checked == true)
+            if (LA_39a_b.Checked == true)
             {
                 var_LA_39a_b = "999";
             }
@@ -7946,11 +6935,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_40a_v.Checked == true)
-            {
-                var_LA_40a_b = "";
-            }
-            else if (LA_40a_b.Checked == true)
+            if (LA_40a_b.Checked == true)
             {
                 var_LA_40a_b = "999";
             }
@@ -7976,11 +6961,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_41a_v.Checked == true)
-            {
-                var_LA_41a_b = "";
-            }
-            else if (LA_41a_b.Checked == true)
+            if (LA_41a_b.Checked == true)
             {
                 var_LA_41a_b = "999";
             }
@@ -8006,11 +6987,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_42a_v.Checked == true)
-            {
-                var_LA_42a_b = "";
-            }
-            else if (LA_42a_b.Checked == true)
+            if (LA_42a_b.Checked == true)
             {
                 var_LA_42a_b = "999";
             }
@@ -8036,11 +7013,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_43a_v.Checked == true)
-            {
-                var_LA_43a_b = "";
-            }
-            else if (LA_43a_b.Checked == true)
+            if (LA_43a_b.Checked == true)
             {
                 var_LA_43a_b = "999";
             }
@@ -8066,11 +7039,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_44a_v.Checked == true)
-            {
-                var_LA_44a_b = "";
-            }
-            else if (LA_44a_b.Checked == true)
+            if (LA_44a_b.Checked == true)
             {
                 var_LA_44a_b = "999";
             }
@@ -8096,11 +7065,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_45a_v.Checked == true)
-            {
-                var_LA_45a_b = "";
-            }
-            else if (LA_45a_b.Checked == true)
+            if (LA_45a_b.Checked == true)
             {
                 var_LA_45a_b = "999";
             }
@@ -8126,11 +7091,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_46a_v.Checked == true)
-            {
-                var_LA_46a_b = "";
-            }
-            else if (LA_46a_b.Checked == true)
+            if (LA_46a_b.Checked == true)
             {
                 var_LA_46a_b = "999";
             }
@@ -8156,11 +7117,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_47a_v.Checked == true)
-            {
-                var_LA_47a_b = "";
-            }
-            else if (LA_47a_b.Checked == true)
+            if (LA_47a_b.Checked == true)
             {
                 var_LA_47a_b = "999";
             }
@@ -8187,11 +7144,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_48a_v.Checked == true)
-            {
-                var_LA_48a_b = "";
-            }
-            else if (LA_48a_b.Checked == true)
+            if (LA_48a_b.Checked == true)
             {
                 var_LA_48a_b = "999";
             }
@@ -8217,11 +7170,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_49a_v.Checked == true)
-            {
-                var_LA_49a_b = "";
-            }
-            else if (LA_49a_b.Checked == true)
+            if (LA_49a_b.Checked == true)
             {
                 var_LA_49a_b = "999";
             }
@@ -8247,11 +7196,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_50a_v.Checked == true)
-            {
-                var_LA_50a_b = "";
-            }
-            else if (LA_50a_b.Checked == true)
+            if (LA_50a_b.Checked == true)
             {
                 var_LA_50a_b = "999";
             }
@@ -8278,11 +7223,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_51a_v.Checked == true)
-            {
-                var_LA_51a_b = "";
-            }
-            else if (LA_51a_b.Checked == true)
+            if (LA_51a_b.Checked == true)
             {
                 var_LA_51a_b = "999";
             }
@@ -8308,12 +7249,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-            if (LA_52a_v.Checked == true)
-            {
-                var_LA_52a_b = "";
-            }
-            else if (LA_52a_b.Checked == true)
+            if (LA_52a_b.Checked == true)
             {
                 var_LA_52a_b = "999";
             }
@@ -8350,683 +7286,1362 @@ public partial class sample_results : System.Web.UI.Page
             val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
 
 
+            //            string[] fldname = {
+            //"la_sno",
+            //"LA_01",
+            //"LA_02",
+            //"LA_03_b",
+            //"LA_03_a",
+            //"LA_04_b",
+            //"LA_04_a",
+            //"LA_05_b",
+            //"LA_05_a",
+            //"LA_06_b",
+            //"LA_06_a",
+            //"LA_07_b",
+            //"LA_07_a",
+            //"LA_08_b",
+            //"LA_08_a",
+            //"LA_09_b",
+            //"LA_09_a",
+            //"LA_10_b",
+            //"LA_10_a",
+            //"LA_11_b",
+            //"LA_11_a",
+            //"LA_12_b",
+            //"LA_12_a",
+            //"LA_13_b",
+            //"LA_13_a",
+            //"LA_14_b",
+            //"LA_14_a",
+            //"LA_15_b",
+            //"LA_15_a",
+            //"LA_16_b",
+            //"LA_16_a",
+            //"LF_01",
+            //"LF_01_a",
+            //"LF_02",
+            //"LF_02_a",
+            //"LF_03",
+            //"LF_03_a",
+            //"LF_04",
+            //"LF_04_a",
+            //"LF_05",
+            //"LF_05_a",
+            //"LF_06",
+            //"LF_06_a",
+            //"LF_07",
+            //"LF_07_a",
+            //"RF_01",
+            //"RF_01_a",
+            //"RF_02",
+            //"RF_02_a",
+            //"RF_03",
+            //"RF_03_a",
+            //"RF_04",
+            //"RF_04_a",
+            //"SE_01",
+            //"SE_01_a",
+            //"SE_02",
+            //"SE_02_a",
+            //"SE_03",
+            //"SE_03_a",
+            //"SE_04",
+            //"SE_04_a",
+            //"CS_01",
+            //"CS_01_a",
+            //"CS_02",
+            //"CS_02_a",
+            //"CS_03",
+            //"CS_03_a",
+            //"CS_04",
+            //"CS_04_a",
+            //"CS_05",
+            //"CS_05_a",
+            //"CS_06",
+            //"CS_06_a",
+            //"CS_07",
+            //"CS_07_a",
+            //"CS_08",
+            //"CS_08_a",
+            //"CS_09",
+            //"CS_09_a",
+            //"CS_10",
+            //"CS_10_a",
+            //"UR_01",
+            //"UR_01_a",
+            //"UR_02",
+            //"UR_02_a",
+            //"UR_03",
+            //"UR_03_a",
+            //"UR_04",
+            //"UR_04_a",
+            //"UR_05",
+            //"UR_05_a",
+            //"UR_06",
+            //"UR_06_a",
+            //"UR_07",
+            //"UR_07_a",
+            //"UR_08",
+            //"UR_08_a",
+            //"UR_10",
+            //"UR_10_a",
+            //"UR_11",
+            //"UR_11_a",
+            //"UR_12",
+            //"UR_12_a",
+            //"UR_13",
+            //"UR_13_a",
+            //"UR_14",
+            //"UR_14_a",
+            //"UR_15",
+            //"UR_15_a",
+            //"UR_16",
+            //"UR_16_a",
+            //"UR_17",
+            //"UR_17_a",
+            //"UR_18",
+            //"UR_18_a",
+            //"UR_19",
+            //"UR_19_a",
+            //"UR_20",
+            //"UR_20_a",
+            //"UR_21",
+            //"UR_21_a",
+            //"uc_01a",
+            //"uc_02a",
+            //"uc_02a_a",
+            //"uc_02b",
+            //"uc_03a",
+            //"uc_03a_a",
+            //"uc_03b",
+            //"uc_04a",
+            //"uc_04a_a",
+            //"uc_04b",
+            //"uc_05a",
+            //"uc_05a_a",
+            //"uc_05b",
+            //"uc_06a",
+            //"uc_06a_a",
+            //"uc_06b",
+            //"uc_07a",
+            //"uc_07a_a",
+            //"uc_07b",
+            //"uc_08a",
+            //"uc_08a_a",
+            //"uc_08b",
+            //"uc_09a",
+            //"uc_09a_a",
+            //"uc_09b",
+            //"uc_10a",
+            //"uc_10a_a",
+            //"uc_10b",
+            //"uc_11a",
+            //"uc_11a_a",
+            //"uc_11b",
+            //"uc_12a",
+            //"uc_12a_a",
+            //"uc_12b",
+            //"uc_13a",
+            //"uc_13a_a",
+            //"uc_13b",
+            //"uc_14a",
+            //"uc_14a_a",
+            //"uc_14b",
+            //"uc_15a",
+            //"uc_15a_a",
+            //"uc_15b",
+            //"uc_16a",
+            //"uc_16a_a",
+            //"uc_16b",
+            //"uc_17a",
+            //"uc_17a_a",
+            //"uc_17b",
+            //"uc_18a",
+            //"uc_18a_a",
+            //"uc_18b",
+            //"uc_19a",
+            //"uc_19a_a",
+            //"uc_19b",
+            //"uc_20a",
+            //"uc_20a_a",
+            //"uc_20b",
+            //"uc_21a",
+            //"uc_21a_a",
+            //"uc_21b",
+            //"uc_22a",
+            //"uc_22a_a",
+            //"uc_22b",
+            //"uc_23a",
+            //"uc_23a_a",
+            //"uc_23b",
+            //"uc_24a",
+            //"uc_24a_a",
+            //"uc_24b",
+            //"uc_25a",
+            //"uc_25a_a",
+            //"uc_25b",
+            //"uc_26a",
+            //"uc_26a_a",
+            //"uc_26b",
+            //"uc_27a",
+            //"uc_27a_a",
+            //"uc_27b",
+            //"uc_28a",
+            //"uc_28a_a",
+            //"uc_28b",
+            //"uc_29a",
+            //"uc_29a_a",
+            //"uc_29b",
+            //"uc_30a",
+            //"uc_30a_a",
+            //"uc_30b",
+            //"uc_31a",
+            //"uc_31a_a",
+            //"uc_31b",
+            //"uc_32a",
+            //"uc_32a_a",
+            //"uc_32b",
+            //"uc_33a",
+            //"uc_33a_a",
+            //"uc_33b",
+            //"uc_34a",
+            //"uc_34a_a",
+            //"uc_34b",
+            //"uc_35a",
+            //"uc_35a_a",
+            //"uc_35b",
+            //"uc_36a",
+            //"uc_36a_a",
+            //"uc_36b",
+            //"uc_37a",
+            //"uc_37a_a",
+            //"uc_37b",
+            //"LA_17",
+            //"LA_18",
+            //"LA_19",
+            //"LA_20a_b",
+            //"LA_20a_a",
+            //"LA_20b_a",
+            //"LA_21a_b",
+            //"LA_21a_a",
+            //"LA_21b_a",
+            //"LA_22a_b",
+            //"LA_22a_a",
+            //"LA_22b_a",
+            //"LA_23a_b",
+            //"LA_23a_a",
+            //"LA_23b_a",
+            //"LA_24a_b",
+            //"LA_24a_a",
+            //"LA_24b_a",
+            //"LA_25a_b",
+            //"LA_25a_a",
+            //"LA_25b_a",
+            //"LA_26a_b",
+            //"LA_26a_a",
+            //"LA_26b_a",
+            //"LA_27a_b",
+            //"LA_27a_a",
+            //"LA_27b_a",
+            //"LA_28a_b",
+            //"LA_28a_a",
+            //"LA_28b_a",
+            //"LA_29a_b",
+            //"LA_29a_a",
+            //"LA_29b_a",
+            //"LA_30a_b",
+            //"LA_30a_a",
+            //"LA_30b_a",
+            //"LA_31a_b",
+            //"LA_31a_a",
+            //"LA_31b_a",
+            //"LA_32a_b",
+            //"LA_32a_a",
+            //"LA_32b_a",
+            //"LA_33a_b",
+            //"LA_33a_a",
+            //"LA_33b_a",
+            //"LA_34a_b",
+            //"LA_34a_a",
+            //"LA_34b_a",
+            //"LA_35a_b",
+            //"LA_35a_a",
+            //"LA_35b_a",
+            //"LA_36a_b",
+            //"LA_36a_a",
+            //"LA_36b_a",
+            //"LA_37a_b",
+            //"LA_37a_a",
+            //"LA_37b_a",
+            //"LA_38a_b",
+            //"LA_38a_a",
+            //"LA_38b_a",
+            //"LA_39a_b",
+            //"LA_39a_a",
+            //"LA_39b_a",
+            //"LA_40a_b",
+            //"LA_40a_a",
+            //"LA_40b_a",
+            //"LA_41a_b",
+            //"LA_41a_a",
+            //"LA_41b_a",
+            //"LA_42a_b",
+            //"LA_42a_a",
+            //"LA_42b_a",
+            //"LA_43a_b",
+            //"LA_43a_a",
+            //"LA_43b_a",
+            //"LA_44a_b",
+            //"LA_44a_a",
+            //"LA_44b_a",
+            //"LA_45a_b",
+            //"LA_45a_a",
+            //"LA_45b_a",
+            //"LA_46a_b",
+            //"LA_46a_a",
+            //"LA_46b_a",
+            //"LA_47a_b",
+            //"LA_47a_a",
+            //"LA_47b_a",
+            //"LA_48a_b",
+            //"LA_48a_a",
+            //"LA_48b_a",
+            //"LA_49a_b",
+            //"LA_49a_a",
+            //"LA_49b_a",
+            //"LA_50a_b",
+            //"LA_50a_a",
+            //"LA_50b_a",
+            //"LA_51a_b",
+            //"LA_51a_a",
+            //"LA_51b_a",
+            //"LA_52a_b",
+            //"LA_52a_a",
+            //"LA_52b_a",
+            //"UserID",
+            //"EntryDate",
+            //"labid"
+            //};
+
+            //            string[] fldvalue = {
+            //la_sno.Text,
+            //LA_01.Text,
+            //LA_02.Text,
+            //var_LA_03_b,
+            //LA_03_a.Text,
+            //var_LA_04_b,
+            //LA_04_a.Text,
+            //var_LA_05_b,
+            //LA_05_a.Text,
+            //var_LA_06_b,
+            //LA_06_a.Text,
+            //var_LA_07_b,
+            //LA_07_a.Text,
+            //var_LA_08_b,
+            //LA_08_a.Text,
+            //var_LA_09_b,
+            //LA_09_a.Text,
+            //var_LA_10_b,
+            //LA_10_a.Text,
+            //var_LA_11_b,
+            //LA_11_a.Text,
+            //var_LA_12_b,
+            //LA_12_a.Text,
+            //var_LA_13_b,
+            //LA_13_a.Text,
+            //var_LA_14_b,
+            //LA_14_a.Text,
+            //var_LA_15_b,
+            //LA_15_a.Text,
+            //var_LA_16_b,
+            //LA_16_a.Text,
+            //var_LF_01,
+            //LF_01_a.Text,
+            //var_LF_02,
+            //LF_02_a.Text,
+            //var_LF_03,
+            //LF_03_a.Text,
+            //var_LF_04,
+            //LF_04_a.Text,
+            //var_LF_05,
+            //LF_05_a.Text,
+            //var_LF_06,
+            //LF_06_a.Text,
+            //var_LF_07,
+            //LF_07_a.Text,
+            //var_RF_01,
+            //RF_01_a.Text,
+            //var_RF_02,
+            //RF_02_a.Text,
+            //var_RF_03,
+            //RF_03_a.Text,
+            //var_RF_04,
+            //RF_04_a.Text,
+            //var_SE_01,
+            //SE_01_a.Text,
+            //var_SE_02,
+            //SE_02_a.Text,
+            //var_SE_03,
+            //SE_03_a.Text,
+            //var_SE_04,
+            //SE_04_a.Text,
+            //var_CS_01,
+            //CS_01_a.Text,
+            //var_CS_02,
+            //CS_02_a.Text,
+            //var_CS_03,
+            //CS_03_a.Text,
+            //var_CS_04,
+            //CS_04_a.Text,
+            //var_CS_05,
+            //CS_05_a.Text,
+            //var_CS_06,
+            //CS_06_a.Text,
+            //var_CS_07,
+            //CS_07_a.Text,
+            //var_CS_08,
+            //CS_08_a.Text,
+            //var_CS_09,
+            //CS_09_a.Text,
+            //var_CS_10,
+            //CS_10_a.Text,
+            //var_UR_01,
+            //UR_01_a.Text,
+            //var_UR_02,
+            //UR_02_a.Text,
+            //var_UR_03,
+            //UR_03_a.Text,
+            //var_UR_04,
+            //UR_04_a.Text,
+            //var_UR_05,
+            //UR_05_a.Text,
+            //var_UR_06,
+            //UR_06_a.Text,
+            //var_UR_07,
+            //UR_07_a.Text,
+            //var_UR_08,
+            //UR_08_a.Text,
+            //var_UR_10,
+            //UR_10_a.Text,
+            //var_UR_11,
+            //UR_11_a.Text,
+            //var_UR_12,
+            //UR_12_a.Text,
+            //var_UR_13,
+            //UR_13_a.Text,
+            //var_UR_14,
+            //UR_14_a.Text,
+            //var_UR_15,
+            //UR_15_a.Text,
+            //var_UR_16,
+            //UR_16_a.Text,
+            //var_UR_17,
+            //UR_17_a.Text,
+            //var_UR_18,
+            //UR_18_a.Text,
+            //var_UR_19,
+            //UR_19_a.Text,
+            //var_UR_20,
+            //UR_20_a.Text,
+            //var_UR_21,
+            //UR_21_a.Text,
+            //var_uc_01a,
+            //var_uc_02a,
+            //uc_02a_a.Text,
+            //var_uc_02b,
+            //var_uc_03a,
+            //uc_03a_a.Text,
+            //var_uc_03b,
+            //var_uc_04a,
+            //uc_04a_a.Text,
+            //var_uc_04b,
+            //var_uc_05a,
+            //uc_05a_a.Text,
+            //var_uc_05b,
+            //var_uc_06a,
+            //uc_06a_a.Text,
+            //var_uc_06b,
+            //var_uc_07a,
+            //uc_07a_a.Text,
+            //var_uc_07b,
+            //var_uc_08a,
+            //uc_08a_a.Text,
+            //var_uc_08b,
+            //var_uc_09a,
+            //uc_09a_a.Text,
+            //var_uc_09b,
+            //var_uc_10a,
+            //uc_10a_a.Text,
+            //var_uc_10b,
+            //var_uc_11a,
+            //uc_11a_a.Text,
+            //var_uc_11b,
+            //var_uc_12a,
+            //uc_12a_a.Text,
+            //var_uc_12b,
+            //var_uc_13a,
+            //uc_13a_a.Text,
+            //var_uc_13b,
+            //var_uc_14a,
+            //uc_14a_a.Text,
+            //var_uc_14b,
+            //var_uc_15a,
+            //uc_15a_a.Text,
+            //var_uc_15b,
+            //var_uc_16a,
+            //uc_16a_a.Text,
+            //var_uc_16b,
+            //var_uc_17a,
+            //uc_17a_a.Text,
+            //var_uc_17b,
+            //var_uc_18a,
+            //uc_18a_a.Text,
+            //var_uc_18b,
+            //var_uc_19a,
+            //uc_19a_a.Text,
+            //var_uc_19b,
+            //var_uc_20a,
+            //uc_20a_a.Text,
+            //var_uc_20b,
+            //var_uc_21a,
+            //uc_21a_a.Text,
+            //var_uc_21b,
+            //var_uc_22a,
+            //uc_22a_a.Text,
+            //var_uc_22b,
+            //var_uc_23a,
+            //uc_23a_a.Text,
+            //var_uc_23b,
+            //var_uc_24a,
+            //uc_24a_a.Text,
+            //var_uc_24b,
+            //var_uc_25a,
+            //uc_25a_a.Text,
+            //var_uc_25b,
+            //var_uc_26a,
+            //uc_26a_a.Text,
+            //var_uc_26b,
+            //var_uc_27a,
+            //uc_27a_a.Text,
+            //var_uc_27b,
+            //var_uc_28a,
+            //uc_28a_a.Text,
+            //var_uc_28b,
+            //var_uc_29a,
+            //uc_29a_a.Text,
+            //var_uc_29b,
+            //var_uc_30a,
+            //uc_30a_a.Text,
+            //var_uc_30b,
+            //var_uc_31a,
+            //uc_31a_a.Text,
+            //var_uc_31b,
+            //var_uc_32a,
+            //uc_32a_a.Text,
+            //var_uc_32b,
+            //var_uc_33a,
+            //uc_33a_a.Text,
+            //var_uc_33b,
+            //var_uc_34a,
+            //uc_34a_a.Text,
+            //var_uc_34b,
+            //var_uc_35a,
+            //uc_35a_a.Text,
+            //var_uc_35b,
+            //var_uc_36a,
+            //uc_36a_a.Text,
+            //var_uc_36b,
+            //var_uc_37a,
+            //uc_37a_a.Text,
+            //var_uc_37b,
+            //LA_17.Text,
+            //LA_18.Text,
+            //LA_19.Text,
+            //var_LA_20a_b,
+            //LA_20a_a.Text,
+            //var_LA_20b_a,
+            //var_LA_21a_b,
+            //LA_21a_a.Text,
+            //var_LA_21b_a,
+            //var_LA_22a_b,
+            //LA_22a_a.Text,
+            //var_LA_22b_a,
+            //var_LA_23a_b,
+            //LA_23a_a.Text,
+            //var_LA_23b_a,
+            //var_LA_24a_b,
+            //LA_24a_a.Text,
+            //var_LA_24b_a,
+            //var_LA_25a_b,
+            //LA_25a_a.Text,
+            //var_LA_25b_a,
+            //var_LA_26a_b,
+            //LA_26a_a.Text,
+            //var_LA_26b_a,
+            //var_LA_27a_b,
+            //LA_27a_a.Text,
+            //var_LA_27b_a,
+            //var_LA_28a_b,
+            //LA_28a_a.Text,
+            //var_LA_28b_a,
+            //var_LA_29a_b,
+            //LA_29a_a.Text,
+            //var_LA_29b_a,
+            //var_LA_30a_b,
+            //LA_30a_a.Text,
+            //var_LA_30b_a,
+            //var_LA_31a_b,
+            //LA_31a_a.Text,
+            //var_LA_31b_a,
+            //var_LA_32a_b,
+            //LA_32a_a.Text,
+            //var_LA_32b_a,
+            //var_LA_33a_b,
+            //LA_33a_a.Text,
+            //var_LA_33b_a,
+            //var_LA_34a_b,
+            //LA_34a_a.Text,
+            //var_LA_34b_a,
+            //var_LA_35a_b,
+            //LA_35a_a.Text,
+            //var_LA_35b_a,
+            //var_LA_36a_b,
+            //LA_36a_a.Text,
+            //var_LA_36b_a,
+            //var_LA_37a_b,
+            //LA_37a_a.Text,
+            //var_LA_37b_a,
+            //var_LA_38a_b,
+            //LA_38a_a.Text,
+            //var_LA_38b_a,
+            //var_LA_39a_b,
+            //LA_39a_a.Text,
+            //var_LA_39b_a,
+            //var_LA_40a_b,
+            //LA_40a_a.Text,
+            //var_LA_40b_a,
+            //var_LA_41a_b,
+            //LA_41a_a.Text,
+            //var_LA_41b_a,
+            //var_LA_42a_b,
+            //LA_42a_a.Text,
+            //var_LA_42b_a,
+            //var_LA_43a_b,
+            //LA_43a_a.Text,
+            //var_LA_43b_a,
+            //var_LA_44a_b,
+            //LA_44a_a.Text,
+            //var_LA_44b_a,
+            //var_LA_45a_b,
+            //LA_45a_a.Text,
+            //var_LA_45b_a,
+            //var_LA_46a_b,
+            //LA_46a_a.Text,
+            //var_LA_46b_a,
+            //var_LA_47a_b,
+            //LA_47a_a.Text,
+            //var_LA_47b_a,
+            //var_LA_48a_b,
+            //LA_48a_a.Text,
+            //var_LA_48b_a,
+            //var_LA_49a_b,
+            //LA_49a_a.Text,
+            //var_LA_49b_a,
+            //var_LA_50a_b,
+            //LA_50a_a.Text,
+            //var_LA_50b_a,
+            //var_LA_51a_b,
+            //LA_51a_a.Text,
+            //var_LA_51b_a,
+            //var_LA_52a_b,
+            //LA_52a_a.Text,
+            //var_LA_52b_a,
+            //Session["userid"].ToString(),
+            //dt_entry.ToShortDateString(),
+            //HttpContext.Current.Request["labid"].ToString()
+
+            //};
+
+
+
             string qry = "insert into sample_result(" +
-    "la_sno," +
-    "LA_01," +
-    "LA_02," +
-    "LA_03_b," +
-    "LA_03_a," +
-    "LA_04_b," +
-    "LA_04_a," +
-    "LA_05_b," +
-    "LA_05_a," +
-    "LA_06_b," +
-    "LA_06_a," +
-    "LA_07_b," +
-    "LA_07_a," +
-    "LA_08_b," +
-    "LA_08_a," +
-    "LA_09_b," +
-    "LA_09_a," +
-    "LA_10_b," +
-    "LA_10_a," +
-    "LA_11_b," +
-    "LA_11_a," +
-    "LA_12_b," +
-    "LA_12_a," +
-    "LA_13_b," +
-    "LA_13_a," +
-    "LA_14_b," +
-    "LA_14_a," +
-    "LA_15_b," +
-    "LA_15_a," +
-    "LA_16_b," +
-    "LA_16_a," +
-    "LF_01," +
-    "LF_01_a," +
-    "LF_02," +
-    "LF_02_a," +
-    "LF_03," +
-    "LF_03_a," +
-    "LF_04," +
-    "LF_04_a," +
-    "LF_05," +
-    "LF_05_a," +
-    "LF_06," +
-    "LF_06_a," +
-    "LF_07," +
-    "LF_07_a," +
-    "RF_01," +
-    "RF_01_a," +
-    "RF_02," +
-    "RF_02_a," +
-    "RF_03," +
-    "RF_03_a," +
-    "RF_04," +
-    "RF_04_a," +
-    "SE_01," +
-    "SE_01_a," +
-    "SE_02," +
-    "SE_02_a," +
-    "SE_03," +
-    "SE_03_a," +
-    "SE_04," +
-    "SE_04_a," +
-    "CS_01," +
-    "CS_01_a," +
-    "CS_02," +
-    "CS_02_a," +
-    "CS_03," +
-    "CS_03_a," +
-    "CS_04," +
-    "CS_04_a," +
-    "CS_05," +
-    "CS_05_a," +
-    "CS_06," +
-    "CS_06_a," +
-    "CS_07," +
-    "CS_07_a," +
-    "CS_08," +
-    "CS_08_a," +
-    "CS_09," +
-    "CS_09_a," +
-    "CS_10," +
-    "CS_10_a," +
-    "UR_01," +
-    "UR_01_a," +
-    "UR_02," +
-    "UR_02_a," +
-    "UR_03," +
-    "UR_03_a," +
-    "UR_04," +
-    "UR_04_a," +
-    "UR_04a," +
-    "UR_04a_a," +
-    "UR_05," +
-    "UR_05_a," +
-    "UR_06," +
-    "UR_06_a," +
-    "UR_07," +
-    "UR_07_a," +
-    "UR_08," +
-    "UR_08_a," +
-    "UR_10," +
-    "UR_10_a," +
-    "UR_11," +
-    "UR_11_a," +
-    "UR_12," +
-    "UR_12_a," +
-    "UR_13," +
-    "UR_13_a," +
-    "UR_14," +
-    "UR_14_a," +
-    "UR_15," +
-    "UR_15_a," +
-    "UR_16," +
-    "UR_16_a," +
-    "UR_17," +
-    "UR_17_a," +
-    "UR_18," +
-    "UR_18_a," +
-    "UR_19," +
-    "UR_19_a," +
-    "UR_20," +
-    "UR_20_a," +
-    "UR_21," +
-    "UR_21_a," +
-    "uc_01a," +
-    "uc_01_ca," +
-    "uc_02a," +
-    "uc_02a_a," +
-    "uc_02b," +
-    "uc_03a," +
-    "uc_03a_a," +
-    "uc_03b," +
-    "uc_04a," +
-    "uc_04a_a," +
-    "uc_04b," +
-    "uc_05a," +
-    "uc_05a_a," +
-    "uc_05b," +
-    "uc_06a," +
-    "uc_06a_a," +
-    "uc_06b," +
-    "uc_07a," +
-    "uc_07a_a," +
-    "uc_07b," +
-    "uc_08a," +
-    "uc_08a_a," +
-    "uc_08b," +
-    "uc_09a," +
-    "uc_09a_a," +
-    "uc_09b," +
-    "uc_10a," +
-    "uc_10a_a," +
-    "uc_10b," +
-    "uc_11a," +
-    "uc_11a_a," +
-    "uc_11b," +
-    "uc_12a," +
-    "uc_12a_a," +
-    "uc_12b," +
-    "uc_13a," +
-    "uc_13a_a," +
-    "uc_13b," +
-    "uc_14a," +
-    "uc_14a_a," +
-    "uc_14b," +
-    "uc_15a," +
-    "uc_15a_a," +
-    "uc_15b," +
-    "uc_16a," +
-    "uc_16a_a," +
-    "uc_16b," +
-    "uc_17a," +
-    "uc_17a_a," +
-    "uc_17b," +
-    "uc_18a," +
-    "uc_18a_a," +
-    "uc_18b," +
-    "uc_19a," +
-    "uc_19a_a," +
-    "uc_19b," +
-    "uc_20a," +
-    "uc_20a_a," +
-    "uc_20b," +
-    "uc_21a," +
-    "uc_21a_a," +
-    "uc_21b," +
-    "uc_22a," +
-    "uc_22a_a," +
-    "uc_22b," +
-    "uc_23a," +
-    "uc_23a_a," +
-    "uc_23b," +
-    "uc_24a," +
-    "uc_24a_a," +
-    "uc_24b," +
-    "uc_25a," +
-    "uc_25a_a," +
-    "uc_25b," +
-    "uc_26a," +
-    "uc_26a_a," +
-    "uc_26b," +
-    "uc_27a," +
-    "uc_27a_a," +
-    "uc_27b," +
-    "uc_28a," +
-    "uc_28a_a," +
-    "uc_28b," +
-    "uc_29a," +
-    "uc_29a_a," +
-    "uc_29b," +
-    "uc_30a," +
-    "uc_30a_a," +
-    "uc_30b," +
-    "uc_31a," +
-    "uc_31a_a," +
-    "uc_31b," +
-    "uc_32a," +
-    "uc_32a_a," +
-    "uc_32b," +
-    "uc_33a," +
-    "uc_33a_a," +
-    "uc_33b," +
-    "uc_34a," +
-    "uc_34a_a," +
-    "uc_34b," +
-    "uc_35a," +
-    "uc_35a_a," +
-    "uc_35b," +
-    "uc_36a," +
-    "uc_36a_a," +
-    "uc_36b," +
-    "uc_37a," +
-    "uc_37a_a," +
-    "uc_37b," +
-    "LA_17," +
-    "LA_18," +
-    "LA_19," +
-    "LA_20a_b," +
-    "LA_20a_a," +
-    "LA_20b_a," +
-    "LA_21a_b," +
-    "LA_21a_a," +
-    "LA_21b_a," +
-    "LA_22a_b," +
-    "LA_22a_a," +
-    "LA_22b_a," +
-    "LA_23a_b," +
-    "LA_23a_a," +
-    "LA_23b_a," +
-    "LA_24a_b," +
-    "LA_24a_a," +
-    "LA_24b_a," +
-    "LA_25a_b," +
-    "LA_25a_a," +
-    "LA_25b_a," +
-    "LA_26a_b," +
-    "LA_26a_a," +
-    "LA_26b_a," +
-    "LA_27a_b," +
-    "LA_27a_a," +
-    "LA_27b_a," +
-    "LA_28a_b," +
-    "LA_28a_a," +
-    "LA_28b_a," +
-    "LA_29a_b," +
-    "LA_29a_a," +
-    "LA_29b_a," +
-    "LA_30a_b," +
-    "LA_30a_a," +
-    "LA_30b_a," +
-    "LA_31a_b," +
-    "LA_31a_a," +
-    "LA_31b_a," +
-    "LA_32a_b," +
-    "LA_32a_a," +
-    "LA_32b_a," +
-    "LA_33a_b," +
-    "LA_33a_a," +
-    "LA_33b_a," +
-    "LA_34a_b," +
-    "LA_34a_a," +
-    "LA_34b_a," +
-    "LA_35a_b," +
-    "LA_35a_a," +
-    "LA_35b_a," +
-    "LA_36a_b," +
-    "LA_36a_a," +
-    "LA_36b_a," +
-    "LA_37a_b," +
-    "LA_37a_a," +
-    "LA_37b_a," +
-    "LA_38a_b," +
-    "LA_38a_a," +
-    "LA_38b_a," +
-    "LA_39a_b," +
-    "LA_39a_a," +
-    "LA_39b_a," +
-    "LA_40a_b," +
-    "LA_40a_a," +
-    "LA_40b_a," +
-    "LA_41a_b," +
-    "LA_41a_a," +
-    "LA_41b_a," +
-    "LA_42a_b," +
-    "LA_42a_a," +
-    "LA_42b_a," +
-    "LA_43a_b," +
-    "LA_43a_a," +
-    "LA_43b_a," +
-    "LA_44a_b," +
-    "LA_44a_a," +
-    "LA_44b_a," +
-    "LA_45a_b," +
-    "LA_45a_a," +
-    "LA_45b_a," +
-    "LA_46a_b," +
-    "LA_46a_a," +
-    "LA_46b_a," +
-    "LA_47a_b," +
-    "LA_47a_a," +
-    "LA_47b_a," +
-    "LA_48a_b," +
-    "LA_48a_a," +
-    "LA_48b_a," +
-    "LA_49a_b," +
-    "LA_49a_a," +
-    "LA_49b_a," +
-    "LA_50a_b," +
-    "LA_50a_a," +
-    "LA_50b_a," +
-    "LA_51a_b," +
-    "LA_51a_a," +
-    "LA_51b_a," +
-    "LA_52a_b," +
-    "LA_52a_a," +
-    "LA_52b_a," +
-    "UserID," +
-    "EntryDate," +
-    "labid) values('" +
-    la_sno.Text + "', '" +
-    LA_01.Text + "', '" +
-    LA_02.Text + "', '" +
-    var_LA_03_b + "', '" +
-    LA_03_a.Text + "', '" +
-    var_LA_04_b + "', '" +
-    LA_04_a.Text + "', '" +
-    var_LA_05_b + "', '" +
-    LA_05_a.Text + "', '" +
-    var_LA_06_b + "', '" +
-    LA_06_a.Text + "', '" +
-    var_LA_07_b + "', '" +
-    LA_07_a.Text + "', '" +
-    var_LA_08_b + "', '" +
-    LA_08_a.Text + "', '" +
-    var_LA_09_b + "', '" +
-    LA_09_a.Text + "', '" +
-    var_LA_10_b + "', '" +
-    LA_10_a.Text + "', '" +
-    var_LA_11_b + "', '" +
-    LA_11_a.Text + "', '" +
-    var_LA_12_b + "', '" +
-    LA_12_a.Text + "', '" +
-    var_LA_13_b + "', '" +
-    LA_13_a.Text + "', '" +
-    var_LA_14_b + "', '" +
-    LA_14_a.Text + "', '" +
-    var_LA_15_b + "', '" +
-    LA_15_a.Text + "', '" +
-    var_LA_16_b + "', '" +
-    LA_16_a.Text + "', '" +
-    var_LF_01 + "', '" +
-    LF_01_a.Text + "', '" +
-    var_LF_02 + "', '" +
-    LF_02_a.Text + "', '" +
-    var_LF_03 + "', '" +
-    LF_03_a.Text + "', '" +
-    var_LF_04 + "', '" +
-    LF_04_a.Text + "', '" +
-    var_LF_05 + "', '" +
-    LF_05_a.Text + "', '" +
-    var_LF_06 + "', '" +
-    LF_06_a.Text + "', '" +
-    var_LF_07 + "', '" +
-    LF_07_a.Text + "', '" +
-    var_RF_01 + "', '" +
-    RF_01_a.Text + "', '" +
-    var_RF_02 + "', '" +
-    RF_02_a.Text + "', '" +
-    var_RF_03 + "', '" +
-    RF_03_a.Text + "', '" +
-    var_RF_04 + "', '" +
-    RF_04_a.Text + "', '" +
-    var_SE_01 + "', '" +
-    SE_01_a.Text + "', '" +
-    var_SE_02 + "', '" +
-    SE_02_a.Text + "', '" +
-    var_SE_03 + "', '" +
-    SE_03_a.Text + "', '" +
-    var_SE_04 + "', '" +
-    SE_04_a.Text + "', '" +
-    var_CS_01 + "', '" +
-    CS_01_a.Text + "', '" +
-    var_CS_02 + "', '" +
-    CS_02_a.Text + "', '" +
-    var_CS_03 + "', '" +
-    CS_03_a.Text + "', '" +
-    var_CS_04 + "', '" +
-    CS_04_a.Text + "', '" +
-    var_CS_05 + "', '" +
-    CS_05_a.Text + "', '" +
-    var_CS_06 + "', '" +
-    CS_06_a.Text + "', '" +
-    var_CS_07 + "', '" +
-    CS_07_a.Text + "', '" +
-    var_CS_08 + "', '" +
-    CS_08_a.Text + "', '" +
-    var_CS_09 + "', '" +
-    CS_09_a.Text + "', '" +
-    var_CS_10 + "', '" +
-    CS_10_a.Text + "', '" +
-    var_UR_01 + "', '" +
-    UR_01_a.Text + "', '" +
-    var_UR_02 + "', '" +
-    UR_02_a.Text + "', '" +
-    var_UR_03 + "', '" +
-    UR_03_a.Text + "', '" +
-    var_UR_04 + "', '" +
-    UR_04_a.Text + "', '" +
-    var_UR_04a + "', '" +
-    UR_04a_a.Text + "', '" +
-    var_UR_05 + "', '" +
-    UR_05_a.Text + "', '" +
-    var_UR_06 + "', '" +
-    UR_06_a.Text + "', '" +
-    var_UR_07 + "', '" +
-    UR_07_a.Text + "', '" +
-    var_UR_08 + "', '" +
-    UR_08_a.Text + "', '" +
-    var_UR_10 + "', '" +
-    UR_10_a.Text + "', '" +
-    var_UR_11 + "', '" +
-    UR_11_a.Text + "', '" +
-    var_UR_12 + "', '" +
-    UR_12_a.Text + "', '" +
-    var_UR_13 + "', '" +
-    UR_13_a.Text + "', '" +
-    var_UR_14 + "', '" +
-    UR_14_a.Text + "', '" +
-    var_UR_15 + "', '" +
-    UR_15_a.Text + "', '" +
-    var_UR_16 + "', '" +
-    UR_16_a.Text + "', '" +
-    var_UR_17 + "', '" +
-    UR_17_a.Text + "', '" +
-    var_UR_18 + "', '" +
-    UR_18_a.Text + "', '" +
-    var_UR_19 + "', '" +
-    UR_19_a.Text + "', '" +
-    var_UR_20 + "', '" +
-    UR_20_a.Text + "', '" +
-    var_UR_21 + "', '" +
-    UR_21_a.Text + "', '" +
-    var_uc_01a + "', '" +
-    uc_01_ca.Text + "', '" +
-    var_uc_02a + "', '" +
-    uc_02a_a.Text + "', '" +
-    var_uc_02b + "', '" +
-    var_uc_03a + "', '" +
-    uc_03a_a.Text + "', '" +
-    var_uc_03b + "', '" +
-    var_uc_04a + "', '" +
-    uc_04a_a.Text + "', '" +
-    var_uc_04b + "', '" +
-    var_uc_05a + "', '" +
-    uc_05a_a.Text + "', '" +
-    var_uc_05b + "', '" +
-    var_uc_06a + "', '" +
-    uc_06a_a.Text + "', '" +
-    var_uc_06b + "', '" +
-    var_uc_07a + "', '" +
-    uc_07a_a.Text + "', '" +
-    var_uc_07b + "', '" +
-    var_uc_08a + "', '" +
-    uc_08a_a.Text + "', '" +
-    var_uc_08b + "', '" +
-    var_uc_09a + "', '" +
-    uc_09a_a.Text + "', '" +
-    var_uc_09b + "', '" +
-    var_uc_10a + "', '" +
-    uc_10a_a.Text + "', '" +
-    var_uc_10b + "', '" +
-    var_uc_11a + "', '" +
-    uc_11a_a.Text + "', '" +
-    var_uc_11b + "', '" +
-    var_uc_12a + "', '" +
-    uc_12a_a.Text + "', '" +
-    var_uc_12b + "', '" +
-    var_uc_13a + "', '" +
-    uc_13a_a.Text + "', '" +
-    var_uc_13b + "', '" +
-    var_uc_14a + "', '" +
-    uc_14a_a.Text + "', '" +
-    var_uc_14b + "', '" +
-    var_uc_15a + "', '" +
-    uc_15a_a.Text + "', '" +
-    var_uc_15b + "', '" +
-    var_uc_16a + "', '" +
-    uc_16a_a.Text + "', '" +
-    var_uc_16b + "', '" +
-    var_uc_17a + "', '" +
-    uc_17a_a.Text + "', '" +
-    var_uc_17b + "', '" +
-    var_uc_18a + "', '" +
-    uc_18a_a.Text + "', '" +
-    var_uc_18b + "', '" +
-    var_uc_19a + "', '" +
-    uc_19a_a.Text + "', '" +
-    var_uc_19b + "', '" +
-    var_uc_20a + "', '" +
-    uc_20a_a.Text + "', '" +
-    var_uc_20b + "', '" +
-    var_uc_21a + "', '" +
-    uc_21a_a.Text + "', '" +
-    var_uc_21b + "', '" +
-    var_uc_22a + "', '" +
-    uc_22a_a.Text + "', '" +
-    var_uc_22b + "', '" +
-    var_uc_23a + "', '" +
-    uc_23a_a.Text + "', '" +
-    var_uc_23b + "', '" +
-    var_uc_24a + "', '" +
-    uc_24a_a.Text + "', '" +
-    var_uc_24b + "', '" +
-    var_uc_25a + "', '" +
-    uc_25a_a.Text + "', '" +
-    var_uc_25b + "', '" +
-    var_uc_26a + "', '" +
-    uc_26a_a.Text + "', '" +
-    var_uc_26b + "', '" +
-    var_uc_27a + "', '" +
-    uc_27a_a.Text + "', '" +
-    var_uc_27b + "', '" +
-    var_uc_28a + "', '" +
-    uc_28a_a.Text + "', '" +
-    var_uc_28b + "', '" +
-    var_uc_29a + "', '" +
-    uc_29a_a.Text + "', '" +
-    var_uc_29b + "', '" +
-    var_uc_30a + "', '" +
-    uc_30a_a.Text + "', '" +
-    var_uc_30b + "', '" +
-    var_uc_31a + "', '" +
-    uc_31a_a.Text + "', '" +
-    var_uc_31b + "', '" +
-    var_uc_32a + "', '" +
-    uc_32a_a.Text + "', '" +
-    var_uc_32b + "', '" +
-    var_uc_33a + "', '" +
-    uc_33a_a.Text + "', '" +
-    var_uc_33b + "', '" +
-    var_uc_34a + "', '" +
-    uc_34a_a.Text + "', '" +
-    var_uc_34b + "', '" +
-    var_uc_35a + "', '" +
-    uc_35a_a.Text + "', '" +
-    var_uc_35b + "', '" +
-    var_uc_36a + "', '" +
-    uc_36a_a.Text + "', '" +
-    var_uc_36b + "', '" +
-    var_uc_37a + "', '" +
-    uc_37a_a.Text + "', '" +
-    var_uc_37b + "', '" +
-    LA_17.Text + "', '" +
-    LA_18.Text + "', '" +
-    LA_19.Text + "', '" +
-    var_LA_20a_b + "', '" +
-    LA_20a_a.Text + "', '" +
-    var_LA_20b_a + "', '" +
-    var_LA_21a_b + "', '" +
-    LA_21a_a.Text + "', '" +
-    var_LA_21b_a + "', '" +
-    var_LA_22a_b + "', '" +
-    LA_22a_a.Text + "', '" +
-    var_LA_22b_a + "', '" +
-    var_LA_23a_b + "', '" +
-    LA_23a_a.Text + "', '" +
-    var_LA_23b_a + "', '" +
-    var_LA_24a_b + "', '" +
-    LA_24a_a.Text + "', '" +
-    var_LA_24b_a + "', '" +
-    var_LA_25a_b + "', '" +
-    LA_25a_a.Text + "', '" +
-    var_LA_25b_a + "', '" +
-    var_LA_26a_b + "', '" +
-    LA_26a_a.Text + "', '" +
-    var_LA_26b_a + "', '" +
-    var_LA_27a_b + "', '" +
-    LA_27a_a.Text + "', '" +
-    var_LA_27b_a + "', '" +
-    var_LA_28a_b + "', '" +
-    LA_28a_a.Text + "', '" +
-    var_LA_28b_a + "', '" +
-    var_LA_29a_b + "', '" +
-    LA_29a_a.Text + "', '" +
-    var_LA_29b_a + "', '" +
-    var_LA_30a_b + "', '" +
-    LA_30a_a.Text + "', '" +
-    var_LA_30b_a + "', '" +
-    var_LA_31a_b + "', '" +
-    LA_31a_a.Text + "', '" +
-    var_LA_31b_a + "', '" +
-    var_LA_32a_b + "', '" +
-    LA_32a_a.Text + "', '" +
-    var_LA_32b_a + "', '" +
-    var_LA_33a_b + "', '" +
-    LA_33a_a.Text + "', '" +
-    var_LA_33b_a + "', '" +
-    var_LA_34a_b + "', '" +
-    LA_34a_a.Text + "', '" +
-    var_LA_34b_a + "', '" +
-    var_LA_35a_b + "', '" +
-    LA_35a_a.Text + "', '" +
-    var_LA_35b_a + "', '" +
-    var_LA_36a_b + "', '" +
-    LA_36a_a.Text + "', '" +
-    var_LA_36b_a + "', '" +
-    var_LA_37a_b + "', '" +
-    LA_37a_a.Text + "', '" +
-    var_LA_37b_a + "', '" +
-    var_LA_38a_b + "', '" +
-    LA_38a_a.Text + "', '" +
-    var_LA_38b_a + "', '" +
-    var_LA_39a_b + "', '" +
-    LA_39a_a.Text + "', '" +
-    var_LA_39b_a + "', '" +
-    var_LA_40a_b + "', '" +
-    LA_40a_a.Text + "', '" +
-    var_LA_40b_a + "', '" +
-    var_LA_41a_b + "', '" +
-    LA_41a_a.Text + "', '" +
-    var_LA_41b_a + "', '" +
-    var_LA_42a_b + "', '" +
-    LA_42a_a.Text + "', '" +
-    var_LA_42b_a + "', '" +
-    var_LA_43a_b + "', '" +
-    LA_43a_a.Text + "', '" +
-    var_LA_43b_a + "', '" +
-    var_LA_44a_b + "', '" +
-    LA_44a_a.Text + "', '" +
-    var_LA_44b_a + "', '" +
-    var_LA_45a_b + "', '" +
-    LA_45a_a.Text + "', '" +
-    var_LA_45b_a + "', '" +
-    var_LA_46a_b + "', '" +
-    LA_46a_a.Text + "', '" +
-    var_LA_46b_a + "', '" +
-    var_LA_47a_b + "', '" +
-    LA_47a_a.Text + "', '" +
-    var_LA_47b_a + "', '" +
-    var_LA_48a_b + "', '" +
-    LA_48a_a.Text + "', '" +
-    var_LA_48b_a + "', '" +
-    var_LA_49a_b + "', '" +
-    LA_49a_a.Text + "', '" +
-    var_LA_49b_a + "', '" +
-    var_LA_50a_b + "', '" +
-    LA_50a_a.Text + "', '" +
-    var_LA_50b_a + "', '" +
-    var_LA_51a_b + "', '" +
-    LA_51a_a.Text + "', '" +
-    var_LA_51b_a + "', '" +
-    var_LA_52a_b + "', '" +
-    LA_52a_a.Text + "', '" +
-    var_LA_52b_a + "', '" +
-    Session["userid"].ToString() + "', '" +
-    val_entry + "', '" +
-    HttpContext.Current.Request["labid"].ToString() + "')";
+"la_sno," +
+"LA_01," +
+"LA_02," +
+"LA_03_b," +
+"LA_03_a," +
+"LA_04_b," +
+"LA_04_a," +
+"LA_05_b," +
+"LA_05_a," +
+"LA_06_b," +
+"LA_06_a," +
+"LA_07_b," +
+"LA_07_a," +
+"LA_08_b," +
+"LA_08_a," +
+"LA_09_b," +
+"LA_09_a," +
+"LA_10_b," +
+"LA_10_a," +
+"LA_11_b," +
+"LA_11_a," +
+"LA_12_b," +
+"LA_12_a," +
+"LA_13_b," +
+"LA_13_a," +
+"LA_14_b," +
+"LA_14_a," +
+"LA_15_b," +
+"LA_15_a," +
+"LA_16_b," +
+"LA_16_a," +
+"LF_01," +
+"LF_01_a," +
+"LF_02," +
+"LF_02_a," +
+"LF_03," +
+"LF_03_a," +
+"LF_04," +
+"LF_04_a," +
+"LF_05," +
+"LF_05_a," +
+"LF_06," +
+"LF_06_a," +
+"LF_07," +
+"LF_07_a," +
+"RF_01," +
+"RF_01_a," +
+"RF_02," +
+"RF_02_a," +
+"RF_03," +
+"RF_03_a," +
+"RF_04," +
+"RF_04_a," +
+"SE_01," +
+"SE_01_a," +
+"SE_02," +
+"SE_02_a," +
+"SE_03," +
+"SE_03_a," +
+"SE_04," +
+"SE_04_a," +
+"CS_01," +
+"CS_01_a," +
+"CS_02," +
+"CS_02_a," +
+"CS_03," +
+"CS_03_a," +
+"CS_04," +
+"CS_04_a," +
+"CS_05," +
+"CS_05_a," +
+"CS_06," +
+"CS_06_a," +
+"CS_07," +
+"CS_07_a," +
+"CS_08," +
+"CS_08_a," +
+"CS_09," +
+"CS_09_a," +
+"CS_10," +
+"CS_10_a," +
+"UR_01," +
+"UR_01_a," +
+"UR_02," +
+"UR_02_a," +
+"UR_03," +
+"UR_03_a," +
+"UR_04," +
+"UR_04_a," +
+"UR_04a," +
+"UR_04a_a," +
+"UR_05," +
+"UR_05_a," +
+"UR_06," +
+"UR_06_a," +
+"UR_07," +
+"UR_07_a," +
+"UR_08," +
+"UR_08_a," +
+"UR_10," +
+"UR_10_a," +
+"UR_11," +
+"UR_11_a," +
+"UR_12," +
+"UR_12_a," +
+"UR_13," +
+"UR_13_a," +
+"UR_14," +
+"UR_14_a," +
+"UR_15," +
+"UR_15_a," +
+"UR_16," +
+"UR_16_a," +
+"UR_17," +
+"UR_17_a," +
+"UR_18," +
+"UR_18_a," +
+"UR_19," +
+"UR_19_a," +
+"UR_20," +
+"UR_20_a," +
+"UR_21," +
+"UR_21_a," +
+"uc_01a," +
+"uc_01_ca," +
+"uc_02a," +
+"uc_02a_a," +
+"uc_02b," +
+"uc_03a," +
+"uc_03a_a," +
+"uc_03b," +
+"uc_04a," +
+"uc_04a_a," +
+"uc_04b," +
+"uc_05a," +
+"uc_05a_a," +
+"uc_05b," +
+"uc_06a," +
+"uc_06a_a," +
+"uc_06b," +
+"uc_07a," +
+"uc_07a_a," +
+"uc_07b," +
+"uc_08a," +
+"uc_08a_a," +
+"uc_08b," +
+"uc_09a," +
+"uc_09a_a," +
+"uc_09b," +
+"uc_10a," +
+"uc_10a_a," +
+"uc_10b," +
+"uc_11a," +
+"uc_11a_a," +
+"uc_11b," +
+"uc_12a," +
+"uc_12a_a," +
+"uc_12b," +
+"uc_13a," +
+"uc_13a_a," +
+"uc_13b," +
+"uc_14a," +
+"uc_14a_a," +
+"uc_14b," +
+"uc_15a," +
+"uc_15a_a," +
+"uc_15b," +
+"uc_16a," +
+"uc_16a_a," +
+"uc_16b," +
+"uc_17a," +
+"uc_17a_a," +
+"uc_17b," +
+"uc_18a," +
+"uc_18a_a," +
+"uc_18b," +
+"uc_19a," +
+"uc_19a_a," +
+"uc_19b," +
+"uc_20a," +
+"uc_20a_a," +
+"uc_20b," +
+"uc_21a," +
+"uc_21a_a," +
+"uc_21b," +
+"uc_22a," +
+"uc_22a_a," +
+"uc_22b," +
+"uc_23a," +
+"uc_23a_a," +
+"uc_23b," +
+"uc_24a," +
+"uc_24a_a," +
+"uc_24b," +
+"uc_25a," +
+"uc_25a_a," +
+"uc_25b," +
+"uc_26a," +
+"uc_26a_a," +
+"uc_26b," +
+"uc_27a," +
+"uc_27a_a," +
+"uc_27b," +
+"uc_28a," +
+"uc_28a_a," +
+"uc_28b," +
+"uc_29a," +
+"uc_29a_a," +
+"uc_29b," +
+"uc_30a," +
+"uc_30a_a," +
+"uc_30b," +
+"uc_31a," +
+"uc_31a_a," +
+"uc_31b," +
+"uc_32a," +
+"uc_32a_a," +
+"uc_32b," +
+"uc_33a," +
+"uc_33a_a," +
+"uc_33b," +
+"uc_34a," +
+"uc_34a_a," +
+"uc_34b," +
+"uc_35a," +
+"uc_35a_a," +
+"uc_35b," +
+"uc_36a," +
+"uc_36a_a," +
+"uc_36b," +
+"uc_37a," +
+"uc_37a_a," +
+"uc_37b," +
+"LA_17," +
+"LA_18," +
+"LA_19," +
+"LA_20a_b," +
+"LA_20a_a," +
+"LA_20b_a," +
+"LA_21a_b," +
+"LA_21a_a," +
+"LA_21b_a," +
+"LA_22a_b," +
+"LA_22a_a," +
+"LA_22b_a," +
+"LA_23a_b," +
+"LA_23a_a," +
+"LA_23b_a," +
+"LA_24a_b," +
+"LA_24a_a," +
+"LA_24b_a," +
+"LA_25a_b," +
+"LA_25a_a," +
+"LA_25b_a," +
+"LA_26a_b," +
+"LA_26a_a," +
+"LA_26b_a," +
+"LA_27a_b," +
+"LA_27a_a," +
+"LA_27b_a," +
+"LA_28a_b," +
+"LA_28a_a," +
+"LA_28b_a," +
+"LA_29a_b," +
+"LA_29a_a," +
+"LA_29b_a," +
+"LA_30a_b," +
+"LA_30a_a," +
+"LA_30b_a," +
+"LA_31a_b," +
+"LA_31a_a," +
+"LA_31b_a," +
+"LA_32a_b," +
+"LA_32a_a," +
+"LA_32b_a," +
+"LA_33a_b," +
+"LA_33a_a," +
+"LA_33b_a," +
+"LA_34a_b," +
+"LA_34a_a," +
+"LA_34b_a," +
+"LA_35a_b," +
+"LA_35a_a," +
+"LA_35b_a," +
+"LA_36a_b," +
+"LA_36a_a," +
+"LA_36b_a," +
+"LA_37a_b," +
+"LA_37a_a," +
+"LA_37b_a," +
+"LA_38a_b," +
+"LA_38a_a," +
+"LA_38b_a," +
+"LA_39a_b," +
+"LA_39a_a," +
+"LA_39b_a," +
+"LA_40a_b," +
+"LA_40a_a," +
+"LA_40b_a," +
+"LA_41a_b," +
+"LA_41a_a," +
+"LA_41b_a," +
+"LA_42a_b," +
+"LA_42a_a," +
+"LA_42b_a," +
+"LA_43a_b," +
+"LA_43a_a," +
+"LA_43b_a," +
+"LA_44a_b," +
+"LA_44a_a," +
+"LA_44b_a," +
+"LA_45a_b," +
+"LA_45a_a," +
+"LA_45b_a," +
+"LA_46a_b," +
+"LA_46a_a," +
+"LA_46b_a," +
+"LA_47a_b," +
+"LA_47a_a," +
+"LA_47b_a," +
+"LA_48a_b," +
+"LA_48a_a," +
+"LA_48b_a," +
+"LA_49a_b," +
+"LA_49a_a," +
+"LA_49b_a," +
+"LA_50a_b," +
+"LA_50a_a," +
+"LA_50b_a," +
+"LA_51a_b," +
+"LA_51a_a," +
+"LA_51b_a," +
+"LA_52a_b," +
+"LA_52a_a," +
+"LA_52b_a," +
+"UserID," +
+"EntryDate," +
+"labid) values('" +
+la_sno.Text + "', '" +
+LA_01.Text + "', '" +
+LA_02.Text + "', '" +
+var_LA_03_b + "', '" +
+LA_03_a.Text + "', '" +
+var_LA_04_b + "', '" +
+LA_04_a.Text + "', '" +
+var_LA_05_b + "', '" +
+LA_05_a.Text + "', '" +
+var_LA_06_b + "', '" +
+LA_06_a.Text + "', '" +
+var_LA_07_b + "', '" +
+LA_07_a.Text + "', '" +
+var_LA_08_b + "', '" +
+LA_08_a.Text + "', '" +
+var_LA_09_b + "', '" +
+LA_09_a.Text + "', '" +
+var_LA_10_b + "', '" +
+LA_10_a.Text + "', '" +
+var_LA_11_b + "', '" +
+LA_11_a.Text + "', '" +
+var_LA_12_b + "', '" +
+LA_12_a.Text + "', '" +
+var_LA_13_b + "', '" +
+LA_13_a.Text + "', '" +
+var_LA_14_b + "', '" +
+LA_14_a.Text + "', '" +
+var_LA_15_b + "', '" +
+LA_15_a.Text + "', '" +
+var_LA_16_b + "', '" +
+LA_16_a.Text + "', '" +
+var_LF_01 + "', '" +
+LF_01_a.Text + "', '" +
+var_LF_02 + "', '" +
+LF_02_a.Text + "', '" +
+var_LF_03 + "', '" +
+LF_03_a.Text + "', '" +
+var_LF_04 + "', '" +
+LF_04_a.Text + "', '" +
+var_LF_05 + "', '" +
+LF_05_a.Text + "', '" +
+var_LF_06 + "', '" +
+LF_06_a.Text + "', '" +
+var_LF_07 + "', '" +
+LF_07_a.Text + "', '" +
+var_RF_01 + "', '" +
+RF_01_a.Text + "', '" +
+var_RF_02 + "', '" +
+RF_02_a.Text + "', '" +
+var_RF_03 + "', '" +
+RF_03_a.Text + "', '" +
+var_RF_04 + "', '" +
+RF_04_a.Text + "', '" +
+var_SE_01 + "', '" +
+SE_01_a.Text + "', '" +
+var_SE_02 + "', '" +
+SE_02_a.Text + "', '" +
+var_SE_03 + "', '" +
+SE_03_a.Text + "', '" +
+var_SE_04 + "', '" +
+SE_04_a.Text + "', '" +
+var_CS_01 + "', '" +
+CS_01_a.Text + "', '" +
+var_CS_02 + "', '" +
+CS_02_a.Text + "', '" +
+var_CS_03 + "', '" +
+CS_03_a.Text + "', '" +
+var_CS_04 + "', '" +
+CS_04_a.Text + "', '" +
+var_CS_05 + "', '" +
+CS_05_a.Text + "', '" +
+var_CS_06 + "', '" +
+CS_06_a.Text + "', '" +
+var_CS_07 + "', '" +
+CS_07_a.Text + "', '" +
+var_CS_08 + "', '" +
+CS_08_a.Text + "', '" +
+var_CS_09 + "', '" +
+CS_09_a.Text + "', '" +
+var_CS_10 + "', '" +
+CS_10_a.Text + "', '" +
+var_UR_01 + "', '" +
+UR_01_a.Text + "', '" +
+var_UR_02 + "', '" +
+UR_02_a.Text + "', '" +
+var_UR_03 + "', '" +
+UR_03_a.Text + "', '" +
+var_UR_04 + "', '" +
+UR_04_a.Text + "', '" +
+var_UR_04a + "', '" +
+UR_04a_a.Text + "', '" +
+var_UR_05 + "', '" +
+UR_05_a.Text + "', '" +
+var_UR_06 + "', '" +
+UR_06_a.Text + "', '" +
+var_UR_07 + "', '" +
+UR_07_a.Text + "', '" +
+var_UR_08 + "', '" +
+UR_08_a.Text + "', '" +
+var_UR_10 + "', '" +
+UR_10_a.Text + "', '" +
+var_UR_11 + "', '" +
+UR_11_a.Text + "', '" +
+var_UR_12 + "', '" +
+UR_12_a.Text + "', '" +
+var_UR_13 + "', '" +
+UR_13_a.Text + "', '" +
+var_UR_14 + "', '" +
+UR_14_a.Text + "', '" +
+var_UR_15 + "', '" +
+UR_15_a.Text + "', '" +
+var_UR_16 + "', '" +
+UR_16_a.Text + "', '" +
+var_UR_17 + "', '" +
+UR_17_a.Text + "', '" +
+var_UR_18 + "', '" +
+UR_18_a.Text + "', '" +
+var_UR_19 + "', '" +
+UR_19_a.Text + "', '" +
+var_UR_20 + "', '" +
+UR_20_a.Text + "', '" +
+var_UR_21 + "', '" +
+UR_21_a.Text + "', '" +
+var_uc_01a + "', '" +
+uc_01_ca.Text + "', '" +
+var_uc_02a + "', '" +
+uc_02a_a.Text + "', '" +
+var_uc_02b + "', '" +
+var_uc_03a + "', '" +
+uc_03a_a.Text + "', '" +
+var_uc_03b + "', '" +
+var_uc_04a + "', '" +
+uc_04a_a.Text + "', '" +
+var_uc_04b + "', '" +
+var_uc_05a + "', '" +
+uc_05a_a.Text + "', '" +
+var_uc_05b + "', '" +
+var_uc_06a + "', '" +
+uc_06a_a.Text + "', '" +
+var_uc_06b + "', '" +
+var_uc_07a + "', '" +
+uc_07a_a.Text + "', '" +
+var_uc_07b + "', '" +
+var_uc_08a + "', '" +
+uc_08a_a.Text + "', '" +
+var_uc_08b + "', '" +
+var_uc_09a + "', '" +
+uc_09a_a.Text + "', '" +
+var_uc_09b + "', '" +
+var_uc_10a + "', '" +
+uc_10a_a.Text + "', '" +
+var_uc_10b + "', '" +
+var_uc_11a + "', '" +
+uc_11a_a.Text + "', '" +
+var_uc_11b + "', '" +
+var_uc_12a + "', '" +
+uc_12a_a.Text + "', '" +
+var_uc_12b + "', '" +
+var_uc_13a + "', '" +
+uc_13a_a.Text + "', '" +
+var_uc_13b + "', '" +
+var_uc_14a + "', '" +
+uc_14a_a.Text + "', '" +
+var_uc_14b + "', '" +
+var_uc_15a + "', '" +
+uc_15a_a.Text + "', '" +
+var_uc_15b + "', '" +
+var_uc_16a + "', '" +
+uc_16a_a.Text + "', '" +
+var_uc_16b + "', '" +
+var_uc_17a + "', '" +
+uc_17a_a.Text + "', '" +
+var_uc_17b + "', '" +
+var_uc_18a + "', '" +
+uc_18a_a.Text + "', '" +
+var_uc_18b + "', '" +
+var_uc_19a + "', '" +
+uc_19a_a.Text + "', '" +
+var_uc_19b + "', '" +
+var_uc_20a + "', '" +
+uc_20a_a.Text + "', '" +
+var_uc_20b + "', '" +
+var_uc_21a + "', '" +
+uc_21a_a.Text + "', '" +
+var_uc_21b + "', '" +
+var_uc_22a + "', '" +
+uc_22a_a.Text + "', '" +
+var_uc_22b + "', '" +
+var_uc_23a + "', '" +
+uc_23a_a.Text + "', '" +
+var_uc_23b + "', '" +
+var_uc_24a + "', '" +
+uc_24a_a.Text + "', '" +
+var_uc_24b + "', '" +
+var_uc_25a + "', '" +
+uc_25a_a.Text + "', '" +
+var_uc_25b + "', '" +
+var_uc_26a + "', '" +
+uc_26a_a.Text + "', '" +
+var_uc_26b + "', '" +
+var_uc_27a + "', '" +
+uc_27a_a.Text + "', '" +
+var_uc_27b + "', '" +
+var_uc_28a + "', '" +
+uc_28a_a.Text + "', '" +
+var_uc_28b + "', '" +
+var_uc_29a + "', '" +
+uc_29a_a.Text + "', '" +
+var_uc_29b + "', '" +
+var_uc_30a + "', '" +
+uc_30a_a.Text + "', '" +
+var_uc_30b + "', '" +
+var_uc_31a + "', '" +
+uc_31a_a.Text + "', '" +
+var_uc_31b + "', '" +
+var_uc_32a + "', '" +
+uc_32a_a.Text + "', '" +
+var_uc_32b + "', '" +
+var_uc_33a + "', '" +
+uc_33a_a.Text + "', '" +
+var_uc_33b + "', '" +
+var_uc_34a + "', '" +
+uc_34a_a.Text + "', '" +
+var_uc_34b + "', '" +
+var_uc_35a + "', '" +
+uc_35a_a.Text + "', '" +
+var_uc_35b + "', '" +
+var_uc_36a + "', '" +
+uc_36a_a.Text + "', '" +
+var_uc_36b + "', '" +
+var_uc_37a + "', '" +
+uc_37a_a.Text + "', '" +
+var_uc_37b + "', '" +
+LA_17.Text + "', '" +
+LA_18.Text + "', '" +
+LA_19.Text + "', '" +
+var_LA_20a_b + "', '" +
+LA_20a_a.Text + "', '" +
+var_LA_20b_a + "', '" +
+var_LA_21a_b + "', '" +
+LA_21a_a.Text + "', '" +
+var_LA_21b_a + "', '" +
+var_LA_22a_b + "', '" +
+LA_22a_a.Text + "', '" +
+var_LA_22b_a + "', '" +
+var_LA_23a_b + "', '" +
+LA_23a_a.Text + "', '" +
+var_LA_23b_a + "', '" +
+var_LA_24a_b + "', '" +
+LA_24a_a.Text + "', '" +
+var_LA_24b_a + "', '" +
+var_LA_25a_b + "', '" +
+LA_25a_a.Text + "', '" +
+var_LA_25b_a + "', '" +
+var_LA_26a_b + "', '" +
+LA_26a_a.Text + "', '" +
+var_LA_26b_a + "', '" +
+var_LA_27a_b + "', '" +
+LA_27a_a.Text + "', '" +
+var_LA_27b_a + "', '" +
+var_LA_28a_b + "', '" +
+LA_28a_a.Text + "', '" +
+var_LA_28b_a + "', '" +
+var_LA_29a_b + "', '" +
+LA_29a_a.Text + "', '" +
+var_LA_29b_a + "', '" +
+var_LA_30a_b + "', '" +
+LA_30a_a.Text + "', '" +
+var_LA_30b_a + "', '" +
+var_LA_31a_b + "', '" +
+LA_31a_a.Text + "', '" +
+var_LA_31b_a + "', '" +
+var_LA_32a_b + "', '" +
+LA_32a_a.Text + "', '" +
+var_LA_32b_a + "', '" +
+var_LA_33a_b + "', '" +
+LA_33a_a.Text + "', '" +
+var_LA_33b_a + "', '" +
+var_LA_34a_b + "', '" +
+LA_34a_a.Text + "', '" +
+var_LA_34b_a + "', '" +
+var_LA_35a_b + "', '" +
+LA_35a_a.Text + "', '" +
+var_LA_35b_a + "', '" +
+var_LA_36a_b + "', '" +
+LA_36a_a.Text + "', '" +
+var_LA_36b_a + "', '" +
+var_LA_37a_b + "', '" +
+LA_37a_a.Text + "', '" +
+var_LA_37b_a + "', '" +
+var_LA_38a_b + "', '" +
+LA_38a_a.Text + "', '" +
+var_LA_38b_a + "', '" +
+var_LA_39a_b + "', '" +
+LA_39a_a.Text + "', '" +
+var_LA_39b_a + "', '" +
+var_LA_40a_b + "', '" +
+LA_40a_a.Text + "', '" +
+var_LA_40b_a + "', '" +
+var_LA_41a_b + "', '" +
+LA_41a_a.Text + "', '" +
+var_LA_41b_a + "', '" +
+var_LA_42a_b + "', '" +
+LA_42a_a.Text + "', '" +
+var_LA_42b_a + "', '" +
+var_LA_43a_b + "', '" +
+LA_43a_a.Text + "', '" +
+var_LA_43b_a + "', '" +
+var_LA_44a_b + "', '" +
+LA_44a_a.Text + "', '" +
+var_LA_44b_a + "', '" +
+var_LA_45a_b + "', '" +
+LA_45a_a.Text + "', '" +
+var_LA_45b_a + "', '" +
+var_LA_46a_b + "', '" +
+LA_46a_a.Text + "', '" +
+var_LA_46b_a + "', '" +
+var_LA_47a_b + "', '" +
+LA_47a_a.Text + "', '" +
+var_LA_47b_a + "', '" +
+var_LA_48a_b + "', '" +
+LA_48a_a.Text + "', '" +
+var_LA_48b_a + "', '" +
+var_LA_49a_b + "', '" +
+LA_49a_a.Text + "', '" +
+var_LA_49b_a + "', '" +
+var_LA_50a_b + "', '" +
+LA_50a_a.Text + "', '" +
+var_LA_50b_a + "', '" +
+var_LA_51a_b + "', '" +
+LA_51a_a.Text + "', '" +
+var_LA_51b_a + "', '" +
+var_LA_52a_b + "', '" +
+LA_52a_a.Text + "', '" +
+var_LA_52b_a + "', '" +
+Session["userid"].ToString() + "', '" +
+val_entry + "', '" +
+HttpContext.Current.Request["labid"].ToString() + "')";
 
 
             //string msg = obj_op.ExecuteNonQuery_Message(fldname, fldvalue, "sp_AddSampleResult");
@@ -9034,8 +8649,6 @@ public partial class sample_results : System.Web.UI.Page
 
             if (string.IsNullOrEmpty(msg))
             {
-                AddFormStatus(formstatus);
-
                 string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
             }
@@ -9100,7 +8713,7 @@ public partial class sample_results : System.Web.UI.Page
       ",case when AS1_Q1_1 = 1 then 'RCT1'" +
       "when AS1_Q1_1 = 2 then 'RCT2'" +
       "end[AS1_Q1_1]" +
-        "FROM [form1] where[AS1_screening_ID] = '" + screeningid + "' and labid='" + labid + "'", cn.cn);
+        "FROM [form1] where[AS1_screening_ID] = '" + screeningid + "' and labid = '" + labid + "'", cn.cn);
 
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -9202,6 +8815,58 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public static List<SampleResults> IsScreeningIDExists(string screeningid)
+    {
+        List<SampleResults> CountryInformation = new List<SampleResults>();
+
+        try
+        {
+            string[] fldname = { "screeningid", "fldvalue", "visitid" };
+            string[] fldvalue = { screeningid, "1", "0" };
+
+
+            CConnection cn = new CConnection();
+
+            SqlCommand cmd = new SqlCommand("select * from sample_result where la_sno='" + screeningid + "'", cn.cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+
+            //DataSet ds = ExecuteNonQuery(fldname, fldvalue, "sp_GetRecords");
+
+            if (ds != null)
+            {
+                if (ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+
+                        foreach (DataRow dr in ds.Tables[0].Rows)
+                        {
+                            CountryInformation.Add(new SampleResults()
+                            {
+                                la_sno = dr["la_sno"].ToString()
+
+                            });
+                        }
+
+                    }
+                }
+            }
+
+
+        }
+
+        catch (Exception ex)
+        {
+
+        }
+
+        return CountryInformation;
+    }
 
 
 
@@ -10220,359 +9885,359 @@ public partial class sample_results : System.Web.UI.Page
             cn = new CConnection();
 
             SqlDataAdapter da = new SqlDataAdapter("select " +
-    "b.AS1_screening_ID," +
-    "[AS1_rand_id]," +
-    "[AS1_name]," +
-    "case when[AS1_sex] = 1 then 'Male'" +
-    "when[AS1_sex] = 2 then 'Female'" +
-    "end[AS1_sex]," +
-    "[AS1_age]," +
-    "[AS1_barcode]," +
-    "case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
-    "when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
-    "when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
-    "when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
-    "when[AS1_fsite] = 5 then 'NICH'" +
-    "when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
-    "end[AS1_fsite]," +
-    "case when AS1_Q1_1 = 1 then 'RCT1'" +
-    "when AS1_Q1_1 = 2 then 'RCT2'" +
-    "end[AS1_Q1_1]," +
-    "a.la_sno," +
-    "a.LA_01," +
-    "a.LA_02," +
-    "a.LA_03_b," +
-    "a.LA_03_a," +
-    "a.LA_04_b," +
-    "a.LA_04_a," +
-    "a.LA_05_b," +
-    "a.LA_05_a," +
-    "a.LA_06_b," +
-    "a.LA_06_a," +
-    "a.LA_07_b," +
-    "a.LA_07_a," +
-    "a.LA_08_b," +
-    "a.LA_08_a," +
-    "a.LA_09_b," +
-    "a.LA_09_a," +
-    "a.LA_10_b," +
-    "a.LA_10_a," +
-    "a.LA_11_b," +
-    "a.LA_11_a," +
-    "a.LA_12_b," +
-    "a.LA_12_a," +
-    "a.LA_13_b," +
-    "a.LA_13_a," +
-    "a.LA_14_b," +
-    "a.LA_14_a," +
-    "a.LA_15_b," +
-    "a.LA_15_a," +
-    "a.LA_16_b," +
-    "a.LA_16_a," +
-    "a.LF_01," +
-    "a.LF_01_a," +
-    "a.LF_02," +
-    "a.LF_02_a," +
-    "a.LF_03," +
-    "a.LF_03_a," +
-    "a.LF_04," +
-    "a.LF_04_a," +
-    "a.LF_05," +
-    "a.LF_05_a," +
-    "a.LF_06," +
-    "a.LF_06_a," +
-    "a.LF_07," +
-    "a.LF_07_a," +
-    "a.RF_01," +
-    "a.RF_01_a," +
-    "a.RF_02," +
-    "a.RF_02_a," +
-    "a.RF_03," +
-    "a.RF_03_a," +
-    "a.RF_04," +
-    "a.RF_04_a," +
-    "a.SE_01," +
-    "a.SE_01_a," +
-    "a.SE_02," +
-    "a.SE_02_a," +
-    "a.SE_03," +
-    "a.SE_03_a," +
-    "a.SE_04," +
-    "a.SE_04_a," +
-    "a.CS_01," +
-    "a.CS_01_a," +
-    "a.CS_02," +
-    "a.CS_02_a," +
-    "a.CS_03," +
-    "a.CS_03_a," +
-    "a.CS_04," +
-    "a.CS_04_a," +
-    "a.CS_05," +
-    "a.CS_05_a," +
-    "a.CS_06," +
-    "a.CS_06_a," +
-    "a.CS_07," +
-    "a.CS_07_a," +
-    "a.CS_08," +
-    "a.CS_08_a," +
-    "a.CS_09," +
-    "a.CS_09_a," +
-    "a.CS_10," +
-    "a.CS_10_a," +
-    "a.UR_01," +
-    "a.UR_01_a," +
-    "a.UR_02," +
-    "a.UR_02_a," +
-    "a.UR_03," +
-    "a.UR_03_a," +
-    "a.UR_04," +
-    "a.UR_04_a," +
-    "a.UR_04a," +
-    "a.UR_04a_a," +
-    "a.UR_05," +
-    "a.UR_05_a," +
-    "a.UR_06," +
-    "a.UR_06_a," +
-    "a.UR_07," +
-    "a.UR_07_a," +
-    "a.UR_08," +
-    "a.UR_08_a," +
-    "a.UR_10," +
-    "a.UR_10_a," +
-    "a.UR_11," +
-    "a.UR_11_a," +
-    "a.UR_12," +
-    "a.UR_12_a," +
-    "a.UR_13," +
-    "a.UR_13_a," +
-    "a.UR_14," +
-    "a.UR_14_a," +
-    "a.UR_15," +
-    "a.UR_15_a," +
-    "a.UR_16," +
-    "a.UR_16_a," +
-    "a.UR_17," +
-    "a.UR_17_a," +
-    "a.UR_18," +
-    "a.UR_18_a," +
-    "a.UR_19," +
-    "a.UR_19_a," +
-    "a.UR_20," +
-    "a.UR_20_a," +
-    "a.UR_21," +
-    "a.UR_21_a," +
-    "a.uc_01_ca," +
-    "a.uc_01a," +
-    "a.uc_02a," +
-    "a.uc_02a_a," +
-    "a.uc_02b," +
-    "a.uc_03a," +
-    "a.uc_03a_a," +
-    "a.uc_03b," +
-    "a.uc_04a," +
-    "a.uc_04a_a," +
-    "a.uc_04b," +
-    "a.uc_05a," +
-    "a.uc_05a_a," +
-    "a.uc_05b," +
-    "a.uc_06a," +
-    "a.uc_06a_a," +
-    "a.uc_06b," +
-    "a.uc_07a," +
-    "a.uc_07a_a," +
-    "a.uc_07b," +
-    "a.uc_08a," +
-    "a.uc_08a_a," +
-    "a.uc_08b," +
-    "a.uc_09a," +
-    "a.uc_09a_a," +
-    "a.uc_09b," +
-    "a.uc_10a," +
-    "a.uc_10a_a," +
-    "a.uc_10b," +
-    "a.uc_11a," +
-    "a.uc_11a_a," +
-    "a.uc_11b," +
-    "a.uc_12a," +
-    "a.uc_12a_a," +
-    "a.uc_12b," +
-    "a.uc_13a," +
-    "a.uc_13a_a," +
-    "a.uc_13b," +
-    "a.uc_14a," +
-    "a.uc_14a_a," +
-    "a.uc_14b," +
-    "a.uc_15a," +
-    "a.uc_15a_a," +
-    "a.uc_15b," +
-    "a.uc_16a," +
-    "a.uc_16a_a," +
-    "a.uc_16b," +
-    "a.uc_17a," +
-    "a.uc_17a_a," +
-    "a.uc_17b," +
-    "a.uc_18a," +
-    "a.uc_18a_a," +
-    "a.uc_18b," +
-    "a.uc_19a," +
-    "a.uc_19a_a," +
-    "a.uc_19b," +
-    "a.uc_20a," +
-    "a.uc_20a_a," +
-    "a.uc_20b," +
-    "a.uc_21a," +
-    "a.uc_21a_a," +
-    "a.uc_21b," +
-    "a.uc_22a," +
-    "a.uc_22a_a," +
-    "a.uc_22b," +
-    "a.uc_23a," +
-    "a.uc_23a_a," +
-    "a.uc_23b," +
-    "a.uc_24a," +
-    "a.uc_24a_a," +
-    "a.uc_24b," +
-    "a.uc_25a," +
-    "a.uc_25a_a," +
-    "a.uc_25b," +
-    "a.uc_26a," +
-    "a.uc_26a_a," +
-    "a.uc_26b," +
-    "a.uc_27a," +
-    "a.uc_27a_a," +
-    "a.uc_27b," +
-    "a.uc_28a," +
-    "a.uc_28a_a," +
-    "a.uc_28b," +
-    "a.uc_29a," +
-    "a.uc_29a_a," +
-    "a.uc_29b," +
-    "a.uc_30a," +
-    "a.uc_30a_a," +
-    "a.uc_30b," +
-    "a.uc_31a," +
-    "a.uc_31a_a," +
-    "a.uc_31b," +
-    "a.uc_32a," +
-    "a.uc_32a_a," +
-    "a.uc_32b," +
-    "a.uc_33a," +
-    "a.uc_33a_a," +
-    "a.uc_33b," +
-    "a.uc_34a," +
-    "a.uc_34a_a," +
-    "a.uc_34b," +
-    "a.uc_35a," +
-    "a.uc_35a_a," +
-    "a.uc_35b," +
-    "a.uc_36a," +
-    "a.uc_36a_a," +
-    "a.uc_36b," +
-    "a.uc_37a," +
-    "a.uc_37a_a," +
-    "a.uc_37b," +
-    "a.LA_17," +
-    "a.LA_18," +
-    "a.LA_19," +
-    "a.LA_20a_b," +
-    "a.LA_20a_a," +
-    "a.LA_20b_a," +
-    "a.LA_21a_b," +
-    "a.LA_21a_a," +
-    "a.LA_21b_a," +
-    "a.LA_22a_b," +
-    "a.LA_22a_a," +
-    "a.LA_22b_a," +
-    "a.LA_23a_b," +
-    "a.LA_23a_a," +
-    "a.LA_23b_a," +
-    "a.LA_24a_b," +
-    "a.LA_24a_a," +
-    "a.LA_24b_a," +
-    "a.LA_25a_b," +
-    "a.LA_25a_a," +
-    "a.LA_25b_a," +
-    "a.LA_26a_b," +
-    "a.LA_26a_a," +
-    "a.LA_26b_a," +
-    "a.LA_27a_b," +
-    "a.LA_27a_a," +
-    "a.LA_27b_a," +
-    "a.LA_28a_b," +
-    "a.LA_28a_a," +
-    "a.LA_28b_a," +
-    "a.LA_29a_b," +
-    "a.LA_29a_a," +
-    "a.LA_29b_a," +
-    "a.LA_30a_b," +
-    "a.LA_30a_a," +
-    "a.LA_30b_a," +
-    "a.LA_31a_b," +
-    "a.LA_31a_a," +
-    "a.LA_31b_a," +
-    "a.LA_32a_b," +
-    "a.LA_32a_a," +
-    "a.LA_32b_a," +
-    "a.LA_33a_b," +
-    "a.LA_33a_a," +
-    "a.LA_33b_a," +
-    "a.LA_34a_b," +
-    "a.LA_34a_a," +
-    "a.LA_34b_a," +
-    "a.LA_35a_b," +
-    "a.LA_35a_a," +
-    "a.LA_35b_a," +
-    "a.LA_36a_b," +
-    "a.LA_36a_a," +
-    "a.LA_36b_a," +
-    "a.LA_37a_b," +
-    "a.LA_37a_a," +
-    "a.LA_37b_a," +
-    "a.LA_38a_b," +
-    "a.LA_38a_a," +
-    "a.LA_38b_a," +
-    "a.LA_39a_b," +
-    "a.LA_39a_a," +
-    "a.LA_39b_a," +
-    "a.LA_40a_b," +
-    "a.LA_40a_a," +
-    "a.LA_40b_a," +
-    "a.LA_41a_b," +
-    "a.LA_41a_a," +
-    "a.LA_41b_a," +
-    "a.LA_42a_b," +
-    "a.LA_42a_a," +
-    "a.LA_42b_a," +
-    "a.LA_43a_b," +
-    "a.LA_43a_a," +
-    "a.LA_43b_a," +
-    "a.LA_44a_b," +
-    "a.LA_44a_a," +
-    "a.LA_44b_a," +
-    "a.LA_45a_b," +
-    "a.LA_45a_a," +
-    "a.LA_45b_a," +
-    "a.LA_46a_b," +
-    "a.LA_46a_a," +
-    "a.LA_46b_a," +
-    "a.LA_47a_b," +
-    "a.LA_47a_a," +
-    "a.LA_47b_a," +
-    "a.LA_48a_b," +
-    "a.LA_48a_a," +
-    "a.LA_48b_a," +
-    "a.LA_49a_b," +
-    "a.LA_49a_a," +
-    "a.LA_49b_a," +
-    "a.LA_50a_b," +
-    "a.LA_50a_a," +
-    "a.LA_50b_a," +
-    "a.LA_51a_b," +
-    "a.LA_51a_a," +
-    "a.LA_51b_a," +
-    "a.LA_52a_b," +
-    "a.LA_52a_a," +
-    "a.LA_52b_a" +
+"b.AS1_screening_ID," +
+"[AS1_rand_id]," +
+"[AS1_name]," +
+"case when[AS1_sex] = 1 then 'Male'" +
+"when[AS1_sex] = 2 then 'Female'" +
+"end[AS1_sex]," +
+"[AS1_age]," +
+"[AS1_barcode]," +
+"case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
+"when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
+"when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
+"when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
+"when[AS1_fsite] = 5 then 'NICH'" +
+"when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
+"end[AS1_fsite]," +
+"case when AS1_Q1_1 = 1 then 'RCT1'" +
+"when AS1_Q1_1 = 2 then 'RCT2'" +
+"end[AS1_Q1_1]," +
+"a.la_sno," +
+"a.LA_01," +
+"a.LA_02," +
+"a.LA_03_b," +
+"a.LA_03_a," +
+"a.LA_04_b," +
+"a.LA_04_a," +
+"a.LA_05_b," +
+"a.LA_05_a," +
+"a.LA_06_b," +
+"a.LA_06_a," +
+"a.LA_07_b," +
+"a.LA_07_a," +
+"a.LA_08_b," +
+"a.LA_08_a," +
+"a.LA_09_b," +
+"a.LA_09_a," +
+"a.LA_10_b," +
+"a.LA_10_a," +
+"a.LA_11_b," +
+"a.LA_11_a," +
+"a.LA_12_b," +
+"a.LA_12_a," +
+"a.LA_13_b," +
+"a.LA_13_a," +
+"a.LA_14_b," +
+"a.LA_14_a," +
+"a.LA_15_b," +
+"a.LA_15_a," +
+"a.LA_16_b," +
+"a.LA_16_a," +
+"a.LF_01," +
+"a.LF_01_a," +
+"a.LF_02," +
+"a.LF_02_a," +
+"a.LF_03," +
+"a.LF_03_a," +
+"a.LF_04," +
+"a.LF_04_a," +
+"a.LF_05," +
+"a.LF_05_a," +
+"a.LF_06," +
+"a.LF_06_a," +
+"a.LF_07," +
+"a.LF_07_a," +
+"a.RF_01," +
+"a.RF_01_a," +
+"a.RF_02," +
+"a.RF_02_a," +
+"a.RF_03," +
+"a.RF_03_a," +
+"a.RF_04," +
+"a.RF_04_a," +
+"a.SE_01," +
+"a.SE_01_a," +
+"a.SE_02," +
+"a.SE_02_a," +
+"a.SE_03," +
+"a.SE_03_a," +
+"a.SE_04," +
+"a.SE_04_a," +
+"a.CS_01," +
+"a.CS_01_a," +
+"a.CS_02," +
+"a.CS_02_a," +
+"a.CS_03," +
+"a.CS_03_a," +
+"a.CS_04," +
+"a.CS_04_a," +
+"a.CS_05," +
+"a.CS_05_a," +
+"a.CS_06," +
+"a.CS_06_a," +
+"a.CS_07," +
+"a.CS_07_a," +
+"a.CS_08," +
+"a.CS_08_a," +
+"a.CS_09," +
+"a.CS_09_a," +
+"a.CS_10," +
+"a.CS_10_a," +
+"a.UR_01," +
+"a.UR_01_a," +
+"a.UR_02," +
+"a.UR_02_a," +
+"a.UR_03," +
+"a.UR_03_a," +
+"a.UR_04," +
+"a.UR_04_a," +
+"a.UR_04a," +
+"a.UR_04a_a," +
+"a.UR_05," +
+"a.UR_05_a," +
+"a.UR_06," +
+"a.UR_06_a," +
+"a.UR_07," +
+"a.UR_07_a," +
+"a.UR_08," +
+"a.UR_08_a," +
+"a.UR_10," +
+"a.UR_10_a," +
+"a.UR_11," +
+"a.UR_11_a," +
+"a.UR_12," +
+"a.UR_12_a," +
+"a.UR_13," +
+"a.UR_13_a," +
+"a.UR_14," +
+"a.UR_14_a," +
+"a.UR_15," +
+"a.UR_15_a," +
+"a.UR_16," +
+"a.UR_16_a," +
+"a.UR_17," +
+"a.UR_17_a," +
+"a.UR_18," +
+"a.UR_18_a," +
+"a.UR_19," +
+"a.UR_19_a," +
+"a.UR_20," +
+"a.UR_20_a," +
+"a.UR_21," +
+"a.UR_21_a," +
+"a.uc_01_ca," +
+"a.uc_01a," +
+"a.uc_02a," +
+"a.uc_02a_a," +
+"a.uc_02b," +
+"a.uc_03a," +
+"a.uc_03a_a," +
+"a.uc_03b," +
+"a.uc_04a," +
+"a.uc_04a_a," +
+"a.uc_04b," +
+"a.uc_05a," +
+"a.uc_05a_a," +
+"a.uc_05b," +
+"a.uc_06a," +
+"a.uc_06a_a," +
+"a.uc_06b," +
+"a.uc_07a," +
+"a.uc_07a_a," +
+"a.uc_07b," +
+"a.uc_08a," +
+"a.uc_08a_a," +
+"a.uc_08b," +
+"a.uc_09a," +
+"a.uc_09a_a," +
+"a.uc_09b," +
+"a.uc_10a," +
+"a.uc_10a_a," +
+"a.uc_10b," +
+"a.uc_11a," +
+"a.uc_11a_a," +
+"a.uc_11b," +
+"a.uc_12a," +
+"a.uc_12a_a," +
+"a.uc_12b," +
+"a.uc_13a," +
+"a.uc_13a_a," +
+"a.uc_13b," +
+"a.uc_14a," +
+"a.uc_14a_a," +
+"a.uc_14b," +
+"a.uc_15a," +
+"a.uc_15a_a," +
+"a.uc_15b," +
+"a.uc_16a," +
+"a.uc_16a_a," +
+"a.uc_16b," +
+"a.uc_17a," +
+"a.uc_17a_a," +
+"a.uc_17b," +
+"a.uc_18a," +
+"a.uc_18a_a," +
+"a.uc_18b," +
+"a.uc_19a," +
+"a.uc_19a_a," +
+"a.uc_19b," +
+"a.uc_20a," +
+"a.uc_20a_a," +
+"a.uc_20b," +
+"a.uc_21a," +
+"a.uc_21a_a," +
+"a.uc_21b," +
+"a.uc_22a," +
+"a.uc_22a_a," +
+"a.uc_22b," +
+"a.uc_23a," +
+"a.uc_23a_a," +
+"a.uc_23b," +
+"a.uc_24a," +
+"a.uc_24a_a," +
+"a.uc_24b," +
+"a.uc_25a," +
+"a.uc_25a_a," +
+"a.uc_25b," +
+"a.uc_26a," +
+"a.uc_26a_a," +
+"a.uc_26b," +
+"a.uc_27a," +
+"a.uc_27a_a," +
+"a.uc_27b," +
+"a.uc_28a," +
+"a.uc_28a_a," +
+"a.uc_28b," +
+"a.uc_29a," +
+"a.uc_29a_a," +
+"a.uc_29b," +
+"a.uc_30a," +
+"a.uc_30a_a," +
+"a.uc_30b," +
+"a.uc_31a," +
+"a.uc_31a_a," +
+"a.uc_31b," +
+"a.uc_32a," +
+"a.uc_32a_a," +
+"a.uc_32b," +
+"a.uc_33a," +
+"a.uc_33a_a," +
+"a.uc_33b," +
+"a.uc_34a," +
+"a.uc_34a_a," +
+"a.uc_34b," +
+"a.uc_35a," +
+"a.uc_35a_a," +
+"a.uc_35b," +
+"a.uc_36a," +
+"a.uc_36a_a," +
+"a.uc_36b," +
+"a.uc_37a," +
+"a.uc_37a_a," +
+"a.uc_37b," +
+"a.LA_17," +
+"a.LA_18," +
+"a.LA_19," +
+"a.LA_20a_b," +
+"a.LA_20a_a," +
+"a.LA_20b_a," +
+"a.LA_21a_b," +
+"a.LA_21a_a," +
+"a.LA_21b_a," +
+"a.LA_22a_b," +
+"a.LA_22a_a," +
+"a.LA_22b_a," +
+"a.LA_23a_b," +
+"a.LA_23a_a," +
+"a.LA_23b_a," +
+"a.LA_24a_b," +
+"a.LA_24a_a," +
+"a.LA_24b_a," +
+"a.LA_25a_b," +
+"a.LA_25a_a," +
+"a.LA_25b_a," +
+"a.LA_26a_b," +
+"a.LA_26a_a," +
+"a.LA_26b_a," +
+"a.LA_27a_b," +
+"a.LA_27a_a," +
+"a.LA_27b_a," +
+"a.LA_28a_b," +
+"a.LA_28a_a," +
+"a.LA_28b_a," +
+"a.LA_29a_b," +
+"a.LA_29a_a," +
+"a.LA_29b_a," +
+"a.LA_30a_b," +
+"a.LA_30a_a," +
+"a.LA_30b_a," +
+"a.LA_31a_b," +
+"a.LA_31a_a," +
+"a.LA_31b_a," +
+"a.LA_32a_b," +
+"a.LA_32a_a," +
+"a.LA_32b_a," +
+"a.LA_33a_b," +
+"a.LA_33a_a," +
+"a.LA_33b_a," +
+"a.LA_34a_b," +
+"a.LA_34a_a," +
+"a.LA_34b_a," +
+"a.LA_35a_b," +
+"a.LA_35a_a," +
+"a.LA_35b_a," +
+"a.LA_36a_b," +
+"a.LA_36a_a," +
+"a.LA_36b_a," +
+"a.LA_37a_b," +
+"a.LA_37a_a," +
+"a.LA_37b_a," +
+"a.LA_38a_b," +
+"a.LA_38a_a," +
+"a.LA_38b_a," +
+"a.LA_39a_b," +
+"a.LA_39a_a," +
+"a.LA_39b_a," +
+"a.LA_40a_b," +
+"a.LA_40a_a," +
+"a.LA_40b_a," +
+"a.LA_41a_b," +
+"a.LA_41a_a," +
+"a.LA_41b_a," +
+"a.LA_42a_b," +
+"a.LA_42a_a," +
+"a.LA_42b_a," +
+"a.LA_43a_b," +
+"a.LA_43a_a," +
+"a.LA_43b_a," +
+"a.LA_44a_b," +
+"a.LA_44a_a," +
+"a.LA_44b_a," +
+"a.LA_45a_b," +
+"a.LA_45a_a," +
+"a.LA_45b_a," +
+"a.LA_46a_b," +
+"a.LA_46a_a," +
+"a.LA_46b_a," +
+"a.LA_47a_b," +
+"a.LA_47a_a," +
+"a.LA_47b_a," +
+"a.LA_48a_b," +
+"a.LA_48a_a," +
+"a.LA_48b_a," +
+"a.LA_49a_b," +
+"a.LA_49a_a," +
+"a.LA_49b_a," +
+"a.LA_50a_b," +
+"a.LA_50a_a," +
+"a.LA_50b_a," +
+"a.LA_51a_b," +
+"a.LA_51a_a," +
+"a.LA_51b_a," +
+"a.LA_52a_b," +
+"a.LA_52a_a," +
+"a.LA_52b_a" +
             " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '" + la_sno.Text + "'", cn.cn);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -13825,4268 +13490,24 @@ public partial class sample_results : System.Web.UI.Page
             cn = new CConnection();
 
             SqlDataAdapter da = new SqlDataAdapter("select " +
-    "b.AS1_screening_ID," +
-    "[AS1_rand_id]," +
-    "[AS1_name]," +
-    "case when[AS1_sex] = 1 then 'Male'" +
-    "when[AS1_sex] = 2 then 'Female'" +
-    "end[AS1_sex]," +
-    "[AS1_age]," +
-    "[AS1_barcode]," +
-    "case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
-    "when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
-    "when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
-    "when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
-    "when[AS1_fsite] = 5 then 'NICH'" +
-    "when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
-    "end[AS1_fsite]," +
-    "case when AS1_Q1_1 = 1 then 'RCT1'" +
-    "when AS1_Q1_1 = 2 then 'RCT2'" +
-    "end[AS1_Q1_1]," +
-    "a.la_sno," +
-    "a.history, " +
-    "a.LA_01," +
-    "a.LA_02," +
-    "a.LA_03_b," +
-    "a.LA_03_a," +
-    "a.LA_04_b," +
-    "a.LA_04_a," +
-    "a.LA_05_b," +
-    "a.LA_05_a," +
-    "a.LA_06_b," +
-    "a.LA_06_a," +
-    "a.LA_07_b," +
-    "a.LA_07_a," +
-    "a.LA_08_b," +
-    "a.LA_08_a," +
-    "a.LA_09_b," +
-    "a.LA_09_a," +
-    "a.LA_10_b," +
-    "a.LA_10_a," +
-    "a.LA_11_b," +
-    "a.LA_11_a," +
-    "a.LA_12_b," +
-    "a.LA_12_a," +
-    "a.LA_13_b," +
-    "a.LA_13_a," +
-    "a.LA_14_b," +
-    "a.LA_14_a," +
-    "a.LA_15_b," +
-    "a.LA_15_a," +
-    "a.LA_16_b," +
-    "a.LA_16_a," +
-    "a.LF_01," +
-    "a.LF_01_a," +
-    "a.LF_02," +
-    "a.LF_02_a," +
-    "a.LF_03," +
-    "a.LF_03_a," +
-    "a.LF_04," +
-    "a.LF_04_a," +
-    "a.LF_05," +
-    "a.LF_05_a," +
-    "a.LF_06," +
-    "a.LF_06_a," +
-    "a.LF_07," +
-    "a.LF_07_a," +
-    "a.RF_01," +
-    "a.RF_01_a," +
-    "a.RF_02," +
-    "a.RF_02_a," +
-    "a.RF_03," +
-    "a.RF_03_a," +
-    "a.RF_04," +
-    "a.RF_04_a," +
-    "a.SE_01," +
-    "a.SE_01_a," +
-    "a.SE_02," +
-    "a.SE_02_a," +
-    "a.SE_03," +
-    "a.SE_03_a," +
-    "a.SE_04," +
-    "a.SE_04_a," +
-    "a.CS_01," +
-    "a.CS_01_a," +
-    "a.CS_02," +
-    "a.CS_02_a," +
-    "a.CS_03," +
-    "a.CS_03_a," +
-    "a.CS_04," +
-    "a.CS_04_a," +
-    "a.CS_05," +
-    "a.CS_05_a," +
-    "a.CS_06," +
-    "a.CS_06_a," +
-    "a.CS_07," +
-    "a.CS_07_a," +
-    "a.CS_08," +
-    "a.CS_08_a," +
-    "a.CS_09," +
-    "a.CS_09_a," +
-    "a.CS_10," +
-    "a.CS_10_a," +
-    "a.UR_01," +
-    "a.UR_01_a," +
-    "a.UR_02," +
-    "a.UR_02_a," +
-    "a.UR_03," +
-    "a.UR_03_a," +
-    "a.UR_04," +
-    "a.UR_04_a," +
-    "a.UR_04a," +
-    "a.UR_04a_a," +
-    "a.UR_05," +
-    "a.UR_05_a," +
-    "a.UR_06," +
-    "a.UR_06_a," +
-    "a.UR_07," +
-    "a.UR_07_a," +
-    "a.UR_08," +
-    "a.UR_08_a," +
-    "a.UR_10," +
-    "a.UR_10_a," +
-    "a.UR_11," +
-    "a.UR_11_a," +
-    "a.UR_12," +
-    "a.UR_12_a," +
-    "a.UR_13," +
-    "a.UR_13_a," +
-    "a.UR_14," +
-    "a.UR_14_a," +
-    "a.UR_15," +
-    "a.UR_15_a," +
-    "a.UR_16," +
-    "a.UR_16_a," +
-    "a.UR_17," +
-    "a.UR_17_a," +
-    "a.UR_18," +
-    "a.UR_18_a," +
-    "a.UR_19," +
-    "a.UR_19_a," +
-    "a.UR_20," +
-    "a.UR_20_a," +
-    "a.UR_21," +
-    "a.UR_21_a," +
-    "a.uc_01_ca," +
-    "a.uc_01a," +
-    "a.uc_02a," +
-    "a.uc_02a_a," +
-    "a.uc_02b," +
-    "a.uc_03a," +
-    "a.uc_03a_a," +
-    "a.uc_03b," +
-    "a.uc_04a," +
-    "a.uc_04a_a," +
-    "a.uc_04b," +
-    "a.uc_05a," +
-    "a.uc_05a_a," +
-    "a.uc_05b," +
-    "a.uc_06a," +
-    "a.uc_06a_a," +
-    "a.uc_06b," +
-    "a.uc_07a," +
-    "a.uc_07a_a," +
-    "a.uc_07b," +
-    "a.uc_08a," +
-    "a.uc_08a_a," +
-    "a.uc_08b," +
-    "a.uc_09a," +
-    "a.uc_09a_a," +
-    "a.uc_09b," +
-    "a.uc_10a," +
-    "a.uc_10a_a," +
-    "a.uc_10b," +
-    "a.uc_11a," +
-    "a.uc_11a_a," +
-    "a.uc_11b," +
-    "a.uc_12a," +
-    "a.uc_12a_a," +
-    "a.uc_12b," +
-    "a.uc_13a," +
-    "a.uc_13a_a," +
-    "a.uc_13b," +
-    "a.uc_14a," +
-    "a.uc_14a_a," +
-    "a.uc_14b," +
-    "a.uc_15a," +
-    "a.uc_15a_a," +
-    "a.uc_15b," +
-    "a.uc_16a," +
-    "a.uc_16a_a," +
-    "a.uc_16b," +
-    "a.uc_17a," +
-    "a.uc_17a_a," +
-    "a.uc_17b," +
-    "a.uc_18a," +
-    "a.uc_18a_a," +
-    "a.uc_18b," +
-    "a.uc_19a," +
-    "a.uc_19a_a," +
-    "a.uc_19b," +
-    "a.uc_20a," +
-    "a.uc_20a_a," +
-    "a.uc_20b," +
-    "a.uc_21a," +
-    "a.uc_21a_a," +
-    "a.uc_21b," +
-    "a.uc_22a," +
-    "a.uc_22a_a," +
-    "a.uc_22b," +
-    "a.uc_23a," +
-    "a.uc_23a_a," +
-    "a.uc_23b," +
-    "a.uc_24a," +
-    "a.uc_24a_a," +
-    "a.uc_24b," +
-    "a.uc_25a," +
-    "a.uc_25a_a," +
-    "a.uc_25b," +
-    "a.uc_26a," +
-    "a.uc_26a_a," +
-    "a.uc_26b," +
-    "a.uc_27a," +
-    "a.uc_27a_a," +
-    "a.uc_27b," +
-    "a.uc_28a," +
-    "a.uc_28a_a," +
-    "a.uc_28b," +
-    "a.uc_29a," +
-    "a.uc_29a_a," +
-    "a.uc_29b," +
-    "a.uc_30a," +
-    "a.uc_30a_a," +
-    "a.uc_30b," +
-    "a.uc_31a," +
-    "a.uc_31a_a," +
-    "a.uc_31b," +
-    "a.uc_32a," +
-    "a.uc_32a_a," +
-    "a.uc_32b," +
-    "a.uc_33a," +
-    "a.uc_33a_a," +
-    "a.uc_33b," +
-    "a.uc_34a," +
-    "a.uc_34a_a," +
-    "a.uc_34b," +
-    "a.uc_35a," +
-    "a.uc_35a_a," +
-    "a.uc_35b," +
-    "a.uc_36a," +
-    "a.uc_36a_a," +
-    "a.uc_36b," +
-    "a.uc_37a," +
-    "a.uc_37a_a," +
-    "a.uc_37b," +
-    "a.LA_17," +
-    "a.LA_18," +
-    "a.LA_19," +
-    "a.LA_20a_b," +
-    "a.LA_20a_a," +
-    "a.LA_20b_a," +
-    "a.LA_21a_b," +
-    "a.LA_21a_a," +
-    "a.LA_21b_a," +
-    "a.LA_22a_b," +
-    "a.LA_22a_a," +
-    "a.LA_22b_a," +
-    "a.LA_23a_b," +
-    "a.LA_23a_a," +
-    "a.LA_23b_a," +
-    "a.LA_24a_b," +
-    "a.LA_24a_a," +
-    "a.LA_24b_a," +
-    "a.LA_25a_b," +
-    "a.LA_25a_a," +
-    "a.LA_25b_a," +
-    "a.LA_26a_b," +
-    "a.LA_26a_a," +
-    "a.LA_26b_a," +
-    "a.LA_27a_b," +
-    "a.LA_27a_a," +
-    "a.LA_27b_a," +
-    "a.LA_28a_b," +
-    "a.LA_28a_a," +
-    "a.LA_28b_a," +
-    "a.LA_29a_b," +
-    "a.LA_29a_a," +
-    "a.LA_29b_a," +
-    "a.LA_30a_b," +
-    "a.LA_30a_a," +
-    "a.LA_30b_a," +
-    "a.LA_31a_b," +
-    "a.LA_31a_a," +
-    "a.LA_31b_a," +
-    "a.LA_32a_b," +
-    "a.LA_32a_a," +
-    "a.LA_32b_a," +
-    "a.LA_33a_b," +
-    "a.LA_33a_a," +
-    "a.LA_33b_a," +
-    "a.LA_34a_b," +
-    "a.LA_34a_a," +
-    "a.LA_34b_a," +
-    "a.LA_35a_b," +
-    "a.LA_35a_a," +
-    "a.LA_35b_a," +
-    "a.LA_36a_b," +
-    "a.LA_36a_a," +
-    "a.LA_36b_a," +
-    "a.LA_37a_b," +
-    "a.LA_37a_a," +
-    "a.LA_37b_a," +
-    "a.LA_38a_b," +
-    "a.LA_38a_a," +
-    "a.LA_38b_a," +
-    "a.LA_39a_b," +
-    "a.LA_39a_a," +
-    "a.LA_39b_a," +
-    "a.LA_40a_b," +
-    "a.LA_40a_a," +
-    "a.LA_40b_a," +
-    "a.LA_41a_b," +
-    "a.LA_41a_a," +
-    "a.LA_41b_a," +
-    "a.LA_42a_b," +
-    "a.LA_42a_a," +
-    "a.LA_42b_a," +
-    "a.LA_43a_b," +
-    "a.LA_43a_a," +
-    "a.LA_43b_a," +
-    "a.LA_44a_b," +
-    "a.LA_44a_a," +
-    "a.LA_44b_a," +
-    "a.LA_45a_b," +
-    "a.LA_45a_a," +
-    "a.LA_45b_a," +
-    "a.LA_46a_b," +
-    "a.LA_46a_a," +
-    "a.LA_46b_a," +
-    "a.LA_47a_b," +
-    "a.LA_47a_a," +
-    "a.LA_47b_a," +
-    "a.LA_48a_b," +
-    "a.LA_48a_a," +
-    "a.LA_48b_a," +
-    "a.LA_49a_b," +
-    "a.LA_49a_a," +
-    "a.LA_49b_a," +
-    "a.LA_50a_b," +
-    "a.LA_50a_a," +
-    "a.LA_50b_a," +
-    "a.LA_51a_b," +
-    "a.LA_51a_a," +
-    "a.LA_51b_a," +
-    "a.LA_52a_b," +
-    "a.LA_52a_a," +
-    "a.LA_52b_a" +
-            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.id = '" + id + "'", cn.cn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-
-            if (ds != null)
-            {
-                if (ds.Tables.Count > 0)
-                {
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-
-                        la_sno.Text = ds.Tables[0].Rows[0]["AS1_screening_ID"].ToString();
-                        la_fsite.Text = ds.Tables[0].Rows[0]["AS1_fsite"].ToString();
-                        la_rand.Text = ds.Tables[0].Rows[0]["AS1_rand_id"].ToString();
-                        la_spec.Text = ds.Tables[0].Rows[0]["AS1_barcode"].ToString();
-                        la_name.Text = ds.Tables[0].Rows[0]["AS1_name"].ToString();
-                        la_gen.Text = ds.Tables[0].Rows[0]["AS1_sex"].ToString();
-                        la_age.Text = ds.Tables[0].Rows[0]["AS1_age"].ToString();
-                        la_obj.Text = ds.Tables[0].Rows[0]["AS1_Q1_1"].ToString();
-
-
-                        txthistory.Text = ds.Tables[0].Rows[0]["history"].ToString();
-
-
-                        if (string.IsNullOrEmpty(txthistory.Text))
-                        {
-                            txthistory.Enabled = true;
-                            txthistory.CssClass = "form-control";
-                            txthistory.ReadOnly = false;
-
-                            //cmdSave.Visible = true;
-                            //cmdSaveDraft.Visible = true;
-
-                            //pnl_draft.Visible = true;
-                            //pnl_save.Visible = true;
-                        }
-                        else
-                        {
-                            txthistory.Enabled = false;
-                            txthistory.CssClass = "form-control";
-                            txthistory.ReadOnly = true;
-
-                            //pnl_draft.Visible = false;
-                            //pnl_save.Visible = false;
-
-                            //cmdSave.Visible = false;
-                            //cmdSaveDraft.Visible = false;
-
-
-                            //cmdSave.CssClass = "btn btn-danger mr-1";
-                            //cmdSaveDraft.CssClass = "btn btn-cyan mr-1";
-                        }
-
-
-                        //LA_01.Text = ds.Tables[0].Rows[0]["LA_01"].ToString();
-                        //LA_02.Text = ds.Tables[0].Rows[0]["LA_02"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "")
-                        {
-                            LA_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "999")
-                        {
-                            LA_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "888")
-                        {
-                            LA_03_c.Checked = true;
-                        }
-
-
-                        LA_03_a.Text = ds.Tables[0].Rows[0]["LA_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "")
-                        {
-                            LA_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "999")
-                        {
-                            LA_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "888")
-                        {
-                            LA_04_c.Checked = true;
-                        }
-
-
-                        LA_04_a.Text = ds.Tables[0].Rows[0]["LA_04_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "")
-                        {
-                            LA_05_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "999")
-                        {
-                            LA_05_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "888")
-                        {
-                            LA_05_c.Checked = true;
-                        }
-
-
-                        LA_05_a.Text = ds.Tables[0].Rows[0]["LA_05_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "")
-                        {
-                            LA_06_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "999")
-                        {
-                            LA_06_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "888")
-                        {
-                            LA_06_c.Checked = true;
-                        }
-
-
-                        LA_06_a.Text = ds.Tables[0].Rows[0]["LA_06_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "")
-                        {
-                            LA_07_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "999")
-                        {
-                            LA_07_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "888")
-                        {
-                            LA_07_c.Checked = true;
-                        }
-
-
-                        LA_07_a.Text = ds.Tables[0].Rows[0]["LA_07_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "")
-                        {
-                            LA_08_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "999")
-                        {
-                            LA_08_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "888")
-                        {
-                            LA_08_c.Checked = true;
-                        }
-
-
-                        LA_08_a.Text = ds.Tables[0].Rows[0]["LA_08_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "")
-                        {
-                            LA_09_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "999")
-                        {
-                            LA_09_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "888")
-                        {
-                            LA_09_c.Checked = true;
-                        }
-
-
-                        LA_09_a.Text = ds.Tables[0].Rows[0]["LA_09_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "")
-                        {
-                            LA_10_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "999")
-                        {
-                            LA_10_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "888")
-                        {
-                            LA_10_c.Checked = true;
-                        }
-
-
-                        LA_10_a.Text = ds.Tables[0].Rows[0]["LA_10_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "")
-                        {
-                            LA_11_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "999")
-                        {
-                            LA_11_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "888")
-                        {
-                            LA_11_c.Checked = true;
-                        }
-
-
-                        LA_11_a.Text = ds.Tables[0].Rows[0]["LA_11_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "")
-                        {
-                            LA_12_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "999")
-                        {
-                            LA_12_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "888")
-                        {
-                            LA_12_c.Checked = true;
-                        }
-
-
-                        LA_12_a.Text = ds.Tables[0].Rows[0]["LA_12_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "")
-                        {
-                            LA_13_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "999")
-                        {
-                            LA_13_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "888")
-                        {
-                            LA_13_c.Checked = true;
-                        }
-
-
-                        LA_13_a.Text = ds.Tables[0].Rows[0]["LA_13_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "")
-                        {
-                            LA_14_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "999")
-                        {
-                            LA_14_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "888")
-                        {
-                            LA_14_c.Checked = true;
-                        }
-
-
-                        LA_14_a.Text = ds.Tables[0].Rows[0]["LA_14_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "")
-                        {
-                            LA_15_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "999")
-                        {
-                            LA_15_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "888")
-                        {
-                            LA_15_c.Checked = true;
-                        }
-
-
-                        LA_15_a.Text = ds.Tables[0].Rows[0]["LA_15_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "")
-                        {
-                            LA_16_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "999")
-                        {
-                            LA_16_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "888")
-                        {
-                            LA_16_c.Checked = true;
-                        }
-
-
-                        LA_16_a.Text = ds.Tables[0].Rows[0]["LA_16_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "")
-                        {
-                            LF_01_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "999")
-                        {
-                            LF_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "888")
-                        {
-                            LF_01_c.Checked = true;
-                        }
-
-
-                        LF_01_a.Text = ds.Tables[0].Rows[0]["LF_01_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "")
-                        {
-                            LF_02_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "999")
-                        {
-                            LF_02_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "888")
-                        {
-                            LF_02_c.Checked = true;
-                        }
-
-
-                        LF_02_a.Text = ds.Tables[0].Rows[0]["LF_02_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "")
-                        {
-                            LF_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "999")
-                        {
-                            LF_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "888")
-                        {
-                            LF_03_c.Checked = true;
-                        }
-
-
-                        LF_03_a.Text = ds.Tables[0].Rows[0]["LF_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "")
-                        {
-                            LF_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "999")
-                        {
-                            LF_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "888")
-                        {
-                            LF_04_c.Checked = true;
-                        }
-
-
-                        LF_04_a.Text = ds.Tables[0].Rows[0]["LF_04_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "")
-                        {
-                            LF_05_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "999")
-                        {
-                            LF_05_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "888")
-                        {
-                            LF_05_c.Checked = true;
-                        }
-
-
-                        LF_05_a.Text = ds.Tables[0].Rows[0]["LF_05_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "")
-                        {
-                            LF_06_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "999")
-                        {
-                            LF_06_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "888")
-                        {
-                            LF_06_c.Checked = true;
-                        }
-
-
-                        LF_06_a.Text = ds.Tables[0].Rows[0]["LF_06_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "")
-                        {
-                            LF_07_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "999")
-                        {
-                            LF_07_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "888")
-                        {
-                            LF_07_c.Checked = true;
-                        }
-
-
-                        LF_07_a.Text = ds.Tables[0].Rows[0]["LF_07_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "")
-                        {
-                            RF_01_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "999")
-                        {
-                            RF_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "888")
-                        {
-                            RF_01_c.Checked = true;
-                        }
-
-
-                        RF_01_a.Text = ds.Tables[0].Rows[0]["RF_01_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "")
-                        {
-                            RF_02_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "999")
-                        {
-                            RF_02_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "888")
-                        {
-                            RF_02_c.Checked = true;
-                        }
-
-
-                        RF_02_a.Text = ds.Tables[0].Rows[0]["RF_02_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "")
-                        {
-                            RF_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "999")
-                        {
-                            RF_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "888")
-                        {
-                            RF_03_c.Checked = true;
-                        }
-
-
-                        RF_03_a.Text = ds.Tables[0].Rows[0]["RF_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "")
-                        {
-                            RF_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "999")
-                        {
-                            RF_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "888")
-                        {
-                            RF_04_c.Checked = true;
-                        }
-
-
-                        RF_04_a.Text = ds.Tables[0].Rows[0]["RF_04_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "")
-                        {
-                            SE_01_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "999")
-                        {
-                            SE_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "888")
-                        {
-                            SE_01_c.Checked = true;
-                        }
-
-
-                        SE_01_a.Text = ds.Tables[0].Rows[0]["SE_01_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "")
-                        {
-                            SE_02_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "999")
-                        {
-                            SE_02_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "888")
-                        {
-                            SE_02_c.Checked = true;
-                        }
-
-
-                        SE_02_a.Text = ds.Tables[0].Rows[0]["SE_02_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "")
-                        {
-                            SE_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "999")
-                        {
-                            SE_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "888")
-                        {
-                            SE_03_c.Checked = true;
-                        }
-
-
-                        SE_03_a.Text = ds.Tables[0].Rows[0]["SE_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "")
-                        {
-                            SE_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "999")
-                        {
-                            SE_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "888")
-                        {
-                            SE_04_c.Checked = true;
-                        }
-
-
-                        SE_04_a.Text = ds.Tables[0].Rows[0]["SE_04_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "")
-                        {
-                            CS_01_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "999")
-                        {
-                            CS_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "888")
-                        {
-                            CS_01_c.Checked = true;
-                        }
-
-
-                        CS_01_a.Text = ds.Tables[0].Rows[0]["CS_01_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "")
-                        {
-                            CS_02_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "999")
-                        {
-                            CS_02_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "888")
-                        {
-                            CS_02_c.Checked = true;
-                        }
-
-
-                        CS_02_a.Text = ds.Tables[0].Rows[0]["CS_02_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "")
-                        {
-                            CS_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "999")
-                        {
-                            CS_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "888")
-                        {
-                            CS_03_c.Checked = true;
-                        }
-
-
-                        CS_03_a.Text = ds.Tables[0].Rows[0]["CS_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "")
-                        {
-                            CS_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "999")
-                        {
-                            CS_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "888")
-                        {
-                            CS_04_c.Checked = true;
-                        }
-
-
-                        CS_04_a.Text = ds.Tables[0].Rows[0]["CS_04_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "")
-                        {
-                            CS_05_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "999")
-                        {
-                            CS_05_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "888")
-                        {
-                            CS_05_c.Checked = true;
-                        }
-
-
-                        CS_05_a.Text = ds.Tables[0].Rows[0]["CS_05_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "")
-                        {
-                            CS_06_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "999")
-                        {
-                            CS_06_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "888")
-                        {
-                            CS_06_c.Checked = true;
-                        }
-
-
-                        CS_06_a.Text = ds.Tables[0].Rows[0]["CS_06_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "")
-                        {
-                            CS_07_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "999")
-                        {
-                            CS_07_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "888")
-                        {
-                            CS_07_c.Checked = true;
-                        }
-
-
-                        CS_07_a.Text = ds.Tables[0].Rows[0]["CS_07_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "")
-                        {
-                            CS_08_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "999")
-                        {
-                            CS_08_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "888")
-                        {
-                            CS_08_c.Checked = true;
-                        }
-
-
-                        CS_08_a.Text = ds.Tables[0].Rows[0]["CS_08_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "")
-                        {
-                            CS_09_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "999")
-                        {
-                            CS_09_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "888")
-                        {
-                            CS_09_c.Checked = true;
-                        }
-
-
-                        CS_09_a.Text = ds.Tables[0].Rows[0]["CS_09_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "")
-                        {
-                            CS_10_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "999")
-                        {
-                            CS_10_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "888")
-                        {
-                            CS_10_c.Checked = true;
-                        }
-
-
-                        CS_10_a.Text = ds.Tables[0].Rows[0]["CS_10_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "")
-                        {
-                            UR_01_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "999")
-                        {
-                            UR_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "888")
-                        {
-                            UR_01_c.Checked = true;
-                        }
-
-
-                        UR_01_a.Text = ds.Tables[0].Rows[0]["UR_01_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "")
-                        {
-                            UR_02_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "999")
-                        {
-                            UR_02_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "888")
-                        {
-                            UR_02_c.Checked = true;
-                        }
-
-
-                        UR_02_a.Text = ds.Tables[0].Rows[0]["UR_02_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "")
-                        {
-                            UR_03_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "999")
-                        {
-                            UR_03_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "888")
-                        {
-                            UR_03_c.Checked = true;
-                        }
-
-
-                        UR_03_a.Text = ds.Tables[0].Rows[0]["UR_03_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "")
-                        {
-                            UR_04_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "999")
-                        {
-                            UR_04_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "888")
-                        {
-                            UR_04_c.Checked = true;
-                        }
-
-
-                        UR_04_a.Text = ds.Tables[0].Rows[0]["UR_04_a"].ToString();
-
-
-
-
-                        if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "")
-                        {
-                            UR_04a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "999")
-                        {
-                            UR_04a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "888")
-                        {
-                            UR_04a_c.Checked = true;
-                        }
-
-
-                        UR_04a_a.Text = ds.Tables[0].Rows[0]["UR_04a_a"].ToString();
-
-
-
-
-
-                        if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "")
-                        {
-                            UR_05_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "999")
-                        {
-                            UR_05_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "888")
-                        {
-                            UR_05_c.Checked = true;
-                        }
-
-
-                        UR_05_a.Text = ds.Tables[0].Rows[0]["UR_05_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "")
-                        {
-                            UR_06_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "999")
-                        {
-                            UR_06_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "888")
-                        {
-                            UR_06_c.Checked = true;
-                        }
-
-
-                        UR_06_a.Text = ds.Tables[0].Rows[0]["UR_06_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "")
-                        {
-                            UR_07_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "999")
-                        {
-                            UR_07_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "888")
-                        {
-                            UR_07_c.Checked = true;
-                        }
-
-
-                        UR_07_a.Text = ds.Tables[0].Rows[0]["UR_07_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "")
-                        {
-                            UR_08_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "999")
-                        {
-                            UR_08_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "888")
-                        {
-                            UR_08_c.Checked = true;
-                        }
-
-
-                        UR_08_a.Text = ds.Tables[0].Rows[0]["UR_08_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "")
-                        {
-                            UR_10_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "999")
-                        {
-                            UR_10_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "888")
-                        {
-                            UR_10_c.Checked = true;
-                        }
-
-
-                        UR_10_a.Text = ds.Tables[0].Rows[0]["UR_10_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "")
-                        {
-                            UR_11_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "999")
-                        {
-                            UR_11_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "888")
-                        {
-                            UR_11_c.Checked = true;
-                        }
-
-
-                        UR_11_a.Text = ds.Tables[0].Rows[0]["UR_11_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "")
-                        {
-                            UR_12_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "999")
-                        {
-                            UR_12_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "888")
-                        {
-                            UR_12_c.Checked = true;
-                        }
-
-
-                        UR_12_a.Text = ds.Tables[0].Rows[0]["UR_12_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "")
-                        {
-                            UR_13_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "999")
-                        {
-                            UR_13_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "888")
-                        {
-                            UR_13_c.Checked = true;
-                        }
-
-
-                        UR_13_a.Text = ds.Tables[0].Rows[0]["UR_13_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "")
-                        {
-                            UR_14_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "999")
-                        {
-                            UR_14_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "888")
-                        {
-                            UR_14_c.Checked = true;
-                        }
-
-
-                        UR_14_a.Text = ds.Tables[0].Rows[0]["UR_14_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "")
-                        {
-                            UR_15_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "999")
-                        {
-                            UR_15_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "888")
-                        {
-                            UR_15_c.Checked = true;
-                        }
-
-
-                        UR_15_a.Text = ds.Tables[0].Rows[0]["UR_15_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "")
-                        {
-                            UR_16_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "999")
-                        {
-                            UR_16_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "888")
-                        {
-                            UR_16_c.Checked = true;
-                        }
-
-
-                        UR_16_a.Text = ds.Tables[0].Rows[0]["UR_16_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "")
-                        {
-                            UR_17_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "999")
-                        {
-                            UR_17_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "888")
-                        {
-                            UR_17_c.Checked = true;
-                        }
-
-
-                        UR_17_a.Text = ds.Tables[0].Rows[0]["UR_17_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "")
-                        {
-                            UR_18_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "999")
-                        {
-                            UR_18_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "888")
-                        {
-                            UR_18_c.Checked = true;
-                        }
-
-
-                        UR_18_a.Text = ds.Tables[0].Rows[0]["UR_18_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "")
-                        {
-                            UR_19_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "999")
-                        {
-                            UR_19_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "888")
-                        {
-                            UR_19_c.Checked = true;
-                        }
-
-
-                        UR_19_a.Text = ds.Tables[0].Rows[0]["UR_19_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "")
-                        {
-                            UR_20_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "999")
-                        {
-                            UR_20_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "888")
-                        {
-                            UR_20_c.Checked = true;
-                        }
-
-
-                        UR_20_a.Text = ds.Tables[0].Rows[0]["UR_20_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "")
-                        {
-                            UR_21_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "999")
-                        {
-                            UR_21_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "888")
-                        {
-                            UR_21_c.Checked = true;
-                        }
-
-
-                        UR_21_a.Text = ds.Tables[0].Rows[0]["UR_21_a"].ToString();
-
-
-                        uc_01_ca.Text = ds.Tables[0].Rows[0]["uc_01_ca"].ToString();
-
-
-
-                        if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "1")
-                        {
-                            uc_01_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "2")
-                        {
-                            uc_01_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "999")
-                        {
-                            uc_01_c.Checked = true;
-                        }
-
-
-
-
-                        if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "")
-                        {
-                            uc_02a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "999")
-                        {
-                            uc_02a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "888")
-                        {
-                            uc_02a_c.Checked = true;
-                        }
-
-
-                        uc_02a_a.Text = ds.Tables[0].Rows[0]["uc_02a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "1")
-                        {
-                            uc_02b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "2")
-                        {
-                            uc_02b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "3")
-                        {
-                            uc_02b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "")
-                        {
-                            uc_03a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "999")
-                        {
-                            uc_03a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "888")
-                        {
-                            uc_03a_c.Checked = true;
-                        }
-
-
-                        uc_03a_a.Text = ds.Tables[0].Rows[0]["uc_03a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "1")
-                        {
-                            uc_03b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "2")
-                        {
-                            uc_03b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "3")
-                        {
-                            uc_03b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "")
-                        {
-                            uc_04a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "999")
-                        {
-                            uc_04a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "888")
-                        {
-                            uc_04a_c.Checked = true;
-                        }
-
-
-                        uc_04a_a.Text = ds.Tables[0].Rows[0]["uc_04a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "1")
-                        {
-                            uc_04b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "2")
-                        {
-                            uc_04b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "3")
-                        {
-                            uc_04b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "")
-                        {
-                            uc_05a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "999")
-                        {
-                            uc_05a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "888")
-                        {
-                            uc_05a_c.Checked = true;
-                        }
-
-
-                        uc_05a_a.Text = ds.Tables[0].Rows[0]["uc_05a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "1")
-                        {
-                            uc_05b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "2")
-                        {
-                            uc_05b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "3")
-                        {
-                            uc_05b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "")
-                        {
-                            uc_06a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "999")
-                        {
-                            uc_06a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "888")
-                        {
-                            uc_06a_c.Checked = true;
-                        }
-
-
-                        uc_06a_a.Text = ds.Tables[0].Rows[0]["uc_06a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "1")
-                        {
-                            uc_06b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "2")
-                        {
-                            uc_06b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "3")
-                        {
-                            uc_06b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "")
-                        {
-                            uc_07a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "999")
-                        {
-                            uc_07a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "888")
-                        {
-                            uc_07a_c.Checked = true;
-                        }
-
-
-                        uc_07a_a.Text = ds.Tables[0].Rows[0]["uc_07a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "1")
-                        {
-                            uc_07b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "2")
-                        {
-                            uc_07b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "3")
-                        {
-                            uc_07b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "")
-                        {
-                            uc_08a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "999")
-                        {
-                            uc_08a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "888")
-                        {
-                            uc_08a_c.Checked = true;
-                        }
-
-
-                        uc_08a_a.Text = ds.Tables[0].Rows[0]["uc_08a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "1")
-                        {
-                            uc_08b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "2")
-                        {
-                            uc_08b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "3")
-                        {
-                            uc_08b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "")
-                        {
-                            uc_09a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "999")
-                        {
-                            uc_09a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "888")
-                        {
-                            uc_09a_c.Checked = true;
-                        }
-
-
-                        uc_09a_a.Text = ds.Tables[0].Rows[0]["uc_09a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "1")
-                        {
-                            uc_09b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "2")
-                        {
-                            uc_09b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "3")
-                        {
-                            uc_09b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "")
-                        {
-                            uc_10a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "999")
-                        {
-                            uc_10a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "888")
-                        {
-                            uc_10a_c.Checked = true;
-                        }
-
-
-                        uc_10a_a.Text = ds.Tables[0].Rows[0]["uc_10a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "1")
-                        {
-                            uc_10b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "2")
-                        {
-                            uc_10b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "3")
-                        {
-                            uc_10b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "")
-                        {
-                            uc_11a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "999")
-                        {
-                            uc_11a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "888")
-                        {
-                            uc_11a_c.Checked = true;
-                        }
-
-
-                        uc_11a_a.Text = ds.Tables[0].Rows[0]["uc_11a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "1")
-                        {
-                            uc_11b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "2")
-                        {
-                            uc_11b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "3")
-                        {
-                            uc_11b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "")
-                        {
-                            uc_12a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "999")
-                        {
-                            uc_12a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "888")
-                        {
-                            uc_12a_c.Checked = true;
-                        }
-
-
-                        uc_12a_a.Text = ds.Tables[0].Rows[0]["uc_12a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "1")
-                        {
-                            uc_12b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "2")
-                        {
-                            uc_12b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "3")
-                        {
-                            uc_12b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "")
-                        {
-                            uc_13a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "999")
-                        {
-                            uc_13a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "888")
-                        {
-                            uc_13a_c.Checked = true;
-                        }
-
-
-                        uc_13a_a.Text = ds.Tables[0].Rows[0]["uc_13a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "1")
-                        {
-                            uc_13b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "2")
-                        {
-                            uc_13b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "3")
-                        {
-                            uc_13b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "")
-                        {
-                            uc_14a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "999")
-                        {
-                            uc_14a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "888")
-                        {
-                            uc_14a_c.Checked = true;
-                        }
-
-
-                        uc_14a_a.Text = ds.Tables[0].Rows[0]["uc_14a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "1")
-                        {
-                            uc_14b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "2")
-                        {
-                            uc_14b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "3")
-                        {
-                            uc_14b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "")
-                        {
-                            uc_15a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "999")
-                        {
-                            uc_15a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "888")
-                        {
-                            uc_15a_c.Checked = true;
-                        }
-
-
-                        uc_15a_a.Text = ds.Tables[0].Rows[0]["uc_15a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "1")
-                        {
-                            uc_15b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "2")
-                        {
-                            uc_15b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "3")
-                        {
-                            uc_15b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "")
-                        {
-                            uc_16a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "999")
-                        {
-                            uc_16a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "888")
-                        {
-                            uc_16a_c.Checked = true;
-                        }
-
-
-                        uc_16a_a.Text = ds.Tables[0].Rows[0]["uc_16a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "1")
-                        {
-                            uc_16b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "2")
-                        {
-                            uc_16b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "3")
-                        {
-                            uc_16b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "")
-                        {
-                            uc_17a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "999")
-                        {
-                            uc_17a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "888")
-                        {
-                            uc_17a_c.Checked = true;
-                        }
-
-
-                        uc_17a_a.Text = ds.Tables[0].Rows[0]["uc_17a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "1")
-                        {
-                            uc_17b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "2")
-                        {
-                            uc_17b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "3")
-                        {
-                            uc_17b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "")
-                        {
-                            uc_18a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "999")
-                        {
-                            uc_18a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "888")
-                        {
-                            uc_18a_c.Checked = true;
-                        }
-
-
-                        uc_18a_a.Text = ds.Tables[0].Rows[0]["uc_18a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "1")
-                        {
-                            uc_18b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "2")
-                        {
-                            uc_18b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "3")
-                        {
-                            uc_18b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "")
-                        {
-                            uc_19a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "999")
-                        {
-                            uc_19a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "888")
-                        {
-                            uc_19a_c.Checked = true;
-                        }
-
-
-                        uc_19a_a.Text = ds.Tables[0].Rows[0]["uc_19a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "1")
-                        {
-                            uc_19b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "2")
-                        {
-                            uc_19b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "3")
-                        {
-                            uc_19b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "")
-                        {
-                            uc_20a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "999")
-                        {
-                            uc_20a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "888")
-                        {
-                            uc_20a_c.Checked = true;
-                        }
-
-
-                        uc_20a_a.Text = ds.Tables[0].Rows[0]["uc_20a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "1")
-                        {
-                            uc_20b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "2")
-                        {
-                            uc_20b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "3")
-                        {
-                            uc_20b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "")
-                        {
-                            uc_21a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "999")
-                        {
-                            uc_21a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "888")
-                        {
-                            uc_21a_c.Checked = true;
-                        }
-
-
-                        uc_21a_a.Text = ds.Tables[0].Rows[0]["uc_21a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "1")
-                        {
-                            uc_21b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "2")
-                        {
-                            uc_21b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "3")
-                        {
-                            uc_21b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "")
-                        {
-                            uc_22a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "999")
-                        {
-                            uc_22a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "888")
-                        {
-                            uc_22a_c.Checked = true;
-                        }
-
-
-                        uc_22a_a.Text = ds.Tables[0].Rows[0]["uc_22a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "1")
-                        {
-                            uc_22b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "2")
-                        {
-                            uc_22b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "3")
-                        {
-                            uc_22b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "")
-                        {
-                            uc_23a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "999")
-                        {
-                            uc_23a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "888")
-                        {
-                            uc_23a_c.Checked = true;
-                        }
-
-
-                        uc_23a_a.Text = ds.Tables[0].Rows[0]["uc_23a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "1")
-                        {
-                            uc_23b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "2")
-                        {
-                            uc_23b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "3")
-                        {
-                            uc_23b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "")
-                        {
-                            uc_24a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "999")
-                        {
-                            uc_24a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "888")
-                        {
-                            uc_24a_c.Checked = true;
-                        }
-
-
-                        uc_24a_a.Text = ds.Tables[0].Rows[0]["uc_24a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "1")
-                        {
-                            uc_24b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "2")
-                        {
-                            uc_24b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "3")
-                        {
-                            uc_24b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "")
-                        {
-                            uc_25a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "999")
-                        {
-                            uc_25a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "888")
-                        {
-                            uc_25a_c.Checked = true;
-                        }
-
-
-                        uc_25a_a.Text = ds.Tables[0].Rows[0]["uc_25a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "1")
-                        {
-                            uc_25b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "2")
-                        {
-                            uc_25b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "3")
-                        {
-                            uc_25b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "")
-                        {
-                            uc_26a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "999")
-                        {
-                            uc_26a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "888")
-                        {
-                            uc_26a_c.Checked = true;
-                        }
-
-
-                        uc_26a_a.Text = ds.Tables[0].Rows[0]["uc_26a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "1")
-                        {
-                            uc_26b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "2")
-                        {
-                            uc_26b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "3")
-                        {
-                            uc_26b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "")
-                        {
-                            uc_27a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "999")
-                        {
-                            uc_27a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "888")
-                        {
-                            uc_27a_c.Checked = true;
-                        }
-
-
-                        uc_27a_a.Text = ds.Tables[0].Rows[0]["uc_27a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "1")
-                        {
-                            uc_27b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "2")
-                        {
-                            uc_27b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "3")
-                        {
-                            uc_27b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "")
-                        {
-                            uc_28a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "999")
-                        {
-                            uc_28a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "888")
-                        {
-                            uc_28a_c.Checked = true;
-                        }
-
-
-                        uc_28a_a.Text = ds.Tables[0].Rows[0]["uc_28a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "1")
-                        {
-                            uc_28b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "2")
-                        {
-                            uc_28b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "3")
-                        {
-                            uc_28b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "")
-                        {
-                            uc_29a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "999")
-                        {
-                            uc_29a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "888")
-                        {
-                            uc_29a_c.Checked = true;
-                        }
-
-
-                        uc_29a_a.Text = ds.Tables[0].Rows[0]["uc_29a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "1")
-                        {
-                            uc_29b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "2")
-                        {
-                            uc_29b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "3")
-                        {
-                            uc_29b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "")
-                        {
-                            uc_30a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "999")
-                        {
-                            uc_30a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "888")
-                        {
-                            uc_30a_c.Checked = true;
-                        }
-
-
-                        uc_30a_a.Text = ds.Tables[0].Rows[0]["uc_30a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "1")
-                        {
-                            uc_30b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "2")
-                        {
-                            uc_30b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "3")
-                        {
-                            uc_30b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "")
-                        {
-                            uc_31a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "999")
-                        {
-                            uc_31a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "888")
-                        {
-                            uc_31a_c.Checked = true;
-                        }
-
-
-                        uc_31a_a.Text = ds.Tables[0].Rows[0]["uc_31a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "1")
-                        {
-                            uc_31b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "2")
-                        {
-                            uc_31b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "3")
-                        {
-                            uc_31b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "")
-                        {
-                            uc_32a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "999")
-                        {
-                            uc_32a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "888")
-                        {
-                            uc_32a_c.Checked = true;
-                        }
-
-
-                        uc_32a_a.Text = ds.Tables[0].Rows[0]["uc_32a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "1")
-                        {
-                            uc_32b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "2")
-                        {
-                            uc_32b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "3")
-                        {
-                            uc_32b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "")
-                        {
-                            uc_33a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "999")
-                        {
-                            uc_33a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "888")
-                        {
-                            uc_33a_c.Checked = true;
-                        }
-
-
-                        uc_33a_a.Text = ds.Tables[0].Rows[0]["uc_33a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "1")
-                        {
-                            uc_33b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "2")
-                        {
-                            uc_33b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "3")
-                        {
-                            uc_33b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "")
-                        {
-                            uc_34a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "999")
-                        {
-                            uc_34a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "888")
-                        {
-                            uc_34a_c.Checked = true;
-                        }
-
-
-                        uc_34a_a.Text = ds.Tables[0].Rows[0]["uc_34a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "1")
-                        {
-                            uc_34b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "2")
-                        {
-                            uc_34b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "3")
-                        {
-                            uc_34b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "")
-                        {
-                            uc_35a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "999")
-                        {
-                            uc_35a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "888")
-                        {
-                            uc_35a_c.Checked = true;
-                        }
-
-
-                        uc_35a_a.Text = ds.Tables[0].Rows[0]["uc_35a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "1")
-                        {
-                            uc_35b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "2")
-                        {
-                            uc_35b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "3")
-                        {
-                            uc_35b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "")
-                        {
-                            uc_36a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "999")
-                        {
-                            uc_36a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "888")
-                        {
-                            uc_36a_c.Checked = true;
-                        }
-
-
-                        uc_36a_a.Text = ds.Tables[0].Rows[0]["uc_36a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "1")
-                        {
-                            uc_36b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "2")
-                        {
-                            uc_36b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "3")
-                        {
-                            uc_36b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "")
-                        {
-                            uc_37a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "999")
-                        {
-                            uc_37a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "888")
-                        {
-                            uc_37a_c.Checked = true;
-                        }
-
-
-                        uc_37a_a.Text = ds.Tables[0].Rows[0]["uc_37a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "1")
-                        {
-                            uc_37b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "2")
-                        {
-                            uc_37b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "3")
-                        {
-                            uc_37b_c.Checked = true;
-                        }
-
-
-                        LA_17.Text = ds.Tables[0].Rows[0]["LA_17"].ToString();
-
-
-                        LA_18.Text = ds.Tables[0].Rows[0]["LA_18"].ToString();
-
-
-                        LA_19.Text = ds.Tables[0].Rows[0]["LA_19"].ToString();
-
-
-
-                        if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "")
-                        {
-                            LA_20a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "999")
-                        {
-                            LA_20a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "888")
-                        {
-                            LA_20a_c.Checked = true;
-                        }
-
-
-                        LA_20a_a.Text = ds.Tables[0].Rows[0]["LA_20a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "1")
-                        {
-                            LA_20b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "2")
-                        {
-                            LA_20b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "3")
-                        {
-                            LA_20b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "")
-                        {
-                            LA_21a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "999")
-                        {
-                            LA_21a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "888")
-                        {
-                            LA_21a_c.Checked = true;
-                        }
-
-
-                        LA_21a_a.Text = ds.Tables[0].Rows[0]["LA_21a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "1")
-                        {
-                            LA_21b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "2")
-                        {
-                            LA_21b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "3")
-                        {
-                            LA_21b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "")
-                        {
-                            LA_22a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "999")
-                        {
-                            LA_22a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "888")
-                        {
-                            LA_22a_c.Checked = true;
-                        }
-
-
-                        LA_22a_a.Text = ds.Tables[0].Rows[0]["LA_22a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "1")
-                        {
-                            LA_22b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "2")
-                        {
-                            LA_22b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "3")
-                        {
-                            LA_22b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "")
-                        {
-                            LA_23a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "999")
-                        {
-                            LA_23a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "888")
-                        {
-                            LA_23a_c.Checked = true;
-                        }
-
-
-                        LA_23a_a.Text = ds.Tables[0].Rows[0]["LA_23a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "1")
-                        {
-                            LA_23b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "2")
-                        {
-                            LA_23b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "3")
-                        {
-                            LA_23b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "")
-                        {
-                            LA_24a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "999")
-                        {
-                            LA_24a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "888")
-                        {
-                            LA_24a_c.Checked = true;
-                        }
-
-
-                        LA_24a_a.Text = ds.Tables[0].Rows[0]["LA_24a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "1")
-                        {
-                            LA_24b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "2")
-                        {
-                            LA_24b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "3")
-                        {
-                            LA_24b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "")
-                        {
-                            LA_25a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "999")
-                        {
-                            LA_25a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "888")
-                        {
-                            LA_25a_c.Checked = true;
-                        }
-
-
-                        LA_25a_a.Text = ds.Tables[0].Rows[0]["LA_25a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "1")
-                        {
-                            LA_25b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "2")
-                        {
-                            LA_25b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "3")
-                        {
-                            LA_25b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "")
-                        {
-                            LA_26a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "999")
-                        {
-                            LA_26a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "888")
-                        {
-                            LA_26a_c.Checked = true;
-                        }
-
-
-                        LA_26a_a.Text = ds.Tables[0].Rows[0]["LA_26a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "1")
-                        {
-                            LA_26b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "2")
-                        {
-                            LA_26b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "3")
-                        {
-                            LA_26b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "")
-                        {
-                            LA_27a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "999")
-                        {
-                            LA_27a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "888")
-                        {
-                            LA_27a_c.Checked = true;
-                        }
-
-
-                        LA_27a_a.Text = ds.Tables[0].Rows[0]["LA_27a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "1")
-                        {
-                            LA_27b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "2")
-                        {
-                            LA_27b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "3")
-                        {
-                            LA_27b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "")
-                        {
-                            LA_28a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "999")
-                        {
-                            LA_28a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "888")
-                        {
-                            LA_28a_c.Checked = true;
-                        }
-
-
-                        LA_28a_a.Text = ds.Tables[0].Rows[0]["LA_28a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "1")
-                        {
-                            LA_28b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "2")
-                        {
-                            LA_28b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "3")
-                        {
-                            LA_28b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "")
-                        {
-                            LA_29a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "999")
-                        {
-                            LA_29a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "888")
-                        {
-                            LA_29a_c.Checked = true;
-                        }
-
-
-                        LA_29a_a.Text = ds.Tables[0].Rows[0]["LA_29a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "1")
-                        {
-                            LA_29b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "2")
-                        {
-                            LA_29b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "3")
-                        {
-                            LA_29b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "")
-                        {
-                            LA_30a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "999")
-                        {
-                            LA_30a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "888")
-                        {
-                            LA_30a_c.Checked = true;
-                        }
-
-
-                        LA_30a_a.Text = ds.Tables[0].Rows[0]["LA_30a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "1")
-                        {
-                            LA_30b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "2")
-                        {
-                            LA_30b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "3")
-                        {
-                            LA_30b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "")
-                        {
-                            LA_31a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "999")
-                        {
-                            LA_31a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "888")
-                        {
-                            LA_31a_c.Checked = true;
-                        }
-
-
-                        LA_31a_a.Text = ds.Tables[0].Rows[0]["LA_31a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "1")
-                        {
-                            LA_31b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "2")
-                        {
-                            LA_31b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "3")
-                        {
-                            LA_31b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "")
-                        {
-                            LA_32a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "999")
-                        {
-                            LA_32a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "888")
-                        {
-                            LA_32a_c.Checked = true;
-                        }
-
-
-                        LA_32a_a.Text = ds.Tables[0].Rows[0]["LA_32a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "1")
-                        {
-                            LA_32b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "2")
-                        {
-                            LA_32b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "3")
-                        {
-                            LA_32b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "")
-                        {
-                            LA_33a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "999")
-                        {
-                            LA_33a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "888")
-                        {
-                            LA_33a_c.Checked = true;
-                        }
-
-
-                        LA_33a_a.Text = ds.Tables[0].Rows[0]["LA_33a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "1")
-                        {
-                            LA_33b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "2")
-                        {
-                            LA_33b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "3")
-                        {
-                            LA_33b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "")
-                        {
-                            LA_34a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "999")
-                        {
-                            LA_34a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "888")
-                        {
-                            LA_34a_c.Checked = true;
-                        }
-
-
-                        LA_34a_a.Text = ds.Tables[0].Rows[0]["LA_34a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "1")
-                        {
-                            LA_34b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "2")
-                        {
-                            LA_34b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "3")
-                        {
-                            LA_34b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "")
-                        {
-                            LA_35a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "999")
-                        {
-                            LA_35a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "888")
-                        {
-                            LA_35a_c.Checked = true;
-                        }
-
-
-                        LA_35a_a.Text = ds.Tables[0].Rows[0]["LA_35a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "1")
-                        {
-                            LA_35b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "2")
-                        {
-                            LA_35b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "3")
-                        {
-                            LA_35b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "")
-                        {
-                            LA_36a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "999")
-                        {
-                            LA_36a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "888")
-                        {
-                            LA_36a_c.Checked = true;
-                        }
-
-
-                        LA_36a_a.Text = ds.Tables[0].Rows[0]["LA_36a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "1")
-                        {
-                            LA_36b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "2")
-                        {
-                            LA_36b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "3")
-                        {
-                            LA_36b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "")
-                        {
-                            LA_37a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "999")
-                        {
-                            LA_37a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "888")
-                        {
-                            LA_37a_c.Checked = true;
-                        }
-
-
-                        LA_37a_a.Text = ds.Tables[0].Rows[0]["LA_37a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "1")
-                        {
-                            LA_37b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "2")
-                        {
-                            LA_37b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "3")
-                        {
-                            LA_37b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "")
-                        {
-                            LA_38a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "999")
-                        {
-                            LA_38a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "888")
-                        {
-                            LA_38a_c.Checked = true;
-                        }
-
-
-                        LA_38a_a.Text = ds.Tables[0].Rows[0]["LA_38a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "1")
-                        {
-                            LA_38b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "2")
-                        {
-                            LA_38b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "3")
-                        {
-                            LA_38b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "")
-                        {
-                            LA_39a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "999")
-                        {
-                            LA_39a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "888")
-                        {
-                            LA_39a_c.Checked = true;
-                        }
-
-
-                        LA_39a_a.Text = ds.Tables[0].Rows[0]["LA_39a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "1")
-                        {
-                            LA_39b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "2")
-                        {
-                            LA_39b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "3")
-                        {
-                            LA_39b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "")
-                        {
-                            LA_40a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "999")
-                        {
-                            LA_40a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "888")
-                        {
-                            LA_40a_c.Checked = true;
-                        }
-
-
-                        LA_40a_a.Text = ds.Tables[0].Rows[0]["LA_40a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "1")
-                        {
-                            LA_40b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "2")
-                        {
-                            LA_40b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "3")
-                        {
-                            LA_40b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "")
-                        {
-                            LA_41a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "999")
-                        {
-                            LA_41a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "888")
-                        {
-                            LA_41a_c.Checked = true;
-                        }
-
-
-                        LA_41a_a.Text = ds.Tables[0].Rows[0]["LA_41a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "1")
-                        {
-                            LA_41b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "2")
-                        {
-                            LA_41b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "3")
-                        {
-                            LA_41b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "")
-                        {
-                            LA_42a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "999")
-                        {
-                            LA_42a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "888")
-                        {
-                            LA_42a_c.Checked = true;
-                        }
-
-
-                        LA_42a_a.Text = ds.Tables[0].Rows[0]["LA_42a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "1")
-                        {
-                            LA_42b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "2")
-                        {
-                            LA_42b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "3")
-                        {
-                            LA_42b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "")
-                        {
-                            LA_43a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "999")
-                        {
-                            LA_43a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "888")
-                        {
-                            LA_43a_c.Checked = true;
-                        }
-
-
-                        LA_43a_a.Text = ds.Tables[0].Rows[0]["LA_43a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "1")
-                        {
-                            LA_43b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "2")
-                        {
-                            LA_43b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "3")
-                        {
-                            LA_43b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "")
-                        {
-                            LA_44a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "999")
-                        {
-                            LA_44a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "888")
-                        {
-                            LA_44a_c.Checked = true;
-                        }
-
-
-                        LA_44a_a.Text = ds.Tables[0].Rows[0]["LA_44a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "1")
-                        {
-                            LA_44b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "2")
-                        {
-                            LA_44b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "3")
-                        {
-                            LA_44b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "")
-                        {
-                            LA_45a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "999")
-                        {
-                            LA_45a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "888")
-                        {
-                            LA_45a_c.Checked = true;
-                        }
-
-
-                        LA_45a_a.Text = ds.Tables[0].Rows[0]["LA_45a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "1")
-                        {
-                            LA_45b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "2")
-                        {
-                            LA_45b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "3")
-                        {
-                            LA_45b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "")
-                        {
-                            LA_46a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "999")
-                        {
-                            LA_46a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "888")
-                        {
-                            LA_46a_c.Checked = true;
-                        }
-
-
-                        LA_46a_a.Text = ds.Tables[0].Rows[0]["LA_46a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "1")
-                        {
-                            LA_46b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "2")
-                        {
-                            LA_46b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "3")
-                        {
-                            LA_46b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "")
-                        {
-                            LA_47a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "999")
-                        {
-                            LA_47a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "888")
-                        {
-                            LA_47a_c.Checked = true;
-                        }
-
-
-                        LA_47a_a.Text = ds.Tables[0].Rows[0]["LA_47a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "1")
-                        {
-                            LA_47b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "2")
-                        {
-                            LA_47b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "3")
-                        {
-                            LA_47b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "")
-                        {
-                            LA_48a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "999")
-                        {
-                            LA_48a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "888")
-                        {
-                            LA_48a_c.Checked = true;
-                        }
-
-
-                        LA_48a_a.Text = ds.Tables[0].Rows[0]["LA_48a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "1")
-                        {
-                            LA_48b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "2")
-                        {
-                            LA_48b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "3")
-                        {
-                            LA_48b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "")
-                        {
-                            LA_49a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "999")
-                        {
-                            LA_49a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "888")
-                        {
-                            LA_49a_c.Checked = true;
-                        }
-
-
-                        LA_49a_a.Text = ds.Tables[0].Rows[0]["LA_49a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "1")
-                        {
-                            LA_49b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "2")
-                        {
-                            LA_49b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "3")
-                        {
-                            LA_49b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "")
-                        {
-                            LA_50a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "999")
-                        {
-                            LA_50a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "888")
-                        {
-                            LA_50a_c.Checked = true;
-                        }
-
-
-                        LA_50a_a.Text = ds.Tables[0].Rows[0]["LA_50a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "1")
-                        {
-                            LA_50b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "2")
-                        {
-                            LA_50b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "3")
-                        {
-                            LA_50b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "")
-                        {
-                            LA_51a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "999")
-                        {
-                            LA_51a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "888")
-                        {
-                            LA_51a_c.Checked = true;
-                        }
-
-
-                        LA_51a_a.Text = ds.Tables[0].Rows[0]["LA_51a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "1")
-                        {
-                            LA_51b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "2")
-                        {
-                            LA_51b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "3")
-                        {
-                            LA_51b_c.Checked = true;
-                        }
-
-
-                        if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "")
-                        {
-                            LA_52a_v.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "999")
-                        {
-                            LA_52a_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "888")
-                        {
-                            LA_52a_c.Checked = true;
-                        }
-
-
-                        LA_52a_a.Text = ds.Tables[0].Rows[0]["LA_52a_a"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "1")
-                        {
-                            LA_52b_a.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "2")
-                        {
-                            LA_52b_b.Checked = true;
-                        }
-                        else if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "3")
-                        {
-                            LA_52b_c.Checked = true;
-                        }
-
-
-                    }
-                }
-            }
-        }
-
-        catch (Exception ex)
-        {
-            string message = "alert('Exception occur');";
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
-        }
-
-        finally
-        {
-            cn = null;
-        }
-    }
-
-
-
-    protected void cmdSaveDraft_Click(object sender, EventArgs e)
-    {
-        if (ViewState["isupdate"] == null)
-        {
-            SaveData("Draft");
-        }
-        else
-        {
-            if (Request["labid"].ToString() == "3")
-            {
-                UpdateData_historyonly("history");
-            }
-            else
-            {
-                UpdateData("Draft");
-            }
-
-        }
-    }
-
-
-    private DataSet GetData()
-    {
-        DataSet ds = null;
-
-        try
-        {
-            CConnection cn = new CConnection();
-            SqlDataAdapter da = new SqlDataAdapter("select " +
-    "b.AS1_screening_ID," +
-    "b.AS1_rand_id," +
-    "b.AS1_name," +
-    "b.AS1_sex," +
-    "b.AS1_age," +
-    "b.AS1_barcode," +
-    "b.AS1_mrno," +
-    "b.AS1_lno," +
-    "b.AS1_barcode1," +
-    "b.AS1_fsite," +
-    "b.AS1_Samp_1," +
-    "b.AS1_Samp_2," +
-    "b.AS1_Samp_3," +
-    "b.AS1_Samp_4," +
-    "b.AS1_Q1_1," +
-    "b.AS1_Q1_2," +
-    "b.AS1_Q2_1," +
-    "b.AS1_Q2_2," +
-    "b.AS1_Q3," +
-    "b.AS1_Q3a_1," +
-    "b.AS1_Q3a_2," +
-    "b.AS1_Q4," +
-    "b.AS1_Q5," +
-    "b.AS1_Q6," +
-    "b.AS1_Q6a," +
-    "b.AS1_Q6b," +
-    "b.AS1_Q6c," +
-    "b.AS2_Q7_1," +
-    "b.AS2_Q7_2," +
-    "b.AS2_Q7_CBC_CODE," +
-    "b.AS2_Q8," +
-    "b.AS2_Q8_BacT," +
-    "b.AS2_Q8_3," +
-    "b.AS2_Q8a," +
-    "b.AS2_Q9," +
-    "b.AS2_Q10," +
-    "b.AS2_Q11," +
-    "b.AS2_Q12_1," +
-    "b.AS2_Q12_2," +
-    "b.AS2_Q12_3," +
-    "b.AS2_Q12_4," +
-    "b.AS2_Q13," +
-    "b.AS2_Q13a," +
-    "b.AS3_Q14," +
-    "b.AS3_Q14a," +
-    "b.AS3_Q15," +
-    "b.AS3_Q16," +
-    "b.AS3_Q17," +
-    "b.AS3_Q18," +
-    "b.AS3_Q19," +
-    "b.AS3_Q20," +
-    "b.AS4_Q21a," +
-    "b.AS4_Q22a," +
-    "b.AS4_Q22b," +
-    "b.AS4_Q23," +
-    "b.AS4_Q24," +
-    "b.AS5_Q25a," +
-    "b.AS5_Q25b," +
-    "b.AS5_Q26," +
-    "b.AS5_Q27," +
-    "b.AS5_Q28," +
-    "b.AS5_Q29," +
-    "b.AS5_Q30," +
-    "b.AS5_Q31," +
-    "b.AS5_Q32," +
-    "b.AS5_Q33a," +
-    "b.AS5_Q33b," +
-    "b.AS3_Remarks," +
-    "b.AS6_Q34," +
-    "b.AS6_Q35," +
-    "b.AS6_Q36," +
-    "b.AS6_Q37," +
-    "b.AS6_Q38," +
-    "b.AS6_Q39," +
-    "b.AS6_Q40," +
-    "b.AS6_Q41," +
-    "b.AS6_Q42," +
-    "b.AS6_Q43," +
-    "b.AS6_Q44," +
-    "b.AS6_Q45," +
-    "b.AS6_Q46," +
-    "b.AS6_Q47," +
-    "b.AS5_R1," +
-    "b.AS3_A1," +
-    "b.AS3_A2," +
-    "b.AS3_B1," +
-    "b.AS3_B2," +
-    "a.la_sno," +
-    "a.LA_01," +
-    "a.LA_02," +
-    "a.LA_03_b," +
-    "a.LA_03_a," +
-    "a.LA_04_b," +
-    "a.LA_04_a," +
-    "a.LA_05_b," +
-    "a.LA_05_a," +
-    "a.LA_06_b," +
-    "a.LA_06_a," +
-    "a.LA_07_b," +
-    "a.LA_07_a," +
-    "a.LA_08_b," +
-    "a.LA_08_a," +
-    "a.LA_09_b," +
-    "a.LA_09_a," +
-    "a.LA_10_b," +
-    "a.LA_10_a," +
-    "a.LA_11_b," +
-    "a.LA_11_a," +
-    "a.LA_12_b," +
-    "a.LA_12_a," +
-    "a.LA_13_b," +
-    "a.LA_13_a," +
-    "a.LA_14_b," +
-    "a.LA_14_a," +
-    "a.LA_15_b," +
-    "a.LA_15_a," +
-    "a.LA_16_b," +
-    "a.LA_16_a," +
-    "a.LF_01," +
-    "a.LF_01_a," +
-    "a.LF_02," +
-    "a.LF_02_a," +
-    "a.LF_03," +
-    "a.LF_03_a," +
-    "a.LF_04," +
-    "a.LF_04_a," +
-    "a.LF_05," +
-    "a.LF_05_a," +
-    "a.LF_06," +
-    "a.LF_06_a," +
-    "a.LF_07," +
-    "a.LF_07_a," +
-    "a.RF_01," +
-    "a.RF_01_a," +
-    "a.RF_02," +
-    "a.RF_02_a," +
-    "a.RF_03," +
-    "a.RF_03_a," +
-    "a.RF_04," +
-    "a.RF_04_a," +
-    "a.SE_01," +
-    "a.SE_01_a," +
-    "a.SE_02," +
-    "a.SE_02_a," +
-    "a.SE_03," +
-    "a.SE_03_a," +
-    "a.SE_04," +
-    "a.SE_04_a," +
-    "a.CS_01," +
-    "a.CS_01_a," +
-    "a.CS_02," +
-    "a.CS_02_a," +
-    "a.CS_03," +
-    "a.CS_03_a," +
-    "a.CS_04," +
-    "a.CS_04_a," +
-    "a.CS_05," +
-    "a.CS_05_a," +
-    "a.CS_06," +
-    "a.CS_06_a," +
-    "a.CS_07," +
-    "a.CS_07_a," +
-    "a.CS_08," +
-    "a.CS_08_a," +
-    "a.CS_09," +
-    "a.CS_09_a," +
-    "a.CS_10," +
-    "a.CS_10_a," +
-    "a.UR_01," +
-    "a.UR_01_a," +
-    "a.UR_02," +
-    "a.UR_02_a," +
-    "a.UR_03," +
-    "a.UR_03_a," +
-    "a.UR_04," +
-    "a.UR_04_a," +
-    "a.UR_04a," +
-    "a.UR_04a_a," +
-    "a.UR_05," +
-    "a.UR_05_a," +
-    "a.UR_06," +
-    "a.UR_06_a," +
-    "a.UR_07," +
-    "a.UR_07_a," +
-    "a.UR_08," +
-    "a.UR_08_a," +
-    "a.UR_10," +
-    "a.UR_10_a," +
-    "a.UR_11," +
-    "a.UR_11_a," +
-    "a.UR_12," +
-    "a.UR_12_a," +
-    "a.UR_13," +
-    "a.UR_13_a," +
-    "a.UR_14," +
-    "a.UR_14_a," +
-    "a.UR_15," +
-    "a.UR_15_a," +
-    "a.UR_16," +
-    "a.UR_16_a," +
-    "a.UR_17," +
-    "a.UR_17_a," +
-    "a.UR_18," +
-    "a.UR_18_a," +
-    "a.UR_19," +
-    "a.UR_19_a," +
-    "a.UR_20," +
-    "a.UR_20_a," +
-    "a.UR_21," +
-    "a.UR_21_a," +
-    "a.uc_01_ca," +
-    "case when a.uc_01a = 1 then 'Uropathogen Isolated' when a.uc_01a = 2 then 'No Uropathogen Isolated' when a.uc_01a = 999 then 'NA' end uc_01a," +
-    "a.uc_02a," +
-    "a.uc_02a_a," +
-    "a.uc_02b," +
-    "a.uc_03a," +
-    "a.uc_03a_a," +
-    "a.uc_03b," +
-    "a.uc_04a," +
-    "a.uc_04a_a," +
-    "a.uc_04b," +
-    "a.uc_05a," +
-    "a.uc_05a_a," +
-    "a.uc_05b," +
-    "a.uc_06a," +
-    "a.uc_06a_a," +
-    "a.uc_06b," +
-    "a.uc_07a," +
-    "a.uc_07a_a," +
-    "a.uc_07b," +
-    "a.uc_08a," +
-    "a.uc_08a_a," +
-    "a.uc_08b," +
-    "a.uc_09a," +
-    "a.uc_09a_a," +
-    "a.uc_09b," +
-    "a.uc_10a," +
-    "a.uc_10a_a," +
-    "a.uc_10b," +
-    "a.uc_11a," +
-    "a.uc_11a_a," +
-    "a.uc_11b," +
-    "a.uc_12a," +
-    "a.uc_12a_a," +
-    "a.uc_12b," +
-    "a.uc_13a," +
-    "a.uc_13a_a," +
-    "a.uc_13b," +
-    "a.uc_14a," +
-    "a.uc_14a_a," +
-    "a.uc_14b," +
-    "a.uc_15a," +
-    "a.uc_15a_a," +
-    "a.uc_15b," +
-    "a.uc_16a," +
-    "a.uc_16a_a," +
-    "a.uc_16b," +
-    "a.uc_17a," +
-    "a.uc_17a_a," +
-    "a.uc_17b," +
-    "a.uc_18a," +
-    "a.uc_18a_a," +
-    "a.uc_18b," +
-    "a.uc_19a," +
-    "a.uc_19a_a," +
-    "a.uc_19b," +
-    "a.uc_20a," +
-    "a.uc_20a_a," +
-    "a.uc_20b," +
-    "a.uc_21a," +
-    "a.uc_21a_a," +
-    "a.uc_21b," +
-    "a.uc_22a," +
-    "a.uc_22a_a," +
-    "a.uc_22b," +
-    "a.uc_23a," +
-    "a.uc_23a_a," +
-    "a.uc_23b," +
-    "a.uc_24a," +
-    "a.uc_24a_a," +
-    "a.uc_24b," +
-    "a.uc_25a," +
-    "a.uc_25a_a," +
-    "a.uc_25b," +
-    "a.uc_26a," +
-    "a.uc_26a_a," +
-    "a.uc_26b," +
-    "a.uc_27a," +
-    "a.uc_27a_a," +
-    "a.uc_27b," +
-    "a.uc_28a," +
-    "a.uc_28a_a," +
-    "a.uc_28b," +
-    "a.uc_29a," +
-    "a.uc_29a_a," +
-    "a.uc_29b," +
-    "a.uc_30a," +
-    "a.uc_30a_a," +
-    "a.uc_30b," +
-    "a.uc_31a," +
-    "a.uc_31a_a," +
-    "a.uc_31b," +
-    "a.uc_32a," +
-    "a.uc_32a_a," +
-    "a.uc_32b," +
-    "a.uc_33a," +
-    "a.uc_33a_a," +
-    "a.uc_33b," +
-    "a.uc_34a," +
-    "a.uc_34a_a," +
-    "a.uc_34b," +
-    "a.uc_35a," +
-    "a.uc_35a_a," +
-    "a.uc_35b," +
-    "a.uc_36a," +
-    "a.uc_36a_a," +
-    "a.uc_36b," +
-    "a.uc_37a," +
-    "a.uc_37a_a," +
-    "a.uc_37b," +
-    "a.LA_17," +
-    "a.LA_18," +
-    "a.LA_19," +
-    "a.LA_20a_b," +
-    "a.LA_20a_a," +
-    "a.LA_20b_a," +
-    "a.LA_21a_b," +
-    "a.LA_21a_a," +
-    "a.LA_21b_a," +
-    "a.LA_22a_b," +
-    "a.LA_22a_a," +
-    "a.LA_22b_a," +
-    "a.LA_23a_b," +
-    "a.LA_23a_a," +
-    "a.LA_23b_a," +
-    "a.LA_24a_b," +
-    "a.LA_24a_a," +
-    "a.LA_24b_a," +
-    "a.LA_25a_b," +
-    "a.LA_25a_a," +
-    "a.LA_25b_a," +
-    "a.LA_26a_b," +
-    "a.LA_26a_a," +
-    "a.LA_26b_a," +
-    "a.LA_27a_b," +
-    "a.LA_27a_a," +
-    "a.LA_27b_a," +
-    "a.LA_28a_b," +
-    "a.LA_28a_a," +
-    "a.LA_28b_a," +
-    "a.LA_29a_b," +
-    "a.LA_29a_a," +
-    "a.LA_29b_a," +
-    "a.LA_30a_b," +
-    "a.LA_30a_a," +
-    "a.LA_30b_a," +
-    "a.LA_31a_b," +
-    "a.LA_31a_a," +
-    "a.LA_31b_a," +
-    "a.LA_32a_b," +
-    "a.LA_32a_a," +
-    "a.LA_32b_a," +
-    "a.LA_33a_b," +
-    "a.LA_33a_a," +
-    "a.LA_33b_a," +
-    "a.LA_34a_b," +
-    "a.LA_34a_a," +
-    "a.LA_34b_a," +
-    "a.LA_35a_b," +
-    "a.LA_35a_a," +
-    "a.LA_35b_a," +
-    "a.LA_36a_b," +
-    "a.LA_36a_a," +
-    "a.LA_36b_a," +
-    "a.LA_37a_b," +
-    "a.LA_37a_a," +
-    "a.LA_37b_a," +
-    "a.LA_38a_b," +
-    "a.LA_38a_a," +
-    "a.LA_38b_a," +
-    "a.LA_39a_b," +
-    "a.LA_39a_a," +
-    "a.LA_39b_a," +
-    "a.LA_40a_b," +
-    "a.LA_40a_a," +
-    "a.LA_40b_a," +
-    "a.LA_41a_b," +
-    "a.LA_41a_a," +
-    "a.LA_41b_a," +
-    "a.LA_42a_b," +
-    "a.LA_42a_a," +
-    "a.LA_42b_a," +
-    "a.LA_43a_b," +
-    "a.LA_43a_a," +
-    "a.LA_43b_a," +
-    "a.LA_44a_b," +
-    "a.LA_44a_a," +
-    "a.LA_44b_a," +
-    "a.LA_45a_b," +
-    "a.LA_45a_a," +
-    "a.LA_45b_a," +
-    "a.LA_46a_b," +
-    "a.LA_46a_a," +
-    "a.LA_46b_a," +
-    "a.LA_47a_b," +
-    "a.LA_47a_a," +
-    "a.LA_47b_a," +
-    "a.LA_48a_b," +
-    "a.LA_48a_a," +
-    "a.LA_48b_a," +
-    "a.LA_49a_b," +
-    "a.LA_49a_a," +
-    "a.LA_49b_a," +
-    "a.LA_50a_b," +
-    "a.LA_50a_a," +
-    "a.LA_50b_a," +
-    "a.LA_51a_b," +
-    "a.LA_51a_a," +
-    "a.LA_51b_a," +
-    "a.LA_52a_b," +
-    "a.LA_52a_a," +
-    "a.LA_52b_a" +
-            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '" + la_sno.Text + "' and b.userid='usernrl'", cn.cn);
-            ds = new DataSet();
-            da.Fill(ds);
-        }
-
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
-        }
-
-        finally
-        {
-
-        }
-
-        return ds;
-    }
-
-
-
-    private void AddFormStatus(string formstatus)
-    {
-        CConnection cn = null;
-
-        try
-        {
-            cn = new CConnection();
-
-
-            DateTime dt_entry = new DateTime();
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-            dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-
-            string[] arr = dt_entry.ToShortDateString().Split('/');
-            string mydt = arr[1] + "/" + arr[0] + "/" + arr[2];
-
-
-            SqlDataAdapter da = new SqlDataAdapter("insert into formstatus values('" + la_sno.Text + "', '" + formstatus + "', '" + mydt + "', '" + mydt + "', '" + Session["userid"].ToString() + "', '" + Request["labid"].ToString() + "', '" + Session["userid"].ToString() + "')", cn.cn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-        }
-
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
-        }
-
-        finally
-        {
-            cn = null;
-        }
-    }
-
-
-    private void UpdateFormStatus(string formstatus)
-    {
-        CConnection cn = null;
-
-        try
-        {
-            cn = new CConnection();
-
-
-            DateTime dt_entry = new DateTime();
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-            dt_entry = Convert.ToDateTime(DateTime.Now.ToString(String.Format("{0:g}")));
-
-            string[] arr = dt_entry.ToShortDateString().Split('/');
-            string mydt = arr[1] + "/" + arr[0] + "/" + arr[2];
-
-
-            SqlDataAdapter da = new SqlDataAdapter("update formstatus set fstatus='" + formstatus + "', Last_Update_DTTM='" + mydt + "', Last_Update_UserId='" + Session["userid"].ToString() + "' where AS1_screening_ID='" + la_sno.Text + "' and labid='" + Request["labid"].ToString() + "'", cn.cn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-        }
-
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
-        }
-
-        finally
-        {
-            cn = null;
-        }
-    }
-
-
-    private DataSet GetData_report()
-    {
-        DataSet ds = null;
-
-        try
-        {
-            CConnection cn = new CConnection();
-            SqlDataAdapter da = new SqlDataAdapter("select " +
 "b.AS1_screening_ID," +
-"b.AS1_rand_id," +
-"b.AS1_name," +
-"b.AS1_sex," +
-"b.AS1_age," +
-"b.AS1_barcode," +
-"b.AS1_mrno," +
-"b.AS1_lno," +
-"b.AS1_barcode1," +
-"b.AS1_fsite," +
-"b.AS1_Samp_1," +
-"b.AS1_Samp_2," +
-"b.AS1_Samp_3," +
-"b.AS1_Samp_4," +
-"b.AS1_Q1_1," +
-"b.AS1_Q1_2," +
-"b.AS1_Q2_1," +
-"b.AS1_Q2_2," +
-"b.AS1_Q3," +
-"b.AS1_Q3a_1," +
-"b.AS1_Q3a_2," +
-"b.AS1_Q4," +
-"b.AS1_Q5," +
-"b.AS1_Q6," +
-"b.AS1_Q6a," +
-"b.AS1_Q6b," +
-"b.AS1_Q6c," +
-"b.AS2_Q7_1," +
-"b.AS2_Q7_2," +
-"b.AS2_Q7_CBC_CODE," +
-"b.AS2_Q8," +
-"b.AS2_Q8_BacT," +
-"b.AS2_Q8_3," +
-"b.AS2_Q8a," +
-"b.AS2_Q9," +
-"b.AS2_Q10," +
-"b.AS2_Q11," +
-"b.AS2_Q12_1," +
-"b.AS2_Q12_2," +
-"b.AS2_Q12_3," +
-"b.AS2_Q12_4," +
-"b.AS2_Q13," +
-"b.AS2_Q13a," +
-"b.AS3_Q14," +
-"b.AS3_Q14a," +
-"b.AS3_Q15," +
-"b.AS3_Q16," +
-"b.AS3_Q17," +
-"b.AS3_Q18," +
-"b.AS3_Q19," +
-"b.AS3_Q20," +
-"b.AS4_Q21a," +
-"b.AS4_Q22a," +
-"b.AS4_Q22b," +
-"b.AS4_Q23," +
-"b.AS4_Q24," +
-"b.AS5_Q25a," +
-"b.AS5_Q25b," +
-"b.AS5_Q26," +
-"b.AS5_Q27," +
-"b.AS5_Q28," +
-"b.AS5_Q29," +
-"b.AS5_Q30," +
-"b.AS5_Q31," +
-"b.AS5_Q32," +
-"b.AS5_Q33a," +
-"b.AS5_Q33b," +
-"b.AS3_Remarks," +
-"b.AS6_Q34," +
-"b.AS6_Q35," +
-"b.AS6_Q36," +
-"b.AS6_Q37," +
-"b.AS6_Q38," +
-"b.AS6_Q39," +
-"b.AS6_Q40," +
-"b.AS6_Q41," +
-"b.AS6_Q42," +
-"b.AS6_Q43," +
-"b.AS6_Q44," +
-"b.AS6_Q45," +
-"b.AS6_Q46," +
-"b.AS6_Q47," +
-"b.AS5_R1," +
-"b.AS3_A1," +
-"b.AS3_A2," +
-"b.AS3_B1," +
-"b.AS3_B2," +
+"[AS1_rand_id]," +
+"[AS1_name]," +
+"case when[AS1_sex] = 1 then 'Male'" +
+"when[AS1_sex] = 2 then 'Female'" +
+"end[AS1_sex]," +
+"[AS1_age]," +
+"[AS1_barcode]," +
+"case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
+"when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
+"when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
+"when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
+"when[AS1_fsite] = 5 then 'NICH'" +
+"when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
+"end[AS1_fsite]," +
+"case when AS1_Q1_1 = 1 then 'RCT1'" +
+"when AS1_Q1_1 = 2 then 'RCT2'" +
+"end[AS1_Q1_1]," +
 "a.la_sno," +
 "a.LA_01," +
 "a.LA_02," +
@@ -18211,7 +13632,7 @@ public partial class sample_results : System.Web.UI.Page
 "a.UR_21," +
 "a.UR_21_a," +
 "a.uc_01_ca," +
-"case when a.uc_01a = 1 then 'Uropathogen Isolated' when a.uc_01a = 2 then 'No Uropathogen Isolated' when a.uc_01a = 999 then 'NA' end uc_01a," +
+"a.uc_01a," +
 "a.uc_02a," +
 "a.uc_02a_a," +
 "a.uc_02b," +
@@ -18422,56 +13843,7090 @@ public partial class sample_results : System.Web.UI.Page
 "a.LA_52a_b," +
 "a.LA_52a_a," +
 "a.LA_52b_a" +
-            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '" + la_sno.Text + "' and b.userid='usernrl'", cn.cn);
-            ds = new DataSet();
+            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.id = '" + id + "'", cn.cn);
+            DataSet ds = new DataSet();
             da.Fill(ds);
+
+
+            if (ds != null)
+            {
+                if (ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+
+                        la_sno.Text = ds.Tables[0].Rows[0]["AS1_screening_ID"].ToString();
+                        la_fsite.Text = ds.Tables[0].Rows[0]["AS1_fsite"].ToString();
+                        la_rand.Text = ds.Tables[0].Rows[0]["AS1_rand_id"].ToString();
+                        la_spec.Text = ds.Tables[0].Rows[0]["AS1_barcode"].ToString();
+                        la_name.Text = ds.Tables[0].Rows[0]["AS1_name"].ToString();
+                        la_gen.Text = ds.Tables[0].Rows[0]["AS1_sex"].ToString();
+                        la_age.Text = ds.Tables[0].Rows[0]["AS1_age"].ToString();
+                        la_obj.Text = ds.Tables[0].Rows[0]["AS1_Q1_1"].ToString();
+
+
+
+                        //LA_01.Text = ds.Tables[0].Rows[0]["LA_01"].ToString();
+                        //LA_02.Text = ds.Tables[0].Rows[0]["LA_02"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "0")
+                        {
+                            LA_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "999")
+                        {
+                            LA_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "888")
+                        {
+                            LA_03_c.Checked = true;
+                        }
+
+
+                        LA_03_a.Text = ds.Tables[0].Rows[0]["LA_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "0")
+                        {
+                            LA_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "999")
+                        {
+                            LA_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "888")
+                        {
+                            LA_04_c.Checked = true;
+                        }
+
+
+                        LA_04_a.Text = ds.Tables[0].Rows[0]["LA_04_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "0")
+                        {
+                            LA_05_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "999")
+                        {
+                            LA_05_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "888")
+                        {
+                            LA_05_c.Checked = true;
+                        }
+
+
+                        LA_05_a.Text = ds.Tables[0].Rows[0]["LA_05_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "0")
+                        {
+                            LA_06_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "999")
+                        {
+                            LA_06_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "888")
+                        {
+                            LA_06_c.Checked = true;
+                        }
+
+
+                        LA_06_a.Text = ds.Tables[0].Rows[0]["LA_06_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "0")
+                        {
+                            LA_07_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "999")
+                        {
+                            LA_07_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "888")
+                        {
+                            LA_07_c.Checked = true;
+                        }
+
+
+                        LA_07_a.Text = ds.Tables[0].Rows[0]["LA_07_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "0")
+                        {
+                            LA_08_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "999")
+                        {
+                            LA_08_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "888")
+                        {
+                            LA_08_c.Checked = true;
+                        }
+
+
+                        LA_08_a.Text = ds.Tables[0].Rows[0]["LA_08_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "0")
+                        {
+                            LA_09_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "999")
+                        {
+                            LA_09_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "888")
+                        {
+                            LA_09_c.Checked = true;
+                        }
+
+
+                        LA_09_a.Text = ds.Tables[0].Rows[0]["LA_09_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "0")
+                        {
+                            LA_10_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "999")
+                        {
+                            LA_10_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "888")
+                        {
+                            LA_10_c.Checked = true;
+                        }
+
+
+                        LA_10_a.Text = ds.Tables[0].Rows[0]["LA_10_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "0")
+                        {
+                            LA_11_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "999")
+                        {
+                            LA_11_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "888")
+                        {
+                            LA_11_c.Checked = true;
+                        }
+
+
+                        LA_11_a.Text = ds.Tables[0].Rows[0]["LA_11_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "0")
+                        {
+                            LA_12_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "999")
+                        {
+                            LA_12_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "888")
+                        {
+                            LA_12_c.Checked = true;
+                        }
+
+
+                        LA_12_a.Text = ds.Tables[0].Rows[0]["LA_12_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "0")
+                        {
+                            LA_13_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "999")
+                        {
+                            LA_13_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "888")
+                        {
+                            LA_13_c.Checked = true;
+                        }
+
+
+                        LA_13_a.Text = ds.Tables[0].Rows[0]["LA_13_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "0")
+                        {
+                            LA_14_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "999")
+                        {
+                            LA_14_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "888")
+                        {
+                            LA_14_c.Checked = true;
+                        }
+
+
+                        LA_14_a.Text = ds.Tables[0].Rows[0]["LA_14_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "0")
+                        {
+                            LA_15_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "999")
+                        {
+                            LA_15_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "888")
+                        {
+                            LA_15_c.Checked = true;
+                        }
+
+
+                        LA_15_a.Text = ds.Tables[0].Rows[0]["LA_15_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "0")
+                        {
+                            LA_16_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "999")
+                        {
+                            LA_16_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "888")
+                        {
+                            LA_16_c.Checked = true;
+                        }
+
+
+                        LA_16_a.Text = ds.Tables[0].Rows[0]["LA_16_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "0")
+                        {
+                            LF_01_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "999")
+                        {
+                            LF_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "888")
+                        {
+                            LF_01_c.Checked = true;
+                        }
+
+
+                        LF_01_a.Text = ds.Tables[0].Rows[0]["LF_01_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "0")
+                        {
+                            LF_02_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "999")
+                        {
+                            LF_02_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "888")
+                        {
+                            LF_02_c.Checked = true;
+                        }
+
+
+                        LF_02_a.Text = ds.Tables[0].Rows[0]["LF_02_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "0")
+                        {
+                            LF_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "999")
+                        {
+                            LF_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "888")
+                        {
+                            LF_03_c.Checked = true;
+                        }
+
+
+                        LF_03_a.Text = ds.Tables[0].Rows[0]["LF_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "0")
+                        {
+                            LF_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "999")
+                        {
+                            LF_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "888")
+                        {
+                            LF_04_c.Checked = true;
+                        }
+
+
+                        LF_04_a.Text = ds.Tables[0].Rows[0]["LF_04_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "0")
+                        {
+                            LF_05_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "999")
+                        {
+                            LF_05_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "888")
+                        {
+                            LF_05_c.Checked = true;
+                        }
+
+
+                        LF_05_a.Text = ds.Tables[0].Rows[0]["LF_05_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "0")
+                        {
+                            LF_06_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "999")
+                        {
+                            LF_06_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "888")
+                        {
+                            LF_06_c.Checked = true;
+                        }
+
+
+                        LF_06_a.Text = ds.Tables[0].Rows[0]["LF_06_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "0")
+                        {
+                            LF_07_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "999")
+                        {
+                            LF_07_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "888")
+                        {
+                            LF_07_c.Checked = true;
+                        }
+
+
+                        LF_07_a.Text = ds.Tables[0].Rows[0]["LF_07_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "0")
+                        {
+                            RF_01_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "999")
+                        {
+                            RF_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "888")
+                        {
+                            RF_01_c.Checked = true;
+                        }
+
+
+                        RF_01_a.Text = ds.Tables[0].Rows[0]["RF_01_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "0")
+                        {
+                            RF_02_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "999")
+                        {
+                            RF_02_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "888")
+                        {
+                            RF_02_c.Checked = true;
+                        }
+
+
+                        RF_02_a.Text = ds.Tables[0].Rows[0]["RF_02_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "0")
+                        {
+                            RF_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "999")
+                        {
+                            RF_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "888")
+                        {
+                            RF_03_c.Checked = true;
+                        }
+
+
+                        RF_03_a.Text = ds.Tables[0].Rows[0]["RF_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "0")
+                        {
+                            RF_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "999")
+                        {
+                            RF_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "888")
+                        {
+                            RF_04_c.Checked = true;
+                        }
+
+
+                        RF_04_a.Text = ds.Tables[0].Rows[0]["RF_04_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "0")
+                        {
+                            SE_01_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "999")
+                        {
+                            SE_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "888")
+                        {
+                            SE_01_c.Checked = true;
+                        }
+
+
+                        SE_01_a.Text = ds.Tables[0].Rows[0]["SE_01_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "0")
+                        {
+                            SE_02_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "999")
+                        {
+                            SE_02_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "888")
+                        {
+                            SE_02_c.Checked = true;
+                        }
+
+
+                        SE_02_a.Text = ds.Tables[0].Rows[0]["SE_02_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "0")
+                        {
+                            SE_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "999")
+                        {
+                            SE_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "888")
+                        {
+                            SE_03_c.Checked = true;
+                        }
+
+
+                        SE_03_a.Text = ds.Tables[0].Rows[0]["SE_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "0")
+                        {
+                            SE_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "999")
+                        {
+                            SE_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "888")
+                        {
+                            SE_04_c.Checked = true;
+                        }
+
+
+                        SE_04_a.Text = ds.Tables[0].Rows[0]["SE_04_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "0")
+                        {
+                            CS_01_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "999")
+                        {
+                            CS_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "888")
+                        {
+                            CS_01_c.Checked = true;
+                        }
+
+
+                        CS_01_a.Text = ds.Tables[0].Rows[0]["CS_01_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "0")
+                        {
+                            CS_02_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "999")
+                        {
+                            CS_02_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "888")
+                        {
+                            CS_02_c.Checked = true;
+                        }
+
+
+                        CS_02_a.Text = ds.Tables[0].Rows[0]["CS_02_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "0")
+                        {
+                            CS_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "999")
+                        {
+                            CS_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "888")
+                        {
+                            CS_03_c.Checked = true;
+                        }
+
+
+                        CS_03_a.Text = ds.Tables[0].Rows[0]["CS_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "0")
+                        {
+                            CS_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "999")
+                        {
+                            CS_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "888")
+                        {
+                            CS_04_c.Checked = true;
+                        }
+
+
+                        CS_04_a.Text = ds.Tables[0].Rows[0]["CS_04_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "0")
+                        {
+                            CS_05_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "999")
+                        {
+                            CS_05_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "888")
+                        {
+                            CS_05_c.Checked = true;
+                        }
+
+
+                        CS_05_a.Text = ds.Tables[0].Rows[0]["CS_05_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "0")
+                        {
+                            CS_06_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "999")
+                        {
+                            CS_06_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "888")
+                        {
+                            CS_06_c.Checked = true;
+                        }
+
+
+                        CS_06_a.Text = ds.Tables[0].Rows[0]["CS_06_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "0")
+                        {
+                            CS_07_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "999")
+                        {
+                            CS_07_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "888")
+                        {
+                            CS_07_c.Checked = true;
+                        }
+
+
+                        CS_07_a.Text = ds.Tables[0].Rows[0]["CS_07_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "0")
+                        {
+                            CS_08_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "999")
+                        {
+                            CS_08_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "888")
+                        {
+                            CS_08_c.Checked = true;
+                        }
+
+
+                        CS_08_a.Text = ds.Tables[0].Rows[0]["CS_08_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "0")
+                        {
+                            CS_09_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "999")
+                        {
+                            CS_09_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "888")
+                        {
+                            CS_09_c.Checked = true;
+                        }
+
+
+                        CS_09_a.Text = ds.Tables[0].Rows[0]["CS_09_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "0")
+                        {
+                            CS_10_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "999")
+                        {
+                            CS_10_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "888")
+                        {
+                            CS_10_c.Checked = true;
+                        }
+
+
+                        CS_10_a.Text = ds.Tables[0].Rows[0]["CS_10_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "0")
+                        {
+                            UR_01_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "999")
+                        {
+                            UR_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "888")
+                        {
+                            UR_01_c.Checked = true;
+                        }
+
+
+                        UR_01_a.Text = ds.Tables[0].Rows[0]["UR_01_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "0")
+                        {
+                            UR_02_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "999")
+                        {
+                            UR_02_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "888")
+                        {
+                            UR_02_c.Checked = true;
+                        }
+
+
+                        UR_02_a.Text = ds.Tables[0].Rows[0]["UR_02_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "0")
+                        {
+                            UR_03_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "999")
+                        {
+                            UR_03_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "888")
+                        {
+                            UR_03_c.Checked = true;
+                        }
+
+
+                        UR_03_a.Text = ds.Tables[0].Rows[0]["UR_03_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "0")
+                        {
+                            UR_04_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "999")
+                        {
+                            UR_04_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "888")
+                        {
+                            UR_04_c.Checked = true;
+                        }
+
+
+                        UR_04_a.Text = ds.Tables[0].Rows[0]["UR_04_a"].ToString();
+
+
+
+
+                        if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "0")
+                        {
+                            UR_04a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "999")
+                        {
+                            UR_04a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "888")
+                        {
+                            UR_04a_c.Checked = true;
+                        }
+
+
+                        UR_04a_a.Text = ds.Tables[0].Rows[0]["UR_04a_a"].ToString();
+
+
+
+
+
+                        if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "0")
+                        {
+                            UR_05_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "999")
+                        {
+                            UR_05_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "888")
+                        {
+                            UR_05_c.Checked = true;
+                        }
+
+
+                        UR_05_a.Text = ds.Tables[0].Rows[0]["UR_05_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "0")
+                        {
+                            UR_06_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "999")
+                        {
+                            UR_06_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "888")
+                        {
+                            UR_06_c.Checked = true;
+                        }
+
+
+                        UR_06_a.Text = ds.Tables[0].Rows[0]["UR_06_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "0")
+                        {
+                            UR_07_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "999")
+                        {
+                            UR_07_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "888")
+                        {
+                            UR_07_c.Checked = true;
+                        }
+
+
+                        UR_07_a.Text = ds.Tables[0].Rows[0]["UR_07_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "0")
+                        {
+                            UR_08_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "999")
+                        {
+                            UR_08_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "888")
+                        {
+                            UR_08_c.Checked = true;
+                        }
+
+
+                        UR_08_a.Text = ds.Tables[0].Rows[0]["UR_08_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "0")
+                        {
+                            UR_10_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "999")
+                        {
+                            UR_10_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "888")
+                        {
+                            UR_10_c.Checked = true;
+                        }
+
+
+                        UR_10_a.Text = ds.Tables[0].Rows[0]["UR_10_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "0")
+                        {
+                            UR_11_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "999")
+                        {
+                            UR_11_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "888")
+                        {
+                            UR_11_c.Checked = true;
+                        }
+
+
+                        UR_11_a.Text = ds.Tables[0].Rows[0]["UR_11_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "0")
+                        {
+                            UR_12_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "999")
+                        {
+                            UR_12_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "888")
+                        {
+                            UR_12_c.Checked = true;
+                        }
+
+
+                        UR_12_a.Text = ds.Tables[0].Rows[0]["UR_12_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "0")
+                        {
+                            UR_13_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "999")
+                        {
+                            UR_13_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "888")
+                        {
+                            UR_13_c.Checked = true;
+                        }
+
+
+                        UR_13_a.Text = ds.Tables[0].Rows[0]["UR_13_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "0")
+                        {
+                            UR_14_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "999")
+                        {
+                            UR_14_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "888")
+                        {
+                            UR_14_c.Checked = true;
+                        }
+
+
+                        UR_14_a.Text = ds.Tables[0].Rows[0]["UR_14_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "0")
+                        {
+                            UR_15_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "999")
+                        {
+                            UR_15_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "888")
+                        {
+                            UR_15_c.Checked = true;
+                        }
+
+
+                        UR_15_a.Text = ds.Tables[0].Rows[0]["UR_15_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "0")
+                        {
+                            UR_16_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "999")
+                        {
+                            UR_16_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "888")
+                        {
+                            UR_16_c.Checked = true;
+                        }
+
+
+                        UR_16_a.Text = ds.Tables[0].Rows[0]["UR_16_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "0")
+                        {
+                            UR_17_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "999")
+                        {
+                            UR_17_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "888")
+                        {
+                            UR_17_c.Checked = true;
+                        }
+
+
+                        UR_17_a.Text = ds.Tables[0].Rows[0]["UR_17_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "0")
+                        {
+                            UR_18_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "999")
+                        {
+                            UR_18_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "888")
+                        {
+                            UR_18_c.Checked = true;
+                        }
+
+
+                        UR_18_a.Text = ds.Tables[0].Rows[0]["UR_18_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "0")
+                        {
+                            UR_19_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "999")
+                        {
+                            UR_19_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "888")
+                        {
+                            UR_19_c.Checked = true;
+                        }
+
+
+                        UR_19_a.Text = ds.Tables[0].Rows[0]["UR_19_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "0")
+                        {
+                            UR_20_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "999")
+                        {
+                            UR_20_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "888")
+                        {
+                            UR_20_c.Checked = true;
+                        }
+
+
+                        UR_20_a.Text = ds.Tables[0].Rows[0]["UR_20_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "0")
+                        {
+                            UR_21_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "999")
+                        {
+                            UR_21_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "888")
+                        {
+                            UR_21_c.Checked = true;
+                        }
+
+
+                        UR_21_a.Text = ds.Tables[0].Rows[0]["UR_21_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "1")
+                        {
+                            uc_01_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "2")
+                        {
+                            uc_01_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "999")
+                        {
+                            uc_01_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "0")
+                        {
+                            uc_02a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "999")
+                        {
+                            uc_02a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "888")
+                        {
+                            uc_02a_c.Checked = true;
+                        }
+
+
+                        uc_02a_a.Text = ds.Tables[0].Rows[0]["uc_02a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "1")
+                        {
+                            uc_02b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "2")
+                        {
+                            uc_02b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_02b"].ToString() == "3")
+                        {
+                            uc_02b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "0")
+                        {
+                            uc_03a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "999")
+                        {
+                            uc_03a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "888")
+                        {
+                            uc_03a_c.Checked = true;
+                        }
+
+
+                        uc_03a_a.Text = ds.Tables[0].Rows[0]["uc_03a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "1")
+                        {
+                            uc_03b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "2")
+                        {
+                            uc_03b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_03b"].ToString() == "3")
+                        {
+                            uc_03b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "0")
+                        {
+                            uc_04a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "999")
+                        {
+                            uc_04a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "888")
+                        {
+                            uc_04a_c.Checked = true;
+                        }
+
+
+                        uc_04a_a.Text = ds.Tables[0].Rows[0]["uc_04a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "1")
+                        {
+                            uc_04b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "2")
+                        {
+                            uc_04b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_04b"].ToString() == "3")
+                        {
+                            uc_04b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "0")
+                        {
+                            uc_05a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "999")
+                        {
+                            uc_05a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "888")
+                        {
+                            uc_05a_c.Checked = true;
+                        }
+
+
+                        uc_05a_a.Text = ds.Tables[0].Rows[0]["uc_05a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "1")
+                        {
+                            uc_05b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "2")
+                        {
+                            uc_05b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_05b"].ToString() == "3")
+                        {
+                            uc_05b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "0")
+                        {
+                            uc_06a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "999")
+                        {
+                            uc_06a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "888")
+                        {
+                            uc_06a_c.Checked = true;
+                        }
+
+
+                        uc_06a_a.Text = ds.Tables[0].Rows[0]["uc_06a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "1")
+                        {
+                            uc_06b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "2")
+                        {
+                            uc_06b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_06b"].ToString() == "3")
+                        {
+                            uc_06b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "0")
+                        {
+                            uc_07a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "999")
+                        {
+                            uc_07a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "888")
+                        {
+                            uc_07a_c.Checked = true;
+                        }
+
+
+                        uc_07a_a.Text = ds.Tables[0].Rows[0]["uc_07a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "1")
+                        {
+                            uc_07b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "2")
+                        {
+                            uc_07b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_07b"].ToString() == "3")
+                        {
+                            uc_07b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "0")
+                        {
+                            uc_08a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "999")
+                        {
+                            uc_08a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "888")
+                        {
+                            uc_08a_c.Checked = true;
+                        }
+
+
+                        uc_08a_a.Text = ds.Tables[0].Rows[0]["uc_08a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "1")
+                        {
+                            uc_08b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "2")
+                        {
+                            uc_08b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_08b"].ToString() == "3")
+                        {
+                            uc_08b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "0")
+                        {
+                            uc_09a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "999")
+                        {
+                            uc_09a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "888")
+                        {
+                            uc_09a_c.Checked = true;
+                        }
+
+
+                        uc_09a_a.Text = ds.Tables[0].Rows[0]["uc_09a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "1")
+                        {
+                            uc_09b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "2")
+                        {
+                            uc_09b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_09b"].ToString() == "3")
+                        {
+                            uc_09b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "0")
+                        {
+                            uc_10a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "999")
+                        {
+                            uc_10a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "888")
+                        {
+                            uc_10a_c.Checked = true;
+                        }
+
+
+                        uc_10a_a.Text = ds.Tables[0].Rows[0]["uc_10a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "1")
+                        {
+                            uc_10b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "2")
+                        {
+                            uc_10b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_10b"].ToString() == "3")
+                        {
+                            uc_10b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "0")
+                        {
+                            uc_11a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "999")
+                        {
+                            uc_11a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "888")
+                        {
+                            uc_11a_c.Checked = true;
+                        }
+
+
+                        uc_11a_a.Text = ds.Tables[0].Rows[0]["uc_11a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "1")
+                        {
+                            uc_11b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "2")
+                        {
+                            uc_11b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_11b"].ToString() == "3")
+                        {
+                            uc_11b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "0")
+                        {
+                            uc_12a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "999")
+                        {
+                            uc_12a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "888")
+                        {
+                            uc_12a_c.Checked = true;
+                        }
+
+
+                        uc_12a_a.Text = ds.Tables[0].Rows[0]["uc_12a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "1")
+                        {
+                            uc_12b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "2")
+                        {
+                            uc_12b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_12b"].ToString() == "3")
+                        {
+                            uc_12b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "0")
+                        {
+                            uc_13a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "999")
+                        {
+                            uc_13a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "888")
+                        {
+                            uc_13a_c.Checked = true;
+                        }
+
+
+                        uc_13a_a.Text = ds.Tables[0].Rows[0]["uc_13a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "1")
+                        {
+                            uc_13b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "2")
+                        {
+                            uc_13b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_13b"].ToString() == "3")
+                        {
+                            uc_13b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "0")
+                        {
+                            uc_14a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "999")
+                        {
+                            uc_14a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "888")
+                        {
+                            uc_14a_c.Checked = true;
+                        }
+
+
+                        uc_14a_a.Text = ds.Tables[0].Rows[0]["uc_14a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "1")
+                        {
+                            uc_14b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "2")
+                        {
+                            uc_14b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_14b"].ToString() == "3")
+                        {
+                            uc_14b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "0")
+                        {
+                            uc_15a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "999")
+                        {
+                            uc_15a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "888")
+                        {
+                            uc_15a_c.Checked = true;
+                        }
+
+
+                        uc_15a_a.Text = ds.Tables[0].Rows[0]["uc_15a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "1")
+                        {
+                            uc_15b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "2")
+                        {
+                            uc_15b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_15b"].ToString() == "3")
+                        {
+                            uc_15b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "0")
+                        {
+                            uc_16a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "999")
+                        {
+                            uc_16a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "888")
+                        {
+                            uc_16a_c.Checked = true;
+                        }
+
+
+                        uc_16a_a.Text = ds.Tables[0].Rows[0]["uc_16a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "1")
+                        {
+                            uc_16b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "2")
+                        {
+                            uc_16b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_16b"].ToString() == "3")
+                        {
+                            uc_16b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "0")
+                        {
+                            uc_17a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "999")
+                        {
+                            uc_17a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "888")
+                        {
+                            uc_17a_c.Checked = true;
+                        }
+
+
+                        uc_17a_a.Text = ds.Tables[0].Rows[0]["uc_17a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "1")
+                        {
+                            uc_17b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "2")
+                        {
+                            uc_17b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_17b"].ToString() == "3")
+                        {
+                            uc_17b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "0")
+                        {
+                            uc_18a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "999")
+                        {
+                            uc_18a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "888")
+                        {
+                            uc_18a_c.Checked = true;
+                        }
+
+
+                        uc_18a_a.Text = ds.Tables[0].Rows[0]["uc_18a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "1")
+                        {
+                            uc_18b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "2")
+                        {
+                            uc_18b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_18b"].ToString() == "3")
+                        {
+                            uc_18b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "0")
+                        {
+                            uc_19a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "999")
+                        {
+                            uc_19a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "888")
+                        {
+                            uc_19a_c.Checked = true;
+                        }
+
+
+                        uc_19a_a.Text = ds.Tables[0].Rows[0]["uc_19a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "1")
+                        {
+                            uc_19b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "2")
+                        {
+                            uc_19b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_19b"].ToString() == "3")
+                        {
+                            uc_19b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "0")
+                        {
+                            uc_20a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "999")
+                        {
+                            uc_20a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "888")
+                        {
+                            uc_20a_c.Checked = true;
+                        }
+
+
+                        uc_20a_a.Text = ds.Tables[0].Rows[0]["uc_20a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "1")
+                        {
+                            uc_20b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "2")
+                        {
+                            uc_20b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_20b"].ToString() == "3")
+                        {
+                            uc_20b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "0")
+                        {
+                            uc_21a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "999")
+                        {
+                            uc_21a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "888")
+                        {
+                            uc_21a_c.Checked = true;
+                        }
+
+
+                        uc_21a_a.Text = ds.Tables[0].Rows[0]["uc_21a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "1")
+                        {
+                            uc_21b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "2")
+                        {
+                            uc_21b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_21b"].ToString() == "3")
+                        {
+                            uc_21b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "0")
+                        {
+                            uc_22a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "999")
+                        {
+                            uc_22a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "888")
+                        {
+                            uc_22a_c.Checked = true;
+                        }
+
+
+                        uc_22a_a.Text = ds.Tables[0].Rows[0]["uc_22a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "1")
+                        {
+                            uc_22b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "2")
+                        {
+                            uc_22b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_22b"].ToString() == "3")
+                        {
+                            uc_22b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "0")
+                        {
+                            uc_23a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "999")
+                        {
+                            uc_23a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "888")
+                        {
+                            uc_23a_c.Checked = true;
+                        }
+
+
+                        uc_23a_a.Text = ds.Tables[0].Rows[0]["uc_23a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "1")
+                        {
+                            uc_23b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "2")
+                        {
+                            uc_23b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_23b"].ToString() == "3")
+                        {
+                            uc_23b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "0")
+                        {
+                            uc_24a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "999")
+                        {
+                            uc_24a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "888")
+                        {
+                            uc_24a_c.Checked = true;
+                        }
+
+
+                        uc_24a_a.Text = ds.Tables[0].Rows[0]["uc_24a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "1")
+                        {
+                            uc_24b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "2")
+                        {
+                            uc_24b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_24b"].ToString() == "3")
+                        {
+                            uc_24b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "0")
+                        {
+                            uc_25a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "999")
+                        {
+                            uc_25a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "888")
+                        {
+                            uc_25a_c.Checked = true;
+                        }
+
+
+                        uc_25a_a.Text = ds.Tables[0].Rows[0]["uc_25a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "1")
+                        {
+                            uc_25b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "2")
+                        {
+                            uc_25b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_25b"].ToString() == "3")
+                        {
+                            uc_25b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "0")
+                        {
+                            uc_26a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "999")
+                        {
+                            uc_26a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "888")
+                        {
+                            uc_26a_c.Checked = true;
+                        }
+
+
+                        uc_26a_a.Text = ds.Tables[0].Rows[0]["uc_26a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "1")
+                        {
+                            uc_26b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "2")
+                        {
+                            uc_26b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_26b"].ToString() == "3")
+                        {
+                            uc_26b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "0")
+                        {
+                            uc_27a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "999")
+                        {
+                            uc_27a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "888")
+                        {
+                            uc_27a_c.Checked = true;
+                        }
+
+
+                        uc_27a_a.Text = ds.Tables[0].Rows[0]["uc_27a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "1")
+                        {
+                            uc_27b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "2")
+                        {
+                            uc_27b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_27b"].ToString() == "3")
+                        {
+                            uc_27b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "0")
+                        {
+                            uc_28a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "999")
+                        {
+                            uc_28a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "888")
+                        {
+                            uc_28a_c.Checked = true;
+                        }
+
+
+                        uc_28a_a.Text = ds.Tables[0].Rows[0]["uc_28a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "1")
+                        {
+                            uc_28b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "2")
+                        {
+                            uc_28b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_28b"].ToString() == "3")
+                        {
+                            uc_28b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "0")
+                        {
+                            uc_29a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "999")
+                        {
+                            uc_29a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "888")
+                        {
+                            uc_29a_c.Checked = true;
+                        }
+
+
+                        uc_29a_a.Text = ds.Tables[0].Rows[0]["uc_29a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "1")
+                        {
+                            uc_29b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "2")
+                        {
+                            uc_29b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_29b"].ToString() == "3")
+                        {
+                            uc_29b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "0")
+                        {
+                            uc_30a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "999")
+                        {
+                            uc_30a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "888")
+                        {
+                            uc_30a_c.Checked = true;
+                        }
+
+
+                        uc_30a_a.Text = ds.Tables[0].Rows[0]["uc_30a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "1")
+                        {
+                            uc_30b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "2")
+                        {
+                            uc_30b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_30b"].ToString() == "3")
+                        {
+                            uc_30b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "0")
+                        {
+                            uc_31a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "999")
+                        {
+                            uc_31a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "888")
+                        {
+                            uc_31a_c.Checked = true;
+                        }
+
+
+                        uc_31a_a.Text = ds.Tables[0].Rows[0]["uc_31a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "1")
+                        {
+                            uc_31b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "2")
+                        {
+                            uc_31b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_31b"].ToString() == "3")
+                        {
+                            uc_31b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "0")
+                        {
+                            uc_32a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "999")
+                        {
+                            uc_32a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "888")
+                        {
+                            uc_32a_c.Checked = true;
+                        }
+
+
+                        uc_32a_a.Text = ds.Tables[0].Rows[0]["uc_32a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "1")
+                        {
+                            uc_32b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "2")
+                        {
+                            uc_32b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_32b"].ToString() == "3")
+                        {
+                            uc_32b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "0")
+                        {
+                            uc_33a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "999")
+                        {
+                            uc_33a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "888")
+                        {
+                            uc_33a_c.Checked = true;
+                        }
+
+
+                        uc_33a_a.Text = ds.Tables[0].Rows[0]["uc_33a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "1")
+                        {
+                            uc_33b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "2")
+                        {
+                            uc_33b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_33b"].ToString() == "3")
+                        {
+                            uc_33b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "0")
+                        {
+                            uc_34a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "999")
+                        {
+                            uc_34a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "888")
+                        {
+                            uc_34a_c.Checked = true;
+                        }
+
+
+                        uc_34a_a.Text = ds.Tables[0].Rows[0]["uc_34a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "0")
+                        {
+                            uc_34b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "999")
+                        {
+                            uc_34b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_34b"].ToString() == "888")
+                        {
+                            uc_34b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "0")
+                        {
+                            uc_35a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "999")
+                        {
+                            uc_35a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "888")
+                        {
+                            uc_35a_c.Checked = true;
+                        }
+
+
+                        uc_35a_a.Text = ds.Tables[0].Rows[0]["uc_35a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "1")
+                        {
+                            uc_35b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "2")
+                        {
+                            uc_35b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_35b"].ToString() == "3")
+                        {
+                            uc_35b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "0")
+                        {
+                            uc_36a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "999")
+                        {
+                            uc_36a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "888")
+                        {
+                            uc_36a_c.Checked = true;
+                        }
+
+
+                        uc_36a_a.Text = ds.Tables[0].Rows[0]["uc_36a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "1")
+                        {
+                            uc_36b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "2")
+                        {
+                            uc_36b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_36b"].ToString() == "3")
+                        {
+                            uc_36b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "0")
+                        {
+                            uc_37a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "999")
+                        {
+                            uc_37a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "888")
+                        {
+                            uc_37a_c.Checked = true;
+                        }
+
+
+                        uc_37a_a.Text = ds.Tables[0].Rows[0]["uc_37a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "1")
+                        {
+                            uc_37b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "2")
+                        {
+                            uc_37b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_37b"].ToString() == "3")
+                        {
+                            uc_37b_c.Checked = true;
+                        }
+
+
+                        LA_17.Text = ds.Tables[0].Rows[0]["LA_17"].ToString();
+
+
+                        LA_18.Text = ds.Tables[0].Rows[0]["LA_18"].ToString();
+
+
+                        LA_19.Text = ds.Tables[0].Rows[0]["LA_19"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "0")
+                        {
+                            LA_20a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "999")
+                        {
+                            LA_20a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "888")
+                        {
+                            LA_20a_c.Checked = true;
+                        }
+
+
+                        LA_20a_a.Text = ds.Tables[0].Rows[0]["LA_20a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "1")
+                        {
+                            LA_20b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "2")
+                        {
+                            LA_20b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_20b_a"].ToString() == "3")
+                        {
+                            LA_20b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "0")
+                        {
+                            LA_21a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "999")
+                        {
+                            LA_21a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "888")
+                        {
+                            LA_21a_c.Checked = true;
+                        }
+
+
+                        LA_21a_a.Text = ds.Tables[0].Rows[0]["LA_21a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "1")
+                        {
+                            LA_21b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "2")
+                        {
+                            LA_21b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_21b_a"].ToString() == "3")
+                        {
+                            LA_21b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "0")
+                        {
+                            LA_22a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "999")
+                        {
+                            LA_22a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "888")
+                        {
+                            LA_22a_c.Checked = true;
+                        }
+
+
+                        LA_22a_a.Text = ds.Tables[0].Rows[0]["LA_22a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "1")
+                        {
+                            LA_22b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "2")
+                        {
+                            LA_22b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_22b_a"].ToString() == "3")
+                        {
+                            LA_22b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "0")
+                        {
+                            LA_23a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "999")
+                        {
+                            LA_23a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "888")
+                        {
+                            LA_23a_c.Checked = true;
+                        }
+
+
+                        LA_23a_a.Text = ds.Tables[0].Rows[0]["LA_23a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "1")
+                        {
+                            LA_23b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "2")
+                        {
+                            LA_23b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_23b_a"].ToString() == "3")
+                        {
+                            LA_23b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "0")
+                        {
+                            LA_24a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "999")
+                        {
+                            LA_24a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "888")
+                        {
+                            LA_24a_c.Checked = true;
+                        }
+
+
+                        LA_24a_a.Text = ds.Tables[0].Rows[0]["LA_24a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "1")
+                        {
+                            LA_24b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "2")
+                        {
+                            LA_24b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_24b_a"].ToString() == "3")
+                        {
+                            LA_24b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "0")
+                        {
+                            LA_25a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "999")
+                        {
+                            LA_25a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "888")
+                        {
+                            LA_25a_c.Checked = true;
+                        }
+
+
+                        LA_25a_a.Text = ds.Tables[0].Rows[0]["LA_25a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "1")
+                        {
+                            LA_25b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "2")
+                        {
+                            LA_25b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_25b_a"].ToString() == "3")
+                        {
+                            LA_25b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "0")
+                        {
+                            LA_26a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "999")
+                        {
+                            LA_26a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "888")
+                        {
+                            LA_26a_c.Checked = true;
+                        }
+
+
+                        LA_26a_a.Text = ds.Tables[0].Rows[0]["LA_26a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "1")
+                        {
+                            LA_26b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "2")
+                        {
+                            LA_26b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_26b_a"].ToString() == "3")
+                        {
+                            LA_26b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "0")
+                        {
+                            LA_27a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "999")
+                        {
+                            LA_27a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "888")
+                        {
+                            LA_27a_c.Checked = true;
+                        }
+
+
+                        LA_27a_a.Text = ds.Tables[0].Rows[0]["LA_27a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "1")
+                        {
+                            LA_27b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "2")
+                        {
+                            LA_27b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_27b_a"].ToString() == "3")
+                        {
+                            LA_27b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "0")
+                        {
+                            LA_28a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "999")
+                        {
+                            LA_28a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "888")
+                        {
+                            LA_28a_c.Checked = true;
+                        }
+
+
+                        LA_28a_a.Text = ds.Tables[0].Rows[0]["LA_28a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "1")
+                        {
+                            LA_28b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "2")
+                        {
+                            LA_28b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_28b_a"].ToString() == "3")
+                        {
+                            LA_28b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "0")
+                        {
+                            LA_29a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "999")
+                        {
+                            LA_29a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "888")
+                        {
+                            LA_29a_c.Checked = true;
+                        }
+
+
+                        LA_29a_a.Text = ds.Tables[0].Rows[0]["LA_29a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "1")
+                        {
+                            LA_29b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "2")
+                        {
+                            LA_29b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_29b_a"].ToString() == "3")
+                        {
+                            LA_29b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "0")
+                        {
+                            LA_30a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "999")
+                        {
+                            LA_30a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "888")
+                        {
+                            LA_30a_c.Checked = true;
+                        }
+
+
+                        LA_30a_a.Text = ds.Tables[0].Rows[0]["LA_30a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "1")
+                        {
+                            LA_30b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "2")
+                        {
+                            LA_30b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_30b_a"].ToString() == "3")
+                        {
+                            LA_30b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "0")
+                        {
+                            LA_31a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "999")
+                        {
+                            LA_31a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "888")
+                        {
+                            LA_31a_c.Checked = true;
+                        }
+
+
+                        LA_31a_a.Text = ds.Tables[0].Rows[0]["LA_31a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "1")
+                        {
+                            LA_31b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "2")
+                        {
+                            LA_31b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_31b_a"].ToString() == "3")
+                        {
+                            LA_31b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "0")
+                        {
+                            LA_32a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "999")
+                        {
+                            LA_32a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "888")
+                        {
+                            LA_32a_c.Checked = true;
+                        }
+
+
+                        LA_32a_a.Text = ds.Tables[0].Rows[0]["LA_32a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "1")
+                        {
+                            LA_32b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "2")
+                        {
+                            LA_32b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_32b_a"].ToString() == "3")
+                        {
+                            LA_32b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "0")
+                        {
+                            LA_33a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "999")
+                        {
+                            LA_33a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "888")
+                        {
+                            LA_33a_c.Checked = true;
+                        }
+
+
+                        LA_33a_a.Text = ds.Tables[0].Rows[0]["LA_33a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "1")
+                        {
+                            LA_33b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "2")
+                        {
+                            LA_33b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_33b_a"].ToString() == "3")
+                        {
+                            LA_33b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "0")
+                        {
+                            LA_34a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "999")
+                        {
+                            LA_34a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "888")
+                        {
+                            LA_34a_c.Checked = true;
+                        }
+
+
+                        LA_34a_a.Text = ds.Tables[0].Rows[0]["LA_34a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "1")
+                        {
+                            LA_34b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "2")
+                        {
+                            LA_34b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_34b_a"].ToString() == "3")
+                        {
+                            LA_34b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "0")
+                        {
+                            LA_35a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "999")
+                        {
+                            LA_35a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "888")
+                        {
+                            LA_35a_c.Checked = true;
+                        }
+
+
+                        LA_35a_a.Text = ds.Tables[0].Rows[0]["LA_35a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "1")
+                        {
+                            LA_35b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "2")
+                        {
+                            LA_35b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_35b_a"].ToString() == "3")
+                        {
+                            LA_35b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "0")
+                        {
+                            LA_36a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "999")
+                        {
+                            LA_36a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "888")
+                        {
+                            LA_36a_c.Checked = true;
+                        }
+
+
+                        LA_36a_a.Text = ds.Tables[0].Rows[0]["LA_36a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "1")
+                        {
+                            LA_36b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "2")
+                        {
+                            LA_36b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_36b_a"].ToString() == "3")
+                        {
+                            LA_36b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "0")
+                        {
+                            LA_37a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "999")
+                        {
+                            LA_37a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "888")
+                        {
+                            LA_37a_c.Checked = true;
+                        }
+
+
+                        LA_37a_a.Text = ds.Tables[0].Rows[0]["LA_37a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "1")
+                        {
+                            LA_37b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "2")
+                        {
+                            LA_37b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_37b_a"].ToString() == "3")
+                        {
+                            LA_37b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "0")
+                        {
+                            LA_38a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "999")
+                        {
+                            LA_38a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "888")
+                        {
+                            LA_38a_c.Checked = true;
+                        }
+
+
+                        LA_38a_a.Text = ds.Tables[0].Rows[0]["LA_38a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "1")
+                        {
+                            LA_38b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "2")
+                        {
+                            LA_38b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_38b_a"].ToString() == "3")
+                        {
+                            LA_38b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "0")
+                        {
+                            LA_39a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "999")
+                        {
+                            LA_39a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "888")
+                        {
+                            LA_39a_c.Checked = true;
+                        }
+
+
+                        LA_39a_a.Text = ds.Tables[0].Rows[0]["LA_39a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "1")
+                        {
+                            LA_39b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "2")
+                        {
+                            LA_39b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_39b_a"].ToString() == "3")
+                        {
+                            LA_39b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "0")
+                        {
+                            LA_40a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "999")
+                        {
+                            LA_40a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "888")
+                        {
+                            LA_40a_c.Checked = true;
+                        }
+
+
+                        LA_40a_a.Text = ds.Tables[0].Rows[0]["LA_40a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "1")
+                        {
+                            LA_40b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "2")
+                        {
+                            LA_40b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_40b_a"].ToString() == "3")
+                        {
+                            LA_40b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "0")
+                        {
+                            LA_41a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "999")
+                        {
+                            LA_41a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "888")
+                        {
+                            LA_41a_c.Checked = true;
+                        }
+
+
+                        LA_41a_a.Text = ds.Tables[0].Rows[0]["LA_41a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "1")
+                        {
+                            LA_41b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "2")
+                        {
+                            LA_41b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_41b_a"].ToString() == "3")
+                        {
+                            LA_41b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "0")
+                        {
+                            LA_42a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "999")
+                        {
+                            LA_42a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "888")
+                        {
+                            LA_42a_c.Checked = true;
+                        }
+
+
+                        LA_42a_a.Text = ds.Tables[0].Rows[0]["LA_42a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "1")
+                        {
+                            LA_42b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "2")
+                        {
+                            LA_42b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_42b_a"].ToString() == "3")
+                        {
+                            LA_42b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "0")
+                        {
+                            LA_43a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "999")
+                        {
+                            LA_43a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "888")
+                        {
+                            LA_43a_c.Checked = true;
+                        }
+
+
+                        LA_43a_a.Text = ds.Tables[0].Rows[0]["LA_43a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "1")
+                        {
+                            LA_43b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "2")
+                        {
+                            LA_43b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_43b_a"].ToString() == "3")
+                        {
+                            LA_43b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "0")
+                        {
+                            LA_44a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "999")
+                        {
+                            LA_44a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "888")
+                        {
+                            LA_44a_c.Checked = true;
+                        }
+
+
+                        LA_44a_a.Text = ds.Tables[0].Rows[0]["LA_44a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "1")
+                        {
+                            LA_44b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "2")
+                        {
+                            LA_44b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_44b_a"].ToString() == "3")
+                        {
+                            LA_44b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "0")
+                        {
+                            LA_45a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "999")
+                        {
+                            LA_45a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "888")
+                        {
+                            LA_45a_c.Checked = true;
+                        }
+
+
+                        LA_45a_a.Text = ds.Tables[0].Rows[0]["LA_45a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "1")
+                        {
+                            LA_45b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "2")
+                        {
+                            LA_45b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_45b_a"].ToString() == "3")
+                        {
+                            LA_45b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "0")
+                        {
+                            LA_46a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "999")
+                        {
+                            LA_46a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "888")
+                        {
+                            LA_46a_c.Checked = true;
+                        }
+
+
+                        LA_46a_a.Text = ds.Tables[0].Rows[0]["LA_46a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "1")
+                        {
+                            LA_46b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "2")
+                        {
+                            LA_46b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_46b_a"].ToString() == "3")
+                        {
+                            LA_46b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "0")
+                        {
+                            LA_47a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "999")
+                        {
+                            LA_47a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "888")
+                        {
+                            LA_47a_c.Checked = true;
+                        }
+
+
+                        LA_47a_a.Text = ds.Tables[0].Rows[0]["LA_47a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "1")
+                        {
+                            LA_47b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "2")
+                        {
+                            LA_47b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_47b_a"].ToString() == "3")
+                        {
+                            LA_47b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "0")
+                        {
+                            LA_48a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "999")
+                        {
+                            LA_48a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "888")
+                        {
+                            LA_48a_c.Checked = true;
+                        }
+
+
+                        LA_48a_a.Text = ds.Tables[0].Rows[0]["LA_48a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "1")
+                        {
+                            LA_48b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "2")
+                        {
+                            LA_48b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_48b_a"].ToString() == "3")
+                        {
+                            LA_48b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "0")
+                        {
+                            LA_49a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "999")
+                        {
+                            LA_49a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "888")
+                        {
+                            LA_49a_c.Checked = true;
+                        }
+
+
+                        LA_49a_a.Text = ds.Tables[0].Rows[0]["LA_49a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "1")
+                        {
+                            LA_49b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "2")
+                        {
+                            LA_49b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_49b_a"].ToString() == "3")
+                        {
+                            LA_49b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "0")
+                        {
+                            LA_50a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "999")
+                        {
+                            LA_50a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "888")
+                        {
+                            LA_50a_c.Checked = true;
+                        }
+
+
+                        LA_50a_a.Text = ds.Tables[0].Rows[0]["LA_50a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "1")
+                        {
+                            LA_50b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "2")
+                        {
+                            LA_50b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_50b_a"].ToString() == "3")
+                        {
+                            LA_50b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "0")
+                        {
+                            LA_51a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "999")
+                        {
+                            LA_51a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "888")
+                        {
+                            LA_51a_c.Checked = true;
+                        }
+
+
+                        LA_51a_a.Text = ds.Tables[0].Rows[0]["LA_51a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "1")
+                        {
+                            LA_51b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "2")
+                        {
+                            LA_51b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_51b_a"].ToString() == "3")
+                        {
+                            LA_51b_c.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "0")
+                        {
+                            LA_52a_v.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "999")
+                        {
+                            LA_52a_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "888")
+                        {
+                            LA_52a_c.Checked = true;
+                        }
+
+
+                        LA_52a_a.Text = ds.Tables[0].Rows[0]["LA_52a_a"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "1")
+                        {
+                            LA_52b_a.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "2")
+                        {
+                            LA_52b_b.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_52b_a"].ToString() == "3")
+                        {
+                            LA_52b_c.Checked = true;
+                        }
+
+
+                    }
+                }
+            }
         }
 
         catch (Exception ex)
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
+            string message = "alert('Exception occur');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
         }
 
         finally
         {
+            cn = null;
+        }
+    }
+
+
+
+    protected void cmdSaveDraft_Click(object sender, EventArgs e)
+    {
+
+
+        if (ViewState["isupdate"] == null)
+        {
+            SaveData();
+        }
+        else
+        {
+            UpdateData();
+        }
+
+
+        CDBOperations obj_op = new CDBOperations();
+
+        string var_LF_01 = "";
+        string var_LF_02 = "";
+        string var_LF_03 = "";
+        string var_LF_04 = "";
+        string var_LF_05 = "";
+        string var_LF_06 = "";
+        string var_LF_07 = "";
+
+
+        string var_RF_01 = "";
+        string var_RF_02 = "";
+        string var_RF_03 = "";
+        string var_RF_04 = "";
+
+
+        string var_SE_01 = "";
+        string var_SE_02 = "";
+        string var_SE_03 = "";
+        string var_SE_04 = "";
+
+
+        string var_CS_01 = "";
+        string var_CS_02 = "";
+        string var_CS_03 = "";
+        string var_CS_04 = "";
+        string var_CS_05 = "";
+        string var_CS_06 = "";
+        string var_CS_07 = "";
+        string var_CS_08 = "";
+        string var_CS_09 = "";
+        string var_CS_10 = "";
+
+
+        string var_UR_01 = "";
+        string var_UR_02 = "";
+        string var_UR_03 = "";
+        string var_UR_04 = "";
+        string var_UR_04a = "";
+        string var_UR_05 = "";
+        string var_UR_06 = "";
+        string var_UR_07 = "";
+        string var_UR_08 = "";
+        string var_UR_10 = "";
+        string var_UR_11 = "";
+        string var_UR_12 = "";
+        string var_UR_13 = "";
+        string var_UR_14 = "";
+        string var_UR_15 = "";
+        string var_UR_16 = "";
+        string var_UR_17 = "";
+        string var_UR_18 = "";
+        string var_UR_19 = "";
+        string var_UR_20 = "";
+        string var_UR_21 = "";
+
+        string var_uc_01a = "";
+
+
+        string var_uc_02a = "";
+        string var_uc_03a = "";
+        string var_uc_04a = "";
+        string var_uc_05a = "";
+        string var_uc_06a = "";
+        string var_uc_07a = "";
+        string var_uc_08a = "";
+        string var_uc_09a = "";
+        string var_uc_10a = "";
+        string var_uc_11a = "";
+        string var_uc_12a = "";
+        string var_uc_13a = "";
+        string var_uc_14a = "";
+        string var_uc_15a = "";
+        string var_uc_16a = "";
+        string var_uc_17a = "";
+        string var_uc_18a = "";
+        string var_uc_19a = "";
+        string var_uc_20a = "";
+        string var_uc_21a = "";
+        string var_uc_22a = "";
+        string var_uc_23a = "";
+        string var_uc_24a = "";
+        string var_uc_25a = "";
+        string var_uc_26a = "";
+        string var_uc_27a = "";
+        string var_uc_28a = "";
+        string var_uc_29a = "";
+        string var_uc_30a = "";
+        string var_uc_31a = "";
+        string var_uc_32a = "";
+        string var_uc_33a = "";
+        string var_uc_34a = "";
+        string var_uc_35a = "";
+        string var_uc_36a = "";
+        string var_uc_37a = "";
+
+
+
+        string var_uc_02b = "";
+        string var_uc_03b = "";
+        string var_uc_04b = "";
+        string var_uc_05b = "";
+        string var_uc_06b = "";
+        string var_uc_07b = "";
+        string var_uc_08b = "";
+        string var_uc_09b = "";
+        string var_uc_10b = "";
+        string var_uc_11b = "";
+        string var_uc_12b = "";
+        string var_uc_13b = "";
+        string var_uc_14b = "";
+        string var_uc_15b = "";
+        string var_uc_16b = "";
+        string var_uc_17b = "";
+        string var_uc_18b = "";
+        string var_uc_19b = "";
+        string var_uc_20b = "";
+        string var_uc_21b = "";
+        string var_uc_22b = "";
+        string var_uc_23b = "";
+        string var_uc_24b = "";
+        string var_uc_25b = "";
+        string var_uc_26b = "";
+        string var_uc_27b = "";
+        string var_uc_28b = "";
+        string var_uc_29b = "";
+        string var_uc_30b = "";
+        string var_uc_31b = "";
+        string var_uc_32b = "";
+        string var_uc_33b = "";
+        string var_uc_34b = "";
+        string var_uc_35b = "";
+        string var_uc_36b = "";
+        string var_uc_37b = "";
+
+
+
+        string var_LA_03_b = "";
+        string var_LA_04_b = "";
+        string var_LA_05_b = "";
+        string var_LA_06_b = "";
+        string var_LA_07_b = "";
+        string var_LA_08_b = "";
+        string var_LA_09_b = "";
+        string var_LA_10_b = "";
+        string var_LA_11_b = "";
+        string var_LA_12_b = "";
+        string var_LA_13_b = "";
+        string var_LA_14_b = "";
+        string var_LA_15_b = "";
+        string var_LA_16_b = "";
+
+        string var_LA_20a_b = "";
+        string var_LA_21a_b = "";
+        string var_LA_22a_b = "";
+        string var_LA_23a_b = "";
+        string var_LA_24a_b = "";
+        string var_LA_25a_b = "";
+        string var_LA_26a_b = "";
+        string var_LA_27a_b = "";
+        string var_LA_28a_b = "";
+        string var_LA_29a_b = "";
+        string var_LA_30a_b = "";
+        string var_LA_31a_b = "";
+        string var_LA_32a_b = "";
+        string var_LA_33a_b = "";
+        string var_LA_34a_b = "";
+        string var_LA_35a_b = "";
+        string var_LA_36a_b = "";
+        string var_LA_37a_b = "";
+        string var_LA_38a_b = "";
+        string var_LA_39a_b = "";
+        string var_LA_40a_b = "";
+        string var_LA_41a_b = "";
+        string var_LA_42a_b = "";
+        string var_LA_43a_b = "";
+        string var_LA_44a_b = "";
+        string var_LA_45a_b = "";
+        string var_LA_46a_b = "";
+        string var_LA_47a_b = "";
+        string var_LA_48a_b = "";
+        string var_LA_49a_b = "";
+        string var_LA_50a_b = "";
+        string var_LA_51a_b = "";
+        string var_LA_52a_b = "";
+
+
+        var var_LA_20b_a = "";
+        var var_LA_21b_a = "";
+        var var_LA_22b_a = "";
+        var var_LA_23b_a = "";
+        var var_LA_24b_a = "";
+        var var_LA_25b_a = "";
+        var var_LA_26b_a = "";
+        var var_LA_27b_a = "";
+        var var_LA_28b_a = "";
+        var var_LA_29b_a = "";
+        var var_LA_30b_a = "";
+        var var_LA_31b_a = "";
+        var var_LA_32b_a = "";
+        var var_LA_33b_a = "";
+        var var_LA_34b_a = "";
+        var var_LA_35b_a = "";
+        var var_LA_36b_a = "";
+        var var_LA_37b_a = "";
+        var var_LA_38b_a = "";
+        var var_LA_39b_a = "";
+        var var_LA_40b_a = "";
+        var var_LA_41b_a = "";
+        var var_LA_42b_a = "";
+        var var_LA_43b_a = "";
+        var var_LA_44b_a = "";
+        var var_LA_45b_a = "";
+        var var_LA_46b_a = "";
+        var var_LA_47b_a = "";
+        var var_LA_48b_a = "";
+        var var_LA_49b_a = "";
+        var var_LA_50b_a = "";
+        var var_LA_51b_a = "";
+        var var_LA_52b_a = "";
+
+
+        try
+        {
+
+
+            if (LA_03_b.Checked == true)
+            {
+                var_LA_03_b = "999";
+            }
+            else if (LA_03_c.Checked == true)
+            {
+                var_LA_03_b = "888";
+            }
+
+
+
+            if (LA_04_b.Checked == true)
+            {
+                var_LA_04_b = "999";
+            }
+            else if (LA_04_c.Checked == true)
+            {
+                var_LA_04_b = "888";
+            }
+
+
+            if (LA_05_b.Checked == true)
+            {
+                var_LA_05_b = "999";
+            }
+            else if (LA_05_c.Checked == true)
+            {
+                var_LA_05_b = "888";
+            }
+
+
+            if (LA_06_b.Checked == true)
+            {
+                var_LA_06_b = "999";
+            }
+            else if (LA_06_c.Checked == true)
+            {
+                var_LA_06_b = "888";
+            }
+
+
+            if (LA_07_b.Checked == true)
+            {
+                var_LA_07_b = "999";
+            }
+            else if (LA_07_c.Checked == true)
+            {
+                var_LA_07_b = "888";
+            }
+
+
+            if (LA_08_b.Checked == true)
+            {
+                var_LA_08_b = "999";
+            }
+            else if (LA_08_c.Checked == true)
+            {
+                var_LA_08_b = "888";
+            }
+
+
+
+            if (LA_09_b.Checked == true)
+            {
+                var_LA_09_b = "999";
+            }
+            else if (LA_09_c.Checked == true)
+            {
+                var_LA_09_b = "999";
+            }
+
+
+            if (LA_10_b.Checked == true)
+            {
+                var_LA_10_b = "999";
+            }
+            else if (LA_10_c.Checked == true)
+            {
+                var_LA_10_b = "888";
+            }
+
+
+
+            if (LA_11_b.Checked == true)
+            {
+                var_LA_11_b = "999";
+            }
+            else if (LA_11_c.Checked == true)
+            {
+                var_LA_11_b = "888";
+            }
+
+
+            if (LA_12_b.Checked == true)
+            {
+                var_LA_12_b = "999";
+            }
+            else if (LA_12_c.Checked == true)
+            {
+                var_LA_12_b = "888";
+            }
+
+
+            if (LA_13_b.Checked == true)
+            {
+                var_LA_13_b = "999";
+            }
+            else if (LA_13_c.Checked == true)
+            {
+                var_LA_13_b = "888";
+            }
+
+
+            if (LA_14_b.Checked == true)
+            {
+                var_LA_14_b = "999";
+            }
+            else if (LA_14_c.Checked == true)
+            {
+                var_LA_14_b = "888";
+            }
+
+
+
+            if (LA_15_b.Checked == true)
+            {
+                var_LA_15_b = "999";
+            }
+            else if (LA_15_c.Checked == true)
+            {
+                var_LA_15_b = "888";
+            }
+
+
+            if (LA_16_b.Checked == true)
+            {
+                var_LA_16_b = "999";
+            }
+            else if (LA_16_c.Checked == true)
+            {
+                var_LA_16_b = "888";
+            }
+
+
+
+
+
+            if (LF_01_b.Checked == true)
+            {
+                var_LF_01 = "999";
+            }
+            else if (LF_01_c.Checked == true)
+            {
+                var_LF_01 = "888";
+            }
+
+
+
+            if (LF_02_b.Checked == true)
+            {
+                var_LF_02 = "999";
+            }
+            else if (LF_02_c.Checked == true)
+            {
+                var_LF_02 = "888";
+            }
+
+
+
+            if (LF_03_b.Checked == true)
+            {
+                var_LF_03 = "999";
+            }
+            else if (LF_03_c.Checked == true)
+            {
+                var_LF_03 = "888";
+            }
+
+
+
+            if (LF_04_b.Checked == true)
+            {
+                var_LF_04 = "999";
+            }
+            else if (LF_04_c.Checked == true)
+            {
+                var_LF_04 = "888";
+            }
+
+
+
+            if (LF_05_b.Checked == true)
+            {
+                var_LF_05 = "999";
+            }
+            else if (LF_05_c.Checked == true)
+            {
+                var_LF_05 = "888";
+            }
+
+
+
+            if (LF_06_b.Checked == true)
+            {
+                var_LF_06 = "999";
+            }
+            else if (LF_06_c.Checked == true)
+            {
+                var_LF_06 = "888";
+            }
+
+
+            if (LF_07_b.Checked == true)
+            {
+                var_LF_07 = "999";
+            }
+            else if (LF_07_c.Checked == true)
+            {
+                var_LF_07 = "888";
+            }
+
+
+
+            if (RF_01_b.Checked == true)
+            {
+                var_RF_01 = "999";
+            }
+            else if (RF_01_c.Checked == true)
+            {
+                var_RF_01 = "888";
+            }
+
+
+
+            if (RF_02_b.Checked == true)
+            {
+                var_RF_02 = "999";
+            }
+            else if (RF_02_c.Checked == true)
+            {
+                var_RF_02 = "888";
+            }
+
+
+
+            if (RF_03_b.Checked == true)
+            {
+                var_RF_03 = "999";
+            }
+            else if (RF_03_c.Checked == true)
+            {
+                var_RF_03 = "888";
+            }
+
+
+
+            if (RF_04_b.Checked == true)
+            {
+                var_RF_04 = "999";
+            }
+            else if (RF_04_c.Checked == true)
+            {
+                var_RF_04 = "888";
+            }
+
+
+
+            if (SE_01_b.Checked == true)
+            {
+                var_SE_01 = "999";
+            }
+            else if (SE_01_c.Checked == true)
+            {
+                var_SE_01 = "888";
+            }
+
+
+
+            if (SE_02_b.Checked == true)
+            {
+                var_SE_02 = "999";
+            }
+            else if (SE_02_c.Checked == true)
+            {
+                var_SE_02 = "888";
+            }
+
+
+
+
+            if (SE_03_b.Checked == true)
+            {
+                var_SE_03 = "999";
+            }
+            else if (SE_03_c.Checked == true)
+            {
+                var_SE_03 = "888";
+            }
+
+
+
+            if (SE_04_b.Checked == true)
+            {
+                var_SE_04 = "999";
+            }
+            else if (SE_04_c.Checked == true)
+            {
+                var_SE_04 = "888";
+            }
+
+
+
+            if (CS_01_b.Checked == true)
+            {
+                var_CS_01 = "999";
+            }
+            else if (CS_01_c.Checked == true)
+            {
+                var_CS_01 = "888";
+            }
+
+
+
+            if (CS_02_b.Checked == true)
+            {
+                var_CS_02 = "999";
+            }
+            else if (CS_02_c.Checked == true)
+            {
+                var_CS_02 = "888";
+            }
+
+
+
+            if (CS_03_b.Checked == true)
+            {
+                var_CS_03 = "999";
+            }
+            else if (CS_03_c.Checked == true)
+            {
+                var_CS_03 = "888";
+            }
+
+
+
+            if (CS_04_b.Checked == true)
+            {
+                var_CS_04 = "999";
+            }
+            else if (CS_04_c.Checked == true)
+            {
+                var_CS_04 = "888";
+            }
+
+
+
+
+            if (CS_05_b.Checked == true)
+            {
+                var_CS_05 = "999";
+            }
+            else if (CS_05_c.Checked == true)
+            {
+                var_CS_05 = "888";
+            }
+
+
+
+            if (CS_06_b.Checked == true)
+            {
+                var_CS_06 = "999";
+            }
+            else if (CS_06_c.Checked == true)
+            {
+                var_CS_06 = "888";
+            }
+
+
+
+            if (CS_07_b.Checked == true)
+            {
+                var_CS_07 = "999";
+            }
+            else if (CS_07_c.Checked == true)
+            {
+                var_CS_07 = "888";
+            }
+
+
+
+            if (CS_08_b.Checked == true)
+            {
+                var_CS_08 = "999";
+            }
+            else if (CS_08_c.Checked == true)
+            {
+                var_CS_08 = "888";
+            }
+
+
+
+            if (CS_09_b.Checked == true)
+            {
+                var_CS_09 = "999";
+            }
+            else if (CS_09_c.Checked == true)
+            {
+                var_CS_09 = "888";
+            }
+
+
+
+            if (CS_10_b.Checked == true)
+            {
+                var_CS_10 = "999";
+            }
+            else if (CS_10_c.Checked == true)
+            {
+                var_CS_10 = "888";
+            }
+
+
+
+
+            if (UR_01_b.Checked == true)
+            {
+                var_UR_01 = "999";
+            }
+            else if (UR_01_c.Checked == true)
+            {
+                var_UR_01 = "888";
+            }
+
+
+
+            if (UR_02_b.Checked == true)
+            {
+                var_UR_02 = "999";
+            }
+            else if (UR_02_c.Checked == true)
+            {
+                var_UR_02 = "888";
+            }
+
+
+
+            if (UR_03_b.Checked == true)
+            {
+                var_UR_03 = "999";
+            }
+            else if (UR_03_c.Checked == true)
+            {
+                var_UR_03 = "888";
+            }
+
+
+
+            if (UR_04_b.Checked == true)
+            {
+                var_UR_04 = "999";
+            }
+            else if (UR_04_c.Checked == true)
+            {
+                var_UR_04 = "888";
+            }
+
+
+
+            if (UR_04a_b.Checked == true)
+            {
+                var_UR_04a = "999";
+            }
+            else if (UR_04a_c.Checked == true)
+            {
+                var_UR_04a = "888";
+            }
+
+
+
+
+            if (UR_05_b.Checked == true)
+            {
+                var_UR_05 = "999";
+            }
+            else if (UR_05_c.Checked == true)
+            {
+                var_UR_05 = "888";
+            }
+
+
+
+
+            if (UR_06_b.Checked == true)
+            {
+                var_UR_06 = "999";
+            }
+            else if (UR_06_c.Checked == true)
+            {
+                var_UR_06 = "888";
+            }
+
+
+
+            if (UR_07_b.Checked == true)
+            {
+                var_UR_07 = "999";
+            }
+            else if (UR_07_c.Checked == true)
+            {
+                var_UR_07 = "888";
+            }
+
+
+
+            if (UR_08_b.Checked == true)
+            {
+                var_UR_08 = "999";
+            }
+            else if (UR_08_c.Checked == true)
+            {
+                var_UR_08 = "888";
+            }
+
+
+
+            if (UR_10_b.Checked == true)
+            {
+                var_UR_10 = "999";
+            }
+            else if (UR_10_c.Checked == true)
+            {
+                var_UR_10 = "888";
+            }
+
+
+
+            if (UR_11_b.Checked == true)
+            {
+                var_UR_11 = "999";
+            }
+            else if (UR_11_c.Checked == true)
+            {
+                var_UR_11 = "888";
+            }
+
+
+
+
+            if (UR_12_b.Checked == true)
+            {
+                var_UR_12 = "999";
+            }
+            else if (UR_12_c.Checked == true)
+            {
+                var_UR_12 = "888";
+            }
+
+
+
+
+            if (UR_13_b.Checked == true)
+            {
+                var_UR_13 = "999";
+            }
+            else if (UR_13_c.Checked == true)
+            {
+                var_UR_13 = "888";
+            }
+
+
+
+
+            if (UR_14_b.Checked == true)
+            {
+                var_UR_14 = "999";
+            }
+            else if (UR_14_c.Checked == true)
+            {
+                var_UR_14 = "888";
+            }
+
+
+
+            if (UR_15_b.Checked == true)
+            {
+                var_UR_15 = "999";
+            }
+            else if (UR_15_c.Checked == true)
+            {
+                var_UR_15 = "888";
+            }
+
+
+
+
+            if (UR_16_b.Checked == true)
+            {
+                var_UR_16 = "999";
+            }
+            else if (UR_16_c.Checked == true)
+            {
+                var_UR_16 = "888";
+            }
+
+
+
+            if (UR_17_b.Checked == true)
+            {
+                var_UR_17 = "999";
+            }
+            else if (UR_17_c.Checked == true)
+            {
+                var_UR_17 = "888";
+            }
+
+
+
+            if (UR_18_b.Checked == true)
+            {
+                var_UR_18 = "999";
+            }
+            else if (UR_18_c.Checked == true)
+            {
+                var_UR_18 = "888";
+            }
+
+
+
+
+            if (UR_19_b.Checked == true)
+            {
+                var_UR_19 = "999";
+            }
+            else if (UR_19_c.Checked == true)
+            {
+                var_UR_19 = "888";
+            }
+
+
+
+
+            if (UR_20_b.Checked == true)
+            {
+                var_UR_20 = "999";
+            }
+            else if (UR_20_c.Checked == true)
+            {
+                var_UR_20 = "888";
+            }
+
+
+
+            if (UR_21_b.Checked == true)
+            {
+                var_UR_21 = "999";
+            }
+            else if (UR_21_c.Checked == true)
+            {
+                var_UR_21 = "888";
+            }
+
+
+
+            if (uc_01_a.Checked == true)
+            {
+                var_uc_01a = "1";
+            }
+            else if (uc_01_b.Checked == true)
+            {
+                var_uc_01a = "2";
+            }
+            else if (uc_01_c.Checked == true)
+            {
+                var_uc_01a = "999";
+            }
+
+
+
+            if (uc_02a_b.Checked == true)
+            {
+                var_uc_02a = "999";
+            }
+            else if (uc_02a_c.Checked == true)
+            {
+                var_uc_02a = "888";
+            }
+
+
+
+            if (uc_02b_a.Checked == true)
+            {
+                var_uc_02b = "1";
+            }
+            else if (uc_02b_b.Checked == true)
+            {
+                var_uc_02b = "2";
+            }
+            else if (uc_02b_c.Checked == true)
+            {
+                var_uc_02b = "3";
+            }
+
+
+
+            if (uc_03a_b.Checked == true)
+            {
+                var_uc_03a = "999";
+            }
+            else if (uc_03a_c.Checked == true)
+            {
+                var_uc_03a = "888";
+            }
+
+
+
+            if (uc_03b_a.Checked == true)
+            {
+                var_uc_03b = "1";
+            }
+            else if (uc_03b_b.Checked == true)
+            {
+                var_uc_03b = "2";
+            }
+            else if (uc_03b_c.Checked == true)
+            {
+                var_uc_03b = "3";
+            }
+
+
+
+
+            if (uc_04a_b.Checked == true)
+            {
+                var_uc_04a = "999";
+            }
+            else if (uc_04a_c.Checked == true)
+            {
+                var_uc_04a = "888";
+            }
+
+
+
+            if (uc_04b_a.Checked == true)
+            {
+                var_uc_04b = "1";
+            }
+            else if (uc_04b_b.Checked == true)
+            {
+                var_uc_04b = "2";
+            }
+            else if (uc_04b_c.Checked == true)
+            {
+                var_uc_04b = "3";
+            }
+
+
+
+            if (uc_05a_b.Checked == true)
+            {
+                var_uc_05a = "999";
+            }
+            else if (uc_05a_c.Checked == true)
+            {
+                var_uc_05a = "888";
+            }
+
+
+
+            if (uc_05b_a.Checked == true)
+            {
+                var_uc_05b = "1";
+            }
+            else if (uc_05b_b.Checked == true)
+            {
+                var_uc_05b = "2";
+            }
+            else if (uc_05b_c.Checked == true)
+            {
+                var_uc_05b = "3";
+            }
+
+
+
+
+            if (uc_06a_b.Checked == true)
+            {
+                var_uc_06a = "999";
+            }
+            else if (uc_06a_c.Checked == true)
+            {
+                var_uc_06a = "888";
+            }
+
+
+
+            if (uc_06b_a.Checked == true)
+            {
+                var_uc_06b = "1";
+            }
+            else if (uc_06b_b.Checked == true)
+            {
+                var_uc_06b = "2";
+            }
+            else if (uc_06b_c.Checked == true)
+            {
+                var_uc_06b = "3";
+            }
+
+
+
+            if (uc_07a_b.Checked == true)
+            {
+                var_uc_07a = "999";
+            }
+            else if (uc_07a_c.Checked == true)
+            {
+                var_uc_07a = "888";
+            }
+
+
+
+            if (uc_07b_a.Checked == true)
+            {
+                var_uc_07b = "1";
+            }
+            else if (uc_07b_b.Checked == true)
+            {
+                var_uc_07b = "2";
+            }
+            else if (uc_07b_c.Checked == true)
+            {
+                var_uc_07b = "3";
+            }
+
+
+
+            if (uc_08a_b.Checked == true)
+            {
+                var_uc_08a = "999";
+            }
+            else if (uc_08a_c.Checked == true)
+            {
+                var_uc_08a = "888";
+            }
+
+
+
+            if (uc_08b_a.Checked == true)
+            {
+                var_uc_08b = "1";
+            }
+            else if (uc_08b_b.Checked == true)
+            {
+                var_uc_08b = "2";
+            }
+            else if (uc_08b_c.Checked == true)
+            {
+                var_uc_08b = "3";
+            }
+
+
+
+
+            if (uc_09a_b.Checked == true)
+            {
+                var_uc_09a = "999";
+            }
+            else if (uc_09a_c.Checked == true)
+            {
+                var_uc_09a = "888";
+            }
+
+
+
+            if (uc_09b_a.Checked == true)
+            {
+                var_uc_09b = "1";
+            }
+            else if (uc_09b_b.Checked == true)
+            {
+                var_uc_09b = "2";
+            }
+            else if (uc_09b_c.Checked == true)
+            {
+                var_uc_09b = "3";
+            }
+
+
+
+
+            if (uc_10a_b.Checked == true)
+            {
+                var_uc_10a = "999";
+            }
+            else if (uc_10a_c.Checked == true)
+            {
+                var_uc_10a = "888";
+            }
+
+
+
+            if (uc_10b_a.Checked == true)
+            {
+                var_uc_10b = "1";
+            }
+            else if (uc_10b_b.Checked == true)
+            {
+                var_uc_10b = "2";
+            }
+            else if (uc_10b_c.Checked == true)
+            {
+                var_uc_10b = "3";
+            }
+
+
+
+            if (uc_11a_b.Checked == true)
+            {
+                var_uc_11a = "999";
+            }
+            else if (uc_11a_c.Checked == true)
+            {
+                var_uc_11a = "888";
+            }
+
+
+
+            if (uc_11b_a.Checked == true)
+            {
+                var_uc_11b = "1";
+            }
+            else if (uc_11b_b.Checked == true)
+            {
+                var_uc_11b = "2";
+            }
+            else if (uc_11b_c.Checked == true)
+            {
+                var_uc_11b = "3";
+            }
+
+
+
+
+            if (uc_12a_b.Checked == true)
+            {
+                var_uc_12a = "999";
+            }
+            else if (uc_12a_c.Checked == true)
+            {
+                var_uc_12a = "888";
+            }
+
+
+
+            if (uc_12b_a.Checked == true)
+            {
+                var_uc_12b = "1";
+            }
+            else if (uc_12b_b.Checked == true)
+            {
+                var_uc_12b = "2";
+            }
+            else if (uc_12b_c.Checked == true)
+            {
+                var_uc_12b = "3";
+            }
+
+
+
+            if (uc_13a_b.Checked == true)
+            {
+                var_uc_13a = "999";
+            }
+            else if (uc_13a_c.Checked == true)
+            {
+                var_uc_13a = "888";
+            }
+
+
+
+            if (uc_13b_a.Checked == true)
+            {
+                var_uc_13b = "1";
+            }
+            else if (uc_13b_b.Checked == true)
+            {
+                var_uc_13b = "2";
+            }
+            else if (uc_13b_c.Checked == true)
+            {
+                var_uc_13b = "3";
+            }
+
+
+
+
+            if (uc_14a_b.Checked == true)
+            {
+                var_uc_14a = "999";
+            }
+            else if (uc_14a_c.Checked == true)
+            {
+                var_uc_14a = "888";
+            }
+
+
+
+            if (uc_14b_a.Checked == true)
+            {
+                var_uc_14b = "1";
+            }
+            else if (uc_14b_b.Checked == true)
+            {
+                var_uc_14b = "2";
+            }
+            else if (uc_14b_c.Checked == true)
+            {
+                var_uc_14b = "3";
+            }
+
+
+
+
+            if (uc_15a_b.Checked == true)
+            {
+                var_uc_15a = "999";
+            }
+            else if (uc_15a_c.Checked == true)
+            {
+                var_uc_15a = "888";
+            }
+
+
+
+            if (uc_15b_a.Checked == true)
+            {
+                var_uc_15b = "1";
+            }
+            else if (uc_15b_b.Checked == true)
+            {
+                var_uc_15b = "2";
+            }
+            else if (uc_15b_c.Checked == true)
+            {
+                var_uc_15b = "3";
+            }
+
+
+
+
+            if (uc_16a_b.Checked == true)
+            {
+                var_uc_16a = "999";
+            }
+            else if (uc_16a_c.Checked == true)
+            {
+                var_uc_16a = "888";
+            }
+
+
+
+            if (uc_16b_a.Checked == true)
+            {
+                var_uc_16b = "1";
+            }
+            else if (uc_16b_b.Checked == true)
+            {
+                var_uc_16b = "2";
+            }
+            else if (uc_16b_c.Checked == true)
+            {
+                var_uc_16b = "3";
+            }
+
+
+
+
+
+            if (uc_17a_b.Checked == true)
+            {
+                var_uc_17a = "999";
+            }
+            else if (uc_17a_c.Checked == true)
+            {
+                var_uc_17a = "888";
+            }
+
+
+
+            if (uc_17b_a.Checked == true)
+            {
+                var_uc_17b = "1";
+            }
+            else if (uc_17b_b.Checked == true)
+            {
+                var_uc_17b = "2";
+            }
+            else if (uc_17b_c.Checked == true)
+            {
+                var_uc_17b = "3";
+            }
+
+
+
+
+            if (uc_18a_b.Checked == true)
+            {
+                var_uc_18a = "999";
+            }
+            else if (uc_18a_c.Checked == true)
+            {
+                var_uc_18a = "888";
+            }
+
+
+
+            if (uc_18b_a.Checked == true)
+            {
+                var_uc_18b = "1";
+            }
+            else if (uc_18b_b.Checked == true)
+            {
+                var_uc_18b = "2";
+            }
+            else if (uc_18b_c.Checked == true)
+            {
+                var_uc_18b = "3";
+            }
+
+
+
+
+            if (uc_19a_b.Checked == true)
+            {
+                var_uc_19a = "999";
+            }
+            else if (uc_19a_c.Checked == true)
+            {
+                var_uc_19a = "888";
+            }
+
+
+
+            if (uc_19b_a.Checked == true)
+            {
+                var_uc_19b = "1";
+            }
+            else if (uc_19b_b.Checked == true)
+            {
+                var_uc_19b = "2";
+            }
+            else if (uc_19b_c.Checked == true)
+            {
+                var_uc_19b = "3";
+            }
+
+
+
+
+            if (uc_20a_b.Checked == true)
+            {
+                var_uc_20a = "999";
+            }
+            else if (uc_20a_c.Checked == true)
+            {
+                var_uc_20a = "888";
+            }
+
+
+
+            if (uc_20b_a.Checked == true)
+            {
+                var_uc_20b = "1";
+            }
+            else if (uc_20b_b.Checked == true)
+            {
+                var_uc_20b = "2";
+            }
+            else if (uc_20b_c.Checked == true)
+            {
+                var_uc_20b = "3";
+            }
+
+
+
+
+            if (uc_21a_b.Checked == true)
+            {
+                var_uc_21a = "999";
+            }
+            else if (uc_21a_c.Checked == true)
+            {
+                var_uc_21a = "888";
+            }
+
+
+
+            if (uc_21b_a.Checked == true)
+            {
+                var_uc_21b = "1";
+            }
+            else if (uc_21b_b.Checked == true)
+            {
+                var_uc_21b = "2";
+            }
+            else if (uc_21b_c.Checked == true)
+            {
+                var_uc_21b = "3";
+            }
+
+
+
+
+            if (uc_22a_b.Checked == true)
+            {
+                var_uc_22a = "999";
+            }
+            else if (uc_22a_c.Checked == true)
+            {
+                var_uc_22a = "888";
+            }
+
+
+
+            if (uc_22b_a.Checked == true)
+            {
+                var_uc_22b = "1";
+            }
+            else if (uc_22b_b.Checked == true)
+            {
+                var_uc_22b = "2";
+            }
+            else if (uc_22b_c.Checked == true)
+            {
+                var_uc_22b = "3";
+            }
+
+
+
+
+            if (uc_23a_b.Checked == true)
+            {
+                var_uc_23a = "999";
+            }
+            else if (uc_23a_c.Checked == true)
+            {
+                var_uc_23a = "888";
+            }
+
+
+
+            if (uc_23b_a.Checked == true)
+            {
+                var_uc_23b = "1";
+            }
+            else if (uc_23b_b.Checked == true)
+            {
+                var_uc_23b = "2";
+            }
+            else if (uc_23b_c.Checked == true)
+            {
+                var_uc_23b = "3";
+            }
+
+
+
+
+            if (uc_24a_b.Checked == true)
+            {
+                var_uc_24a = "999";
+            }
+            else if (uc_24a_c.Checked == true)
+            {
+                var_uc_24a = "888";
+            }
+
+
+
+            if (uc_24b_a.Checked == true)
+            {
+                var_uc_24b = "1";
+            }
+            else if (uc_24b_b.Checked == true)
+            {
+                var_uc_24b = "2";
+            }
+            else if (uc_24b_c.Checked == true)
+            {
+                var_uc_24b = "3";
+            }
+
+
+
+
+            if (uc_25a_b.Checked == true)
+            {
+                var_uc_25a = "999";
+            }
+            else if (uc_25a_c.Checked == true)
+            {
+                var_uc_25a = "888";
+            }
+
+
+
+            if (uc_25b_a.Checked == true)
+            {
+                var_uc_25b = "1";
+            }
+            else if (uc_25b_b.Checked == true)
+            {
+                var_uc_25b = "2";
+            }
+            else if (uc_25b_c.Checked == true)
+            {
+                var_uc_25b = "3";
+            }
+
+
+
+
+            if (uc_26a_b.Checked == true)
+            {
+                var_uc_26a = "999";
+            }
+            else if (uc_26a_c.Checked == true)
+            {
+                var_uc_26a = "888";
+            }
+
+
+
+            if (uc_26b_a.Checked == true)
+            {
+                var_uc_26b = "1";
+            }
+            else if (uc_26b_b.Checked == true)
+            {
+                var_uc_26b = "2";
+            }
+            else if (uc_26b_c.Checked == true)
+            {
+                var_uc_26b = "3";
+            }
+
+
+
+
+            if (uc_27a_b.Checked == true)
+            {
+                var_uc_27a = "999";
+            }
+            else if (uc_27a_c.Checked == true)
+            {
+                var_uc_27a = "888";
+            }
+
+
+
+            if (uc_27b_a.Checked == true)
+            {
+                var_uc_27b = "1";
+            }
+            else if (uc_27b_b.Checked == true)
+            {
+                var_uc_27b = "2";
+            }
+            else if (uc_27b_c.Checked == true)
+            {
+                var_uc_27b = "3";
+            }
+
+
+
+
+
+            if (uc_28a_b.Checked == true)
+            {
+                var_uc_28a = "999";
+            }
+            else if (uc_28a_c.Checked == true)
+            {
+                var_uc_28a = "888";
+            }
+
+
+
+            if (uc_28b_a.Checked == true)
+            {
+                var_uc_28b = "1";
+            }
+            else if (uc_28b_b.Checked == true)
+            {
+                var_uc_28b = "2";
+            }
+            else if (uc_28b_c.Checked == true)
+            {
+                var_uc_28b = "3";
+            }
+
+
+
+
+            if (uc_29a_b.Checked == true)
+            {
+                var_uc_29a = "999";
+            }
+            else if (uc_29a_c.Checked == true)
+            {
+                var_uc_29a = "888";
+            }
+
+
+
+            if (uc_29b_a.Checked == true)
+            {
+                var_uc_29b = "1";
+            }
+            else if (uc_29b_b.Checked == true)
+            {
+                var_uc_29b = "2";
+            }
+            else if (uc_29b_c.Checked == true)
+            {
+                var_uc_29b = "3";
+            }
+
+
+
+
+
+            if (uc_30a_b.Checked == true)
+            {
+                var_uc_30a = "999";
+            }
+            else if (uc_30a_c.Checked == true)
+            {
+                var_uc_30a = "888";
+            }
+
+
+
+            if (uc_30b_a.Checked == true)
+            {
+                var_uc_30b = "1";
+            }
+            else if (uc_30b_b.Checked == true)
+            {
+                var_uc_30b = "2";
+            }
+            else if (uc_30b_c.Checked == true)
+            {
+                var_uc_30b = "3";
+            }
+
+
+
+
+            if (uc_31a_b.Checked == true)
+            {
+                var_uc_31a = "999";
+            }
+            else if (uc_31a_c.Checked == true)
+            {
+                var_uc_31a = "888";
+            }
+
+
+
+            if (uc_31b_a.Checked == true)
+            {
+                var_uc_31b = "1";
+            }
+            else if (uc_31b_b.Checked == true)
+            {
+                var_uc_31b = "2";
+            }
+            else if (uc_31b_c.Checked == true)
+            {
+                var_uc_31b = "3";
+            }
+
+
+
+
+            if (uc_32a_b.Checked == true)
+            {
+                var_uc_32a = "999";
+            }
+            else if (uc_32a_c.Checked == true)
+            {
+                var_uc_32a = "888";
+            }
+
+
+
+            if (uc_32b_a.Checked == true)
+            {
+                var_uc_32b = "1";
+            }
+            else if (uc_32b_b.Checked == true)
+            {
+                var_uc_32b = "2";
+            }
+            else if (uc_32b_c.Checked == true)
+            {
+                var_uc_32b = "3";
+            }
+
+
+
+
+
+            if (uc_33a_b.Checked == true)
+            {
+                var_uc_33a = "999";
+            }
+            else if (uc_33a_c.Checked == true)
+            {
+                var_uc_33a = "888";
+            }
+
+
+
+            if (uc_33b_a.Checked == true)
+            {
+                var_uc_33b = "1";
+            }
+            else if (uc_33b_b.Checked == true)
+            {
+                var_uc_33b = "2";
+            }
+            else if (uc_33b_c.Checked == true)
+            {
+                var_uc_33b = "3";
+            }
+
+
+
+
+            if (uc_34a_b.Checked == true)
+            {
+                var_uc_34a = "999";
+            }
+            else if (uc_34a_c.Checked == true)
+            {
+                var_uc_34a = "888";
+            }
+
+
+
+            if (uc_34b_a.Checked == true)
+            {
+                var_uc_34b = "1";
+            }
+            else if (uc_34b_b.Checked == true)
+            {
+                var_uc_34b = "2";
+            }
+            else if (uc_34b_c.Checked == true)
+            {
+                var_uc_34b = "3";
+            }
+
+
+
+
+            if (uc_35a_b.Checked == true)
+            {
+                var_uc_35a = "999";
+            }
+            else if (uc_35a_c.Checked == true)
+            {
+                var_uc_35a = "888";
+            }
+
+
+
+            if (uc_35b_a.Checked == true)
+            {
+                var_uc_35b = "1";
+            }
+            else if (uc_35b_b.Checked == true)
+            {
+                var_uc_35b = "2";
+            }
+            else if (uc_35b_c.Checked == true)
+            {
+                var_uc_35b = "3";
+            }
+
+
+
+
+
+            if (uc_36a_b.Checked == true)
+            {
+                var_uc_36a = "999";
+            }
+            else if (uc_36a_c.Checked == true)
+            {
+                var_uc_36a = "888";
+            }
+
+
+
+            if (uc_36b_a.Checked == true)
+            {
+                var_uc_36b = "1";
+            }
+            else if (uc_36b_b.Checked == true)
+            {
+                var_uc_36b = "2";
+            }
+            else if (uc_36b_c.Checked == true)
+            {
+                var_uc_36b = "3";
+            }
+
+
+
+
+
+            if (uc_37a_b.Checked == true)
+            {
+                var_uc_37a = "999";
+            }
+            else if (uc_37a_c.Checked == true)
+            {
+                var_uc_37a = "888";
+            }
+
+
+
+            if (uc_37b_a.Checked == true)
+            {
+                var_uc_37b = "1";
+            }
+            else if (uc_37b_b.Checked == true)
+            {
+                var_uc_37b = "2";
+            }
+            else if (uc_37b_c.Checked == true)
+            {
+                var_uc_37b = "3";
+            }
+
+
+
+
+
+
+
+            if (LA_20a_b.Checked == true)
+            {
+                var_LA_20a_b = "999";
+            }
+            else if (LA_20a_c.Checked == true)
+            {
+                var_LA_20a_b = "888";
+            }
+
+
+
+            if (LA_20b_a.Checked == true)
+            {
+                var_LA_20b_a = "1";
+            }
+            else if (LA_20b_b.Checked == true)
+            {
+                var_LA_20b_a = "2";
+            }
+            else if (LA_20b_c.Checked == true)
+            {
+                var_LA_20b_a = "3";
+            }
+
+
+
+
+            if (LA_21a_b.Checked == true)
+            {
+                var_LA_21a_b = "999";
+            }
+            else if (LA_21a_c.Checked == true)
+            {
+                var_LA_21a_b = "888";
+            }
+
+
+
+            if (LA_21b_a.Checked == true)
+            {
+                var_LA_21b_a = "1";
+            }
+            else if (LA_21b_b.Checked == true)
+            {
+                var_LA_21b_a = "2";
+            }
+            else if (LA_21b_c.Checked == true)
+            {
+                var_LA_21b_a = "3";
+            }
+
+
+
+            if (LA_22a_b.Checked == true)
+            {
+                var_LA_22a_b = "999";
+            }
+            else if (LA_22a_c.Checked == true)
+            {
+                var_LA_22a_b = "888";
+            }
+
+
+
+            if (LA_22b_a.Checked == true)
+            {
+                var_LA_22b_a = "1";
+            }
+            else if (LA_22b_b.Checked == true)
+            {
+                var_LA_22b_a = "2";
+            }
+            else if (LA_22b_c.Checked == true)
+            {
+                var_LA_22b_a = "3";
+            }
+
+
+
+            if (LA_23a_b.Checked == true)
+            {
+                var_LA_23a_b = "999";
+            }
+            else if (LA_23a_c.Checked == true)
+            {
+                var_LA_23a_b = "888";
+            }
+
+
+
+            if (LA_23b_a.Checked == true)
+            {
+                var_LA_23b_a = "1";
+            }
+            else if (LA_23b_b.Checked == true)
+            {
+                var_LA_23b_a = "2";
+            }
+            else if (LA_23b_c.Checked == true)
+            {
+                var_LA_23b_a = "3";
+            }
+
+
+
+            if (LA_24a_b.Checked == true)
+            {
+                var_LA_24a_b = "999";
+            }
+            else if (LA_24a_c.Checked == true)
+            {
+                var_LA_24a_b = "888";
+            }
+
+
+
+            if (LA_24b_a.Checked == true)
+            {
+                var_LA_24b_a = "1";
+            }
+            else if (LA_24b_b.Checked == true)
+            {
+                var_LA_24b_a = "2";
+            }
+            else if (LA_24b_c.Checked == true)
+            {
+                var_LA_24b_a = "3";
+            }
+
+
+
+            if (LA_25a_b.Checked == true)
+            {
+                var_LA_25a_b = "999";
+            }
+            else if (LA_25a_c.Checked == true)
+            {
+                var_LA_25a_b = "888";
+            }
+
+
+
+            if (LA_25b_a.Checked == true)
+            {
+                var_LA_25b_a = "1";
+            }
+            else if (LA_25b_b.Checked == true)
+            {
+                var_LA_25b_a = "2";
+            }
+            else if (LA_25b_c.Checked == true)
+            {
+                var_LA_25b_a = "3";
+            }
+
+
+
+            if (LA_26a_b.Checked == true)
+            {
+                var_LA_26a_b = "999";
+            }
+            else if (LA_26a_c.Checked == true)
+            {
+                var_LA_26a_b = "888";
+            }
+
+
+
+            if (LA_26b_a.Checked == true)
+            {
+                var_LA_26b_a = "1";
+            }
+            else if (LA_26b_b.Checked == true)
+            {
+                var_LA_26b_a = "2";
+            }
+            else if (LA_26b_c.Checked == true)
+            {
+                var_LA_26b_a = "3";
+            }
+
+
+
+
+            if (LA_27a_b.Checked == true)
+            {
+                var_LA_27a_b = "999";
+            }
+            else if (LA_27a_c.Checked == true)
+            {
+                var_LA_27a_b = "888";
+            }
+
+
+
+            if (LA_27b_a.Checked == true)
+            {
+                var_LA_27b_a = "1";
+            }
+            else if (LA_27b_b.Checked == true)
+            {
+                var_LA_27b_a = "2";
+            }
+            else if (LA_27b_c.Checked == true)
+            {
+                var_LA_27b_a = "3";
+            }
+
+
+
+
+            if (LA_28a_b.Checked == true)
+            {
+                var_LA_28a_b = "999";
+            }
+            else if (LA_28a_c.Checked == true)
+            {
+                var_LA_28a_b = "888";
+            }
+
+
+
+            if (LA_28b_a.Checked == true)
+            {
+                var_LA_28b_a = "1";
+            }
+            else if (LA_28b_b.Checked == true)
+            {
+                var_LA_28b_a = "2";
+            }
+            else if (LA_28b_c.Checked == true)
+            {
+                var_LA_28b_a = "3";
+            }
+
+
+
+            if (LA_29a_b.Checked == true)
+            {
+                var_LA_29a_b = "999";
+            }
+            else if (LA_29a_c.Checked == true)
+            {
+                var_LA_29a_b = "888";
+            }
+
+
+
+            if (LA_29b_a.Checked == true)
+            {
+                var_LA_29b_a = "1";
+            }
+            else if (LA_29b_b.Checked == true)
+            {
+                var_LA_29b_a = "2";
+            }
+            else if (LA_29b_c.Checked == true)
+            {
+                var_LA_29b_a = "3";
+            }
+
+
+
+            if (LA_30a_b.Checked == true)
+            {
+                var_LA_30a_b = "999";
+            }
+            else if (LA_30a_c.Checked == true)
+            {
+                var_LA_30a_b = "888";
+            }
+
+
+
+            if (LA_30b_a.Checked == true)
+            {
+                var_LA_30b_a = "1";
+            }
+            else if (LA_30b_b.Checked == true)
+            {
+                var_LA_30b_a = "2";
+            }
+            else if (LA_30b_c.Checked == true)
+            {
+                var_LA_30b_a = "3";
+            }
+
+
+
+            if (LA_31a_b.Checked == true)
+            {
+                var_LA_31a_b = "999";
+            }
+            else if (LA_31a_c.Checked == true)
+            {
+                var_LA_31a_b = "888";
+            }
+
+
+
+            if (LA_31b_a.Checked == true)
+            {
+                var_LA_31b_a = "1";
+            }
+            else if (LA_31b_b.Checked == true)
+            {
+                var_LA_31b_a = "2";
+            }
+            else if (LA_31b_c.Checked == true)
+            {
+                var_LA_31b_a = "3";
+            }
+
+
+
+            if (LA_32a_b.Checked == true)
+            {
+                var_LA_32a_b = "999";
+            }
+            else if (LA_32a_c.Checked == true)
+            {
+                var_LA_32a_b = "888";
+            }
+
+
+
+            if (LA_32b_a.Checked == true)
+            {
+                var_LA_32b_a = "1";
+            }
+            else if (LA_32b_b.Checked == true)
+            {
+                var_LA_32b_a = "2";
+            }
+            else if (LA_32b_c.Checked == true)
+            {
+                var_LA_32b_a = "3";
+            }
+
+
+
+
+            if (LA_33a_b.Checked == true)
+            {
+                var_LA_33a_b = "999";
+            }
+            else if (LA_33a_c.Checked == true)
+            {
+                var_LA_33a_b = "888";
+            }
+
+
+
+            if (LA_33b_a.Checked == true)
+            {
+                var_LA_33b_a = "1";
+            }
+            else if (LA_33b_b.Checked == true)
+            {
+                var_LA_33b_a = "2";
+            }
+            else if (LA_33b_c.Checked == true)
+            {
+                var_LA_33b_a = "3";
+            }
+
+
+
+
+            if (LA_34a_b.Checked == true)
+            {
+                var_LA_34a_b = "999";
+            }
+            else if (LA_34a_c.Checked == true)
+            {
+                var_LA_34a_b = "888";
+            }
+
+
+
+            if (LA_34b_a.Checked == true)
+            {
+                var_LA_34b_a = "1";
+            }
+            else if (LA_34b_b.Checked == true)
+            {
+                var_LA_34b_a = "2";
+            }
+            else if (LA_34b_c.Checked == true)
+            {
+                var_LA_34b_a = "3";
+            }
+
+
+
+            if (LA_35a_b.Checked == true)
+            {
+                var_LA_35a_b = "999";
+            }
+            else if (LA_35a_c.Checked == true)
+            {
+                var_LA_35a_b = "888";
+            }
+
+
+
+            if (LA_35b_a.Checked == true)
+            {
+                var_LA_35b_a = "1";
+            }
+            else if (LA_35b_b.Checked == true)
+            {
+                var_LA_35b_a = "2";
+            }
+            else if (LA_35b_c.Checked == true)
+            {
+                var_LA_35b_a = "3";
+            }
+
+
+
+            if (LA_36a_b.Checked == true)
+            {
+                var_LA_36a_b = "999";
+            }
+            else if (LA_36a_c.Checked == true)
+            {
+                var_LA_36a_b = "888";
+            }
+
+
+
+            if (LA_36b_a.Checked == true)
+            {
+                var_LA_36b_a = "1";
+            }
+            else if (LA_36b_b.Checked == true)
+            {
+                var_LA_36b_a = "2";
+            }
+            else if (LA_36b_c.Checked == true)
+            {
+                var_LA_36b_a = "3";
+            }
+
+
+
+
+            if (LA_37a_b.Checked == true)
+            {
+                var_LA_37a_b = "999";
+            }
+            else if (LA_37a_c.Checked == true)
+            {
+                var_LA_37a_b = "888";
+            }
+
+
+
+            if (LA_37b_a.Checked == true)
+            {
+                var_LA_37b_a = "1";
+            }
+            else if (LA_37b_b.Checked == true)
+            {
+                var_LA_37b_a = "2";
+            }
+            else if (LA_37b_c.Checked == true)
+            {
+                var_LA_37b_a = "3";
+            }
+
+
+
+            if (LA_38a_b.Checked == true)
+            {
+                var_LA_38a_b = "999";
+            }
+            else if (LA_38a_c.Checked == true)
+            {
+                var_LA_38a_b = "888";
+            }
+
+
+
+            if (LA_38b_a.Checked == true)
+            {
+                var_LA_38b_a = "1";
+            }
+            else if (LA_38b_b.Checked == true)
+            {
+                var_LA_38b_a = "2";
+            }
+            else if (LA_38b_c.Checked == true)
+            {
+                var_LA_38b_a = "3";
+            }
+
+
+
+            if (LA_39a_b.Checked == true)
+            {
+                var_LA_39a_b = "999";
+            }
+            else if (LA_39a_c.Checked == true)
+            {
+                var_LA_39a_b = "888";
+            }
+
+
+
+            if (LA_39b_a.Checked == true)
+            {
+                var_LA_39b_a = "1";
+            }
+            else if (LA_39b_b.Checked == true)
+            {
+                var_LA_39b_a = "2";
+            }
+            else if (LA_39b_c.Checked == true)
+            {
+                var_LA_39b_a = "3";
+            }
+
+
+
+            if (LA_40a_b.Checked == true)
+            {
+                var_LA_40a_b = "999";
+            }
+            else if (LA_40a_c.Checked == true)
+            {
+                var_LA_40a_b = "888";
+            }
+
+
+
+            if (LA_40b_a.Checked == true)
+            {
+                var_LA_40b_a = "1";
+            }
+            else if (LA_40b_b.Checked == true)
+            {
+                var_LA_40b_a = "2";
+            }
+            else if (LA_40b_c.Checked == true)
+            {
+                var_LA_40b_a = "3";
+            }
+
+
+
+            if (LA_41a_b.Checked == true)
+            {
+                var_LA_41a_b = "999";
+            }
+            else if (LA_41a_c.Checked == true)
+            {
+                var_LA_41a_b = "888";
+            }
+
+
+
+            if (LA_41b_a.Checked == true)
+            {
+                var_LA_41b_a = "1";
+            }
+            else if (LA_41b_b.Checked == true)
+            {
+                var_LA_41b_a = "2";
+            }
+            else if (LA_41b_c.Checked == true)
+            {
+                var_LA_41b_a = "3";
+            }
+
+
+
+            if (LA_42a_b.Checked == true)
+            {
+                var_LA_42a_b = "999";
+            }
+            else if (LA_42a_c.Checked == true)
+            {
+                var_LA_42a_b = "888";
+            }
+
+
+
+            if (LA_42b_a.Checked == true)
+            {
+                var_LA_42b_a = "1";
+            }
+            else if (LA_42b_b.Checked == true)
+            {
+                var_LA_42b_a = "2";
+            }
+            else if (LA_42b_c.Checked == true)
+            {
+                var_LA_42b_a = "3";
+            }
+
+
+
+            if (LA_43a_b.Checked == true)
+            {
+                var_LA_43a_b = "999";
+            }
+            else if (LA_43a_c.Checked == true)
+            {
+                var_LA_43a_b = "888";
+            }
+
+
+
+            if (LA_43b_a.Checked == true)
+            {
+                var_LA_43b_a = "1";
+            }
+            else if (LA_43b_b.Checked == true)
+            {
+                var_LA_43b_a = "2";
+            }
+            else if (LA_43b_c.Checked == true)
+            {
+                var_LA_43b_a = "3";
+            }
+
+
+
+            if (LA_44a_b.Checked == true)
+            {
+                var_LA_44a_b = "999";
+            }
+            else if (LA_44a_c.Checked == true)
+            {
+                var_LA_44a_b = "888";
+            }
+
+
+
+            if (LA_44b_a.Checked == true)
+            {
+                var_LA_44b_a = "1";
+            }
+            else if (LA_44b_b.Checked == true)
+            {
+                var_LA_44b_a = "2";
+            }
+            else if (LA_44b_c.Checked == true)
+            {
+                var_LA_44b_a = "3";
+            }
+
+
+
+            if (LA_45a_b.Checked == true)
+            {
+                var_LA_45a_b = "999";
+            }
+            else if (LA_45a_c.Checked == true)
+            {
+                var_LA_45a_b = "888";
+            }
+
+
+
+            if (LA_45b_a.Checked == true)
+            {
+                var_LA_45b_a = "1";
+            }
+            else if (LA_45b_b.Checked == true)
+            {
+                var_LA_45b_a = "2";
+            }
+            else if (LA_45b_c.Checked == true)
+            {
+                var_LA_45b_a = "3";
+            }
+
+
+
+            if (LA_46a_b.Checked == true)
+            {
+                var_LA_46a_b = "999";
+            }
+            else if (LA_46a_c.Checked == true)
+            {
+                var_LA_46a_b = "888";
+            }
+
+
+
+            if (LA_46b_a.Checked == true)
+            {
+                var_LA_46b_a = "1";
+            }
+            else if (LA_46b_b.Checked == true)
+            {
+                var_LA_46b_a = "2";
+            }
+            else if (LA_46b_c.Checked == true)
+            {
+                var_LA_46b_a = "3";
+            }
+
+
+
+            if (LA_47a_b.Checked == true)
+            {
+                var_LA_47a_b = "999";
+            }
+            else if (LA_47a_c.Checked == true)
+            {
+                var_LA_47a_b = "888";
+            }
+
+
+
+            if (LA_47b_a.Checked == true)
+            {
+                var_LA_47b_a = "1";
+            }
+            else if (LA_47b_b.Checked == true)
+            {
+                var_LA_47b_a = "2";
+            }
+            else if (LA_47b_c.Checked == true)
+            {
+                var_LA_47b_a = "3";
+            }
+
+
+
+
+            if (LA_48a_b.Checked == true)
+            {
+                var_LA_48a_b = "999";
+            }
+            else if (LA_48a_c.Checked == true)
+            {
+                var_LA_48a_b = "888";
+            }
+
+
+
+            if (LA_48b_a.Checked == true)
+            {
+                var_LA_48b_a = "1";
+            }
+            else if (LA_48b_b.Checked == true)
+            {
+                var_LA_48b_a = "2";
+            }
+            else if (LA_48b_c.Checked == true)
+            {
+                var_LA_48b_a = "3";
+            }
+
+
+
+            if (LA_49a_b.Checked == true)
+            {
+                var_LA_49a_b = "999";
+            }
+            else if (LA_49a_c.Checked == true)
+            {
+                var_LA_49a_b = "888";
+            }
+
+
+
+            if (LA_49b_a.Checked == true)
+            {
+                var_LA_49b_a = "1";
+            }
+            else if (LA_49b_b.Checked == true)
+            {
+                var_LA_49b_a = "2";
+            }
+            else if (LA_49b_c.Checked == true)
+            {
+                var_LA_49b_a = "3";
+            }
+
+
+
+            if (LA_50a_b.Checked == true)
+            {
+                var_LA_50a_b = "999";
+            }
+            else if (LA_50a_c.Checked == true)
+            {
+                var_LA_50a_b = "888";
+            }
+
+
+
+            if (LA_50b_a.Checked == true)
+            {
+                var_LA_50b_a = "1";
+            }
+            else if (LA_50b_b.Checked == true)
+            {
+                var_LA_50b_a = "2";
+            }
+            else if (LA_50b_c.Checked == true)
+            {
+                var_LA_50b_a = "3";
+            }
+
+
+
+
+            if (LA_51a_b.Checked == true)
+            {
+                var_LA_51a_b = "999";
+            }
+            else if (LA_51a_c.Checked == true)
+            {
+                var_LA_51a_b = "888";
+            }
+
+
+
+            if (LA_51b_a.Checked == true)
+            {
+                var_LA_51b_a = "1";
+            }
+            else if (LA_51b_b.Checked == true)
+            {
+                var_LA_51b_a = "2";
+            }
+            else if (LA_51b_c.Checked == true)
+            {
+                var_LA_51b_a = "3";
+            }
+
+
+
+            if (LA_52a_b.Checked == true)
+            {
+                var_LA_52a_b = "999";
+            }
+            else if (LA_52a_c.Checked == true)
+            {
+                var_LA_52a_b = "888";
+            }
+
+
+
+            if (LA_52b_a.Checked == true)
+            {
+                var_LA_52b_a = "1";
+            }
+            else if (LA_52b_b.Checked == true)
+            {
+                var_LA_52b_a = "2";
+            }
+            else if (LA_52b_c.Checked == true)
+            {
+                var_LA_52b_a = "3";
+            }
+
+
+            DateTime dt_entry = new DateTime();
+
+            string[] arr_entry = null;
+            string val_entry = null;
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+            dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            arr_entry = dt_entry.ToShortDateString().Split('/');
+            val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
+
+
+            CConnection cn = new CConnection();
+
+
+            string qry1 = "select * from sample_result where la_sno='" + la_sno.Text + "'";
+
+            string msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
+
+            if (string.IsNullOrEmpty(msg1))
+            {
+
+                qry1 = "UPDATE sample_result set " +
+ "LA_01 = '" + LA_01.Text + "', " +
+ "LA_02 = '" + LA_02.Text + "', " +
+ "LA_03_b = '" + LA_03_b.Text + "', " +
+ "LA_03_a = '" + LA_03_a.Text + "', " +
+ "LA_04_b = '" + LA_04_b.Text + "', " +
+ "LA_04_a = '" + LA_04_a.Text + "', " +
+ "LA_05_b = '" + LA_05_b.Text + "', " +
+ "LA_05_a = '" + LA_05_a.Text + "', " +
+ "LA_06_b = '" + LA_06_b.Text + "', " +
+ "LA_06_a = '" + LA_06_a.Text + "', " +
+ "LA_07_b = '" + LA_07_b.Text + "', " +
+ "LA_07_a = '" + LA_07_a.Text + "', " +
+ "LA_08_b = '" + LA_08_b.Text + "', " +
+ "LA_08_a = '" + LA_08_a.Text + "', " +
+ "LA_09_b = '" + LA_09_b.Text + "', " +
+ "LA_09_a = '" + LA_09_a.Text + "', " +
+ "LA_10_b = '" + LA_10_b.Text + "', " +
+ "LA_10_a = '" + LA_10_a.Text + "', " +
+ "LA_11_b = '" + LA_11_b.Text + "', " +
+ "LA_11_a = '" + LA_11_a.Text + "', " +
+ "LA_12_b = '" + LA_12_b.Text + "', " +
+ "LA_12_a = '" + LA_12_a.Text + "', " +
+ "LA_13_b = '" + LA_13_b.Text + "', " +
+ "LA_13_a = '" + LA_13_a.Text + "', " +
+ "LA_14_b = '" + LA_14_b.Text + "', " +
+ "LA_14_a = '" + LA_14_a.Text + "', " +
+ "LA_15_b = '" + LA_15_b.Text + "', " +
+ "LA_15_a = '" + LA_15_a.Text + "', " +
+ "LA_16_b = '" + LA_16_b.Text + "', " +
+ "LA_16_a = '" + LA_16_a.Text + "', " +
+ "LF_01 = '" + var_LF_01 + "', " +
+ "LF_01_a = '" + LF_01_a.Text + "', " +
+ "LF_02 = '" + var_LF_02 + "', " +
+ "LF_02_a = '" + LF_02_a.Text + "', " +
+ "LF_03 = '" + var_LF_03 + "', " +
+ "LF_03_a = '" + LF_03_a.Text + "', " +
+ "LF_04 = '" + var_LF_04 + "', " +
+ "LF_04_a = '" + LF_04_a.Text + "', " +
+ "LF_05 = '" + var_LF_05 + "', " +
+ "LF_05_a = '" + LF_05_a.Text + "', " +
+ "LF_06 = '" + var_LF_06 + "', " +
+ "LF_06_a = '" + LF_06_a.Text + "', " +
+ "LF_07 = '" + var_LF_07 + "', " +
+ "LF_07_a = '" + LF_07_a.Text + "', " +
+ "RF_01 = '" + var_RF_01 + "', " +
+ "RF_01_a = '" + RF_01_a.Text + "', " +
+ "RF_02 = '" + var_RF_02 + "', " +
+ "RF_02_a = '" + RF_02_a.Text + "', " +
+ "RF_03 = '" + var_RF_03 + "', " +
+ "RF_03_a = '" + RF_03_a.Text + "', " +
+ "RF_04 = '" + var_RF_04 + "', " +
+ "RF_04_a = '" + RF_04_a.Text + "', " +
+ "SE_01 = '" + var_SE_01 + "', " +
+ "SE_01_a = '" + SE_01_a.Text + "', " +
+ "SE_02 = '" + var_SE_02 + "', " +
+ "SE_02_a = '" + SE_02_a.Text + "', " +
+ "SE_03 = '" + var_SE_03 + "', " +
+ "SE_03_a = '" + SE_03_a.Text + "', " +
+ "SE_04 = '" + var_SE_04 + "', " +
+ "SE_04_a = '" + SE_04_a.Text + "', " +
+ "CS_01 = '" + var_CS_01 + "', " +
+ "CS_01_a = '" + CS_01_a.Text + "', " +
+ "CS_02 = '" + var_CS_02 + "', " +
+ "CS_02_a = '" + CS_02_a.Text + "', " +
+ "CS_03 = '" + var_CS_03 + "', " +
+ "CS_03_a = '" + CS_03_a.Text + "', " +
+ "CS_04 = '" + var_CS_04 + "', " +
+ "CS_04_a = '" + CS_04_a.Text + "', " +
+ "CS_05 = '" + var_CS_05 + "', " +
+ "CS_05_a = '" + CS_05_a.Text + "', " +
+ "CS_06 = '" + var_CS_06 + "', " +
+ "CS_06_a = '" + CS_06_a.Text + "', " +
+ "CS_07 = '" + var_CS_07 + "', " +
+ "CS_07_a = '" + CS_07_a.Text + "', " +
+ "CS_08 = '" + var_CS_08 + "', " +
+ "CS_08_a = '" + CS_08_a.Text + "', " +
+ "CS_09 = '" + var_CS_09 + "', " +
+ "CS_09_a = '" + CS_09_a.Text + "', " +
+ "CS_10 = '" + var_CS_10 + "', " +
+ "CS_10_a = '" + CS_10_a.Text + "', " +
+ "UR_01 = '" + var_UR_01 + "', " +
+ "UR_01_a = '" + UR_01_a.Text + "', " +
+ "UR_02 = '" + var_UR_02 + "', " +
+ "UR_02_a = '" + UR_02_a.Text + "', " +
+ "UR_03 = '" + var_UR_03 + "', " +
+ "UR_03_a = '" + UR_03_a.Text + "', " +
+ "UR_04 = '" + var_UR_04 + "', " +
+ "UR_04_a = '" + UR_04_a.Text + "', " +
+ "UR_05 = '" + var_UR_05 + "', " +
+ "UR_05_a = '" + UR_05_a.Text + "', " +
+ "UR_06 = '" + var_UR_06 + "', " +
+ "UR_06_a = '" + UR_06_a.Text + "', " +
+ "UR_07 = '" + var_UR_07 + "', " +
+ "UR_07_a = '" + UR_07_a.Text + "', " +
+ "UR_08 = '" + var_UR_08 + "', " +
+ "UR_08_a = '" + UR_08_a.Text + "', " +
+ "UR_10 = '" + var_UR_10 + "', " +
+ "UR_10_a = '" + UR_10_a.Text + "', " +
+ "UR_11 = '" + var_UR_11 + "', " +
+ "UR_11_a = '" + UR_11_a.Text + "', " +
+ "UR_12 = '" + var_UR_12 + "', " +
+ "UR_12_a = '" + UR_12_a.Text + "', " +
+ "UR_13 = '" + var_UR_13 + "', " +
+ "UR_13_a = '" + UR_13_a.Text + "', " +
+ "UR_14 = '" + var_UR_14 + "', " +
+ "UR_14_a = '" + UR_14_a.Text + "', " +
+ "UR_15 = '" + var_UR_15 + "', " +
+ "UR_15_a = '" + UR_15_a.Text + "', " +
+ "UR_16 = '" + var_UR_16 + "', " +
+ "UR_16_a = '" + UR_16_a.Text + "', " +
+ "UR_17 = '" + var_UR_17 + "', " +
+ "UR_17_a = '" + UR_17_a.Text + "', " +
+ "UR_18 = '" + var_UR_18 + "', " +
+ "UR_18_a = '" + UR_18_a.Text + "', " +
+ "UR_19 = '" + var_UR_19 + "', " +
+ "UR_19_a = '" + UR_19_a.Text + "', " +
+ "UR_20 = '" + var_UR_20 + "', " +
+ "UR_20_a = '" + UR_20_a.Text + "', " +
+ "UR_21 = '" + var_UR_21 + "', " +
+ "UR_21_a = '" + UR_21_a.Text + "', " +
+ "uc_01a = '" + var_uc_01a + "', " +
+ "uc_02a = '" + var_uc_02a + "', " +
+ "uc_02a_a = '" + uc_02a_a.Text + "', " +
+ "uc_02b = '" + var_uc_02b + "', " +
+ "uc_03a = '" + var_uc_03a + "', " +
+ "uc_03a_a = '" + uc_03a_a.Text + "', " +
+ "uc_03b = '" + var_uc_03b + "', " +
+ "uc_04a = '" + var_uc_04a + "', " +
+ "uc_04a_a = '" + uc_04a_a.Text + "', " +
+ "uc_04b = '" + var_uc_04b + "', " +
+ "uc_05a = '" + var_uc_05a + "', " +
+ "uc_05a_a = '" + uc_05a_a.Text + "', " +
+ "uc_05b = '" + var_uc_05b + "', " +
+ "uc_06a = '" + var_uc_06a + "', " +
+ "uc_06a_a = '" + uc_06a_a.Text + "', " +
+ "uc_06b = '" + var_uc_06b + "', " +
+ "uc_07a = '" + var_uc_07a + "', " +
+ "uc_07a_a = '" + uc_07a_a.Text + "', " +
+ "uc_07b = '" + var_uc_07b + "', " +
+ "uc_08a = '" + var_uc_08a + "', " +
+ "uc_08a_a = '" + uc_08a_a.Text + "', " +
+ "uc_08b = '" + var_uc_08b + "', " +
+ "uc_09a = '" + var_uc_09a + "', " +
+ "uc_09a_a = '" + uc_09a_a.Text + "', " +
+ "uc_09b = '" + var_uc_09b + "', " +
+ "uc_10a = '" + var_uc_10a + "', " +
+ "uc_10a_a = '" + uc_10a_a.Text + "', " +
+ "uc_10b = '" + var_uc_10b + "', " +
+ "uc_11a = '" + var_uc_11a + "', " +
+ "uc_11a_a = '" + uc_11a_a.Text + "', " +
+ "uc_11b = '" + var_uc_11b + "', " +
+ "uc_12a = '" + var_uc_12a + "', " +
+ "uc_12a_a = '" + uc_12a_a.Text + "', " +
+ "uc_12b = '" + var_uc_12b + "', " +
+ "uc_13a = '" + var_uc_13a + "', " +
+ "uc_13a_a = '" + uc_13a_a.Text + "', " +
+ "uc_13b = '" + var_uc_13b + "', " +
+ "uc_14a = '" + var_uc_14a + "', " +
+ "uc_14a_a = '" + uc_14a_a.Text + "', " +
+ "uc_14b = '" + var_uc_14b + "', " +
+ "uc_15a = '" + var_uc_15a + "', " +
+ "uc_15a_a = '" + uc_15a_a.Text + "', " +
+ "uc_15b = '" + var_uc_15b + "', " +
+ "uc_16a = '" + var_uc_16a + "', " +
+ "uc_16a_a = '" + uc_16a_a.Text + "', " +
+ "uc_16b = '" + var_uc_16b + "', " +
+ "uc_17a = '" + var_uc_17a + "', " +
+ "uc_17a_a = '" + uc_17a_a.Text + "', " +
+ "uc_17b = '" + var_uc_17b + "', " +
+ "uc_18a = '" + var_uc_18a + "', " +
+ "uc_18a_a = '" + uc_18a_a.Text + "', " +
+ "uc_18b = '" + var_uc_18b + "', " +
+ "uc_19a = '" + var_uc_19a + "', " +
+ "uc_19a_a = '" + uc_19a_a.Text + "', " +
+ "uc_19b = '" + var_uc_19b + "', " +
+ "uc_20a = '" + var_uc_20a + "', " +
+ "uc_20a_a = '" + uc_20a_a.Text + "', " +
+ "uc_20b = '" + var_uc_20b + "', " +
+ "uc_21a = '" + var_uc_21a + "', " +
+ "uc_21a_a = '" + uc_21a_a.Text + "', " +
+ "uc_21b = '" + var_uc_21b + "', " +
+ "uc_22a = '" + var_uc_22a + "', " +
+ "uc_22a_a = '" + uc_22a_a.Text + "', " +
+ "uc_22b = '" + var_uc_22b + "', " +
+ "uc_23a = '" + var_uc_23a + "', " +
+ "uc_23a_a = '" + uc_23a_a.Text + "', " +
+ "uc_23b = '" + var_uc_23b + "', " +
+ "uc_24a = '" + var_uc_24a + "', " +
+ "uc_24a_a = '" + uc_24a_a.Text + "', " +
+ "uc_24b = '" + var_uc_24b + "', " +
+ "uc_25a = '" + var_uc_25a + "', " +
+ "uc_25a_a = '" + uc_25a_a.Text + "', " +
+ "uc_25b = '" + var_uc_25b + "', " +
+ "uc_26a = '" + var_uc_26a + "', " +
+ "uc_26a_a = '" + uc_26a_a.Text + "', " +
+ "uc_26b = '" + var_uc_26b + "', " +
+ "uc_27a = '" + var_uc_27a + "', " +
+ "uc_27a_a = '" + uc_27a_a.Text + "', " +
+ "uc_27b = '" + var_uc_27b + "', " +
+ "uc_28a = '" + var_uc_28a + "', " +
+ "uc_28a_a = '" + uc_28a_a.Text + "', " +
+ "uc_28b = '" + var_uc_28b + "', " +
+ "uc_29a = '" + var_uc_29a + "', " +
+ "uc_29a_a = '" + uc_29a_a.Text + "', " +
+ "uc_29b = '" + var_uc_29b + "', " +
+ "uc_30a = '" + var_uc_30a + "', " +
+ "uc_30a_a = '" + uc_30a_a.Text + "', " +
+ "uc_30b = '" + var_uc_30b + "', " +
+ "uc_31a = '" + var_uc_31a + "', " +
+ "uc_31a_a = '" + uc_31a_a.Text + "', " +
+ "uc_31b = '" + var_uc_31b + "', " +
+ "uc_32a = '" + var_uc_32a + "', " +
+ "uc_32a_a = '" + uc_32a_a.Text + "', " +
+ "uc_32b = '" + var_uc_32b + "', " +
+ "uc_33a = '" + var_uc_33a + "', " +
+ "uc_33a_a = '" + uc_33a_a.Text + "', " +
+ "uc_33b = '" + var_uc_33b + "', " +
+ "uc_34a = '" + var_uc_34a + "', " +
+ "uc_34a_a = '" + uc_34a_a.Text + "', " +
+ "uc_34b = '" + var_uc_34b + "', " +
+ "uc_35a = '" + var_uc_35a + "', " +
+ "uc_35a_a = '" + uc_35a_a.Text + "', " +
+ "uc_35b = '" + var_uc_35b + "', " +
+ "uc_36a = '" + var_uc_36a + "', " +
+ "uc_36a_a = '" + uc_36a_a.Text + "', " +
+ "uc_36b = '" + var_uc_36b + "', " +
+ "uc_37a = '" + var_uc_37a + "', " +
+ "uc_37a_a = '" + uc_37a_a.Text + "', " +
+ "uc_37b = '" + var_uc_37b + "', " +
+ "LA_17 = '" + LA_17.Text + "', " +
+ "LA_18 = '" + LA_18.Text + "', " +
+ "LA_19 = '" + LA_19.Text + "', " +
+ "LA_20a_b = '" + LA_20a_b.Text + "', " +
+ "LA_20a_a = '" + LA_20a_a.Text + "', " +
+ "LA_20b_a = '" + LA_20b_a.Text + "', " +
+ "LA_21a_b = '" + LA_21a_b.Text + "', " +
+ "LA_21a_a = '" + LA_21a_a.Text + "', " +
+ "LA_21b_a = '" + LA_21b_a.Text + "', " +
+ "LA_22a_b = '" + LA_22a_b.Text + "', " +
+ "LA_22a_a = '" + LA_22a_a.Text + "', " +
+ "LA_22b_a = '" + LA_22b_a.Text + "', " +
+ "LA_23a_b = '" + LA_23a_b.Text + "', " +
+ "LA_23a_a = '" + LA_23a_a.Text + "', " +
+ "LA_23b_a = '" + LA_23b_a.Text + "', " +
+ "LA_24a_b = '" + LA_24a_b.Text + "', " +
+ "LA_24a_a = '" + LA_24a_a.Text + "', " +
+ "LA_24b_a = '" + LA_24b_a.Text + "', " +
+ "LA_25a_b = '" + LA_25a_b.Text + "', " +
+ "LA_25a_a = '" + LA_25a_a.Text + "', " +
+ "LA_25b_a = '" + LA_25b_a.Text + "', " +
+ "LA_26a_b = '" + LA_26a_b.Text + "', " +
+ "LA_26a_a = '" + LA_26a_a.Text + "', " +
+ "LA_26b_a = '" + LA_26b_a.Text + "', " +
+ "LA_27a_b = '" + LA_27a_b.Text + "', " +
+ "LA_27a_a = '" + LA_27a_a.Text + "', " +
+ "LA_27b_a = '" + LA_27b_a.Text + "', " +
+ "LA_28a_b = '" + LA_28a_b.Text + "', " +
+ "LA_28a_a = '" + LA_28a_a.Text + "', " +
+ "LA_28b_a = '" + LA_28b_a.Text + "', " +
+ "LA_29a_b = '" + LA_29a_b.Text + "', " +
+ "LA_29a_a = '" + LA_29a_a.Text + "', " +
+ "LA_29b_a = '" + LA_29b_a.Text + "', " +
+ "LA_30a_b = '" + LA_30a_b.Text + "', " +
+ "LA_30a_a = '" + LA_30a_a.Text + "', " +
+ "LA_30b_a = '" + LA_30b_a.Text + "', " +
+ "LA_31a_b = '" + LA_31a_b.Text + "', " +
+ "LA_31a_a = '" + LA_31a_a.Text + "', " +
+ "LA_31b_a = '" + LA_31b_a.Text + "', " +
+ "LA_32a_b = '" + LA_32a_b.Text + "', " +
+ "LA_32a_a = '" + LA_32a_a.Text + "', " +
+ "LA_32b_a = '" + LA_32b_a.Text + "', " +
+ "LA_33a_b = '" + LA_33a_b.Text + "', " +
+ "LA_33a_a = '" + LA_33a_a.Text + "', " +
+ "LA_33b_a = '" + LA_33b_a.Text + "', " +
+ "LA_34a_b = '" + LA_34a_b.Text + "', " +
+ "LA_34a_a = '" + LA_34a_a.Text + "', " +
+ "LA_34b_a = '" + LA_34b_a.Text + "', " +
+ "LA_35a_b = '" + LA_35a_b.Text + "', " +
+ "LA_35a_a = '" + LA_35a_a.Text + "', " +
+ "LA_35b_a = '" + LA_35b_a.Text + "', " +
+ "LA_36a_b = '" + LA_36a_b.Text + "', " +
+ "LA_36a_a = '" + LA_36a_a.Text + "', " +
+ "LA_36b_a = '" + LA_36b_a.Text + "', " +
+ "LA_37a_b = '" + LA_37a_b.Text + "', " +
+ "LA_37a_a = '" + LA_37a_a.Text + "', " +
+ "LA_37b_a = '" + LA_37b_a.Text + "', " +
+ "LA_38a_b = '" + LA_38a_b.Text + "', " +
+ "LA_38a_a = '" + LA_38a_a.Text + "', " +
+ "LA_38b_a = '" + LA_38b_a.Text + "', " +
+ "LA_39a_b = '" + LA_39a_b.Text + "', " +
+ "LA_39a_a = '" + LA_39a_a.Text + "', " +
+ "LA_39b_a = '" + LA_39b_a.Text + "', " +
+ "LA_40a_b = '" + LA_40a_b.Text + "', " +
+ "LA_40a_a = '" + LA_40a_a.Text + "', " +
+ "LA_40b_a = '" + LA_40b_a.Text + "', " +
+ "LA_41a_b = '" + LA_41a_b.Text + "', " +
+ "LA_41a_a = '" + LA_41a_a.Text + "', " +
+ "LA_41b_a = '" + LA_41b_a.Text + "', " +
+ "LA_42a_b = '" + LA_42a_b.Text + "', " +
+ "LA_42a_a = '" + LA_42a_a.Text + "', " +
+ "LA_42b_a = '" + LA_42b_a.Text + "', " +
+ "LA_43a_b = '" + LA_43a_b.Text + "', " +
+ "LA_43a_a = '" + LA_43a_a.Text + "', " +
+ "LA_43b_a = '" + LA_43b_a.Text + "', " +
+ "LA_44a_b = '" + LA_44a_b.Text + "', " +
+ "LA_44a_a = '" + LA_44a_a.Text + "', " +
+ "LA_44b_a = '" + LA_44b_a.Text + "', " +
+ "LA_45a_b = '" + LA_45a_b.Text + "', " +
+ "LA_45a_a = '" + LA_45a_a.Text + "', " +
+ "LA_45b_a = '" + LA_45b_a.Text + "', " +
+ "LA_46a_b = '" + LA_46a_b.Text + "', " +
+ "LA_46a_a = '" + LA_46a_a.Text + "', " +
+ "LA_46b_a = '" + LA_46b_a.Text + "', " +
+ "LA_47a_b = '" + LA_47a_b.Text + "', " +
+ "LA_47a_a = '" + LA_47a_a.Text + "', " +
+ "LA_47b_a = '" + LA_47b_a.Text + "', " +
+ "LA_48a_b = '" + LA_48a_b.Text + "', " +
+ "LA_48a_a = '" + LA_48a_a.Text + "', " +
+ "LA_48b_a = '" + LA_48b_a.Text + "', " +
+ "LA_49a_b = '" + LA_49a_b.Text + "', " +
+ "LA_49a_a = '" + LA_49a_a.Text + "', " +
+ "LA_49b_a = '" + LA_49b_a.Text + "', " +
+ "LA_50a_b = '" + LA_50a_b.Text + "', " +
+ "LA_50a_a = '" + LA_50a_a.Text + "', " +
+ "LA_50b_a = '" + LA_50b_a.Text + "', " +
+ "LA_51a_b = '" + LA_51a_b.Text + "', " +
+ "LA_51a_a = '" + LA_51a_a.Text + "', " +
+ "LA_51b_a = '" + LA_51b_a.Text + "', " +
+ "LA_52a_b = '" + LA_52a_b.Text + "', " +
+ "LA_52a_a = '" + LA_52a_a.Text + "', " +
+ "LA_52b_a = '" + LA_52b_a.Text + "', " +
+ "uc_01_ca = '" + uc_01_ca.Text + "', " +
+ "UR_04a_a = '" + UR_04a_a.Text + "', " +
+ "UR_04a = '" + var_UR_04a + "' where la_sno='" + la_sno.Text + "'";
+
+
+                msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
+
+
+                if (string.IsNullOrEmpty(msg1))
+                {
+                    string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                }
+                else
+                {
+                    string message = "alert('" + msg1.Replace("'", "") + "');";
+                    message = "alert('" + msg1.Replace("\"", "") + "');";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                }
+
+
+            }
+            else
+            {
+                string qry = "insert into sample_result(" +
+"la_sno," +
+"LA_01," +
+"LA_02," +
+"LA_03_b," +
+"LA_03_a," +
+"LA_04_b," +
+"LA_04_a," +
+"LA_05_b," +
+"LA_05_a," +
+"LA_06_b," +
+"LA_06_a," +
+"LA_07_b," +
+"LA_07_a," +
+"LA_08_b," +
+"LA_08_a," +
+"LA_09_b," +
+"LA_09_a," +
+"LA_10_b," +
+"LA_10_a," +
+"LA_11_b," +
+"LA_11_a," +
+"LA_12_b," +
+"LA_12_a," +
+"LA_13_b," +
+"LA_13_a," +
+"LA_14_b," +
+"LA_14_a," +
+"LA_15_b," +
+"LA_15_a," +
+"LA_16_b," +
+"LA_16_a," +
+"LF_01," +
+"LF_01_a," +
+"LF_02," +
+"LF_02_a," +
+"LF_03," +
+"LF_03_a," +
+"LF_04," +
+"LF_04_a," +
+"LF_05," +
+"LF_05_a," +
+"LF_06," +
+"LF_06_a," +
+"LF_07," +
+"LF_07_a," +
+"RF_01," +
+"RF_01_a," +
+"RF_02," +
+"RF_02_a," +
+"RF_03," +
+"RF_03_a," +
+"RF_04," +
+"RF_04_a," +
+"SE_01," +
+"SE_01_a," +
+"SE_02," +
+"SE_02_a," +
+"SE_03," +
+"SE_03_a," +
+"SE_04," +
+"SE_04_a," +
+"CS_01," +
+"CS_01_a," +
+"CS_02," +
+"CS_02_a," +
+"CS_03," +
+"CS_03_a," +
+"CS_04," +
+"CS_04_a," +
+"CS_05," +
+"CS_05_a," +
+"CS_06," +
+"CS_06_a," +
+"CS_07," +
+"CS_07_a," +
+"CS_08," +
+"CS_08_a," +
+"CS_09," +
+"CS_09_a," +
+"CS_10," +
+"CS_10_a," +
+"UR_01," +
+"UR_01_a," +
+"UR_02," +
+"UR_02_a," +
+"UR_03," +
+"UR_03_a," +
+"UR_04," +
+"UR_04_a," +
+"UR_04a," +
+"UR_04a_a," +
+"UR_05," +
+"UR_05_a," +
+"UR_06," +
+"UR_06_a," +
+"UR_07," +
+"UR_07_a," +
+"UR_08," +
+"UR_08_a," +
+"UR_10," +
+"UR_10_a," +
+"UR_11," +
+"UR_11_a," +
+"UR_12," +
+"UR_12_a," +
+"UR_13," +
+"UR_13_a," +
+"UR_14," +
+"UR_14_a," +
+"UR_15," +
+"UR_15_a," +
+"UR_16," +
+"UR_16_a," +
+"UR_17," +
+"UR_17_a," +
+"UR_18," +
+"UR_18_a," +
+"UR_19," +
+"UR_19_a," +
+"UR_20," +
+"UR_20_a," +
+"UR_21," +
+"UR_21_a," +
+"uc_01a," +
+"uc_01_ca," +
+"uc_02a," +
+"uc_02a_a," +
+"uc_02b," +
+"uc_03a," +
+"uc_03a_a," +
+"uc_03b," +
+"uc_04a," +
+"uc_04a_a," +
+"uc_04b," +
+"uc_05a," +
+"uc_05a_a," +
+"uc_05b," +
+"uc_06a," +
+"uc_06a_a," +
+"uc_06b," +
+"uc_07a," +
+"uc_07a_a," +
+"uc_07b," +
+"uc_08a," +
+"uc_08a_a," +
+"uc_08b," +
+"uc_09a," +
+"uc_09a_a," +
+"uc_09b," +
+"uc_10a," +
+"uc_10a_a," +
+"uc_10b," +
+"uc_11a," +
+"uc_11a_a," +
+"uc_11b," +
+"uc_12a," +
+"uc_12a_a," +
+"uc_12b," +
+"uc_13a," +
+"uc_13a_a," +
+"uc_13b," +
+"uc_14a," +
+"uc_14a_a," +
+"uc_14b," +
+"uc_15a," +
+"uc_15a_a," +
+"uc_15b," +
+"uc_16a," +
+"uc_16a_a," +
+"uc_16b," +
+"uc_17a," +
+"uc_17a_a," +
+"uc_17b," +
+"uc_18a," +
+"uc_18a_a," +
+"uc_18b," +
+"uc_19a," +
+"uc_19a_a," +
+"uc_19b," +
+"uc_20a," +
+"uc_20a_a," +
+"uc_20b," +
+"uc_21a," +
+"uc_21a_a," +
+"uc_21b," +
+"uc_22a," +
+"uc_22a_a," +
+"uc_22b," +
+"uc_23a," +
+"uc_23a_a," +
+"uc_23b," +
+"uc_24a," +
+"uc_24a_a," +
+"uc_24b," +
+"uc_25a," +
+"uc_25a_a," +
+"uc_25b," +
+"uc_26a," +
+"uc_26a_a," +
+"uc_26b," +
+"uc_27a," +
+"uc_27a_a," +
+"uc_27b," +
+"uc_28a," +
+"uc_28a_a," +
+"uc_28b," +
+"uc_29a," +
+"uc_29a_a," +
+"uc_29b," +
+"uc_30a," +
+"uc_30a_a," +
+"uc_30b," +
+"uc_31a," +
+"uc_31a_a," +
+"uc_31b," +
+"uc_32a," +
+"uc_32a_a," +
+"uc_32b," +
+"uc_33a," +
+"uc_33a_a," +
+"uc_33b," +
+"uc_34a," +
+"uc_34a_a," +
+"uc_34b," +
+"uc_35a," +
+"uc_35a_a," +
+"uc_35b," +
+"uc_36a," +
+"uc_36a_a," +
+"uc_36b," +
+"uc_37a," +
+"uc_37a_a," +
+"uc_37b," +
+"LA_17," +
+"LA_18," +
+"LA_19," +
+"LA_20a_b," +
+"LA_20a_a," +
+"LA_20b_a," +
+"LA_21a_b," +
+"LA_21a_a," +
+"LA_21b_a," +
+"LA_22a_b," +
+"LA_22a_a," +
+"LA_22b_a," +
+"LA_23a_b," +
+"LA_23a_a," +
+"LA_23b_a," +
+"LA_24a_b," +
+"LA_24a_a," +
+"LA_24b_a," +
+"LA_25a_b," +
+"LA_25a_a," +
+"LA_25b_a," +
+"LA_26a_b," +
+"LA_26a_a," +
+"LA_26b_a," +
+"LA_27a_b," +
+"LA_27a_a," +
+"LA_27b_a," +
+"LA_28a_b," +
+"LA_28a_a," +
+"LA_28b_a," +
+"LA_29a_b," +
+"LA_29a_a," +
+"LA_29b_a," +
+"LA_30a_b," +
+"LA_30a_a," +
+"LA_30b_a," +
+"LA_31a_b," +
+"LA_31a_a," +
+"LA_31b_a," +
+"LA_32a_b," +
+"LA_32a_a," +
+"LA_32b_a," +
+"LA_33a_b," +
+"LA_33a_a," +
+"LA_33b_a," +
+"LA_34a_b," +
+"LA_34a_a," +
+"LA_34b_a," +
+"LA_35a_b," +
+"LA_35a_a," +
+"LA_35b_a," +
+"LA_36a_b," +
+"LA_36a_a," +
+"LA_36b_a," +
+"LA_37a_b," +
+"LA_37a_a," +
+"LA_37b_a," +
+"LA_38a_b," +
+"LA_38a_a," +
+"LA_38b_a," +
+"LA_39a_b," +
+"LA_39a_a," +
+"LA_39b_a," +
+"LA_40a_b," +
+"LA_40a_a," +
+"LA_40b_a," +
+"LA_41a_b," +
+"LA_41a_a," +
+"LA_41b_a," +
+"LA_42a_b," +
+"LA_42a_a," +
+"LA_42b_a," +
+"LA_43a_b," +
+"LA_43a_a," +
+"LA_43b_a," +
+"LA_44a_b," +
+"LA_44a_a," +
+"LA_44b_a," +
+"LA_45a_b," +
+"LA_45a_a," +
+"LA_45b_a," +
+"LA_46a_b," +
+"LA_46a_a," +
+"LA_46b_a," +
+"LA_47a_b," +
+"LA_47a_a," +
+"LA_47b_a," +
+"LA_48a_b," +
+"LA_48a_a," +
+"LA_48b_a," +
+"LA_49a_b," +
+"LA_49a_a," +
+"LA_49b_a," +
+"LA_50a_b," +
+"LA_50a_a," +
+"LA_50b_a," +
+"LA_51a_b," +
+"LA_51a_a," +
+"LA_51b_a," +
+"LA_52a_b," +
+"LA_52a_a," +
+"LA_52b_a," +
+"UserID," +
+"EntryDate," +
+"labid) values('" +
+la_sno.Text + "', '" +
+LA_01.Text + "', '" +
+LA_02.Text + "', '" +
+var_LA_03_b + "', '" +
+LA_03_a.Text + "', '" +
+var_LA_04_b + "', '" +
+LA_04_a.Text + "', '" +
+var_LA_05_b + "', '" +
+LA_05_a.Text + "', '" +
+var_LA_06_b + "', '" +
+LA_06_a.Text + "', '" +
+var_LA_07_b + "', '" +
+LA_07_a.Text + "', '" +
+var_LA_08_b + "', '" +
+LA_08_a.Text + "', '" +
+var_LA_09_b + "', '" +
+LA_09_a.Text + "', '" +
+var_LA_10_b + "', '" +
+LA_10_a.Text + "', '" +
+var_LA_11_b + "', '" +
+LA_11_a.Text + "', '" +
+var_LA_12_b + "', '" +
+LA_12_a.Text + "', '" +
+var_LA_13_b + "', '" +
+LA_13_a.Text + "', '" +
+var_LA_14_b + "', '" +
+LA_14_a.Text + "', '" +
+var_LA_15_b + "', '" +
+LA_15_a.Text + "', '" +
+var_LA_16_b + "', '" +
+LA_16_a.Text + "', '" +
+var_LF_01 + "', '" +
+LF_01_a.Text + "', '" +
+var_LF_02 + "', '" +
+LF_02_a.Text + "', '" +
+var_LF_03 + "', '" +
+LF_03_a.Text + "', '" +
+var_LF_04 + "', '" +
+LF_04_a.Text + "', '" +
+var_LF_05 + "', '" +
+LF_05_a.Text + "', '" +
+var_LF_06 + "', '" +
+LF_06_a.Text + "', '" +
+var_LF_07 + "', '" +
+LF_07_a.Text + "', '" +
+var_RF_01 + "', '" +
+RF_01_a.Text + "', '" +
+var_RF_02 + "', '" +
+RF_02_a.Text + "', '" +
+var_RF_03 + "', '" +
+RF_03_a.Text + "', '" +
+var_RF_04 + "', '" +
+RF_04_a.Text + "', '" +
+var_SE_01 + "', '" +
+SE_01_a.Text + "', '" +
+var_SE_02 + "', '" +
+SE_02_a.Text + "', '" +
+var_SE_03 + "', '" +
+SE_03_a.Text + "', '" +
+var_SE_04 + "', '" +
+SE_04_a.Text + "', '" +
+var_CS_01 + "', '" +
+CS_01_a.Text + "', '" +
+var_CS_02 + "', '" +
+CS_02_a.Text + "', '" +
+var_CS_03 + "', '" +
+CS_03_a.Text + "', '" +
+var_CS_04 + "', '" +
+CS_04_a.Text + "', '" +
+var_CS_05 + "', '" +
+CS_05_a.Text + "', '" +
+var_CS_06 + "', '" +
+CS_06_a.Text + "', '" +
+var_CS_07 + "', '" +
+CS_07_a.Text + "', '" +
+var_CS_08 + "', '" +
+CS_08_a.Text + "', '" +
+var_CS_09 + "', '" +
+CS_09_a.Text + "', '" +
+var_CS_10 + "', '" +
+CS_10_a.Text + "', '" +
+var_UR_01 + "', '" +
+UR_01_a.Text + "', '" +
+var_UR_02 + "', '" +
+UR_02_a.Text + "', '" +
+var_UR_03 + "', '" +
+UR_03_a.Text + "', '" +
+var_UR_04 + "', '" +
+UR_04_a.Text + "', '" +
+var_UR_04a + "', '" +
+UR_04a_a.Text + "', '" +
+var_UR_05 + "', '" +
+UR_05_a.Text + "', '" +
+var_UR_06 + "', '" +
+UR_06_a.Text + "', '" +
+var_UR_07 + "', '" +
+UR_07_a.Text + "', '" +
+var_UR_08 + "', '" +
+UR_08_a.Text + "', '" +
+var_UR_10 + "', '" +
+UR_10_a.Text + "', '" +
+var_UR_11 + "', '" +
+UR_11_a.Text + "', '" +
+var_UR_12 + "', '" +
+UR_12_a.Text + "', '" +
+var_UR_13 + "', '" +
+UR_13_a.Text + "', '" +
+var_UR_14 + "', '" +
+UR_14_a.Text + "', '" +
+var_UR_15 + "', '" +
+UR_15_a.Text + "', '" +
+var_UR_16 + "', '" +
+UR_16_a.Text + "', '" +
+var_UR_17 + "', '" +
+UR_17_a.Text + "', '" +
+var_UR_18 + "', '" +
+UR_18_a.Text + "', '" +
+var_UR_19 + "', '" +
+UR_19_a.Text + "', '" +
+var_UR_20 + "', '" +
+UR_20_a.Text + "', '" +
+var_UR_21 + "', '" +
+UR_21_a.Text + "', '" +
+var_uc_01a + "', '" +
+uc_01_ca.Text + "', '" +
+var_uc_02a + "', '" +
+uc_02a_a.Text + "', '" +
+var_uc_02b + "', '" +
+var_uc_03a + "', '" +
+uc_03a_a.Text + "', '" +
+var_uc_03b + "', '" +
+var_uc_04a + "', '" +
+uc_04a_a.Text + "', '" +
+var_uc_04b + "', '" +
+var_uc_05a + "', '" +
+uc_05a_a.Text + "', '" +
+var_uc_05b + "', '" +
+var_uc_06a + "', '" +
+uc_06a_a.Text + "', '" +
+var_uc_06b + "', '" +
+var_uc_07a + "', '" +
+uc_07a_a.Text + "', '" +
+var_uc_07b + "', '" +
+var_uc_08a + "', '" +
+uc_08a_a.Text + "', '" +
+var_uc_08b + "', '" +
+var_uc_09a + "', '" +
+uc_09a_a.Text + "', '" +
+var_uc_09b + "', '" +
+var_uc_10a + "', '" +
+uc_10a_a.Text + "', '" +
+var_uc_10b + "', '" +
+var_uc_11a + "', '" +
+uc_11a_a.Text + "', '" +
+var_uc_11b + "', '" +
+var_uc_12a + "', '" +
+uc_12a_a.Text + "', '" +
+var_uc_12b + "', '" +
+var_uc_13a + "', '" +
+uc_13a_a.Text + "', '" +
+var_uc_13b + "', '" +
+var_uc_14a + "', '" +
+uc_14a_a.Text + "', '" +
+var_uc_14b + "', '" +
+var_uc_15a + "', '" +
+uc_15a_a.Text + "', '" +
+var_uc_15b + "', '" +
+var_uc_16a + "', '" +
+uc_16a_a.Text + "', '" +
+var_uc_16b + "', '" +
+var_uc_17a + "', '" +
+uc_17a_a.Text + "', '" +
+var_uc_17b + "', '" +
+var_uc_18a + "', '" +
+uc_18a_a.Text + "', '" +
+var_uc_18b + "', '" +
+var_uc_19a + "', '" +
+uc_19a_a.Text + "', '" +
+var_uc_19b + "', '" +
+var_uc_20a + "', '" +
+uc_20a_a.Text + "', '" +
+var_uc_20b + "', '" +
+var_uc_21a + "', '" +
+uc_21a_a.Text + "', '" +
+var_uc_21b + "', '" +
+var_uc_22a + "', '" +
+uc_22a_a.Text + "', '" +
+var_uc_22b + "', '" +
+var_uc_23a + "', '" +
+uc_23a_a.Text + "', '" +
+var_uc_23b + "', '" +
+var_uc_24a + "', '" +
+uc_24a_a.Text + "', '" +
+var_uc_24b + "', '" +
+var_uc_25a + "', '" +
+uc_25a_a.Text + "', '" +
+var_uc_25b + "', '" +
+var_uc_26a + "', '" +
+uc_26a_a.Text + "', '" +
+var_uc_26b + "', '" +
+var_uc_27a + "', '" +
+uc_27a_a.Text + "', '" +
+var_uc_27b + "', '" +
+var_uc_28a + "', '" +
+uc_28a_a.Text + "', '" +
+var_uc_28b + "', '" +
+var_uc_29a + "', '" +
+uc_29a_a.Text + "', '" +
+var_uc_29b + "', '" +
+var_uc_30a + "', '" +
+uc_30a_a.Text + "', '" +
+var_uc_30b + "', '" +
+var_uc_31a + "', '" +
+uc_31a_a.Text + "', '" +
+var_uc_31b + "', '" +
+var_uc_32a + "', '" +
+uc_32a_a.Text + "', '" +
+var_uc_32b + "', '" +
+var_uc_33a + "', '" +
+uc_33a_a.Text + "', '" +
+var_uc_33b + "', '" +
+var_uc_34a + "', '" +
+uc_34a_a.Text + "', '" +
+var_uc_34b + "', '" +
+var_uc_35a + "', '" +
+uc_35a_a.Text + "', '" +
+var_uc_35b + "', '" +
+var_uc_36a + "', '" +
+uc_36a_a.Text + "', '" +
+var_uc_36b + "', '" +
+var_uc_37a + "', '" +
+uc_37a_a.Text + "', '" +
+var_uc_37b + "', '" +
+LA_17.Text + "', '" +
+LA_18.Text + "', '" +
+LA_19.Text + "', '" +
+var_LA_20a_b + "', '" +
+LA_20a_a.Text + "', '" +
+var_LA_20b_a + "', '" +
+var_LA_21a_b + "', '" +
+LA_21a_a.Text + "', '" +
+var_LA_21b_a + "', '" +
+var_LA_22a_b + "', '" +
+LA_22a_a.Text + "', '" +
+var_LA_22b_a + "', '" +
+var_LA_23a_b + "', '" +
+LA_23a_a.Text + "', '" +
+var_LA_23b_a + "', '" +
+var_LA_24a_b + "', '" +
+LA_24a_a.Text + "', '" +
+var_LA_24b_a + "', '" +
+var_LA_25a_b + "', '" +
+LA_25a_a.Text + "', '" +
+var_LA_25b_a + "', '" +
+var_LA_26a_b + "', '" +
+LA_26a_a.Text + "', '" +
+var_LA_26b_a + "', '" +
+var_LA_27a_b + "', '" +
+LA_27a_a.Text + "', '" +
+var_LA_27b_a + "', '" +
+var_LA_28a_b + "', '" +
+LA_28a_a.Text + "', '" +
+var_LA_28b_a + "', '" +
+var_LA_29a_b + "', '" +
+LA_29a_a.Text + "', '" +
+var_LA_29b_a + "', '" +
+var_LA_30a_b + "', '" +
+LA_30a_a.Text + "', '" +
+var_LA_30b_a + "', '" +
+var_LA_31a_b + "', '" +
+LA_31a_a.Text + "', '" +
+var_LA_31b_a + "', '" +
+var_LA_32a_b + "', '" +
+LA_32a_a.Text + "', '" +
+var_LA_32b_a + "', '" +
+var_LA_33a_b + "', '" +
+LA_33a_a.Text + "', '" +
+var_LA_33b_a + "', '" +
+var_LA_34a_b + "', '" +
+LA_34a_a.Text + "', '" +
+var_LA_34b_a + "', '" +
+var_LA_35a_b + "', '" +
+LA_35a_a.Text + "', '" +
+var_LA_35b_a + "', '" +
+var_LA_36a_b + "', '" +
+LA_36a_a.Text + "', '" +
+var_LA_36b_a + "', '" +
+var_LA_37a_b + "', '" +
+LA_37a_a.Text + "', '" +
+var_LA_37b_a + "', '" +
+var_LA_38a_b + "', '" +
+LA_38a_a.Text + "', '" +
+var_LA_38b_a + "', '" +
+var_LA_39a_b + "', '" +
+LA_39a_a.Text + "', '" +
+var_LA_39b_a + "', '" +
+var_LA_40a_b + "', '" +
+LA_40a_a.Text + "', '" +
+var_LA_40b_a + "', '" +
+var_LA_41a_b + "', '" +
+LA_41a_a.Text + "', '" +
+var_LA_41b_a + "', '" +
+var_LA_42a_b + "', '" +
+LA_42a_a.Text + "', '" +
+var_LA_42b_a + "', '" +
+var_LA_43a_b + "', '" +
+LA_43a_a.Text + "', '" +
+var_LA_43b_a + "', '" +
+var_LA_44a_b + "', '" +
+LA_44a_a.Text + "', '" +
+var_LA_44b_a + "', '" +
+var_LA_45a_b + "', '" +
+LA_45a_a.Text + "', '" +
+var_LA_45b_a + "', '" +
+var_LA_46a_b + "', '" +
+LA_46a_a.Text + "', '" +
+var_LA_46b_a + "', '" +
+var_LA_47a_b + "', '" +
+LA_47a_a.Text + "', '" +
+var_LA_47b_a + "', '" +
+var_LA_48a_b + "', '" +
+LA_48a_a.Text + "', '" +
+var_LA_48b_a + "', '" +
+var_LA_49a_b + "', '" +
+LA_49a_a.Text + "', '" +
+var_LA_49b_a + "', '" +
+var_LA_50a_b + "', '" +
+LA_50a_a.Text + "', '" +
+var_LA_50b_a + "', '" +
+var_LA_51a_b + "', '" +
+LA_51a_a.Text + "', '" +
+var_LA_51b_a + "', '" +
+var_LA_52a_b + "', '" +
+LA_52a_a.Text + "', '" +
+var_LA_52b_a + "', '" +
+Session["userid"].ToString() + "', '" +
+val_entry + "', '" +
+HttpContext.Current.Request["labid"].ToString() + "')";
+
+
+                //string msg = obj_op.ExecuteNonQuery_Message(fldname, fldvalue, "sp_AddSampleResult");
+                string msg = obj_op.ExecuteNonQuery_Message_Qry(qry);
+
+                if (string.IsNullOrEmpty(msg))
+                {
+                    string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                }
+                else
+                {
+                    string message = "alert('" + msg.Replace("'", "") + "');";
+                    message = "alert('" + msg.Replace("\"", "") + "');";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                }
+
+
+            }
+
+
+
+            LA_01.Focus();
 
         }
 
-        return ds;
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message + "');";
+            ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+        }
+
+
+        finally
+        {
+            obj_op = null;
+        }
     }
 
-
-    private void previewReport()
-    {
-        ReportViewer1.ProcessingMode = ProcessingMode.Local;
-        ReportViewer1.LocalReport.ReportPath = Server.MapPath("rpt_Sample.rdlc");
-        DataSet ds = GetData_report();
-        ReportDataSource datasource = new ReportDataSource("ds", ds.Tables[0]);
-        ReportViewer1.LocalReport.DataSources.Clear();
-        ReportViewer1.LocalReport.DataSources.Add(datasource);
-        ReportViewer1.LocalReport.Refresh();
-
-        ReportViewer1.Visible = true;
-        //pnl_viewer.Visible = true;
-    }
-
-
-    protected void cmdPrintPreview_Click(object sender, EventArgs e)
-    {
-        ReportViewer1.ProcessingMode = ProcessingMode.Local;
-        ReportViewer1.LocalReport.ReportPath = Server.MapPath("rpt_Sample.rdlc");
-        DataSet ds = GetData_report();
-        ReportDataSource datasource = new ReportDataSource("ds", ds.Tables[0]);
-        ReportViewer1.LocalReport.DataSources.Clear();
-        ReportViewer1.LocalReport.DataSources.Add(datasource);
-        ReportViewer1.LocalReport.Refresh();
-
-        ReportViewer1.Visible = true;
-        //pnl_viewer.Visible = true;
-    }
-
-    protected void cmdPrint_Click(object sender, EventArgs e)
-    {
-
-    }
 }
