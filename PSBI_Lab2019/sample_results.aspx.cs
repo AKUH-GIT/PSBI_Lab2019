@@ -26,8 +26,7 @@ public partial class sample_results : System.Web.UI.Page
     private IList<Stream> m_streams;
 
     public List<CountryInfo> CountryInformation { get; set; }
-    public List<SampleResults> SampleResultsInfo { get; set; }
-    public List<SampleResultsRecordset> SampleResultList { get; set; }
+
 
     public class CountryInfo
     {
@@ -40,350 +39,6 @@ public partial class sample_results : System.Web.UI.Page
         public string AS1_fsite { get; set; }
         public string AS1_Q1_1 { get; set; }
     }
-
-
-
-
-    public class SampleResultsRecordset
-    {
-        public string la_sno { get; set; }
-        public string LA_01 { get; set; }
-        public string LA_02 { get; set; }
-        public string LA_03_b { get; set; }
-        public string LA_03_a { get; set; }
-        public string LA_04_b { get; set; }
-        public string LA_04_a { get; set; }
-        public string LA_05_b { get; set; }
-        public string LA_05_a { get; set; }
-        public string LA_06_b { get; set; }
-        public string LA_06_a { get; set; }
-        public string LA_07_b { get; set; }
-        public string LA_07_a { get; set; }
-        public string LA_08_b { get; set; }
-        public string LA_08_a { get; set; }
-        public string LA_09_b { get; set; }
-        public string LA_09_a { get; set; }
-        public string LA_10_b { get; set; }
-        public string LA_10_a { get; set; }
-        public string LA_11_b { get; set; }
-        public string LA_11_a { get; set; }
-        public string LA_12_b { get; set; }
-        public string LA_12_a { get; set; }
-        public string LA_13_b { get; set; }
-        public string LA_13_a { get; set; }
-        public string LA_14_b { get; set; }
-        public string LA_14_a { get; set; }
-        public string LA_15_b { get; set; }
-        public string LA_15_a { get; set; }
-        public string LA_16_b { get; set; }
-        public string LA_16_a { get; set; }
-        public string LF_01 { get; set; }
-        public string LF_01_a { get; set; }
-        public string LF_02 { get; set; }
-        public string LF_02_a { get; set; }
-        public string LF_03 { get; set; }
-        public string LF_03_a { get; set; }
-        public string LF_04 { get; set; }
-        public string LF_04_a { get; set; }
-        public string LF_05 { get; set; }
-        public string LF_05_a { get; set; }
-        public string LF_06 { get; set; }
-        public string LF_06_a { get; set; }
-        public string LF_07 { get; set; }
-        public string LF_07_a { get; set; }
-        public string RF_01 { get; set; }
-        public string RF_01_a { get; set; }
-        public string RF_02 { get; set; }
-        public string RF_02_a { get; set; }
-        public string RF_03 { get; set; }
-        public string RF_03_a { get; set; }
-        public string RF_04 { get; set; }
-        public string RF_04_a { get; set; }
-        public string SE_01 { get; set; }
-        public string SE_01_a { get; set; }
-        public string SE_02 { get; set; }
-        public string SE_02_a { get; set; }
-        public string SE_03 { get; set; }
-        public string SE_03_a { get; set; }
-        public string SE_04 { get; set; }
-        public string SE_04_a { get; set; }
-        public string CS_01 { get; set; }
-        public string CS_01_a { get; set; }
-        public string CS_02 { get; set; }
-        public string CS_02_a { get; set; }
-        public string CS_03 { get; set; }
-        public string CS_03_a { get; set; }
-        public string CS_04 { get; set; }
-        public string CS_04_a { get; set; }
-        public string CS_05 { get; set; }
-        public string CS_05_a { get; set; }
-        public string CS_06 { get; set; }
-        public string CS_06_a { get; set; }
-        public string CS_07 { get; set; }
-        public string CS_07_a { get; set; }
-        public string CS_08 { get; set; }
-        public string CS_08_a { get; set; }
-        public string CS_09 { get; set; }
-        public string CS_09_a { get; set; }
-        public string CS_10 { get; set; }
-        public string CS_10_a { get; set; }
-        public string UR_01 { get; set; }
-        public string UR_01_a { get; set; }
-        public string UR_02 { get; set; }
-        public string UR_02_a { get; set; }
-        public string UR_03 { get; set; }
-        public string UR_03_a { get; set; }
-        public string UR_04 { get; set; }
-        public string UR_04_a { get; set; }
-        public string UR_05 { get; set; }
-        public string UR_05_a { get; set; }
-        public string UR_06 { get; set; }
-        public string UR_06_a { get; set; }
-        public string UR_07 { get; set; }
-        public string UR_07_a { get; set; }
-        public string UR_08 { get; set; }
-        public string UR_08_a { get; set; }
-        public string UR_10 { get; set; }
-        public string UR_10_a { get; set; }
-        public string UR_11 { get; set; }
-        public string UR_11_a { get; set; }
-        public string UR_12 { get; set; }
-        public string UR_12_a { get; set; }
-        public string UR_13 { get; set; }
-        public string UR_13_a { get; set; }
-        public string UR_14 { get; set; }
-        public string UR_14_a { get; set; }
-        public string UR_15 { get; set; }
-        public string UR_15_a { get; set; }
-        public string UR_16 { get; set; }
-        public string UR_16_a { get; set; }
-        public string UR_17 { get; set; }
-        public string UR_17_a { get; set; }
-        public string UR_18 { get; set; }
-        public string UR_18_a { get; set; }
-        public string UR_19 { get; set; }
-        public string UR_19_a { get; set; }
-        public string UR_20 { get; set; }
-        public string UR_20_a { get; set; }
-        public string UR_21 { get; set; }
-        public string UR_21_a { get; set; }
-        public string uc_01a { get; set; }
-        public string uc_02a { get; set; }
-        public string uc_02a_a { get; set; }
-        public string uc_02b { get; set; }
-        public string uc_03a { get; set; }
-        public string uc_03a_a { get; set; }
-        public string uc_03b { get; set; }
-        public string uc_04a { get; set; }
-        public string uc_04a_a { get; set; }
-        public string uc_04b { get; set; }
-        public string uc_05a { get; set; }
-        public string uc_05a_a { get; set; }
-        public string uc_05b { get; set; }
-        public string uc_06a { get; set; }
-        public string uc_06a_a { get; set; }
-        public string uc_06b { get; set; }
-        public string uc_07a { get; set; }
-        public string uc_07a_a { get; set; }
-        public string uc_07b { get; set; }
-        public string uc_08a { get; set; }
-        public string uc_08a_a { get; set; }
-        public string uc_08b { get; set; }
-        public string uc_09a { get; set; }
-        public string uc_09a_a { get; set; }
-        public string uc_09b { get; set; }
-        public string uc_10a { get; set; }
-        public string uc_10a_a { get; set; }
-        public string uc_10b { get; set; }
-        public string uc_11a { get; set; }
-        public string uc_11a_a { get; set; }
-        public string uc_11b { get; set; }
-        public string uc_12a { get; set; }
-        public string uc_12a_a { get; set; }
-        public string uc_12b { get; set; }
-        public string uc_13a { get; set; }
-        public string uc_13a_a { get; set; }
-        public string uc_13b { get; set; }
-        public string uc_14a { get; set; }
-        public string uc_14a_a { get; set; }
-        public string uc_14b { get; set; }
-        public string uc_15a { get; set; }
-        public string uc_15a_a { get; set; }
-        public string uc_15b { get; set; }
-        public string uc_16a { get; set; }
-        public string uc_16a_a { get; set; }
-        public string uc_16b { get; set; }
-        public string uc_17a { get; set; }
-        public string uc_17a_a { get; set; }
-        public string uc_17b { get; set; }
-        public string uc_18a { get; set; }
-        public string uc_18a_a { get; set; }
-        public string uc_18b { get; set; }
-        public string uc_19a { get; set; }
-        public string uc_19a_a { get; set; }
-        public string uc_19b { get; set; }
-        public string uc_20a { get; set; }
-        public string uc_20a_a { get; set; }
-        public string uc_20b { get; set; }
-        public string uc_21a { get; set; }
-        public string uc_21a_a { get; set; }
-        public string uc_21b { get; set; }
-        public string uc_22a { get; set; }
-        public string uc_22a_a { get; set; }
-        public string uc_22b { get; set; }
-        public string uc_23a { get; set; }
-        public string uc_23a_a { get; set; }
-        public string uc_23b { get; set; }
-        public string uc_24a { get; set; }
-        public string uc_24a_a { get; set; }
-        public string uc_24b { get; set; }
-        public string uc_25a { get; set; }
-        public string uc_25a_a { get; set; }
-        public string uc_25b { get; set; }
-        public string uc_26a { get; set; }
-        public string uc_26a_a { get; set; }
-        public string uc_26b { get; set; }
-        public string uc_27a { get; set; }
-        public string uc_27a_a { get; set; }
-        public string uc_27b { get; set; }
-        public string uc_28a { get; set; }
-        public string uc_28a_a { get; set; }
-        public string uc_28b { get; set; }
-        public string uc_29a { get; set; }
-        public string uc_29a_a { get; set; }
-        public string uc_29b { get; set; }
-        public string uc_30a { get; set; }
-        public string uc_30a_a { get; set; }
-        public string uc_30b { get; set; }
-        public string uc_31a { get; set; }
-        public string uc_31a_a { get; set; }
-        public string uc_31b { get; set; }
-        public string uc_32a { get; set; }
-        public string uc_32a_a { get; set; }
-        public string uc_32b { get; set; }
-        public string uc_33a { get; set; }
-        public string uc_33a_a { get; set; }
-        public string uc_33b { get; set; }
-        public string uc_34a { get; set; }
-        public string uc_34a_a { get; set; }
-        public string uc_34b { get; set; }
-        public string uc_35a { get; set; }
-        public string uc_35a_a { get; set; }
-        public string uc_35b { get; set; }
-        public string uc_36a { get; set; }
-        public string uc_36a_a { get; set; }
-        public string uc_36b { get; set; }
-        public string uc_37a { get; set; }
-        public string uc_37a_a { get; set; }
-        public string uc_37b { get; set; }
-        public string LA_17 { get; set; }
-        public string LA_18 { get; set; }
-        public string LA_19 { get; set; }
-        public string LA_20a_b { get; set; }
-        public string LA_20a_a { get; set; }
-        public string LA_20b_a { get; set; }
-        public string LA_21a_b { get; set; }
-        public string LA_21a_a { get; set; }
-        public string LA_21b_a { get; set; }
-        public string LA_22a_b { get; set; }
-        public string LA_22a_a { get; set; }
-        public string LA_22b_a { get; set; }
-        public string LA_23a_b { get; set; }
-        public string LA_23a_a { get; set; }
-        public string LA_23b_a { get; set; }
-        public string LA_24a_b { get; set; }
-        public string LA_24a_a { get; set; }
-        public string LA_24b_a { get; set; }
-        public string LA_25a_b { get; set; }
-        public string LA_25a_a { get; set; }
-        public string LA_25b_a { get; set; }
-        public string LA_26a_b { get; set; }
-        public string LA_26a_a { get; set; }
-        public string LA_26b_a { get; set; }
-        public string LA_27a_b { get; set; }
-        public string LA_27a_a { get; set; }
-        public string LA_27b_a { get; set; }
-        public string LA_28a_b { get; set; }
-        public string LA_28a_a { get; set; }
-        public string LA_28b_a { get; set; }
-        public string LA_29a_b { get; set; }
-        public string LA_29a_a { get; set; }
-        public string LA_29b_a { get; set; }
-        public string LA_30a_b { get; set; }
-        public string LA_30a_a { get; set; }
-        public string LA_30b_a { get; set; }
-        public string LA_31a_b { get; set; }
-        public string LA_31a_a { get; set; }
-        public string LA_31b_a { get; set; }
-        public string LA_32a_b { get; set; }
-        public string LA_32a_a { get; set; }
-        public string LA_32b_a { get; set; }
-        public string LA_33a_b { get; set; }
-        public string LA_33a_a { get; set; }
-        public string LA_33b_a { get; set; }
-        public string LA_34a_b { get; set; }
-        public string LA_34a_a { get; set; }
-        public string LA_34b_a { get; set; }
-        public string LA_35a_b { get; set; }
-        public string LA_35a_a { get; set; }
-        public string LA_35b_a { get; set; }
-        public string LA_36a_b { get; set; }
-        public string LA_36a_a { get; set; }
-        public string LA_36b_a { get; set; }
-        public string LA_37a_b { get; set; }
-        public string LA_37a_a { get; set; }
-        public string LA_37b_a { get; set; }
-        public string LA_38a_b { get; set; }
-        public string LA_38a_a { get; set; }
-        public string LA_38b_a { get; set; }
-        public string LA_39a_b { get; set; }
-        public string LA_39a_a { get; set; }
-        public string LA_39b_a { get; set; }
-        public string LA_40a_b { get; set; }
-        public string LA_40a_a { get; set; }
-        public string LA_40b_a { get; set; }
-        public string LA_41a_b { get; set; }
-        public string LA_41a_a { get; set; }
-        public string LA_41b_a { get; set; }
-        public string LA_42a_b { get; set; }
-        public string LA_42a_a { get; set; }
-        public string LA_42b_a { get; set; }
-        public string LA_43a_b { get; set; }
-        public string LA_43a_a { get; set; }
-        public string LA_43b_a { get; set; }
-        public string LA_44a_b { get; set; }
-        public string LA_44a_a { get; set; }
-        public string LA_44b_a { get; set; }
-        public string LA_45a_b { get; set; }
-        public string LA_45a_a { get; set; }
-        public string LA_45b_a { get; set; }
-        public string LA_46a_b { get; set; }
-        public string LA_46a_a { get; set; }
-        public string LA_46b_a { get; set; }
-        public string LA_47a_b { get; set; }
-        public string LA_47a_a { get; set; }
-        public string LA_47b_a { get; set; }
-        public string LA_48a_b { get; set; }
-        public string LA_48a_a { get; set; }
-        public string LA_48b_a { get; set; }
-        public string LA_49a_b { get; set; }
-        public string LA_49a_a { get; set; }
-        public string LA_49b_a { get; set; }
-        public string LA_50a_b { get; set; }
-        public string LA_50a_a { get; set; }
-        public string LA_50b_a { get; set; }
-        public string LA_51a_b { get; set; }
-        public string LA_51a_a { get; set; }
-        public string LA_51b_a { get; set; }
-        public string LA_52a_b { get; set; }
-        public string LA_52a_a { get; set; }
-        public string LA_52b_a { get; set; }
-        public string uc_01_ca { get; set; }
-        public string UR_04a_a { get; set; }
-        public string UR_04a { get; set; }
-
-    }
-
 
 
     public class SampleResults
@@ -17455,10 +17110,12 @@ public partial class sample_results : System.Web.UI.Page
         {
             if (Request["labid"].ToString() == "3")
             {
+                AuditTrials();
                 UpdateData_historyonly("history");
             }
             else
             {
+                AuditTrials();
                 UpdateData("Draft");
             }
 
@@ -18691,85 +18348,487 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-    //private void AuditTrials(string spName)
-    //{
-    //    CDBOperations obj_op = null;
-    //    DataSet ds = null;
-    //    DataSet ds_dict = null;
+    private DataSet getSampleResult_ScrID()
+    {
+        CConnection cn = new CConnection();
+
+        SqlDataAdapter da = new SqlDataAdapter("select " +
+    "b.AS1_screening_ID," +
+    "[AS1_rand_id]," +
+    "[AS1_name]," +
+    "case when[AS1_sex] = 1 then 'Male'" +
+    "when[AS1_sex] = 2 then 'Female'" +
+    "end[AS1_sex]," +
+    "[AS1_age]," +
+    "[AS1_barcode]," +
+    "case when[AS1_fsite] = 1 then 'AKU Kharadar Hospital'" +
+    "when[AS1_fsite] = 2 then 'Sindh Govt. Children Hospital'" +
+    "when[AS1_fsite] = 3 then 'Liyari General Hospital'" +
+    "when[AS1_fsite] = 4 then 'Indus Korangi Hospital'" +
+    "when[AS1_fsite] = 5 then 'NICH'" +
+    "when[AS1_fsite] = 6 then 'Sheikh Saeed Memorial Hospital'" +
+    "end[AS1_fsite]," +
+    "case when AS1_Q1_1 = 1 then 'RCT1'" +
+    "when AS1_Q1_1 = 2 then 'RCT2'" +
+    "end[AS1_Q1_1]," +
+    "a.la_sno," +
+    "a.history, " +
+    "a.LA_01," +
+    "a.LA_02," +
+    "a.LA_03_b," +
+    "a.LA_03_a," +
+    "a.LA_04_b," +
+    "a.LA_04_a," +
+    "a.LA_05_b," +
+    "a.LA_05_a," +
+    "a.LA_06_b," +
+    "a.LA_06_a," +
+    "a.LA_07_b," +
+    "a.LA_07_a," +
+    "a.LA_08_b," +
+    "a.LA_08_a," +
+    "a.LA_09_b," +
+    "a.LA_09_a," +
+    "a.LA_10_b," +
+    "a.LA_10_a," +
+    "a.LA_11_b," +
+    "a.LA_11_a," +
+    "a.LA_12_b," +
+    "a.LA_12_a," +
+    "a.LA_13_b," +
+    "a.LA_13_a," +
+    "a.LA_14_b," +
+    "a.LA_14_a," +
+    "a.LA_15_b," +
+    "a.LA_15_a," +
+    "a.LA_16_b," +
+    "a.LA_16_a," +
+    "a.LF_01," +
+    "a.LF_01_a," +
+    "a.LF_02," +
+    "a.LF_02_a," +
+    "a.LF_03," +
+    "a.LF_03_a," +
+    "a.LF_04," +
+    "a.LF_04_a," +
+    "a.LF_05," +
+    "a.LF_05_a," +
+    "a.LF_06," +
+    "a.LF_06_a," +
+    "a.LF_07," +
+    "a.LF_07_a," +
+    "a.RF_01," +
+    "a.RF_01_a," +
+    "a.RF_02," +
+    "a.RF_02_a," +
+    "a.RF_03," +
+    "a.RF_03_a," +
+    "a.RF_04," +
+    "a.RF_04_a," +
+    "a.SE_01," +
+    "a.SE_01_a," +
+    "a.SE_02," +
+    "a.SE_02_a," +
+    "a.SE_03," +
+    "a.SE_03_a," +
+    "a.SE_04," +
+    "a.SE_04_a," +
+    "a.CS_01," +
+    "a.CS_01_a," +
+    "a.CS_02," +
+    "a.CS_02_a," +
+    "a.CS_03," +
+    "a.CS_03_a," +
+    "a.CS_04," +
+    "a.CS_04_a," +
+    "a.CS_05," +
+    "a.CS_05_a," +
+    "a.CS_06," +
+    "a.CS_06_a," +
+    "a.CS_07," +
+    "a.CS_07_a," +
+    "a.CS_08," +
+    "a.CS_08_a," +
+    "a.CS_09," +
+    "a.CS_09_a," +
+    "a.CS_10," +
+    "a.CS_10_a," +
+    "a.UR_01," +
+    "a.UR_01_a," +
+    "a.UR_02," +
+    "a.UR_02_a," +
+    "a.UR_03," +
+    "a.UR_03_a," +
+    "a.UR_04," +
+    "a.UR_04_a," +
+    "a.UR_04a," +
+    "a.UR_04a_a," +
+    "a.UR_05," +
+    "a.UR_05_a," +
+    "a.UR_06," +
+    "a.UR_06_a," +
+    "a.UR_07," +
+    "a.UR_07_a," +
+    "a.UR_08," +
+    "a.UR_08_a," +
+    "a.UR_10," +
+    "a.UR_10_a," +
+    "a.UR_11," +
+    "a.UR_11_a," +
+    "a.UR_12," +
+    "a.UR_12_a," +
+    "a.UR_13," +
+    "a.UR_13_a," +
+    "a.UR_14," +
+    "a.UR_14_a," +
+    "a.UR_15," +
+    "a.UR_15_a," +
+    "a.UR_16," +
+    "a.UR_16_a," +
+    "a.UR_17," +
+    "a.UR_17_a," +
+    "a.UR_18," +
+    "a.UR_18_a," +
+    "a.UR_19," +
+    "a.UR_19_a," +
+    "a.UR_20," +
+    "a.UR_20_a," +
+    "a.UR_21," +
+    "a.UR_21_a," +
+    "a.uc_01_ca," +
+    "a.uc_01a," +
+    "a.uc_02a," +
+    "a.uc_02a_a," +
+    "a.uc_02b," +
+    "a.uc_03a," +
+    "a.uc_03a_a," +
+    "a.uc_03b," +
+    "a.uc_04a," +
+    "a.uc_04a_a," +
+    "a.uc_04b," +
+    "a.uc_05a," +
+    "a.uc_05a_a," +
+    "a.uc_05b," +
+    "a.uc_06a," +
+    "a.uc_06a_a," +
+    "a.uc_06b," +
+    "a.uc_07a," +
+    "a.uc_07a_a," +
+    "a.uc_07b," +
+    "a.uc_08a," +
+    "a.uc_08a_a," +
+    "a.uc_08b," +
+    "a.uc_09a," +
+    "a.uc_09a_a," +
+    "a.uc_09b," +
+    "a.uc_10a," +
+    "a.uc_10a_a," +
+    "a.uc_10b," +
+    "a.uc_11a," +
+    "a.uc_11a_a," +
+    "a.uc_11b," +
+    "a.uc_12a," +
+    "a.uc_12a_a," +
+    "a.uc_12b," +
+    "a.uc_13a," +
+    "a.uc_13a_a," +
+    "a.uc_13b," +
+    "a.uc_14a," +
+    "a.uc_14a_a," +
+    "a.uc_14b," +
+    "a.uc_15a," +
+    "a.uc_15a_a," +
+    "a.uc_15b," +
+    "a.uc_16a," +
+    "a.uc_16a_a," +
+    "a.uc_16b," +
+    "a.uc_17a," +
+    "a.uc_17a_a," +
+    "a.uc_17b," +
+    "a.uc_18a," +
+    "a.uc_18a_a," +
+    "a.uc_18b," +
+    "a.uc_19a," +
+    "a.uc_19a_a," +
+    "a.uc_19b," +
+    "a.uc_20a," +
+    "a.uc_20a_a," +
+    "a.uc_20b," +
+    "a.uc_21a," +
+    "a.uc_21a_a," +
+    "a.uc_21b," +
+    "a.uc_22a," +
+    "a.uc_22a_a," +
+    "a.uc_22b," +
+    "a.uc_23a," +
+    "a.uc_23a_a," +
+    "a.uc_23b," +
+    "a.uc_24a," +
+    "a.uc_24a_a," +
+    "a.uc_24b," +
+    "a.uc_25a," +
+    "a.uc_25a_a," +
+    "a.uc_25b," +
+    "a.uc_26a," +
+    "a.uc_26a_a," +
+    "a.uc_26b," +
+    "a.uc_27a," +
+    "a.uc_27a_a," +
+    "a.uc_27b," +
+    "a.uc_28a," +
+    "a.uc_28a_a," +
+    "a.uc_28b," +
+    "a.uc_29a," +
+    "a.uc_29a_a," +
+    "a.uc_29b," +
+    "a.uc_30a," +
+    "a.uc_30a_a," +
+    "a.uc_30b," +
+    "a.uc_31a," +
+    "a.uc_31a_a," +
+    "a.uc_31b," +
+    "a.uc_32a," +
+    "a.uc_32a_a," +
+    "a.uc_32b," +
+    "a.uc_33a," +
+    "a.uc_33a_a," +
+    "a.uc_33b," +
+    "a.uc_34a," +
+    "a.uc_34a_a," +
+    "a.uc_34b," +
+    "a.uc_35a," +
+    "a.uc_35a_a," +
+    "a.uc_35b," +
+    "a.uc_36a," +
+    "a.uc_36a_a," +
+    "a.uc_36b," +
+    "a.uc_37a," +
+    "a.uc_37a_a," +
+    "a.uc_37b," +
+    "a.LA_17," +
+    "a.LA_18," +
+    "a.LA_19," +
+    "a.LA_20a_b," +
+    "a.LA_20a_a," +
+    "a.LA_20b_a," +
+    "a.LA_21a_b," +
+    "a.LA_21a_a," +
+    "a.LA_21b_a," +
+    "a.LA_22a_b," +
+    "a.LA_22a_a," +
+    "a.LA_22b_a," +
+    "a.LA_23a_b," +
+    "a.LA_23a_a," +
+    "a.LA_23b_a," +
+    "a.LA_24a_b," +
+    "a.LA_24a_a," +
+    "a.LA_24b_a," +
+    "a.LA_25a_b," +
+    "a.LA_25a_a," +
+    "a.LA_25b_a," +
+    "a.LA_26a_b," +
+    "a.LA_26a_a," +
+    "a.LA_26b_a," +
+    "a.LA_27a_b," +
+    "a.LA_27a_a," +
+    "a.LA_27b_a," +
+    "a.LA_28a_b," +
+    "a.LA_28a_a," +
+    "a.LA_28b_a," +
+    "a.LA_29a_b," +
+    "a.LA_29a_a," +
+    "a.LA_29b_a," +
+    "a.LA_30a_b," +
+    "a.LA_30a_a," +
+    "a.LA_30b_a," +
+    "a.LA_31a_b," +
+    "a.LA_31a_a," +
+    "a.LA_31b_a," +
+    "a.LA_32a_b," +
+    "a.LA_32a_a," +
+    "a.LA_32b_a," +
+    "a.LA_33a_b," +
+    "a.LA_33a_a," +
+    "a.LA_33b_a," +
+    "a.LA_34a_b," +
+    "a.LA_34a_a," +
+    "a.LA_34b_a," +
+    "a.LA_35a_b," +
+    "a.LA_35a_a," +
+    "a.LA_35b_a," +
+    "a.LA_36a_b," +
+    "a.LA_36a_a," +
+    "a.LA_36b_a," +
+    "a.LA_37a_b," +
+    "a.LA_37a_a," +
+    "a.LA_37b_a," +
+    "a.LA_38a_b," +
+    "a.LA_38a_a," +
+    "a.LA_38b_a," +
+    "a.LA_39a_b," +
+    "a.LA_39a_a," +
+    "a.LA_39b_a," +
+    "a.LA_40a_b," +
+    "a.LA_40a_a," +
+    "a.LA_40b_a," +
+    "a.LA_41a_b," +
+    "a.LA_41a_a," +
+    "a.LA_41b_a," +
+    "a.LA_42a_b," +
+    "a.LA_42a_a," +
+    "a.LA_42b_a," +
+    "a.LA_43a_b," +
+    "a.LA_43a_a," +
+    "a.LA_43b_a," +
+    "a.LA_44a_b," +
+    "a.LA_44a_a," +
+    "a.LA_44b_a," +
+    "a.LA_45a_b," +
+    "a.LA_45a_a," +
+    "a.LA_45b_a," +
+    "a.LA_46a_b," +
+    "a.LA_46a_a," +
+    "a.LA_46b_a," +
+    "a.LA_47a_b," +
+    "a.LA_47a_a," +
+    "a.LA_47b_a," +
+    "a.LA_48a_b," +
+    "a.LA_48a_a," +
+    "a.LA_48b_a," +
+    "a.LA_49a_b," +
+    "a.LA_49a_a," +
+    "a.LA_49b_a," +
+    "a.LA_50a_b," +
+    "a.LA_50a_a," +
+    "a.LA_50b_a," +
+    "a.LA_51a_b," +
+    "a.LA_51a_a," +
+    "a.LA_51b_a," +
+    "a.LA_52a_b," +
+    "a.LA_52a_a," +
+    "a.LA_52b_a" +
+            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.la_sno = '" + la_sno.Text + "' and a.labid='1'", cn.cn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+
+        return ds;
+    }
 
 
-    //    try
-    //    {
+    private DataSet getDictionary_Cols(string formname)
+    {
+        CConnection cn = new CConnection();
+        SqlDataAdapter da = new SqlDataAdapter("select * from tbldict where tabname = '" + formname + "' order by var_seq", cn.cn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
 
-    //        obj_op = new CDBOperations();
-    //        ds = obj_op.GetFormData_VisitID("sp_GetRecords", "5", la_sno.Text, "");
-
-
-
-    //        ds_dict = obj_op.GetFormData_VisitID1("sp_GetRecords1", "0", "", "", "sample_result");
-
-
-
-
-    //        for (int a = 0; a <= ds_dict.Tables[0].Rows.Count - 1; a++)
-    //        {
-
-    //            for (int b = 0; b <= ds.Tables[0].Rows.Count - 1; b++)
-    //            {
-
-    //                //if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "FORM_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "COMP_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "EntryDate" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "UserID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "IsPilotPhase" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR1_DIFF" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR2_DIFF")
-
-    //                if (IsIncludedAudit("sample_result", ds_dict.Tables[0].Rows[a]["var_id"].ToString()))
-    //                {
-
-    //                    //if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() != tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text)
-
-
-    //                    if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() != tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text)
-    //                    {
-
-    //                        if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "DATEVISITV2")
-    //                        {
-
-    //                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() == "" && tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text == "  /  /")
-    //                            {
-
-    //                            }
-    //                            else
-    //                            {
-    //                                AddRecord(spName, ds.Tables[0].Rows[b]["FORM_ID"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text, CVariables.dual_normal_update.ToString(), CVariables.dualisupdate.ToString());
-    //                            }
-
-    //                        }
-    //                        else
-    //                        {
-    //                            AddRecord(spName, ds.Tables[0].Rows[b]["FORM_ID"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text, CVariables.dual_normal_update.ToString(), CVariables.dualisupdate.ToString());
-    //                        }
-    //                    }
-    //                }  //   if (ds.Tables[0].Rows[0][a].ToString() == tabControl1.TabPages[b].Controls[c].Name)
+        return ds;
+    }
 
 
 
-    //            }     //   for (int b = 0; b <= tabControl1.TabPages[b].Controls.Count - 1; c++)
+    private void AuditTrials()
+    {
+        CDBOperations obj_op = null;
+        DataSet ds = null;
+        DataSet ds_dict = null;
 
 
-    //        }     //    for (int a = 0; a <= ds.Tables[0].Columns.Count - 1; a++)
+        try
+        {
+
+            obj_op = new CDBOperations();
+
+            //ds = obj_op.GetFormData_VisitID("sp_GetRecords", "5", la_sno.Text, "");
+            ds = getSampleResult_ScrID();
 
 
-    //    }
+            //ds_dict = obj_op.GetFormData_VisitID1("sp_GetRecords1", "0", "", "", "sample_result");
+            ds_dict = getDictionary_Cols("sample_result");
 
 
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //    }
 
-    //    finally
-    //    {
-    //        obj_op = null;
-    //        ds = null;
-    //    }
-    //}
+            for (int a = 0; a <= ds_dict.Tables[0].Rows.Count - 1; a++)
+            {
+
+                for (int b = 0; b <= ds.Tables[0].Rows.Count - 1; b++)
+                {
+
+                    //if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "FORM_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "COMP_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "EntryDate" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "UserID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "IsPilotPhase" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR1_DIFF" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR2_DIFF")
+
+                    if (IsIncludedAudit("sample_result", ds_dict.Tables[0].Rows[a]["var_id"].ToString()))
+                    {
+
+                        //if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() != tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text)
+
+
+
+                        if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_03_a")
+                        {
+
+
+                            TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["var_id"].ToString());
+
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text.Trim())
+                            {
+
+                                if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "DATEVISITV2")
+                                {
+
+                                    //if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() == "")
+                                    //{
+
+                                    //}
+                                    //else
+                                    //{
+                                    //    AddRecord(spName, ds.Tables[0].Rows[b]["FORM_ID"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text, CVariables.dual_normal_update.ToString(), CVariables.dualisupdate.ToString());
+                                    //}
+
+                                }
+                                else
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+                                }
+                            }
+
+
+                        }
+
+
+
+
+
+
+
+
+                    }  //   if (ds.Tables[0].Rows[0][a].ToString() == tabControl1.TabPages[b].Controls[c].Name)
+
+
+
+                }     //   for (int b = 0; b <= tabControl1.TabPages[b].Controls.Count - 1; c++)
+
+
+            }     //    for (int a = 0; a <= ds.Tables[0].Columns.Count - 1; a++)
+
+
+        }
+
+
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message.Replace("'", "") + "');";
+            message = "alert('" + ex.Message.Replace("\"", "") + "');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+            obj_op = null;
+            ds = null;
+        }
+    }
 
 
 
@@ -18777,16 +18836,23 @@ public partial class sample_results : System.Web.UI.Page
     private bool IsIncludedAudit(string tabname, string fieldname)
     {
         CDBOperations obj_op = new CDBOperations();
+        CConnection cn = new CConnection();
+
         DataSet ds = null;
 
         bool IsError = false;
 
         try
         {
-            string[] fldname = { "tabname", "var_name", "var_id", "var_nmae", "var_seq", "field_desc", "remarks", "data_type", "field_len", "field_decimal", "MinValue", "MaxValue", "value1", "value2", "value3", "value4", "value5", "taborder", "msg", "IsOthers", "Others_Value", "No_Options", "Isblank", "fldvalue" };
-            string[] fldvalue = { tabname, "", fieldname, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "8" };
+            //string[] fldname = { "tabname", "var_name", "var_id", "var_nmae", "var_seq", "field_desc", "remarks", "data_type", "field_len", "field_decimal", "MinValue", "MaxValue", "value1", "value2", "value3", "value4", "value5", "taborder", "msg", "IsOthers", "Others_Value", "No_Options", "Isblank", "fldvalue" };
+            //string[] fldvalue = { tabname, "", fieldname, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "8" };
 
-            ds = obj_op.ExecuteNonQuery(fldname, fldvalue, "sp_CreateDictionary");
+            //ds = obj_op.ExecuteNonQuery(fldname, fldvalue, "sp_CreateDictionary");
+
+            SqlDataAdapter da = new SqlDataAdapter("select * from tbldict where tabname = '" + tabname + "' and var_id  = '" + fieldname + "' and isaudit is not null", cn.cn);
+            ds = new DataSet();
+            da.Fill(ds);
+
 
             if (ds != null)
             {
@@ -18818,6 +18884,7 @@ public partial class sample_results : System.Web.UI.Page
 
     private void AddRecord(string spName, string ChildID, string VisitID, string formNo, string FormName, string ActionPerformed, string FieldName, string OldValue, string NewValue, string IsUpdateNormal, string IsDualUpdate)
     {
+        CConnection cn = new CConnection();
         CDBOperations obj_op = null;
         string[] st_dt;
 
@@ -18837,10 +18904,20 @@ public partial class sample_results : System.Web.UI.Page
             start_dt1 = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
 
 
-            string[] fldname = { "FormID", "VisitID", "FormNo", "FormName", "ActionPerformed", "EntryDate", "EntryTime", "ComputerName", "WinUserName", "LoginUserName", "FieldName", "OldValue", "NewValue", "IsUpdateNormal", "IsDualUpdate" };
-            string[] fldvalue = { ChildID, VisitID, formNo, FormName, ActionPerformed, start_dt.ToShortDateString(), start_dt1.ToShortTimeString(), "", Session["userid"].ToString(), Session["userid"].ToString(), FieldName, OldValue, NewValue, IsUpdateNormal, IsDualUpdate };
+            //string[] fldname = { "FormID", "VisitID", "FormNo", "FormName", "ActionPerformed", "EntryDate", "EntryTime", "ComputerName", "WinUserName", "LoginUserName", "FieldName", "OldValue", "NewValue", "IsUpdateNormal", "IsDualUpdate" };
+            ///string[] fldvalue = { ChildID, VisitID, formNo, FormName, ActionPerformed, start_dt.ToShortDateString(), start_dt1.ToShortTimeString(), "", Session["userid"].ToString(), Session["userid"].ToString(), FieldName, OldValue, NewValue, IsUpdateNormal, IsDualUpdate };
 
-            obj_op.ExecuteNonQuery(fldname, fldvalue, spName);
+            //obj_op.ExecuteNonQuery(fldname, fldvalue, spName);
+
+
+            string qry = "insert into tblAuditTrials (FormID, VisitID, FormNo, FormName, ActionPerformed, EntryDate, EntryTime, ComputerName, WinUserName, LoginUserName, FieldName, OldValue, NewValue, IsUpdateNormal, IsDualUpdate) values ('" +
+                ChildID + "', '" + VisitID + "', '" + formNo + "', '" + FormName + "', '" + ActionPerformed + "', '" + start_dt.ToShortDateString() + "', '" + start_dt1.ToShortTimeString() + "', ''" + ", '" + Session["userid"].ToString() + "', '" + Session["userid"].ToString() + "', '" + FieldName + "', '" + OldValue + "', '" + NewValue + "', '" + IsUpdateNormal + "', '" + IsDualUpdate + "')";
+
+
+            SqlDataAdapter da = new SqlDataAdapter(qry, cn.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
         }
 
         catch (Exception ex)
