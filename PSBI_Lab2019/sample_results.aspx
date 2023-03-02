@@ -105,7 +105,9 @@
             var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
                 ((evt.which) ? evt.which : 0));
             if (charCode > 31 && (charCode < 65 || charCode > 90) &&
-                (charCode < 97 || charCode > 122) && charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 32) {
+                (charCode < 97 || charCode > 122) && charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 32
+                && charCode != 46 && charCode != 45 && charCode != 47) {                
+
                 alert("Please enter string / numeric value but special characters not allowed ");
                 return false;
             }

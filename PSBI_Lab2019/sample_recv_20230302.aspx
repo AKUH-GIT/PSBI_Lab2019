@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_recv.aspx.cs" Inherits="sample_recv" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_recv_20230302.aspx.cs" Inherits="sample_recv_20230302" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
@@ -166,85 +166,350 @@
 
 
     </script>
-    <script>        
+    <script>
 
         $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
 
             var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
 
-            if (arr[2] === "11") {
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
 
-                $("#pnl_AS4_Q21a").css("display", "none");
+                var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
 
-                EnableControls1("AS3_Q16", "txt");
-                EnableControls1("AS3_Q17", "txt");
-                EnableControls1("AS3_Q18", "txt");
-                EnableControls1("AS3_Q19", "txt");
-                EnableControls1("AS3_Q20", "txt");
+                if (arr[2] != arr1[2]) {
+                    alert("RCT 1 must be selected for all samples ");
 
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
 
-                DisableControls1("AS4_Q21a", "rdo");
-
-                DisableControls1("AS4_Q22a", "txt");
-                DisableControls1("AS4_Q22b", "txt");
-                DisableControls1("AS4_Q23", "txt");
-                DisableControls1("AS4_Q24", "txt");
-                DisableControls1("AS5_Q25a", "txt");
-                DisableControls1("AS5_Q25b", "txt");
-                DisableControls1("AS5_Q26", "txt");
-
-                DisableControls1("AS5_Q27", "rdo");
-                DisableControls1("AS5_Q28", "rdo");
-                DisableControls1("AS5_Q29", "rdo");
-                DisableControls1("AS5_Q30", "rdo");
-                DisableControls1("AS5_Q31", "rdo");
-                DisableControls1("AS5_Q32", "rdo");
-
-                DisableControls1("AS5_Q33a", "txt");
-                DisableControls1("AS5_Q33b", "txt");
-                DisableControls1("AS3_Remarks", "txt");
-
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+                }
             }
-            else {
-
-                $("#pnl_AS4_Q21a").css("display", "block");
-
-                DisableControls1("AS3_Q16", "txt");
-                DisableControls1("AS3_Q17", "txt");
-                DisableControls1("AS3_Q18", "txt");
-                DisableControls1("AS3_Q19", "txt");
-                DisableControls1("AS3_Q20", "txt");
 
 
-                EnableControls1("AS4_Q21a", "rdo");
+            var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
 
-                EnableControls1("AS4_Q22a", "txt");
-                EnableControls1("AS4_Q22b", "txt");
-                EnableControls1("AS4_Q23", "txt");
-                EnableControls1("AS4_Q24", "txt");
-                EnableControls1("AS5_Q25a", "txt");
-                EnableControls1("AS5_Q25b", "txt");
-                EnableControls1("AS5_Q26", "txt");
 
-                EnableControls1("AS5_Q27", "rdo");
-                EnableControls1("AS5_Q28", "rdo");
-                EnableControls1("AS5_Q29", "rdo");
-                EnableControls1("AS5_Q30", "rdo");
-                EnableControls1("AS5_Q31", "rdo");
-                EnableControls1("AS5_Q32", "rdo");
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
 
-                EnableControls1("AS5_Q33a", "txt");
-                EnableControls1("AS5_Q33b", "txt");
-                EnableControls1("AS3_Remarks", "txt");
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
 
+
+                if (arr[2] == 11 && arr1[2] == 2) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                } else if (arr[2] == 12 && arr1[2] == 1) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                }
             }
 
 
         });
 
 
+        $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+                if (arr[2] != arr1[2]) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+                }
+            }
 
 
+
+
+            var rdo_value1 = $("input[name='AS1_Q3']:checked").val();
+
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+
+
+                if (arr[2] == 11 && arr1[2] == 2) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                } else if (arr[2] == 12 && arr1[2] == 1) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                    $("#AS1_Q3_1").removeAttr("checked");
+                    $("#AS1_Q3_2").removeAttr("checked");
+
+                }
+            }
+
+        });
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q3']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+                if (arr[2] == 2 && arr1[2] == 11) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+                } else if (arr[2] == 1 && arr1[2] == 12) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    $("#AS1_Q2_11").removeAttr("checked");
+                    $("#AS1_Q2_12").removeAttr("checked");
+                }
+            }
+
+
+
+
+            var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
+
+            if (rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+
+                if (arr[2] == 2 && arr1[2] == 11) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    //$("#AS1_Q2_11").removeAttr("checked");
+                    //$("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+
+                } else if (arr[2] == 1 && arr1[2] == 12) {
+                    alert("RCT 1 must be selected for all samples ");
+
+                    //$("#AS1_Q2_11").removeAttr("checked");
+                    //$("#AS1_Q2_12").removeAttr("checked");
+
+                    $("#AS1_Q1_11").removeAttr("checked");
+                    $("#AS1_Q1_12").removeAttr("checked");
+                }
+            }
+
+        });
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q3']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+
+                if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+                }
+
+            }
+
+        });
+
+
+
+
+
+        $(document).on("click", "input[name='AS1_Q2_1']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q3']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q1_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q3']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+
+
+                if (arr[2] === "11" && arr1[2] === "1" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+
+                }
+
+            }
+
+        });
 
 
 
@@ -304,6 +569,95 @@
         });
 
 
+
+
+        $(document).on("click", "input[name='AS1_Q3']:checked", function () {
+
+            var arr = $(this).val().split('_');
+            var rdo_value = $("input[name='AS1_Q1_1']:checked").val();
+            var rdo_value1 = $("input[name='AS1_Q2_1']:checked").val();
+
+
+            if (rdo_value != undefined && rdo_value != "" && rdo_value != null && rdo_value != "undefined" &&
+                rdo_value1 != undefined && rdo_value1 != "" && rdo_value1 != null && rdo_value1 != "undefined") {
+
+                var arr1 = $("input[name='AS1_Q1_1']:checked").val().split('_');
+                var arr2 = $("input[name='AS1_Q2_1']:checked").val().split('_');
+
+
+                if (arr[2] === "1" && arr1[2] === "11" && arr2[2] === "11") {
+
+                    $("#pnl_AS4_Q21a").css("display", "none");
+
+                    EnableControls1("AS3_Q16", "txt");
+                    EnableControls1("AS3_Q17", "txt");
+                    EnableControls1("AS3_Q18", "txt");
+                    EnableControls1("AS3_Q19", "txt");
+                    EnableControls1("AS3_Q20", "txt");
+
+
+                    DisableControls1("AS4_Q21a", "rdo");
+
+                    DisableControls1("AS4_Q22a", "txt");
+                    DisableControls1("AS4_Q22b", "txt");
+                    DisableControls1("AS4_Q23", "txt");
+                    DisableControls1("AS4_Q24", "txt");
+                    DisableControls1("AS5_Q25a", "txt");
+                    DisableControls1("AS5_Q25b", "txt");
+                    DisableControls1("AS5_Q26", "txt");
+
+                    DisableControls1("AS5_Q27", "rdo");
+                    DisableControls1("AS5_Q28", "rdo");
+                    DisableControls1("AS5_Q29", "rdo");
+                    DisableControls1("AS5_Q30", "rdo");
+                    DisableControls1("AS5_Q31", "rdo");
+                    DisableControls1("AS5_Q32", "rdo");
+
+                    DisableControls1("AS5_Q33a", "txt");
+                    DisableControls1("AS5_Q33b", "txt");
+                    DisableControls1("AS3_Remarks", "txt");
+
+                }
+                else {
+
+                    $("#pnl_AS4_Q21a").css("display", "block");
+
+
+                    DisableControls1("AS3_Q16", "txt");
+                    DisableControls1("AS3_Q17", "txt");
+                    DisableControls1("AS3_Q18", "txt");
+                    DisableControls1("AS3_Q19", "txt");
+                    DisableControls1("AS3_Q20", "txt");
+
+
+                    EnableControls1("AS4_Q21a", "rdo");
+
+                    EnableControls1("AS4_Q22a", "txt");
+                    EnableControls1("AS4_Q22b", "txt");
+                    EnableControls1("AS4_Q23", "txt");
+                    EnableControls1("AS4_Q24", "txt");
+                    EnableControls1("AS5_Q25a", "txt");
+                    EnableControls1("AS5_Q25b", "txt");
+                    EnableControls1("AS5_Q26", "txt");
+
+                    EnableControls1("AS5_Q27", "rdo");
+                    EnableControls1("AS5_Q28", "rdo");
+                    EnableControls1("AS5_Q29", "rdo");
+                    EnableControls1("AS5_Q30", "rdo");
+                    EnableControls1("AS5_Q31", "rdo");
+                    EnableControls1("AS5_Q32", "rdo");
+
+                    EnableControls1("AS5_Q33a", "txt");
+                    EnableControls1("AS5_Q33b", "txt");
+                    EnableControls1("AS3_Remarks", "txt");
+
+
+
+                }
+
+            }
+
+        });
 
 
 
@@ -957,11 +1311,6 @@
                 $("#AS2_Q7_CBC_CODE").focus();
                 return false;
             }
-            else if ($("#AS2_Q7_CBC_CODE").val().indexOf("_") != -1) {
-                alert("Please enter full sample id ");
-                $("#AS2_Q7_CBC_CODE").focus();
-                return false;
-            }
             else if ($('input[name=AS2_Q8]:checked').length <= 0
                 && ($("#AS2_Q8_1").is(":visible") == true || $("#AS2_Q8_2").is(":visible") == true)) {
                 alert("Please select BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after) ");
@@ -1334,7 +1683,7 @@
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
                     </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>                    
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
@@ -1346,7 +1695,7 @@
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
                     </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>                    
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
@@ -1356,7 +1705,7 @@
                         { %>
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a></li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
+                    <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>                    
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
@@ -1552,9 +1901,7 @@
                                                                 <asp:TextBox runat="server" ID="AS1_Q1_2" MaxLength="6" class="form-control" name="AS1_Q1_2" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
-
-
-                                                        <div class="form-group row" style="display: none;">
+                                                        <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Blood Culture Sample collection</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
@@ -1567,17 +1914,13 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
-
-
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Volume of blood in Paeds BacT Alert Paeds bottle ml</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" ID="AS1_Q2_2" MaxLength="6" class="form-control" name="AS1_Q2_2" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
-
-                                                        <div class="form-group row" style="display: none;">
+                                                        <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Metagenomics Sample collection</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
@@ -1590,7 +1933,6 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
                                                     </asp:Panel>
                                                     <asp:Panel runat="server" ID="pnl_AS1_Q3a_1">
                                                         <div class="form-group row">

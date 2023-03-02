@@ -243,6 +243,7 @@ public partial class login : System.Web.UI.Page
                         HttpContext.Current.Session["id"] = ds.Tables[0].Rows[0]["ID"].ToString();
                         HttpContext.Current.Session["userid"] = ds.Tables[0].Rows[0]["UserID"].ToString();
                         HttpContext.Current.Response.Cookies["labid"].Value = ds.Tables[0].Rows[0]["labid"].ToString();
+                        HttpContext.Current.Response.Cookies["role"].Value = ds.Tables[0].Rows[0]["role"].ToString();
 
                         Response.Redirect("default.aspx");
 

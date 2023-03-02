@@ -34,14 +34,71 @@ public partial class search_sample : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                fillDropDown();
+                if (Request.Cookies["role"].Value == "admin")
+                {
+                    fillDropDown_allsites();
+                }
+                else
+                {
+                    fillDropDown_sitewise();
+                }
+
+
                 ReportViewer1.Visible = false;
             }
         }
     }
 
 
-    private void fillDropDown()
+
+    private void fillDropDown_sitewise()
+    {
+        CConnection cn = null;
+
+        try
+        {
+            cn = new CConnection();
+            string qry;
+
+            qry = "select distinct la_sno from sample_result where SUBSTRING(la_sno, 4, 1) = '" + Request.Cookies["role"].Value + "'";
+
+
+            SqlDataAdapter da = new SqlDataAdapter(qry, cn.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            ddl_screeningid.DataTextField = ds.Tables[0].Columns["la_sno"].ToString();
+            ddl_screeningid.DataValueField = ds.Tables[0].Columns["la_sno"].ToString();
+
+            ddl_screeningid.DataSource = ds.Tables[0];
+            ddl_screeningid.DataBind();
+
+            ddl_screeningid.Items.Add(new ListItem("Select Screening ID", "0"));
+
+            for (int a = 0; a <= ddl_screeningid.Items.Count - 1; a++)
+            {
+                if (ddl_screeningid.Items[a].Value == "0")
+                {
+                    ddl_screeningid.SelectedIndex = a;
+                }
+            }
+
+        }
+
+        catch (Exception ex)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
+        }
+
+        finally
+        {
+            cn = null;
+        }
+    }
+
+
+
+    private void fillDropDown_allsites()
     {
         CConnection cn = null;
 
@@ -4077,7 +4134,15 @@ public partial class search_sample : System.Web.UI.Page
             ReportViewer1.Visible = false;
             ddl_screeningid.Items.Clear();
 
-            fillDropDown();
+
+            if (Request.Cookies["role"].Value == "admin")
+            {
+                fillDropDown_allsites();
+            }
+            else
+            {
+                fillDropDown_sitewise();
+            }
 
 
             cn = new CConnection();
