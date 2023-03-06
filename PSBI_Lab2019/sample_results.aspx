@@ -574,11 +574,2139 @@
                 $("#cmdPrintPreview").hide();
                 $("#cmdPrint").hide();
                 //$("#cmdSaveDraft").show();
+                //LoadData_SampleResult();
+
             }
 
         });
 
 
+        function LoadData_SampleResult() {
+
+            $
+                .ajax({
+                    url: "sample_results.aspx/IsScreeningIDExists",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: "{ screeningid: '" + $('#la_sno').val() + "', labid: '" + getCookie("labid") + "'}",
+
+                    success: function (
+                        data) {
+
+                        if (data.d == "") {
+
+
+                        }
+                        else {
+                            $("#la_sno").val(data.d[0]["la_sno"]);
+                            test0(data);
+                            test0a(data);
+                            test1(data);
+                            test9(data);
+                            test2(data);
+                            test2a(data);
+                            test3(data);
+                            test3a(data);
+                            test3b(data);
+                            test3c(data);
+                            test3d(data);
+                            test4(data);
+                            test5(data);
+                            test6(data);
+                            test7(data);
+                            test8(data);
+                            test10(data);
+                            test11(data);
+
+                            $("#history").val(data.d[0]["history"]);
+
+                        }
+
+                    },
+                    error: function (
+                        xhr,
+                        ajaxOptions,
+                        thrownError) {
+
+                        alert('Error: ');
+
+                    }
+                });
+
+        }
+
+
+        function test0(data) {
+            if (data.d[0]["LA_03_b"] == "") {
+                $("#LA_03_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_03_b"] == "999") {
+                $("#LA_03_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_03_b"] == "888") {
+                $("#LA_03_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_03]:checked").val(), $("#LA_03_a"), "LA_03_v", $("#lbl_LA_03_a"));
+            ShowHide_TextBox($("input[name=LA_03]:checked").val(), $("#LA_03_a"), "LA_03_v", $("#lbl_LA_03_a"));
+            ShowHide_TextBox($("input[name=LA_03]:checked").val(), $("#LA_03_a"), "LA_03_v", $("#lbl_LA_03_a"));
+
+
+
+            $("#LA_03_a").val(data.d[0]["LA_03_a"]);
+
+
+            if (data.d[0]["LA_04_b"] == "") {
+                $("#LA_04_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_04_b"] == "999") {
+                $("#LA_04_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_04_b"] == "888") {
+                $("#LA_04_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_04]:checked").val(), $("#LA_04_a"), "LA_04_v", $("#lbl_LA_04_a"));
+            ShowHide_TextBox($("input[name=LA_04]:checked").val(), $("#LA_04_a"), "LA_04_v", $("#lbl_LA_04_a"));
+            ShowHide_TextBox($("input[name=LA_04]:checked").val(), $("#LA_04_a"), "LA_04_v", $("#lbl_LA_04_a"));
+
+
+
+            $("#LA_04_a").val(data.d[0]["LA_04_a"]);
+
+
+
+            if (data.d[0]["LA_05_b"] == "") {
+                $("#LA_05_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_05_b"] == "999") {
+                $("#LA_05_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_05_b"] == "888") {
+                $("#LA_05_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_05]:checked").val(), $("#LA_05_a"), "LA_05_v", $("#lbl_LA_05_a"));
+            ShowHide_TextBox($("input[name=LA_05]:checked").val(), $("#LA_05_a"), "LA_05_v", $("#lbl_LA_05_a"));
+            ShowHide_TextBox($("input[name=LA_05]:checked").val(), $("#LA_05_a"), "LA_05_v", $("#lbl_LA_05_a"));
+
+
+            $("#LA_05_a").val(data.d[0]["LA_05_a"]);
+
+
+
+            if (data.d[0]["LA_06_b"] == "") {
+                $("#LA_06_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_06_b"] == "999") {
+                $("#LA_06_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_06_b"] == "888") {
+                $("#LA_06_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_06]:checked").val(), $("#LA_06_a"), "LA_06_v", $("#lbl_LA_06_a"));
+            ShowHide_TextBox($("input[name=LA_06]:checked").val(), $("#LA_06_a"), "LA_06_v", $("#lbl_LA_06_a"));
+            ShowHide_TextBox($("input[name=LA_06]:checked").val(), $("#LA_06_a"), "LA_06_v", $("#lbl_LA_06_a"));
+
+
+            $("#LA_06_a").val(data.d[0]["LA_06_a"]);
+
+
+
+            if (data.d[0]["LA_07_b"] == "") {
+                $("#LA_07_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_07_b"] == "999") {
+                $("#LA_07_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_07_b"] == "888") {
+                $("#LA_07_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_07]:checked").val(), $("#LA_07_a"), "LA_07_v", $("#lbl_LA_07_a"));
+            ShowHide_TextBox($("input[name=LA_07]:checked").val(), $("#LA_07_a"), "LA_07_v", $("#lbl_LA_07_a"));
+            ShowHide_TextBox($("input[name=LA_07]:checked").val(), $("#LA_07_a"), "LA_07_v", $("#lbl_LA_07_a"));
+
+
+            $("#LA_07_a").val(data.d[0]["LA_07_a"]);
+
+
+
+        }
+
+
+        function test0a(data) {
+            if (data.d[0]["LA_08_b"] == "") {
+                $("#LA_08_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_08_b"] == "999") {
+                $("#LA_08_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_08_b"] == "888") {
+                $("#LA_08_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_08]:checked").val(), $("#LA_08_a"), "LA_08_v", $("#lbl_LA_08_a"));
+            ShowHide_TextBox($("input[name=LA_08]:checked").val(), $("#LA_08_a"), "LA_08_v", $("#lbl_LA_08_a"));
+            ShowHide_TextBox($("input[name=LA_08]:checked").val(), $("#LA_08_a"), "LA_08_v", $("#lbl_LA_08_a"));
+
+
+            $("#LA_08_a").val(data.d[0]["LA_08_a"]);
+
+
+            if (data.d[0]["LA_09_b"] == "") {
+                $("#LA_09_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_09_b"] == "999") {
+                $("#LA_09_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_09_b"] == "888") {
+                $("#LA_09_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_09]:checked").val(), $("#LA_09_a"), "LA_09_v", $("#lbl_LA_09_a"));
+            ShowHide_TextBox($("input[name=LA_09]:checked").val(), $("#LA_09_a"), "LA_09_v", $("#lbl_LA_09_a"));
+            ShowHide_TextBox($("input[name=LA_09]:checked").val(), $("#LA_09_a"), "LA_09_v", $("#lbl_LA_09_a"));
+
+
+            $("#LA_09_a").val(data.d[0]["LA_09_a"]);
+
+
+            if (data.d[0]["LA_10_b"] == "") {
+                $("#LA_10_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_10_b"] == "999") {
+                $("#LA_10_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_10_b"] == "888") {
+                $("#LA_10_a").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=LA_10]:checked").val(), $("#LA_10_a"), "LA_10_v", $("#lbl_LA_10_a"));
+            ShowHide_TextBox($("input[name=LA_10]:checked").val(), $("#LA_10_a"), "LA_10_v", $("#lbl_LA_10_a"));
+            ShowHide_TextBox($("input[name=LA_10]:checked").val(), $("#LA_10_a"), "LA_10_v", $("#lbl_LA_10_a"));
+
+
+            $("#LA_10_a").val(data.d[0]["LA_10_a"]);
+
+            if (data.d[0]["LA_11_b"] == "") {
+                $("#LA_11_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_11_b"] == "999") {
+                $("#LA_11_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_11_b"] == "888") {
+                $("#LA_11_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_11]:checked").val(), $("#LA_11_a"), "LA_11_v", $("#lbl_LA_11_a"));
+            ShowHide_TextBox($("input[name=LA_11]:checked").val(), $("#LA_11_a"), "LA_11_v", $("#lbl_LA_11_a"));
+            ShowHide_TextBox($("input[name=LA_11]:checked").val(), $("#LA_11_a"), "LA_11_v", $("#lbl_LA_11_a"));
+
+            $("#LA_11_a").val(data.d[0]["LA_11_a"]);
+
+            if (data.d[0]["LA_12_b"] == "") {
+                $("#LA_12_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_12_b"] == "999") {
+                $("#LA_12_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_12_b"] == "888") {
+                $("#LA_12_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_12]:checked").val(), $("#LA_12_a"), "LA_12_v", $("#lbl_LA_12_a"));
+            ShowHide_TextBox($("input[name=LA_12]:checked").val(), $("#LA_12_a"), "LA_12_v", $("#lbl_LA_12_a"));
+            ShowHide_TextBox($("input[name=LA_12]:checked").val(), $("#LA_12_a"), "LA_12_v", $("#lbl_LA_12_a"));
+
+            $("#LA_12_a").val(data.d[0]["LA_12_a"]);
+
+            if (data.d[0]["LA_13_b"] == "") {
+                $("#LA_13_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_13_b"] == "999") {
+                $("#LA_13_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_13_b"] == "888") {
+                $("#LA_13_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_13]:checked").val(), $("#LA_13_a"), "LA_13_v", $("#lbl_LA_13_a"));
+            ShowHide_TextBox($("input[name=LA_13]:checked").val(), $("#LA_13_a"), "LA_13_v", $("#lbl_LA_13_a"));
+            ShowHide_TextBox($("input[name=LA_13]:checked").val(), $("#LA_13_a"), "LA_13_v", $("#lbl_LA_13_a"));
+
+            $("#LA_13_a").val(data.d[0]["LA_13_a"]);
+
+            if (data.d[0]["LA_14_b"] == "") {
+                $("#LA_14_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_14_b"] == "999") {
+                $("#LA_14_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_14_b"] == "888") {
+                $("#LA_14_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_14]:checked").val(), $("#LA_14_a"), "LA_14_v", $("#lbl_LA_14_a"));
+            ShowHide_TextBox($("input[name=LA_14]:checked").val(), $("#LA_14_a"), "LA_14_v", $("#lbl_LA_14_a"));
+            ShowHide_TextBox($("input[name=LA_14]:checked").val(), $("#LA_14_a"), "LA_14_v", $("#lbl_LA_14_a"));
+
+            $("#LA_14_a").val(data.d[0]["LA_14_a"]);
+
+            if (data.d[0]["LA_15_b"] == "") {
+                $("#LA_15_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_15_b"] == "999") {
+                $("#LA_15_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_15_b"] == "888") {
+                $("#LA_15_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_15]:checked").val(), $("#LA_15_a"), "LA_15_v", $("#lbl_LA_15_a"));
+            ShowHide_TextBox($("input[name=LA_15]:checked").val(), $("#LA_15_a"), "LA_15_v", $("#lbl_LA_15_a"));
+            ShowHide_TextBox($("input[name=LA_15]:checked").val(), $("#LA_15_a"), "LA_15_v", $("#lbl_LA_15_a"));
+            $("#LA_15_a").val(data.d[0]["LA_15_a"]);
+
+            if (data.d[0]["LA_16_b"] == "") {
+                $("#LA_16_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_16_b"] == "999") {
+                $("#LA_16_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_16_b"] == "888") {
+                $("#LA_16_a").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LA_16]:checked").val(), $("#LA_16_a"), "LA_16_v", $("#lbl_LA_16_a"));
+            ShowHide_TextBox($("input[name=LA_16]:checked").val(), $("#LA_16_a"), "LA_16_v", $("#lbl_LA_16_a"));
+            ShowHide_TextBox($("input[name=LA_16]:checked").val(), $("#LA_16_a"), "LA_16_v", $("#lbl_LA_16_a"));
+
+            $("#LA_16_a").val(data.d[0]["LA_16_a"]);
+
+            if (data.d[0]["LF_01"] == "") {
+                $("#LF_01_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_01"] == "999") {
+                $("#LF_01_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_01"] == "888") {
+                $("#LF_01_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_01]:checked").val(), $("#LF_01_a"), "LF_01_v", $("#lbl_LF_01_a"));
+            ShowHide_TextBox($("input[name=LF_01]:checked").val(), $("#LF_01_a"), "LF_01_v", $("#lbl_LF_01_a"));
+            ShowHide_TextBox($("input[name=LF_01]:checked").val(), $("#LF_01_a"), "LF_01_v", $("#lbl_LF_01_a"));
+        }
+
+        function test1(data) {
+            $("#LF_01_a").val(data.d[0]["LF_01_a"]);
+
+            if (data.d[0]["LF_02"] == "") {
+                $("#LF_02_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_02"] == "999") {
+                $("#LF_02_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_02"] == "888") {
+                $("#LF_02_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_02]:checked").val(), $("#LF_02_a"), "LF_02_v", $("#lbl_LF_02_a"));
+            ShowHide_TextBox($("input[name=LF_02]:checked").val(), $("#LF_02_a"), "LF_02_v", $("#lbl_LF_02_a"));
+            ShowHide_TextBox($("input[name=LF_02]:checked").val(), $("#LF_02_a"), "LF_02_v", $("#lbl_LF_02_a"));
+
+            $("#LF_02_a").val(data.d[0]["LF_02_a"]);
+
+            if (data.d[0]["LF_03"] == "") {
+                $("#LF_03_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_03"] == "999") {
+                $("#LF_03_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_03"] == "888") {
+                $("#LF_03_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_03]:checked").val(), $("#LF_03_a"), "LF_03_v", $("#lbl_LF_03_a"));
+            ShowHide_TextBox($("input[name=LF_03]:checked").val(), $("#LF_03_a"), "LF_03_v", $("#lbl_LF_03_a"));
+            ShowHide_TextBox($("input[name=LF_03]:checked").val(), $("#LF_03_a"), "LF_03_v", $("#lbl_LF_03_a"));
+
+            $("#LF_03_a").val(data.d[0]["LF_03_a"]);
+
+            if (data.d[0]["LF_04"] == "") {
+                $("#LF_04_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_04"] == "999") {
+                $("#LF_04_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_04"] == "888") {
+                $("#LF_04_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_04]:checked").val(), $("#LF_04_a"), "LF_04_v", $("#lbl_LF_04_a"));
+            ShowHide_TextBox($("input[name=LF_04]:checked").val(), $("#LF_04_a"), "LF_04_v", $("#lbl_LF_04_a"));
+            ShowHide_TextBox($("input[name=LF_04]:checked").val(), $("#LF_04_a"), "LF_04_v", $("#lbl_LF_04_a"));
+
+            $("#LF_04_a").val(data.d[0]["LF_04_a"]);
+
+            if (data.d[0]["LF_05"] == "") {
+                $("#LF_05_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_05"] == "999") {
+                $("#LF_05_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_05"] == "888") {
+                $("#LF_05_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_05]:checked").val(), $("#LF_05_a"), "LF_05_v", $("#lbl_LF_05_a"));
+            ShowHide_TextBox($("input[name=LF_05]:checked").val(), $("#LF_05_a"), "LF_05_v", $("#lbl_LF_05_a"));
+            ShowHide_TextBox($("input[name=LF_05]:checked").val(), $("#LF_05_a"), "LF_05_v", $("#lbl_LF_05_a"));
+
+            $("#LF_05_a").val(data.d[0]["LF_05_a"]);
+
+            if (data.d[0]["LF_06"] == "") {
+                $("#LF_06_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_06"] == "999") {
+                $("#LF_06_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_06"] == "888") {
+                $("#LF_06_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_06]:checked").val(), $("#LF_06_a"), "LF_06_v", $("#lbl_LF_06_a"));
+            ShowHide_TextBox($("input[name=LF_06]:checked").val(), $("#LF_06_a"), "LF_06_v", $("#lbl_LF_06_a"));
+            ShowHide_TextBox($("input[name=LF_06]:checked").val(), $("#LF_06_a"), "LF_06_v", $("#lbl_LF_06_a"));
+
+            $("#LF_06_a").val(data.d[0]["LF_06_a"]);
+
+            if (data.d[0]["LF_07"] == "") {
+                $("#LF_07_v").prop("checked", "checked");
+            } else if (data.d[0]["LF_07"] == "999") {
+                $("#LF_07_b").prop("checked", "checked");
+            } else if (data.d[0]["LF_07"] == "888") {
+                $("#LF_07_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=LF_07]:checked").val(), $("#LF_07_a"), "LF_07_v", $("#lbl_LF_07_a"));
+            ShowHide_TextBox($("input[name=LF_07]:checked").val(), $("#LF_07_a"), "LF_07_v", $("#lbl_LF_07_a"));
+            ShowHide_TextBox($("input[name=LF_07]:checked").val(), $("#LF_07_a"), "LF_07_v", $("#lbl_LF_07_a"));
+
+            $("#LF_07_a").val(data.d[0]["LF_07_a"]);
+
+
+        }
+
+
+        function test2(data) {
+            if (data.d[0]["RF_01"] == "") {
+                $("#RF_01_v").prop("checked", "checked");
+            } else if (data.d[0]["RF_01"] == "999") {
+                $("#RF_01_b").prop("checked", "checked");
+            } else if (data.d[0]["RF_01"] == "888") {
+                $("#RF_01_c").prop("checked", "checked");
+            }
+            ShowHide_TextBox($("input[name=RF_01]:checked").val(), $("#RF_01_a"), "RF_01_v", $("#lbl_RF_01_a"));
+            ShowHide_TextBox($("input[name=RF_01]:checked").val(), $("#RF_01_a"), "RF_01_v", $("#lbl_RF_01_a"));
+            ShowHide_TextBox($("input[name=RF_01]:checked").val(), $("#RF_01_a"), "RF_01_v", $("#lbl_RF_01_a"));
+
+            $("#RF_01_a").val(data.d[0]["RF_01_a"]);
+
+            if (data.d[0]["RF_03"] == "") {
+                $("#RF_03_v").prop("checked", "checked");
+            } else if (data.d[0]["RF_03"] == "999") {
+                $("#RF_03_b").prop("checked", "checked");
+            } else if (data.d[0]["RF_03"] == "888") {
+                $("#RF_03_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=RF_03]:checked").val(), $("#RF_03_a"), "RF_03_v", $("#lbl_RF_03_a"));
+            ShowHide_TextBox($("input[name=RF_03]:checked").val(), $("#RF_03_a"), "RF_03_v", $("#lbl_RF_03_a"));
+            ShowHide_TextBox($("input[name=RF_03]:checked").val(), $("#RF_03_a"), "RF_03_v", $("#lbl_RF_03_a"));
+
+
+            $("#RF_03_a").val(data.d[0]["RF_03_a"]);
+
+
+            if (data.d[0]["RF_04"] == "") {
+                $("#RF_04_v").prop("checked", "checked");
+            } else if (data.d[0]["RF_04"] == "999") {
+                $("#RF_04_b").prop("checked", "checked");
+            } else if (data.d[0]["RF_04"] == "888") {
+                $("#RF_04_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=RF_04]:checked").val(), $("#RF_04_a"), "RF_04_v", $("#lbl_RF_04_a"));
+            ShowHide_TextBox($("input[name=RF_04]:checked").val(), $("#RF_04_a"), "RF_04_v", $("#lbl_RF_04_a"));
+            ShowHide_TextBox($("input[name=RF_04]:checked").val(), $("#RF_04_a"), "RF_04_v", $("#lbl_RF_04_a"));
+
+
+            $("#RF_04_a").val(data.d[0]["RF_04_a"]);
+
+
+
+            if (data.d[0]["SE_01"] == "") {
+                $("#SE_01_v").prop("checked", "checked");
+            } else if (data.d[0]["SE_01"] == "999") {
+                $("#SE_01_b").prop("checked", "checked");
+            } else if (data.d[0]["SE_01"] == "888") {
+                $("#SE_01_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=SE_01]:checked").val(), $("#SE_01_a"), "SE_01_v", $("#lbl_SE_01_a"));
+            ShowHide_TextBox($("input[name=SE_01]:checked").val(), $("#SE_01_a"), "SE_01_v", $("#lbl_SE_01_a"));
+            ShowHide_TextBox($("input[name=SE_01]:checked").val(), $("#SE_01_a"), "SE_01_v", $("#lbl_SE_01_a"));
+
+
+
+            $("#SE_01_a").val(data.d[0]["SE_01_a"]);
+
+
+
+            if (data.d[0]["SE_02"] == "") {
+                $("#SE_02_v").prop("checked", "checked");
+            } else if (data.d[0]["SE_02"] == "999") {
+                $("#SE_02_b").prop("checked", "checked");
+            } else if (data.d[0]["SE_02"] == "888") {
+                $("#SE_02_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=SE_02]:checked").val(), $("#SE_02_a"), "SE_02_v", $("#lbl_SE_02_a"));
+            ShowHide_TextBox($("input[name=SE_02]:checked").val(), $("#SE_02_a"), "SE_02_v", $("#lbl_SE_02_a"));
+            ShowHide_TextBox($("input[name=SE_02]:checked").val(), $("#SE_02_a"), "SE_02_v", $("#lbl_SE_02_a"));
+
+
+            $("#SE_02_a").val(data.d[0]["SE_02_a"]);
+
+
+
+            if (data.d[0]["SE_03"] == "") {
+                $("#SE_03_v").prop("checked", "checked");
+            } else if (data.d[0]["SE_03"] == "999") {
+                $("#SE_03_b").prop("checked", "checked");
+            } else if (data.d[0]["SE_03"] == "888") {
+                $("#SE_03_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=SE_03]:checked").val(), $("#SE_03_a"), "SE_03_v", $("#lbl_SE_03_a"));
+            ShowHide_TextBox($("input[name=SE_03]:checked").val(), $("#SE_03_a"), "SE_03_v", $("#lbl_SE_03_a"));
+            ShowHide_TextBox($("input[name=SE_03]:checked").val(), $("#SE_03_a"), "SE_03_v", $("#lbl_SE_03_a"));
+
+
+            $("#SE_03_a").val(data.d[0]["SE_03_a"]);
+
+
+
+            if (data.d[0]["SE_04"] == "") {
+                $("#SE_04_v").prop("checked", "checked");
+            } else if (data.d[0]["SE_04"] == "999") {
+                $("#SE_04_b").prop("checked", "checked");
+            } else if (data.d[0]["SE_04"] == "888") {
+                $("#SE_04_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=SE_04]:checked").val(), $("#SE_04_a"), "SE_04_v", $("#lbl_SE_04_a"));
+            ShowHide_TextBox($("input[name=SE_04]:checked").val(), $("#SE_04_a"), "SE_04_v", $("#lbl_SE_04_a"));
+            ShowHide_TextBox($("input[name=SE_04]:checked").val(), $("#SE_04_a"), "SE_04_v", $("#lbl_SE_04_a"));
+
+
+            $("#SE_04_a").val(data.d[0]["SE_04_a"]);
+
+
+        }
+
+
+        function test2a(data) {
+            if (data.d[0]["CS_01"] == "") {
+                $("#CS_01_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_01"] == "999") {
+                $("#CS_01_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_01"] == "888") {
+                $("#CS_01_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_01]:checked").val(), $("#CS_01_a"), "CS_01_v", $("#lbl_CS_01_a"));
+            ShowHide_TextBox($("input[name=CS_01]:checked").val(), $("#CS_01_a"), "CS_01_v", $("#lbl_CS_01_a"));
+            ShowHide_TextBox($("input[name=CS_01]:checked").val(), $("#CS_01_a"), "CS_01_v", $("#lbl_CS_01_a"));
+
+
+
+            $("#CS_01_a").val(data.d[0]["CS_01_a"]);
+
+
+
+            if (data.d[0]["CS_02"] == "") {
+                $("#CS_02_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_02"] == "999") {
+                $("#CS_02_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_02"] == "888") {
+                $("#CS_02_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_02]:checked").val(), $("#CS_02_a"), "CS_02_v", $("#lbl_CS_02_a"));
+            ShowHide_TextBox($("input[name=CS_02]:checked").val(), $("#CS_02_a"), "CS_02_v", $("#lbl_CS_02_a"));
+            ShowHide_TextBox($("input[name=CS_02]:checked").val(), $("#CS_02_a"), "CS_02_v", $("#lbl_CS_02_a"));
+
+
+            $("#CS_02_a").val(data.d[0]["CS_02_a"]);
+
+
+            if (data.d[0]["CS_03"] == "") {
+                $("#CS_03_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_03"] == "999") {
+                $("#CS_03_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_03"] == "888") {
+                $("#CS_03_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_03]:checked").val(), $("#CS_03_a"), "CS_03_v", $("#lbl_CS_03_a"));
+            ShowHide_TextBox($("input[name=CS_03]:checked").val(), $("#CS_03_a"), "CS_03_v", $("#lbl_CS_03_a"));
+            ShowHide_TextBox($("input[name=CS_03]:checked").val(), $("#CS_03_a"), "CS_03_v", $("#lbl_CS_03_a"));
+
+
+            $("#CS_03_a").val(data.d[0]["CS_03_a"]);
+
+
+
+            if (data.d[0]["CS_04"] == "") {
+                $("#CS_04_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_04"] == "999") {
+                $("#CS_04_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_04"] == "888") {
+                $("#CS_04_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_04]:checked").val(), $("#CS_04_a"), "CS_04_v", $("#lbl_CS_04_a"));
+            ShowHide_TextBox($("input[name=CS_04]:checked").val(), $("#CS_04_a"), "CS_04_v", $("#lbl_CS_04_a"));
+            ShowHide_TextBox($("input[name=CS_04]:checked").val(), $("#CS_04_a"), "CS_04_v", $("#lbl_CS_04_a"));
+
+
+            $("#CS_04_a").val(data.d[0]["CS_04_a"]);
+
+
+            if (data.d[0]["CS_05"] == "") {
+                $("#CS_05_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_05"] == "999") {
+                $("#CS_05_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_05"] == "888") {
+                $("#CS_05_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_05]:checked").val(), $("#CS_05_a"), "CS_05_v", $("#lbl_CS_05_a"));
+            ShowHide_TextBox($("input[name=CS_05]:checked").val(), $("#CS_05_a"), "CS_05_v", $("#lbl_CS_05_a"));
+            ShowHide_TextBox($("input[name=CS_05]:checked").val(), $("#CS_05_a"), "CS_05_v", $("#lbl_CS_05_a"));
+
+
+            $("#CS_05_a").val(data.d[0]["CS_05_a"]);
+
+
+
+            if (data.d[0]["CS_06"] == "") {
+                $("#CS_06_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_06"] == "999") {
+                $("#CS_06_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_06"] == "888") {
+                $("#CS_06_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_06]:checked").val(), $("#CS_06_a"), "CS_06_v", $("#lbl_CS_06_a"));
+            ShowHide_TextBox($("input[name=CS_06]:checked").val(), $("#CS_06_a"), "CS_06_v", $("#lbl_CS_06_a"));
+            ShowHide_TextBox($("input[name=CS_06]:checked").val(), $("#CS_06_a"), "CS_06_v", $("#lbl_CS_06_a"));
+
+
+            $("#CS_06_a").val(data.d[0]["CS_06_a"]);
+
+
+            if (data.d[0]["CS_07"] == "") {
+                $("#CS_07_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_07"] == "999") {
+                $("#CS_07_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_07"] == "888") {
+                $("#CS_07_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_07]:checked").val(), $("#CS_07_a"), "CS_07_v", $("#lbl_CS_07_a"));
+            ShowHide_TextBox($("input[name=CS_07]:checked").val(), $("#CS_07_a"), "CS_07_v", $("#lbl_CS_07_a"));
+            ShowHide_TextBox($("input[name=CS_07]:checked").val(), $("#CS_07_a"), "CS_07_v", $("#lbl_CS_07_a"));
+
+
+            $("#CS_07_a").val(data.d[0]["CS_07_a"]);
+
+
+
+            if (data.d[0]["CS_08"] == "") {
+                $("#CS_08_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_08"] == "999") {
+                $("#CS_08_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_08"] == "888") {
+                $("#CS_08_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_08]:checked").val(), $("#CS_08_a"), "CS_08_v", $("#lbl_CS_08_a"));
+            ShowHide_TextBox($("input[name=CS_08]:checked").val(), $("#CS_08_a"), "CS_08_v", $("#lbl_CS_08_a"));
+            ShowHide_TextBox($("input[name=CS_08]:checked").val(), $("#CS_08_a"), "CS_08_v", $("#lbl_CS_08_a"));
+
+
+
+            $("#CS_08_a").val(data.d[0]["CS_08_a"]);
+
+
+            if (data.d[0]["CS_09"] == "") {
+                $("#CS_09_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_09"] == "999") {
+                $("#CS_09_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_09"] == "888") {
+                $("#CS_09_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_09]:checked").val(), $("#CS_09_a"), "CS_09_v", $("#lbl_CS_09_a"));
+            ShowHide_TextBox($("input[name=CS_09]:checked").val(), $("#CS_09_a"), "CS_09_v", $("#lbl_CS_09_a"));
+            ShowHide_TextBox($("input[name=CS_09]:checked").val(), $("#CS_09_a"), "CS_09_v", $("#lbl_CS_09_a"));
+
+
+            $("#CS_09_a").val(data.d[0]["CS_09_a"]);
+
+
+            if (data.d[0]["CS_10"] == "") {
+                $("#CS_10_v").prop("checked", "checked");
+            } else if (data.d[0]["CS_10"] == "999") {
+                $("#CS_10_b").prop("checked", "checked");
+            } else if (data.d[0]["CS_10"] == "888") {
+                $("#CS_10_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=CS_10]:checked").val(), $("#CS_10_a"), "CS_10_v", $("#lbl_CS_10_a"));
+            ShowHide_TextBox($("input[name=CS_10]:checked").val(), $("#CS_10_a"), "CS_10_v", $("#lbl_CS_10_a"));
+            ShowHide_TextBox($("input[name=CS_10]:checked").val(), $("#CS_10_a"), "CS_10_v", $("#lbl_CS_10_a"));
+
+
+            $("#CS_10_a").val(data.d[0]["CS_10_a"]);
+        }
+
+
+
+        function test3(data) {
+            if (data.d[0]["uc_01a"] == "1") {
+                $("#uc_01_a").prop("checked", "checked");
+                $("#uc_01_ca").removeAttr("disabled", "disabled");
+            } else if (data.d[0]["uc_01a"] == "2") {
+                $("#uc_01_b").prop("checked", "checked");
+                $("#uc_01_ca").val("");
+                $("#uc_01_ca").attr("disabled", "disabled");
+            } else if (data.d[0]["uc_01a"] == "999") {
+                $("#uc_01_c").prop("checked", "checked");
+                $("#uc_01_ca").val("");
+                $("#uc_01_ca").attr("disabled", "disabled");
+            }
+
+            $("#uc_01_ca").val(data.d[0]["uc_01_ca"]);
+
+            if (data.d[0]["uc_02a"] == "") {
+                $("#uc_02a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_02a"] == "999") {
+                $("#uc_02a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_02a"] == "888") {
+                $("#uc_02a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_02a]:checked").val(), $("#uc_02a_a"), "uc_02a_v", $("#lbl_uc_02a_a"), $("input[name=uc_02b]"), $("#lbl_uc_02b"), $("#lbl_uc_02b_s"), $("#lbl_uc_02b_r"), $("#lbl_uc_02b_i"));
+            ShowHide_TextBox_New($("input[name=uc_02a]:checked").val(), $("#uc_02a_a"), "uc_02a_v", $("#lbl_uc_02a_a"), $("input[name=uc_02b]"), $("#lbl_uc_02b"), $("#lbl_uc_02b_s"), $("#lbl_uc_02b_r"), $("#lbl_uc_02b_i"));
+            ShowHide_TextBox_New($("input[name=uc_02a]:checked").val(), $("#uc_02a_a"), "uc_02a_v", $("#lbl_uc_02a_a"), $("input[name=uc_02b]"), $("#lbl_uc_02b"), $("#lbl_uc_02b_s"), $("#lbl_uc_02b_r"), $("#lbl_uc_02b_i"));
+
+            $("#uc_02a_a").val(data.d[0]["uc_02a_a"]);
+
+            if (data.d[0]["uc_02b"] == "1") {
+                $("#uc_02b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_02b"] == "2") {
+                $("#uc_02b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_02b"] == "3") {
+                $("#uc_02b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_03a"] == "") {
+                $("#uc_03a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_03a"] == "999") {
+                $("#uc_03a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_03a"] == "888") {
+                $("#uc_03a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_03a]:checked").val(), $("#uc_03a_a"), "uc_03a_v", $("#lbl_uc_03a_a"), $("input[name=uc_03b]"), $("#lbl_uc_03b"), $("#lbl_uc_03b_s"), $("#lbl_uc_03b_r"), $("#lbl_uc_03b_i"));
+            ShowHide_TextBox_New($("input[name=uc_03a]:checked").val(), $("#uc_03a_a"), "uc_03a_v", $("#lbl_uc_03a_a"), $("input[name=uc_03b]"), $("#lbl_uc_03b"), $("#lbl_uc_03b_s"), $("#lbl_uc_03b_r"), $("#lbl_uc_03b_i"));
+            ShowHide_TextBox_New($("input[name=uc_03a]:checked").val(), $("#uc_03a_a"), "uc_03a_v", $("#lbl_uc_03a_a"), $("input[name=uc_03b]"), $("#lbl_uc_03b"), $("#lbl_uc_03b_s"), $("#lbl_uc_03b_r"), $("#lbl_uc_03b_i"));
+
+
+            $("#uc_03a_a").val(data.d[0]["uc_03a_a"]);
+
+            if (data.d[0]["uc_03b"] == "1") {
+                $("#uc_03b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_03b"] == "2") {
+                $("#uc_03b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_03b"] == "3") {
+                $("#uc_03b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_04a"] == "") {
+                $("#uc_04a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_04a"] == "999") {
+                $("#uc_04a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_04a"] == "888") {
+                $("#uc_04a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_04a]:checked").val(), $("#uc_04a_a"), "uc_04a_v", $("#lbl_uc_04a_a"), $("input[name=uc_04b]"), $("#lbl_uc_04b"), $("#lbl_uc_04b_s"), $("#lbl_uc_04b_r"), $("#lbl_uc_04b_i"));
+            ShowHide_TextBox_New($("input[name=uc_04a]:checked").val(), $("#uc_04a_a"), "uc_04a_v", $("#lbl_uc_04a_a"), $("input[name=uc_04b]"), $("#lbl_uc_04b"), $("#lbl_uc_04b_s"), $("#lbl_uc_04b_r"), $("#lbl_uc_04b_i"));
+            ShowHide_TextBox_New($("input[name=uc_04a]:checked").val(), $("#uc_04a_a"), "uc_04a_v", $("#lbl_uc_04a_a"), $("input[name=uc_04b]"), $("#lbl_uc_04b"), $("#lbl_uc_04b_s"), $("#lbl_uc_04b_r"), $("#lbl_uc_04b_i"));
+
+
+            $("#uc_04a_a").val(data.d[0]["uc_04a_a"]);
+
+            if (data.d[0]["uc_04b"] == "1") {
+                $("#uc_04b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_04b"] == "2") {
+                $("#uc_04b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_04b"] == "3") {
+                $("#uc_04b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_05a"] == "") {
+                $("#uc_05a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_05a"] == "999") {
+                $("#uc_05a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_05a"] == "888") {
+                $("#uc_05a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_05a]:checked").val(), $("#uc_05a_a"), "uc_05a_v", $("#lbl_uc_05a_a"), $("input[name=uc_05b]"), $("#lbl_uc_05b"), $("#lbl_uc_05b_s"), $("#lbl_uc_05b_r"), $("#lbl_uc_05b_i"));
+            ShowHide_TextBox_New($("input[name=uc_05a]:checked").val(), $("#uc_05a_a"), "uc_05a_v", $("#lbl_uc_05a_a"), $("input[name=uc_05b]"), $("#lbl_uc_05b"), $("#lbl_uc_05b_s"), $("#lbl_uc_05b_r"), $("#lbl_uc_05b_i"));
+            ShowHide_TextBox_New($("input[name=uc_05a]:checked").val(), $("#uc_05a_a"), "uc_05a_v", $("#lbl_uc_05a_a"), $("input[name=uc_05b]"), $("#lbl_uc_05b"), $("#lbl_uc_05b_s"), $("#lbl_uc_05b_r"), $("#lbl_uc_05b_i"));
+
+
+            $("#uc_05a_a").val(data.d[0]["uc_05a_a"]);
+
+            if (data.d[0]["uc_05b"] == "1") {
+                $("#uc_05b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_05b"] == "2") {
+                $("#uc_05b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_05b"] == "3") {
+                $("#uc_05b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_06a"] == "") {
+                $("#uc_06a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_06a"] == "999") {
+                $("#uc_06a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_06a"] == "888") {
+                $("#uc_06a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_06a]:checked").val(), $("#uc_06a_a"), "uc_06a_v", $("#lbl_uc_06a_a"), $("input[name=uc_06b]"), $("#lbl_uc_06b"), $("#lbl_uc_06b_s"), $("#lbl_uc_06b_r"), $("#lbl_uc_06b_i"));
+            ShowHide_TextBox_New($("input[name=uc_06a]:checked").val(), $("#uc_06a_a"), "uc_06a_v", $("#lbl_uc_06a_a"), $("input[name=uc_06b]"), $("#lbl_uc_06b"), $("#lbl_uc_06b_s"), $("#lbl_uc_06b_r"), $("#lbl_uc_06b_i"));
+            ShowHide_TextBox_New($("input[name=uc_06a]:checked").val(), $("#uc_06a_a"), "uc_06a_v", $("#lbl_uc_06a_a"), $("input[name=uc_06b]"), $("#lbl_uc_06b"), $("#lbl_uc_06b_s"), $("#lbl_uc_06b_r"), $("#lbl_uc_06b_i"));
+
+            $("#uc_06a_a").val(data.d[0]["uc_06a_a"]);
+
+            if (data.d[0]["uc_06b"] == "1") {
+                $("#uc_06b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_06b"] == "2") {
+                $("#uc_06b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_06b"] == "3") {
+                $("#uc_06b_c").prop("checked", "checked");
+            }
+
+
+        }
+
+
+        function test3a(data) {
+            if (data.d[0]["uc_07a"] == "") {
+                $("#uc_07a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_07a"] == "999") {
+                $("#uc_07a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_07a"] == "888") {
+                $("#uc_07a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_07a]:checked").val(), $("#uc_07a_a"), "uc_07a_v", $("#lbl_uc_07a_a"), $("input[name=uc_07b]"), $("#lbl_uc_07b"), $("#lbl_uc_07b_s"), $("#lbl_uc_07b_r"), $("#lbl_uc_07b_i"));
+            ShowHide_TextBox_New($("input[name=uc_07a]:checked").val(), $("#uc_07a_a"), "uc_07a_v", $("#lbl_uc_07a_a"), $("input[name=uc_07b]"), $("#lbl_uc_07b"), $("#lbl_uc_07b_s"), $("#lbl_uc_07b_r"), $("#lbl_uc_07b_i"));
+            ShowHide_TextBox_New($("input[name=uc_07a]:checked").val(), $("#uc_07a_a"), "uc_07a_v", $("#lbl_uc_07a_a"), $("input[name=uc_07b]"), $("#lbl_uc_07b"), $("#lbl_uc_07b_s"), $("#lbl_uc_07b_r"), $("#lbl_uc_07b_i"));
+
+
+
+            $("#uc_07a_a").val(data.d[0]["uc_07a_a"]);
+
+
+            if (data.d[0]["uc_07b"] == "1") {
+                $("#uc_07b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_07b"] == "2") {
+                $("#uc_07b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_07b"] == "3") {
+                $("#uc_07b_c").prop("checked", "checked");
+            }
+
+
+
+
+            if (data.d[0]["uc_08a"] == "") {
+                $("#uc_08a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_08a"] == "999") {
+                $("#uc_08a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_08a"] == "888") {
+                $("#uc_08a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_08a]:checked").val(), $("#uc_08a_a"), "uc_08a_v", $("#lbl_uc_08a_a"), $("input[name=uc_08b]"), $("#lbl_uc_08b"), $("#lbl_uc_08b_s"), $("#lbl_uc_08b_r"), $("#lbl_uc_08b_i"));
+            ShowHide_TextBox_New($("input[name=uc_08a]:checked").val(), $("#uc_08a_a"), "uc_08a_v", $("#lbl_uc_08a_a"), $("input[name=uc_08b]"), $("#lbl_uc_08b"), $("#lbl_uc_08b_s"), $("#lbl_uc_08b_r"), $("#lbl_uc_08b_i"));
+            ShowHide_TextBox_New($("input[name=uc_08a]:checked").val(), $("#uc_08a_a"), "uc_08a_v", $("#lbl_uc_08a_a"), $("input[name=uc_08b]"), $("#lbl_uc_08b"), $("#lbl_uc_08b_s"), $("#lbl_uc_08b_r"), $("#lbl_uc_08b_i"));
+
+
+
+            $("#uc_08a_a").val(data.d[0]["uc_08a_a"]);
+
+
+            if (data.d[0]["uc_08b"] == "1") {
+                $("#uc_08b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_08b"] == "2") {
+                $("#uc_08b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_08b"] == "3") {
+                $("#uc_08b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_09a"] == "") {
+                $("#uc_09a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_09a"] == "999") {
+                $("#uc_09a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_09a"] == "888") {
+                $("#uc_09a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_09a]:checked").val(), $("#uc_09a_a"), "uc_09a_v", $("#lbl_uc_09a_a"), $("input[name=uc_09b]"), $("#lbl_uc_09b"), $("#lbl_uc_09b_s"), $("#lbl_uc_09b_r"), $("#lbl_uc_09b_i"));
+            ShowHide_TextBox_New($("input[name=uc_09a]:checked").val(), $("#uc_09a_a"), "uc_09a_v", $("#lbl_uc_09a_a"), $("input[name=uc_09b]"), $("#lbl_uc_09b"), $("#lbl_uc_09b_s"), $("#lbl_uc_09b_r"), $("#lbl_uc_09b_i"));
+            ShowHide_TextBox_New($("input[name=uc_09a]:checked").val(), $("#uc_09a_a"), "uc_09a_v", $("#lbl_uc_09a_a"), $("input[name=uc_09b]"), $("#lbl_uc_09b"), $("#lbl_uc_09b_s"), $("#lbl_uc_09b_r"), $("#lbl_uc_09b_i"));
+
+
+
+            $("#uc_09a_a").val(data.d[0]["uc_09a_a"]);
+
+
+            if (data.d[0]["uc_09b"] == "1") {
+                $("#uc_09b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_09b"] == "2") {
+                $("#uc_09b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_09b"] == "3") {
+                $("#uc_09b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_10a"] == "") {
+                $("#uc_10a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_10a"] == "999") {
+                $("#uc_10a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_10a"] == "888") {
+                $("#uc_10a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_10a]:checked").val(), $("#uc_10a_a"), "uc_10a_v", $("#lbl_uc_10a_a"), $("input[name=uc_10b]"), $("#lbl_uc_10b"), $("#lbl_uc_10b_s"), $("#lbl_uc_10b_r"), $("#lbl_uc_10b_i"));
+            ShowHide_TextBox_New($("input[name=uc_10a]:checked").val(), $("#uc_10a_a"), "uc_10a_v", $("#lbl_uc_10a_a"), $("input[name=uc_10b]"), $("#lbl_uc_10b"), $("#lbl_uc_10b_s"), $("#lbl_uc_10b_r"), $("#lbl_uc_10b_i"));
+            ShowHide_TextBox_New($("input[name=uc_10a]:checked").val(), $("#uc_10a_a"), "uc_10a_v", $("#lbl_uc_10a_a"), $("input[name=uc_10b]"), $("#lbl_uc_10b"), $("#lbl_uc_10b_s"), $("#lbl_uc_10b_r"), $("#lbl_uc_10b_i"));
+
+
+
+            $("#uc_10a_a").val(data.d[0]["uc_10a_a"]);
+
+
+            if (data.d[0]["uc_10b"] == "1") {
+                $("#uc_10b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_10b"] == "2") {
+                $("#uc_10b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_10b"] == "3") {
+                $("#uc_10b_c").prop("checked", "checked");
+            }
+
+        }
+
+
+        function test3b(data) {
+            if (data.d[0]["uc_11a"] == "") {
+                $("#uc_11a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_11a"] == "999") {
+                $("#uc_11a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_11a"] == "888") {
+                $("#uc_11a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_11a]:checked").val(), $("#uc_11a_a"), "uc_11a_v", $("#lbl_uc_11a_a"), $("input[name=uc_11b]"), $("#lbl_uc_11b"), $("#lbl_uc_11b_s"), $("#lbl_uc_11b_r"), $("#lbl_uc_11b_i"));
+            ShowHide_TextBox_New($("input[name=uc_11a]:checked").val(), $("#uc_11a_a"), "uc_11a_v", $("#lbl_uc_11a_a"), $("input[name=uc_11b]"), $("#lbl_uc_11b"), $("#lbl_uc_11b_s"), $("#lbl_uc_11b_r"), $("#lbl_uc_11b_i"));
+            ShowHide_TextBox_New($("input[name=uc_11a]:checked").val(), $("#uc_11a_a"), "uc_11a_v", $("#lbl_uc_11a_a"), $("input[name=uc_11b]"), $("#lbl_uc_11b"), $("#lbl_uc_11b_s"), $("#lbl_uc_11b_r"), $("#lbl_uc_11b_i"));
+
+
+
+            $("#uc_11a_a").val(data.d[0]["uc_11a_a"]);
+
+
+            if (data.d[0]["uc_11b"] == "1") {
+                $("#uc_11b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_11b"] == "2") {
+                $("#uc_11b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_11b"] == "3") {
+                $("#uc_11b_c").prop("checked", "checked");
+            }
+
+
+
+
+            if (data.d[0]["uc_12a"] == "") {
+                $("#uc_12a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_12a"] == "999") {
+                $("#uc_12a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_12a"] == "888") {
+                $("#uc_12a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_12a]:checked").val(), $("#uc_12a_a"), "uc_12a_v", $("#lbl_uc_12a_a"), $("input[name=uc_12b]"), $("#lbl_uc_12b"), $("#lbl_uc_12b_s"), $("#lbl_uc_12b_r"), $("#lbl_uc_12b_i"));
+            ShowHide_TextBox_New($("input[name=uc_12a]:checked").val(), $("#uc_12a_a"), "uc_12a_v", $("#lbl_uc_12a_a"), $("input[name=uc_12b]"), $("#lbl_uc_12b"), $("#lbl_uc_12b_s"), $("#lbl_uc_12b_r"), $("#lbl_uc_12b_i"));
+            ShowHide_TextBox_New($("input[name=uc_12a]:checked").val(), $("#uc_12a_a"), "uc_12a_v", $("#lbl_uc_12a_a"), $("input[name=uc_12b]"), $("#lbl_uc_12b"), $("#lbl_uc_12b_s"), $("#lbl_uc_12b_r"), $("#lbl_uc_12b_i"));
+
+
+
+            $("#uc_12a_a").val(data.d[0]["uc_12a_a"]);
+
+
+            if (data.d[0]["uc_12b"] == "1") {
+                $("#uc_12b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_12b"] == "2") {
+                $("#uc_12b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_12b"] == "3") {
+                $("#uc_12b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_13a"] == "") {
+                $("#uc_13a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_13a"] == "999") {
+                $("#uc_13a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_13a"] == "888") {
+                $("#uc_13a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_13a]:checked").val(), $("#uc_13a_a"), "uc_13a_v", $("#lbl_uc_13a_a"), $("input[name=uc_13b]"), $("#lbl_uc_13b"), $("#lbl_uc_13b_s"), $("#lbl_uc_13b_r"), $("#lbl_uc_13b_i"));
+            ShowHide_TextBox_New($("input[name=uc_13a]:checked").val(), $("#uc_13a_a"), "uc_13a_v", $("#lbl_uc_13a_a"), $("input[name=uc_13b]"), $("#lbl_uc_13b"), $("#lbl_uc_13b_s"), $("#lbl_uc_13b_r"), $("#lbl_uc_13b_i"));
+            ShowHide_TextBox_New($("input[name=uc_13a]:checked").val(), $("#uc_13a_a"), "uc_13a_v", $("#lbl_uc_13a_a"), $("input[name=uc_13b]"), $("#lbl_uc_13b"), $("#lbl_uc_13b_s"), $("#lbl_uc_13b_r"), $("#lbl_uc_13b_i"));
+
+
+
+            $("#uc_13a_a").val(data.d[0]["uc_13a_a"]);
+
+
+            if (data.d[0]["uc_13b"] == "1") {
+                $("#uc_13b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_13b"] == "2") {
+                $("#uc_13b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_13b"] == "3") {
+                $("#uc_13b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_14a"] == "") {
+                $("#uc_14a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_14a"] == "999") {
+                $("#uc_14a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_14a"] == "888") {
+                $("#uc_14a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_14a]:checked").val(), $("#uc_14a_a"), "uc_14a_v", $("#lbl_uc_14a_a"), $("input[name=uc_14b]"), $("#lbl_uc_14b"), $("#lbl_uc_14b_s"), $("#lbl_uc_14b_r"), $("#lbl_uc_14b_i"));
+            ShowHide_TextBox_New($("input[name=uc_14a]:checked").val(), $("#uc_14a_a"), "uc_14a_v", $("#lbl_uc_14a_a"), $("input[name=uc_14b]"), $("#lbl_uc_14b"), $("#lbl_uc_14b_s"), $("#lbl_uc_14b_r"), $("#lbl_uc_14b_i"));
+            ShowHide_TextBox_New($("input[name=uc_14a]:checked").val(), $("#uc_14a_a"), "uc_14a_v", $("#lbl_uc_14a_a"), $("input[name=uc_14b]"), $("#lbl_uc_14b"), $("#lbl_uc_14b_s"), $("#lbl_uc_14b_r"), $("#lbl_uc_14b_i"));
+
+
+
+            $("#uc_14a_a").val(data.d[0]["uc_14a_a"]);
+
+
+            if (data.d[0]["uc_14b"] == "1") {
+                $("#uc_14b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_14b"] == "2") {
+                $("#uc_14b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_14b"] == "3") {
+                $("#uc_14b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_15a"] == "") {
+                $("#uc_15a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_15a"] == "999") {
+                $("#uc_15a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_15a"] == "888") {
+                $("#uc_15a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_15a]:checked").val(), $("#uc_15a_a"), "uc_15a_v", $("#lbl_uc_15a_a"), $("input[name=uc_15b]"), $("#lbl_uc_15b"), $("#lbl_uc_15b_s"), $("#lbl_uc_15b_r"), $("#lbl_uc_15b_i"));
+            ShowHide_TextBox_New($("input[name=uc_15a]:checked").val(), $("#uc_15a_a"), "uc_15a_v", $("#lbl_uc_15a_a"), $("input[name=uc_15b]"), $("#lbl_uc_15b"), $("#lbl_uc_15b_s"), $("#lbl_uc_15b_r"), $("#lbl_uc_15b_i"));
+            ShowHide_TextBox_New($("input[name=uc_15a]:checked").val(), $("#uc_15a_a"), "uc_15a_v", $("#lbl_uc_15a_a"), $("input[name=uc_15b]"), $("#lbl_uc_15b"), $("#lbl_uc_15b_s"), $("#lbl_uc_15b_r"), $("#lbl_uc_15b_i"));
+
+
+
+            $("#uc_15a_a").val(data.d[0]["uc_15a_a"]);
+
+
+            if (data.d[0]["uc_15b"] == "1") {
+                $("#uc_15b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_15b"] == "2") {
+                $("#uc_15b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_15b"] == "3") {
+                $("#uc_15b_c").prop("checked", "checked");
+            }
+        }
+
+
+        function test3c(data) {
+            if (data.d[0]["uc_16a"] == "") {
+                $("#uc_16a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_16a"] == "999") {
+                $("#uc_16a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_16a"] == "888") {
+                $("#uc_16a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_16a]:checked").val(), $("#uc_16a_a"), "uc_16a_v", $("#lbl_uc_16a_a"), $("input[name=uc_16b]"), $("#lbl_uc_16b"), $("#lbl_uc_16b_s"), $("#lbl_uc_16b_r"), $("#lbl_uc_16b_i"));
+            ShowHide_TextBox_New($("input[name=uc_16a]:checked").val(), $("#uc_16a_a"), "uc_16a_v", $("#lbl_uc_16a_a"), $("input[name=uc_16b]"), $("#lbl_uc_16b"), $("#lbl_uc_16b_s"), $("#lbl_uc_16b_r"), $("#lbl_uc_16b_i"));
+            ShowHide_TextBox_New($("input[name=uc_16a]:checked").val(), $("#uc_16a_a"), "uc_16a_v", $("#lbl_uc_16a_a"), $("input[name=uc_16b]"), $("#lbl_uc_16b"), $("#lbl_uc_16b_s"), $("#lbl_uc_16b_r"), $("#lbl_uc_16b_i"));
+
+
+
+            $("#uc_16a_a").val(data.d[0]["uc_16a_a"]);
+
+
+            if (data.d[0]["uc_16b"] == "1") {
+                $("#uc_16b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_16b"] == "2") {
+                $("#uc_16b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_16b"] == "3") {
+                $("#uc_16b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_17a"] == "") {
+                $("#uc_17a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_17a"] == "999") {
+                $("#uc_17a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_17a"] == "888") {
+                $("#uc_17a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_17a]:checked").val(), $("#uc_17a_a"), "uc_17a_v", $("#lbl_uc_17a_a"), $("input[name=uc_17b]"), $("#lbl_uc_17b"), $("#lbl_uc_17b_s"), $("#lbl_uc_17b_r"), $("#lbl_uc_17b_i"));
+            ShowHide_TextBox_New($("input[name=uc_17a]:checked").val(), $("#uc_17a_a"), "uc_17a_v", $("#lbl_uc_17a_a"), $("input[name=uc_17b]"), $("#lbl_uc_17b"), $("#lbl_uc_17b_s"), $("#lbl_uc_17b_r"), $("#lbl_uc_17b_i"));
+            ShowHide_TextBox_New($("input[name=uc_17a]:checked").val(), $("#uc_17a_a"), "uc_17a_v", $("#lbl_uc_17a_a"), $("input[name=uc_17b]"), $("#lbl_uc_17b"), $("#lbl_uc_17b_s"), $("#lbl_uc_17b_r"), $("#lbl_uc_17b_i"));
+
+
+
+            $("#uc_17a_a").val(data.d[0]["uc_17a_a"]);
+
+
+            if (data.d[0]["uc_17b"] == "1") {
+                $("#uc_17b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_17b"] == "2") {
+                $("#uc_17b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_17b"] == "3") {
+                $("#uc_17b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_18a"] == "") {
+                $("#uc_18a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_18a"] == "999") {
+                $("#uc_18a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_18a"] == "888") {
+                $("#uc_18a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_18a]:checked").val(), $("#uc_18a_a"), "uc_18a_v", $("#lbl_uc_18a_a"), $("input[name=uc_18b]"), $("#lbl_uc_18b"), $("#lbl_uc_18b_s"), $("#lbl_uc_18b_r"), $("#lbl_uc_18b_i"));
+            ShowHide_TextBox_New($("input[name=uc_18a]:checked").val(), $("#uc_18a_a"), "uc_18a_v", $("#lbl_uc_18a_a"), $("input[name=uc_18b]"), $("#lbl_uc_18b"), $("#lbl_uc_18b_s"), $("#lbl_uc_18b_r"), $("#lbl_uc_18b_i"));
+            ShowHide_TextBox_New($("input[name=uc_18a]:checked").val(), $("#uc_18a_a"), "uc_18a_v", $("#lbl_uc_18a_a"), $("input[name=uc_18b]"), $("#lbl_uc_18b"), $("#lbl_uc_18b_s"), $("#lbl_uc_18b_r"), $("#lbl_uc_18b_i"));
+
+
+
+            $("#uc_18a_a").val(data.d[0]["uc_18a_a"]);
+
+
+            if (data.d[0]["uc_18b"] == "1") {
+                $("#uc_18b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_18b"] == "2") {
+                $("#uc_18b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_18b"] == "3") {
+                $("#uc_18b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_19a"] == "") {
+                $("#uc_19a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_19a"] == "999") {
+                $("#uc_19a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_19a"] == "888") {
+                $("#uc_19a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_19a]:checked").val(), $("#uc_19a_a"), "uc_19a_v", $("#lbl_uc_19a_a"), $("input[name=uc_19b]"), $("#lbl_uc_19b"), $("#lbl_uc_19b_s"), $("#lbl_uc_19b_r"), $("#lbl_uc_19b_i"));
+            ShowHide_TextBox_New($("input[name=uc_19a]:checked").val(), $("#uc_19a_a"), "uc_19a_v", $("#lbl_uc_19a_a"), $("input[name=uc_19b]"), $("#lbl_uc_19b"), $("#lbl_uc_19b_s"), $("#lbl_uc_19b_r"), $("#lbl_uc_19b_i"));
+            ShowHide_TextBox_New($("input[name=uc_19a]:checked").val(), $("#uc_19a_a"), "uc_19a_v", $("#lbl_uc_19a_a"), $("input[name=uc_19b]"), $("#lbl_uc_19b"), $("#lbl_uc_19b_s"), $("#lbl_uc_19b_r"), $("#lbl_uc_19b_i"));
+
+
+
+            $("#uc_19a_a").val(data.d[0]["uc_19a_a"]);
+
+
+            if (data.d[0]["uc_19b"] == "1") {
+                $("#uc_19b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_19b"] == "2") {
+                $("#uc_19b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_19b"] == "3") {
+                $("#uc_19b_c").prop("checked", "checked");
+            }
+
+
+
+
+            if (data.d[0]["uc_20a"] == "") {
+                $("#uc_20a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_20a"] == "999") {
+                $("#uc_20a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_20a"] == "888") {
+                $("#uc_20a_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox_New($("input[name=uc_20a]:checked").val(), $("#uc_20a_a"), "uc_20a_v", $("#lbl_uc_20a_a"), $("input[name=uc_20b]"), $("#lbl_uc_20b"), $("#lbl_uc_20b_s"), $("#lbl_uc_20b_r"), $("#lbl_uc_20b_i"));
+            ShowHide_TextBox_New($("input[name=uc_20a]:checked").val(), $("#uc_20a_a"), "uc_20a_v", $("#lbl_uc_20a_a"), $("input[name=uc_20b]"), $("#lbl_uc_20b"), $("#lbl_uc_20b_s"), $("#lbl_uc_20b_r"), $("#lbl_uc_20b_i"));
+            ShowHide_TextBox_New($("input[name=uc_20a]:checked").val(), $("#uc_20a_a"), "uc_20a_v", $("#lbl_uc_20a_a"), $("input[name=uc_20b]"), $("#lbl_uc_20b"), $("#lbl_uc_20b_s"), $("#lbl_uc_20b_r"), $("#lbl_uc_20b_i"));
+
+
+
+            $("#uc_20a_a").val(data.d[0]["uc_20a_a"]);
+
+
+            if (data.d[0]["uc_20b"] == "1") {
+                $("#uc_20b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_20b"] == "2") {
+                $("#uc_20b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_20b"] == "3") {
+                $("#uc_20b_c").prop("checked", "checked");
+            }
+
+        }
+
+
+        function test3d(data) {
+            if (data.d[0]["uc_21a"] == "") {
+                $("#uc_21a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_21a"] == "999") {
+                $("#uc_21a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_21a"] == "888") {
+                $("#uc_21a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_21a]:checked").val(), $("#uc_21a_a"), "uc_21a_v", $("#lbl_uc_21a_a"), $("input[name=uc_21b]"), $("#lbl_uc_21b"), $("#lbl_uc_21b_s"), $("#lbl_uc_21b_r"), $("#lbl_uc_21b_i"));
+            ShowHide_TextBox_New($("input[name=uc_21a]:checked").val(), $("#uc_21a_a"), "uc_21a_v", $("#lbl_uc_21a_a"), $("input[name=uc_21b]"), $("#lbl_uc_21b"), $("#lbl_uc_21b_s"), $("#lbl_uc_21b_r"), $("#lbl_uc_21b_i"));
+            ShowHide_TextBox_New($("input[name=uc_21a]:checked").val(), $("#uc_21a_a"), "uc_21a_v", $("#lbl_uc_21a_a"), $("input[name=uc_21b]"), $("#lbl_uc_21b"), $("#lbl_uc_21b_s"), $("#lbl_uc_21b_r"), $("#lbl_uc_21b_i"));
+
+
+            $("#uc_21a_a").val(data.d[0]["uc_21a_a"]);
+
+
+            if (data.d[0]["uc_21b"] == "1") {
+                $("#uc_21b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_21b"] == "2") {
+                $("#uc_21b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_21b"] == "3") {
+                $("#uc_21b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_22a"] == "") {
+                $("#uc_22a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_22a"] == "999") {
+                $("#uc_22a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_22a"] == "888") {
+                $("#uc_22a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_22a]:checked").val(), $("#uc_22a_a"), "uc_22a_v", $("#lbl_uc_22a_a"), $("input[name=uc_22b]"), $("#lbl_uc_22b"), $("#lbl_uc_22b_s"), $("#lbl_uc_22b_r"), $("#lbl_uc_22b_i"));
+            ShowHide_TextBox_New($("input[name=uc_22a]:checked").val(), $("#uc_22a_a"), "uc_22a_v", $("#lbl_uc_22a_a"), $("input[name=uc_22b]"), $("#lbl_uc_22b"), $("#lbl_uc_22b_s"), $("#lbl_uc_22b_r"), $("#lbl_uc_22b_i"));
+            ShowHide_TextBox_New($("input[name=uc_22a]:checked").val(), $("#uc_22a_a"), "uc_22a_v", $("#lbl_uc_22a_a"), $("input[name=uc_22b]"), $("#lbl_uc_22b"), $("#lbl_uc_22b_s"), $("#lbl_uc_22b_r"), $("#lbl_uc_22b_i"));
+
+
+            $("#uc_22a_a").val(data.d[0]["uc_22a_a"]);
+
+
+            if (data.d[0]["uc_22b"] == "1") {
+                $("#uc_22b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_22b"] == "2") {
+                $("#uc_22b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_22b"] == "3") {
+                $("#uc_22b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_23a"] == "") {
+                $("#uc_23a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_23a"] == "999") {
+                $("#uc_23a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_23a"] == "888") {
+                $("#uc_23a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_23a]:checked").val(), $("#uc_23a_a"), "uc_23a_v", $("#lbl_uc_23a_a"), $("input[name=uc_23b]"), $("#lbl_uc_23b"), $("#lbl_uc_23b_s"), $("#lbl_uc_23b_r"), $("#lbl_uc_23b_i"));
+            ShowHide_TextBox_New($("input[name=uc_23a]:checked").val(), $("#uc_23a_a"), "uc_23a_v", $("#lbl_uc_23a_a"), $("input[name=uc_23b]"), $("#lbl_uc_23b"), $("#lbl_uc_23b_s"), $("#lbl_uc_23b_r"), $("#lbl_uc_23b_i"));
+            ShowHide_TextBox_New($("input[name=uc_23a]:checked").val(), $("#uc_23a_a"), "uc_23a_v", $("#lbl_uc_23a_a"), $("input[name=uc_23b]"), $("#lbl_uc_23b"), $("#lbl_uc_23b_s"), $("#lbl_uc_23b_r"), $("#lbl_uc_23b_i"));
+
+
+            $("#uc_23a_a").val(data.d[0]["uc_23a_a"]);
+
+
+            if (data.d[0]["uc_23b"] == "1") {
+                $("#uc_23b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_23b"] == "2") {
+                $("#uc_23b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_23b"] == "3") {
+                $("#uc_23b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_24a"] == "") {
+                $("#uc_24a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_24a"] == "999") {
+                $("#uc_24a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_24a"] == "888") {
+                $("#uc_24a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_24a]:checked").val(), $("#uc_24a_a"), "uc_24a_v", $("#lbl_uc_24a_a"), $("input[name=uc_24b]"), $("#lbl_uc_24b"), $("#lbl_uc_24b_s"), $("#lbl_uc_24b_r"), $("#lbl_uc_24b_i"));
+            ShowHide_TextBox_New($("input[name=uc_24a]:checked").val(), $("#uc_24a_a"), "uc_24a_v", $("#lbl_uc_24a_a"), $("input[name=uc_24b]"), $("#lbl_uc_24b"), $("#lbl_uc_24b_s"), $("#lbl_uc_24b_r"), $("#lbl_uc_24b_i"));
+            ShowHide_TextBox_New($("input[name=uc_24a]:checked").val(), $("#uc_24a_a"), "uc_24a_v", $("#lbl_uc_24a_a"), $("input[name=uc_24b]"), $("#lbl_uc_24b"), $("#lbl_uc_24b_s"), $("#lbl_uc_24b_r"), $("#lbl_uc_24b_i"));
+
+
+            $("#uc_24a_a").val(data.d[0]["uc_24a_a"]);
+
+
+            if (data.d[0]["uc_24b"] == "1") {
+                $("#uc_24b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_24b"] == "2") {
+                $("#uc_24b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_24b"] == "3") {
+                $("#uc_24b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_25a"] == "") {
+                $("#uc_25a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_25a"] == "999") {
+                $("#uc_25a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_25a"] == "888") {
+                $("#uc_25a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_25a]:checked").val(), $("#uc_25a_a"), "uc_25a_v", $("#lbl_uc_25a_a"), $("input[name=uc_25b]"), $("#lbl_uc_25b"), $("#lbl_uc_25b_s"), $("#lbl_uc_25b_r"), $("#lbl_uc_25b_i"));
+            ShowHide_TextBox_New($("input[name=uc_25a]:checked").val(), $("#uc_25a_a"), "uc_25a_v", $("#lbl_uc_25a_a"), $("input[name=uc_25b]"), $("#lbl_uc_25b"), $("#lbl_uc_25b_s"), $("#lbl_uc_25b_r"), $("#lbl_uc_25b_i"));
+            ShowHide_TextBox_New($("input[name=uc_25a]:checked").val(), $("#uc_25a_a"), "uc_25a_v", $("#lbl_uc_25a_a"), $("input[name=uc_25b]"), $("#lbl_uc_25b"), $("#lbl_uc_25b_s"), $("#lbl_uc_25b_r"), $("#lbl_uc_25b_i"));
+
+
+            $("#uc_25a_a").val(data.d[0]["uc_25a_a"]);
+
+
+            if (data.d[0]["uc_25b"] == "1") {
+                $("#uc_25b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_25b"] == "2") {
+                $("#uc_25b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_25b"] == "3") {
+                $("#uc_25b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_26a"] == "") {
+                $("#uc_26a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_26a"] == "999") {
+                $("#uc_26a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_26a"] == "888") {
+                $("#uc_26a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_26a]:checked").val(), $("#uc_26a_a"), "uc_26a_v", $("#lbl_uc_26a_a"), $("input[name=uc_26b]"), $("#lbl_uc_26b"), $("#lbl_uc_26b_s"), $("#lbl_uc_26b_r"), $("#lbl_uc_26b_i"));
+            ShowHide_TextBox_New($("input[name=uc_26a]:checked").val(), $("#uc_26a_a"), "uc_26a_v", $("#lbl_uc_26a_a"), $("input[name=uc_26b]"), $("#lbl_uc_26b"), $("#lbl_uc_26b_s"), $("#lbl_uc_26b_r"), $("#lbl_uc_26b_i"));
+            ShowHide_TextBox_New($("input[name=uc_26a]:checked").val(), $("#uc_26a_a"), "uc_26a_v", $("#lbl_uc_26a_a"), $("input[name=uc_26b]"), $("#lbl_uc_26b"), $("#lbl_uc_26b_s"), $("#lbl_uc_26b_r"), $("#lbl_uc_26b_i"));
+
+
+            $("#uc_26a_a").val(data.d[0]["uc_26a_a"]);
+
+
+            if (data.d[0]["uc_26b"] == "1") {
+                $("#uc_26b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_26b"] == "2") {
+                $("#uc_26b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_26b"] == "3") {
+                $("#uc_26b_c").prop("checked", "checked");
+            }
+
+
+            if (data.d[0]["uc_27a"] == "") {
+                $("#uc_27a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_27a"] == "999") {
+                $("#uc_27a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_27a"] == "888") {
+                $("#uc_27a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_27a]:checked").val(), $("#uc_27a_a"), "uc_27a_v", $("#lbl_uc_27a_a"), $("input[name=uc_27b]"), $("#lbl_uc_27b"), $("#lbl_uc_27b_s"), $("#lbl_uc_27b_r"), $("#lbl_uc_27b_i"));
+            ShowHide_TextBox_New($("input[name=uc_27a]:checked").val(), $("#uc_27a_a"), "uc_27a_v", $("#lbl_uc_27a_a"), $("input[name=uc_27b]"), $("#lbl_uc_27b"), $("#lbl_uc_27b_s"), $("#lbl_uc_27b_r"), $("#lbl_uc_27b_i"));
+            ShowHide_TextBox_New($("input[name=uc_27a]:checked").val(), $("#uc_27a_a"), "uc_27a_v", $("#lbl_uc_27a_a"), $("input[name=uc_27b]"), $("#lbl_uc_27b"), $("#lbl_uc_27b_s"), $("#lbl_uc_27b_r"), $("#lbl_uc_27b_i"));
+
+
+            $("#uc_27a_a").val(data.d[0]["uc_27a_a"]);
+
+
+            if (data.d[0]["uc_27b"] == "1") {
+                $("#uc_27b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_27b"] == "2") {
+                $("#uc_27b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_27b"] == "3") {
+                $("#uc_27b_c").prop("checked", "checked");
+            }
+
+
+
+            if (data.d[0]["uc_28a"] == "") {
+                $("#uc_28a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_28a"] == "999") {
+                $("#uc_28a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_28a"] == "888") {
+                $("#uc_28a_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox_New($("input[name=uc_28a]:checked").val(), $("#uc_28a_a"), "uc_28a_v", $("#lbl_uc_28a_a"), $("input[name=uc_28b]"), $("#lbl_uc_28b"), $("#lbl_uc_28b_s"), $("#lbl_uc_28b_r"), $("#lbl_uc_28b_i"));
+            ShowHide_TextBox_New($("input[name=uc_28a]:checked").val(), $("#uc_28a_a"), "uc_28a_v", $("#lbl_uc_28a_a"), $("input[name=uc_28b]"), $("#lbl_uc_28b"), $("#lbl_uc_28b_s"), $("#lbl_uc_28b_r"), $("#lbl_uc_28b_i"));
+            ShowHide_TextBox_New($("input[name=uc_28a]:checked").val(), $("#uc_28a_a"), "uc_28a_v", $("#lbl_uc_28a_a"), $("input[name=uc_28b]"), $("#lbl_uc_28b"), $("#lbl_uc_28b_s"), $("#lbl_uc_28b_r"), $("#lbl_uc_28b_i"));
+
+
+            $("#uc_28a_a").val(data.d[0]["uc_28a_a"]);
+
+            if (data.d[0]["uc_28b"] == "1") {
+                $("#uc_28b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_28b"] == "2") {
+                $("#uc_28b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_28b"] == "3") {
+                $("#uc_28b_c").prop("checked", "checked");
+            }
+        }
+
+        function test4(data) {
+            if (data.d[0]["uc_29a"] == "") {
+                $("#uc_29a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_29a"] == "999") {
+                $("#uc_29a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_29a"] == "888") {
+                $("#uc_29a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_29a]:checked").val(), $("#uc_29a_a"), "uc_29a_v", $("#lbl_uc_29a_a"), $("input[name=uc_29b]"), $("#lbl_uc_29b"), $("#lbl_uc_29b_s"), $("#lbl_uc_29b_r"), $("#lbl_uc_29b_i"));
+            ShowHide_TextBox_New($("input[name=uc_29a]:checked").val(), $("#uc_29a_a"), "uc_29a_v", $("#lbl_uc_29a_a"), $("input[name=uc_29b]"), $("#lbl_uc_29b"), $("#lbl_uc_29b_s"), $("#lbl_uc_29b_r"), $("#lbl_uc_29b_i"));
+            ShowHide_TextBox_New($("input[name=uc_29a]:checked").val(), $("#uc_29a_a"), "uc_29a_v", $("#lbl_uc_29a_a"), $("input[name=uc_29b]"), $("#lbl_uc_29b"), $("#lbl_uc_29b_s"), $("#lbl_uc_29b_r"), $("#lbl_uc_29b_i"));
+
+            $("#uc_29a_a").val(data.d[0]["uc_29a_a"]);
+
+            if (data.d[0]["uc_29b"] == "1") {
+                $("#uc_29b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_29b"] == "2") {
+                $("#uc_29b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_29b"] == "3") {
+                $("#uc_29b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_30a"] == "") {
+                $("#uc_30a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_30a"] == "999") {
+                $("#uc_30a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_30a"] == "888") {
+                $("#uc_30a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_30a]:checked").val(), $("#uc_30a_a"), "uc_30a_v", $("#lbl_uc_30a_a"), $("input[name=uc_30b]"), $("#lbl_uc_30b"), $("#lbl_uc_30b_s"), $("#lbl_uc_30b_r"), $("#lbl_uc_30b_i"));
+            ShowHide_TextBox_New($("input[name=uc_30a]:checked").val(), $("#uc_30a_a"), "uc_30a_v", $("#lbl_uc_30a_a"), $("input[name=uc_30b]"), $("#lbl_uc_30b"), $("#lbl_uc_30b_s"), $("#lbl_uc_30b_r"), $("#lbl_uc_30b_i"));
+            ShowHide_TextBox_New($("input[name=uc_30a]:checked").val(), $("#uc_30a_a"), "uc_30a_v", $("#lbl_uc_30a_a"), $("input[name=uc_30b]"), $("#lbl_uc_30b"), $("#lbl_uc_30b_s"), $("#lbl_uc_30b_r"), $("#lbl_uc_30b_i"));
+
+            $("#uc_30a_a").val(data.d[0]["uc_30a_a"]);
+
+            if (data.d[0]["uc_30b"] == "1") {
+                $("#uc_30b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_30b"] == "2") {
+                $("#uc_30b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_30b"] == "3") {
+                $("#uc_30b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_31a"] == "") {
+                $("#uc_31a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_31a"] == "999") {
+                $("#uc_31a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_31a"] == "888") {
+                $("#uc_31a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_31a]:checked").val(), $("#uc_31a_a"), "uc_31a_v", $("#lbl_uc_31a_a"), $("input[name=uc_31b]"), $("#lbl_uc_31b"), $("#lbl_uc_31b_s"), $("#lbl_uc_31b_r"), $("#lbl_uc_31b_i"));
+            ShowHide_TextBox_New($("input[name=uc_31a]:checked").val(), $("#uc_31a_a"), "uc_31a_v", $("#lbl_uc_31a_a"), $("input[name=uc_31b]"), $("#lbl_uc_31b"), $("#lbl_uc_31b_s"), $("#lbl_uc_31b_r"), $("#lbl_uc_31b_i"));
+            ShowHide_TextBox_New($("input[name=uc_31a]:checked").val(), $("#uc_31a_a"), "uc_31a_v", $("#lbl_uc_31a_a"), $("input[name=uc_31b]"), $("#lbl_uc_31b"), $("#lbl_uc_31b_s"), $("#lbl_uc_31b_r"), $("#lbl_uc_31b_i"));
+
+            $("#uc_31a_a").val(data.d[0]["uc_31a_a"]);
+
+            if (data.d[0]["uc_31b"] == "1") {
+                $("#uc_31b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_31b"] == "2") {
+                $("#uc_31b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_31b"] == "3") {
+                $("#uc_31b_c").prop("checked", "checked");
+            }
+        }
+
+        function test5(data) {
+            if (data.d[0]["uc_32a"] == "") {
+                $("#uc_32a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_32a"] == "999") {
+                $("#uc_32a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_32a"] == "888") {
+                $("#uc_32a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_32a]:checked").val(), $("#uc_32a_a"), "uc_32a_v", $("#lbl_uc_32a_a"), $("input[name=uc_32b]"), $("#lbl_uc_32b"), $("#lbl_uc_32b_s"), $("#lbl_uc_32b_r"), $("#lbl_uc_32b_i"));
+            ShowHide_TextBox_New($("input[name=uc_32a]:checked").val(), $("#uc_32a_a"), "uc_32a_v", $("#lbl_uc_32a_a"), $("input[name=uc_32b]"), $("#lbl_uc_32b"), $("#lbl_uc_32b_s"), $("#lbl_uc_32b_r"), $("#lbl_uc_32b_i"));
+            ShowHide_TextBox_New($("input[name=uc_32a]:checked").val(), $("#uc_32a_a"), "uc_32a_v", $("#lbl_uc_32a_a"), $("input[name=uc_32b]"), $("#lbl_uc_32b"), $("#lbl_uc_32b_s"), $("#lbl_uc_32b_r"), $("#lbl_uc_32b_i"));
+
+            $("#uc_32a_a").val(data.d[0]["uc_32a_a"]);
+
+            if (data.d[0]["uc_32b"] == "1") {
+                $("#uc_32b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_32b"] == "2") {
+                $("#uc_32b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_32b"] == "3") {
+                $("#uc_32b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_33a"] == "") {
+                $("#uc_33a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_33a"] == "999") {
+                $("#uc_33a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_33a"] == "888") {
+                $("#uc_33a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_33a]:checked").val(), $("#uc_33a_a"), "uc_33a_v", $("#lbl_uc_33a_a"), $("input[name=uc_33b]"), $("#lbl_uc_33b"), $("#lbl_uc_33b_s"), $("#lbl_uc_33b_r"), $("#lbl_uc_33b_i"));
+            ShowHide_TextBox_New($("input[name=uc_33a]:checked").val(), $("#uc_33a_a"), "uc_33a_v", $("#lbl_uc_33a_a"), $("input[name=uc_33b]"), $("#lbl_uc_33b"), $("#lbl_uc_33b_s"), $("#lbl_uc_33b_r"), $("#lbl_uc_33b_i"));
+            ShowHide_TextBox_New($("input[name=uc_33a]:checked").val(), $("#uc_33a_a"), "uc_33a_v", $("#lbl_uc_33a_a"), $("input[name=uc_33b]"), $("#lbl_uc_33b"), $("#lbl_uc_33b_s"), $("#lbl_uc_33b_r"), $("#lbl_uc_33b_i"));
+
+            $("#uc_33a_a").val(data.d[0]["uc_33a_a"]);
+
+            if (data.d[0]["uc_33b"] == "1") {
+                $("#uc_33b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_33b"] == "2") {
+                $("#uc_33b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_33b"] == "3") {
+                $("#uc_33b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_34a"] == "") {
+                $("#uc_34a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_34a"] == "999") {
+                $("#uc_34a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_34a"] == "888") {
+                $("#uc_34a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_34a]:checked").val(), $("#uc_34a_a"), "uc_34a_v", $("#lbl_uc_34a_a"), $("input[name=uc_34b]"), $("#lbl_uc_34b"), $("#lbl_uc_34b_s"), $("#lbl_uc_34b_r"), $("#lbl_uc_34b_i"));
+            ShowHide_TextBox_New($("input[name=uc_34a]:checked").val(), $("#uc_34a_a"), "uc_34a_v", $("#lbl_uc_34a_a"), $("input[name=uc_34b]"), $("#lbl_uc_34b"), $("#lbl_uc_34b_s"), $("#lbl_uc_34b_r"), $("#lbl_uc_34b_i"));
+            ShowHide_TextBox_New($("input[name=uc_34a]:checked").val(), $("#uc_34a_a"), "uc_34a_v", $("#lbl_uc_34a_a"), $("input[name=uc_34b]"), $("#lbl_uc_34b"), $("#lbl_uc_34b_s"), $("#lbl_uc_34b_r"), $("#lbl_uc_34b_i"));
+
+            $("#uc_34a_a").val(data.d[0]["uc_34a_a"]);
+
+            if (data.d[0]["uc_34b"] == "1") {
+                $("#uc_34b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_34b"] == "2") {
+                $("#uc_34b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_34b"] == "3") {
+                $("#uc_34b_c").prop("checked", "checked");
+            }
+        }
+
+
+        function test6(data) {
+            if (data.d[0]["uc_35a"] == "") {
+                $("#uc_35a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_35a"] == "999") {
+                $("#uc_35a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_35a"] == "888") {
+                $("#uc_35a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_35a]:checked").val(), $("#uc_35a_a"), "uc_35a_v", $("#lbl_uc_35a_a"), $("input[name=uc_35b]"), $("#lbl_uc_35b"), $("#lbl_uc_35b_s"), $("#lbl_uc_35b_r"), $("#lbl_uc_35b_i"));
+            ShowHide_TextBox_New($("input[name=uc_35a]:checked").val(), $("#uc_35a_a"), "uc_35a_v", $("#lbl_uc_35a_a"), $("input[name=uc_35b]"), $("#lbl_uc_35b"), $("#lbl_uc_35b_s"), $("#lbl_uc_35b_r"), $("#lbl_uc_35b_i"));
+            ShowHide_TextBox_New($("input[name=uc_35a]:checked").val(), $("#uc_35a_a"), "uc_35a_v", $("#lbl_uc_35a_a"), $("input[name=uc_35b]"), $("#lbl_uc_35b"), $("#lbl_uc_35b_s"), $("#lbl_uc_35b_r"), $("#lbl_uc_35b_i"));
+
+            $("#uc_35a_a").val(data.d[0]["uc_35a_a"]);
+
+            if (data.d[0]["uc_35b"] == "1") {
+                $("#uc_35b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_35b"] == "2") {
+                $("#uc_35b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_35b"] == "3") {
+                $("#uc_35b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_36a"] == "") {
+                $("#uc_36a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_36a"] == "999") {
+                $("#uc_36a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_36a"] == "888") {
+                $("#uc_36a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_36a]:checked").val(), $("#uc_36a_a"), "uc_36a_v", $("#lbl_uc_36a_a"), $("input[name=uc_36b]"), $("#lbl_uc_36b"), $("#lbl_uc_36b_s"), $("#lbl_uc_36b_r"), $("#lbl_uc_36b_i"));
+            ShowHide_TextBox_New($("input[name=uc_36a]:checked").val(), $("#uc_36a_a"), "uc_36a_v", $("#lbl_uc_36a_a"), $("input[name=uc_36b]"), $("#lbl_uc_36b"), $("#lbl_uc_36b_s"), $("#lbl_uc_36b_r"), $("#lbl_uc_36b_i"));
+            ShowHide_TextBox_New($("input[name=uc_36a]:checked").val(), $("#uc_36a_a"), "uc_36a_v", $("#lbl_uc_36a_a"), $("input[name=uc_36b]"), $("#lbl_uc_36b"), $("#lbl_uc_36b_s"), $("#lbl_uc_36b_r"), $("#lbl_uc_36b_i"));
+
+            $("#uc_36a_a").val(data.d[0]["uc_36a_a"]);
+
+            if (data.d[0]["uc_36b"] == "1") {
+                $("#uc_36b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_36b"] == "2") {
+                $("#uc_36b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_36b"] == "3") {
+                $("#uc_36b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["uc_37a"] == "") {
+                $("#uc_37a_v").prop("checked", "checked");
+            } else if (data.d[0]["uc_37a"] == "999") {
+                $("#uc_37a_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_37a"] == "888") {
+                $("#uc_37a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=uc_37a]:checked").val(), $("#uc_37a_a"), "uc_37a_v", $("#lbl_uc_37a_a"), $("input[name=uc_37b]"), $("#lbl_uc_37b"), $("#lbl_uc_37b_s"), $("#lbl_uc_37b_r"), $("#lbl_uc_37b_i"));
+            ShowHide_TextBox_New($("input[name=uc_37a]:checked").val(), $("#uc_37a_a"), "uc_37a_v", $("#lbl_uc_37a_a"), $("input[name=uc_37b]"), $("#lbl_uc_37b"), $("#lbl_uc_37b_s"), $("#lbl_uc_37b_r"), $("#lbl_uc_37b_i"));
+            ShowHide_TextBox_New($("input[name=uc_37a]:checked").val(), $("#uc_37a_a"), "uc_37a_v", $("#lbl_uc_37a_a"), $("input[name=uc_37b]"), $("#lbl_uc_37b"), $("#lbl_uc_37b_s"), $("#lbl_uc_37b_r"), $("#lbl_uc_37b_i"));
+
+            $("#uc_37a_a").val(data.d[0]["uc_37a_a"]);
+
+            if (data.d[0]["uc_37b"] == "1") {
+                $("#uc_37b_a").prop("checked", "checked");
+            } else if (data.d[0]["uc_37b"] == "2") {
+                $("#uc_37b_b").prop("checked", "checked");
+            } else if (data.d[0]["uc_37b"] == "3") {
+                $("#uc_37b_c").prop("checked", "checked");
+            }
+        }
+
+        function test7(data) {
+            $("#LA_18").val(data.d[0]["LA_18"]);
+            $("#LA_19").val(data.d[0]["LA_19"]);
+
+
+            if (data.d[0]["LA_20a_b"] == "") {
+                $("#LA_20a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_20a_b"] == "999") {
+                $("#LA_20a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_20a_b"] == "888") {
+                $("#LA_20a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_20a]:checked").val(), $("#LA_20a_a"), "LA_20a_v", $("#lbl_LA_20a_a"), $("input[name=LA_20b]"), $("#lbl_LA_20b"), $("#lbl_LA_20b_s"), $("#lbl_LA_20b_r"), $("#lbl_LA_20b_i"));
+            ShowHide_TextBox_New($("input[name=LA_20a]:checked").val(), $("#LA_20a_a"), "LA_20a_v", $("#lbl_LA_20a_a"), $("input[name=LA_20b]"), $("#lbl_LA_20b"), $("#lbl_LA_20b_s"), $("#lbl_LA_20b_r"), $("#lbl_LA_20b_i"));
+            ShowHide_TextBox_New($("input[name=LA_20a]:checked").val(), $("#LA_20a_a"), "LA_20a_v", $("#lbl_LA_20a_a"), $("input[name=LA_20b]"), $("#lbl_LA_20b"), $("#lbl_LA_20b_s"), $("#lbl_LA_20b_r"), $("#lbl_LA_20b_i"));
+
+            $("#LA_20a_a").val(data.d[0]["LA_20a_a"]);
+
+            if (data.d[0]["LA_20b_a"] == "1") {
+                $("#LA_20b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_20b_a"] == "2") {
+                $("#LA_20b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_20b_a"] == "3") {
+                $("#LA_20b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["LA_21a_b"] == "") {
+                $("#LA_21a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_21a_b"] == "999") {
+                $("#LA_21a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_21a_b"] == "888") {
+                $("#LA_21a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_21a]:checked").val(), $("#LA_21a_a"), "LA_21a_v", $("#lbl_LA_21a_a"), $("input[name=LA_21b]"), $("#lbl_LA_21b"), $("#lbl_LA_21b_s"), $("#lbl_LA_21b_r"), $("#lbl_LA_21b_i"));
+            ShowHide_TextBox_New($("input[name=LA_21a]:checked").val(), $("#LA_21a_a"), "LA_21a_v", $("#lbl_LA_21a_a"), $("input[name=LA_21b]"), $("#lbl_LA_21b"), $("#lbl_LA_21b_s"), $("#lbl_LA_21b_r"), $("#lbl_LA_21b_i"));
+            ShowHide_TextBox_New($("input[name=LA_21a]:checked").val(), $("#LA_21a_a"), "LA_21a_v", $("#lbl_LA_21a_a"), $("input[name=LA_21b]"), $("#lbl_LA_21b"), $("#lbl_LA_21b_s"), $("#lbl_LA_21b_r"), $("#lbl_LA_21b_i"));
+
+            $("#LA_21a_a").val(data.d[0]["LA_21a_a"]);
+
+            if (data.d[0]["LA_21b_a"] == "1") {
+                $("#LA_21b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_21b_a"] == "2") {
+                $("#LA_21b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_21b_a"] == "3") {
+                $("#LA_21b_c").prop("checked", "checked");
+            }
+
+            if (data.d[0]["LA_23a_b"] == "") {
+                $("#LA_23a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_23a_b"] == "999") {
+                $("#LA_23a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_23a_b"] == "888") {
+                $("#LA_23a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_23a]:checked").val(), $("#LA_23a_a"), "LA_23a_v", $("#lbl_LA_23a_a"), $("input[name=LA_23b]"), $("#lbl_LA_23b"), $("#lbl_LA_23b_s"), $("#lbl_LA_23b_r"), $("#lbl_LA_23b_i"));
+            ShowHide_TextBox_New($("input[name=LA_23a]:checked").val(), $("#LA_23a_a"), "LA_23a_v", $("#lbl_LA_23a_a"), $("input[name=LA_23b]"), $("#lbl_LA_23b"), $("#lbl_LA_23b_s"), $("#lbl_LA_23b_r"), $("#lbl_LA_23b_i"));
+            ShowHide_TextBox_New($("input[name=LA_23a]:checked").val(), $("#LA_23a_a"), "LA_23a_v", $("#lbl_LA_23a_a"), $("input[name=LA_23b]"), $("#lbl_LA_23b"), $("#lbl_LA_23b_s"), $("#lbl_LA_23b_r"), $("#lbl_LA_23b_i"));
+
+            $("#LA_23a_a").val(data.d[0]["LA_23a_a"]);
+
+            if (data.d[0]["LA_23b_a"] == "1") {
+                $("#LA_23b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_23b_a"] == "2") {
+                $("#LA_23b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_23b_a"] == "3") {
+                $("#LA_23b_c").prop("checked", "checked");
+            }
+        }
+
+
+        function test8(data) {
+            if (data.d[0]["LA_24a_b"] == "") {
+                $("#LA_24a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_24a_b"] == "999") {
+                $("#LA_24a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_24a_b"] == "888") {
+                $("#LA_24a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
+            ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
+            ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
+
+            $("#LA_24a_a").val(data.d[0]["LA_24a_a"]);
+
+            if (data.d[0]["LA_24b_a"] == "1") {
+                $("#LA_24b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_24b_a"] == "2") {
+                $("#LA_24b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_24b_a"] == "3") {
+                $("#LA_24b_c").prop("checked", "checked");
+            }
+
+        }
+
+        function test9(data) {
+            if (data.d[0]["UR_01"] == "") {
+                $("#UR_01_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_01"] == "999") {
+                $("#UR_01_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_01"] == "888") {
+                $("#UR_01_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox($("input[name=UR_01]:checked").val(), $("#UR_01_a"), "UR_01_v", $("#lbl_UR_01_a"));
+            ShowHide_TextBox($("input[name=UR_01]:checked").val(), $("#UR_01_a"), "UR_01_v", $("#lbl_UR_01_a"));
+            ShowHide_TextBox($("input[name=UR_01]:checked").val(), $("#UR_01_a"), "UR_01_v", $("#lbl_UR_01_a"));
+            $("#UR_01_a").val(data.d[0]["UR_01_a"]);
+
+            if (data.d[0]["UR_02"] == "") {
+                $("#UR_02_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_02"] == "999") {
+                $("#UR_02_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_02"] == "888") {
+                $("#UR_02_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=UR_02]:checked").val(), $("#UR_02_a"), "UR_02_v", $("#lbl_UR_02_a"));
+            ShowHide_TextBox($("input[name=UR_02]:checked").val(), $("#UR_02_a"), "UR_02_v", $("#lbl_UR_02_a"));
+            ShowHide_TextBox($("input[name=UR_02]:checked").val(), $("#UR_02_a"), "UR_02_v", $("#lbl_UR_02_a"));
+
+            $("#UR_02_a").val(data.d[0]["UR_02_a"]);
+
+            if (data.d[0]["UR_03"] == "") {
+                $("#UR_03_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_03"] == "999") {
+                $("#UR_03_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_03"] == "888") {
+                $("#UR_03_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_03]:checked").val(), $("#UR_03_a"), "UR_03_v", $("#lbl_UR_03_a"));
+            ShowHide_TextBox($("input[name=UR_03]:checked").val(), $("#UR_03_a"), "UR_03_v", $("#lbl_UR_03_a"));
+            ShowHide_TextBox($("input[name=UR_03]:checked").val(), $("#UR_03_a"), "UR_03_v", $("#lbl_UR_03_a"));
+
+            $("#UR_03_a").val(data.d[0]["UR_03_a"]);
+
+            if (data.d[0]["UR_04"] == "") {
+                $("#UR_04_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_04"] == "999") {
+                $("#UR_04_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_04"] == "888") {
+                $("#UR_04_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=UR_04]:checked").val(), $("#UR_04_a"), "UR_04_v", $("#lbl_UR_04_a"));
+            ShowHide_TextBox($("input[name=UR_04]:checked").val(), $("#UR_04_a"), "UR_04_v", $("#lbl_UR_04_a"));
+            ShowHide_TextBox($("input[name=UR_04]:checked").val(), $("#UR_04_a"), "UR_04_v", $("#lbl_UR_04_a"));
+
+            $("#UR_04_a").val(data.d[0]["UR_04_a"]);
+
+            if (data.d[0]["UR_04a"] == "") {
+                $("#UR_04a_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_04a"] == "999") {
+                $("#UR_04a_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_04a"] == "888") {
+                $("#UR_04a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_04a]:checked").val(), $("#UR_04a_a"), "UR_04a_v", $("#lbl_UR_04a_a"));
+            ShowHide_TextBox($("input[name=UR_04a]:checked").val(), $("#UR_04a_a"), "UR_04a_v", $("#lbl_UR_04a_a"));
+            ShowHide_TextBox($("input[name=UR_04a]:checked").val(), $("#UR_04a_a"), "UR_04a_v", $("#lbl_UR_04a_a"));
+
+            $("#UR_04a_a").val(data.d[0]["UR_04a_a"]);
+
+            if (data.d[0]["UR_05"] == "") {
+                $("#UR_05_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_05"] == "999") {
+                $("#UR_05_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_05"] == "888") {
+                $("#UR_05_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_05]:checked").val(), $("#UR_05_a"), "UR_05_v", $("#lbl_UR_05_a"));
+            ShowHide_TextBox($("input[name=UR_05]:checked").val(), $("#UR_05_a"), "UR_05_v", $("#lbl_UR_05_a"));
+            ShowHide_TextBox($("input[name=UR_05]:checked").val(), $("#UR_05_a"), "UR_05_v", $("#lbl_UR_05_a"));
+
+            $("#UR_05_a").val(data.d[0]["UR_05_a"]);
+
+            if (data.d[0]["UR_06"] == "") {
+                $("#UR_06_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_06"] == "999") {
+                $("#UR_06_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_06"] == "888") {
+                $("#UR_06_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_06]:checked").val(), $("#UR_06_a"), "UR_06_v", $("#lbl_UR_06_a"));
+            ShowHide_TextBox($("input[name=UR_06]:checked").val(), $("#UR_06_a"), "UR_06_v", $("#lbl_UR_06_a"));
+            ShowHide_TextBox($("input[name=UR_06]:checked").val(), $("#UR_06_a"), "UR_06_v", $("#lbl_UR_06_a"));
+
+
+            $("#UR_06_a").val(data.d[0]["UR_06_a"]);
+
+
+            if (data.d[0]["UR_07"] == "") {
+                $("#UR_07_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_07"] == "999") {
+                $("#UR_07_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_07"] == "888") {
+                $("#UR_07_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_07]:checked").val(), $("#UR_07_a"), "UR_07_v", $("#lbl_UR_07_a"));
+            ShowHide_TextBox($("input[name=UR_07]:checked").val(), $("#UR_07_a"), "UR_07_v", $("#lbl_UR_07_a"));
+            ShowHide_TextBox($("input[name=UR_07]:checked").val(), $("#UR_07_a"), "UR_07_v", $("#lbl_UR_07_a"));
+
+            $("#UR_07_a").val(data.d[0]["UR_07_a"]);
+
+            if (data.d[0]["UR_08"] == "") {
+                $("#UR_08_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_08"] == "999") {
+                $("#UR_08_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_08"] == "888") {
+                $("#UR_08_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_08]:checked").val(), $("#UR_08_a"), "UR_08_v", $("#lbl_UR_08_a"));
+            ShowHide_TextBox($("input[name=UR_08]:checked").val(), $("#UR_08_a"), "UR_08_v", $("#lbl_UR_08_a"));
+            ShowHide_TextBox($("input[name=UR_08]:checked").val(), $("#UR_08_a"), "UR_08_v", $("#lbl_UR_08_a"));
+
+            $("#UR_08_a").val(data.d[0]["UR_08_a"]);
+
+
+            if (data.d[0]["UR_10"] == "") {
+                $("#UR_10_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_10"] == "999") {
+                $("#UR_10_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_10"] == "888") {
+                $("#UR_10_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox($("input[name=UR_10]:checked").val(), $("#UR_10_a"), "UR_10_v", $("#lbl_UR_10_a"));
+            ShowHide_TextBox($("input[name=UR_10]:checked").val(), $("#UR_10_a"), "UR_10_v", $("#lbl_UR_10_a"));
+            ShowHide_TextBox($("input[name=UR_10]:checked").val(), $("#UR_10_a"), "UR_10_v", $("#lbl_UR_10_a"));
+
+
+            $("#UR_10_a").val(data.d[0]["UR_10_a"]);
+
+
+
+            if (data.d[0]["UR_11"] == "") {
+                $("#UR_11_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_11"] == "999") {
+                $("#UR_11_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_11"] == "888") {
+                $("#UR_11_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox($("input[name=UR_11]:checked").val(), $("#UR_11_a"), "UR_11_v", $("#lbl_UR_11_a"));
+            ShowHide_TextBox($("input[name=UR_11]:checked").val(), $("#UR_11_a"), "UR_11_v", $("#lbl_UR_11_a"));
+            ShowHide_TextBox($("input[name=UR_11]:checked").val(), $("#UR_11_a"), "UR_11_v", $("#lbl_UR_11_a"));
+
+
+            $("#UR_11_a").val(data.d[0]["UR_11_a"]);
+
+
+            if (data.d[0]["UR_12"] == "") {
+                $("#UR_12_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_12"] == "999") {
+                $("#UR_12_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_12"] == "888") {
+                $("#UR_12_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox($("input[name=UR_12]:checked").val(), $("#UR_12_a"), "UR_12_v", $("#lbl_UR_12_a"));
+            ShowHide_TextBox($("input[name=UR_12]:checked").val(), $("#UR_12_a"), "UR_12_v", $("#lbl_UR_12_a"));
+            ShowHide_TextBox($("input[name=UR_12]:checked").val(), $("#UR_12_a"), "UR_12_v", $("#lbl_UR_12_a"));
+
+
+            $("#UR_12_a").val(data.d[0]["UR_12_a"]);
+
+
+
+            if (data.d[0]["UR_13"] == "") {
+                $("#UR_13_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_13"] == "999") {
+                $("#UR_13_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_13"] == "888") {
+                $("#UR_13_c").prop("checked", "checked");
+            }
+
+
+
+            ShowHide_TextBox($("input[name=UR_13]:checked").val(), $("#UR_13_a"), "UR_13_v", $("#lbl_UR_13_a"));
+            ShowHide_TextBox($("input[name=UR_13]:checked").val(), $("#UR_13_a"), "UR_13_v", $("#lbl_UR_13_a"));
+            ShowHide_TextBox($("input[name=UR_13]:checked").val(), $("#UR_13_a"), "UR_13_v", $("#lbl_UR_13_a"));
+
+            $("#UR_13_a").val(data.d[0]["UR_13_a"]);
+
+
+            if (data.d[0]["UR_14"] == "") {
+                $("#UR_14_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_14"] == "999") {
+                $("#UR_14_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_14"] == "888") {
+                $("#UR_14_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_14]:checked").val(), $("#UR_14_a"), "UR_14_v", $("#lbl_UR_14_a"));
+            ShowHide_TextBox($("input[name=UR_14]:checked").val(), $("#UR_14_a"), "UR_14_v", $("#lbl_UR_14_a"));
+            ShowHide_TextBox($("input[name=UR_14]:checked").val(), $("#UR_14_a"), "UR_14_v", $("#lbl_UR_14_a"));
+
+            $("#UR_14_a").val(data.d[0]["UR_14_a"]);
+
+            if (data.d[0]["UR_15"] == "") {
+                $("#UR_15_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_15"] == "999") {
+                $("#UR_15_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_15"] == "888") {
+                $("#UR_15_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_15]:checked").val(), $("#UR_15_a"), "UR_15_v", $("#lbl_UR_15_a"));
+            ShowHide_TextBox($("input[name=UR_15]:checked").val(), $("#UR_15_a"), "UR_15_v", $("#lbl_UR_15_a"));
+            ShowHide_TextBox($("input[name=UR_15]:checked").val(), $("#UR_15_a"), "UR_15_v", $("#lbl_UR_15_a"));
+
+            $("#UR_15_a").val(data.d[0]["UR_15_a"]);
+
+            if (data.d[0]["UR_16"] == "") {
+                $("#UR_16_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_16"] == "999") {
+                $("#UR_16_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_16"] == "888") {
+                $("#UR_16_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_16]:checked").val(), $("#UR_16_a"), "UR_16_v", $("#lbl_UR_16_a"));
+            ShowHide_TextBox($("input[name=UR_16]:checked").val(), $("#UR_16_a"), "UR_16_v", $("#lbl_UR_16_a"));
+            ShowHide_TextBox($("input[name=UR_16]:checked").val(), $("#UR_16_a"), "UR_16_v", $("#lbl_UR_16_a"));
+
+            $("#UR_16_a").val(data.d[0]["UR_16_a"]);
+
+
+            if (data.d[0]["UR_17"] == "") {
+                $("#UR_17_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_17"] == "999") {
+                $("#UR_17_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_17"] == "888") {
+                $("#UR_17_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_17]:checked").val(), $("#UR_17_a"), "UR_17_v", $("#lbl_UR_17_a"));
+            ShowHide_TextBox($("input[name=UR_17]:checked").val(), $("#UR_17_a"), "UR_17_v", $("#lbl_UR_17_a"));
+            ShowHide_TextBox($("input[name=UR_17]:checked").val(), $("#UR_17_a"), "UR_17_v", $("#lbl_UR_17_a"));
+
+            $("#UR_17_a").val(data.d[0]["UR_17_a"]);
+
+            if (data.d[0]["UR_18"] == "") {
+                $("#UR_18_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_18"] == "999") {
+                $("#UR_18_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_18"] == "888") {
+                $("#UR_18_c").prop("checked", "checked");
+            }
+
+
+            ShowHide_TextBox($("input[name=UR_18]:checked").val(), $("#UR_18_a"), "UR_18_v", $("#lbl_UR_18_a"));
+            ShowHide_TextBox($("input[name=UR_18]:checked").val(), $("#UR_18_a"), "UR_18_v", $("#lbl_UR_18_a"));
+            ShowHide_TextBox($("input[name=UR_18]:checked").val(), $("#UR_18_a"), "UR_18_v", $("#lbl_UR_18_a"));
+
+
+            $("#UR_18_a").val(data.d[0]["UR_18_a"]);
+
+
+            if (data.d[0]["UR_18"] == "") {
+                $("#UR_19_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_19"] == "999") {
+                $("#UR_19_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_19"] == "888") {
+                $("#UR_19_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_19]:checked").val(), $("#UR_19_a"), "UR_19_v", $("#lbl_UR_19_a"));
+            ShowHide_TextBox($("input[name=UR_19]:checked").val(), $("#UR_19_a"), "UR_19_v", $("#lbl_UR_19_a"));
+            ShowHide_TextBox($("input[name=UR_19]:checked").val(), $("#UR_19_a"), "UR_19_v", $("#lbl_UR_19_a"));
+
+            $("#UR_19_a").val(data.d[0]["UR_19_a"]);
+
+            if (data.d[0]["UR_18"] == "") {
+                $("#UR_20_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_20"] == "999") {
+                $("#UR_20_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_20"] == "888") {
+                $("#UR_20_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_20]:checked").val(), $("#UR_20_a"), "UR_20_v", $("#lbl_UR_20_a"));
+            ShowHide_TextBox($("input[name=UR_20]:checked").val(), $("#UR_20_a"), "UR_20_v", $("#lbl_UR_20_a"));
+            ShowHide_TextBox($("input[name=UR_20]:checked").val(), $("#UR_20_a"), "UR_20_v", $("#lbl_UR_20_a"));
+
+            $("#UR_20_a").val(data.d[0]["UR_20_a"]);
+
+            if (data.d[0]["UR_18"] == "") {
+                $("#UR_21_v").prop("checked", "checked");
+            } else if (data.d[0]["UR_21"] == "999") {
+                $("#UR_21_b").prop("checked", "checked");
+            } else if (data.d[0]["UR_21"] == "888") {
+                $("#UR_21_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox($("input[name=UR_21]:checked").val(), $("#UR_21_a"), "UR_21_v", $("#lbl_UR_21_a"));
+            ShowHide_TextBox($("input[name=UR_21]:checked").val(), $("#UR_21_a"), "UR_21_v", $("#lbl_UR_21_a"));
+            ShowHide_TextBox($("input[name=UR_21]:checked").val(), $("#UR_21_a"), "UR_21_v", $("#lbl_UR_21_a"));
+
+            $("#UR_21_a").val(data.d[0]["UR_21_a"]);
+        }
+
+        function test10(data) {
+            if (data.d[0]["LA_25a_b"] == "") {
+                $("#LA_25a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_25a_b"] == "999") {
+                $("#LA_25a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_25a_b"] == "888") {
+                $("#LA_25a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_25a]:checked").val(), $("#LA_25a_a"), "LA_25a_v", $("#lbl_LA_25a_a"), $("input[name=LA_25b]"), $("#lbl_LA_25b"), $("#lbl_LA_25b_s"), $("#lbl_LA_25b_r"), $("#lbl_LA_25b_i"));
+            ShowHide_TextBox_New($("input[name=LA_25a]:checked").val(), $("#LA_25a_a"), "LA_25a_v", $("#lbl_LA_25a_a"), $("input[name=LA_25b]"), $("#lbl_LA_25b"), $("#lbl_LA_25b_s"), $("#lbl_LA_25b_r"), $("#lbl_LA_25b_i"));
+            ShowHide_TextBox_New($("input[name=LA_25a]:checked").val(), $("#LA_25a_a"), "LA_25a_v", $("#lbl_LA_25a_a"), $("input[name=LA_25b]"), $("#lbl_LA_25b"), $("#lbl_LA_25b_s"), $("#lbl_LA_25b_r"), $("#lbl_LA_25b_i"));
+
+            $("#LA_25a_a").val(data.d[0]["LA_25a_a"]);
+
+            if (data.d[0]["LA_25b_a"] == "1") {
+                $("#LA_25b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_25b_a"] == "2") {
+                $("#LA_25b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_25b_a"] == "3") {
+                $("#LA_25b_c").prop("checked", "checked");
+            }
+        }
+
+        function test11(data) {
+            if (data.d[0]["LA_26a_b"] == "") {
+                $("#LA_26a_v").prop("checked", "checked");
+            } else if (data.d[0]["LA_26a_b"] == "999") {
+                $("#LA_26a_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_26a_b"] == "888") {
+                $("#LA_26a_c").prop("checked", "checked");
+            }
+
+            ShowHide_TextBox_New($("input[name=LA_26a]:checked").val(), $("#LA_26a_a"), "LA_26a_v", $("#lbl_LA_26a_a"), $("input[name=LA_26b]"), $("#lbl_LA_26b"), $("#lbl_LA_26b_s"), $("#lbl_LA_26b_r"), $("#lbl_LA_26b_i"));
+            ShowHide_TextBox_New($("input[name=LA_26a]:checked").val(), $("#LA_26a_a"), "LA_26a_v", $("#lbl_LA_26a_a"), $("input[name=LA_26b]"), $("#lbl_LA_26b"), $("#lbl_LA_26b_s"), $("#lbl_LA_26b_r"), $("#lbl_LA_26b_i"));
+            ShowHide_TextBox_New($("input[name=LA_26a]:checked").val(), $("#LA_26a_a"), "LA_26a_v", $("#lbl_LA_26a_a"), $("input[name=LA_26b]"), $("#lbl_LA_26b"), $("#lbl_LA_26b_s"), $("#lbl_LA_26b_r"), $("#lbl_LA_26b_i"));
+
+            $("#LA_26a_a").val(data.d[0]["LA_26a_a"]);
+
+            if (data.d[0]["LA_26b_a"] == "1") {
+                $("#LA_26b_a").prop("checked", "checked");
+            } else if (data.d[0]["LA_26b_a"] == "2") {
+                $("#LA_26b_b").prop("checked", "checked");
+            } else if (data.d[0]["LA_26b_a"] == "3") {
+                $("#LA_26b_c").prop("checked", "checked");
+            }
+        }
+
+
+        
         $(document).on("blur", "#la_sno", function (e) {
 
             if ($("#la_sno").val() != "__-_-____") {
@@ -605,22 +2733,40 @@
 
                                 isexist = true;
 
-                                alert("Results already entered against this Screening id ");
+
+                                $("#la_sno").val(data.d[0]["la_sno"]);
 
 
-                                $("#la_fsite").val("");
-                                $("#la_rand").val("");
-                                $("#la_spec").val("");
-                                $("#la_name").val("");
-                                $("#la_gen").val("");
-                                $("#la_age").val("");
-                                $("#la_obj").val("");
 
-                                DisableControls_Loop();
+                                if (data.d[0]["LF_01"] == "") {
+                                    $("#LF_01_v").prop("checked", "checked");
+                                }
+                                else if (data.d[0]["LF_01"] == "999") {
+                                    $("#LF_01_b").prop("checked", "checked");
+                                    ShowHide_TextBox($("input[name=LF_01]:checked").val(), $("#LF_01_a"), "LF_01_v", $("#lbl_LF_01_a"));
+                                }
+                                else if (data.d[0]["LF_01"] == "888") {
+                                    $("#LF_01_c").prop("checked", "checked");
+                                    ShowHide_TextBox($("input[name=LF_01]:checked").val(), $("#LF_01_a"), "LF_01_v", $("#lbl_LF_01_a"));
+                                }
 
 
-                                $("#cmdSave").hide();
-                                $("#cmdSaveDraft").hide();
+
+                                //alert("Results already entered against this Screening id ");
+
+                                //$("#la_fsite").val("");
+                                //$("#la_rand").val("");
+                                //$("#la_spec").val("");
+                                //$("#la_name").val("");
+                                //$("#la_gen").val("");
+                                //$("#la_age").val("");
+                                //$("#la_obj").val("");
+
+                                //DisableControls_Loop();
+
+
+                                //$("#cmdSave").hide();
+                                //$("#cmdSaveDraft").hide();
                             }
 
                         },
@@ -1851,19 +3997,7 @@
 
 
 
-        // javed
 
-        //function testv() {
-        //    ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
-        //}
-
-        //function testb() {
-        //    ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
-        //}
-
-        //function testc() {
-        //    ShowHide_TextBox_New($("input[name=LA_24a]:checked").val(), $("#LA_24a_a"), "LA_24a_v", $("#lbl_LA_24a_a"), $("input[name=LA_24b]"), $("#lbl_LA_24b"), $("#lbl_LA_24b_s"), $("#lbl_LA_24b_r"), $("#lbl_LA_24b_i"));
-        //}
 
 
         $(document).on("change", "#LA_24a_v", function () {
@@ -2939,8 +5073,6 @@
         $(document).on("change", "#uc_37a_c", function () {
             ShowHide_TextBox_New($("input[name=uc_37a]:checked").val(), $("#uc_37a_a"), "uc_37a_v", $("#lbl_uc_37a_a"), $("input[name=uc_37b]"), $("#lbl_uc_37b"), $("#lbl_uc_37b_s"), $("#lbl_uc_37b_r"), $("#lbl_uc_37b_i"));
         });
-
-
 
 
 
@@ -9435,11 +11567,11 @@
                                                                     <label for="input-radio-11">Azithromycin (AZM) 15ug Value</label>
                                                                 </fieldset>
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" name="LA_24a_b" ID="LA_24a_b"  />
+                                                                    <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" name="LA_24a_b" ID="LA_24a_b" />
                                                                     <label for="input-radio-11">NA</label>
                                                                 </fieldset>
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" name="LA_24a_c" ID="LA_24a_c"  />
+                                                                    <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" name="LA_24a_c" ID="LA_24a_c" />
                                                                     <label for="input-radio-12">NR</label>
                                                                 </fieldset>
                                                             </div>
@@ -10914,7 +13046,7 @@
                                                         <asp:PostBackTrigger ControlID="cmdSaveDraft" />
                                                         <asp:PostBackTrigger ControlID="cmdSave" />
                                                         <asp:PostBackTrigger ControlID="cmdPrintPreview" />
-                                                        <asp:PostBackTrigger ControlID="cmdPrint" />                                                        
+                                                        <asp:PostBackTrigger ControlID="cmdPrint" />
                                                     </Triggers>
                                                 </asp:UpdatePanel>
                                                 <%--<div class="form-actions right">

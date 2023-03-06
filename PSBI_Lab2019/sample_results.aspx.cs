@@ -26,6 +26,7 @@ public partial class sample_results : System.Web.UI.Page
     private IList<Stream> m_streams;
 
     public List<CountryInfo> CountryInformation { get; set; }
+    public List<SampleResultsRecordset> SampleResultList { get; set; }
 
 
     public class CountryInfo
@@ -38,6 +39,348 @@ public partial class sample_results : System.Web.UI.Page
         public string AS1_barcode { get; set; }
         public string AS1_fsite { get; set; }
         public string AS1_Q1_1 { get; set; }
+    }
+
+
+    public class SampleResultsRecordset
+    {
+        public string la_sno { get; set; }
+        public string LA_01 { get; set; }
+        public string LA_02 { get; set; }
+        public string LA_03_b { get; set; }
+        public string LA_03_a { get; set; }
+        public string LA_04_b { get; set; }
+        public string LA_04_a { get; set; }
+        public string LA_05_b { get; set; }
+        public string LA_05_a { get; set; }
+        public string LA_06_b { get; set; }
+        public string LA_06_a { get; set; }
+        public string LA_07_b { get; set; }
+        public string LA_07_a { get; set; }
+        public string LA_08_b { get; set; }
+        public string LA_08_a { get; set; }
+        public string LA_09_b { get; set; }
+        public string LA_09_a { get; set; }
+        public string LA_10_b { get; set; }
+        public string LA_10_a { get; set; }
+        public string LA_11_b { get; set; }
+        public string LA_11_a { get; set; }
+        public string LA_12_b { get; set; }
+        public string LA_12_a { get; set; }
+        public string LA_13_b { get; set; }
+        public string LA_13_a { get; set; }
+        public string LA_14_b { get; set; }
+        public string LA_14_a { get; set; }
+        public string LA_15_b { get; set; }
+        public string LA_15_a { get; set; }
+        public string LA_16_b { get; set; }
+        public string LA_16_a { get; set; }
+        public string LF_01 { get; set; }
+        public string LF_01_a { get; set; }
+        public string LF_02 { get; set; }
+        public string LF_02_a { get; set; }
+        public string LF_03 { get; set; }
+        public string LF_03_a { get; set; }
+        public string LF_04 { get; set; }
+        public string LF_04_a { get; set; }
+        public string LF_05 { get; set; }
+        public string LF_05_a { get; set; }
+        public string LF_06 { get; set; }
+        public string LF_06_a { get; set; }
+        public string LF_07 { get; set; }
+        public string LF_07_a { get; set; }
+        public string RF_01 { get; set; }
+        public string RF_01_a { get; set; }
+        public string RF_02 { get; set; }
+        public string RF_02_a { get; set; }
+        public string RF_03 { get; set; }
+        public string RF_03_a { get; set; }
+        public string RF_04 { get; set; }
+        public string RF_04_a { get; set; }
+        public string SE_01 { get; set; }
+        public string SE_01_a { get; set; }
+        public string SE_02 { get; set; }
+        public string SE_02_a { get; set; }
+        public string SE_03 { get; set; }
+        public string SE_03_a { get; set; }
+        public string SE_04 { get; set; }
+        public string SE_04_a { get; set; }
+        public string CS_01 { get; set; }
+        public string CS_01_a { get; set; }
+        public string CS_02 { get; set; }
+        public string CS_02_a { get; set; }
+        public string CS_03 { get; set; }
+        public string CS_03_a { get; set; }
+        public string CS_04 { get; set; }
+        public string CS_04_a { get; set; }
+        public string CS_05 { get; set; }
+        public string CS_05_a { get; set; }
+        public string CS_06 { get; set; }
+        public string CS_06_a { get; set; }
+        public string CS_07 { get; set; }
+        public string CS_07_a { get; set; }
+        public string CS_08 { get; set; }
+        public string CS_08_a { get; set; }
+        public string CS_09 { get; set; }
+        public string CS_09_a { get; set; }
+        public string CS_10 { get; set; }
+        public string CS_10_a { get; set; }
+        public string UR_01 { get; set; }
+        public string UR_01_a { get; set; }
+        public string UR_02 { get; set; }
+        public string UR_02_a { get; set; }
+        public string UR_03 { get; set; }
+        public string UR_03_a { get; set; }
+        public string UR_04 { get; set; }
+        public string UR_04_a { get; set; }
+        public string UR_05 { get; set; }
+        public string UR_05_a { get; set; }
+        public string UR_06 { get; set; }
+        public string UR_06_a { get; set; }
+        public string UR_07 { get; set; }
+        public string UR_07_a { get; set; }
+        public string UR_08 { get; set; }
+        public string UR_08_a { get; set; }
+        public string UR_10 { get; set; }
+        public string UR_10_a { get; set; }
+        public string UR_11 { get; set; }
+        public string UR_11_a { get; set; }
+        public string UR_12 { get; set; }
+        public string UR_12_a { get; set; }
+        public string UR_13 { get; set; }
+        public string UR_13_a { get; set; }
+        public string UR_14 { get; set; }
+        public string UR_14_a { get; set; }
+        public string UR_15 { get; set; }
+        public string UR_15_a { get; set; }
+        public string UR_16 { get; set; }
+        public string UR_16_a { get; set; }
+        public string UR_17 { get; set; }
+        public string UR_17_a { get; set; }
+        public string UR_18 { get; set; }
+        public string UR_18_a { get; set; }
+        public string UR_19 { get; set; }
+        public string UR_19_a { get; set; }
+        public string UR_20 { get; set; }
+        public string UR_20_a { get; set; }
+        public string UR_21 { get; set; }
+        public string UR_21_a { get; set; }
+        public string uc_01a { get; set; }
+        public string uc_02a { get; set; }
+        public string uc_02a_a { get; set; }
+        public string uc_02b { get; set; }
+        public string uc_03a { get; set; }
+        public string uc_03a_a { get; set; }
+        public string uc_03b { get; set; }
+        public string uc_04a { get; set; }
+        public string uc_04a_a { get; set; }
+        public string uc_04b { get; set; }
+        public string uc_05a { get; set; }
+        public string uc_05a_a { get; set; }
+        public string uc_05b { get; set; }
+        public string uc_06a { get; set; }
+        public string uc_06a_a { get; set; }
+        public string uc_06b { get; set; }
+        public string uc_07a { get; set; }
+        public string uc_07a_a { get; set; }
+        public string uc_07b { get; set; }
+        public string uc_08a { get; set; }
+        public string uc_08a_a { get; set; }
+        public string uc_08b { get; set; }
+        public string uc_09a { get; set; }
+        public string uc_09a_a { get; set; }
+        public string uc_09b { get; set; }
+        public string uc_10a { get; set; }
+        public string uc_10a_a { get; set; }
+        public string uc_10b { get; set; }
+        public string uc_11a { get; set; }
+        public string uc_11a_a { get; set; }
+        public string uc_11b { get; set; }
+        public string uc_12a { get; set; }
+        public string uc_12a_a { get; set; }
+        public string uc_12b { get; set; }
+        public string uc_13a { get; set; }
+        public string uc_13a_a { get; set; }
+        public string uc_13b { get; set; }
+        public string uc_14a { get; set; }
+        public string uc_14a_a { get; set; }
+        public string uc_14b { get; set; }
+        public string uc_15a { get; set; }
+        public string uc_15a_a { get; set; }
+        public string uc_15b { get; set; }
+        public string uc_16a { get; set; }
+        public string uc_16a_a { get; set; }
+        public string uc_16b { get; set; }
+        public string uc_17a { get; set; }
+        public string uc_17a_a { get; set; }
+        public string uc_17b { get; set; }
+        public string uc_18a { get; set; }
+        public string uc_18a_a { get; set; }
+        public string uc_18b { get; set; }
+        public string uc_19a { get; set; }
+        public string uc_19a_a { get; set; }
+        public string uc_19b { get; set; }
+        public string uc_20a { get; set; }
+        public string uc_20a_a { get; set; }
+        public string uc_20b { get; set; }
+        public string uc_21a { get; set; }
+        public string uc_21a_a { get; set; }
+        public string uc_21b { get; set; }
+        public string uc_22a { get; set; }
+        public string uc_22a_a { get; set; }
+        public string uc_22b { get; set; }
+        public string uc_23a { get; set; }
+        public string uc_23a_a { get; set; }
+        public string uc_23b { get; set; }
+        public string uc_24a { get; set; }
+        public string uc_24a_a { get; set; }
+        public string uc_24b { get; set; }
+        public string uc_25a { get; set; }
+        public string uc_25a_a { get; set; }
+        public string uc_25b { get; set; }
+        public string uc_26a { get; set; }
+        public string uc_26a_a { get; set; }
+        public string uc_26b { get; set; }
+        public string uc_27a { get; set; }
+        public string uc_27a_a { get; set; }
+        public string uc_27b { get; set; }
+        public string uc_28a { get; set; }
+        public string uc_28a_a { get; set; }
+        public string uc_28b { get; set; }
+        public string uc_29a { get; set; }
+        public string uc_29a_a { get; set; }
+        public string uc_29b { get; set; }
+        public string uc_30a { get; set; }
+        public string uc_30a_a { get; set; }
+        public string uc_30b { get; set; }
+        public string uc_31a { get; set; }
+        public string uc_31a_a { get; set; }
+        public string uc_31b { get; set; }
+        public string uc_32a { get; set; }
+        public string uc_32a_a { get; set; }
+        public string uc_32b { get; set; }
+        public string uc_33a { get; set; }
+        public string uc_33a_a { get; set; }
+        public string uc_33b { get; set; }
+        public string uc_34a { get; set; }
+        public string uc_34a_a { get; set; }
+        public string uc_34b { get; set; }
+        public string uc_35a { get; set; }
+        public string uc_35a_a { get; set; }
+        public string uc_35b { get; set; }
+        public string uc_36a { get; set; }
+        public string uc_36a_a { get; set; }
+        public string uc_36b { get; set; }
+        public string uc_37a { get; set; }
+        public string uc_37a_a { get; set; }
+        public string uc_37b { get; set; }
+        public string LA_17 { get; set; }
+        public string LA_18 { get; set; }
+        public string LA_19 { get; set; }
+        public string LA_20a_b { get; set; }
+        public string LA_20a_a { get; set; }
+        public string LA_20b_a { get; set; }
+        public string LA_21a_b { get; set; }
+        public string LA_21a_a { get; set; }
+        public string LA_21b_a { get; set; }
+        public string LA_22a_b { get; set; }
+        public string LA_22a_a { get; set; }
+        public string LA_22b_a { get; set; }
+        public string LA_23a_b { get; set; }
+        public string LA_23a_a { get; set; }
+        public string LA_23b_a { get; set; }
+        public string LA_24a_b { get; set; }
+        public string LA_24a_a { get; set; }
+        public string LA_24b_a { get; set; }
+        public string LA_25a_b { get; set; }
+        public string LA_25a_a { get; set; }
+        public string LA_25b_a { get; set; }
+        public string LA_26a_b { get; set; }
+        public string LA_26a_a { get; set; }
+        public string LA_26b_a { get; set; }
+        public string LA_27a_b { get; set; }
+        public string LA_27a_a { get; set; }
+        public string LA_27b_a { get; set; }
+        public string LA_28a_b { get; set; }
+        public string LA_28a_a { get; set; }
+        public string LA_28b_a { get; set; }
+        public string LA_29a_b { get; set; }
+        public string LA_29a_a { get; set; }
+        public string LA_29b_a { get; set; }
+        public string LA_30a_b { get; set; }
+        public string LA_30a_a { get; set; }
+        public string LA_30b_a { get; set; }
+        public string LA_31a_b { get; set; }
+        public string LA_31a_a { get; set; }
+        public string LA_31b_a { get; set; }
+        public string LA_32a_b { get; set; }
+        public string LA_32a_a { get; set; }
+        public string LA_32b_a { get; set; }
+        public string LA_33a_b { get; set; }
+        public string LA_33a_a { get; set; }
+        public string LA_33b_a { get; set; }
+        public string LA_34a_b { get; set; }
+        public string LA_34a_a { get; set; }
+        public string LA_34b_a { get; set; }
+        public string LA_35a_b { get; set; }
+        public string LA_35a_a { get; set; }
+        public string LA_35b_a { get; set; }
+        public string LA_36a_b { get; set; }
+        public string LA_36a_a { get; set; }
+        public string LA_36b_a { get; set; }
+        public string LA_37a_b { get; set; }
+        public string LA_37a_a { get; set; }
+        public string LA_37b_a { get; set; }
+        public string LA_38a_b { get; set; }
+        public string LA_38a_a { get; set; }
+        public string LA_38b_a { get; set; }
+        public string LA_39a_b { get; set; }
+        public string LA_39a_a { get; set; }
+        public string LA_39b_a { get; set; }
+        public string LA_40a_b { get; set; }
+        public string LA_40a_a { get; set; }
+        public string LA_40b_a { get; set; }
+        public string LA_41a_b { get; set; }
+        public string LA_41a_a { get; set; }
+        public string LA_41b_a { get; set; }
+        public string LA_42a_b { get; set; }
+        public string LA_42a_a { get; set; }
+        public string LA_42b_a { get; set; }
+        public string LA_43a_b { get; set; }
+        public string LA_43a_a { get; set; }
+        public string LA_43b_a { get; set; }
+        public string LA_44a_b { get; set; }
+        public string LA_44a_a { get; set; }
+        public string LA_44b_a { get; set; }
+        public string LA_45a_b { get; set; }
+        public string LA_45a_a { get; set; }
+        public string LA_45b_a { get; set; }
+        public string LA_46a_b { get; set; }
+        public string LA_46a_a { get; set; }
+        public string LA_46b_a { get; set; }
+        public string LA_47a_b { get; set; }
+        public string LA_47a_a { get; set; }
+        public string LA_47b_a { get; set; }
+        public string LA_48a_b { get; set; }
+        public string LA_48a_a { get; set; }
+        public string LA_48b_a { get; set; }
+        public string LA_49a_b { get; set; }
+        public string LA_49a_a { get; set; }
+        public string LA_49b_a { get; set; }
+        public string LA_50a_b { get; set; }
+        public string LA_50a_a { get; set; }
+        public string LA_50b_a { get; set; }
+        public string LA_51a_b { get; set; }
+        public string LA_51a_a { get; set; }
+        public string LA_51b_a { get; set; }
+        public string LA_52a_b { get; set; }
+        public string LA_52a_a { get; set; }
+        public string LA_52b_a { get; set; }
+        public string uc_01_ca { get; set; }
+        public string UR_04a_a { get; set; }
+        public string UR_04a { get; set; }
+        public string history { get; set; }
+
     }
 
 
@@ -81,8 +424,6 @@ public partial class sample_results : System.Web.UI.Page
                 lnkUser.Text = "Welcome: " + HttpContext.Current.Request["mycookie"].ToString();
                 lnkUser.CssClass = "dropdown-toggle nav-link";
                 lnkUser = null;
-
-
 
 
                 if (Request.QueryString["id"] != null && Request.Cookies["labid"].Value == "3")
@@ -8704,7 +9045,35 @@ public partial class sample_results : System.Web.UI.Page
 
             if (string.IsNullOrEmpty(msg))
             {
-                AddFormStatus(formstatus);
+
+                CConnection cn = new CConnection();
+                SqlDataAdapter da = new SqlDataAdapter("select * from formstatus where AS1_screening_ID = '" + la_sno.Text + "' and labid='" + Request.Cookies["labid"].Value + "'", cn.cn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            UpdateFormStatus(formstatus);
+                        }
+                        else
+                        {
+                            AddFormStatus(formstatus);
+                        }
+                    }
+                    else
+                    {
+                        AddFormStatus(formstatus);
+                    }
+                }
+                else
+                {
+                    AddFormStatus(formstatus);
+                }
+
 
                 string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
@@ -8819,9 +9188,9 @@ public partial class sample_results : System.Web.UI.Page
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-    public static List<SampleResults> IsScreeningIDExists(string screeningid, string labid)
+    public static List<SampleResultsRecordset> IsScreeningIDExists(string screeningid, string labid)
     {
-        List<SampleResults> CountryInformation = new List<SampleResults>();
+        List<SampleResultsRecordset> CountryInformation = new List<SampleResultsRecordset>();
 
         try
         {
@@ -8848,11 +9217,353 @@ public partial class sample_results : System.Web.UI.Page
 
                         foreach (DataRow dr in ds.Tables[0].Rows)
                         {
-                            CountryInformation.Add(new SampleResults()
+                            CountryInformation.Add(new SampleResultsRecordset()
                             {
-                                la_sno = dr["la_sno"].ToString()
+                                la_sno = dr["la_sno"].ToString(),
+                                LA_01 = dr["LA_01"].ToString(),
+                                LA_02 = dr["LA_02"].ToString(),
+                                LA_03_b = dr["LA_03_b"].ToString(),
+                                LA_03_a = dr["LA_03_a"].ToString(),
+                                LA_04_b = dr["LA_04_b"].ToString(),
+                                LA_04_a = dr["LA_04_a"].ToString(),
+                                LA_05_b = dr["LA_05_b"].ToString(),
+                                LA_05_a = dr["LA_05_a"].ToString(),
+                                LA_06_b = dr["LA_06_b"].ToString(),
+                                LA_06_a = dr["LA_06_a"].ToString(),
+                                LA_07_b = dr["LA_07_b"].ToString(),
+                                LA_07_a = dr["LA_07_a"].ToString(),
+                                LA_08_b = dr["LA_08_b"].ToString(),
+                                LA_08_a = dr["LA_08_a"].ToString(),
+                                LA_09_b = dr["LA_09_b"].ToString(),
+                                LA_09_a = dr["LA_09_a"].ToString(),
+                                LA_10_b = dr["LA_10_b"].ToString(),
+                                LA_10_a = dr["LA_10_a"].ToString(),
+                                LA_11_b = dr["LA_11_b"].ToString(),
+                                LA_11_a = dr["LA_11_a"].ToString(),
+                                LA_12_b = dr["LA_12_b"].ToString(),
+                                LA_12_a = dr["LA_12_a"].ToString(),
+                                LA_13_b = dr["LA_13_b"].ToString(),
+                                LA_13_a = dr["LA_13_a"].ToString(),
+                                LA_14_b = dr["LA_14_b"].ToString(),
+                                LA_14_a = dr["LA_14_a"].ToString(),
+                                LA_15_b = dr["LA_15_b"].ToString(),
+                                LA_15_a = dr["LA_15_a"].ToString(),
+                                LA_16_b = dr["LA_16_b"].ToString(),
+                                LA_16_a = dr["LA_16_a"].ToString(),
+                                LF_01 = dr["LF_01"].ToString(),
+                                LF_01_a = dr["LF_01_a"].ToString(),
+                                LF_02 = dr["LF_02"].ToString(),
+                                LF_02_a = dr["LF_02_a"].ToString(),
+                                LF_03 = dr["LF_03"].ToString(),
+                                LF_03_a = dr["LF_03_a"].ToString(),
+                                LF_04 = dr["LF_04"].ToString(),
+                                LF_04_a = dr["LF_04_a"].ToString(),
+                                LF_05 = dr["LF_05"].ToString(),
+                                LF_05_a = dr["LF_05_a"].ToString(),
+                                LF_06 = dr["LF_06"].ToString(),
+                                LF_06_a = dr["LF_06_a"].ToString(),
+                                LF_07 = dr["LF_07"].ToString(),
+                                LF_07_a = dr["LF_07_a"].ToString(),
+                                RF_01 = dr["RF_01"].ToString(),
+                                RF_01_a = dr["RF_01_a"].ToString(),
+                                RF_02 = dr["RF_02"].ToString(),
+                                RF_02_a = dr["RF_02_a"].ToString(),
+                                RF_03 = dr["RF_03"].ToString(),
+                                RF_03_a = dr["RF_03_a"].ToString(),
+                                RF_04 = dr["RF_04"].ToString(),
+                                RF_04_a = dr["RF_04_a"].ToString(),
+                                SE_01 = dr["SE_01"].ToString(),
+                                SE_01_a = dr["SE_01_a"].ToString(),
+                                SE_02 = dr["SE_02"].ToString(),
+                                SE_02_a = dr["SE_02_a"].ToString(),
+                                SE_03 = dr["SE_03"].ToString(),
+                                SE_03_a = dr["SE_03_a"].ToString(),
+                                SE_04 = dr["SE_04"].ToString(),
+                                SE_04_a = dr["SE_04_a"].ToString(),
+                                CS_01 = dr["CS_01"].ToString(),
+                                CS_01_a = dr["CS_01_a"].ToString(),
+                                CS_02 = dr["CS_02"].ToString(),
+                                CS_02_a = dr["CS_02_a"].ToString(),
+                                CS_03 = dr["CS_03"].ToString(),
+                                CS_03_a = dr["CS_03_a"].ToString(),
+                                CS_04 = dr["CS_04"].ToString(),
+                                CS_04_a = dr["CS_04_a"].ToString(),
+                                CS_05 = dr["CS_05"].ToString(),
+                                CS_05_a = dr["CS_05_a"].ToString(),
+                                CS_06 = dr["CS_06"].ToString(),
+                                CS_06_a = dr["CS_06_a"].ToString(),
+                                CS_07 = dr["CS_07"].ToString(),
+                                CS_07_a = dr["CS_07_a"].ToString(),
+                                CS_08 = dr["CS_08"].ToString(),
+                                CS_08_a = dr["CS_08_a"].ToString(),
+                                CS_09 = dr["CS_09"].ToString(),
+                                CS_09_a = dr["CS_09_a"].ToString(),
+                                CS_10 = dr["CS_10"].ToString(),
+                                CS_10_a = dr["CS_10_a"].ToString(),
+                                UR_01 = dr["UR_01"].ToString(),
+                                UR_01_a = dr["UR_01_a"].ToString(),
+                                UR_02 = dr["UR_02"].ToString(),
+                                UR_02_a = dr["UR_02_a"].ToString(),
+                                UR_03 = dr["UR_03"].ToString(),
+                                UR_03_a = dr["UR_03_a"].ToString(),
+                                UR_04 = dr["UR_04"].ToString(),
+                                UR_04_a = dr["UR_04_a"].ToString(),
+                                UR_05 = dr["UR_05"].ToString(),
+                                UR_05_a = dr["UR_05_a"].ToString(),
+                                UR_06 = dr["UR_06"].ToString(),
+                                UR_06_a = dr["UR_06_a"].ToString(),
+                                UR_07 = dr["UR_07"].ToString(),
+                                UR_07_a = dr["UR_07_a"].ToString(),
+                                UR_08 = dr["UR_08"].ToString(),
+                                UR_08_a = dr["UR_08_a"].ToString(),
+                                UR_10 = dr["UR_10"].ToString(),
+                                UR_10_a = dr["UR_10_a"].ToString(),
+                                UR_11 = dr["UR_11"].ToString(),
+                                UR_11_a = dr["UR_11_a"].ToString(),
+                                UR_12 = dr["UR_12"].ToString(),
+                                UR_12_a = dr["UR_12_a"].ToString(),
+                                UR_13 = dr["UR_13"].ToString(),
+                                UR_13_a = dr["UR_13_a"].ToString(),
+                                UR_14 = dr["UR_14"].ToString(),
+                                UR_14_a = dr["UR_14_a"].ToString(),
+                                UR_15 = dr["UR_15"].ToString(),
+                                UR_15_a = dr["UR_15_a"].ToString(),
+                                UR_16 = dr["UR_16"].ToString(),
+                                UR_16_a = dr["UR_16_a"].ToString(),
+                                UR_17 = dr["UR_17"].ToString(),
+                                UR_17_a = dr["UR_17_a"].ToString(),
+                                UR_18 = dr["UR_18"].ToString(),
+                                UR_18_a = dr["UR_18_a"].ToString(),
+                                UR_19 = dr["UR_19"].ToString(),
+                                UR_19_a = dr["UR_19_a"].ToString(),
+                                UR_20 = dr["UR_20"].ToString(),
+                                UR_20_a = dr["UR_20_a"].ToString(),
+                                UR_21 = dr["UR_21"].ToString(),
+                                UR_21_a = dr["UR_21_a"].ToString(),
+                                uc_01a = dr["uc_01a"].ToString(),
+                                uc_02a = dr["uc_02a"].ToString(),
+                                uc_02a_a = dr["uc_02a_a"].ToString(),
+                                uc_02b = dr["uc_02b"].ToString(),
+                                uc_03a = dr["uc_03a"].ToString(),
+                                uc_03a_a = dr["uc_03a_a"].ToString(),
+                                uc_03b = dr["uc_03b"].ToString(),
+                                uc_04a = dr["uc_04a"].ToString(),
+                                uc_04a_a = dr["uc_04a_a"].ToString(),
+                                uc_04b = dr["uc_04b"].ToString(),
+                                uc_05a = dr["uc_05a"].ToString(),
+                                uc_05a_a = dr["uc_05a_a"].ToString(),
+                                uc_05b = dr["uc_05b"].ToString(),
+                                uc_06a = dr["uc_06a"].ToString(),
+                                uc_06a_a = dr["uc_06a_a"].ToString(),
+                                uc_06b = dr["uc_06b"].ToString(),
+                                uc_07a = dr["uc_07a"].ToString(),
+                                uc_07a_a = dr["uc_07a_a"].ToString(),
+                                uc_07b = dr["uc_07b"].ToString(),
+                                uc_08a = dr["uc_08a"].ToString(),
+                                uc_08a_a = dr["uc_08a_a"].ToString(),
+                                uc_08b = dr["uc_08b"].ToString(),
+                                uc_09a = dr["uc_09a"].ToString(),
+                                uc_09a_a = dr["uc_09a_a"].ToString(),
+                                uc_09b = dr["uc_09b"].ToString(),
+                                uc_10a = dr["uc_10a"].ToString(),
+                                uc_10a_a = dr["uc_10a_a"].ToString(),
+                                uc_10b = dr["uc_10b"].ToString(),
+                                uc_11a = dr["uc_11a"].ToString(),
+                                uc_11a_a = dr["uc_11a_a"].ToString(),
+                                uc_11b = dr["uc_11b"].ToString(),
+                                uc_12a = dr["uc_12a"].ToString(),
+                                uc_12a_a = dr["uc_12a_a"].ToString(),
+                                uc_12b = dr["uc_12b"].ToString(),
+                                uc_13a = dr["uc_13a"].ToString(),
+                                uc_13a_a = dr["uc_13a_a"].ToString(),
+                                uc_13b = dr["uc_13b"].ToString(),
+                                uc_14a = dr["uc_14a"].ToString(),
+                                uc_14a_a = dr["uc_14a_a"].ToString(),
+                                uc_14b = dr["uc_14b"].ToString(),
+                                uc_15a = dr["uc_15a"].ToString(),
+                                uc_15a_a = dr["uc_15a_a"].ToString(),
+                                uc_15b = dr["uc_15b"].ToString(),
+                                uc_16a = dr["uc_16a"].ToString(),
+                                uc_16a_a = dr["uc_16a_a"].ToString(),
+                                uc_16b = dr["uc_16b"].ToString(),
+                                uc_17a = dr["uc_17a"].ToString(),
+                                uc_17a_a = dr["uc_17a_a"].ToString(),
+                                uc_17b = dr["uc_17b"].ToString(),
+                                uc_18a = dr["uc_18a"].ToString(),
+                                uc_18a_a = dr["uc_18a_a"].ToString(),
+                                uc_18b = dr["uc_18b"].ToString(),
+                                uc_19a = dr["uc_19a"].ToString(),
+                                uc_19a_a = dr["uc_19a_a"].ToString(),
+                                uc_19b = dr["uc_19b"].ToString(),
+                                uc_20a = dr["uc_20a"].ToString(),
+                                uc_20a_a = dr["uc_20a_a"].ToString(),
+                                uc_20b = dr["uc_20b"].ToString(),
+                                uc_21a = dr["uc_21a"].ToString(),
+                                uc_21a_a = dr["uc_21a_a"].ToString(),
+                                uc_21b = dr["uc_21b"].ToString(),
+                                uc_22a = dr["uc_22a"].ToString(),
+                                uc_22a_a = dr["uc_22a_a"].ToString(),
+                                uc_22b = dr["uc_22b"].ToString(),
+                                uc_23a = dr["uc_23a"].ToString(),
+                                uc_23a_a = dr["uc_23a_a"].ToString(),
+                                uc_23b = dr["uc_23b"].ToString(),
+                                uc_24a = dr["uc_24a"].ToString(),
+                                uc_24a_a = dr["uc_24a_a"].ToString(),
+                                uc_24b = dr["uc_24b"].ToString(),
+                                uc_25a = dr["uc_25a"].ToString(),
+                                uc_25a_a = dr["uc_25a_a"].ToString(),
+                                uc_25b = dr["uc_25b"].ToString(),
+                                uc_26a = dr["uc_26a"].ToString(),
+                                uc_26a_a = dr["uc_26a_a"].ToString(),
+                                uc_26b = dr["uc_26b"].ToString(),
+                                uc_27a = dr["uc_27a"].ToString(),
+                                uc_27a_a = dr["uc_27a_a"].ToString(),
+                                uc_27b = dr["uc_27b"].ToString(),
+                                uc_28a = dr["uc_28a"].ToString(),
+                                uc_28a_a = dr["uc_28a_a"].ToString(),
+                                uc_28b = dr["uc_28b"].ToString(),
+                                uc_29a = dr["uc_29a"].ToString(),
+                                uc_29a_a = dr["uc_29a_a"].ToString(),
+                                uc_29b = dr["uc_29b"].ToString(),
+                                uc_30a = dr["uc_30a"].ToString(),
+                                uc_30a_a = dr["uc_30a_a"].ToString(),
+                                uc_30b = dr["uc_30b"].ToString(),
+                                uc_31a = dr["uc_31a"].ToString(),
+                                uc_31a_a = dr["uc_31a_a"].ToString(),
+                                uc_31b = dr["uc_31b"].ToString(),
+                                uc_32a = dr["uc_32a"].ToString(),
+                                uc_32a_a = dr["uc_32a_a"].ToString(),
+                                uc_32b = dr["uc_32b"].ToString(),
+                                uc_33a = dr["uc_33a"].ToString(),
+                                uc_33a_a = dr["uc_33a_a"].ToString(),
+                                uc_33b = dr["uc_33b"].ToString(),
+                                uc_34a = dr["uc_34a"].ToString(),
+                                uc_34a_a = dr["uc_34a_a"].ToString(),
+                                uc_34b = dr["uc_34b"].ToString(),
+                                uc_35a = dr["uc_35a"].ToString(),
+                                uc_35a_a = dr["uc_35a_a"].ToString(),
+                                uc_35b = dr["uc_35b"].ToString(),
+                                uc_36a = dr["uc_36a"].ToString(),
+                                uc_36a_a = dr["uc_36a_a"].ToString(),
+                                uc_36b = dr["uc_36b"].ToString(),
+                                uc_37a = dr["uc_37a"].ToString(),
+                                uc_37a_a = dr["uc_37a_a"].ToString(),
+                                uc_37b = dr["uc_37b"].ToString(),
+                                LA_17 = dr["LA_17"].ToString(),
+                                LA_18 = dr["LA_18"].ToString(),
+                                LA_19 = dr["LA_19"].ToString(),
+                                LA_20a_b = dr["LA_20a_b"].ToString(),
+                                LA_20a_a = dr["LA_20a_a"].ToString(),
+                                LA_20b_a = dr["LA_20b_a"].ToString(),
+                                LA_21a_b = dr["LA_21a_b"].ToString(),
+                                LA_21a_a = dr["LA_21a_a"].ToString(),
+                                LA_21b_a = dr["LA_21b_a"].ToString(),
+                                LA_22a_b = dr["LA_22a_b"].ToString(),
+                                LA_22a_a = dr["LA_22a_a"].ToString(),
+                                LA_22b_a = dr["LA_22b_a"].ToString(),
+                                LA_23a_b = dr["LA_23a_b"].ToString(),
+                                LA_23a_a = dr["LA_23a_a"].ToString(),
+                                LA_23b_a = dr["LA_23b_a"].ToString(),
+                                LA_24a_b = dr["LA_24a_b"].ToString(),
+                                LA_24a_a = dr["LA_24a_a"].ToString(),
+                                LA_24b_a = dr["LA_24b_a"].ToString(),
+                                LA_25a_b = dr["LA_25a_b"].ToString(),
+                                LA_25a_a = dr["LA_25a_a"].ToString(),
+                                LA_25b_a = dr["LA_25b_a"].ToString(),
+                                LA_26a_b = dr["LA_26a_b"].ToString(),
+                                LA_26a_a = dr["LA_26a_a"].ToString(),
+                                LA_26b_a = dr["LA_26b_a"].ToString(),
+                                LA_27a_b = dr["LA_27a_b"].ToString(),
+                                LA_27a_a = dr["LA_27a_a"].ToString(),
+                                LA_27b_a = dr["LA_27b_a"].ToString(),
+                                LA_28a_b = dr["LA_28a_b"].ToString(),
+                                LA_28a_a = dr["LA_28a_a"].ToString(),
+                                LA_28b_a = dr["LA_28b_a"].ToString(),
+                                LA_29a_b = dr["LA_29a_b"].ToString(),
+                                LA_29a_a = dr["LA_29a_a"].ToString(),
+                                LA_29b_a = dr["LA_29b_a"].ToString(),
+                                LA_30a_b = dr["LA_30a_b"].ToString(),
+                                LA_30a_a = dr["LA_30a_a"].ToString(),
+                                LA_30b_a = dr["LA_30b_a"].ToString(),
+                                LA_31a_b = dr["LA_31a_b"].ToString(),
+                                LA_31a_a = dr["LA_31a_a"].ToString(),
+                                LA_31b_a = dr["LA_31b_a"].ToString(),
+                                LA_32a_b = dr["LA_32a_b"].ToString(),
+                                LA_32a_a = dr["LA_32a_a"].ToString(),
+                                LA_32b_a = dr["LA_32b_a"].ToString(),
+                                LA_33a_b = dr["LA_33a_b"].ToString(),
+                                LA_33a_a = dr["LA_33a_a"].ToString(),
+                                LA_33b_a = dr["LA_33b_a"].ToString(),
+                                LA_34a_b = dr["LA_34a_b"].ToString(),
+                                LA_34a_a = dr["LA_34a_a"].ToString(),
+                                LA_34b_a = dr["LA_34b_a"].ToString(),
+                                LA_35a_b = dr["LA_35a_b"].ToString(),
+                                LA_35a_a = dr["LA_35a_a"].ToString(),
+                                LA_35b_a = dr["LA_35b_a"].ToString(),
+                                LA_36a_b = dr["LA_36a_b"].ToString(),
+                                LA_36a_a = dr["LA_36a_a"].ToString(),
+                                LA_36b_a = dr["LA_36b_a"].ToString(),
+                                LA_37a_b = dr["LA_37a_b"].ToString(),
+                                LA_37a_a = dr["LA_37a_a"].ToString(),
+                                LA_37b_a = dr["LA_37b_a"].ToString(),
+                                LA_38a_b = dr["LA_38a_b"].ToString(),
+                                LA_38a_a = dr["LA_38a_a"].ToString(),
+                                LA_38b_a = dr["LA_38b_a"].ToString(),
+                                LA_39a_b = dr["LA_39a_b"].ToString(),
+                                LA_39a_a = dr["LA_39a_a"].ToString(),
+                                LA_39b_a = dr["LA_39b_a"].ToString(),
+                                LA_40a_b = dr["LA_40a_b"].ToString(),
+                                LA_40a_a = dr["LA_40a_a"].ToString(),
+                                LA_40b_a = dr["LA_40b_a"].ToString(),
+                                LA_41a_b = dr["LA_41a_b"].ToString(),
+                                LA_41a_a = dr["LA_41a_a"].ToString(),
+                                LA_41b_a = dr["LA_41b_a"].ToString(),
+                                LA_42a_b = dr["LA_42a_b"].ToString(),
+                                LA_42a_a = dr["LA_42a_a"].ToString(),
+                                LA_42b_a = dr["LA_42b_a"].ToString(),
+                                LA_43a_b = dr["LA_43a_b"].ToString(),
+                                LA_43a_a = dr["LA_43a_a"].ToString(),
+                                LA_43b_a = dr["LA_43b_a"].ToString(),
+                                LA_44a_b = dr["LA_44a_b"].ToString(),
+                                LA_44a_a = dr["LA_44a_a"].ToString(),
+                                LA_44b_a = dr["LA_44b_a"].ToString(),
+                                LA_45a_b = dr["LA_45a_b"].ToString(),
+                                LA_45a_a = dr["LA_45a_a"].ToString(),
+                                LA_45b_a = dr["LA_45b_a"].ToString(),
+                                LA_46a_b = dr["LA_46a_b"].ToString(),
+                                LA_46a_a = dr["LA_46a_a"].ToString(),
+                                LA_46b_a = dr["LA_46b_a"].ToString(),
+                                LA_47a_b = dr["LA_47a_b"].ToString(),
+                                LA_47a_a = dr["LA_47a_a"].ToString(),
+                                LA_47b_a = dr["LA_47b_a"].ToString(),
+                                LA_48a_b = dr["LA_48a_b"].ToString(),
+                                LA_48a_a = dr["LA_48a_a"].ToString(),
+                                LA_48b_a = dr["LA_48b_a"].ToString(),
+                                LA_49a_b = dr["LA_49a_b"].ToString(),
+                                LA_49a_a = dr["LA_49a_a"].ToString(),
+                                LA_49b_a = dr["LA_49b_a"].ToString(),
+                                LA_50a_b = dr["LA_50a_b"].ToString(),
+                                LA_50a_a = dr["LA_50a_a"].ToString(),
+                                LA_50b_a = dr["LA_50b_a"].ToString(),
+                                LA_51a_b = dr["LA_51a_b"].ToString(),
+                                LA_51a_a = dr["LA_51a_a"].ToString(),
+                                LA_51b_a = dr["LA_51b_a"].ToString(),
+                                LA_52a_b = dr["LA_52a_b"].ToString(),
+                                LA_52a_a = dr["LA_52a_a"].ToString(),
+                                LA_52b_a = dr["LA_52b_a"].ToString(),
+                                uc_01_ca = dr["uc_01_ca"].ToString(),
+                                UR_04a_a = dr["UR_04a_a"].ToString(),
+                                UR_04a = dr["UR_04a"].ToString(),
+                                history = dr["history"].ToString()
 
                             });
+
+
+                            //CountryInformation.Add(new SampleResults()
+                            //{
+                            //    la_sno = dr["la_sno"].ToString()
+
+                            //});
                         }
 
                     }
@@ -19359,16 +20070,16 @@ public partial class sample_results : System.Web.UI.Page
 
     protected void LA_24a_v_CheckedChanged(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void LA_24a_b_CheckedChanged(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void LA_24a_c_CheckedChanged(object sender, EventArgs e)
     {
-        
+
     }
 }
