@@ -17,8 +17,7 @@ using System.Drawing.Printing;
 using System.Drawing;
 using System.Text;
 using System.IO;
-
-
+using System.ServiceModel.Configuration;
 
 public partial class sample_results : System.Web.UI.Page
 {
@@ -26,7 +25,7 @@ public partial class sample_results : System.Web.UI.Page
     private IList<Stream> m_streams;
 
     public List<CountryInfo> CountryInformation { get; set; }
-    public List<SampleResultsRecordset> SampleResultList { get; set; }
+    public List<SampleResults> SampleResultList { get; set; }
 
 
     public class CountryInfo
@@ -42,346 +41,7 @@ public partial class sample_results : System.Web.UI.Page
     }
 
 
-    public class SampleResultsRecordset
-    {
-        public string la_sno { get; set; }
-        public string LA_01 { get; set; }
-        public string LA_02 { get; set; }
-        public string LA_03_b { get; set; }
-        public string LA_03_a { get; set; }
-        public string LA_04_b { get; set; }
-        public string LA_04_a { get; set; }
-        public string LA_05_b { get; set; }
-        public string LA_05_a { get; set; }
-        public string LA_06_b { get; set; }
-        public string LA_06_a { get; set; }
-        public string LA_07_b { get; set; }
-        public string LA_07_a { get; set; }
-        public string LA_08_b { get; set; }
-        public string LA_08_a { get; set; }
-        public string LA_09_b { get; set; }
-        public string LA_09_a { get; set; }
-        public string LA_10_b { get; set; }
-        public string LA_10_a { get; set; }
-        public string LA_11_b { get; set; }
-        public string LA_11_a { get; set; }
-        public string LA_12_b { get; set; }
-        public string LA_12_a { get; set; }
-        public string LA_13_b { get; set; }
-        public string LA_13_a { get; set; }
-        public string LA_14_b { get; set; }
-        public string LA_14_a { get; set; }
-        public string LA_15_b { get; set; }
-        public string LA_15_a { get; set; }
-        public string LA_16_b { get; set; }
-        public string LA_16_a { get; set; }
-        public string LF_01 { get; set; }
-        public string LF_01_a { get; set; }
-        public string LF_02 { get; set; }
-        public string LF_02_a { get; set; }
-        public string LF_03 { get; set; }
-        public string LF_03_a { get; set; }
-        public string LF_04 { get; set; }
-        public string LF_04_a { get; set; }
-        public string LF_05 { get; set; }
-        public string LF_05_a { get; set; }
-        public string LF_06 { get; set; }
-        public string LF_06_a { get; set; }
-        public string LF_07 { get; set; }
-        public string LF_07_a { get; set; }
-        public string RF_01 { get; set; }
-        public string RF_01_a { get; set; }
-        public string RF_02 { get; set; }
-        public string RF_02_a { get; set; }
-        public string RF_03 { get; set; }
-        public string RF_03_a { get; set; }
-        public string RF_04 { get; set; }
-        public string RF_04_a { get; set; }
-        public string SE_01 { get; set; }
-        public string SE_01_a { get; set; }
-        public string SE_02 { get; set; }
-        public string SE_02_a { get; set; }
-        public string SE_03 { get; set; }
-        public string SE_03_a { get; set; }
-        public string SE_04 { get; set; }
-        public string SE_04_a { get; set; }
-        public string CS_01 { get; set; }
-        public string CS_01_a { get; set; }
-        public string CS_02 { get; set; }
-        public string CS_02_a { get; set; }
-        public string CS_03 { get; set; }
-        public string CS_03_a { get; set; }
-        public string CS_04 { get; set; }
-        public string CS_04_a { get; set; }
-        public string CS_05 { get; set; }
-        public string CS_05_a { get; set; }
-        public string CS_06 { get; set; }
-        public string CS_06_a { get; set; }
-        public string CS_07 { get; set; }
-        public string CS_07_a { get; set; }
-        public string CS_08 { get; set; }
-        public string CS_08_a { get; set; }
-        public string CS_09 { get; set; }
-        public string CS_09_a { get; set; }
-        public string CS_10 { get; set; }
-        public string CS_10_a { get; set; }
-        public string UR_01 { get; set; }
-        public string UR_01_a { get; set; }
-        public string UR_02 { get; set; }
-        public string UR_02_a { get; set; }
-        public string UR_03 { get; set; }
-        public string UR_03_a { get; set; }
-        public string UR_04 { get; set; }
-        public string UR_04_a { get; set; }
-        public string UR_05 { get; set; }
-        public string UR_05_a { get; set; }
-        public string UR_06 { get; set; }
-        public string UR_06_a { get; set; }
-        public string UR_07 { get; set; }
-        public string UR_07_a { get; set; }
-        public string UR_08 { get; set; }
-        public string UR_08_a { get; set; }
-        public string UR_10 { get; set; }
-        public string UR_10_a { get; set; }
-        public string UR_11 { get; set; }
-        public string UR_11_a { get; set; }
-        public string UR_12 { get; set; }
-        public string UR_12_a { get; set; }
-        public string UR_13 { get; set; }
-        public string UR_13_a { get; set; }
-        public string UR_14 { get; set; }
-        public string UR_14_a { get; set; }
-        public string UR_15 { get; set; }
-        public string UR_15_a { get; set; }
-        public string UR_16 { get; set; }
-        public string UR_16_a { get; set; }
-        public string UR_17 { get; set; }
-        public string UR_17_a { get; set; }
-        public string UR_18 { get; set; }
-        public string UR_18_a { get; set; }
-        public string UR_19 { get; set; }
-        public string UR_19_a { get; set; }
-        public string UR_20 { get; set; }
-        public string UR_20_a { get; set; }
-        public string UR_21 { get; set; }
-        public string UR_21_a { get; set; }
-        public string uc_01a { get; set; }
-        public string uc_02a { get; set; }
-        public string uc_02a_a { get; set; }
-        public string uc_02b { get; set; }
-        public string uc_03a { get; set; }
-        public string uc_03a_a { get; set; }
-        public string uc_03b { get; set; }
-        public string uc_04a { get; set; }
-        public string uc_04a_a { get; set; }
-        public string uc_04b { get; set; }
-        public string uc_05a { get; set; }
-        public string uc_05a_a { get; set; }
-        public string uc_05b { get; set; }
-        public string uc_06a { get; set; }
-        public string uc_06a_a { get; set; }
-        public string uc_06b { get; set; }
-        public string uc_07a { get; set; }
-        public string uc_07a_a { get; set; }
-        public string uc_07b { get; set; }
-        public string uc_08a { get; set; }
-        public string uc_08a_a { get; set; }
-        public string uc_08b { get; set; }
-        public string uc_09a { get; set; }
-        public string uc_09a_a { get; set; }
-        public string uc_09b { get; set; }
-        public string uc_10a { get; set; }
-        public string uc_10a_a { get; set; }
-        public string uc_10b { get; set; }
-        public string uc_11a { get; set; }
-        public string uc_11a_a { get; set; }
-        public string uc_11b { get; set; }
-        public string uc_12a { get; set; }
-        public string uc_12a_a { get; set; }
-        public string uc_12b { get; set; }
-        public string uc_13a { get; set; }
-        public string uc_13a_a { get; set; }
-        public string uc_13b { get; set; }
-        public string uc_14a { get; set; }
-        public string uc_14a_a { get; set; }
-        public string uc_14b { get; set; }
-        public string uc_15a { get; set; }
-        public string uc_15a_a { get; set; }
-        public string uc_15b { get; set; }
-        public string uc_16a { get; set; }
-        public string uc_16a_a { get; set; }
-        public string uc_16b { get; set; }
-        public string uc_17a { get; set; }
-        public string uc_17a_a { get; set; }
-        public string uc_17b { get; set; }
-        public string uc_18a { get; set; }
-        public string uc_18a_a { get; set; }
-        public string uc_18b { get; set; }
-        public string uc_19a { get; set; }
-        public string uc_19a_a { get; set; }
-        public string uc_19b { get; set; }
-        public string uc_20a { get; set; }
-        public string uc_20a_a { get; set; }
-        public string uc_20b { get; set; }
-        public string uc_21a { get; set; }
-        public string uc_21a_a { get; set; }
-        public string uc_21b { get; set; }
-        public string uc_22a { get; set; }
-        public string uc_22a_a { get; set; }
-        public string uc_22b { get; set; }
-        public string uc_23a { get; set; }
-        public string uc_23a_a { get; set; }
-        public string uc_23b { get; set; }
-        public string uc_24a { get; set; }
-        public string uc_24a_a { get; set; }
-        public string uc_24b { get; set; }
-        public string uc_25a { get; set; }
-        public string uc_25a_a { get; set; }
-        public string uc_25b { get; set; }
-        public string uc_26a { get; set; }
-        public string uc_26a_a { get; set; }
-        public string uc_26b { get; set; }
-        public string uc_27a { get; set; }
-        public string uc_27a_a { get; set; }
-        public string uc_27b { get; set; }
-        public string uc_28a { get; set; }
-        public string uc_28a_a { get; set; }
-        public string uc_28b { get; set; }
-        public string uc_29a { get; set; }
-        public string uc_29a_a { get; set; }
-        public string uc_29b { get; set; }
-        public string uc_30a { get; set; }
-        public string uc_30a_a { get; set; }
-        public string uc_30b { get; set; }
-        public string uc_31a { get; set; }
-        public string uc_31a_a { get; set; }
-        public string uc_31b { get; set; }
-        public string uc_32a { get; set; }
-        public string uc_32a_a { get; set; }
-        public string uc_32b { get; set; }
-        public string uc_33a { get; set; }
-        public string uc_33a_a { get; set; }
-        public string uc_33b { get; set; }
-        public string uc_34a { get; set; }
-        public string uc_34a_a { get; set; }
-        public string uc_34b { get; set; }
-        public string uc_35a { get; set; }
-        public string uc_35a_a { get; set; }
-        public string uc_35b { get; set; }
-        public string uc_36a { get; set; }
-        public string uc_36a_a { get; set; }
-        public string uc_36b { get; set; }
-        public string uc_37a { get; set; }
-        public string uc_37a_a { get; set; }
-        public string uc_37b { get; set; }
-        public string LA_17 { get; set; }
-        public string LA_18 { get; set; }
-        public string LA_19 { get; set; }
-        public string LA_20a_b { get; set; }
-        public string LA_20a_a { get; set; }
-        public string LA_20b_a { get; set; }
-        public string LA_21a_b { get; set; }
-        public string LA_21a_a { get; set; }
-        public string LA_21b_a { get; set; }
-        public string LA_22a_b { get; set; }
-        public string LA_22a_a { get; set; }
-        public string LA_22b_a { get; set; }
-        public string LA_23a_b { get; set; }
-        public string LA_23a_a { get; set; }
-        public string LA_23b_a { get; set; }
-        public string LA_24a_b { get; set; }
-        public string LA_24a_a { get; set; }
-        public string LA_24b_a { get; set; }
-        public string LA_25a_b { get; set; }
-        public string LA_25a_a { get; set; }
-        public string LA_25b_a { get; set; }
-        public string LA_26a_b { get; set; }
-        public string LA_26a_a { get; set; }
-        public string LA_26b_a { get; set; }
-        public string LA_27a_b { get; set; }
-        public string LA_27a_a { get; set; }
-        public string LA_27b_a { get; set; }
-        public string LA_28a_b { get; set; }
-        public string LA_28a_a { get; set; }
-        public string LA_28b_a { get; set; }
-        public string LA_29a_b { get; set; }
-        public string LA_29a_a { get; set; }
-        public string LA_29b_a { get; set; }
-        public string LA_30a_b { get; set; }
-        public string LA_30a_a { get; set; }
-        public string LA_30b_a { get; set; }
-        public string LA_31a_b { get; set; }
-        public string LA_31a_a { get; set; }
-        public string LA_31b_a { get; set; }
-        public string LA_32a_b { get; set; }
-        public string LA_32a_a { get; set; }
-        public string LA_32b_a { get; set; }
-        public string LA_33a_b { get; set; }
-        public string LA_33a_a { get; set; }
-        public string LA_33b_a { get; set; }
-        public string LA_34a_b { get; set; }
-        public string LA_34a_a { get; set; }
-        public string LA_34b_a { get; set; }
-        public string LA_35a_b { get; set; }
-        public string LA_35a_a { get; set; }
-        public string LA_35b_a { get; set; }
-        public string LA_36a_b { get; set; }
-        public string LA_36a_a { get; set; }
-        public string LA_36b_a { get; set; }
-        public string LA_37a_b { get; set; }
-        public string LA_37a_a { get; set; }
-        public string LA_37b_a { get; set; }
-        public string LA_38a_b { get; set; }
-        public string LA_38a_a { get; set; }
-        public string LA_38b_a { get; set; }
-        public string LA_39a_b { get; set; }
-        public string LA_39a_a { get; set; }
-        public string LA_39b_a { get; set; }
-        public string LA_40a_b { get; set; }
-        public string LA_40a_a { get; set; }
-        public string LA_40b_a { get; set; }
-        public string LA_41a_b { get; set; }
-        public string LA_41a_a { get; set; }
-        public string LA_41b_a { get; set; }
-        public string LA_42a_b { get; set; }
-        public string LA_42a_a { get; set; }
-        public string LA_42b_a { get; set; }
-        public string LA_43a_b { get; set; }
-        public string LA_43a_a { get; set; }
-        public string LA_43b_a { get; set; }
-        public string LA_44a_b { get; set; }
-        public string LA_44a_a { get; set; }
-        public string LA_44b_a { get; set; }
-        public string LA_45a_b { get; set; }
-        public string LA_45a_a { get; set; }
-        public string LA_45b_a { get; set; }
-        public string LA_46a_b { get; set; }
-        public string LA_46a_a { get; set; }
-        public string LA_46b_a { get; set; }
-        public string LA_47a_b { get; set; }
-        public string LA_47a_a { get; set; }
-        public string LA_47b_a { get; set; }
-        public string LA_48a_b { get; set; }
-        public string LA_48a_a { get; set; }
-        public string LA_48b_a { get; set; }
-        public string LA_49a_b { get; set; }
-        public string LA_49a_a { get; set; }
-        public string LA_49b_a { get; set; }
-        public string LA_50a_b { get; set; }
-        public string LA_50a_a { get; set; }
-        public string LA_50b_a { get; set; }
-        public string LA_51a_b { get; set; }
-        public string LA_51a_a { get; set; }
-        public string LA_51b_a { get; set; }
-        public string LA_52a_b { get; set; }
-        public string LA_52a_a { get; set; }
-        public string LA_52b_a { get; set; }
-        public string uc_01_ca { get; set; }
-        public string UR_04a_a { get; set; }
-        public string UR_04a { get; set; }
-        public string history { get; set; }
 
-    }
 
 
     public class SampleResults
@@ -403,11 +63,7 @@ public partial class sample_results : System.Web.UI.Page
 
         cmdSaveDraft.OnClientClick = "return ValidateForm1();";
 
-
-
-        //LA_24a_v.Attributes.Add("onclick", "testv();");
-        //LA_24a_b.Attributes.Add("onclick", "testb();");
-        //LA_24a_c.Attributes.Add("onclick", "testc();");
+              
 
 
 
@@ -9188,9 +8844,9 @@ public partial class sample_results : System.Web.UI.Page
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-    public static List<SampleResultsRecordset> IsScreeningIDExists(string screeningid, string labid)
+    public static List<SampleResults> IsScreeningIDExists(string screeningid, string labid)
     {
-        List<SampleResultsRecordset> CountryInformation = new List<SampleResultsRecordset>();
+        List<SampleResults> CountryInformation = new List<SampleResults>();
 
         try
         {
@@ -9217,353 +8873,11 @@ public partial class sample_results : System.Web.UI.Page
 
                         foreach (DataRow dr in ds.Tables[0].Rows)
                         {
-                            CountryInformation.Add(new SampleResultsRecordset()
+                            CountryInformation.Add(new SampleResults()
                             {
-                                la_sno = dr["la_sno"].ToString(),
-                                LA_01 = dr["LA_01"].ToString(),
-                                LA_02 = dr["LA_02"].ToString(),
-                                LA_03_b = dr["LA_03_b"].ToString(),
-                                LA_03_a = dr["LA_03_a"].ToString(),
-                                LA_04_b = dr["LA_04_b"].ToString(),
-                                LA_04_a = dr["LA_04_a"].ToString(),
-                                LA_05_b = dr["LA_05_b"].ToString(),
-                                LA_05_a = dr["LA_05_a"].ToString(),
-                                LA_06_b = dr["LA_06_b"].ToString(),
-                                LA_06_a = dr["LA_06_a"].ToString(),
-                                LA_07_b = dr["LA_07_b"].ToString(),
-                                LA_07_a = dr["LA_07_a"].ToString(),
-                                LA_08_b = dr["LA_08_b"].ToString(),
-                                LA_08_a = dr["LA_08_a"].ToString(),
-                                LA_09_b = dr["LA_09_b"].ToString(),
-                                LA_09_a = dr["LA_09_a"].ToString(),
-                                LA_10_b = dr["LA_10_b"].ToString(),
-                                LA_10_a = dr["LA_10_a"].ToString(),
-                                LA_11_b = dr["LA_11_b"].ToString(),
-                                LA_11_a = dr["LA_11_a"].ToString(),
-                                LA_12_b = dr["LA_12_b"].ToString(),
-                                LA_12_a = dr["LA_12_a"].ToString(),
-                                LA_13_b = dr["LA_13_b"].ToString(),
-                                LA_13_a = dr["LA_13_a"].ToString(),
-                                LA_14_b = dr["LA_14_b"].ToString(),
-                                LA_14_a = dr["LA_14_a"].ToString(),
-                                LA_15_b = dr["LA_15_b"].ToString(),
-                                LA_15_a = dr["LA_15_a"].ToString(),
-                                LA_16_b = dr["LA_16_b"].ToString(),
-                                LA_16_a = dr["LA_16_a"].ToString(),
-                                LF_01 = dr["LF_01"].ToString(),
-                                LF_01_a = dr["LF_01_a"].ToString(),
-                                LF_02 = dr["LF_02"].ToString(),
-                                LF_02_a = dr["LF_02_a"].ToString(),
-                                LF_03 = dr["LF_03"].ToString(),
-                                LF_03_a = dr["LF_03_a"].ToString(),
-                                LF_04 = dr["LF_04"].ToString(),
-                                LF_04_a = dr["LF_04_a"].ToString(),
-                                LF_05 = dr["LF_05"].ToString(),
-                                LF_05_a = dr["LF_05_a"].ToString(),
-                                LF_06 = dr["LF_06"].ToString(),
-                                LF_06_a = dr["LF_06_a"].ToString(),
-                                LF_07 = dr["LF_07"].ToString(),
-                                LF_07_a = dr["LF_07_a"].ToString(),
-                                RF_01 = dr["RF_01"].ToString(),
-                                RF_01_a = dr["RF_01_a"].ToString(),
-                                RF_02 = dr["RF_02"].ToString(),
-                                RF_02_a = dr["RF_02_a"].ToString(),
-                                RF_03 = dr["RF_03"].ToString(),
-                                RF_03_a = dr["RF_03_a"].ToString(),
-                                RF_04 = dr["RF_04"].ToString(),
-                                RF_04_a = dr["RF_04_a"].ToString(),
-                                SE_01 = dr["SE_01"].ToString(),
-                                SE_01_a = dr["SE_01_a"].ToString(),
-                                SE_02 = dr["SE_02"].ToString(),
-                                SE_02_a = dr["SE_02_a"].ToString(),
-                                SE_03 = dr["SE_03"].ToString(),
-                                SE_03_a = dr["SE_03_a"].ToString(),
-                                SE_04 = dr["SE_04"].ToString(),
-                                SE_04_a = dr["SE_04_a"].ToString(),
-                                CS_01 = dr["CS_01"].ToString(),
-                                CS_01_a = dr["CS_01_a"].ToString(),
-                                CS_02 = dr["CS_02"].ToString(),
-                                CS_02_a = dr["CS_02_a"].ToString(),
-                                CS_03 = dr["CS_03"].ToString(),
-                                CS_03_a = dr["CS_03_a"].ToString(),
-                                CS_04 = dr["CS_04"].ToString(),
-                                CS_04_a = dr["CS_04_a"].ToString(),
-                                CS_05 = dr["CS_05"].ToString(),
-                                CS_05_a = dr["CS_05_a"].ToString(),
-                                CS_06 = dr["CS_06"].ToString(),
-                                CS_06_a = dr["CS_06_a"].ToString(),
-                                CS_07 = dr["CS_07"].ToString(),
-                                CS_07_a = dr["CS_07_a"].ToString(),
-                                CS_08 = dr["CS_08"].ToString(),
-                                CS_08_a = dr["CS_08_a"].ToString(),
-                                CS_09 = dr["CS_09"].ToString(),
-                                CS_09_a = dr["CS_09_a"].ToString(),
-                                CS_10 = dr["CS_10"].ToString(),
-                                CS_10_a = dr["CS_10_a"].ToString(),
-                                UR_01 = dr["UR_01"].ToString(),
-                                UR_01_a = dr["UR_01_a"].ToString(),
-                                UR_02 = dr["UR_02"].ToString(),
-                                UR_02_a = dr["UR_02_a"].ToString(),
-                                UR_03 = dr["UR_03"].ToString(),
-                                UR_03_a = dr["UR_03_a"].ToString(),
-                                UR_04 = dr["UR_04"].ToString(),
-                                UR_04_a = dr["UR_04_a"].ToString(),
-                                UR_05 = dr["UR_05"].ToString(),
-                                UR_05_a = dr["UR_05_a"].ToString(),
-                                UR_06 = dr["UR_06"].ToString(),
-                                UR_06_a = dr["UR_06_a"].ToString(),
-                                UR_07 = dr["UR_07"].ToString(),
-                                UR_07_a = dr["UR_07_a"].ToString(),
-                                UR_08 = dr["UR_08"].ToString(),
-                                UR_08_a = dr["UR_08_a"].ToString(),
-                                UR_10 = dr["UR_10"].ToString(),
-                                UR_10_a = dr["UR_10_a"].ToString(),
-                                UR_11 = dr["UR_11"].ToString(),
-                                UR_11_a = dr["UR_11_a"].ToString(),
-                                UR_12 = dr["UR_12"].ToString(),
-                                UR_12_a = dr["UR_12_a"].ToString(),
-                                UR_13 = dr["UR_13"].ToString(),
-                                UR_13_a = dr["UR_13_a"].ToString(),
-                                UR_14 = dr["UR_14"].ToString(),
-                                UR_14_a = dr["UR_14_a"].ToString(),
-                                UR_15 = dr["UR_15"].ToString(),
-                                UR_15_a = dr["UR_15_a"].ToString(),
-                                UR_16 = dr["UR_16"].ToString(),
-                                UR_16_a = dr["UR_16_a"].ToString(),
-                                UR_17 = dr["UR_17"].ToString(),
-                                UR_17_a = dr["UR_17_a"].ToString(),
-                                UR_18 = dr["UR_18"].ToString(),
-                                UR_18_a = dr["UR_18_a"].ToString(),
-                                UR_19 = dr["UR_19"].ToString(),
-                                UR_19_a = dr["UR_19_a"].ToString(),
-                                UR_20 = dr["UR_20"].ToString(),
-                                UR_20_a = dr["UR_20_a"].ToString(),
-                                UR_21 = dr["UR_21"].ToString(),
-                                UR_21_a = dr["UR_21_a"].ToString(),
-                                uc_01a = dr["uc_01a"].ToString(),
-                                uc_02a = dr["uc_02a"].ToString(),
-                                uc_02a_a = dr["uc_02a_a"].ToString(),
-                                uc_02b = dr["uc_02b"].ToString(),
-                                uc_03a = dr["uc_03a"].ToString(),
-                                uc_03a_a = dr["uc_03a_a"].ToString(),
-                                uc_03b = dr["uc_03b"].ToString(),
-                                uc_04a = dr["uc_04a"].ToString(),
-                                uc_04a_a = dr["uc_04a_a"].ToString(),
-                                uc_04b = dr["uc_04b"].ToString(),
-                                uc_05a = dr["uc_05a"].ToString(),
-                                uc_05a_a = dr["uc_05a_a"].ToString(),
-                                uc_05b = dr["uc_05b"].ToString(),
-                                uc_06a = dr["uc_06a"].ToString(),
-                                uc_06a_a = dr["uc_06a_a"].ToString(),
-                                uc_06b = dr["uc_06b"].ToString(),
-                                uc_07a = dr["uc_07a"].ToString(),
-                                uc_07a_a = dr["uc_07a_a"].ToString(),
-                                uc_07b = dr["uc_07b"].ToString(),
-                                uc_08a = dr["uc_08a"].ToString(),
-                                uc_08a_a = dr["uc_08a_a"].ToString(),
-                                uc_08b = dr["uc_08b"].ToString(),
-                                uc_09a = dr["uc_09a"].ToString(),
-                                uc_09a_a = dr["uc_09a_a"].ToString(),
-                                uc_09b = dr["uc_09b"].ToString(),
-                                uc_10a = dr["uc_10a"].ToString(),
-                                uc_10a_a = dr["uc_10a_a"].ToString(),
-                                uc_10b = dr["uc_10b"].ToString(),
-                                uc_11a = dr["uc_11a"].ToString(),
-                                uc_11a_a = dr["uc_11a_a"].ToString(),
-                                uc_11b = dr["uc_11b"].ToString(),
-                                uc_12a = dr["uc_12a"].ToString(),
-                                uc_12a_a = dr["uc_12a_a"].ToString(),
-                                uc_12b = dr["uc_12b"].ToString(),
-                                uc_13a = dr["uc_13a"].ToString(),
-                                uc_13a_a = dr["uc_13a_a"].ToString(),
-                                uc_13b = dr["uc_13b"].ToString(),
-                                uc_14a = dr["uc_14a"].ToString(),
-                                uc_14a_a = dr["uc_14a_a"].ToString(),
-                                uc_14b = dr["uc_14b"].ToString(),
-                                uc_15a = dr["uc_15a"].ToString(),
-                                uc_15a_a = dr["uc_15a_a"].ToString(),
-                                uc_15b = dr["uc_15b"].ToString(),
-                                uc_16a = dr["uc_16a"].ToString(),
-                                uc_16a_a = dr["uc_16a_a"].ToString(),
-                                uc_16b = dr["uc_16b"].ToString(),
-                                uc_17a = dr["uc_17a"].ToString(),
-                                uc_17a_a = dr["uc_17a_a"].ToString(),
-                                uc_17b = dr["uc_17b"].ToString(),
-                                uc_18a = dr["uc_18a"].ToString(),
-                                uc_18a_a = dr["uc_18a_a"].ToString(),
-                                uc_18b = dr["uc_18b"].ToString(),
-                                uc_19a = dr["uc_19a"].ToString(),
-                                uc_19a_a = dr["uc_19a_a"].ToString(),
-                                uc_19b = dr["uc_19b"].ToString(),
-                                uc_20a = dr["uc_20a"].ToString(),
-                                uc_20a_a = dr["uc_20a_a"].ToString(),
-                                uc_20b = dr["uc_20b"].ToString(),
-                                uc_21a = dr["uc_21a"].ToString(),
-                                uc_21a_a = dr["uc_21a_a"].ToString(),
-                                uc_21b = dr["uc_21b"].ToString(),
-                                uc_22a = dr["uc_22a"].ToString(),
-                                uc_22a_a = dr["uc_22a_a"].ToString(),
-                                uc_22b = dr["uc_22b"].ToString(),
-                                uc_23a = dr["uc_23a"].ToString(),
-                                uc_23a_a = dr["uc_23a_a"].ToString(),
-                                uc_23b = dr["uc_23b"].ToString(),
-                                uc_24a = dr["uc_24a"].ToString(),
-                                uc_24a_a = dr["uc_24a_a"].ToString(),
-                                uc_24b = dr["uc_24b"].ToString(),
-                                uc_25a = dr["uc_25a"].ToString(),
-                                uc_25a_a = dr["uc_25a_a"].ToString(),
-                                uc_25b = dr["uc_25b"].ToString(),
-                                uc_26a = dr["uc_26a"].ToString(),
-                                uc_26a_a = dr["uc_26a_a"].ToString(),
-                                uc_26b = dr["uc_26b"].ToString(),
-                                uc_27a = dr["uc_27a"].ToString(),
-                                uc_27a_a = dr["uc_27a_a"].ToString(),
-                                uc_27b = dr["uc_27b"].ToString(),
-                                uc_28a = dr["uc_28a"].ToString(),
-                                uc_28a_a = dr["uc_28a_a"].ToString(),
-                                uc_28b = dr["uc_28b"].ToString(),
-                                uc_29a = dr["uc_29a"].ToString(),
-                                uc_29a_a = dr["uc_29a_a"].ToString(),
-                                uc_29b = dr["uc_29b"].ToString(),
-                                uc_30a = dr["uc_30a"].ToString(),
-                                uc_30a_a = dr["uc_30a_a"].ToString(),
-                                uc_30b = dr["uc_30b"].ToString(),
-                                uc_31a = dr["uc_31a"].ToString(),
-                                uc_31a_a = dr["uc_31a_a"].ToString(),
-                                uc_31b = dr["uc_31b"].ToString(),
-                                uc_32a = dr["uc_32a"].ToString(),
-                                uc_32a_a = dr["uc_32a_a"].ToString(),
-                                uc_32b = dr["uc_32b"].ToString(),
-                                uc_33a = dr["uc_33a"].ToString(),
-                                uc_33a_a = dr["uc_33a_a"].ToString(),
-                                uc_33b = dr["uc_33b"].ToString(),
-                                uc_34a = dr["uc_34a"].ToString(),
-                                uc_34a_a = dr["uc_34a_a"].ToString(),
-                                uc_34b = dr["uc_34b"].ToString(),
-                                uc_35a = dr["uc_35a"].ToString(),
-                                uc_35a_a = dr["uc_35a_a"].ToString(),
-                                uc_35b = dr["uc_35b"].ToString(),
-                                uc_36a = dr["uc_36a"].ToString(),
-                                uc_36a_a = dr["uc_36a_a"].ToString(),
-                                uc_36b = dr["uc_36b"].ToString(),
-                                uc_37a = dr["uc_37a"].ToString(),
-                                uc_37a_a = dr["uc_37a_a"].ToString(),
-                                uc_37b = dr["uc_37b"].ToString(),
-                                LA_17 = dr["LA_17"].ToString(),
-                                LA_18 = dr["LA_18"].ToString(),
-                                LA_19 = dr["LA_19"].ToString(),
-                                LA_20a_b = dr["LA_20a_b"].ToString(),
-                                LA_20a_a = dr["LA_20a_a"].ToString(),
-                                LA_20b_a = dr["LA_20b_a"].ToString(),
-                                LA_21a_b = dr["LA_21a_b"].ToString(),
-                                LA_21a_a = dr["LA_21a_a"].ToString(),
-                                LA_21b_a = dr["LA_21b_a"].ToString(),
-                                LA_22a_b = dr["LA_22a_b"].ToString(),
-                                LA_22a_a = dr["LA_22a_a"].ToString(),
-                                LA_22b_a = dr["LA_22b_a"].ToString(),
-                                LA_23a_b = dr["LA_23a_b"].ToString(),
-                                LA_23a_a = dr["LA_23a_a"].ToString(),
-                                LA_23b_a = dr["LA_23b_a"].ToString(),
-                                LA_24a_b = dr["LA_24a_b"].ToString(),
-                                LA_24a_a = dr["LA_24a_a"].ToString(),
-                                LA_24b_a = dr["LA_24b_a"].ToString(),
-                                LA_25a_b = dr["LA_25a_b"].ToString(),
-                                LA_25a_a = dr["LA_25a_a"].ToString(),
-                                LA_25b_a = dr["LA_25b_a"].ToString(),
-                                LA_26a_b = dr["LA_26a_b"].ToString(),
-                                LA_26a_a = dr["LA_26a_a"].ToString(),
-                                LA_26b_a = dr["LA_26b_a"].ToString(),
-                                LA_27a_b = dr["LA_27a_b"].ToString(),
-                                LA_27a_a = dr["LA_27a_a"].ToString(),
-                                LA_27b_a = dr["LA_27b_a"].ToString(),
-                                LA_28a_b = dr["LA_28a_b"].ToString(),
-                                LA_28a_a = dr["LA_28a_a"].ToString(),
-                                LA_28b_a = dr["LA_28b_a"].ToString(),
-                                LA_29a_b = dr["LA_29a_b"].ToString(),
-                                LA_29a_a = dr["LA_29a_a"].ToString(),
-                                LA_29b_a = dr["LA_29b_a"].ToString(),
-                                LA_30a_b = dr["LA_30a_b"].ToString(),
-                                LA_30a_a = dr["LA_30a_a"].ToString(),
-                                LA_30b_a = dr["LA_30b_a"].ToString(),
-                                LA_31a_b = dr["LA_31a_b"].ToString(),
-                                LA_31a_a = dr["LA_31a_a"].ToString(),
-                                LA_31b_a = dr["LA_31b_a"].ToString(),
-                                LA_32a_b = dr["LA_32a_b"].ToString(),
-                                LA_32a_a = dr["LA_32a_a"].ToString(),
-                                LA_32b_a = dr["LA_32b_a"].ToString(),
-                                LA_33a_b = dr["LA_33a_b"].ToString(),
-                                LA_33a_a = dr["LA_33a_a"].ToString(),
-                                LA_33b_a = dr["LA_33b_a"].ToString(),
-                                LA_34a_b = dr["LA_34a_b"].ToString(),
-                                LA_34a_a = dr["LA_34a_a"].ToString(),
-                                LA_34b_a = dr["LA_34b_a"].ToString(),
-                                LA_35a_b = dr["LA_35a_b"].ToString(),
-                                LA_35a_a = dr["LA_35a_a"].ToString(),
-                                LA_35b_a = dr["LA_35b_a"].ToString(),
-                                LA_36a_b = dr["LA_36a_b"].ToString(),
-                                LA_36a_a = dr["LA_36a_a"].ToString(),
-                                LA_36b_a = dr["LA_36b_a"].ToString(),
-                                LA_37a_b = dr["LA_37a_b"].ToString(),
-                                LA_37a_a = dr["LA_37a_a"].ToString(),
-                                LA_37b_a = dr["LA_37b_a"].ToString(),
-                                LA_38a_b = dr["LA_38a_b"].ToString(),
-                                LA_38a_a = dr["LA_38a_a"].ToString(),
-                                LA_38b_a = dr["LA_38b_a"].ToString(),
-                                LA_39a_b = dr["LA_39a_b"].ToString(),
-                                LA_39a_a = dr["LA_39a_a"].ToString(),
-                                LA_39b_a = dr["LA_39b_a"].ToString(),
-                                LA_40a_b = dr["LA_40a_b"].ToString(),
-                                LA_40a_a = dr["LA_40a_a"].ToString(),
-                                LA_40b_a = dr["LA_40b_a"].ToString(),
-                                LA_41a_b = dr["LA_41a_b"].ToString(),
-                                LA_41a_a = dr["LA_41a_a"].ToString(),
-                                LA_41b_a = dr["LA_41b_a"].ToString(),
-                                LA_42a_b = dr["LA_42a_b"].ToString(),
-                                LA_42a_a = dr["LA_42a_a"].ToString(),
-                                LA_42b_a = dr["LA_42b_a"].ToString(),
-                                LA_43a_b = dr["LA_43a_b"].ToString(),
-                                LA_43a_a = dr["LA_43a_a"].ToString(),
-                                LA_43b_a = dr["LA_43b_a"].ToString(),
-                                LA_44a_b = dr["LA_44a_b"].ToString(),
-                                LA_44a_a = dr["LA_44a_a"].ToString(),
-                                LA_44b_a = dr["LA_44b_a"].ToString(),
-                                LA_45a_b = dr["LA_45a_b"].ToString(),
-                                LA_45a_a = dr["LA_45a_a"].ToString(),
-                                LA_45b_a = dr["LA_45b_a"].ToString(),
-                                LA_46a_b = dr["LA_46a_b"].ToString(),
-                                LA_46a_a = dr["LA_46a_a"].ToString(),
-                                LA_46b_a = dr["LA_46b_a"].ToString(),
-                                LA_47a_b = dr["LA_47a_b"].ToString(),
-                                LA_47a_a = dr["LA_47a_a"].ToString(),
-                                LA_47b_a = dr["LA_47b_a"].ToString(),
-                                LA_48a_b = dr["LA_48a_b"].ToString(),
-                                LA_48a_a = dr["LA_48a_a"].ToString(),
-                                LA_48b_a = dr["LA_48b_a"].ToString(),
-                                LA_49a_b = dr["LA_49a_b"].ToString(),
-                                LA_49a_a = dr["LA_49a_a"].ToString(),
-                                LA_49b_a = dr["LA_49b_a"].ToString(),
-                                LA_50a_b = dr["LA_50a_b"].ToString(),
-                                LA_50a_a = dr["LA_50a_a"].ToString(),
-                                LA_50b_a = dr["LA_50b_a"].ToString(),
-                                LA_51a_b = dr["LA_51a_b"].ToString(),
-                                LA_51a_a = dr["LA_51a_a"].ToString(),
-                                LA_51b_a = dr["LA_51b_a"].ToString(),
-                                LA_52a_b = dr["LA_52a_b"].ToString(),
-                                LA_52a_a = dr["LA_52a_a"].ToString(),
-                                LA_52b_a = dr["LA_52b_a"].ToString(),
-                                uc_01_ca = dr["uc_01_ca"].ToString(),
-                                UR_04a_a = dr["UR_04a_a"].ToString(),
-                                UR_04a = dr["UR_04a"].ToString(),
-                                history = dr["history"].ToString()
+                                la_sno = dr["la_sno"].ToString()
 
                             });
-
-
-                            //CountryInformation.Add(new SampleResults()
-                            //{
-                            //    la_sno = dr["la_sno"].ToString()
-
-                            //});
                         }
 
                     }
@@ -14606,15 +13920,21 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "")
                         {
                             LA_03_v.Checked = true;
+                            LA_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "999")
                         {
                             LA_03_b.Checked = true;
+                            LA_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "888")
                         {
                             LA_03_c.Checked = true;
+                            LA_03_c_CheckedChanged(null, null);
                         }
+
+
+
 
 
                         LA_03_a.Text = ds.Tables[0].Rows[0]["LA_03_a"].ToString();
@@ -14623,14 +13943,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "")
                         {
                             LA_04_v.Checked = true;
+                            LA_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "999")
                         {
                             LA_04_b.Checked = true;
+                            LA_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_04_b"].ToString() == "888")
                         {
                             LA_04_c.Checked = true;
+                            LA_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -14640,14 +13963,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "")
                         {
                             LA_05_v.Checked = true;
+                            LA_05_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "999")
                         {
                             LA_05_b.Checked = true;
+                            LA_05_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_05_b"].ToString() == "888")
                         {
                             LA_05_c.Checked = true;
+                            LA_05_c_CheckedChanged(null, null);
                         }
 
 
@@ -14657,14 +13983,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "")
                         {
                             LA_06_v.Checked = true;
+                            LA_06_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "999")
                         {
                             LA_06_b.Checked = true;
+                            LA_06_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_06_b"].ToString() == "888")
                         {
                             LA_06_c.Checked = true;
+                            LA_06_c_CheckedChanged(null, null);
                         }
 
 
@@ -14674,14 +14003,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "")
                         {
                             LA_07_v.Checked = true;
+                            LA_07_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "999")
                         {
                             LA_07_b.Checked = true;
+                            LA_07_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_07_b"].ToString() == "888")
                         {
                             LA_07_c.Checked = true;
+                            LA_07_c_CheckedChanged(null, null);
                         }
 
 
@@ -14691,14 +14023,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "")
                         {
                             LA_08_v.Checked = true;
+                            LA_08_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "999")
                         {
                             LA_08_b.Checked = true;
+                            LA_08_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_08_b"].ToString() == "888")
                         {
                             LA_08_c.Checked = true;
+                            LA_08_c_CheckedChanged(null, null);
                         }
 
 
@@ -14708,14 +14043,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "")
                         {
                             LA_09_v.Checked = true;
+                            LA_09_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "999")
                         {
                             LA_09_b.Checked = true;
+                            LA_09_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_09_b"].ToString() == "888")
                         {
                             LA_09_c.Checked = true;
+                            LA_09_c_CheckedChanged(null, null);
                         }
 
 
@@ -14725,14 +14063,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "")
                         {
                             LA_10_v.Checked = true;
+                            LA_10_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "999")
                         {
                             LA_10_b.Checked = true;
+                            LA_10_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_10_b"].ToString() == "888")
                         {
                             LA_10_c.Checked = true;
+                            LA_10_c_CheckedChanged(null, null);
                         }
 
 
@@ -14742,14 +14083,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "")
                         {
                             LA_11_v.Checked = true;
+                            LA_11_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "999")
                         {
                             LA_11_b.Checked = true;
+                            LA_11_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_11_b"].ToString() == "888")
                         {
                             LA_11_c.Checked = true;
+                            LA_11_c_CheckedChanged(null, null);
                         }
 
 
@@ -14759,14 +14103,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "")
                         {
                             LA_12_v.Checked = true;
+                            LA_12_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "999")
                         {
                             LA_12_b.Checked = true;
+                            LA_12_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_12_b"].ToString() == "888")
                         {
                             LA_12_c.Checked = true;
+                            LA_12_c_CheckedChanged(null, null);
                         }
 
 
@@ -14776,14 +14123,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "")
                         {
                             LA_13_v.Checked = true;
+                            LA_13_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "999")
                         {
                             LA_13_b.Checked = true;
+                            LA_13_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_13_b"].ToString() == "888")
                         {
                             LA_13_c.Checked = true;
+                            LA_13_c_CheckedChanged(null, null);
                         }
 
 
@@ -14793,14 +14143,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "")
                         {
                             LA_14_v.Checked = true;
+                            LA_14_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "999")
                         {
                             LA_14_b.Checked = true;
+                            LA_14_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_14_b"].ToString() == "888")
                         {
                             LA_14_c.Checked = true;
+                            LA_14_c_CheckedChanged(null, null);
                         }
 
 
@@ -14810,14 +14163,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "")
                         {
                             LA_15_v.Checked = true;
+                            LA_15_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "999")
                         {
                             LA_15_b.Checked = true;
+                            LA_15_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_15_b"].ToString() == "888")
                         {
                             LA_15_c.Checked = true;
+                            LA_15_c_CheckedChanged(null, null);
                         }
 
 
@@ -14827,14 +14183,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "")
                         {
                             LA_16_v.Checked = true;
+                            LA_16_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "999")
                         {
                             LA_16_b.Checked = true;
+                            LA_16_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_16_b"].ToString() == "888")
                         {
                             LA_16_c.Checked = true;
+                            LA_16_c_CheckedChanged(null, null);
                         }
 
 
@@ -14844,14 +14203,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "")
                         {
                             LF_01_v.Checked = true;
+                            LF_01_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "999")
                         {
                             LF_01_b.Checked = true;
+                            LF_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "888")
                         {
                             LF_01_c.Checked = true;
+                            LF_01_c_CheckedChanged(null, null);
                         }
 
 
@@ -14861,14 +14223,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "")
                         {
                             LF_02_v.Checked = true;
+                            LF_02_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "999")
                         {
                             LF_02_b.Checked = true;
+                            LF_02_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_02"].ToString() == "888")
                         {
                             LF_02_c.Checked = true;
+                            LF_02_c_CheckedChanged(null, null);
                         }
 
 
@@ -14878,14 +14243,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "")
                         {
                             LF_03_v.Checked = true;
+                            LF_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "999")
                         {
                             LF_03_b.Checked = true;
+                            LF_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_03"].ToString() == "888")
                         {
                             LF_03_c.Checked = true;
+                            LF_03_c_CheckedChanged(null, null);
                         }
 
 
@@ -14895,14 +14263,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "")
                         {
                             LF_04_v.Checked = true;
+                            LF_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "999")
                         {
                             LF_04_b.Checked = true;
+                            LF_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_04"].ToString() == "888")
                         {
                             LF_04_c.Checked = true;
+                            LF_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -14912,14 +14283,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "")
                         {
                             LF_05_v.Checked = true;
+                            LF_05_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "999")
                         {
                             LF_05_b.Checked = true;
+                            LF_05_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_05"].ToString() == "888")
                         {
                             LF_05_c.Checked = true;
+                            LF_05_c_CheckedChanged(null, null);
                         }
 
 
@@ -14929,14 +14303,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "")
                         {
                             LF_06_v.Checked = true;
+                            LF_06_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "999")
                         {
                             LF_06_b.Checked = true;
+                            LF_06_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_06"].ToString() == "888")
                         {
                             LF_06_c.Checked = true;
+                            LF_06_c_CheckedChanged(null, null);
                         }
 
 
@@ -14946,14 +14323,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "")
                         {
                             LF_07_v.Checked = true;
+                            LF_07_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "999")
                         {
                             LF_07_b.Checked = true;
+                            LF_07_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LF_07"].ToString() == "888")
                         {
                             LF_07_c.Checked = true;
+                            LF_07_c_CheckedChanged(null, null);
                         }
 
 
@@ -14963,14 +14343,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "")
                         {
                             RF_01_v.Checked = true;
+                            RF_01_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "999")
                         {
                             RF_01_b.Checked = true;
+                            RF_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "888")
                         {
                             RF_01_c.Checked = true;
+                            RF_01_c_CheckedChanged(null, null);
                         }
 
 
@@ -14980,14 +14363,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "")
                         {
                             RF_02_v.Checked = true;
+                            RF_02_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "999")
                         {
                             RF_02_b.Checked = true;
+                            RF_02_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_02"].ToString() == "888")
                         {
                             RF_02_c.Checked = true;
+                            RF_02_c_CheckedChanged(null, null);
                         }
 
 
@@ -14997,14 +14383,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "")
                         {
                             RF_03_v.Checked = true;
+                            RF_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "999")
                         {
                             RF_03_b.Checked = true;
+                            RF_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_03"].ToString() == "888")
                         {
                             RF_03_c.Checked = true;
+                            RF_03_c_CheckedChanged(null, null);
                         }
 
 
@@ -15014,14 +14403,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "")
                         {
                             RF_04_v.Checked = true;
+                            RF_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "999")
                         {
                             RF_04_b.Checked = true;
+                            RF_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["RF_04"].ToString() == "888")
                         {
                             RF_04_c.Checked = true;
+                            RF_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -15031,14 +14423,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "")
                         {
                             SE_01_v.Checked = true;
+                            SE_01_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "999")
                         {
                             SE_01_b.Checked = true;
+                            SE_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "888")
                         {
                             SE_01_c.Checked = true;
+                            SE_01_c_CheckedChanged(null, null);
                         }
 
 
@@ -15048,14 +14443,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "")
                         {
                             SE_02_v.Checked = true;
+                            SE_02_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "999")
                         {
                             SE_02_b.Checked = true;
+                            SE_02_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_02"].ToString() == "888")
                         {
                             SE_02_c.Checked = true;
+                            SE_02_c_CheckedChanged(null, null);
                         }
 
 
@@ -15065,14 +14463,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "")
                         {
                             SE_03_v.Checked = true;
+                            SE_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "999")
                         {
                             SE_03_b.Checked = true;
+                            SE_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_03"].ToString() == "888")
                         {
                             SE_03_c.Checked = true;
+                            SE_03_c_CheckedChanged(null, null);
                         }
 
 
@@ -15082,14 +14483,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "")
                         {
                             SE_04_v.Checked = true;
+                            SE_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "999")
                         {
                             SE_04_b.Checked = true;
+                            SE_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["SE_04"].ToString() == "888")
                         {
                             SE_04_c.Checked = true;
+                            SE_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -15099,14 +14503,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "")
                         {
                             CS_01_v.Checked = true;
+                            CS_01_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "999")
                         {
                             CS_01_b.Checked = true;
+                            CS_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "888")
                         {
                             CS_01_c.Checked = true;
+                            CS_01_c_CheckedChanged(null, null);
                         }
 
 
@@ -15116,14 +14523,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "")
                         {
                             CS_02_v.Checked = true;
+                            CS_02_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "999")
                         {
                             CS_02_b.Checked = true;
+                            CS_02_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_02"].ToString() == "888")
                         {
                             CS_02_c.Checked = true;
+                            CS_02_c_CheckedChanged(null, null);
                         }
 
 
@@ -15133,14 +14543,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "")
                         {
                             CS_03_v.Checked = true;
+                            CS_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "999")
                         {
                             CS_03_b.Checked = true;
+                            CS_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_03"].ToString() == "888")
                         {
                             CS_03_c.Checked = true;
+                            CS_03_c_CheckedChanged(null, null);
                         }
 
 
@@ -15150,14 +14563,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "")
                         {
                             CS_04_v.Checked = true;
+                            CS_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "999")
                         {
                             CS_04_b.Checked = true;
+                            CS_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_04"].ToString() == "888")
                         {
                             CS_04_c.Checked = true;
+                            CS_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -15167,14 +14583,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "")
                         {
                             CS_05_v.Checked = true;
+                            CS_05_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "999")
                         {
                             CS_05_b.Checked = true;
+                            CS_05_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_05"].ToString() == "888")
                         {
                             CS_05_c.Checked = true;
+                            CS_05_c_CheckedChanged(null, null);
                         }
 
 
@@ -15184,14 +14603,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "")
                         {
                             CS_06_v.Checked = true;
+                            CS_06_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "999")
                         {
                             CS_06_b.Checked = true;
+                            CS_06_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_06"].ToString() == "888")
                         {
                             CS_06_c.Checked = true;
+                            CS_06_c_CheckedChanged(null, null);
                         }
 
 
@@ -15201,14 +14623,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "")
                         {
                             CS_07_v.Checked = true;
+                            CS_07_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "999")
                         {
                             CS_07_b.Checked = true;
+                            CS_07_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_07"].ToString() == "888")
                         {
                             CS_07_c.Checked = true;
+                            CS_07_c_CheckedChanged(null, null);
                         }
 
 
@@ -15218,14 +14643,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "")
                         {
                             CS_08_v.Checked = true;
+                            CS_08_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "999")
                         {
                             CS_08_b.Checked = true;
+                            CS_08_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_08"].ToString() == "888")
                         {
                             CS_08_c.Checked = true;
+                            CS_08_c_CheckedChanged(null, null);
                         }
 
 
@@ -15235,14 +14663,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "")
                         {
                             CS_09_v.Checked = true;
+                            CS_09_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "999")
                         {
                             CS_09_b.Checked = true;
+                            CS_09_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_09"].ToString() == "888")
                         {
                             CS_09_c.Checked = true;
+                            CS_09_c_CheckedChanged(null, null);
                         }
 
 
@@ -15252,14 +14683,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "")
                         {
                             CS_10_v.Checked = true;
+                            CS_10_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "999")
                         {
                             CS_10_b.Checked = true;
+                            CS_10_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["CS_10"].ToString() == "888")
                         {
                             CS_10_c.Checked = true;
+                            CS_10_c_CheckedChanged(null, null);
                         }
 
 
@@ -15269,14 +14703,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "")
                         {
                             UR_01_v.Checked = true;
+                            UR_01_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "999")
                         {
                             UR_01_b.Checked = true;
+                            UR_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "888")
                         {
                             UR_01_c.Checked = true;
+                            UR_01_c_CheckedChanged(null, null);
                         }
 
 
@@ -15286,14 +14723,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "")
                         {
                             UR_02_v.Checked = true;
+                            UR_02_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "999")
                         {
                             UR_02_b.Checked = true;
+                            UR_02_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_02"].ToString() == "888")
                         {
                             UR_02_c.Checked = true;
+                            UR_02_c_CheckedChanged(null, null);
                         }
 
 
@@ -15303,14 +14743,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "")
                         {
                             UR_03_v.Checked = true;
+                            UR_03_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "999")
                         {
                             UR_03_b.Checked = true;
+                            UR_03_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_03"].ToString() == "888")
                         {
                             UR_03_c.Checked = true;
+                            UR_03_c_CheckedChanged(null, null);
                         }
 
 
@@ -15320,14 +14763,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "")
                         {
                             UR_04_v.Checked = true;
+                            UR_04_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "999")
                         {
                             UR_04_b.Checked = true;
+                            UR_04_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_04"].ToString() == "888")
                         {
                             UR_04_c.Checked = true;
+                            UR_04_c_CheckedChanged(null, null);
                         }
 
 
@@ -15339,14 +14785,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "")
                         {
                             UR_04a_v.Checked = true;
+                            UR_04a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "999")
                         {
                             UR_04a_b.Checked = true;
+                            UR_04a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_04a"].ToString() == "888")
                         {
                             UR_04a_c.Checked = true;
+                            UR_04a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15359,14 +14808,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "")
                         {
                             UR_05_v.Checked = true;
+                            UR_05_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "999")
                         {
                             UR_05_b.Checked = true;
+                            UR_05_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_05"].ToString() == "888")
                         {
                             UR_05_c.Checked = true;
+                            UR_05_c_CheckedChanged(null, null);
                         }
 
 
@@ -15376,14 +14828,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "")
                         {
                             UR_06_v.Checked = true;
+                            UR_06_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "999")
                         {
                             UR_06_b.Checked = true;
+                            UR_06_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_06"].ToString() == "888")
                         {
                             UR_06_c.Checked = true;
+                            UR_06_c_CheckedChanged(null, null);
                         }
 
 
@@ -15393,14 +14848,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "")
                         {
                             UR_07_v.Checked = true;
+                            UR_07_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "999")
                         {
                             UR_07_b.Checked = true;
+                            UR_07_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_07"].ToString() == "888")
                         {
                             UR_07_c.Checked = true;
+                            UR_07_c_CheckedChanged(null, null);
                         }
 
 
@@ -15410,14 +14868,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "")
                         {
                             UR_08_v.Checked = true;
+                            UR_08_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "999")
                         {
                             UR_08_b.Checked = true;
+                            UR_08_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_08"].ToString() == "888")
                         {
                             UR_08_c.Checked = true;
+                            UR_08_c_CheckedChanged(null, null);
                         }
 
 
@@ -15427,14 +14888,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "")
                         {
                             UR_10_v.Checked = true;
+                            UR_10_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "999")
                         {
                             UR_10_b.Checked = true;
+                            UR_10_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_10"].ToString() == "888")
                         {
                             UR_10_c.Checked = true;
+                            UR_10_c_CheckedChanged(null, null);
                         }
 
 
@@ -15444,14 +14908,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "")
                         {
                             UR_11_v.Checked = true;
+                            UR_11_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "999")
                         {
                             UR_11_b.Checked = true;
+                            UR_11_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_11"].ToString() == "888")
                         {
                             UR_11_c.Checked = true;
+                            UR_11_c_CheckedChanged(null, null);
                         }
 
 
@@ -15461,14 +14928,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "")
                         {
                             UR_12_v.Checked = true;
+                            UR_12_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "999")
                         {
                             UR_12_b.Checked = true;
+                            UR_12_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_12"].ToString() == "888")
                         {
                             UR_12_c.Checked = true;
+                            UR_12_c_CheckedChanged(null, null);
                         }
 
 
@@ -15478,14 +14948,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "")
                         {
                             UR_13_v.Checked = true;
+                            UR_13_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "999")
                         {
                             UR_13_b.Checked = true;
+                            UR_13_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_13"].ToString() == "888")
                         {
                             UR_13_c.Checked = true;
+                            UR_13_c_CheckedChanged(null, null);
                         }
 
 
@@ -15495,14 +14968,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "")
                         {
                             UR_14_v.Checked = true;
+                            UR_14_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "999")
                         {
                             UR_14_b.Checked = true;
+                            UR_14_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_14"].ToString() == "888")
                         {
                             UR_14_c.Checked = true;
+                            UR_14_c_CheckedChanged(null, null);
                         }
 
 
@@ -15512,14 +14988,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "")
                         {
                             UR_15_v.Checked = true;
+                            UR_15_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "999")
                         {
                             UR_15_b.Checked = true;
+                            UR_15_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_15"].ToString() == "888")
                         {
                             UR_15_c.Checked = true;
+                            UR_15_c_CheckedChanged(null, null);
                         }
 
 
@@ -15529,14 +15008,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "")
                         {
                             UR_16_v.Checked = true;
+                            UR_16_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "999")
                         {
                             UR_16_b.Checked = true;
+                            UR_16_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_16"].ToString() == "888")
                         {
                             UR_16_c.Checked = true;
+                            UR_16_c_CheckedChanged(null, null);
                         }
 
 
@@ -15546,14 +15028,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "")
                         {
                             UR_17_v.Checked = true;
+                            UR_17_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "999")
                         {
                             UR_17_b.Checked = true;
+                            UR_17_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_17"].ToString() == "888")
                         {
                             UR_17_c.Checked = true;
+                            UR_17_c_CheckedChanged(null, null);
                         }
 
 
@@ -15563,14 +15048,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "")
                         {
                             UR_18_v.Checked = true;
+                            UR_18_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "999")
                         {
                             UR_18_b.Checked = true;
+                            UR_18_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_18"].ToString() == "888")
                         {
                             UR_18_c.Checked = true;
+                            UR_18_c_CheckedChanged(null, null);
                         }
 
 
@@ -15580,14 +15068,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "")
                         {
                             UR_19_v.Checked = true;
+                            UR_19_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "999")
                         {
                             UR_19_b.Checked = true;
+                            UR_19_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_19"].ToString() == "888")
                         {
                             UR_19_c.Checked = true;
+                            UR_19_c_CheckedChanged(null, null);
                         }
 
 
@@ -15597,14 +15088,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "")
                         {
                             UR_20_v.Checked = true;
+                            UR_20_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "999")
                         {
                             UR_20_b.Checked = true;
+                            UR_20_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_20"].ToString() == "888")
                         {
                             UR_20_c.Checked = true;
+                            UR_20_c_CheckedChanged(null, null);
                         }
 
 
@@ -15614,14 +15108,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "")
                         {
                             UR_21_v.Checked = true;
+                            UR_21_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "999")
                         {
                             UR_21_b.Checked = true;
+                            UR_21_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["UR_21"].ToString() == "888")
                         {
                             UR_21_c.Checked = true;
+                            UR_21_c_CheckedChanged(null, null);
                         }
 
 
@@ -15635,30 +15132,35 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "1")
                         {
                             uc_01_a.Checked = true;
+                            uc_01_a_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "2")
                         {
                             uc_01_b.Checked = true;
+                            uc_01_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_01a"].ToString() == "999")
                         {
                             uc_01_c.Checked = true;
+                            uc_01_c_CheckedChanged(null, null);
                         }
-
 
 
 
                         if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "")
                         {
                             uc_02a_v.Checked = true;
+                            uc_02a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "999")
                         {
                             uc_02a_b.Checked = true;
+                            uc_02a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_02a"].ToString() == "888")
                         {
                             uc_02a_c.Checked = true;
+                            uc_02a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15682,14 +15184,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "")
                         {
                             uc_03a_v.Checked = true;
+                            uc_03a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "999")
                         {
                             uc_03a_b.Checked = true;
+                            uc_03a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_03a"].ToString() == "888")
                         {
                             uc_03a_c.Checked = true;
+                            uc_03a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15713,14 +15218,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "")
                         {
                             uc_04a_v.Checked = true;
+                            uc_04a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "999")
                         {
                             uc_04a_b.Checked = true;
+                            uc_04a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_04a"].ToString() == "888")
                         {
                             uc_04a_c.Checked = true;
+                            uc_04a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15744,14 +15252,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "")
                         {
                             uc_05a_v.Checked = true;
+                            uc_05a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "999")
                         {
                             uc_05a_b.Checked = true;
+                            uc_05a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_05a"].ToString() == "888")
                         {
                             uc_05a_c.Checked = true;
+                            uc_05a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15775,14 +15286,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "")
                         {
                             uc_06a_v.Checked = true;
+                            uc_06a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "999")
                         {
                             uc_06a_b.Checked = true;
+                            uc_06a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_06a"].ToString() == "888")
                         {
                             uc_06a_c.Checked = true;
+                            uc_06a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15806,14 +15320,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "")
                         {
                             uc_07a_v.Checked = true;
+                            uc_07a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "999")
                         {
                             uc_07a_b.Checked = true;
+                            uc_07a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_07a"].ToString() == "888")
                         {
                             uc_07a_c.Checked = true;
+                            uc_07a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15837,14 +15354,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "")
                         {
                             uc_08a_v.Checked = true;
+                            uc_08a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "999")
                         {
                             uc_08a_b.Checked = true;
+                            uc_08a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_08a"].ToString() == "888")
                         {
                             uc_08a_c.Checked = true;
+                            uc_08a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15868,14 +15388,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "")
                         {
                             uc_09a_v.Checked = true;
+                            uc_09a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "999")
                         {
                             uc_09a_b.Checked = true;
+                            uc_09a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_09a"].ToString() == "888")
                         {
                             uc_09a_c.Checked = true;
+                            uc_09a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15899,14 +15422,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "")
                         {
                             uc_10a_v.Checked = true;
+                            uc_10a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "999")
                         {
                             uc_10a_b.Checked = true;
+                            uc_10a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_10a"].ToString() == "888")
                         {
                             uc_10a_c.Checked = true;
+                            uc_10a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15930,14 +15456,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "")
                         {
                             uc_11a_v.Checked = true;
+                            uc_11a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "999")
                         {
                             uc_11a_b.Checked = true;
+                            uc_11a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_11a"].ToString() == "888")
                         {
                             uc_11a_c.Checked = true;
+                            uc_11a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15961,14 +15490,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "")
                         {
                             uc_12a_v.Checked = true;
+                            uc_12a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "999")
                         {
                             uc_12a_b.Checked = true;
+                            uc_12a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_12a"].ToString() == "888")
                         {
                             uc_12a_c.Checked = true;
+                            uc_12a_c_CheckedChanged(null, null);
                         }
 
 
@@ -15992,14 +15524,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "")
                         {
                             uc_13a_v.Checked = true;
+                            uc_13a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "999")
                         {
                             uc_13a_b.Checked = true;
+                            uc_13a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_13a"].ToString() == "888")
                         {
                             uc_13a_c.Checked = true;
+                            uc_13a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16023,14 +15558,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "")
                         {
                             uc_14a_v.Checked = true;
+                            uc_14a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "999")
                         {
                             uc_14a_b.Checked = true;
+                            uc_14a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_14a"].ToString() == "888")
                         {
                             uc_14a_c.Checked = true;
+                            uc_14a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16054,14 +15592,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "")
                         {
                             uc_15a_v.Checked = true;
+                            uc_15a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "999")
                         {
                             uc_15a_b.Checked = true;
+                            uc_15a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_15a"].ToString() == "888")
                         {
                             uc_15a_c.Checked = true;
+                            uc_15a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16085,14 +15626,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "")
                         {
                             uc_16a_v.Checked = true;
+                            uc_16a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "999")
                         {
                             uc_16a_b.Checked = true;
+                            uc_16a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_16a"].ToString() == "888")
                         {
                             uc_16a_c.Checked = true;
+                            uc_16a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16116,14 +15660,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "")
                         {
                             uc_17a_v.Checked = true;
+                            uc_17a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "999")
                         {
                             uc_17a_b.Checked = true;
+                            uc_17a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_17a"].ToString() == "888")
                         {
                             uc_17a_c.Checked = true;
+                            uc_17a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16147,14 +15694,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "")
                         {
                             uc_18a_v.Checked = true;
+                            uc_18a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "999")
                         {
                             uc_18a_b.Checked = true;
+                            uc_18a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_18a"].ToString() == "888")
                         {
                             uc_18a_c.Checked = true;
+                            uc_18a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16178,14 +15728,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "")
                         {
                             uc_19a_v.Checked = true;
+                            uc_19a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "999")
                         {
                             uc_19a_b.Checked = true;
+                            uc_19a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_19a"].ToString() == "888")
                         {
                             uc_19a_c.Checked = true;
+                            uc_19a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16209,14 +15762,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "")
                         {
                             uc_20a_v.Checked = true;
+                            uc_20a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "999")
                         {
                             uc_20a_b.Checked = true;
+                            uc_20a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_20a"].ToString() == "888")
                         {
                             uc_20a_c.Checked = true;
+                            uc_20a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16240,14 +15796,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "")
                         {
                             uc_21a_v.Checked = true;
+                            uc_21a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "999")
                         {
                             uc_21a_b.Checked = true;
+                            uc_21a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_21a"].ToString() == "888")
                         {
                             uc_21a_c.Checked = true;
+                            uc_21a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16271,14 +15830,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "")
                         {
                             uc_22a_v.Checked = true;
+                            uc_22a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "999")
                         {
                             uc_22a_b.Checked = true;
+                            uc_22a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_22a"].ToString() == "888")
                         {
                             uc_22a_c.Checked = true;
+                            uc_22a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16302,14 +15864,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "")
                         {
                             uc_23a_v.Checked = true;
+                            uc_23a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "999")
                         {
                             uc_23a_b.Checked = true;
+                            uc_23a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_23a"].ToString() == "888")
                         {
                             uc_23a_c.Checked = true;
+                            uc_23a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16333,14 +15898,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "")
                         {
                             uc_24a_v.Checked = true;
+                            uc_24a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "999")
                         {
                             uc_24a_b.Checked = true;
+                            uc_24a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_24a"].ToString() == "888")
                         {
                             uc_24a_c.Checked = true;
+                            uc_24a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16364,14 +15932,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "")
                         {
                             uc_25a_v.Checked = true;
+                            uc_25a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "999")
                         {
                             uc_25a_b.Checked = true;
+                            uc_25a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_25a"].ToString() == "888")
                         {
                             uc_25a_c.Checked = true;
+                            uc_25a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16395,14 +15966,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "")
                         {
                             uc_26a_v.Checked = true;
+                            uc_26a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "999")
                         {
                             uc_26a_b.Checked = true;
+                            uc_26a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_26a"].ToString() == "888")
                         {
                             uc_26a_c.Checked = true;
+                            uc_26a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16426,14 +16000,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "")
                         {
                             uc_27a_v.Checked = true;
+                            uc_27a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "999")
                         {
                             uc_27a_b.Checked = true;
+                            uc_27a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_27a"].ToString() == "888")
                         {
                             uc_27a_c.Checked = true;
+                            uc_27a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16457,14 +16034,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "")
                         {
                             uc_28a_v.Checked = true;
+                            uc_28a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "999")
                         {
                             uc_28a_b.Checked = true;
+                            uc_28a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_28a"].ToString() == "888")
                         {
                             uc_28a_c.Checked = true;
+                            uc_28a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16488,14 +16068,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "")
                         {
                             uc_29a_v.Checked = true;
+                            uc_29a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "999")
                         {
                             uc_29a_b.Checked = true;
+                            uc_29a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_29a"].ToString() == "888")
                         {
                             uc_29a_c.Checked = true;
+                            uc_29a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16519,14 +16102,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "")
                         {
                             uc_30a_v.Checked = true;
+                            uc_30a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "999")
                         {
                             uc_30a_b.Checked = true;
+                            uc_30a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_30a"].ToString() == "888")
                         {
                             uc_30a_c.Checked = true;
+                            uc_30a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16550,14 +16136,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "")
                         {
                             uc_31a_v.Checked = true;
+                            uc_31a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "999")
                         {
                             uc_31a_b.Checked = true;
+                            uc_31a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_31a"].ToString() == "888")
                         {
                             uc_31a_c.Checked = true;
+                            uc_31a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16581,14 +16170,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "")
                         {
                             uc_32a_v.Checked = true;
+                            uc_32a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "999")
                         {
                             uc_32a_b.Checked = true;
+                            uc_32a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_32a"].ToString() == "888")
                         {
                             uc_32a_c.Checked = true;
+                            uc_32a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16612,14 +16204,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "")
                         {
                             uc_33a_v.Checked = true;
+                            uc_33a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "999")
                         {
                             uc_33a_b.Checked = true;
+                            uc_33a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_33a"].ToString() == "888")
                         {
                             uc_33a_c.Checked = true;
+                            uc_33a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16643,14 +16238,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "")
                         {
                             uc_34a_v.Checked = true;
+                            uc_34a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "999")
                         {
                             uc_34a_b.Checked = true;
+                            uc_34a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_34a"].ToString() == "888")
                         {
                             uc_34a_c.Checked = true;
+                            uc_34a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16674,14 +16272,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "")
                         {
                             uc_35a_v.Checked = true;
+                            uc_35a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "999")
                         {
                             uc_35a_b.Checked = true;
+                            uc_35a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_35a"].ToString() == "888")
                         {
                             uc_35a_c.Checked = true;
+                            uc_35a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16705,14 +16306,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "")
                         {
                             uc_36a_v.Checked = true;
+                            uc_36a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "999")
                         {
                             uc_36a_b.Checked = true;
+                            uc_36a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_36a"].ToString() == "888")
                         {
                             uc_36a_c.Checked = true;
+                            uc_36a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16736,14 +16340,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "")
                         {
                             uc_37a_v.Checked = true;
+                            uc_37a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "999")
                         {
                             uc_37a_b.Checked = true;
+                            uc_37a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["uc_37a"].ToString() == "888")
                         {
                             uc_37a_c.Checked = true;
+                            uc_37a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16777,14 +16384,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "")
                         {
                             LA_20a_v.Checked = true;
+                            LA_20a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "999")
                         {
                             LA_20a_b.Checked = true;
+                            LA_20a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_20a_b"].ToString() == "888")
                         {
                             LA_20a_c.Checked = true;
+                            LA_20a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16837,14 +16447,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "")
                         {
                             LA_21a_v.Checked = true;
+                            LA_21a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "999")
                         {
                             LA_21a_b.Checked = true;
+                            LA_21a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_21a_b"].ToString() == "888")
                         {
                             LA_21a_c.Checked = true;
+                            LA_21a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16868,14 +16481,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "")
                         {
                             LA_22a_v.Checked = true;
+                            LA_22a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "999")
                         {
                             LA_22a_b.Checked = true;
+                            LA_22a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_22a_b"].ToString() == "888")
                         {
                             LA_22a_c.Checked = true;
+                            LA_22a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16899,14 +16515,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "")
                         {
                             LA_23a_v.Checked = true;
+                            LA_23a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "999")
                         {
                             LA_23a_b.Checked = true;
+                            LA_23a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_23a_b"].ToString() == "888")
                         {
                             LA_23a_c.Checked = true;
+                            LA_23a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16930,14 +16549,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "")
                         {
                             LA_24a_v.Checked = true;
+                            LA_24a_v_CheckedChanged1(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "999")
                         {
                             LA_24a_b.Checked = true;
+                            LA_24a_b_CheckedChanged1(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_24a_b"].ToString() == "888")
                         {
                             LA_24a_c.Checked = true;
+                            LA_24a_c_CheckedChanged1(null, null);
                         }
 
 
@@ -16960,20 +16582,20 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-
-
-
                         if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "")
                         {
                             LA_25a_v.Checked = true;
+                            LA_25a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "999")
                         {
                             LA_25a_b.Checked = true;
+                            LA_25a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_25a_b"].ToString() == "888")
                         {
                             LA_25a_c.Checked = true;
+                            LA_25a_c_CheckedChanged(null, null);
                         }
 
 
@@ -16997,14 +16619,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "")
                         {
                             LA_26a_v.Checked = true;
+                            LA_26a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "999")
                         {
                             LA_26a_b.Checked = true;
+                            LA_26a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_26a_b"].ToString() == "888")
                         {
                             LA_26a_c.Checked = true;
+                            LA_26a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17028,14 +16653,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "")
                         {
                             LA_27a_v.Checked = true;
+                            LA_27a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "999")
                         {
                             LA_27a_b.Checked = true;
+                            LA_27a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_27a_b"].ToString() == "888")
                         {
                             LA_27a_c.Checked = true;
+                            LA_27a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17059,14 +16687,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "")
                         {
                             LA_28a_v.Checked = true;
+                            LA_28a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "999")
                         {
                             LA_28a_b.Checked = true;
+                            LA_28a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_28a_b"].ToString() == "888")
                         {
                             LA_28a_c.Checked = true;
+                            LA_28a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17090,14 +16721,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "")
                         {
                             LA_29a_v.Checked = true;
+                            LA_29a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "999")
                         {
                             LA_29a_b.Checked = true;
+                            LA_29a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_29a_b"].ToString() == "888")
                         {
                             LA_29a_c.Checked = true;
+                            LA_29a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17121,14 +16755,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "")
                         {
                             LA_30a_v.Checked = true;
+                            LA_30a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "999")
                         {
                             LA_30a_b.Checked = true;
+                            LA_30a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_30a_b"].ToString() == "888")
                         {
                             LA_30a_c.Checked = true;
+                            LA_30a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17152,14 +16789,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "")
                         {
                             LA_31a_v.Checked = true;
+                            LA_31a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "999")
                         {
                             LA_31a_b.Checked = true;
+                            LA_31a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_31a_b"].ToString() == "888")
                         {
                             LA_31a_c.Checked = true;
+                            LA_31a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17183,14 +16823,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "")
                         {
                             LA_32a_v.Checked = true;
+                            LA_32a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "999")
                         {
                             LA_32a_b.Checked = true;
+                            LA_32a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_32a_b"].ToString() == "888")
                         {
                             LA_32a_c.Checked = true;
+                            LA_32a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17214,14 +16857,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "")
                         {
                             LA_33a_v.Checked = true;
+                            LA_33a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "999")
                         {
                             LA_33a_b.Checked = true;
+                            LA_33a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_33a_b"].ToString() == "888")
                         {
                             LA_33a_c.Checked = true;
+                            LA_33a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17245,14 +16891,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "")
                         {
                             LA_34a_v.Checked = true;
+                            LA_34a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "999")
                         {
                             LA_34a_b.Checked = true;
+                            LA_34a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_34a_b"].ToString() == "888")
                         {
                             LA_34a_c.Checked = true;
+                            LA_34a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17276,14 +16925,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "")
                         {
                             LA_35a_v.Checked = true;
+                            LA_35a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "999")
                         {
                             LA_35a_b.Checked = true;
+                            LA_35a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_35a_b"].ToString() == "888")
                         {
                             LA_35a_c.Checked = true;
+                            LA_35a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17307,14 +16959,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "")
                         {
                             LA_36a_v.Checked = true;
+                            LA_36a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "999")
                         {
                             LA_36a_b.Checked = true;
+                            LA_36a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_36a_b"].ToString() == "888")
                         {
                             LA_36a_c.Checked = true;
+                            LA_36a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17338,14 +16993,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "")
                         {
                             LA_37a_v.Checked = true;
+                            LA_37a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "999")
                         {
                             LA_37a_b.Checked = true;
+                            LA_37a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_37a_b"].ToString() == "888")
                         {
                             LA_37a_c.Checked = true;
+                            LA_37a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17369,14 +17027,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "")
                         {
                             LA_38a_v.Checked = true;
+                            LA_38a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "999")
                         {
                             LA_38a_b.Checked = true;
+                            LA_38a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_38a_b"].ToString() == "888")
                         {
                             LA_38a_c.Checked = true;
+                            LA_38a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17400,14 +17061,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "")
                         {
                             LA_39a_v.Checked = true;
+                            LA_39a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "999")
                         {
                             LA_39a_b.Checked = true;
+                            LA_39a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_39a_b"].ToString() == "888")
                         {
                             LA_39a_c.Checked = true;
+                            LA_39a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17431,14 +17095,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "")
                         {
                             LA_40a_v.Checked = true;
+                            LA_40a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "999")
                         {
                             LA_40a_b.Checked = true;
+                            LA_40a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_40a_b"].ToString() == "888")
                         {
                             LA_40a_c.Checked = true;
+                            LA_40a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17462,14 +17129,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "")
                         {
                             LA_41a_v.Checked = true;
+                            LA_41a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "999")
                         {
                             LA_41a_b.Checked = true;
+                            LA_41a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_41a_b"].ToString() == "888")
                         {
                             LA_41a_c.Checked = true;
+                            LA_41a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17493,14 +17163,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "")
                         {
                             LA_42a_v.Checked = true;
+                            LA_42a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "999")
                         {
                             LA_42a_b.Checked = true;
+                            LA_42a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_42a_b"].ToString() == "888")
                         {
                             LA_42a_c.Checked = true;
+                            LA_42a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17524,14 +17197,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "")
                         {
                             LA_43a_v.Checked = true;
+                            LA_43a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "999")
                         {
                             LA_43a_b.Checked = true;
+                            LA_43a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_43a_b"].ToString() == "888")
                         {
                             LA_43a_c.Checked = true;
+                            LA_43a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17555,14 +17231,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "")
                         {
                             LA_44a_v.Checked = true;
+                            LA_44a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "999")
                         {
                             LA_44a_b.Checked = true;
+                            LA_44a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_44a_b"].ToString() == "888")
                         {
                             LA_44a_c.Checked = true;
+                            LA_44a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17586,14 +17265,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "")
                         {
                             LA_45a_v.Checked = true;
+                            LA_45a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "999")
                         {
                             LA_45a_b.Checked = true;
+                            LA_45a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_45a_b"].ToString() == "888")
                         {
                             LA_45a_c.Checked = true;
+                            LA_45a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17617,14 +17299,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "")
                         {
                             LA_46a_v.Checked = true;
+                            LA_46a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "999")
                         {
                             LA_46a_b.Checked = true;
+                            LA_46a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_46a_b"].ToString() == "888")
                         {
                             LA_46a_c.Checked = true;
+                            LA_46a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17648,14 +17333,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "")
                         {
                             LA_47a_v.Checked = true;
+                            LA_47a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "999")
                         {
                             LA_47a_b.Checked = true;
+                            LA_47a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_47a_b"].ToString() == "888")
                         {
                             LA_47a_c.Checked = true;
+                            LA_47a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17679,14 +17367,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "")
                         {
                             LA_48a_v.Checked = true;
+                            LA_48a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "999")
                         {
                             LA_48a_b.Checked = true;
+                            LA_48a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_48a_b"].ToString() == "888")
                         {
                             LA_48a_c.Checked = true;
+                            LA_48a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17710,14 +17401,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "")
                         {
                             LA_49a_v.Checked = true;
+                            LA_49a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "999")
                         {
                             LA_49a_b.Checked = true;
+                            LA_49a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_49a_b"].ToString() == "888")
                         {
                             LA_49a_c.Checked = true;
+                            LA_49a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17741,14 +17435,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "")
                         {
                             LA_50a_v.Checked = true;
+                            LA_50a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "999")
                         {
                             LA_50a_b.Checked = true;
+                            LA_50a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_50a_b"].ToString() == "888")
                         {
                             LA_50a_c.Checked = true;
+                            LA_50a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17772,14 +17469,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "")
                         {
                             LA_51a_v.Checked = true;
+                            LA_51a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "999")
                         {
                             LA_51a_b.Checked = true;
+                            LA_51a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_51a_b"].ToString() == "888")
                         {
                             LA_51a_c.Checked = true;
+                            LA_51a_c_CheckedChanged(null, null);
                         }
 
 
@@ -17803,14 +17503,17 @@ public partial class sample_results : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "")
                         {
                             LA_52a_v.Checked = true;
+                            LA_52a_v_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "999")
                         {
                             LA_52a_b.Checked = true;
+                            LA_52a_b_CheckedChanged(null, null);
                         }
                         else if (ds.Tables[0].Rows[0]["LA_52a_b"].ToString() == "888")
                         {
                             LA_52a_c.Checked = true;
+                            LA_52a_c_CheckedChanged(null, null);
                         }
 
 
@@ -20070,15 +19773,5116 @@ public partial class sample_results : System.Web.UI.Page
 
     protected void LA_24a_v_CheckedChanged(object sender, EventArgs e)
     {
-
+        if(LA_24a_v.Checked)
+        {
+            cntl_LA_24a_a.Visible = true;
+            cntl_LA_24b.Visible = true;
+        }
     }
 
     protected void LA_24a_b_CheckedChanged(object sender, EventArgs e)
     {
-
+        if (LA_24a_v.Checked)
+        {
+            cntl_LA_24a_a.Visible = false;
+            cntl_LA_24b.Visible = false;
+            LA_24a_a.Text = "";
+            LA_24b_a.Checked = false;
+            LA_24b_b.Checked = false;
+            LA_24b_c.Checked = false;
+        }
     }
 
     protected void LA_24a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_24a_c.Checked)
+        {
+            cntl_LA_24a_a.Visible = false;
+            cntl_LA_24b.Visible = false;
+            LA_24a_a.Text = "";
+            LA_24b_a.Checked = false;
+            LA_24b_b.Checked = false;
+            LA_24b_c.Checked = false;
+        }
+    }
+
+    protected void LA_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_03_v.Checked == true)
+        {
+            cntl_LA_03_a.Visible = true;
+        }
+    }
+
+    protected void LA_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_03_b.Checked == true)
+        {
+            cntl_LA_03_a.Visible = false;
+            LA_03_a.Text = "";
+        }
+    }
+
+    protected void LA_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_03_c.Checked == true)
+        {
+            cntl_LA_03_a.Visible = false;
+            LA_03_a.Text = "";
+        }
+    }
+
+    protected void LA_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_04_v.Checked == true)
+        {
+            cntl_LA_04_a.Visible = true;
+        }
+    }
+
+    protected void LA_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_04_b.Checked == true)
+        {
+            cntl_LA_04_a.Visible = false;
+            LA_04_a.Text = "";
+        }
+    }
+
+    protected void LA_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_04_c.Checked == true)
+        {
+            cntl_LA_04_a.Visible = false;
+            LA_04_a.Text = "";
+        }
+    }
+
+    protected void LA_05_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_05_v.Checked == true)
+        {
+            cntl_LA_05_a.Visible = true;
+        }
+    }
+
+    protected void LA_05_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_05_b.Checked == true)
+        {
+            cntl_LA_05_a.Visible = false;
+            LA_05_a.Text = "";
+        }
+    }
+
+    protected void LA_05_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_05_c.Checked == true)
+        {
+            cntl_LA_05_a.Visible = false;
+            LA_05_a.Text = "";
+        }
+    }
+
+    protected void LA_06_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_06_v.Checked == true)
+        {
+            cntl_LA_06_a.Visible = true;
+        }
+    }
+
+    protected void LA_06_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_06_b.Checked == true)
+        {
+            cntl_LA_06_a.Visible = false;
+            LA_06_a.Text = "";
+        }
+    }
+
+    protected void LA_06_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_06_c.Checked == true)
+        {
+            cntl_LA_06_a.Visible = false;
+            LA_06_a.Text = "";
+        }
+    }
+
+    protected void LA_07_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_07_v.Checked == true)
+        {
+            cntl_LA_07_a.Visible = true;
+        }
+    }
+
+    protected void LA_07_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_07_b.Checked == true)
+        {
+            cntl_LA_07_a.Visible = false;
+            LA_07_a.Text = "";
+        }
+    }
+
+    protected void LA_07_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_07_c.Checked == true)
+        {
+            cntl_LA_07_a.Visible = false;
+            LA_07_a.Text = "";
+        }
+    }
+
+    protected void LA_08_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_08_v.Checked == true)
+        {
+            cntl_LA_08_a.Visible = true;
+        }
+    }
+
+    protected void LA_08_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_08_b.Checked == true)
+        {
+            cntl_LA_08_a.Visible = false;
+            LA_08_a.Text = "";
+        }
+    }
+
+    protected void LA_08_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_08_c.Checked == true)
+        {
+            cntl_LA_08_a.Visible = false;
+            LA_08_a.Text = "";
+        }
+    }
+
+    protected void LA_09_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_09_v.Checked == true)
+        {
+            cntl_LA_09_a.Visible = true;
+        }
+    }
+
+    protected void LA_09_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_09_b.Checked == true)
+        {
+            cntl_LA_09_a.Visible = false;
+            LA_09_a.Text = "";
+        }
+    }
+
+    protected void LA_09_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_09_c.Checked == true)
+        {
+            cntl_LA_09_a.Visible = false;
+            LA_09_a.Text = "";
+        }
+    }
+
+    protected void LA_10_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_10_v.Checked == true)
+        {
+            cntl_LA_10_a.Visible = true;
+        }
+    }
+
+    protected void LA_10_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_10_b.Checked == true)
+        {
+            cntl_LA_10_a.Visible = false;
+            LA_10_a.Text = "";
+        }
+    }
+
+    protected void LA_10_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_10_c.Checked == true)
+        {
+            cntl_LA_10_a.Visible = false;
+            LA_10_a.Text = "";
+        }
+    }
+
+    protected void LA_11_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_11_v.Checked == true)
+        {
+            cntl_LA_11_a.Visible = true;
+        }
+    }
+
+    protected void LA_11_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_11_b.Checked == true)
+        {
+            cntl_LA_11_a.Visible = false;
+            LA_11_a.Text = "";
+        }
+    }
+
+    protected void LA_11_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_11_c.Checked == true)
+        {
+            cntl_LA_11_a.Visible = false;
+            LA_11_a.Text = "";
+        }
+    }
+
+    protected void LA_12_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_12_v.Checked == true)
+        {
+            cntl_LA_12_a.Visible = true;
+        }
+    }
+
+    protected void LA_12_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_12_b.Checked == true)
+        {
+            cntl_LA_12_a.Visible = false;
+            LA_12_a.Text = "";
+        }
+    }
+
+    protected void LA_12_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_12_c.Checked == true)
+        {
+            cntl_LA_12_a.Visible = false;
+            LA_12_a.Text = "";
+        }
+    }
+
+    protected void LA_13_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_13_v.Checked == true)
+        {
+            cntl_LA_13_a.Visible = true;
+        }
+    }
+
+    protected void LA_13_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_13_b.Checked == true)
+        {
+            cntl_LA_13_a.Visible = false;
+            LA_13_a.Text = "";
+        }
+    }
+
+    protected void LA_13_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_13_c.Checked == true)
+        {
+            cntl_LA_13_a.Visible = false;
+            LA_13_a.Text = "";
+        }
+    }
+
+    protected void LA_14_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_14_v.Checked == true)
+        {
+            cntl_LA_14_a.Visible = true;
+        }
+    }
+
+    protected void LA_14_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_14_b.Checked == true)
+        {
+            cntl_LA_14_a.Visible = false;
+            LA_14_a.Text = "";
+        }
+    }
+
+    protected void LA_14_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_14_c.Checked == true)
+        {
+            cntl_LA_14_a.Visible = false;
+            LA_14_a.Text = "";
+        }
+    }
+
+    protected void LA_15_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_15_v.Checked == true)
+        {
+            cntl_LA_15_a.Visible = true;
+        }
+    }
+
+    protected void LA_15_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_15_b.Checked == true)
+        {
+            cntl_LA_15_a.Visible = false;
+            LA_15_a.Text = "";
+        }
+    }
+
+    protected void LA_15_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_15_c.Checked == true)
+        {
+            cntl_LA_15_a.Visible = false;
+            LA_15_a.Text = "";
+        }
+    }
+
+    protected void LA_16_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_16_v.Checked == true)
+        {
+            cntl_LA_16_a.Visible = true;
+        }
+    }
+
+    protected void LA_16_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_16_b.Checked == true)
+        {
+            cntl_LA_16_a.Visible = false;
+            LA_16_a.Text = "";
+        }
+    }
+
+    protected void LA_16_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_16_c.Checked == true)
+        {
+            cntl_LA_16_a.Visible = false;
+            LA_16_a.Text = "";
+        }
+    }
+
+    protected void LF_01_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_01_v.Checked == true)
+        {
+            cntl_LF_01_a.Visible = true;
+        }
+    }
+
+    protected void LF_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_01_b.Checked == true)
+        {
+            cntl_LF_01_a.Visible = false;
+            LF_01_a.Text = "";
+        }
+    }
+
+    protected void LF_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_01_c.Checked == true)
+        {
+            cntl_LF_01_a.Visible = false;
+            LF_01_a.Text = "";
+        }
+    }
+
+    protected void LF_02_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_02_v.Checked == true)
+        {
+            cntl_LF_02_a.Visible = true;
+        }
+    }
+
+    protected void LF_02_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_02_b.Checked == true)
+        {
+            cntl_LF_02_a.Visible = false;
+            LF_02_a.Text = "";
+        }
+    }
+
+    protected void LF_02_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_02_c.Checked == true)
+        {
+            cntl_LF_02_a.Visible = false;
+            LF_02_a.Text = "";
+        }
+    }
+
+    protected void LF_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_03_v.Checked == true)
+        {
+            cntl_LF_03_a.Visible = true;
+        }
+    }
+
+    protected void LF_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_03_b.Checked == true)
+        {
+            cntl_LF_03_a.Visible = false;
+            LF_03_a.Text = "";
+        }
+    }
+
+    protected void LF_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_03_c.Checked == true)
+        {
+            cntl_LF_03_a.Visible = false;
+            LF_03_a.Text = "";
+        }
+    }
+
+    protected void LF_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_04_v.Checked == true)
+        {
+            cntl_LF_04_a.Visible = true;
+        }
+    }
+
+    protected void LF_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_04_b.Checked == true)
+        {
+            cntl_LF_04_a.Visible = false;
+            LF_04_a.Text = "";
+        }
+    }
+
+    protected void LF_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_04_c.Checked == true)
+        {
+            cntl_LF_04_a.Visible = false;
+            LF_04_a.Text = "";
+        }
+    }
+
+    protected void LF_05_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_05_v.Checked == true)
+        {
+            cntl_LF_05_a.Visible = true;
+        }
+    }
+
+    protected void LF_05_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_05_b.Checked == true)
+        {
+            cntl_LF_05_a.Visible = false;
+            LF_05_a.Text = "";
+        }
+    }
+
+    protected void LF_05_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_05_c.Checked == true)
+        {
+            cntl_LF_05_a.Visible = false;
+            LF_05_a.Text = "";
+        }
+    }
+
+    protected void LF_06_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_06_v.Checked == true)
+        {
+            cntl_LF_06_a.Visible = true;
+        }
+    }
+
+    protected void LF_06_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_06_b.Checked == true)
+        {
+            cntl_LF_06_a.Visible = false;
+            LF_06_a.Text = "";
+        }
+    }
+
+    protected void LF_06_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_06_c.Checked == true)
+        {
+            cntl_LF_06_a.Visible = false;
+            LF_06_a.Text = "";
+        }
+    }
+
+    protected void LF_07_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_07_v.Checked == true)
+        {
+            cntl_LF_07_a.Visible = true;
+        }
+    }
+
+    protected void LF_07_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_07_b.Checked == true)
+        {
+            cntl_LF_07_a.Visible = false;
+            LF_07_a.Text = "";
+        }
+    }
+
+    protected void LF_07_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LF_07_c.Checked == true)
+        {
+            cntl_LF_07_a.Visible = false;
+            LF_07_a.Text = "";
+        }
+    }
+
+    protected void RF_01_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_01_v.Checked)
+        {
+            cntl_RF_01_a.Visible = true;
+        }
+    }
+
+    protected void RF_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_01_b.Checked)
+        {
+            cntl_RF_01_a.Visible = false;
+            RF_01_a.Text = "";
+        }
+    }
+
+    protected void RF_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_01_c.Checked)
+        {
+            cntl_RF_01_a.Visible = false;
+            RF_01_a.Text = "";
+        }
+    }
+
+    protected void RF_02_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_02_v.Checked)
+        {
+            cntl_RF_02_a.Visible = true;
+        }
+    }
+
+    protected void RF_02_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_02_b.Checked)
+        {
+            cntl_RF_02_a.Visible = false;
+            RF_02_a.Text = "";
+        }
+    }
+
+    protected void RF_02_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_02_c.Checked)
+        {
+            cntl_RF_02_a.Visible = false;
+            RF_02_a.Text = "";
+        }
+    }
+
+    protected void RF_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_03_v.Checked)
+        {
+            cntl_RF_03_a.Visible = true;
+        }
+    }
+
+    protected void RF_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_03_b.Checked)
+        {
+            cntl_RF_03_a.Visible = false;
+            RF_03_a.Text = "";
+        }
+    }
+
+    protected void RF_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_03_c.Checked)
+        {
+            cntl_RF_03_a.Visible = false;
+            RF_03_a.Text = "";
+        }
+    }
+
+    protected void RF_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_04_v.Checked)
+        {
+            cntl_RF_04_a.Visible = true;
+        }
+    }
+
+    protected void RF_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_04_b.Checked)
+        {
+            cntl_RF_04_a.Visible = false;
+            RF_04_a.Text = "";
+        }
+    }
+
+    protected void RF_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RF_04_c.Checked)
+        {
+            cntl_RF_04_a.Visible = false;
+            RF_04_a.Text = "";
+        }
+    }
+
+    protected void SE_01_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_01_v.Checked)
+        {
+            cntl_SE_01_a.Visible = true;
+        }
+    }
+
+    protected void SE_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_01_b.Checked)
+        {
+            cntl_SE_01_a.Visible = false;
+            SE_01_a.Text = "";
+        }
+    }
+
+    protected void SE_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_01_c.Checked)
+        {
+            cntl_SE_01_a.Visible = false;
+            SE_01_a.Text = "";
+        }
+    }
+
+    protected void SE_02_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_02_v.Checked)
+        {
+            cntl_SE_02_a.Visible = true;
+        }
+    }
+
+    protected void SE_02_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_02_b.Checked)
+        {
+            cntl_SE_02_a.Visible = false;
+            SE_02_a.Text = "";
+        }
+    }
+
+    protected void SE_02_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_02_c.Checked)
+        {
+            cntl_SE_02_a.Visible = false;
+            SE_02_a.Text = "";
+        }
+    }
+
+    protected void SE_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_03_v.Checked)
+        {
+            cntl_SE_03_a.Visible = true;
+        }
+    }
+
+    protected void SE_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_03_b.Checked)
+        {
+            cntl_SE_03_a.Visible = false;
+            SE_03_a.Text = "";
+        }
+    }
+
+    protected void SE_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_03_c.Checked)
+        {
+            cntl_SE_03_a.Visible = false;
+            SE_03_a.Text = "";
+        }
+    }
+
+    protected void SE_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_04_v.Checked)
+        {
+            cntl_SE_04_a.Visible = true;
+        }
+    }
+
+    protected void SE_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_04_b.Checked)
+        {
+            cntl_SE_04_a.Visible = false;
+            SE_04_a.Text = "";
+        }
+    }
+
+    protected void SE_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SE_04_c.Checked)
+        {
+            cntl_SE_04_a.Visible = false;
+            SE_04_a.Text = "";
+        }
+    }
+
+    protected void CS_01_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_01_v.Checked)
+        {
+            cntl_CS_01_a.Visible = true;
+        }
+    }
+
+    protected void CS_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_01_b.Checked)
+        {
+            cntl_CS_01_a.Visible = false;
+            CS_01_a.Text = "";
+        }
+    }
+
+    protected void CS_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_01_c.Checked)
+        {
+            cntl_CS_01_a.Visible = false;
+            CS_01_a.Text = "";
+        }
+    }
+
+    protected void CS_02_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_02_v.Checked)
+        {
+            cntl_CS_02_a.Visible = true;
+        }
+    }
+
+    protected void CS_02_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_02_b.Checked)
+        {
+            cntl_CS_02_a.Visible = false;
+            CS_02_a.Text = "";
+        }
+    }
+
+    protected void CS_02_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_02_c.Checked)
+        {
+            cntl_CS_02_a.Visible = false;
+            CS_02_a.Text = "";
+        }
+    }
+
+    protected void CS_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_03_v.Checked)
+        {
+            cntl_CS_03_a.Visible = true;
+        }
+    }
+
+    protected void CS_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_03_b.Checked)
+        {
+            cntl_CS_03_a.Visible = false;
+            CS_03_a.Text = "";
+        }
+    }
+
+    protected void CS_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_03_c.Checked)
+        {
+            cntl_CS_03_a.Visible = false;
+            CS_03_a.Text = "";
+        }
+    }
+
+    protected void CS_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_04_v.Checked)
+        {
+            cntl_CS_04_a.Visible = true;
+        }
+    }
+
+    protected void CS_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_04_b.Checked)
+        {
+            cntl_CS_04_a.Visible = false;
+            CS_04_a.Text = "";
+        }
+    }
+
+    protected void CS_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_04_c.Checked)
+        {
+            cntl_CS_04_a.Visible = false;
+            CS_04_a.Text = "";
+        }
+    }
+
+    protected void CS_05_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_05_v.Checked)
+        {
+            cntl_CS_05_a.Visible = true;
+        }
+    }
+
+    protected void CS_05_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_05_b.Checked)
+        {
+            cntl_CS_05_a.Visible = false;
+            CS_05_a.Text = "";
+        }
+    }
+
+    protected void CS_05_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_05_c.Checked)
+        {
+            cntl_CS_05_a.Visible = false;
+            CS_05_a.Text = "";
+        }
+    }
+
+    protected void CS_06_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_06_v.Checked)
+        {
+            cntl_CS_06_a.Visible = true;
+        }
+    }
+
+    protected void CS_06_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_06_b.Checked)
+        {
+            cntl_CS_06_a.Visible = false;
+            CS_06_a.Text = "";
+        }
+    }
+
+    protected void CS_06_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_06_c.Checked)
+        {
+            cntl_CS_06_a.Visible = false;
+            CS_06_a.Text = "";
+        }
+    }
+
+    protected void CS_07_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_07_v.Checked)
+        {
+            cntl_CS_07_a.Visible = true;
+        }
+    }
+
+    protected void CS_07_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_07_b.Checked)
+        {
+            cntl_CS_07_a.Visible = false;
+            CS_07_a.Text = "";
+        }
+    }
+
+    protected void CS_07_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_07_c.Checked)
+        {
+            cntl_CS_07_a.Visible = false;
+            CS_07_a.Text = "";
+        }
+    }
+
+    protected void CS_08_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_08_v.Checked)
+        {
+            cntl_CS_08_a.Visible = true;
+        }
+    }
+
+    protected void CS_08_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_08_b.Checked)
+        {
+            cntl_CS_08_a.Visible = false;
+            CS_08_a.Text = "";
+        }
+    }
+
+    protected void CS_08_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_08_c.Checked)
+        {
+            cntl_CS_08_a.Visible = false;
+            CS_08_a.Text = "";
+        }
+    }
+
+    protected void CS_09_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_09_v.Checked)
+        {
+            cntl_CS_09_a.Visible = true;
+        }
+    }
+
+    protected void CS_09_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_09_b.Checked)
+        {
+            cntl_CS_09_a.Visible = false;
+            CS_09_a.Text = "";
+        }
+    }
+
+    protected void CS_09_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_09_c.Checked)
+        {
+            cntl_CS_09_a.Visible = false;
+            CS_09_a.Text = "";
+        }
+    }
+
+    protected void CS_10_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_10_v.Checked)
+        {
+            cntl_CS_10_a.Visible = true;
+        }
+    }
+
+    protected void CS_10_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_10_b.Checked)
+        {
+            cntl_CS_10_a.Visible = false;
+            CS_10_a.Text = "";
+        }
+    }
+
+    protected void CS_10_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CS_10_c.Checked)
+        {
+            cntl_CS_10_a.Visible = false;
+            CS_10_a.Text = "";
+        }
+    }
+
+    protected void UR_01_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_01_v.Checked)
+        {
+            cntl_UR_01_a.Visible = true;
+        }
+    }
+
+    protected void UR_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_01_b.Checked)
+        {
+            cntl_UR_01_a.Visible = false;
+            UR_01_a.Text = "";
+        }
+    }
+
+    protected void UR_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_01_c.Checked)
+        {
+            cntl_UR_01_a.Visible = false;
+            UR_01_a.Text = "";
+        }
+    }
+
+    protected void UR_02_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_02_v.Checked)
+        {
+            cntl_UR_02_a.Visible = true;
+        }
+    }
+
+    protected void UR_02_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_02_b.Checked)
+        {
+            cntl_UR_02_a.Visible = false;
+            UR_02_a.Text = "";
+        }
+    }
+
+    protected void UR_02_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_02_c.Checked)
+        {
+            cntl_UR_02_a.Visible = false;
+            UR_02_a.Text = "";
+        }
+    }
+
+    protected void UR_03_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_03_v.Checked)
+        {
+            cntl_UR_03_a.Visible = true;
+        }
+    }
+
+    protected void UR_03_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_03_b.Checked)
+        {
+            cntl_UR_03_a.Visible = false;
+            UR_03_a.Text = "";
+        }
+    }
+
+    protected void UR_03_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_03_c.Checked)
+        {
+            cntl_UR_03_a.Visible = false;
+            UR_03_a.Text = "";
+        }
+    }
+
+    protected void UR_04_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04_v.Checked)
+        {
+            cntl_UR_04_a.Visible = true;
+        }
+    }
+
+    protected void UR_04_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04_b.Checked)
+        {
+            cntl_UR_04_a.Visible = false;
+            UR_04_a.Text = "";
+        }
+    }
+
+    protected void UR_04_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04_c.Checked)
+        {
+            cntl_UR_04_a.Visible = false;
+            UR_04_a.Text = "";
+        }
+    }
+
+    protected void UR_04a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04a_v.Checked)
+        {
+            cntl_UR_04a_a.Visible = true;
+        }
+    }
+
+    protected void UR_04a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04a_b.Checked)
+        {
+            cntl_UR_04a_a.Visible = false;
+            UR_04a_a.Text = "";
+        }
+    }
+
+    protected void UR_04a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_04a_c.Checked)
+        {
+            cntl_UR_04a_a.Visible = false;
+            UR_04a_a.Text = "";
+        }
+    }
+
+    protected void UR_05_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_05_v.Checked)
+        {
+            cntl_UR_05_a.Visible = true;
+        }
+    }
+
+    protected void UR_05_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_05_b.Checked)
+        {
+            cntl_UR_05_a.Visible = false;
+            UR_05_a.Text = "";
+        }
+    }
+
+    protected void UR_05_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_05_c.Checked)
+        {
+            cntl_UR_05_a.Visible = false;
+            UR_05_a.Text = "";
+        }
+    }
+
+    protected void UR_06_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_06_v.Checked)
+        {
+            cntl_UR_06_a.Visible = true;
+        }
+    }
+
+    protected void UR_06_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_06_b.Checked)
+        {
+            cntl_UR_06_a.Visible = false;
+            UR_06_a.Text = "";
+        }
+    }
+
+    protected void UR_06_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_06_c.Checked)
+        {
+            cntl_UR_06_a.Visible = false;
+            UR_06_a.Text = "";
+        }
+    }
+
+    protected void UR_07_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_07_v.Checked)
+        {
+            cntl_UR_07_a.Visible = true;
+        }
+    }
+
+    protected void UR_07_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_07_b.Checked)
+        {
+            cntl_UR_07_a.Visible = false;
+            UR_07_a.Text = "";
+        }
+    }
+
+    protected void UR_07_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_07_c.Checked)
+        {
+            cntl_UR_07_a.Visible = false;
+            UR_07_a.Text = "";
+        }
+    }
+
+    protected void UR_08_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_08_v.Checked)
+        {
+            cntl_UR_08_a.Visible = true;
+        }
+    }
+
+    protected void UR_08_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_08_b.Checked)
+        {
+            cntl_UR_08_a.Visible = false;
+            UR_08_a.Text = "";
+        }
+    }
+
+    protected void UR_08_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_08_c.Checked)
+        {
+            cntl_UR_08_a.Visible = false;
+            UR_08_a.Text = "";
+        }
+    }
+
+    protected void UR_10_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_10_v.Checked)
+        {
+            cntl_UR_10_a.Visible = true;
+        }
+    }
+
+    protected void UR_10_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_10_b.Checked)
+        {
+            cntl_UR_10_a.Visible = false;
+            UR_10_a.Text = "";
+        }
+    }
+
+    protected void UR_10_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_10_c.Checked)
+        {
+            cntl_UR_10_a.Visible = false;
+            UR_10_a.Text = "";
+        }
+    }
+
+    protected void UR_11_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_11_v.Checked)
+        {
+            cntl_UR_11_a.Visible = true;
+        }
+    }
+
+    protected void UR_11_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_11_b.Checked)
+        {
+            cntl_UR_11_a.Visible = false;
+            UR_11_a.Text = "";
+        }
+    }
+
+    protected void UR_11_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_11_c.Checked)
+        {
+            cntl_UR_11_a.Visible = false;
+            UR_11_a.Text = "";
+        }
+    }
+
+    protected void UR_12_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_12_v.Checked)
+        {
+            cntl_UR_12_a.Visible = true;
+        }
+    }
+
+    protected void UR_12_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_12_b.Checked)
+        {
+            cntl_UR_12_a.Visible = false;
+            UR_12_a.Text = "";
+        }
+    }
+
+    protected void UR_12_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_12_c.Checked)
+        {
+            cntl_UR_12_a.Visible = false;
+            UR_12_a.Text = "";
+        }
+    }
+
+    protected void UR_13_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_13_v.Checked)
+        {
+            cntl_UR_13_a.Visible = true;
+        }
+    }
+
+    protected void UR_13_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_13_b.Checked)
+        {
+            cntl_UR_13_a.Visible = false;
+            UR_13_a.Text = "";
+        }
+    }
+
+    protected void UR_13_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_13_c.Checked)
+        {
+            cntl_UR_13_a.Visible = false;
+            UR_13_a.Text = "";
+        }
+    }
+
+    protected void UR_14_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_14_v.Checked)
+        {
+            cntl_UR_14_a.Visible = true;
+        }
+    }
+
+    protected void UR_14_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_14_b.Checked)
+        {
+            cntl_UR_14_a.Visible = false;
+            UR_14_a.Text = "";
+        }
+    }
+
+    protected void UR_14_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_14_c.Checked)
+        {
+            cntl_UR_14_a.Visible = false;
+            UR_14_a.Text = "";
+        }
+    }
+
+    protected void UR_15_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_15_v.Checked)
+        {
+            cntl_UR_15_a.Visible = true;
+        }
+    }
+
+    protected void UR_15_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_15_b.Checked)
+        {
+            cntl_UR_15_a.Visible = false;
+            UR_15_a.Text = "";
+        }
+    }
+
+    protected void UR_15_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_15_c.Checked)
+        {
+            cntl_UR_15_a.Visible = false;
+            UR_15_a.Text = "";
+        }
+    }
+
+    protected void UR_16_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_16_v.Checked)
+        {
+            cntl_UR_16_a.Visible = true;
+        }
+    }
+
+    protected void UR_16_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_16_b.Checked)
+        {
+            cntl_UR_16_a.Visible = false;
+            UR_16_a.Text = "";
+        }
+    }
+
+    protected void UR_16_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_16_c.Checked)
+        {
+            cntl_UR_16_a.Visible = false;
+            UR_16_a.Text = "";
+        }
+    }
+
+    protected void UR_17_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_17_v.Checked)
+        {
+            cntl_UR_17_a.Visible = true;
+        }
+    }
+
+    protected void UR_17_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_17_b.Checked)
+        {
+            cntl_UR_17_a.Visible = false;
+            UR_17_a.Text = "";
+        }
+    }
+
+    protected void UR_17_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_17_c.Checked)
+        {
+            cntl_UR_17_a.Visible = false;
+            UR_17_a.Text = "";
+        }
+    }
+
+    protected void UR_18_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_18_v.Checked)
+        {
+            cntl_UR_18_a.Visible = true;
+        }
+    }
+
+    protected void UR_18_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_18_b.Checked)
+        {
+            cntl_UR_18_a.Visible = false;
+            UR_18_a.Text = "";
+        }
+    }
+
+    protected void UR_18_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_18_c.Checked)
+        {
+            cntl_UR_18_a.Visible = false;
+            UR_18_a.Text = "";
+        }
+    }
+
+    protected void UR_19_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_19_v.Checked)
+        {
+            cntl_UR_19_a.Visible = true;
+        }
+    }
+
+    protected void UR_19_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_19_b.Checked)
+        {
+            cntl_UR_19_a.Visible = false;
+            UR_19_a.Text = "";
+        }
+    }
+
+    protected void UR_19_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_19_c.Checked)
+        {
+            cntl_UR_19_a.Visible = false;
+            UR_19_a.Text = "";
+        }
+    }
+
+    protected void UR_20_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_20_v.Checked)
+        {
+            cntl_UR_20_a.Visible = true;
+        }
+    }
+
+    protected void UR_20_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_20_b.Checked)
+        {
+            cntl_UR_20_a.Visible = false;
+            UR_20_a.Text = "";
+        }
+    }
+
+    protected void UR_20_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_20_c.Checked)
+        {
+            cntl_UR_20_a.Visible = false;
+            UR_20_a.Text = "";
+        }
+    }
+
+    protected void UR_21_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_21_v.Checked)
+        {
+            cntl_UR_21_a.Visible = true;
+        }
+    }
+
+    protected void UR_21_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_21_b.Checked)
+        {
+            cntl_UR_21_a.Visible = false;
+            UR_21_a.Text = "";
+        }
+    }
+
+    protected void UR_21_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (UR_21_c.Checked)
+        {
+            cntl_UR_21_a.Visible = false;
+            UR_21_a.Text = "";
+        }
+    }
+
+    protected void uc_01_a_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_01_a.Checked)
+        {
+            cntl_uc_01_ca.Visible = true;
+        }
+    }
+
+    protected void uc_01_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_01_b.Checked)
+        {
+            cntl_uc_01_ca.Visible = false;
+            uc_01_ca.Text = "";
+        }
+    }
+
+    protected void uc_01_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_01_c.Checked)
+        {
+            cntl_uc_01_ca.Visible = false;
+            uc_01_ca.Text = "";
+        }
+    }
+
+    protected void uc_02a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_02a_v.Checked)
+        {
+            cntl_uc_02a_a.Visible = true;
+            cntl_uc_02b.Visible = true;
+        }
+    }
+
+    protected void uc_02a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_02a_b.Checked)
+        {
+            cntl_uc_02a_a.Visible = false;
+            cntl_uc_02b.Visible = false;
+
+            uc_02a_a.Text = "";
+            uc_02b_a.Checked = false;
+            uc_02b_b.Checked = false;
+            uc_02b_c.Checked = false;
+        }
+    }
+
+    protected void uc_02a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_02a_c.Checked)
+        {
+            cntl_uc_02a_a.Visible = false;
+            cntl_uc_02b.Visible = false;
+
+            uc_02a_a.Text = "";
+            uc_02b_a.Checked = false;
+            uc_02b_b.Checked = false;
+            uc_02b_c.Checked = false;
+        }
+    }
+
+
+    protected void uc_03a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_03a_v.Checked)
+        {
+            cntl_uc_03a_a.Visible = true;
+            cntl_uc_03b.Visible = true;
+        }
+    }
+
+    protected void uc_03a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_03a_b.Checked)
+        {
+            cntl_uc_03a_a.Visible = false;
+            cntl_uc_03b.Visible = false;
+
+            uc_03a_a.Text = "";
+            uc_03b_a.Checked = false;
+            uc_03b_b.Checked = false;
+            uc_03b_c.Checked = false;
+        }
+    }
+
+    protected void uc_03a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_03a_c.Checked)
+        {
+            cntl_uc_03a_a.Visible = false;
+            cntl_uc_03b.Visible = false;
+
+            uc_03a_a.Text = "";
+            uc_03b_a.Checked = false;
+            uc_03b_b.Checked = false;
+            uc_03b_c.Checked = false;
+        }
+    }
+
+
+
+    protected void uc_04a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_04a_v.Checked)
+        {
+            cntl_uc_04a_a.Visible = true;
+            cntl_uc_04b.Visible = true;
+        }
+    }
+
+    protected void uc_04a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_04a_b.Checked)
+        {
+            cntl_uc_04a_a.Visible = false;
+            cntl_uc_04b.Visible = false;
+
+            uc_04a_a.Text = "";
+            uc_04b_a.Checked = false;
+            uc_04b_b.Checked = false;
+            uc_04b_c.Checked = false;
+        }
+    }
+
+    protected void uc_04a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_04a_c.Checked)
+        {
+            cntl_uc_04a_a.Visible = false;
+            cntl_uc_04b.Visible = false;
+
+            uc_04a_a.Text = "";
+            uc_04b_a.Checked = false;
+            uc_04b_b.Checked = false;
+            uc_04b_c.Checked = false;
+        }
+    }
+
+    protected void uc_04b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_04b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_04b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_05a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_05a_v.Checked)
+        {
+            cntl_uc_05a_a.Visible = true;
+            cntl_uc_05b.Visible = true;
+        }
+    }
+
+    protected void uc_05a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_05a_b.Checked)
+        {
+            cntl_uc_05a_a.Visible = false;
+            cntl_uc_05b.Visible = false;
+
+            uc_05a_a.Text = "";
+            uc_05b_a.Checked = false;
+            uc_05b_b.Checked = false;
+            uc_05b_c.Checked = false;
+        }
+    }
+
+    protected void uc_05a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_05a_c.Checked)
+        {
+            cntl_uc_05a_a.Visible = false;
+            cntl_uc_05b.Visible = false;
+
+            uc_05a_a.Text = "";
+            uc_05b_a.Checked = false;
+            uc_05b_b.Checked = false;
+            uc_05b_c.Checked = false;
+        }
+    }
+
+    protected void uc_05b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_05b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_05b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_06a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_06a_v.Checked)
+        {
+            cntl_uc_06a_a.Visible = true;
+            cntl_uc_06b.Visible = true;
+        }
+    }
+
+    protected void uc_06a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_06a_b.Checked)
+        {
+            cntl_uc_06a_a.Visible = false;
+            cntl_uc_06b.Visible = false;
+
+            uc_06a_a.Text = "";
+            uc_06b_a.Checked = false;
+            uc_06b_b.Checked = false;
+            uc_06b_c.Checked = false;
+        }
+    }
+
+    protected void uc_06a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_06a_c.Checked)
+        {
+            cntl_uc_06a_a.Visible = false;
+            cntl_uc_06b.Visible = false;
+
+            uc_06a_a.Text = "";
+            uc_06b_a.Checked = false;
+            uc_06b_b.Checked = false;
+            uc_06b_c.Checked = false;
+        }
+    }
+
+    protected void uc_06b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_06b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_06b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_07a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_07a_v.Checked)
+        {
+            cntl_uc_07a_a.Visible = true;
+            cntl_uc_07b.Visible = true;
+        }
+    }
+
+    protected void uc_07a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_07a_b.Checked)
+        {
+            cntl_uc_07a_a.Visible = false;
+            cntl_uc_07b.Visible = false;
+
+            uc_07a_a.Text = "";
+            uc_07b_a.Checked = false;
+            uc_07b_b.Checked = false;
+            uc_07b_c.Checked = false;
+        }
+    }
+
+    protected void uc_07a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_07a_c.Checked)
+        {
+            cntl_uc_07a_a.Visible = false;
+            cntl_uc_07b.Visible = false;
+
+            uc_07a_a.Text = "";
+            uc_07b_a.Checked = false;
+            uc_07b_b.Checked = false;
+            uc_07b_c.Checked = false;
+        }
+    }
+
+    protected void uc_07b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_07b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_07b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_08a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_08a_v.Checked)
+        {
+            cntl_uc_08a_a.Visible = true;
+            cntl_uc_08b.Visible = true;
+        }
+    }
+
+    protected void uc_08a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_08a_b.Checked)
+        {
+            cntl_uc_08a_a.Visible = false;
+            cntl_uc_08b.Visible = false;
+
+            uc_08a_a.Text = "";
+            uc_08b_a.Checked = false;
+            uc_08b_b.Checked = false;
+            uc_08b_c.Checked = false;
+        }
+    }
+
+    protected void uc_08a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_08a_c.Checked)
+        {
+            cntl_uc_08a_a.Visible = false;
+            cntl_uc_08b.Visible = false;
+
+            uc_08a_a.Text = "";
+            uc_08b_a.Checked = false;
+            uc_08b_b.Checked = false;
+            uc_08b_c.Checked = false;
+        }
+    }
+
+    protected void uc_08b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_08b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_08b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_09a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_09a_v.Checked)
+        {
+            cntl_uc_09a_a.Visible = true;
+            cntl_uc_09b.Visible = true;
+        }
+    }
+
+    protected void uc_09a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_09a_b.Checked)
+        {
+            cntl_uc_09a_a.Visible = false;
+            cntl_uc_09b.Visible = false;
+
+            uc_09a_a.Text = "";
+            uc_09b_a.Checked = false;
+            uc_09b_b.Checked = false;
+            uc_09b_c.Checked = false;
+        }
+    }
+
+    protected void uc_09a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_09a_c.Checked)
+        {
+            cntl_uc_09a_a.Visible = false;
+            cntl_uc_09b.Visible = false;
+
+            uc_09a_a.Text = "";
+            uc_09b_a.Checked = false;
+            uc_09b_b.Checked = false;
+            uc_09b_c.Checked = false;
+        }
+    }
+
+    protected void uc_09b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_09b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_09b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_10a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_10a_v.Checked)
+        {
+            cntl_uc_10a_a.Visible = true;
+            cntl_uc_10b.Visible = true;
+        }
+    }
+
+    protected void uc_10a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_10a_b.Checked)
+        {
+            cntl_uc_10a_a.Visible = false;
+            cntl_uc_10b.Visible = false;
+
+            uc_10a_a.Text = "";
+            uc_10b_a.Checked = false;
+            uc_10b_b.Checked = false;
+            uc_10b_c.Checked = false;
+        }
+    }
+
+    protected void uc_10a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_10a_c.Checked)
+        {
+            cntl_uc_10a_a.Visible = false;
+            cntl_uc_10b.Visible = false;
+
+            uc_10a_a.Text = "";
+            uc_10b_a.Checked = false;
+            uc_10b_b.Checked = false;
+            uc_10b_c.Checked = false;
+        }
+    }
+
+    protected void uc_10b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_10b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_10b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_11a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_11a_v.Checked)
+        {
+            cntl_uc_11a_a.Visible = true;
+            cntl_uc_11b.Visible = true;
+        }
+    }
+
+    protected void uc_11a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_11a_b.Checked)
+        {
+            cntl_uc_11a_a.Visible = false;
+            cntl_uc_11b.Visible = false;
+
+            uc_11a_a.Text = "";
+            uc_11b_a.Checked = false;
+            uc_11b_b.Checked = false;
+            uc_11b_c.Checked = false;
+        }
+    }
+
+    protected void uc_11a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_11a_c.Checked)
+        {
+            cntl_uc_11a_a.Visible = false;
+            cntl_uc_11b.Visible = false;
+
+            uc_11a_a.Text = "";
+            uc_11b_a.Checked = false;
+            uc_11b_b.Checked = false;
+            uc_11b_c.Checked = false;
+        }
+    }
+
+    protected void uc_11b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_11b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_11b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_12a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_12a_v.Checked)
+        {
+            cntl_uc_12a_a.Visible = true;
+            cntl_uc_12b.Visible = true;
+        }
+    }
+
+    protected void uc_12a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_12a_b.Checked)
+        {
+            cntl_uc_12a_a.Visible = false;
+            cntl_uc_12b.Visible = false;
+
+            uc_12a_a.Text = "";
+            uc_12b_a.Checked = false;
+            uc_12b_b.Checked = false;
+            uc_12b_c.Checked = false;
+        }
+    }
+
+    protected void uc_12a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_12a_c.Checked)
+        {
+            cntl_uc_12a_a.Visible = false;
+            cntl_uc_12b.Visible = false;
+
+            uc_12a_a.Text = "";
+            uc_12b_a.Checked = false;
+            uc_12b_b.Checked = false;
+            uc_12b_c.Checked = false;
+        }
+    }
+
+    protected void uc_12b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_12b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_12b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_13a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_13a_v.Checked)
+        {
+            cntl_uc_13a_a.Visible = true;
+            cntl_uc_13b.Visible = true;
+        }
+    }
+
+    protected void uc_13a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_13a_b.Checked)
+        {
+            cntl_uc_13a_a.Visible = false;
+            cntl_uc_13b.Visible = false;
+
+            uc_13a_a.Text = "";
+            uc_13b_a.Checked = false;
+            uc_13b_b.Checked = false;
+            uc_13b_c.Checked = false;
+        }
+    }
+
+    protected void uc_13a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_13a_c.Checked)
+        {
+            cntl_uc_13a_a.Visible = false;
+            cntl_uc_13b.Visible = false;
+
+            uc_13a_a.Text = "";
+            uc_13b_a.Checked = false;
+            uc_13b_b.Checked = false;
+            uc_13b_c.Checked = false;
+        }
+    }
+
+    protected void uc_13b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_13b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_13b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_14a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_14a_v.Checked)
+        {
+            cntl_uc_14a_a.Visible = true;
+            cntl_uc_14b.Visible = true;
+        }
+    }
+
+    protected void uc_14a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_14a_b.Checked)
+        {
+            cntl_uc_14a_a.Visible = false;
+            cntl_uc_14b.Visible = false;
+
+            uc_14a_a.Text = "";
+            uc_14b_a.Checked = false;
+            uc_14b_b.Checked = false;
+            uc_14b_c.Checked = false;
+        }
+    }
+
+    protected void uc_14a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_14a_c.Checked)
+        {
+            cntl_uc_14a_a.Visible = false;
+            cntl_uc_14b.Visible = false;
+
+            uc_14a_a.Text = "";
+            uc_14b_a.Checked = false;
+            uc_14b_b.Checked = false;
+            uc_14b_c.Checked = false;
+        }
+    }
+
+    protected void uc_14b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_14b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_14b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_15a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_15a_v.Checked)
+        {
+            cntl_uc_15a_a.Visible = true;
+            cntl_uc_15b.Visible = true;
+        }
+    }
+
+    protected void uc_15a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_15a_b.Checked)
+        {
+            cntl_uc_15a_a.Visible = false;
+            cntl_uc_15b.Visible = false;
+
+            uc_15a_a.Text = "";
+            uc_15b_a.Checked = false;
+            uc_15b_b.Checked = false;
+            uc_15b_c.Checked = false;
+        }
+    }
+
+    protected void uc_15a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_15a_c.Checked)
+        {
+            cntl_uc_15a_a.Visible = false;
+            cntl_uc_15b.Visible = false;
+
+            uc_15a_a.Text = "";
+            uc_15b_a.Checked = false;
+            uc_15b_b.Checked = false;
+            uc_15b_c.Checked = false;
+        }
+    }
+
+    protected void uc_15b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_15b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_15b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_16a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_16a_v.Checked)
+        {
+            cntl_uc_16a_a.Visible = true;
+            cntl_uc_16b.Visible = true;
+        }
+    }
+
+    protected void uc_16a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_16a_b.Checked)
+        {
+            cntl_uc_16a_a.Visible = false;
+            cntl_uc_16b.Visible = false;
+
+            uc_16a_a.Text = "";
+            uc_16b_a.Checked = false;
+            uc_16b_b.Checked = false;
+            uc_16b_c.Checked = false;
+        }
+    }
+
+    protected void uc_16a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_16a_c.Checked)
+        {
+            cntl_uc_16a_a.Visible = false;
+            cntl_uc_16b.Visible = false;
+
+            uc_16a_a.Text = "";
+            uc_16b_a.Checked = false;
+            uc_16b_b.Checked = false;
+            uc_16b_c.Checked = false;
+        }
+    }
+
+    protected void uc_16b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_16b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_16b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_17a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_17a_v.Checked)
+        {
+            cntl_uc_17a_a.Visible = true;
+            cntl_uc_17b.Visible = true;
+        }
+    }
+
+    protected void uc_17a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_17a_b.Checked)
+        {
+            cntl_uc_17a_a.Visible = false;
+            cntl_uc_17b.Visible = false;
+
+            uc_17a_a.Text = "";
+            uc_17b_a.Checked = false;
+            uc_17b_b.Checked = false;
+            uc_17b_c.Checked = false;
+        }
+    }
+
+    protected void uc_17a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_17a_c.Checked)
+        {
+            cntl_uc_17a_a.Visible = false;
+            cntl_uc_17b.Visible = false;
+
+            uc_17a_a.Text = "";
+            uc_17b_a.Checked = false;
+            uc_17b_b.Checked = false;
+            uc_17b_c.Checked = false;
+        }
+    }
+
+    protected void uc_17b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_17b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_17b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_18a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_18a_v.Checked)
+        {
+            cntl_uc_18a_a.Visible = true;
+            cntl_uc_18b.Visible = true;
+        }
+    }
+
+    protected void uc_18a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_18a_b.Checked)
+        {
+            cntl_uc_18a_a.Visible = false;
+            cntl_uc_18b.Visible = false;
+
+            uc_18a_a.Text = "";
+            uc_18b_a.Checked = false;
+            uc_18b_b.Checked = false;
+            uc_18b_c.Checked = false;
+        }
+    }
+
+    protected void uc_18a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_18a_c.Checked)
+        {
+            cntl_uc_18a_a.Visible = false;
+            cntl_uc_18b.Visible = false;
+
+            uc_18a_a.Text = "";
+            uc_18b_a.Checked = false;
+            uc_18b_b.Checked = false;
+            uc_18b_c.Checked = false;
+        }
+    }
+
+    protected void uc_18b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_18b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_18b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_19a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_19a_v.Checked)
+        {
+            cntl_uc_19a_a.Visible = true;
+            cntl_uc_19b.Visible = true;
+        }
+    }
+
+    protected void uc_19a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_19a_b.Checked)
+        {
+            cntl_uc_19a_a.Visible = false;
+            cntl_uc_19b.Visible = false;
+
+            uc_19a_a.Text = "";
+            uc_19b_a.Checked = false;
+            uc_19b_b.Checked = false;
+            uc_19b_c.Checked = false;
+        }
+    }
+
+    protected void uc_19a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_19a_c.Checked)
+        {
+            cntl_uc_19a_a.Visible = false;
+            cntl_uc_19b.Visible = false;
+
+            uc_19a_a.Text = "";
+            uc_19b_a.Checked = false;
+            uc_19b_b.Checked = false;
+            uc_19b_c.Checked = false;
+        }
+    }
+
+    protected void uc_19b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_19b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_19b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_20a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_20a_v.Checked)
+        {
+            cntl_uc_20a_a.Visible = true;
+            cntl_uc_20b.Visible = true;
+        }
+    }
+
+    protected void uc_20a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_20a_b.Checked)
+        {
+            cntl_uc_20a_a.Visible = false;
+            cntl_uc_20b.Visible = false;
+
+            uc_20a_a.Text = "";
+            uc_20b_a.Checked = false;
+            uc_20b_b.Checked = false;
+            uc_20b_c.Checked = false;
+        }
+    }
+
+    protected void uc_20a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_20a_c.Checked)
+        {
+            cntl_uc_20a_a.Visible = false;
+            cntl_uc_20b.Visible = false;
+
+            uc_20a_a.Text = "";
+            uc_20b_a.Checked = false;
+            uc_20b_b.Checked = false;
+            uc_20b_c.Checked = false;
+        }
+    }
+
+    protected void uc_20b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_20b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_20b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_21a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_21a_v.Checked)
+        {
+            cntl_uc_21a_a.Visible = true;
+            cntl_uc_21b.Visible = true;
+        }
+    }
+
+    protected void uc_21a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_21a_b.Checked)
+        {
+            cntl_uc_21a_a.Visible = false;
+            cntl_uc_21b.Visible = false;
+
+            uc_21a_a.Text = "";
+            uc_21b_a.Checked = false;
+            uc_21b_b.Checked = false;
+            uc_21b_c.Checked = false;
+        }
+    }
+
+    protected void uc_21a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_21a_c.Checked)
+        {
+            cntl_uc_21a_a.Visible = false;
+            cntl_uc_21b.Visible = false;
+
+            uc_21a_a.Text = "";
+            uc_21b_a.Checked = false;
+            uc_21b_b.Checked = false;
+            uc_21b_c.Checked = false;
+        }
+    }
+
+    protected void uc_21b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_21b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_21b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_22a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_22a_v.Checked)
+        {
+            cntl_uc_22a_a.Visible = true;
+            cntl_uc_22b.Visible = true;
+        }
+    }
+
+    protected void uc_22a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_22a_b.Checked)
+        {
+            cntl_uc_22a_a.Visible = false;
+            cntl_uc_22b.Visible = false;
+
+            uc_22a_a.Text = "";
+            uc_22b_a.Checked = false;
+            uc_22b_b.Checked = false;
+            uc_22b_c.Checked = false;
+        }
+    }
+
+    protected void uc_22a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_22a_c.Checked)
+        {
+            cntl_uc_22a_a.Visible = false;
+            cntl_uc_22b.Visible = false;
+
+            uc_22a_a.Text = "";
+            uc_22b_a.Checked = false;
+            uc_22b_b.Checked = false;
+            uc_22b_c.Checked = false;
+        }
+    }
+
+    protected void uc_22b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_22b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_22b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_23a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_23a_v.Checked)
+        {
+            cntl_uc_23a_a.Visible = true;
+            cntl_uc_23b.Visible = true;
+        }
+    }
+
+    protected void uc_23a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_23a_b.Checked)
+        {
+            cntl_uc_23a_a.Visible = false;
+            cntl_uc_23b.Visible = false;
+
+            uc_23a_a.Text = "";
+            uc_23b_a.Checked = false;
+            uc_23b_b.Checked = false;
+            uc_23b_c.Checked = false;
+        }
+    }
+
+    protected void uc_23a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_23a_c.Checked)
+        {
+            cntl_uc_23a_a.Visible = false;
+            cntl_uc_23b.Visible = false;
+
+            uc_23a_a.Text = "";
+            uc_23b_a.Checked = false;
+            uc_23b_b.Checked = false;
+            uc_23b_c.Checked = false;
+        }
+    }
+
+    protected void uc_23b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_23b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_23b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_24a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_24a_v.Checked)
+        {
+            cntl_uc_24a_a.Visible = true;
+            cntl_uc_24b.Visible = true;
+        }
+    }
+
+    protected void uc_24a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_24a_b.Checked)
+        {
+            cntl_uc_24a_a.Visible = false;
+            cntl_uc_24b.Visible = false;
+
+            uc_24a_a.Text = "";
+            uc_24b_a.Checked = false;
+            uc_24b_b.Checked = false;
+            uc_24b_c.Checked = false;
+        }
+    }
+
+    protected void uc_24a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_24a_c.Checked)
+        {
+            cntl_uc_24a_a.Visible = false;
+            cntl_uc_24b.Visible = false;
+
+            uc_24a_a.Text = "";
+            uc_24b_a.Checked = false;
+            uc_24b_b.Checked = false;
+            uc_24b_c.Checked = false;
+        }
+    }
+
+    protected void uc_24b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_24b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_24b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_25a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_25a_v.Checked)
+        {
+            cntl_uc_25a_a.Visible = true;
+            cntl_uc_25b.Visible = true;
+        }
+    }
+
+    protected void uc_25a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_25a_b.Checked)
+        {
+            cntl_uc_25a_a.Visible = false;
+            cntl_uc_25b.Visible = false;
+
+            uc_25a_a.Text = "";
+            uc_25b_a.Checked = false;
+            uc_25b_b.Checked = false;
+            uc_25b_c.Checked = false;
+        }
+    }
+
+    protected void uc_25a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_25a_c.Checked)
+        {
+            cntl_uc_25a_a.Visible = false;
+            cntl_uc_25b.Visible = false;
+
+            uc_25a_a.Text = "";
+            uc_25b_a.Checked = false;
+            uc_25b_b.Checked = false;
+            uc_25b_c.Checked = false;
+        }
+    }
+
+    protected void uc_25b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_25b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_25b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_26a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_26a_v.Checked)
+        {
+            cntl_uc_26a_a.Visible = true;
+            cntl_uc_26b.Visible = true;
+        }
+    }
+
+    protected void uc_26a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_26a_b.Checked)
+        {
+            cntl_uc_26a_a.Visible = false;
+            cntl_uc_26b.Visible = false;
+
+            uc_26a_a.Text = "";
+            uc_26b_a.Checked = false;
+            uc_26b_b.Checked = false;
+            uc_26b_c.Checked = false;
+        }
+    }
+
+    protected void uc_26a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_26a_c.Checked)
+        {
+            cntl_uc_26a_a.Visible = false;
+            cntl_uc_26b.Visible = false;
+
+            uc_26a_a.Text = "";
+            uc_26b_a.Checked = false;
+            uc_26b_b.Checked = false;
+            uc_26b_c.Checked = false;
+        }
+    }
+
+    protected void uc_26b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_26b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_26b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_27a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_27a_v.Checked)
+        {
+            cntl_uc_27a_a.Visible = true;
+            cntl_uc_27b.Visible = true;
+        }
+    }
+
+    protected void uc_27a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_27a_b.Checked)
+        {
+            cntl_uc_27a_a.Visible = false;
+            cntl_uc_27b.Visible = false;
+
+            uc_27a_a.Text = "";
+            uc_27b_a.Checked = false;
+            uc_27b_b.Checked = false;
+            uc_27b_c.Checked = false;
+        }
+    }
+
+    protected void uc_27a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_27a_c.Checked)
+        {
+            cntl_uc_27a_a.Visible = false;
+            cntl_uc_27b.Visible = false;
+
+            uc_27a_a.Text = "";
+            uc_27b_a.Checked = false;
+            uc_27b_b.Checked = false;
+            uc_27b_c.Checked = false;
+        }
+    }
+
+    protected void uc_27b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_27b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_27b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_28a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_28a_v.Checked)
+        {
+            cntl_uc_28a_a.Visible = true;
+            cntl_uc_28b.Visible = true;
+        }
+    }
+
+    protected void uc_28a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_28a_b.Checked)
+        {
+            cntl_uc_28a_a.Visible = false;
+            cntl_uc_28b.Visible = false;
+
+            uc_28a_a.Text = "";
+            uc_28b_a.Checked = false;
+            uc_28b_b.Checked = false;
+            uc_28b_c.Checked = false;
+        }
+    }
+
+    protected void uc_28a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_28a_c.Checked)
+        {
+            cntl_uc_28a_a.Visible = false;
+            cntl_uc_28b.Visible = false;
+
+            uc_28a_a.Text = "";
+            uc_28b_a.Checked = false;
+            uc_28b_b.Checked = false;
+            uc_28b_c.Checked = false;
+        }
+    }
+
+    protected void uc_28b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_28b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_28b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_29a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_29a_v.Checked)
+        {
+            cntl_uc_29a_a.Visible = true;
+            cntl_uc_29b.Visible = true;
+        }
+    }
+
+    protected void uc_29a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_29a_b.Checked)
+        {
+            cntl_uc_29a_a.Visible = false;
+            cntl_uc_29b.Visible = false;
+
+            uc_29a_a.Text = "";
+            uc_29b_a.Checked = false;
+            uc_29b_b.Checked = false;
+            uc_29b_c.Checked = false;
+        }
+    }
+
+    protected void uc_29a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_29a_c.Checked)
+        {
+            cntl_uc_29a_a.Visible = false;
+            cntl_uc_29b.Visible = false;
+
+            uc_29a_a.Text = "";
+            uc_29b_a.Checked = false;
+            uc_29b_b.Checked = false;
+            uc_29b_c.Checked = false;
+        }
+    }
+
+    protected void uc_29b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_29b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_29b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_30a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_30a_v.Checked)
+        {
+            cntl_uc_30a_a.Visible = true;
+            cntl_uc_30b.Visible = true;
+        }
+    }
+
+    protected void uc_30a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_30a_b.Checked)
+        {
+            cntl_uc_30a_a.Visible = false;
+            cntl_uc_30b.Visible = false;
+
+            uc_30a_a.Text = "";
+            uc_30b_a.Checked = false;
+            uc_30b_b.Checked = false;
+            uc_30b_c.Checked = false;
+        }
+    }
+
+    protected void uc_30a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_30a_c.Checked)
+        {
+            cntl_uc_30a_a.Visible = false;
+            cntl_uc_30b.Visible = false;
+
+            uc_30a_a.Text = "";
+            uc_30b_a.Checked = false;
+            uc_30b_b.Checked = false;
+            uc_30b_c.Checked = false;
+        }
+    }
+
+    protected void uc_30b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_30b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_30b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_31a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_31a_v.Checked)
+        {
+            cntl_uc_31a_a.Visible = true;
+            cntl_uc_31b.Visible = true;
+        }
+    }
+
+    protected void uc_31a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_31a_b.Checked)
+        {
+            cntl_uc_31a_a.Visible = false;
+            cntl_uc_31b.Visible = false;
+
+            uc_31a_a.Text = "";
+            uc_31b_a.Checked = false;
+            uc_31b_b.Checked = false;
+            uc_31b_c.Checked = false;
+        }
+    }
+
+    protected void uc_31a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_31a_c.Checked)
+        {
+            cntl_uc_31a_a.Visible = false;
+            cntl_uc_31b.Visible = false;
+
+            uc_31a_a.Text = "";
+            uc_31b_a.Checked = false;
+            uc_31b_b.Checked = false;
+            uc_31b_c.Checked = false;
+        }
+    }
+
+    protected void uc_31b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_31b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_31b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_32a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_32a_v.Checked)
+        {
+            cntl_uc_32a_a.Visible = true;
+            cntl_uc_32b.Visible = true;
+        }
+    }
+
+    protected void uc_32a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_32a_b.Checked)
+        {
+            cntl_uc_32a_a.Visible = false;
+            cntl_uc_32b.Visible = false;
+
+            uc_32a_a.Text = "";
+            uc_32b_a.Checked = false;
+            uc_32b_b.Checked = false;
+            uc_32b_c.Checked = false;
+        }
+    }
+
+    protected void uc_32a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_32a_c.Checked)
+        {
+            cntl_uc_32a_a.Visible = false;
+            cntl_uc_32b.Visible = false;
+
+            uc_32a_a.Text = "";
+            uc_32b_a.Checked = false;
+            uc_32b_b.Checked = false;
+            uc_32b_c.Checked = false;
+        }
+    }
+
+    protected void uc_32b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_32b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_32b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_33a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_33a_v.Checked)
+        {
+            cntl_uc_33a_a.Visible = true;
+            cntl_uc_33b.Visible = true;
+        }
+    }
+
+    protected void uc_33a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_33a_b.Checked)
+        {
+            cntl_uc_33a_a.Visible = false;
+            cntl_uc_33b.Visible = false;
+
+            uc_33a_a.Text = "";
+            uc_33b_a.Checked = false;
+            uc_33b_b.Checked = false;
+            uc_33b_c.Checked = false;
+        }
+    }
+
+    protected void uc_33a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_33a_c.Checked)
+        {
+            cntl_uc_33a_a.Visible = false;
+            cntl_uc_33b.Visible = false;
+
+            uc_33a_a.Text = "";
+            uc_33b_a.Checked = false;
+            uc_33b_b.Checked = false;
+            uc_33b_c.Checked = false;
+        }
+    }
+
+    protected void uc_33b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_33b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_33b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_34a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_34a_v.Checked)
+        {
+            cntl_uc_34a_a.Visible = true;
+            cntl_uc_34b.Visible = true;
+        }
+    }
+
+    protected void uc_34a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_34a_b.Checked)
+        {
+            cntl_uc_34a_a.Visible = false;
+            cntl_uc_34b.Visible = false;
+
+            uc_34a_a.Text = "";
+            uc_34b_a.Checked = false;
+            uc_34b_b.Checked = false;
+            uc_34b_c.Checked = false;
+        }
+    }
+
+    protected void uc_34a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_34a_c.Checked)
+        {
+            cntl_uc_34a_a.Visible = false;
+            cntl_uc_34b.Visible = false;
+
+            uc_34a_a.Text = "";
+            uc_34b_a.Checked = false;
+            uc_34b_b.Checked = false;
+            uc_34b_c.Checked = false;
+        }
+    }
+
+    protected void uc_34b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_34b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_34b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_35a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_35a_v.Checked)
+        {
+            cntl_uc_35a_a.Visible = true;
+            cntl_uc_35b.Visible = true;
+        }
+    }
+
+    protected void uc_35a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_35a_b.Checked)
+        {
+            cntl_uc_35a_a.Visible = false;
+            cntl_uc_35b.Visible = false;
+
+            uc_35a_a.Text = "";
+            uc_35b_a.Checked = false;
+            uc_35b_b.Checked = false;
+            uc_35b_c.Checked = false;
+        }
+    }
+
+    protected void uc_35a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_35a_c.Checked)
+        {
+            cntl_uc_35a_a.Visible = false;
+            cntl_uc_35b.Visible = false;
+
+            uc_35a_a.Text = "";
+            uc_35b_a.Checked = false;
+            uc_35b_b.Checked = false;
+            uc_35b_c.Checked = false;
+        }
+    }
+
+    protected void uc_35b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_35b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_35b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_36a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_36a_v.Checked)
+        {
+            cntl_uc_36a_a.Visible = true;
+            cntl_uc_36b.Visible = true;
+        }
+    }
+
+    protected void uc_36a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_36a_b.Checked)
+        {
+            cntl_uc_36a_a.Visible = false;
+            cntl_uc_36b.Visible = false;
+
+            uc_36a_a.Text = "";
+            uc_36b_a.Checked = false;
+            uc_36b_b.Checked = false;
+            uc_36b_c.Checked = false;
+        }
+    }
+
+    protected void uc_36a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_36a_c.Checked)
+        {
+            cntl_uc_36a_a.Visible = false;
+            cntl_uc_36b.Visible = false;
+
+            uc_36a_a.Text = "";
+            uc_36b_a.Checked = false;
+            uc_36b_b.Checked = false;
+            uc_36b_c.Checked = false;
+        }
+    }
+
+    protected void uc_36b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_36b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_36b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_37a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_37a_v.Checked)
+        {
+            cntl_uc_37a_a.Visible = true;
+            cntl_uc_37b.Visible = true;
+        }
+    }
+
+    protected void uc_37a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_37a_b.Checked)
+        {
+            cntl_uc_37a_a.Visible = false;
+            cntl_uc_37b.Visible = false;
+
+            uc_37a_a.Text = "";
+            uc_37b_a.Checked = false;
+            uc_37b_b.Checked = false;
+            uc_37b_c.Checked = false;
+        }
+    }
+
+    protected void uc_37a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (uc_37a_c.Checked)
+        {
+            cntl_uc_37a_a.Visible = false;
+            cntl_uc_37b.Visible = false;
+
+            uc_37a_a.Text = "";
+            uc_37b_a.Checked = false;
+            uc_37b_b.Checked = false;
+            uc_37b_c.Checked = false;
+        }
+    }
+
+    protected void uc_37b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_37b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void uc_37b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_20a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_20a_v.Checked)
+        {
+            cntl_LA_20a_a.Visible = true;
+            cntl_LA_20b.Visible = true;
+        }
+    }
+
+    protected void LA_20a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_20a_b.Checked)
+        {
+            cntl_LA_20a_a.Visible = false;
+            cntl_LA_20b.Visible = false;
+            LA_20a_a.Text = "";
+            LA_20b_a.Checked = false;
+            LA_20b_b.Checked = false;
+            LA_20b_c.Checked = false;
+        }
+    }
+
+    protected void LA_20a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_20a_c.Checked)
+        {
+            cntl_LA_20a_a.Visible = false;
+            cntl_LA_20b.Visible = false;
+            LA_20a_a.Text = "";
+            LA_20b_a.Checked = false;
+            LA_20b_b.Checked = false;
+            LA_20b_c.Checked = false;
+        }
+    }
+
+    protected void LA_20b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_20b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_20b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_21a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_21a_v.Checked)
+        {
+            cntl_LA_21a_a.Visible = true;
+            cntl_LA_21b.Visible = true;
+        }
+    }
+
+    protected void LA_21a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_21a_b.Checked)
+        {
+            cntl_LA_21a_a.Visible = false;
+            cntl_LA_21b.Visible = false;
+            LA_21a_a.Text = "";
+            LA_21b_a.Checked = false;
+            LA_21b_b.Checked = false;
+            LA_21b_c.Checked = false;
+        }
+    }
+
+    protected void LA_21a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_21a_c.Checked)
+        {
+            cntl_LA_21a_a.Visible = false;
+            cntl_LA_21b.Visible = false;
+            LA_21a_a.Text = "";
+            LA_21b_a.Checked = false;
+            LA_21b_b.Checked = false;
+            LA_21b_c.Checked = false;
+        }
+    }
+
+    protected void LA_21b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_21b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_21b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_22a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_22a_v.Checked)
+        {
+            cntl_LA_22a_a.Visible = true;
+            cntl_LA_22b.Visible = true;
+        }
+    }
+
+    protected void LA_22a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_22a_b.Checked)
+        {
+            cntl_LA_22a_a.Visible = false;
+            cntl_LA_22b.Visible = false;
+            LA_22a_a.Text = "";
+            LA_22b_a.Checked = false;
+            LA_22b_b.Checked = false;
+            LA_22b_c.Checked = false;
+        }
+    }
+
+    protected void LA_22a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_22a_c.Checked)
+        {
+            cntl_LA_22a_a.Visible = false;
+            cntl_LA_22b.Visible = false;
+            LA_22a_a.Text = "";
+            LA_22b_a.Checked = false;
+            LA_22b_b.Checked = false;
+            LA_22b_c.Checked = false;
+        }
+    }
+
+    protected void LA_22b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_22b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_22b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_23a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_23a_v.Checked)
+        {
+            cntl_LA_23a_a.Visible = true;
+            cntl_LA_23b.Visible = true;
+        }
+    }
+
+    protected void LA_23a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_23a_b.Checked)
+        {
+            cntl_LA_23a_a.Visible = false;
+            cntl_LA_23b.Visible = false;
+            LA_23a_a.Text = "";
+            LA_23b_a.Checked = false;
+            LA_23b_b.Checked = false;
+            LA_23b_c.Checked = false;
+        }
+    }
+
+    protected void LA_23a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_23a_c.Checked)
+        {
+            cntl_LA_23a_a.Visible = false;
+            cntl_LA_23b.Visible = false;
+            LA_23a_a.Text = "";
+            LA_23b_a.Checked = false;
+            LA_23b_b.Checked = false;
+            LA_23b_c.Checked = false;
+        }
+    }
+
+    protected void LA_23b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_23b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_23b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_24a_v_CheckedChanged1(object sender, EventArgs e)
+    {
+        if (LA_24a_v.Checked)
+        {
+            cntl_LA_24a_a.Visible = true;
+            cntl_LA_24b.Visible = true;
+        }
+    }
+
+    protected void LA_24a_b_CheckedChanged1(object sender, EventArgs e)
+    {
+        if (LA_24a_b.Checked)
+        {
+            cntl_LA_24a_a.Visible = false;
+            cntl_LA_24b.Visible = false;
+            LA_24a_a.Text = "";
+            LA_24b_a.Checked = false;
+            LA_24b_b.Checked = false;
+            LA_24b_c.Checked = false;
+        }
+    }
+
+    protected void LA_24a_c_CheckedChanged1(object sender, EventArgs e)
+    {
+        if (LA_24a_c.Checked)
+        {
+            cntl_LA_24a_a.Visible = false;
+            cntl_LA_24b.Visible = false;
+            LA_24a_a.Text = "";
+            LA_24b_a.Checked = false;
+            LA_24b_b.Checked = false;
+            LA_24b_c.Checked = false;
+        }
+    }
+
+    protected void LA_24b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_24b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_24b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_25a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_25a_v.Checked)
+        {
+            cntl_LA_25a_a.Visible = true;
+            cntl_LA_25b.Visible = true;
+        }
+    }
+
+    protected void LA_25a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_25a_b.Checked)
+        {
+            cntl_LA_25a_a.Visible = false;
+            cntl_LA_25b.Visible = false;
+            LA_25a_a.Text = "";
+            LA_25b_a.Checked = false;
+            LA_25b_b.Checked = false;
+            LA_25b_c.Checked = false;
+        }
+    }
+
+    protected void LA_25a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_25a_c.Checked)
+        {
+            cntl_LA_25a_a.Visible = false;
+            cntl_LA_25b.Visible = false;
+            LA_25a_a.Text = "";
+            LA_25b_a.Checked = false;
+            LA_25b_b.Checked = false;
+            LA_25b_c.Checked = false;
+        }
+    }
+
+    protected void LA_25b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_25b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_25b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_26a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_26a_v.Checked)
+        {
+            cntl_LA_26a_a.Visible = true;
+            cntl_LA_26b.Visible = true;
+        }
+    }
+
+    protected void LA_26a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_26a_b.Checked)
+        {
+            cntl_LA_26a_a.Visible = false;
+            cntl_LA_26b.Visible = false;
+            LA_26a_a.Text = "";
+            LA_26b_a.Checked = false;
+            LA_26b_b.Checked = false;
+            LA_26b_c.Checked = false;
+        }
+    }
+
+    protected void LA_26a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_26a_c.Checked)
+        {
+            cntl_LA_26a_a.Visible = false;
+            cntl_LA_26b.Visible = false;
+            LA_26a_a.Text = "";
+            LA_26b_a.Checked = false;
+            LA_26b_b.Checked = false;
+            LA_26b_c.Checked = false;
+        }
+    }
+
+    protected void LA_26b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_26b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_26b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_27a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_27a_v.Checked)
+        {
+            cntl_LA_27a_a.Visible = true;
+            cntl_LA_27b.Visible = true;
+        }
+    }
+
+    protected void LA_27a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_27a_b.Checked)
+        {
+            cntl_LA_27a_a.Visible = false;
+            cntl_LA_27b.Visible = false;
+            LA_27a_a.Text = "";
+            LA_27b_a.Checked = false;
+            LA_27b_b.Checked = false;
+            LA_27b_c.Checked = false;
+        }
+    }
+
+    protected void LA_27a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_27a_c.Checked)
+        {
+            cntl_LA_27a_a.Visible = false;
+            cntl_LA_27b.Visible = false;
+            LA_27a_a.Text = "";
+            LA_27b_a.Checked = false;
+            LA_27b_b.Checked = false;
+            LA_27b_c.Checked = false;
+        }
+    }
+
+    protected void LA_27b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_27b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_27b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_28a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_28a_v.Checked)
+        {
+            cntl_LA_28a_a.Visible = true;
+            cntl_LA_28b.Visible = true;
+        }
+    }
+
+    protected void LA_28a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_28a_b.Checked)
+        {
+            cntl_LA_28a_a.Visible = false;
+            cntl_LA_28b.Visible = false;
+            LA_28a_a.Text = "";
+            LA_28b_a.Checked = false;
+            LA_28b_b.Checked = false;
+            LA_28b_c.Checked = false;
+        }
+    }
+
+    protected void LA_28a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_28a_c.Checked)
+        {
+            cntl_LA_28a_a.Visible = false;
+            cntl_LA_28b.Visible = false;
+            LA_28a_a.Text = "";
+            LA_28b_a.Checked = false;
+            LA_28b_b.Checked = false;
+            LA_28b_c.Checked = false;
+        }
+    }
+
+    protected void LA_28b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_28b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_28b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_29a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_29a_v.Checked)
+        {
+            cntl_LA_29a_a.Visible = true;
+            cntl_LA_29b.Visible = true;
+        }
+    }
+
+    protected void LA_29a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_29a_b.Checked)
+        {
+            cntl_LA_29a_a.Visible = false;
+            cntl_LA_29b.Visible = false;
+            LA_29a_a.Text = "";
+            LA_29b_a.Checked = false;
+            LA_29b_b.Checked = false;
+            LA_29b_c.Checked = false;
+        }
+    }
+
+    protected void LA_29a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_29a_c.Checked)
+        {
+            cntl_LA_29a_a.Visible = false;
+            cntl_LA_29b.Visible = false;
+            LA_29a_a.Text = "";
+            LA_29b_a.Checked = false;
+            LA_29b_b.Checked = false;
+            LA_29b_c.Checked = false;
+        }
+    }
+
+    protected void LA_29b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_29b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_29b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_30a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_30a_v.Checked)
+        {
+            cntl_LA_30a_a.Visible = true;
+            cntl_LA_30b.Visible = true;
+        }
+    }
+
+    protected void LA_30a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_30a_b.Checked)
+        {
+            cntl_LA_30a_a.Visible = false;
+            cntl_LA_30b.Visible = false;
+            LA_30a_a.Text = "";
+            LA_30b_a.Checked = false;
+            LA_30b_b.Checked = false;
+            LA_30b_c.Checked = false;
+        }
+    }
+
+    protected void LA_30a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_30a_c.Checked)
+        {
+            cntl_LA_30a_a.Visible = false;
+            cntl_LA_30b.Visible = false;
+            LA_30a_a.Text = "";
+            LA_30b_a.Checked = false;
+            LA_30b_b.Checked = false;
+            LA_30b_c.Checked = false;
+        }
+    }
+
+    protected void LA_30b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_30b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_30b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_31a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_31a_v.Checked)
+        {
+            cntl_LA_31a_a.Visible = true;
+            cntl_LA_31b.Visible = true;
+        }
+    }
+
+    protected void LA_31a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_31a_b.Checked)
+        {
+            cntl_LA_31a_a.Visible = false;
+            cntl_LA_31b.Visible = false;
+            LA_31a_a.Text = "";
+            LA_31b_a.Checked = false;
+            LA_31b_b.Checked = false;
+            LA_31b_c.Checked = false;
+        }
+    }
+
+    protected void LA_31a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_31a_c.Checked)
+        {
+            cntl_LA_31a_a.Visible = false;
+            cntl_LA_31b.Visible = false;
+            LA_31a_a.Text = "";
+            LA_31b_a.Checked = false;
+            LA_31b_b.Checked = false;
+            LA_31b_c.Checked = false;
+        }
+    }
+
+    protected void LA_31b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_31b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_31b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_32a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_32a_v.Checked)
+        {
+            cntl_LA_32a_a.Visible = true;
+            cntl_LA_32b.Visible = true;
+        }
+    }
+
+    protected void LA_32a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_32a_b.Checked)
+        {
+            cntl_LA_32a_a.Visible = false;
+            cntl_LA_32b.Visible = false;
+            LA_32a_a.Text = "";
+            LA_32b_a.Checked = false;
+            LA_32b_b.Checked = false;
+            LA_32b_c.Checked = false;
+        }
+    }
+
+    protected void LA_32a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_32a_c.Checked)
+        {
+            cntl_LA_32a_a.Visible = false;
+            cntl_LA_32b.Visible = false;
+            LA_32a_a.Text = "";
+            LA_32b_a.Checked = false;
+            LA_32b_b.Checked = false;
+            LA_32b_c.Checked = false;
+        }
+    }
+
+    protected void LA_32b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_32b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_32b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_33a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_33a_v.Checked)
+        {
+            cntl_LA_33a_a.Visible = true;
+            cntl_LA_33b.Visible = true;
+        }
+    }
+
+    protected void LA_33a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_33a_b.Checked)
+        {
+            cntl_LA_33a_a.Visible = false;
+            cntl_LA_33b.Visible = false;
+            LA_33a_a.Text = "";
+            LA_33b_a.Checked = false;
+            LA_33b_b.Checked = false;
+            LA_33b_c.Checked = false;
+        }
+    }
+
+    protected void LA_33a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_33a_c.Checked)
+        {
+            cntl_LA_33a_a.Visible = false;
+            cntl_LA_33b.Visible = false;
+            LA_33a_a.Text = "";
+            LA_33b_a.Checked = false;
+            LA_33b_b.Checked = false;
+            LA_33b_c.Checked = false;
+        }
+    }
+
+    protected void LA_33b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_33b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_33b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_34a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_34a_v.Checked)
+        {
+            cntl_LA_34a_a.Visible = true;
+            cntl_LA_34b.Visible = true;
+        }
+    }
+
+    protected void LA_34a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_34a_b.Checked)
+        {
+            cntl_LA_34a_a.Visible = false;
+            cntl_LA_34b.Visible = false;
+            LA_34a_a.Text = "";
+            LA_34b_a.Checked = false;
+            LA_34b_b.Checked = false;
+            LA_34b_c.Checked = false;
+        }
+    }
+
+    protected void LA_34a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_34a_c.Checked)
+        {
+            cntl_LA_34a_a.Visible = false;
+            cntl_LA_34b.Visible = false;
+            LA_34a_a.Text = "";
+            LA_34b_a.Checked = false;
+            LA_34b_b.Checked = false;
+            LA_34b_c.Checked = false;
+        }
+    }
+
+    protected void LA_34b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_34b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_34b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_35a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_35a_v.Checked)
+        {
+            cntl_LA_35a_a.Visible = true;
+            cntl_LA_35b.Visible = true;
+        }
+    }
+
+    protected void LA_35a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_35a_b.Checked)
+        {
+            cntl_LA_35a_a.Visible = false;
+            cntl_LA_35b.Visible = false;
+            LA_35a_a.Text = "";
+            LA_35b_a.Checked = false;
+            LA_35b_b.Checked = false;
+            LA_35b_c.Checked = false;
+        }
+    }
+
+    protected void LA_35a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_35a_c.Checked)
+        {
+            cntl_LA_35a_a.Visible = false;
+            cntl_LA_35b.Visible = false;
+            LA_35a_a.Text = "";
+            LA_35b_a.Checked = false;
+            LA_35b_b.Checked = false;
+            LA_35b_c.Checked = false;
+        }
+    }
+
+    protected void LA_35b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_35b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_35b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_36a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_36a_v.Checked)
+        {
+            cntl_LA_36a_a.Visible = true;
+            cntl_LA_36b.Visible = true;
+        }
+    }
+
+    protected void LA_36a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_36a_b.Checked)
+        {
+            cntl_LA_36a_a.Visible = false;
+            cntl_LA_36b.Visible = false;
+            LA_36a_a.Text = "";
+            LA_36b_a.Checked = false;
+            LA_36b_b.Checked = false;
+            LA_36b_c.Checked = false;
+        }
+    }
+
+    protected void LA_36a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_36a_c.Checked)
+        {
+            cntl_LA_36a_a.Visible = false;
+            cntl_LA_36b.Visible = false;
+            LA_36a_a.Text = "";
+            LA_36b_a.Checked = false;
+            LA_36b_b.Checked = false;
+            LA_36b_c.Checked = false;
+        }
+    }
+
+    protected void LA_36b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_36b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_36b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_37a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_37a_v.Checked)
+        {
+            cntl_LA_37a_a.Visible = true;
+            cntl_LA_37b.Visible = true;
+        }
+    }
+
+    protected void LA_37a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_37a_b.Checked)
+        {
+            cntl_LA_37a_a.Visible = false;
+            cntl_LA_37b.Visible = false;
+            LA_37a_a.Text = "";
+            LA_37b_a.Checked = false;
+            LA_37b_b.Checked = false;
+            LA_37b_c.Checked = false;
+        }
+    }
+
+    protected void LA_37a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_37a_c.Checked)
+        {
+            cntl_LA_37a_a.Visible = false;
+            cntl_LA_37b.Visible = false;
+            LA_37a_a.Text = "";
+            LA_37b_a.Checked = false;
+            LA_37b_b.Checked = false;
+            LA_37b_c.Checked = false;
+        }
+    }
+
+    protected void LA_37b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_37b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_37b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_38a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_38a_v.Checked)
+        {
+            cntl_LA_38a_a.Visible = true;
+            cntl_LA_38b.Visible = true;
+        }
+    }
+
+    protected void LA_38a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_38a_b.Checked)
+        {
+            cntl_LA_38a_a.Visible = false;
+            cntl_LA_38b.Visible = false;
+            LA_38a_a.Text = "";
+            LA_38b_a.Checked = false;
+            LA_38b_b.Checked = false;
+            LA_38b_c.Checked = false;
+        }
+    }
+
+    protected void LA_38a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_38a_c.Checked)
+        {
+            cntl_LA_38a_a.Visible = false;
+            cntl_LA_38b.Visible = false;
+            LA_38a_a.Text = "";
+            LA_38b_a.Checked = false;
+            LA_38b_b.Checked = false;
+            LA_38b_c.Checked = false;
+        }
+    }
+
+    protected void LA_38b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_38b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_38b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_39a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_39a_v.Checked)
+        {
+            cntl_LA_39a_a.Visible = true;
+            cntl_LA_39b.Visible = true;
+        }
+    }
+
+    protected void LA_39a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_39a_b.Checked)
+        {
+            cntl_LA_39a_a.Visible = false;
+            cntl_LA_39b.Visible = false;
+            LA_39a_a.Text = "";
+            LA_39b_a.Checked = false;
+            LA_39b_b.Checked = false;
+            LA_39b_c.Checked = false;
+        }
+    }
+
+    protected void LA_39a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_39a_c.Checked)
+        {
+            cntl_LA_39a_a.Visible = false;
+            cntl_LA_39b.Visible = false;
+            LA_39a_a.Text = "";
+            LA_39b_a.Checked = false;
+            LA_39b_b.Checked = false;
+            LA_39b_c.Checked = false;
+        }
+    }
+
+    protected void LA_39b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_39b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_39b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_40a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_40a_v.Checked)
+        {
+            cntl_LA_40a_a.Visible = true;
+            cntl_LA_40b.Visible = true;
+        }
+    }
+
+    protected void LA_40a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_40a_b.Checked)
+        {
+            cntl_LA_40a_a.Visible = false;
+            cntl_LA_40b.Visible = false;
+            LA_40a_a.Text = "";
+            LA_40b_a.Checked = false;
+            LA_40b_b.Checked = false;
+            LA_40b_c.Checked = false;
+        }
+    }
+
+    protected void LA_40a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_40a_c.Checked)
+        {
+            cntl_LA_40a_a.Visible = false;
+            cntl_LA_40b.Visible = false;
+            LA_40a_a.Text = "";
+            LA_40b_a.Checked = false;
+            LA_40b_b.Checked = false;
+            LA_40b_c.Checked = false;
+        }
+    }
+
+    protected void LA_40b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_40b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_40b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_41a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_41a_v.Checked)
+        {
+            cntl_LA_41a_a.Visible = true;
+            cntl_LA_41b.Visible = true;
+        }
+    }
+
+    protected void LA_41a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_41a_b.Checked)
+        {
+            cntl_LA_41a_a.Visible = false;
+            cntl_LA_41b.Visible = false;
+            LA_41a_a.Text = "";
+            LA_41b_a.Checked = false;
+            LA_41b_b.Checked = false;
+            LA_41b_c.Checked = false;
+        }
+    }
+
+    protected void LA_41a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_41a_c.Checked)
+        {
+            cntl_LA_41a_a.Visible = false;
+            cntl_LA_41b.Visible = false;
+            LA_41a_a.Text = "";
+            LA_41b_a.Checked = false;
+            LA_41b_b.Checked = false;
+            LA_41b_c.Checked = false;
+        }
+    }
+
+    protected void LA_41b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_41b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_41b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_42a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_42a_v.Checked)
+        {
+            cntl_LA_42a_a.Visible = true;
+            cntl_LA_42b.Visible = true;
+        }
+    }
+
+    protected void LA_42a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_42a_b.Checked)
+        {
+            cntl_LA_42a_a.Visible = false;
+            cntl_LA_42b.Visible = false;
+            LA_42a_a.Text = "";
+            LA_42b_a.Checked = false;
+            LA_42b_b.Checked = false;
+            LA_42b_c.Checked = false;
+        }
+    }
+
+    protected void LA_42a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_42a_c.Checked)
+        {
+            cntl_LA_42a_a.Visible = false;
+            cntl_LA_42b.Visible = false;
+            LA_42a_a.Text = "";
+            LA_42b_a.Checked = false;
+            LA_42b_b.Checked = false;
+            LA_42b_c.Checked = false;
+        }
+    }
+
+    protected void LA_42b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_42b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_42b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_43a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_43a_v.Checked)
+        {
+            cntl_LA_43a_a.Visible = true;
+            cntl_LA_43b.Visible = true;
+        }
+    }
+
+    protected void LA_43a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_43a_b.Checked)
+        {
+            cntl_LA_43a_a.Visible = false;
+            cntl_LA_43b.Visible = false;
+            LA_43a_a.Text = "";
+            LA_43b_a.Checked = false;
+            LA_43b_b.Checked = false;
+            LA_43b_c.Checked = false;
+        }
+    }
+
+    protected void LA_43a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_43a_c.Checked)
+        {
+            cntl_LA_43a_a.Visible = false;
+            cntl_LA_43b.Visible = false;
+            LA_43a_a.Text = "";
+            LA_43b_a.Checked = false;
+            LA_43b_b.Checked = false;
+            LA_43b_c.Checked = false;
+        }
+    }
+
+    protected void LA_43b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_43b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_43b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_44a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_44a_v.Checked)
+        {
+            cntl_LA_44a_a.Visible = true;
+            cntl_LA_44b.Visible = true;
+        }
+    }
+
+    protected void LA_44a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_44a_b.Checked)
+        {
+            cntl_LA_44a_a.Visible = false;
+            cntl_LA_44b.Visible = false;
+            LA_44a_a.Text = "";
+            LA_44b_a.Checked = false;
+            LA_44b_b.Checked = false;
+            LA_44b_c.Checked = false;
+        }
+    }
+
+    protected void LA_44a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_44a_c.Checked)
+        {
+            cntl_LA_44a_a.Visible = false;
+            cntl_LA_44b.Visible = false;
+            LA_44a_a.Text = "";
+            LA_44b_a.Checked = false;
+            LA_44b_b.Checked = false;
+            LA_44b_c.Checked = false;
+        }
+    }
+
+    protected void LA_44b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_44b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_44b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_45a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_45a_v.Checked)
+        {
+            cntl_LA_45a_a.Visible = true;
+            cntl_LA_45b.Visible = true;
+        }
+    }
+
+    protected void LA_45a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_45a_b.Checked)
+        {
+            cntl_LA_45a_a.Visible = false;
+            cntl_LA_45b.Visible = false;
+            LA_45a_a.Text = "";
+            LA_45b_a.Checked = false;
+            LA_45b_b.Checked = false;
+            LA_45b_c.Checked = false;
+        }
+    }
+
+    protected void LA_45a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_45a_c.Checked)
+        {
+            cntl_LA_45a_a.Visible = false;
+            cntl_LA_45b.Visible = false;
+            LA_45a_a.Text = "";
+            LA_45b_a.Checked = false;
+            LA_45b_b.Checked = false;
+            LA_45b_c.Checked = false;
+        }
+    }
+
+    protected void LA_45b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_45b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_45b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_46a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_46a_v.Checked)
+        {
+            cntl_LA_46a_a.Visible = true;
+            cntl_LA_46b.Visible = true;
+        }
+    }
+
+    protected void LA_46a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_46a_b.Checked)
+        {
+            cntl_LA_46a_a.Visible = false;
+            cntl_LA_46b.Visible = false;
+            LA_46a_a.Text = "";
+            LA_46b_a.Checked = false;
+            LA_46b_b.Checked = false;
+            LA_46b_c.Checked = false;
+        }
+    }
+
+    protected void LA_46a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_46a_c.Checked)
+        {
+            cntl_LA_46a_a.Visible = false;
+            cntl_LA_46b.Visible = false;
+            LA_46a_a.Text = "";
+            LA_46b_a.Checked = false;
+            LA_46b_b.Checked = false;
+            LA_46b_c.Checked = false;
+        }
+    }
+
+    protected void LA_46b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_46b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_46b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_47a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_47a_v.Checked)
+        {
+            cntl_LA_47a_a.Visible = true;
+            cntl_LA_47b.Visible = true;
+        }
+    }
+
+    protected void LA_47a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_47a_b.Checked)
+        {
+            cntl_LA_47a_a.Visible = false;
+            cntl_LA_47b.Visible = false;
+            LA_47a_a.Text = "";
+            LA_47b_a.Checked = false;
+            LA_47b_b.Checked = false;
+            LA_47b_c.Checked = false;
+        }
+    }
+
+    protected void LA_47a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_47a_c.Checked)
+        {
+            cntl_LA_47a_a.Visible = false;
+            cntl_LA_47b.Visible = false;
+            LA_47a_a.Text = "";
+            LA_47b_a.Checked = false;
+            LA_47b_b.Checked = false;
+            LA_47b_c.Checked = false;
+        }
+    }
+
+    protected void LA_47b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_47b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_47b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_48a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_48a_v.Checked)
+        {
+            cntl_LA_48a_a.Visible = true;
+            cntl_LA_48b.Visible = true;
+        }
+    }
+
+    protected void LA_48a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_48a_b.Checked)
+        {
+            cntl_LA_48a_a.Visible = false;
+            cntl_LA_48b.Visible = false;
+            LA_48a_a.Text = "";
+            LA_48b_a.Checked = false;
+            LA_48b_b.Checked = false;
+            LA_48b_c.Checked = false;
+        }
+    }
+
+    protected void LA_48a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_48a_c.Checked)
+        {
+            cntl_LA_48a_a.Visible = false;
+            cntl_LA_48b.Visible = false;
+            LA_48a_a.Text = "";
+            LA_48b_a.Checked = false;
+            LA_48b_b.Checked = false;
+            LA_48b_c.Checked = false;
+        }
+    }
+
+    protected void LA_48b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_48b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_48b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_49a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_49a_v.Checked)
+        {
+            cntl_LA_49a_a.Visible = true;
+            cntl_LA_49b.Visible = true;
+        }
+    }
+
+    protected void LA_49a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_49a_b.Checked)
+        {
+            cntl_LA_49a_a.Visible = false;
+            cntl_LA_49b.Visible = false;
+            LA_49a_a.Text = "";
+            LA_49b_a.Checked = false;
+            LA_49b_b.Checked = false;
+            LA_49b_c.Checked = false;
+        }
+    }
+
+    protected void LA_49a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_49a_c.Checked)
+        {
+            cntl_LA_49a_a.Visible = false;
+            cntl_LA_49b.Visible = false;
+            LA_49a_a.Text = "";
+            LA_49b_a.Checked = false;
+            LA_49b_b.Checked = false;
+            LA_49b_c.Checked = false;
+        }
+    }
+
+    protected void LA_49b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_49b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_49b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_50a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_50a_v.Checked)
+        {
+            cntl_LA_50a_a.Visible = true;
+            cntl_LA_50b.Visible = true;
+        }
+    }
+
+    protected void LA_50a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_50a_b.Checked)
+        {
+            cntl_LA_50a_a.Visible = false;
+            cntl_LA_50b.Visible = false;
+            LA_50a_a.Text = "";
+            LA_50b_a.Checked = false;
+            LA_50b_b.Checked = false;
+            LA_50b_c.Checked = false;
+        }
+    }
+
+    protected void LA_50a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_50a_c.Checked)
+        {
+            cntl_LA_50a_a.Visible = false;
+            cntl_LA_50b.Visible = false;
+            LA_50a_a.Text = "";
+            LA_50b_a.Checked = false;
+            LA_50b_b.Checked = false;
+            LA_50b_c.Checked = false;
+        }
+    }
+
+    protected void LA_50b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_50b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_50b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_51a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_51a_v.Checked)
+        {
+            cntl_LA_51a_a.Visible = true;
+            cntl_LA_51b.Visible = true;
+        }
+    }
+
+    protected void LA_51a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_51a_b.Checked)
+        {
+            cntl_LA_51a_a.Visible = false;
+            cntl_LA_51b.Visible = false;
+            LA_51a_a.Text = "";
+            LA_51b_a.Checked = false;
+            LA_51b_b.Checked = false;
+            LA_51b_c.Checked = false;
+        }
+    }
+
+    protected void LA_51a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_51a_c.Checked)
+        {
+            cntl_LA_51a_a.Visible = false;
+            cntl_LA_51b.Visible = false;
+            LA_51a_a.Text = "";
+            LA_51b_a.Checked = false;
+            LA_51b_b.Checked = false;
+            LA_51b_c.Checked = false;
+        }
+    }
+
+    protected void LA_51b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_51b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_51b_c_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_52a_v_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_52a_v.Checked)
+        {
+            cntl_LA_52a_a.Visible = true;
+            cntl_LA_52b.Visible = true;
+        }
+    }
+
+    protected void LA_52a_b_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_52a_b.Checked)
+        {
+            cntl_LA_52a_a.Visible = false;
+            cntl_LA_52b.Visible = false;
+            LA_52a_a.Text = "";
+            LA_52b_a.Checked = false;
+            LA_52b_b.Checked = false;
+            LA_52b_c.Checked = false;
+        }
+    }
+
+    protected void LA_52a_c_CheckedChanged(object sender, EventArgs e)
+    {
+        if (LA_52a_c.Checked)
+        {
+            cntl_LA_52a_a.Visible = false;
+            cntl_LA_52b.Visible = false;
+            LA_52a_a.Text = "";
+            LA_52b_a.Checked = false;
+            LA_52b_b.Checked = false;
+            LA_52b_c.Checked = false;
+        }
+    }
+
+    protected void LA_52b_a_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_52b_b_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void LA_52b_c_CheckedChanged(object sender, EventArgs e)
     {
 
     }
