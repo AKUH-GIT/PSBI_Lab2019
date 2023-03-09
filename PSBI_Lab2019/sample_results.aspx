@@ -556,6 +556,17 @@
                 //$("#cmdSaveDraft").hide();
                 ///$("#cmdSave").hide();
             }
+            else if (labid == 4) {
+                $("#txthistory").attr("readonly", "readonly");
+                DisableControls_Loop1();
+                $("#pnl_draft").hide();
+                $("#pnl_save").hide();
+                $("#pnl_cancel").show();
+                $("#cmdPrintPreview").hide();
+                $("#cmdPrint").hide();
+                //$("#cmdSaveDraft").hide();
+                ///$("#cmdSave").hide();
+            }
             else if (labid == 2) {
                 $("#txthistory").attr("readonly", "readonly");
                 $("#pnl_draft").hide();
@@ -2822,8 +2833,8 @@
                                         }
 
 
-                                        $("#cmdSave").show();
-                                        $("#cmdSaveDraft").show();
+                                        $("#cmdSave").hide();
+                                        $("#cmdSaveDraft").hide();
                                     }
                                 }
 
@@ -2838,8 +2849,8 @@
                             }
                         });
 
-                    $("#cmdSave").show();
-                    $("#cmdSaveDraft").show();
+                    $("#cmdSave").hide();
+                    $("#cmdSaveDraft").hide();
 
                 }
 
@@ -7512,7 +7523,7 @@
             <div class="navigation-background"></div>
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3" || HttpContext.Current.Request.Cookies["labid"].Value == "4")
                         { %>
 
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>

@@ -87,6 +87,8 @@ public partial class sample_results : System.Web.UI.Page
                     ViewState["id"] = Request.QueryString["id"].ToString();
                     getData1(ViewState["id"].ToString());
                     cmdSave.Visible = false;
+                    cmdSaveDraft.Visible = true;
+                    cmdCancel.Visible = true;
                     //txthistory.ReadOnly = true;
 
 
@@ -108,7 +110,28 @@ public partial class sample_results : System.Web.UI.Page
                         getData1(ViewState["id"].ToString());
                         ViewState["isupdate"] = "1";
                         cmdSave.Visible = true;
+                        cmdSaveDraft.Visible = true;
+                        cmdCancel.Visible = true;
                         txthistory.ReadOnly = false;
+
+                        pnl_LA_01.Visible = false;
+                        pnl_LA_02.Visible = false;
+                        pnl_idrl.Visible = true;
+
+                        previewReport();
+
+                    }
+                    else if (Request.QueryString["id"] != null && Request.Cookies["labid"].Value == "4")
+                    {
+                        ViewState["id"] = Request.QueryString["id"].ToString();
+                        getData1(ViewState["id"].ToString());
+                        cmdSave.Visible = false;
+                        cmdSaveDraft.Visible = false;
+                        cmdCancel.Visible = true;
+                        //txthistory.ReadOnly = true;
+
+
+                        ViewState["isupdate"] = "1";
 
                         pnl_LA_01.Visible = false;
                         pnl_LA_02.Visible = false;
@@ -13899,7 +13922,7 @@ public partial class sample_results : System.Web.UI.Page
                         txthistory.Text = ds.Tables[0].Rows[0]["history"].ToString();
 
 
-                        if (Request.Cookies["labid"].Value == "1")
+                        if (Request.Cookies["labid"].Value == "1" && Request.Cookies["labid"].Value == "4")
                         {
                             txthistory.Enabled = false;
                             txthistory.CssClass = "form-control";

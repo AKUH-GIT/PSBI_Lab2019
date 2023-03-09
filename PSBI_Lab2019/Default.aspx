@@ -221,7 +221,7 @@
                     <div class="main-menu-content">
                         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                            <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                            <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3" || HttpContext.Current.Request.Cookies["labid"].Value == "4")
                                 { %>
 
                             <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
