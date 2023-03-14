@@ -63,8 +63,6 @@ public partial class sample_results : System.Web.UI.Page
 
         cmdSaveDraft.OnClientClick = "return ValidateForm1();";
 
-              
-
 
 
         if (!IsPostBack)
@@ -92,6 +90,8 @@ public partial class sample_results : System.Web.UI.Page
                     //txthistory.ReadOnly = true;
 
 
+                    Disable_IDRL_Section();
+
                     ViewState["isupdate"] = "1";
 
                     pnl_LA_01.Visible = false;
@@ -118,6 +118,8 @@ public partial class sample_results : System.Web.UI.Page
                         pnl_LA_02.Visible = false;
                         pnl_idrl.Visible = true;
 
+                        Enable_IDRL_Section();
+
                         previewReport();
 
                     }
@@ -130,6 +132,7 @@ public partial class sample_results : System.Web.UI.Page
                         cmdCancel.Visible = true;
                         //txthistory.ReadOnly = true;
 
+                        Disable_IDRL_Section();
 
                         ViewState["isupdate"] = "1";
 
@@ -145,800 +148,11 @@ public partial class sample_results : System.Web.UI.Page
 
                         if (Request.QueryString["id"] == null && Request.Cookies["labid"].Value == "2")
                         {
-                            EnableControls(LA_01);
-                            EnableControls(LA_02);
-
-                            Disable_RadioButton(LA_03_v);
-                            Disable_RadioButton(LA_03_b);
-                            Disable_RadioButton(LA_03_c);
-                            DisableControls(LA_03_a);
-
-
-                            Disable_RadioButton(LA_04_v);
-                            Disable_RadioButton(LA_04_b);
-                            Disable_RadioButton(LA_04_c);
-                            DisableControls(LA_04_a);
-
-
-                            Disable_RadioButton(LA_05_v);
-                            Disable_RadioButton(LA_05_b);
-                            Disable_RadioButton(LA_05_c);
-                            DisableControls(LA_05_a);
-
-
-                            Disable_RadioButton(LA_06_v);
-                            Disable_RadioButton(LA_06_b);
-                            Disable_RadioButton(LA_06_c);
-                            DisableControls(LA_06_a);
-
-
-                            Disable_RadioButton(LA_07_v);
-                            Disable_RadioButton(LA_07_b);
-                            Disable_RadioButton(LA_07_c);
-                            DisableControls(LA_07_a);
-
-
-                            Disable_RadioButton(LA_08_v);
-                            Disable_RadioButton(LA_08_b);
-                            Disable_RadioButton(LA_08_c);
-                            DisableControls(LA_08_a);
-
-
-                            Disable_RadioButton(LA_09_v);
-                            Disable_RadioButton(LA_09_b);
-                            Disable_RadioButton(LA_09_c);
-                            DisableControls(LA_09_a);
-
-
-                            Disable_RadioButton(LA_10_v);
-                            Disable_RadioButton(LA_10_b);
-                            Disable_RadioButton(LA_10_c);
-                            DisableControls(LA_10_a);
-
-
-                            Disable_RadioButton(LA_11_v);
-                            Disable_RadioButton(LA_11_b);
-                            Disable_RadioButton(LA_11_c);
-                            DisableControls(LA_11_a);
-
-
-                            Disable_RadioButton(LA_12_v);
-                            Disable_RadioButton(LA_12_b);
-                            Disable_RadioButton(LA_12_c);
-                            DisableControls(LA_12_a);
-
-
-                            Disable_RadioButton(LA_13_v);
-                            Disable_RadioButton(LA_13_b);
-                            Disable_RadioButton(LA_13_c);
-                            DisableControls(LA_13_a);
-
-
-                            Disable_RadioButton(LA_14_v);
-                            Disable_RadioButton(LA_14_b);
-                            Disable_RadioButton(LA_14_c);
-                            DisableControls(LA_14_a);
-
-
-                            Disable_RadioButton(LA_15_v);
-                            Disable_RadioButton(LA_15_b);
-                            Disable_RadioButton(LA_15_c);
-                            DisableControls(LA_15_a);
-
-
-                            Disable_RadioButton(LA_16_v);
-                            Disable_RadioButton(LA_16_b);
-                            Disable_RadioButton(LA_16_c);
-                            DisableControls(LA_16_a);
-
-                            DisableControls(LA_17);
-                            DisableControls(LA_18);
-                            DisableControls(LA_19);
-
-
-                            Disable_RadioButton(LA_20a_v);
-                            Disable_RadioButton(LA_20a_b);
-                            Disable_RadioButton(LA_20a_c);
-                            DisableControls(LA_20a_a);
-                            Disable_RadioButton(LA_20b_a);
-                            Disable_RadioButton(LA_20b_b);
-                            Disable_RadioButton(LA_20b_c);
-
-
-                            Disable_RadioButton(LA_21a_v);
-                            Disable_RadioButton(LA_21a_b);
-                            Disable_RadioButton(LA_21a_c);
-                            DisableControls(LA_21a_a);
-                            Disable_RadioButton(LA_21b_a);
-                            Disable_RadioButton(LA_21b_b);
-                            Disable_RadioButton(LA_21b_c);
-
-
-                            Disable_RadioButton(LA_22a_v);
-                            Disable_RadioButton(LA_22a_b);
-                            Disable_RadioButton(LA_22a_c);
-                            DisableControls(LA_22a_a);
-                            Disable_RadioButton(LA_22b_a);
-                            Disable_RadioButton(LA_22b_b);
-                            Disable_RadioButton(LA_22b_c);
-
-
-                            Disable_RadioButton(LA_23a_v);
-                            Disable_RadioButton(LA_23a_b);
-                            Disable_RadioButton(LA_23a_c);
-                            DisableControls(LA_23a_a);
-                            Disable_RadioButton(LA_23b_a);
-                            Disable_RadioButton(LA_23b_b);
-                            Disable_RadioButton(LA_23b_c);
-
-
-                            Disable_RadioButton(LA_24a_v);
-                            Disable_RadioButton(LA_24a_b);
-                            Disable_RadioButton(LA_24a_c);
-                            DisableControls(LA_24a_a);
-                            Disable_RadioButton(LA_24b_a);
-                            Disable_RadioButton(LA_24b_b);
-                            Disable_RadioButton(LA_24b_c);
-
-
-                            Disable_RadioButton(LA_25a_v);
-                            Disable_RadioButton(LA_25a_b);
-                            Disable_RadioButton(LA_25a_c);
-                            DisableControls(LA_25a_a);
-                            Disable_RadioButton(LA_25b_a);
-                            Disable_RadioButton(LA_25b_b);
-                            Disable_RadioButton(LA_25b_c);
-
-
-                            Disable_RadioButton(LA_26a_v);
-                            Disable_RadioButton(LA_26a_b);
-                            Disable_RadioButton(LA_26a_c);
-                            DisableControls(LA_26a_a);
-                            Disable_RadioButton(LA_26b_a);
-                            Disable_RadioButton(LA_26b_b);
-                            Disable_RadioButton(LA_26b_c);
-
-
-                            Disable_RadioButton(LA_27a_v);
-                            Disable_RadioButton(LA_27a_b);
-                            Disable_RadioButton(LA_27a_c);
-                            DisableControls(LA_27a_a);
-                            Disable_RadioButton(LA_27b_a);
-                            Disable_RadioButton(LA_27b_b);
-                            Disable_RadioButton(LA_27b_c);
-
-
-                            Disable_RadioButton(LA_28a_v);
-                            Disable_RadioButton(LA_28a_b);
-                            Disable_RadioButton(LA_28a_c);
-                            DisableControls(LA_28a_a);
-                            Disable_RadioButton(LA_28b_a);
-                            Disable_RadioButton(LA_28b_b);
-                            Disable_RadioButton(LA_28b_c);
-
-
-
-                            Disable_RadioButton(LA_29a_v);
-                            Disable_RadioButton(LA_29a_b);
-                            Disable_RadioButton(LA_29a_c);
-                            DisableControls(LA_29a_a);
-                            Disable_RadioButton(LA_29b_a);
-                            Disable_RadioButton(LA_29b_b);
-                            Disable_RadioButton(LA_29b_c);
-
-
-
-                            Disable_RadioButton(LA_30a_v);
-                            Disable_RadioButton(LA_30a_b);
-                            Disable_RadioButton(LA_30a_c);
-                            DisableControls(LA_30a_a);
-                            Disable_RadioButton(LA_30b_a);
-                            Disable_RadioButton(LA_30b_b);
-                            Disable_RadioButton(LA_30b_c);
-
-
-                            Disable_RadioButton(LA_31a_v);
-                            Disable_RadioButton(LA_31a_b);
-                            Disable_RadioButton(LA_31a_c);
-                            DisableControls(LA_31a_a);
-                            Disable_RadioButton(LA_31b_a);
-                            Disable_RadioButton(LA_31b_b);
-                            Disable_RadioButton(LA_31b_c);
-
-
-                            Disable_RadioButton(LA_32a_v);
-                            Disable_RadioButton(LA_32a_b);
-                            Disable_RadioButton(LA_32a_c);
-                            DisableControls(LA_32a_a);
-                            Disable_RadioButton(LA_32b_a);
-                            Disable_RadioButton(LA_32b_b);
-                            Disable_RadioButton(LA_32b_c);
-
-
-                            Disable_RadioButton(LA_33a_v);
-                            Disable_RadioButton(LA_33a_b);
-                            Disable_RadioButton(LA_33a_c);
-                            DisableControls(LA_33a_a);
-                            Disable_RadioButton(LA_33b_a);
-                            Disable_RadioButton(LA_33b_b);
-                            Disable_RadioButton(LA_33b_c);
-
-
-                            Disable_RadioButton(LA_34a_v);
-                            Disable_RadioButton(LA_34a_b);
-                            Disable_RadioButton(LA_34a_c);
-                            DisableControls(LA_34a_a);
-                            Disable_RadioButton(LA_34b_a);
-                            Disable_RadioButton(LA_34b_b);
-                            Disable_RadioButton(LA_34b_c);
-
-
-                            Disable_RadioButton(LA_35a_v);
-                            Disable_RadioButton(LA_35a_b);
-                            Disable_RadioButton(LA_35a_c);
-                            DisableControls(LA_35a_a);
-                            Disable_RadioButton(LA_35b_a);
-                            Disable_RadioButton(LA_35b_b);
-                            Disable_RadioButton(LA_35b_c);
-
-
-                            Disable_RadioButton(LA_36a_v);
-                            Disable_RadioButton(LA_36a_b);
-                            Disable_RadioButton(LA_36a_c);
-                            DisableControls(LA_36a_a);
-                            Disable_RadioButton(LA_36b_a);
-                            Disable_RadioButton(LA_36b_b);
-                            Disable_RadioButton(LA_36b_c);
-
-
-                            Disable_RadioButton(LA_37a_v);
-                            Disable_RadioButton(LA_37a_b);
-                            Disable_RadioButton(LA_37a_c);
-                            DisableControls(LA_37a_a);
-                            Disable_RadioButton(LA_37b_a);
-                            Disable_RadioButton(LA_37b_b);
-                            Disable_RadioButton(LA_37b_c);
-
-
-                            Disable_RadioButton(LA_38a_v);
-                            Disable_RadioButton(LA_38a_b);
-                            Disable_RadioButton(LA_38a_c);
-                            DisableControls(LA_38a_a);
-                            Disable_RadioButton(LA_38b_a);
-                            Disable_RadioButton(LA_38b_b);
-                            Disable_RadioButton(LA_38b_c);
-
-
-                            Disable_RadioButton(LA_39a_v);
-                            Disable_RadioButton(LA_39a_b);
-                            Disable_RadioButton(LA_39a_c);
-                            DisableControls(LA_39a_a);
-                            Disable_RadioButton(LA_39b_a);
-                            Disable_RadioButton(LA_39b_b);
-                            Disable_RadioButton(LA_39b_c);
-
-
-
-                            Disable_RadioButton(LA_40a_v);
-                            Disable_RadioButton(LA_40a_b);
-                            Disable_RadioButton(LA_40a_c);
-                            DisableControls(LA_40a_a);
-                            Disable_RadioButton(LA_40b_a);
-                            Disable_RadioButton(LA_40b_b);
-                            Disable_RadioButton(LA_40b_c);
-
-
-                            Disable_RadioButton(LA_41a_v);
-                            Disable_RadioButton(LA_41a_b);
-                            Disable_RadioButton(LA_41a_c);
-                            DisableControls(LA_41a_a);
-                            Disable_RadioButton(LA_41b_a);
-                            Disable_RadioButton(LA_41b_b);
-                            Disable_RadioButton(LA_41b_c);
-
-
-                            Disable_RadioButton(LA_42a_v);
-                            Disable_RadioButton(LA_42a_b);
-                            Disable_RadioButton(LA_42a_c);
-                            DisableControls(LA_42a_a);
-                            Disable_RadioButton(LA_42b_a);
-                            Disable_RadioButton(LA_42b_b);
-                            Disable_RadioButton(LA_42b_c);
-
-
-                            Disable_RadioButton(LA_43a_v);
-                            Disable_RadioButton(LA_43a_b);
-                            Disable_RadioButton(LA_43a_c);
-                            DisableControls(LA_43a_a);
-                            Disable_RadioButton(LA_43b_a);
-                            Disable_RadioButton(LA_43b_b);
-                            Disable_RadioButton(LA_43b_c);
-
-
-                            Disable_RadioButton(LA_44a_v);
-                            Disable_RadioButton(LA_44a_b);
-                            Disable_RadioButton(LA_44a_c);
-                            DisableControls(LA_44a_a);
-                            Disable_RadioButton(LA_44b_a);
-                            Disable_RadioButton(LA_44b_b);
-                            Disable_RadioButton(LA_44b_c);
-
-
-                            Disable_RadioButton(LA_45a_v);
-                            Disable_RadioButton(LA_45a_b);
-                            Disable_RadioButton(LA_45a_c);
-                            DisableControls(LA_45a_a);
-                            Disable_RadioButton(LA_45b_a);
-                            Disable_RadioButton(LA_45b_b);
-                            Disable_RadioButton(LA_45b_c);
-
-
-                            Disable_RadioButton(LA_46a_v);
-                            Disable_RadioButton(LA_46a_b);
-                            Disable_RadioButton(LA_46a_c);
-                            DisableControls(LA_46a_a);
-                            Disable_RadioButton(LA_46b_a);
-                            Disable_RadioButton(LA_46b_b);
-                            Disable_RadioButton(LA_46b_c);
-
-
-                            Disable_RadioButton(LA_47a_v);
-                            Disable_RadioButton(LA_47a_b);
-                            Disable_RadioButton(LA_47a_c);
-                            DisableControls(LA_47a_a);
-                            Disable_RadioButton(LA_47b_a);
-                            Disable_RadioButton(LA_47b_b);
-                            Disable_RadioButton(LA_47b_c);
-
-
-                            Disable_RadioButton(LA_48a_v);
-                            Disable_RadioButton(LA_48a_b);
-                            Disable_RadioButton(LA_48a_c);
-                            DisableControls(LA_48a_a);
-                            Disable_RadioButton(LA_48b_a);
-                            Disable_RadioButton(LA_48b_b);
-                            Disable_RadioButton(LA_48b_c);
-
-
-                            Disable_RadioButton(LA_49a_v);
-                            Disable_RadioButton(LA_49a_b);
-                            Disable_RadioButton(LA_49a_c);
-                            DisableControls(LA_49a_a);
-                            Disable_RadioButton(LA_49b_a);
-                            Disable_RadioButton(LA_49b_b);
-                            Disable_RadioButton(LA_49b_c);
-
-
-                            Disable_RadioButton(LA_50a_v);
-                            Disable_RadioButton(LA_50a_b);
-                            Disable_RadioButton(LA_50a_c);
-                            DisableControls(LA_50a_a);
-                            Disable_RadioButton(LA_50b_a);
-                            Disable_RadioButton(LA_50b_b);
-                            Disable_RadioButton(LA_50b_c);
-
-
-                            Disable_RadioButton(LA_51a_v);
-                            Disable_RadioButton(LA_51a_b);
-                            Disable_RadioButton(LA_51a_c);
-                            DisableControls(LA_51a_a);
-                            Disable_RadioButton(LA_51b_a);
-                            Disable_RadioButton(LA_51b_b);
-                            Disable_RadioButton(LA_51b_c);
-
-
-                            Disable_RadioButton(LA_52a_v);
-                            Disable_RadioButton(LA_52a_b);
-                            Disable_RadioButton(LA_52a_c);
-                            DisableControls(LA_52a_a);
-                            Disable_RadioButton(LA_52b_a);
-                            Disable_RadioButton(LA_52b_b);
-                            Disable_RadioButton(LA_52b_c);
-
-
-                            pnl_LA_01.Visible = true;
-                            pnl_LA_02.Visible = true;
-                            pnl_idrl.Visible = false;
-
+                            Disable_IDRL_Section();
                         }
                         else
                         {
-                            DisableControls(LA_01);
-                            DisableControls(LA_02);
-
-
-                            Enable_RadioButton(LA_03_v);
-                            Enable_RadioButton(LA_03_b);
-                            Enable_RadioButton(LA_03_c);
-                            EnableControls(LA_03_a);
-
-
-                            Enable_RadioButton(LA_04_v);
-                            Enable_RadioButton(LA_04_b);
-                            Enable_RadioButton(LA_04_c);
-                            EnableControls(LA_04_a);
-
-
-                            Enable_RadioButton(LA_05_v);
-                            Enable_RadioButton(LA_05_b);
-                            Enable_RadioButton(LA_05_c);
-                            EnableControls(LA_05_a);
-
-
-                            Enable_RadioButton(LA_06_v);
-                            Enable_RadioButton(LA_06_b);
-                            Enable_RadioButton(LA_06_c);
-                            EnableControls(LA_06_a);
-
-
-                            Enable_RadioButton(LA_07_v);
-                            Enable_RadioButton(LA_07_b);
-                            Enable_RadioButton(LA_07_c);
-                            EnableControls(LA_07_a);
-
-
-                            Enable_RadioButton(LA_08_v);
-                            Enable_RadioButton(LA_08_b);
-                            Enable_RadioButton(LA_08_c);
-                            EnableControls(LA_08_a);
-
-
-                            Enable_RadioButton(LA_09_v);
-                            Enable_RadioButton(LA_09_b);
-                            Enable_RadioButton(LA_09_c);
-                            EnableControls(LA_09_a);
-
-
-                            Enable_RadioButton(LA_10_v);
-                            Enable_RadioButton(LA_10_b);
-                            Enable_RadioButton(LA_10_c);
-                            EnableControls(LA_10_a);
-
-
-                            Enable_RadioButton(LA_11_v);
-                            Enable_RadioButton(LA_11_b);
-                            Enable_RadioButton(LA_11_c);
-                            EnableControls(LA_11_a);
-
-
-                            Enable_RadioButton(LA_12_v);
-                            Enable_RadioButton(LA_12_b);
-                            Enable_RadioButton(LA_12_c);
-                            EnableControls(LA_12_a);
-
-
-                            Enable_RadioButton(LA_13_v);
-                            Enable_RadioButton(LA_13_b);
-                            Enable_RadioButton(LA_13_c);
-                            EnableControls(LA_13_a);
-
-
-                            Enable_RadioButton(LA_14_v);
-                            Enable_RadioButton(LA_14_b);
-                            Enable_RadioButton(LA_14_c);
-                            EnableControls(LA_14_a);
-
-
-                            Enable_RadioButton(LA_15_v);
-                            Enable_RadioButton(LA_15_b);
-                            Enable_RadioButton(LA_15_c);
-                            EnableControls(LA_15_a);
-
-
-                            Enable_RadioButton(LA_16_v);
-                            Enable_RadioButton(LA_16_b);
-                            Enable_RadioButton(LA_16_c);
-                            EnableControls(LA_16_a);
-
-                            EnableControls(LA_17);
-                            EnableControls(LA_18);
-                            EnableControls(LA_19);
-
-
-                            Enable_RadioButton(LA_20a_v);
-                            Enable_RadioButton(LA_20a_b);
-                            Enable_RadioButton(LA_20a_c);
-                            EnableControls(LA_20a_a);
-                            Enable_RadioButton(LA_20b_a);
-                            Enable_RadioButton(LA_20b_b);
-                            Enable_RadioButton(LA_20b_c);
-
-
-                            Enable_RadioButton(LA_21a_v);
-                            Enable_RadioButton(LA_21a_b);
-                            Enable_RadioButton(LA_21a_c);
-                            EnableControls(LA_21a_a);
-                            Enable_RadioButton(LA_21b_a);
-                            Enable_RadioButton(LA_21b_b);
-                            Enable_RadioButton(LA_21b_c);
-
-
-                            Enable_RadioButton(LA_22a_v);
-                            Enable_RadioButton(LA_22a_b);
-                            Enable_RadioButton(LA_22a_c);
-                            EnableControls(LA_22a_a);
-                            Enable_RadioButton(LA_22b_a);
-                            Enable_RadioButton(LA_22b_b);
-                            Enable_RadioButton(LA_22b_c);
-
-
-                            Enable_RadioButton(LA_23a_v);
-                            Enable_RadioButton(LA_23a_b);
-                            Enable_RadioButton(LA_23a_c);
-                            EnableControls(LA_23a_a);
-                            Enable_RadioButton(LA_23b_a);
-                            Enable_RadioButton(LA_23b_b);
-                            Enable_RadioButton(LA_23b_c);
-
-
-                            Enable_RadioButton(LA_24a_v);
-                            Enable_RadioButton(LA_24a_b);
-                            Enable_RadioButton(LA_24a_c);
-                            EnableControls(LA_24a_a);
-                            Enable_RadioButton(LA_24b_a);
-                            Enable_RadioButton(LA_24b_b);
-                            Enable_RadioButton(LA_24b_c);
-
-
-                            Enable_RadioButton(LA_25a_v);
-                            Enable_RadioButton(LA_25a_b);
-                            Enable_RadioButton(LA_25a_c);
-                            EnableControls(LA_25a_a);
-                            Enable_RadioButton(LA_25b_a);
-                            Enable_RadioButton(LA_25b_b);
-                            Enable_RadioButton(LA_25b_c);
-
-
-                            Enable_RadioButton(LA_26a_v);
-                            Enable_RadioButton(LA_26a_b);
-                            Enable_RadioButton(LA_26a_c);
-                            EnableControls(LA_26a_a);
-                            Enable_RadioButton(LA_26b_a);
-                            Enable_RadioButton(LA_26b_b);
-                            Enable_RadioButton(LA_26b_c);
-
-
-                            Enable_RadioButton(LA_27a_v);
-                            Enable_RadioButton(LA_27a_b);
-                            Enable_RadioButton(LA_27a_c);
-                            EnableControls(LA_27a_a);
-                            Enable_RadioButton(LA_27b_a);
-                            Enable_RadioButton(LA_27b_b);
-                            Enable_RadioButton(LA_27b_c);
-
-
-                            Enable_RadioButton(LA_28a_v);
-                            Enable_RadioButton(LA_28a_b);
-                            Enable_RadioButton(LA_28a_c);
-                            EnableControls(LA_28a_a);
-                            Enable_RadioButton(LA_28b_a);
-                            Enable_RadioButton(LA_28b_b);
-                            Enable_RadioButton(LA_28b_c);
-
-
-
-                            Enable_RadioButton(LA_29a_v);
-                            Enable_RadioButton(LA_29a_b);
-                            Enable_RadioButton(LA_29a_c);
-                            EnableControls(LA_29a_a);
-                            Enable_RadioButton(LA_29b_a);
-                            Enable_RadioButton(LA_29b_b);
-                            Enable_RadioButton(LA_29b_c);
-
-
-
-                            Enable_RadioButton(LA_30a_v);
-                            Enable_RadioButton(LA_30a_b);
-                            Enable_RadioButton(LA_30a_c);
-                            EnableControls(LA_30a_a);
-                            Enable_RadioButton(LA_30b_a);
-                            Enable_RadioButton(LA_30b_b);
-                            Enable_RadioButton(LA_30b_c);
-
-
-                            Enable_RadioButton(LA_31a_v);
-                            Enable_RadioButton(LA_31a_b);
-                            Enable_RadioButton(LA_31a_c);
-                            EnableControls(LA_31a_a);
-                            Enable_RadioButton(LA_31b_a);
-                            Enable_RadioButton(LA_31b_b);
-                            Enable_RadioButton(LA_31b_c);
-
-
-                            Enable_RadioButton(LA_32a_v);
-                            Enable_RadioButton(LA_32a_b);
-                            Enable_RadioButton(LA_32a_c);
-                            EnableControls(LA_32a_a);
-                            Enable_RadioButton(LA_32b_a);
-                            Enable_RadioButton(LA_32b_b);
-                            Enable_RadioButton(LA_32b_c);
-
-
-                            Enable_RadioButton(LA_33a_v);
-                            Enable_RadioButton(LA_33a_b);
-                            Enable_RadioButton(LA_33a_c);
-                            EnableControls(LA_33a_a);
-                            Enable_RadioButton(LA_33b_a);
-                            Enable_RadioButton(LA_33b_b);
-                            Enable_RadioButton(LA_33b_c);
-
-
-                            Enable_RadioButton(LA_34a_v);
-                            Enable_RadioButton(LA_34a_b);
-                            Enable_RadioButton(LA_34a_c);
-                            EnableControls(LA_34a_a);
-                            Enable_RadioButton(LA_34b_a);
-                            Enable_RadioButton(LA_34b_b);
-                            Enable_RadioButton(LA_34b_c);
-
-
-                            Enable_RadioButton(LA_35a_v);
-                            Enable_RadioButton(LA_35a_b);
-                            Enable_RadioButton(LA_35a_c);
-                            EnableControls(LA_35a_a);
-                            Enable_RadioButton(LA_35b_a);
-                            Enable_RadioButton(LA_35b_b);
-                            Enable_RadioButton(LA_35b_c);
-
-
-                            Enable_RadioButton(LA_36a_v);
-                            Enable_RadioButton(LA_36a_b);
-                            Enable_RadioButton(LA_36a_c);
-                            EnableControls(LA_36a_a);
-                            Enable_RadioButton(LA_36b_a);
-                            Enable_RadioButton(LA_36b_b);
-                            Enable_RadioButton(LA_36b_c);
-
-
-                            Enable_RadioButton(LA_37a_v);
-                            Enable_RadioButton(LA_37a_b);
-                            Enable_RadioButton(LA_37a_c);
-                            EnableControls(LA_37a_a);
-                            Enable_RadioButton(LA_37b_a);
-                            Enable_RadioButton(LA_37b_b);
-                            Enable_RadioButton(LA_37b_c);
-
-
-                            Enable_RadioButton(LA_38a_v);
-                            Enable_RadioButton(LA_38a_b);
-                            Enable_RadioButton(LA_38a_c);
-                            EnableControls(LA_38a_a);
-                            Enable_RadioButton(LA_38b_a);
-                            Enable_RadioButton(LA_38b_b);
-                            Enable_RadioButton(LA_38b_c);
-
-
-                            Enable_RadioButton(LA_39a_v);
-                            Enable_RadioButton(LA_39a_b);
-                            Enable_RadioButton(LA_39a_c);
-                            EnableControls(LA_39a_a);
-                            Enable_RadioButton(LA_39b_a);
-                            Enable_RadioButton(LA_39b_b);
-                            Enable_RadioButton(LA_39b_c);
-
-
-
-                            Enable_RadioButton(LA_40a_v);
-                            Enable_RadioButton(LA_40a_b);
-                            Enable_RadioButton(LA_40a_c);
-                            EnableControls(LA_40a_a);
-                            Enable_RadioButton(LA_40b_a);
-                            Enable_RadioButton(LA_40b_b);
-                            Enable_RadioButton(LA_40b_c);
-
-
-                            Enable_RadioButton(LA_41a_v);
-                            Enable_RadioButton(LA_41a_b);
-                            Enable_RadioButton(LA_41a_c);
-                            EnableControls(LA_41a_a);
-                            Enable_RadioButton(LA_41b_a);
-                            Enable_RadioButton(LA_41b_b);
-                            Enable_RadioButton(LA_41b_c);
-
-
-                            Enable_RadioButton(LA_42a_v);
-                            Enable_RadioButton(LA_42a_b);
-                            Enable_RadioButton(LA_42a_c);
-                            EnableControls(LA_42a_a);
-                            Enable_RadioButton(LA_42b_a);
-                            Enable_RadioButton(LA_42b_b);
-                            Enable_RadioButton(LA_42b_c);
-
-
-                            Enable_RadioButton(LA_43a_v);
-                            Enable_RadioButton(LA_43a_b);
-                            Enable_RadioButton(LA_43a_c);
-                            EnableControls(LA_43a_a);
-                            Enable_RadioButton(LA_43b_a);
-                            Enable_RadioButton(LA_43b_b);
-                            Enable_RadioButton(LA_43b_c);
-
-
-                            Enable_RadioButton(LA_44a_v);
-                            Enable_RadioButton(LA_44a_b);
-                            Enable_RadioButton(LA_44a_c);
-                            EnableControls(LA_44a_a);
-                            Enable_RadioButton(LA_44b_a);
-                            Enable_RadioButton(LA_44b_b);
-                            Enable_RadioButton(LA_44b_c);
-
-
-                            Enable_RadioButton(LA_45a_v);
-                            Enable_RadioButton(LA_45a_b);
-                            Enable_RadioButton(LA_45a_c);
-                            EnableControls(LA_45a_a);
-                            Enable_RadioButton(LA_45b_a);
-                            Enable_RadioButton(LA_45b_b);
-                            Enable_RadioButton(LA_45b_c);
-
-
-                            Enable_RadioButton(LA_46a_v);
-                            Enable_RadioButton(LA_46a_b);
-                            Enable_RadioButton(LA_46a_c);
-                            EnableControls(LA_46a_a);
-                            Enable_RadioButton(LA_46b_a);
-                            Enable_RadioButton(LA_46b_b);
-                            Enable_RadioButton(LA_46b_c);
-
-
-                            Enable_RadioButton(LA_47a_v);
-                            Enable_RadioButton(LA_47a_b);
-                            Enable_RadioButton(LA_47a_c);
-                            EnableControls(LA_47a_a);
-                            Enable_RadioButton(LA_47b_a);
-                            Enable_RadioButton(LA_47b_b);
-                            Enable_RadioButton(LA_47b_c);
-
-
-                            Enable_RadioButton(LA_48a_v);
-                            Enable_RadioButton(LA_48a_b);
-                            Enable_RadioButton(LA_48a_c);
-                            EnableControls(LA_48a_a);
-                            Enable_RadioButton(LA_48b_a);
-                            Enable_RadioButton(LA_48b_b);
-                            Enable_RadioButton(LA_48b_c);
-
-
-                            Enable_RadioButton(LA_49a_v);
-                            Enable_RadioButton(LA_49a_b);
-                            Enable_RadioButton(LA_49a_c);
-                            EnableControls(LA_49a_a);
-                            Enable_RadioButton(LA_49b_a);
-                            Enable_RadioButton(LA_49b_b);
-                            Enable_RadioButton(LA_49b_c);
-
-
-                            Enable_RadioButton(LA_50a_v);
-                            Enable_RadioButton(LA_50a_b);
-                            Enable_RadioButton(LA_50a_c);
-                            EnableControls(LA_50a_a);
-                            Enable_RadioButton(LA_50b_a);
-                            Enable_RadioButton(LA_50b_b);
-                            Enable_RadioButton(LA_50b_c);
-
-
-                            Enable_RadioButton(LA_51a_v);
-                            Enable_RadioButton(LA_51a_b);
-                            Enable_RadioButton(LA_51a_c);
-                            EnableControls(LA_51a_a);
-                            Enable_RadioButton(LA_51b_a);
-                            Enable_RadioButton(LA_51b_b);
-                            Enable_RadioButton(LA_51b_c);
-
-
-                            Enable_RadioButton(LA_52a_v);
-                            Enable_RadioButton(LA_52a_b);
-                            Enable_RadioButton(LA_52a_c);
-                            EnableControls(LA_52a_a);
-                            Enable_RadioButton(LA_52b_a);
-                            Enable_RadioButton(LA_52b_b);
-                            Enable_RadioButton(LA_52b_c);
-
-                            pnl_LA_01.Visible = false;
-                            pnl_LA_02.Visible = false;
-                            pnl_idrl.Visible = true;
-
-
+                            Enable_IDRL_Section();
                         }
 
                     }
@@ -958,6 +172,2107 @@ public partial class sample_results : System.Web.UI.Page
     }
 
 
+
+    private void Disable_IDRL_Section()
+    {
+
+        EnableControls(LA_01);
+        EnableControls(LA_02);
+
+        Disable_RadioButton(LA_03_v);
+        Disable_RadioButton(LA_03_b);
+        Disable_RadioButton(LA_03_c);
+        DisableControls1(LA_03_a);
+
+
+        Disable_RadioButton(LA_04_v);
+        Disable_RadioButton(LA_04_b);
+        Disable_RadioButton(LA_04_c);
+        DisableControls1(LA_04_a);
+
+
+        Disable_RadioButton(LA_05_v);
+        Disable_RadioButton(LA_05_b);
+        Disable_RadioButton(LA_05_c);
+        DisableControls1(LA_05_a);
+
+
+        Disable_RadioButton(LA_06_v);
+        Disable_RadioButton(LA_06_b);
+        Disable_RadioButton(LA_06_c);
+        DisableControls1(LA_06_a);
+
+
+        Disable_RadioButton(LA_07_v);
+        Disable_RadioButton(LA_07_b);
+        Disable_RadioButton(LA_07_c);
+        DisableControls1(LA_07_a);
+
+
+        Disable_RadioButton(LA_08_v);
+        Disable_RadioButton(LA_08_b);
+        Disable_RadioButton(LA_08_c);
+        DisableControls1(LA_08_a);
+
+
+        Disable_RadioButton(LA_09_v);
+        Disable_RadioButton(LA_09_b);
+        Disable_RadioButton(LA_09_c);
+        DisableControls1(LA_09_a);
+
+
+        Disable_RadioButton(LA_10_v);
+        Disable_RadioButton(LA_10_b);
+        Disable_RadioButton(LA_10_c);
+        DisableControls1(LA_10_a);
+
+
+        Disable_RadioButton(LA_11_v);
+        Disable_RadioButton(LA_11_b);
+        Disable_RadioButton(LA_11_c);
+        DisableControls1(LA_11_a);
+
+
+        Disable_RadioButton(LA_12_v);
+        Disable_RadioButton(LA_12_b);
+        Disable_RadioButton(LA_12_c);
+        DisableControls1(LA_12_a);
+
+
+        Disable_RadioButton(LA_13_v);
+        Disable_RadioButton(LA_13_b);
+        Disable_RadioButton(LA_13_c);
+        DisableControls1(LA_13_a);
+
+
+        Disable_RadioButton(LA_14_v);
+        Disable_RadioButton(LA_14_b);
+        Disable_RadioButton(LA_14_c);
+        DisableControls1(LA_14_a);
+
+
+        Disable_RadioButton(LA_15_v);
+        Disable_RadioButton(LA_15_b);
+        Disable_RadioButton(LA_15_c);
+        DisableControls1(LA_15_a);
+
+
+        Disable_RadioButton(LA_16_v);
+        Disable_RadioButton(LA_16_b);
+        Disable_RadioButton(LA_16_c);
+        DisableControls1(LA_16_a);
+
+
+
+        Disable_RadioButton(LF_01_v);
+        Disable_RadioButton(LF_01_b);
+        Disable_RadioButton(LF_01_c);
+        DisableControls1(LF_01_a);
+
+
+
+        Disable_RadioButton(LF_02_v);
+        Disable_RadioButton(LF_02_b);
+        Disable_RadioButton(LF_02_c);
+        DisableControls1(LF_02_a);
+
+
+        Disable_RadioButton(LF_03_v);
+        Disable_RadioButton(LF_03_b);
+        Disable_RadioButton(LF_03_c);
+        DisableControls1(LF_03_a);
+
+
+        Disable_RadioButton(LF_04_v);
+        Disable_RadioButton(LF_04_b);
+        Disable_RadioButton(LF_04_c);
+        DisableControls1(LF_04_a);
+
+
+        Disable_RadioButton(LF_05_v);
+        Disable_RadioButton(LF_05_b);
+        Disable_RadioButton(LF_05_c);
+        DisableControls1(LF_05_a);
+
+
+        Disable_RadioButton(LF_06_v);
+        Disable_RadioButton(LF_06_b);
+        Disable_RadioButton(LF_06_c);
+        DisableControls1(LF_06_a);
+
+
+        Disable_RadioButton(LF_07_v);
+        Disable_RadioButton(LF_07_b);
+        Disable_RadioButton(LF_07_c);
+        DisableControls1(LF_07_a);
+
+
+
+        Disable_RadioButton(RF_01_v);
+        Disable_RadioButton(RF_01_b);
+        Disable_RadioButton(RF_01_c);
+        DisableControls1(RF_01_a);
+
+
+
+        Disable_RadioButton(RF_03_v);
+        Disable_RadioButton(RF_03_b);
+        Disable_RadioButton(RF_03_c);
+        DisableControls1(RF_03_a);
+
+
+        Disable_RadioButton(RF_04_v);
+        Disable_RadioButton(RF_04_b);
+        Disable_RadioButton(RF_04_c);
+        DisableControls1(RF_04_a);
+
+
+        Disable_RadioButton(SE_01_v);
+        Disable_RadioButton(SE_01_b);
+        Disable_RadioButton(SE_01_c);
+        DisableControls1(SE_01_a);
+
+
+        Disable_RadioButton(SE_02_v);
+        Disable_RadioButton(SE_02_b);
+        Disable_RadioButton(SE_02_c);
+        DisableControls1(SE_02_a);
+
+
+        Disable_RadioButton(SE_03_v);
+        Disable_RadioButton(SE_03_b);
+        Disable_RadioButton(SE_03_c);
+        DisableControls1(SE_03_a);
+
+
+        Disable_RadioButton(SE_04_v);
+        Disable_RadioButton(SE_04_b);
+        Disable_RadioButton(SE_04_c);
+        DisableControls1(SE_04_a);
+
+
+        Disable_RadioButton(CS_01_v);
+        Disable_RadioButton(CS_01_b);
+        Disable_RadioButton(CS_01_c);
+        DisableControls1(CS_01_a);
+
+
+
+        Disable_RadioButton(CS_02_v);
+        Disable_RadioButton(CS_02_b);
+        Disable_RadioButton(CS_02_c);
+        DisableControls1(CS_02_a);
+
+
+
+        Disable_RadioButton(CS_03_v);
+        Disable_RadioButton(CS_03_b);
+        Disable_RadioButton(CS_03_c);
+        DisableControls1(CS_03_a);
+
+
+        Disable_RadioButton(CS_04_v);
+        Disable_RadioButton(CS_04_b);
+        Disable_RadioButton(CS_04_c);
+        DisableControls1(CS_04_a);
+
+
+
+        Disable_RadioButton(CS_05_v);
+        Disable_RadioButton(CS_05_b);
+        Disable_RadioButton(CS_05_c);
+        DisableControls1(CS_05_a);
+
+
+        Disable_RadioButton(CS_06_v);
+        Disable_RadioButton(CS_06_b);
+        Disable_RadioButton(CS_06_c);
+        DisableControls1(CS_06_a);
+
+
+        Disable_RadioButton(CS_07_v);
+        Disable_RadioButton(CS_07_b);
+        Disable_RadioButton(CS_07_c);
+        DisableControls1(CS_07_a);
+
+
+        Disable_RadioButton(CS_08_v);
+        Disable_RadioButton(CS_08_b);
+        Disable_RadioButton(CS_08_c);
+        DisableControls1(CS_08_a);
+
+
+
+        Disable_RadioButton(CS_09_v);
+        Disable_RadioButton(CS_09_b);
+        Disable_RadioButton(CS_09_c);
+        DisableControls1(CS_09_a);
+
+
+        Disable_RadioButton(CS_10_v);
+        Disable_RadioButton(CS_10_b);
+        Disable_RadioButton(CS_10_c);
+        DisableControls1(CS_10_a);
+
+
+
+        Disable_RadioButton(UR_01_v);
+        Disable_RadioButton(UR_01_b);
+        Disable_RadioButton(UR_01_c);
+        DisableControls1(UR_01_a);
+
+
+        Disable_RadioButton(UR_02_v);
+        Disable_RadioButton(UR_02_b);
+        Disable_RadioButton(UR_02_c);
+        DisableControls1(UR_02_a);
+
+
+        Disable_RadioButton(UR_03_v);
+        Disable_RadioButton(UR_03_b);
+        Disable_RadioButton(UR_03_c);
+        DisableControls1(UR_03_a);
+
+
+        Disable_RadioButton(UR_04_v);
+        Disable_RadioButton(UR_04_b);
+        Disable_RadioButton(UR_04_c);
+        DisableControls1(UR_04_a);
+
+
+        Disable_RadioButton(UR_04a_v);
+        Disable_RadioButton(UR_04a_b);
+        Disable_RadioButton(UR_04a_c);
+        DisableControls1(UR_04a_a);
+
+
+        Disable_RadioButton(UR_05_v);
+        Disable_RadioButton(UR_05_b);
+        Disable_RadioButton(UR_05_c);
+        DisableControls1(UR_05_a);
+
+
+        Disable_RadioButton(UR_06_v);
+        Disable_RadioButton(UR_06_b);
+        Disable_RadioButton(UR_06_c);
+        DisableControls1(UR_06_a);
+
+
+        Disable_RadioButton(UR_07_v);
+        Disable_RadioButton(UR_07_b);
+        Disable_RadioButton(UR_07_c);
+        DisableControls1(UR_07_a);
+
+
+        Disable_RadioButton(UR_08_v);
+        Disable_RadioButton(UR_08_b);
+        Disable_RadioButton(UR_08_c);
+        DisableControls1(UR_08_a);
+
+
+
+        Disable_RadioButton(UR_10_v);
+        Disable_RadioButton(UR_10_b);
+        Disable_RadioButton(UR_10_c);
+        DisableControls1(UR_10_a);
+
+
+        Disable_RadioButton(UR_11_v);
+        Disable_RadioButton(UR_11_b);
+        Disable_RadioButton(UR_11_c);
+        DisableControls1(UR_11_a);
+
+
+        Disable_RadioButton(UR_12_v);
+        Disable_RadioButton(UR_12_b);
+        Disable_RadioButton(UR_12_c);
+        DisableControls1(UR_12_a);
+
+
+        Disable_RadioButton(UR_13_v);
+        Disable_RadioButton(UR_13_b);
+        Disable_RadioButton(UR_13_c);
+        DisableControls1(UR_13_a);
+
+
+        Disable_RadioButton(UR_14_v);
+        Disable_RadioButton(UR_14_b);
+        Disable_RadioButton(UR_14_c);
+        DisableControls1(UR_14_a);
+
+
+        Disable_RadioButton(UR_15_v);
+        Disable_RadioButton(UR_15_b);
+        Disable_RadioButton(UR_15_c);
+        DisableControls1(UR_15_a);
+
+
+        Disable_RadioButton(UR_16_v);
+        Disable_RadioButton(UR_16_b);
+        Disable_RadioButton(UR_16_c);
+        DisableControls1(UR_16_a);
+
+
+        Disable_RadioButton(UR_17_v);
+        Disable_RadioButton(UR_17_b);
+        Disable_RadioButton(UR_17_c);
+        DisableControls1(UR_17_a);
+
+
+
+        Disable_RadioButton(UR_18_v);
+        Disable_RadioButton(UR_18_b);
+        Disable_RadioButton(UR_18_c);
+        DisableControls1(UR_18_a);
+
+
+
+        Disable_RadioButton(UR_19_v);
+        Disable_RadioButton(UR_19_b);
+        Disable_RadioButton(UR_19_c);
+        DisableControls1(UR_19_a);
+
+
+        Disable_RadioButton(UR_20_v);
+        Disable_RadioButton(UR_20_b);
+        Disable_RadioButton(UR_20_c);
+        DisableControls1(UR_20_a);
+
+
+
+        Disable_RadioButton(UR_21_v);
+        Disable_RadioButton(UR_21_b);
+        Disable_RadioButton(UR_21_c);
+        DisableControls1(UR_21_a);
+
+
+        Disable_RadioButton(uc_01_a);
+        Disable_RadioButton(uc_01_b);
+        Disable_RadioButton(uc_01_c);
+        DisableControls1(uc_01_ca);
+
+
+        Disable_RadioButton(uc_02a_v);
+        Disable_RadioButton(uc_02a_b);
+        Disable_RadioButton(uc_02a_c);
+        DisableControls1(uc_02a_a);
+        Disable_RadioButton(uc_02b_a);
+        Disable_RadioButton(uc_02b_b);
+        Disable_RadioButton(uc_02b_c);
+
+
+        Disable_RadioButton(uc_03a_v);
+        Disable_RadioButton(uc_03a_b);
+        Disable_RadioButton(uc_03a_c);
+        DisableControls1(uc_03a_a);
+        Disable_RadioButton(uc_03b_a);
+        Disable_RadioButton(uc_03b_b);
+        Disable_RadioButton(uc_03b_c);
+
+
+        Disable_RadioButton(uc_04a_v);
+        Disable_RadioButton(uc_04a_b);
+        Disable_RadioButton(uc_04a_c);
+        DisableControls1(uc_04a_a);
+        Disable_RadioButton(uc_04b_a);
+        Disable_RadioButton(uc_04b_b);
+        Disable_RadioButton(uc_04b_c);
+
+
+        Disable_RadioButton(uc_05a_v);
+        Disable_RadioButton(uc_05a_b);
+        Disable_RadioButton(uc_05a_c);
+        DisableControls1(uc_05a_a);
+        Disable_RadioButton(uc_05b_a);
+        Disable_RadioButton(uc_05b_b);
+        Disable_RadioButton(uc_05b_c);
+
+
+        Disable_RadioButton(uc_06a_v);
+        Disable_RadioButton(uc_06a_b);
+        Disable_RadioButton(uc_06a_c);
+        DisableControls1(uc_06a_a);
+        Disable_RadioButton(uc_06b_a);
+        Disable_RadioButton(uc_06b_b);
+        Disable_RadioButton(uc_06b_c);
+
+
+        Disable_RadioButton(uc_07a_v);
+        Disable_RadioButton(uc_07a_b);
+        Disable_RadioButton(uc_07a_c);
+        DisableControls1(uc_07a_a);
+        Disable_RadioButton(uc_07b_a);
+        Disable_RadioButton(uc_07b_b);
+        Disable_RadioButton(uc_07b_c);
+
+
+        Disable_RadioButton(uc_08a_v);
+        Disable_RadioButton(uc_08a_b);
+        Disable_RadioButton(uc_08a_c);
+        DisableControls1(uc_08a_a);
+        Disable_RadioButton(uc_08b_a);
+        Disable_RadioButton(uc_08b_b);
+        Disable_RadioButton(uc_08b_c);
+
+
+
+        Disable_RadioButton(uc_09a_v);
+        Disable_RadioButton(uc_09a_b);
+        Disable_RadioButton(uc_09a_c);
+        DisableControls1(uc_09a_a);
+        Disable_RadioButton(uc_09b_a);
+        Disable_RadioButton(uc_09b_b);
+        Disable_RadioButton(uc_09b_c);
+
+
+
+        Disable_RadioButton(uc_10a_v);
+        Disable_RadioButton(uc_10a_b);
+        Disable_RadioButton(uc_10a_c);
+        DisableControls1(uc_10a_a);
+        Disable_RadioButton(uc_10b_a);
+        Disable_RadioButton(uc_10b_b);
+        Disable_RadioButton(uc_10b_c);
+
+
+
+        Disable_RadioButton(uc_11a_v);
+        Disable_RadioButton(uc_11a_b);
+        Disable_RadioButton(uc_11a_c);
+        DisableControls1(uc_11a_a);
+        Disable_RadioButton(uc_11b_a);
+        Disable_RadioButton(uc_11b_b);
+        Disable_RadioButton(uc_11b_c);
+
+
+
+        Disable_RadioButton(uc_12a_v);
+        Disable_RadioButton(uc_12a_b);
+        Disable_RadioButton(uc_12a_c);
+        DisableControls1(uc_12a_a);
+        Disable_RadioButton(uc_12b_a);
+        Disable_RadioButton(uc_12b_b);
+        Disable_RadioButton(uc_12b_c);
+
+
+
+        Disable_RadioButton(uc_13a_v);
+        Disable_RadioButton(uc_13a_b);
+        Disable_RadioButton(uc_13a_c);
+        DisableControls1(uc_13a_a);
+        Disable_RadioButton(uc_13b_a);
+        Disable_RadioButton(uc_13b_b);
+        Disable_RadioButton(uc_13b_c);
+
+
+
+        Disable_RadioButton(uc_14a_v);
+        Disable_RadioButton(uc_14a_b);
+        Disable_RadioButton(uc_14a_c);
+        DisableControls1(uc_14a_a);
+        Disable_RadioButton(uc_14b_a);
+        Disable_RadioButton(uc_14b_b);
+        Disable_RadioButton(uc_14b_c);
+
+
+
+        Disable_RadioButton(uc_15a_v);
+        Disable_RadioButton(uc_15a_b);
+        Disable_RadioButton(uc_15a_c);
+        DisableControls1(uc_15a_a);
+        Disable_RadioButton(uc_15b_a);
+        Disable_RadioButton(uc_15b_b);
+        Disable_RadioButton(uc_15b_c);
+
+
+
+        Disable_RadioButton(uc_16a_v);
+        Disable_RadioButton(uc_16a_b);
+        Disable_RadioButton(uc_16a_c);
+        DisableControls1(uc_16a_a);
+        Disable_RadioButton(uc_16b_a);
+        Disable_RadioButton(uc_16b_b);
+        Disable_RadioButton(uc_16b_c);
+
+
+
+        Disable_RadioButton(uc_17a_v);
+        Disable_RadioButton(uc_17a_b);
+        Disable_RadioButton(uc_17a_c);
+        DisableControls1(uc_17a_a);
+        Disable_RadioButton(uc_17b_a);
+        Disable_RadioButton(uc_17b_b);
+        Disable_RadioButton(uc_17b_c);
+
+
+
+        Disable_RadioButton(uc_18a_v);
+        Disable_RadioButton(uc_18a_b);
+        Disable_RadioButton(uc_18a_c);
+        DisableControls1(uc_18a_a);
+        Disable_RadioButton(uc_18b_a);
+        Disable_RadioButton(uc_18b_b);
+        Disable_RadioButton(uc_18b_c);
+
+
+
+        Disable_RadioButton(uc_19a_v);
+        Disable_RadioButton(uc_19a_b);
+        Disable_RadioButton(uc_19a_c);
+        DisableControls1(uc_19a_a);
+        Disable_RadioButton(uc_19b_a);
+        Disable_RadioButton(uc_19b_b);
+        Disable_RadioButton(uc_19b_c);
+
+
+
+        Disable_RadioButton(uc_20a_v);
+        Disable_RadioButton(uc_20a_b);
+        Disable_RadioButton(uc_20a_c);
+        DisableControls1(uc_20a_a);
+        Disable_RadioButton(uc_20b_a);
+        Disable_RadioButton(uc_20b_b);
+        Disable_RadioButton(uc_20b_c);
+
+
+
+        Disable_RadioButton(uc_21a_v);
+        Disable_RadioButton(uc_21a_b);
+        Disable_RadioButton(uc_21a_c);
+        DisableControls1(uc_21a_a);
+        Disable_RadioButton(uc_21b_a);
+        Disable_RadioButton(uc_21b_b);
+        Disable_RadioButton(uc_21b_c);
+
+
+        Disable_RadioButton(uc_22a_v);
+        Disable_RadioButton(uc_22a_b);
+        Disable_RadioButton(uc_22a_c);
+        DisableControls1(uc_22a_a);
+        Disable_RadioButton(uc_22b_a);
+        Disable_RadioButton(uc_22b_b);
+        Disable_RadioButton(uc_22b_c);
+
+
+
+        Disable_RadioButton(uc_23a_v);
+        Disable_RadioButton(uc_23a_b);
+        Disable_RadioButton(uc_23a_c);
+        DisableControls1(uc_23a_a);
+        Disable_RadioButton(uc_23b_a);
+        Disable_RadioButton(uc_23b_b);
+        Disable_RadioButton(uc_23b_c);
+
+
+
+        Disable_RadioButton(uc_24a_v);
+        Disable_RadioButton(uc_24a_b);
+        Disable_RadioButton(uc_24a_c);
+        DisableControls1(uc_24a_a);
+        Disable_RadioButton(uc_24b_a);
+        Disable_RadioButton(uc_24b_b);
+        Disable_RadioButton(uc_24b_c);
+
+
+
+        Disable_RadioButton(uc_25a_v);
+        Disable_RadioButton(uc_25a_b);
+        Disable_RadioButton(uc_25a_c);
+        DisableControls1(uc_25a_a);
+        Disable_RadioButton(uc_25b_a);
+        Disable_RadioButton(uc_25b_b);
+        Disable_RadioButton(uc_25b_c);
+
+
+
+        Disable_RadioButton(uc_26a_v);
+        Disable_RadioButton(uc_26a_b);
+        Disable_RadioButton(uc_26a_c);
+        DisableControls1(uc_26a_a);
+        Disable_RadioButton(uc_26b_a);
+        Disable_RadioButton(uc_26b_b);
+        Disable_RadioButton(uc_26b_c);
+
+
+
+        Disable_RadioButton(uc_27a_v);
+        Disable_RadioButton(uc_27a_b);
+        Disable_RadioButton(uc_27a_c);
+        DisableControls1(uc_27a_a);
+        Disable_RadioButton(uc_27b_a);
+        Disable_RadioButton(uc_27b_b);
+        Disable_RadioButton(uc_27b_c);
+
+
+
+
+        Disable_RadioButton(uc_28a_v);
+        Disable_RadioButton(uc_28a_b);
+        Disable_RadioButton(uc_28a_c);
+        DisableControls1(uc_28a_a);
+        Disable_RadioButton(uc_28b_a);
+        Disable_RadioButton(uc_28b_b);
+        Disable_RadioButton(uc_28b_c);
+
+
+
+        Disable_RadioButton(uc_29a_v);
+        Disable_RadioButton(uc_29a_b);
+        Disable_RadioButton(uc_29a_c);
+        DisableControls1(uc_29a_a);
+        Disable_RadioButton(uc_29b_a);
+        Disable_RadioButton(uc_29b_b);
+        Disable_RadioButton(uc_29b_c);
+
+
+
+        Disable_RadioButton(uc_30a_v);
+        Disable_RadioButton(uc_30a_b);
+        Disable_RadioButton(uc_30a_c);
+        DisableControls1(uc_30a_a);
+        Disable_RadioButton(uc_30b_a);
+        Disable_RadioButton(uc_30b_b);
+        Disable_RadioButton(uc_30b_c);
+
+
+
+        Disable_RadioButton(uc_31a_v);
+        Disable_RadioButton(uc_31a_b);
+        Disable_RadioButton(uc_31a_c);
+        DisableControls1(uc_31a_a);
+        Disable_RadioButton(uc_31b_a);
+        Disable_RadioButton(uc_31b_b);
+        Disable_RadioButton(uc_31b_c);
+
+
+
+        Disable_RadioButton(uc_32a_v);
+        Disable_RadioButton(uc_32a_b);
+        Disable_RadioButton(uc_32a_c);
+        DisableControls1(uc_32a_a);
+        Disable_RadioButton(uc_32b_a);
+        Disable_RadioButton(uc_32b_b);
+        Disable_RadioButton(uc_32b_c);
+
+
+
+        Disable_RadioButton(uc_33a_v);
+        Disable_RadioButton(uc_33a_b);
+        Disable_RadioButton(uc_33a_c);
+        DisableControls1(uc_33a_a);
+        Disable_RadioButton(uc_33b_a);
+        Disable_RadioButton(uc_33b_b);
+        Disable_RadioButton(uc_33b_c);
+
+
+
+        Disable_RadioButton(uc_34a_v);
+        Disable_RadioButton(uc_34a_b);
+        Disable_RadioButton(uc_34a_c);
+        DisableControls1(uc_34a_a);
+        Disable_RadioButton(uc_34b_a);
+        Disable_RadioButton(uc_34b_b);
+        Disable_RadioButton(uc_34b_c);
+
+
+
+        Disable_RadioButton(uc_35a_v);
+        Disable_RadioButton(uc_35a_b);
+        Disable_RadioButton(uc_35a_c);
+        DisableControls1(uc_35a_a);
+        Disable_RadioButton(uc_35b_a);
+        Disable_RadioButton(uc_35b_b);
+        Disable_RadioButton(uc_35b_c);
+
+
+
+        Disable_RadioButton(uc_36a_v);
+        Disable_RadioButton(uc_36a_b);
+        Disable_RadioButton(uc_36a_c);
+        DisableControls1(uc_36a_a);
+        Disable_RadioButton(uc_36b_a);
+        Disable_RadioButton(uc_36b_b);
+        Disable_RadioButton(uc_36b_c);
+
+
+
+        Disable_RadioButton(uc_37a_v);
+        Disable_RadioButton(uc_37a_b);
+        Disable_RadioButton(uc_37a_c);
+        DisableControls1(uc_37a_a);
+        Disable_RadioButton(uc_37b_a);
+        Disable_RadioButton(uc_37b_b);
+        Disable_RadioButton(uc_37b_c);
+
+
+
+        DisableControls1(LA_17);
+        DisableControls1(LA_18);
+        DisableControls1(LA_19);
+
+
+        Disable_RadioButton(LA_20a_v);
+        Disable_RadioButton(LA_20a_b);
+        Disable_RadioButton(LA_20a_c);
+        DisableControls1(LA_20a_a);
+        Disable_RadioButton(LA_20b_a);
+        Disable_RadioButton(LA_20b_b);
+        Disable_RadioButton(LA_20b_c);
+
+
+        Disable_RadioButton(LA_21a_v);
+        Disable_RadioButton(LA_21a_b);
+        Disable_RadioButton(LA_21a_c);
+        DisableControls1(LA_21a_a);
+        Disable_RadioButton(LA_21b_a);
+        Disable_RadioButton(LA_21b_b);
+        Disable_RadioButton(LA_21b_c);
+
+
+        Disable_RadioButton(LA_22a_v);
+        Disable_RadioButton(LA_22a_b);
+        Disable_RadioButton(LA_22a_c);
+        DisableControls1(LA_22a_a);
+        Disable_RadioButton(LA_22b_a);
+        Disable_RadioButton(LA_22b_b);
+        Disable_RadioButton(LA_22b_c);
+
+
+        Disable_RadioButton(LA_23a_v);
+        Disable_RadioButton(LA_23a_b);
+        Disable_RadioButton(LA_23a_c);
+        DisableControls1(LA_23a_a);
+        Disable_RadioButton(LA_23b_a);
+        Disable_RadioButton(LA_23b_b);
+        Disable_RadioButton(LA_23b_c);
+
+
+        Disable_RadioButton(LA_24a_v);
+        Disable_RadioButton(LA_24a_b);
+        Disable_RadioButton(LA_24a_c);
+        DisableControls1(LA_24a_a);
+        Disable_RadioButton(LA_24b_a);
+        Disable_RadioButton(LA_24b_b);
+        Disable_RadioButton(LA_24b_c);
+
+
+        Disable_RadioButton(LA_25a_v);
+        Disable_RadioButton(LA_25a_b);
+        Disable_RadioButton(LA_25a_c);
+        DisableControls1(LA_25a_a);
+        Disable_RadioButton(LA_25b_a);
+        Disable_RadioButton(LA_25b_b);
+        Disable_RadioButton(LA_25b_c);
+
+
+        Disable_RadioButton(LA_26a_v);
+        Disable_RadioButton(LA_26a_b);
+        Disable_RadioButton(LA_26a_c);
+        DisableControls1(LA_26a_a);
+        Disable_RadioButton(LA_26b_a);
+        Disable_RadioButton(LA_26b_b);
+        Disable_RadioButton(LA_26b_c);
+
+
+        Disable_RadioButton(LA_27a_v);
+        Disable_RadioButton(LA_27a_b);
+        Disable_RadioButton(LA_27a_c);
+        DisableControls1(LA_27a_a);
+        Disable_RadioButton(LA_27b_a);
+        Disable_RadioButton(LA_27b_b);
+        Disable_RadioButton(LA_27b_c);
+
+
+        Disable_RadioButton(LA_28a_v);
+        Disable_RadioButton(LA_28a_b);
+        Disable_RadioButton(LA_28a_c);
+        DisableControls1(LA_28a_a);
+        Disable_RadioButton(LA_28b_a);
+        Disable_RadioButton(LA_28b_b);
+        Disable_RadioButton(LA_28b_c);
+
+
+
+        Disable_RadioButton(LA_29a_v);
+        Disable_RadioButton(LA_29a_b);
+        Disable_RadioButton(LA_29a_c);
+        DisableControls1(LA_29a_a);
+        Disable_RadioButton(LA_29b_a);
+        Disable_RadioButton(LA_29b_b);
+        Disable_RadioButton(LA_29b_c);
+
+
+
+        Disable_RadioButton(LA_30a_v);
+        Disable_RadioButton(LA_30a_b);
+        Disable_RadioButton(LA_30a_c);
+        DisableControls1(LA_30a_a);
+        Disable_RadioButton(LA_30b_a);
+        Disable_RadioButton(LA_30b_b);
+        Disable_RadioButton(LA_30b_c);
+
+
+        Disable_RadioButton(LA_31a_v);
+        Disable_RadioButton(LA_31a_b);
+        Disable_RadioButton(LA_31a_c);
+        DisableControls1(LA_31a_a);
+        Disable_RadioButton(LA_31b_a);
+        Disable_RadioButton(LA_31b_b);
+        Disable_RadioButton(LA_31b_c);
+
+
+        Disable_RadioButton(LA_32a_v);
+        Disable_RadioButton(LA_32a_b);
+        Disable_RadioButton(LA_32a_c);
+        DisableControls1(LA_32a_a);
+        Disable_RadioButton(LA_32b_a);
+        Disable_RadioButton(LA_32b_b);
+        Disable_RadioButton(LA_32b_c);
+
+
+        Disable_RadioButton(LA_33a_v);
+        Disable_RadioButton(LA_33a_b);
+        Disable_RadioButton(LA_33a_c);
+        DisableControls1(LA_33a_a);
+        Disable_RadioButton(LA_33b_a);
+        Disable_RadioButton(LA_33b_b);
+        Disable_RadioButton(LA_33b_c);
+
+
+        Disable_RadioButton(LA_34a_v);
+        Disable_RadioButton(LA_34a_b);
+        Disable_RadioButton(LA_34a_c);
+        DisableControls1(LA_34a_a);
+        Disable_RadioButton(LA_34b_a);
+        Disable_RadioButton(LA_34b_b);
+        Disable_RadioButton(LA_34b_c);
+
+
+        Disable_RadioButton(LA_35a_v);
+        Disable_RadioButton(LA_35a_b);
+        Disable_RadioButton(LA_35a_c);
+        DisableControls1(LA_35a_a);
+        Disable_RadioButton(LA_35b_a);
+        Disable_RadioButton(LA_35b_b);
+        Disable_RadioButton(LA_35b_c);
+
+
+        Disable_RadioButton(LA_36a_v);
+        Disable_RadioButton(LA_36a_b);
+        Disable_RadioButton(LA_36a_c);
+        DisableControls1(LA_36a_a);
+        Disable_RadioButton(LA_36b_a);
+        Disable_RadioButton(LA_36b_b);
+        Disable_RadioButton(LA_36b_c);
+
+
+        Disable_RadioButton(LA_37a_v);
+        Disable_RadioButton(LA_37a_b);
+        Disable_RadioButton(LA_37a_c);
+        DisableControls1(LA_37a_a);
+        Disable_RadioButton(LA_37b_a);
+        Disable_RadioButton(LA_37b_b);
+        Disable_RadioButton(LA_37b_c);
+
+
+        Disable_RadioButton(LA_38a_v);
+        Disable_RadioButton(LA_38a_b);
+        Disable_RadioButton(LA_38a_c);
+        DisableControls1(LA_38a_a);
+        Disable_RadioButton(LA_38b_a);
+        Disable_RadioButton(LA_38b_b);
+        Disable_RadioButton(LA_38b_c);
+
+
+        Disable_RadioButton(LA_39a_v);
+        Disable_RadioButton(LA_39a_b);
+        Disable_RadioButton(LA_39a_c);
+        DisableControls1(LA_39a_a);
+        Disable_RadioButton(LA_39b_a);
+        Disable_RadioButton(LA_39b_b);
+        Disable_RadioButton(LA_39b_c);
+
+
+
+        Disable_RadioButton(LA_40a_v);
+        Disable_RadioButton(LA_40a_b);
+        Disable_RadioButton(LA_40a_c);
+        DisableControls1(LA_40a_a);
+        Disable_RadioButton(LA_40b_a);
+        Disable_RadioButton(LA_40b_b);
+        Disable_RadioButton(LA_40b_c);
+
+
+        Disable_RadioButton(LA_41a_v);
+        Disable_RadioButton(LA_41a_b);
+        Disable_RadioButton(LA_41a_c);
+        DisableControls1(LA_41a_a);
+        Disable_RadioButton(LA_41b_a);
+        Disable_RadioButton(LA_41b_b);
+        Disable_RadioButton(LA_41b_c);
+
+
+        Disable_RadioButton(LA_42a_v);
+        Disable_RadioButton(LA_42a_b);
+        Disable_RadioButton(LA_42a_c);
+        DisableControls1(LA_42a_a);
+        Disable_RadioButton(LA_42b_a);
+        Disable_RadioButton(LA_42b_b);
+        Disable_RadioButton(LA_42b_c);
+
+
+        Disable_RadioButton(LA_43a_v);
+        Disable_RadioButton(LA_43a_b);
+        Disable_RadioButton(LA_43a_c);
+        DisableControls1(LA_43a_a);
+        Disable_RadioButton(LA_43b_a);
+        Disable_RadioButton(LA_43b_b);
+        Disable_RadioButton(LA_43b_c);
+
+
+        Disable_RadioButton(LA_44a_v);
+        Disable_RadioButton(LA_44a_b);
+        Disable_RadioButton(LA_44a_c);
+        DisableControls1(LA_44a_a);
+        Disable_RadioButton(LA_44b_a);
+        Disable_RadioButton(LA_44b_b);
+        Disable_RadioButton(LA_44b_c);
+
+
+        Disable_RadioButton(LA_45a_v);
+        Disable_RadioButton(LA_45a_b);
+        Disable_RadioButton(LA_45a_c);
+        DisableControls1(LA_45a_a);
+        Disable_RadioButton(LA_45b_a);
+        Disable_RadioButton(LA_45b_b);
+        Disable_RadioButton(LA_45b_c);
+
+
+        Disable_RadioButton(LA_46a_v);
+        Disable_RadioButton(LA_46a_b);
+        Disable_RadioButton(LA_46a_c);
+        DisableControls1(LA_46a_a);
+        Disable_RadioButton(LA_46b_a);
+        Disable_RadioButton(LA_46b_b);
+        Disable_RadioButton(LA_46b_c);
+
+
+        Disable_RadioButton(LA_47a_v);
+        Disable_RadioButton(LA_47a_b);
+        Disable_RadioButton(LA_47a_c);
+        DisableControls1(LA_47a_a);
+        Disable_RadioButton(LA_47b_a);
+        Disable_RadioButton(LA_47b_b);
+        Disable_RadioButton(LA_47b_c);
+
+
+        Disable_RadioButton(LA_48a_v);
+        Disable_RadioButton(LA_48a_b);
+        Disable_RadioButton(LA_48a_c);
+        DisableControls1(LA_48a_a);
+        Disable_RadioButton(LA_48b_a);
+        Disable_RadioButton(LA_48b_b);
+        Disable_RadioButton(LA_48b_c);
+
+
+        Disable_RadioButton(LA_49a_v);
+        Disable_RadioButton(LA_49a_b);
+        Disable_RadioButton(LA_49a_c);
+        DisableControls1(LA_49a_a);
+        Disable_RadioButton(LA_49b_a);
+        Disable_RadioButton(LA_49b_b);
+        Disable_RadioButton(LA_49b_c);
+
+
+        Disable_RadioButton(LA_50a_v);
+        Disable_RadioButton(LA_50a_b);
+        Disable_RadioButton(LA_50a_c);
+        DisableControls1(LA_50a_a);
+        Disable_RadioButton(LA_50b_a);
+        Disable_RadioButton(LA_50b_b);
+        Disable_RadioButton(LA_50b_c);
+
+
+        Disable_RadioButton(LA_51a_v);
+        Disable_RadioButton(LA_51a_b);
+        Disable_RadioButton(LA_51a_c);
+        DisableControls1(LA_51a_a);
+        Disable_RadioButton(LA_51b_a);
+        Disable_RadioButton(LA_51b_b);
+        Disable_RadioButton(LA_51b_c);
+
+
+        Disable_RadioButton(LA_52a_v);
+        Disable_RadioButton(LA_52a_b);
+        Disable_RadioButton(LA_52a_c);
+        DisableControls1(LA_52a_a);
+        Disable_RadioButton(LA_52b_a);
+        Disable_RadioButton(LA_52b_b);
+        Disable_RadioButton(LA_52b_c);
+
+
+        pnl_LA_01.Visible = true;
+        pnl_LA_02.Visible = true;
+        pnl_idrl.Visible = false;
+
+    }
+
+
+    private void Enable_IDRL_Section()
+    {
+        DisableControls(LA_01);
+        DisableControls(LA_02);
+
+
+        Enable_RadioButton(LA_03_v);
+        Enable_RadioButton(LA_03_b);
+        Enable_RadioButton(LA_03_c);
+        EnableControls(LA_03_a);
+
+
+        Enable_RadioButton(LA_04_v);
+        Enable_RadioButton(LA_04_b);
+        Enable_RadioButton(LA_04_c);
+        EnableControls(LA_04_a);
+
+
+        Enable_RadioButton(LA_05_v);
+        Enable_RadioButton(LA_05_b);
+        Enable_RadioButton(LA_05_c);
+        EnableControls(LA_05_a);
+
+
+        Enable_RadioButton(LA_06_v);
+        Enable_RadioButton(LA_06_b);
+        Enable_RadioButton(LA_06_c);
+        EnableControls(LA_06_a);
+
+
+        Enable_RadioButton(LA_07_v);
+        Enable_RadioButton(LA_07_b);
+        Enable_RadioButton(LA_07_c);
+        EnableControls(LA_07_a);
+
+
+        Enable_RadioButton(LA_08_v);
+        Enable_RadioButton(LA_08_b);
+        Enable_RadioButton(LA_08_c);
+        EnableControls(LA_08_a);
+
+
+        Enable_RadioButton(LA_09_v);
+        Enable_RadioButton(LA_09_b);
+        Enable_RadioButton(LA_09_c);
+        EnableControls(LA_09_a);
+
+
+        Enable_RadioButton(LA_10_v);
+        Enable_RadioButton(LA_10_b);
+        Enable_RadioButton(LA_10_c);
+        EnableControls(LA_10_a);
+
+
+        Enable_RadioButton(LA_11_v);
+        Enable_RadioButton(LA_11_b);
+        Enable_RadioButton(LA_11_c);
+        EnableControls(LA_11_a);
+
+
+        Enable_RadioButton(LA_12_v);
+        Enable_RadioButton(LA_12_b);
+        Enable_RadioButton(LA_12_c);
+        EnableControls(LA_12_a);
+
+
+        Enable_RadioButton(LA_13_v);
+        Enable_RadioButton(LA_13_b);
+        Enable_RadioButton(LA_13_c);
+        EnableControls(LA_13_a);
+
+
+        Enable_RadioButton(LA_14_v);
+        Enable_RadioButton(LA_14_b);
+        Enable_RadioButton(LA_14_c);
+        EnableControls(LA_14_a);
+
+
+        Enable_RadioButton(LA_15_v);
+        Enable_RadioButton(LA_15_b);
+        Enable_RadioButton(LA_15_c);
+        EnableControls(LA_15_a);
+
+
+        Enable_RadioButton(LA_16_v);
+        Enable_RadioButton(LA_16_b);
+        Enable_RadioButton(LA_16_c);
+        EnableControls(LA_16_a);
+
+
+
+        Enable_RadioButton(LF_01_v);
+        Enable_RadioButton(LF_01_b);
+        Enable_RadioButton(LF_01_c);
+        EnableControls(LF_01_a);
+
+
+
+        Enable_RadioButton(LF_02_v);
+        Enable_RadioButton(LF_02_b);
+        Enable_RadioButton(LF_02_c);
+        EnableControls(LF_02_a);
+
+
+        Enable_RadioButton(LF_03_v);
+        Enable_RadioButton(LF_03_b);
+        Enable_RadioButton(LF_03_c);
+        EnableControls(LF_03_a);
+
+
+
+        Enable_RadioButton(LF_04_v);
+        Enable_RadioButton(LF_04_b);
+        Enable_RadioButton(LF_04_c);
+        EnableControls(LF_04_a);
+
+
+
+        Enable_RadioButton(LF_05_v);
+        Enable_RadioButton(LF_05_b);
+        Enable_RadioButton(LF_05_c);
+        EnableControls(LF_05_a);
+
+
+
+        Enable_RadioButton(LF_06_v);
+        Enable_RadioButton(LF_06_b);
+        Enable_RadioButton(LF_06_c);
+        EnableControls(LF_06_a);
+
+
+
+        Enable_RadioButton(LF_07_v);
+        Enable_RadioButton(LF_07_b);
+        Enable_RadioButton(LF_07_c);
+        EnableControls(LF_07_a);
+
+
+
+        Enable_RadioButton(RF_01_v);
+        Enable_RadioButton(RF_01_b);
+        Enable_RadioButton(RF_01_c);
+        EnableControls(RF_01_a);
+
+
+        Enable_RadioButton(RF_03_v);
+        Enable_RadioButton(RF_03_b);
+        Enable_RadioButton(RF_03_c);
+        EnableControls(RF_03_a);
+
+
+        Enable_RadioButton(RF_04_v);
+        Enable_RadioButton(RF_04_b);
+        Enable_RadioButton(RF_04_c);
+        EnableControls(RF_04_a);
+
+
+        Enable_RadioButton(SE_01_v);
+        Enable_RadioButton(SE_01_b);
+        Enable_RadioButton(SE_01_c);
+        EnableControls(SE_01_a);
+
+
+        Enable_RadioButton(SE_02_v);
+        Enable_RadioButton(SE_02_b);
+        Enable_RadioButton(SE_02_c);
+        EnableControls(SE_02_a);
+
+
+        Enable_RadioButton(SE_03_v);
+        Enable_RadioButton(SE_03_b);
+        Enable_RadioButton(SE_03_c);
+        EnableControls(SE_03_a);
+
+
+        Enable_RadioButton(SE_04_v);
+        Enable_RadioButton(SE_04_b);
+        Enable_RadioButton(SE_04_c);
+        EnableControls(SE_04_a);
+
+
+
+        Enable_RadioButton(CS_01_v);
+        Enable_RadioButton(CS_01_b);
+        Enable_RadioButton(CS_01_c);
+        EnableControls(CS_01_a);
+
+
+        Enable_RadioButton(CS_02_v);
+        Enable_RadioButton(CS_02_b);
+        Enable_RadioButton(CS_02_c);
+        EnableControls(CS_02_a);
+
+
+
+
+        Enable_RadioButton(CS_03_v);
+        Enable_RadioButton(CS_03_b);
+        Enable_RadioButton(CS_03_c);
+        EnableControls(CS_03_a);
+
+
+
+        Enable_RadioButton(CS_04_v);
+        Enable_RadioButton(CS_04_b);
+        Enable_RadioButton(CS_04_c);
+        EnableControls(CS_04_a);
+
+
+
+        Enable_RadioButton(CS_05_v);
+        Enable_RadioButton(CS_05_b);
+        Enable_RadioButton(CS_05_c);
+        EnableControls(CS_05_a);
+
+
+
+        Enable_RadioButton(CS_06_v);
+        Enable_RadioButton(CS_06_b);
+        Enable_RadioButton(CS_06_c);
+        EnableControls(CS_06_a);
+
+
+
+        Enable_RadioButton(CS_07_v);
+        Enable_RadioButton(CS_07_b);
+        Enable_RadioButton(CS_07_c);
+        EnableControls(CS_07_a);
+
+
+
+        Enable_RadioButton(CS_08_v);
+        Enable_RadioButton(CS_08_b);
+        Enable_RadioButton(CS_08_c);
+        EnableControls(CS_08_a);
+
+
+
+        Enable_RadioButton(CS_09_v);
+        Enable_RadioButton(CS_09_b);
+        Enable_RadioButton(CS_09_c);
+        EnableControls(CS_09_a);
+
+
+
+        Enable_RadioButton(CS_10_v);
+        Enable_RadioButton(CS_10_b);
+        Enable_RadioButton(CS_10_c);
+        EnableControls(CS_10_a);
+
+
+
+        Enable_RadioButton(UR_01_v);
+        Enable_RadioButton(UR_01_b);
+        Enable_RadioButton(UR_01_c);
+        EnableControls(UR_01_a);
+
+
+        Enable_RadioButton(UR_02_v);
+        Enable_RadioButton(UR_02_b);
+        Enable_RadioButton(UR_02_c);
+        EnableControls(UR_02_a);
+
+
+        Enable_RadioButton(UR_03_v);
+        Enable_RadioButton(UR_03_b);
+        Enable_RadioButton(UR_03_c);
+        EnableControls(UR_03_a);
+
+
+        Enable_RadioButton(UR_04_v);
+        Enable_RadioButton(UR_04_b);
+        Enable_RadioButton(UR_04_c);
+        EnableControls(UR_04_a);
+
+
+        Enable_RadioButton(UR_05_v);
+        Enable_RadioButton(UR_05_b);
+        Enable_RadioButton(UR_05_c);
+        EnableControls(UR_05_a);
+
+
+        Enable_RadioButton(UR_06_v);
+        Enable_RadioButton(UR_06_b);
+        Enable_RadioButton(UR_06_c);
+        EnableControls(UR_06_a);
+
+
+        Enable_RadioButton(UR_07_v);
+        Enable_RadioButton(UR_07_b);
+        Enable_RadioButton(UR_07_c);
+        EnableControls(UR_07_a);
+
+
+        Enable_RadioButton(UR_08_v);
+        Enable_RadioButton(UR_08_b);
+        Enable_RadioButton(UR_08_c);
+        EnableControls(UR_08_a);
+
+
+        Enable_RadioButton(UR_10_v);
+        Enable_RadioButton(UR_10_b);
+        Enable_RadioButton(UR_10_c);
+        EnableControls(UR_10_a);
+
+
+        Enable_RadioButton(UR_11_v);
+        Enable_RadioButton(UR_11_b);
+        Enable_RadioButton(UR_11_c);
+        EnableControls(UR_11_a);
+
+
+
+        Enable_RadioButton(UR_12_v);
+        Enable_RadioButton(UR_12_b);
+        Enable_RadioButton(UR_12_c);
+        EnableControls(UR_12_a);
+
+
+
+        Enable_RadioButton(UR_13_v);
+        Enable_RadioButton(UR_13_b);
+        Enable_RadioButton(UR_13_c);
+        EnableControls(UR_13_a);
+
+
+
+        Enable_RadioButton(UR_14_v);
+        Enable_RadioButton(UR_14_b);
+        Enable_RadioButton(UR_14_c);
+        EnableControls(UR_14_a);
+
+
+
+        Enable_RadioButton(UR_15_v);
+        Enable_RadioButton(UR_15_b);
+        Enable_RadioButton(UR_15_c);
+        EnableControls(UR_15_a);
+
+
+
+        Enable_RadioButton(UR_16_v);
+        Enable_RadioButton(UR_16_b);
+        Enable_RadioButton(UR_16_c);
+        EnableControls(UR_16_a);
+
+
+
+        Enable_RadioButton(UR_17_v);
+        Enable_RadioButton(UR_17_b);
+        Enable_RadioButton(UR_17_c);
+        EnableControls(UR_17_a);
+
+
+
+        Enable_RadioButton(UR_18_v);
+        Enable_RadioButton(UR_18_b);
+        Enable_RadioButton(UR_18_c);
+        EnableControls(UR_18_a);
+
+
+        Enable_RadioButton(UR_19_v);
+        Enable_RadioButton(UR_19_b);
+        Enable_RadioButton(UR_19_c);
+        EnableControls(UR_19_a);
+
+
+
+        Enable_RadioButton(UR_20_v);
+        Enable_RadioButton(UR_20_b);
+        Enable_RadioButton(UR_20_c);
+        EnableControls(UR_20_a);
+
+
+        Enable_RadioButton(UR_21_v);
+        Enable_RadioButton(UR_21_b);
+        Enable_RadioButton(UR_21_c);
+        EnableControls(UR_21_a);
+
+
+
+        Enable_RadioButton(uc_01_a);
+        Enable_RadioButton(uc_01_b);
+        Enable_RadioButton(uc_01_c);
+        EnableControls(uc_01_ca);
+
+
+        Enable_RadioButton(uc_02a_v);
+        Enable_RadioButton(uc_02a_b);
+        Enable_RadioButton(uc_02a_c);
+        EnableControls(uc_02a_a);
+        Enable_RadioButton(uc_02b_a);
+        Enable_RadioButton(uc_02b_b);
+        Enable_RadioButton(uc_02b_c);
+
+
+
+        Enable_RadioButton(uc_03a_v);
+        Enable_RadioButton(uc_03a_b);
+        Enable_RadioButton(uc_03a_c);
+        EnableControls(uc_03a_a);
+        Enable_RadioButton(uc_03b_a);
+        Enable_RadioButton(uc_03b_b);
+        Enable_RadioButton(uc_03b_c);
+
+
+
+        Enable_RadioButton(uc_04a_v);
+        Enable_RadioButton(uc_04a_b);
+        Enable_RadioButton(uc_04a_c);
+        EnableControls(uc_04a_a);
+        Enable_RadioButton(uc_04b_a);
+        Enable_RadioButton(uc_04b_b);
+        Enable_RadioButton(uc_04b_c);
+
+
+
+        Enable_RadioButton(uc_05a_v);
+        Enable_RadioButton(uc_05a_b);
+        Enable_RadioButton(uc_05a_c);
+        EnableControls(uc_05a_a);
+        Enable_RadioButton(uc_05b_a);
+        Enable_RadioButton(uc_05b_b);
+        Enable_RadioButton(uc_05b_c);
+
+
+
+        Enable_RadioButton(uc_06a_v);
+        Enable_RadioButton(uc_06a_b);
+        Enable_RadioButton(uc_06a_c);
+        EnableControls(uc_06a_a);
+        Enable_RadioButton(uc_06b_a);
+        Enable_RadioButton(uc_06b_b);
+        Enable_RadioButton(uc_06b_c);
+
+
+
+        Enable_RadioButton(uc_07a_v);
+        Enable_RadioButton(uc_07a_b);
+        Enable_RadioButton(uc_07a_c);
+        EnableControls(uc_07a_a);
+        Enable_RadioButton(uc_07b_a);
+        Enable_RadioButton(uc_07b_b);
+        Enable_RadioButton(uc_07b_c);
+
+
+
+        Enable_RadioButton(uc_08a_v);
+        Enable_RadioButton(uc_08a_b);
+        Enable_RadioButton(uc_08a_c);
+        EnableControls(uc_08a_a);
+        Enable_RadioButton(uc_08b_a);
+        Enable_RadioButton(uc_08b_b);
+        Enable_RadioButton(uc_08b_c);
+
+
+
+        Enable_RadioButton(uc_09a_v);
+        Enable_RadioButton(uc_09a_b);
+        Enable_RadioButton(uc_09a_c);
+        EnableControls(uc_09a_a);
+        Enable_RadioButton(uc_09b_a);
+        Enable_RadioButton(uc_09b_b);
+        Enable_RadioButton(uc_09b_c);
+
+
+
+        Enable_RadioButton(uc_10a_v);
+        Enable_RadioButton(uc_10a_b);
+        Enable_RadioButton(uc_10a_c);
+        EnableControls(uc_10a_a);
+        Enable_RadioButton(uc_10b_a);
+        Enable_RadioButton(uc_10b_b);
+        Enable_RadioButton(uc_10b_c);
+
+
+
+        Enable_RadioButton(uc_11a_v);
+        Enable_RadioButton(uc_11a_b);
+        Enable_RadioButton(uc_11a_c);
+        EnableControls(uc_11a_a);
+        Enable_RadioButton(uc_11b_a);
+        Enable_RadioButton(uc_11b_b);
+        Enable_RadioButton(uc_11b_c);
+
+
+
+        Enable_RadioButton(uc_12a_v);
+        Enable_RadioButton(uc_12a_b);
+        Enable_RadioButton(uc_12a_c);
+        EnableControls(uc_12a_a);
+        Enable_RadioButton(uc_12b_a);
+        Enable_RadioButton(uc_12b_b);
+        Enable_RadioButton(uc_12b_c);
+
+
+
+        Enable_RadioButton(uc_13a_v);
+        Enable_RadioButton(uc_13a_b);
+        Enable_RadioButton(uc_13a_c);
+        EnableControls(uc_13a_a);
+        Enable_RadioButton(uc_13b_a);
+        Enable_RadioButton(uc_13b_b);
+        Enable_RadioButton(uc_13b_c);
+
+
+
+        Enable_RadioButton(uc_14a_v);
+        Enable_RadioButton(uc_14a_b);
+        Enable_RadioButton(uc_14a_c);
+        EnableControls(uc_14a_a);
+        Enable_RadioButton(uc_14b_a);
+        Enable_RadioButton(uc_14b_b);
+        Enable_RadioButton(uc_14b_c);
+
+
+
+        Enable_RadioButton(uc_15a_v);
+        Enable_RadioButton(uc_15a_b);
+        Enable_RadioButton(uc_15a_c);
+        EnableControls(uc_15a_a);
+        Enable_RadioButton(uc_15b_a);
+        Enable_RadioButton(uc_15b_b);
+        Enable_RadioButton(uc_15b_c);
+
+
+
+        Enable_RadioButton(uc_16a_v);
+        Enable_RadioButton(uc_16a_b);
+        Enable_RadioButton(uc_16a_c);
+        EnableControls(uc_16a_a);
+        Enable_RadioButton(uc_16b_a);
+        Enable_RadioButton(uc_16b_b);
+        Enable_RadioButton(uc_16b_c);
+
+
+        Enable_RadioButton(uc_17a_v);
+        Enable_RadioButton(uc_17a_b);
+        Enable_RadioButton(uc_17a_c);
+        EnableControls(uc_17a_a);
+        Enable_RadioButton(uc_17b_a);
+        Enable_RadioButton(uc_17b_b);
+        Enable_RadioButton(uc_17b_c);
+
+
+
+        Enable_RadioButton(uc_18a_v);
+        Enable_RadioButton(uc_18a_b);
+        Enable_RadioButton(uc_18a_c);
+        EnableControls(uc_18a_a);
+        Enable_RadioButton(uc_18b_a);
+        Enable_RadioButton(uc_18b_b);
+        Enable_RadioButton(uc_18b_c);
+
+
+
+        Enable_RadioButton(uc_19a_v);
+        Enable_RadioButton(uc_19a_b);
+        Enable_RadioButton(uc_19a_c);
+        EnableControls(uc_19a_a);
+        Enable_RadioButton(uc_19b_a);
+        Enable_RadioButton(uc_19b_b);
+        Enable_RadioButton(uc_19b_c);
+
+
+
+        Enable_RadioButton(uc_20a_v);
+        Enable_RadioButton(uc_20a_b);
+        Enable_RadioButton(uc_20a_c);
+        EnableControls(uc_20a_a);
+        Enable_RadioButton(uc_20b_a);
+        Enable_RadioButton(uc_20b_b);
+        Enable_RadioButton(uc_20b_c);
+
+
+
+        Enable_RadioButton(uc_21a_v);
+        Enable_RadioButton(uc_21a_b);
+        Enable_RadioButton(uc_21a_c);
+        EnableControls(uc_21a_a);
+        Enable_RadioButton(uc_21b_a);
+        Enable_RadioButton(uc_21b_b);
+        Enable_RadioButton(uc_21b_c);
+
+
+
+        Enable_RadioButton(uc_22a_v);
+        Enable_RadioButton(uc_22a_b);
+        Enable_RadioButton(uc_22a_c);
+        EnableControls(uc_22a_a);
+        Enable_RadioButton(uc_22b_a);
+        Enable_RadioButton(uc_22b_b);
+        Enable_RadioButton(uc_22b_c);
+
+
+
+        Enable_RadioButton(uc_23a_v);
+        Enable_RadioButton(uc_23a_b);
+        Enable_RadioButton(uc_23a_c);
+        EnableControls(uc_23a_a);
+        Enable_RadioButton(uc_23b_a);
+        Enable_RadioButton(uc_23b_b);
+        Enable_RadioButton(uc_23b_c);
+
+
+
+        Enable_RadioButton(uc_24a_v);
+        Enable_RadioButton(uc_24a_b);
+        Enable_RadioButton(uc_24a_c);
+        EnableControls(uc_24a_a);
+        Enable_RadioButton(uc_24b_a);
+        Enable_RadioButton(uc_24b_b);
+        Enable_RadioButton(uc_24b_c);
+
+
+
+        Enable_RadioButton(uc_25a_v);
+        Enable_RadioButton(uc_25a_b);
+        Enable_RadioButton(uc_25a_c);
+        EnableControls(uc_25a_a);
+        Enable_RadioButton(uc_25b_a);
+        Enable_RadioButton(uc_25b_b);
+        Enable_RadioButton(uc_25b_c);
+
+
+
+        Enable_RadioButton(uc_26a_v);
+        Enable_RadioButton(uc_26a_b);
+        Enable_RadioButton(uc_26a_c);
+        EnableControls(uc_26a_a);
+        Enable_RadioButton(uc_26b_a);
+        Enable_RadioButton(uc_26b_b);
+        Enable_RadioButton(uc_26b_c);
+
+
+
+        Enable_RadioButton(uc_27a_v);
+        Enable_RadioButton(uc_27a_b);
+        Enable_RadioButton(uc_27a_c);
+        EnableControls(uc_27a_a);
+        Enable_RadioButton(uc_27b_a);
+        Enable_RadioButton(uc_27b_b);
+        Enable_RadioButton(uc_27b_c);
+
+
+        Enable_RadioButton(uc_28a_v);
+        Enable_RadioButton(uc_28a_b);
+        Enable_RadioButton(uc_28a_c);
+        EnableControls(uc_28a_a);
+        Enable_RadioButton(uc_28b_a);
+        Enable_RadioButton(uc_28b_b);
+        Enable_RadioButton(uc_28b_c);
+
+
+
+        Enable_RadioButton(uc_29a_v);
+        Enable_RadioButton(uc_29a_b);
+        Enable_RadioButton(uc_29a_c);
+        EnableControls(uc_29a_a);
+        Enable_RadioButton(uc_29b_a);
+        Enable_RadioButton(uc_29b_b);
+        Enable_RadioButton(uc_29b_c);
+
+
+
+        Enable_RadioButton(uc_30a_v);
+        Enable_RadioButton(uc_30a_b);
+        Enable_RadioButton(uc_30a_c);
+        EnableControls(uc_30a_a);
+        Enable_RadioButton(uc_30b_a);
+        Enable_RadioButton(uc_30b_b);
+        Enable_RadioButton(uc_30b_c);
+
+
+
+        Enable_RadioButton(uc_31a_v);
+        Enable_RadioButton(uc_31a_b);
+        Enable_RadioButton(uc_31a_c);
+        EnableControls(uc_31a_a);
+        Enable_RadioButton(uc_31b_a);
+        Enable_RadioButton(uc_31b_b);
+        Enable_RadioButton(uc_31b_c);
+
+
+
+        Enable_RadioButton(uc_32a_v);
+        Enable_RadioButton(uc_32a_b);
+        Enable_RadioButton(uc_32a_c);
+        EnableControls(uc_32a_a);
+        Enable_RadioButton(uc_32b_a);
+        Enable_RadioButton(uc_32b_b);
+        Enable_RadioButton(uc_32b_c);
+
+
+
+        Enable_RadioButton(uc_33a_v);
+        Enable_RadioButton(uc_33a_b);
+        Enable_RadioButton(uc_33a_c);
+        EnableControls(uc_33a_a);
+        Enable_RadioButton(uc_33b_a);
+        Enable_RadioButton(uc_33b_b);
+        Enable_RadioButton(uc_33b_c);
+
+
+
+        Enable_RadioButton(uc_34a_v);
+        Enable_RadioButton(uc_34a_b);
+        Enable_RadioButton(uc_34a_c);
+        EnableControls(uc_34a_a);
+        Enable_RadioButton(uc_34b_a);
+        Enable_RadioButton(uc_34b_b);
+        Enable_RadioButton(uc_34b_c);
+
+
+
+        Enable_RadioButton(uc_35a_v);
+        Enable_RadioButton(uc_35a_b);
+        Enable_RadioButton(uc_35a_c);
+        EnableControls(uc_35a_a);
+        Enable_RadioButton(uc_35b_a);
+        Enable_RadioButton(uc_35b_b);
+        Enable_RadioButton(uc_35b_c);
+
+
+
+        Enable_RadioButton(uc_36a_v);
+        Enable_RadioButton(uc_36a_b);
+        Enable_RadioButton(uc_36a_c);
+        EnableControls(uc_36a_a);
+        Enable_RadioButton(uc_36b_a);
+        Enable_RadioButton(uc_36b_b);
+        Enable_RadioButton(uc_36b_c);
+
+
+
+        Enable_RadioButton(uc_37a_v);
+        Enable_RadioButton(uc_37a_b);
+        Enable_RadioButton(uc_37a_c);
+        EnableControls(uc_37a_a);
+        Enable_RadioButton(uc_37b_a);
+        Enable_RadioButton(uc_37b_b);
+        Enable_RadioButton(uc_37b_c);
+
+
+        EnableControls(LA_17);
+        EnableControls(LA_18);
+        EnableControls(LA_19);
+
+
+        Enable_RadioButton(LA_20a_v);
+        Enable_RadioButton(LA_20a_b);
+        Enable_RadioButton(LA_20a_c);
+        EnableControls(LA_20a_a);
+        Enable_RadioButton(LA_20b_a);
+        Enable_RadioButton(LA_20b_b);
+        Enable_RadioButton(LA_20b_c);
+
+
+        Enable_RadioButton(LA_21a_v);
+        Enable_RadioButton(LA_21a_b);
+        Enable_RadioButton(LA_21a_c);
+        EnableControls(LA_21a_a);
+        Enable_RadioButton(LA_21b_a);
+        Enable_RadioButton(LA_21b_b);
+        Enable_RadioButton(LA_21b_c);
+
+
+        Enable_RadioButton(LA_22a_v);
+        Enable_RadioButton(LA_22a_b);
+        Enable_RadioButton(LA_22a_c);
+        EnableControls(LA_22a_a);
+        Enable_RadioButton(LA_22b_a);
+        Enable_RadioButton(LA_22b_b);
+        Enable_RadioButton(LA_22b_c);
+
+
+        Enable_RadioButton(LA_23a_v);
+        Enable_RadioButton(LA_23a_b);
+        Enable_RadioButton(LA_23a_c);
+        EnableControls(LA_23a_a);
+        Enable_RadioButton(LA_23b_a);
+        Enable_RadioButton(LA_23b_b);
+        Enable_RadioButton(LA_23b_c);
+
+
+        Enable_RadioButton(LA_24a_v);
+        Enable_RadioButton(LA_24a_b);
+        Enable_RadioButton(LA_24a_c);
+        EnableControls(LA_24a_a);
+        Enable_RadioButton(LA_24b_a);
+        Enable_RadioButton(LA_24b_b);
+        Enable_RadioButton(LA_24b_c);
+
+
+        Enable_RadioButton(LA_25a_v);
+        Enable_RadioButton(LA_25a_b);
+        Enable_RadioButton(LA_25a_c);
+        EnableControls(LA_25a_a);
+        Enable_RadioButton(LA_25b_a);
+        Enable_RadioButton(LA_25b_b);
+        Enable_RadioButton(LA_25b_c);
+
+
+        Enable_RadioButton(LA_26a_v);
+        Enable_RadioButton(LA_26a_b);
+        Enable_RadioButton(LA_26a_c);
+        EnableControls(LA_26a_a);
+        Enable_RadioButton(LA_26b_a);
+        Enable_RadioButton(LA_26b_b);
+        Enable_RadioButton(LA_26b_c);
+
+
+        Enable_RadioButton(LA_27a_v);
+        Enable_RadioButton(LA_27a_b);
+        Enable_RadioButton(LA_27a_c);
+        EnableControls(LA_27a_a);
+        Enable_RadioButton(LA_27b_a);
+        Enable_RadioButton(LA_27b_b);
+        Enable_RadioButton(LA_27b_c);
+
+
+        Enable_RadioButton(LA_28a_v);
+        Enable_RadioButton(LA_28a_b);
+        Enable_RadioButton(LA_28a_c);
+        EnableControls(LA_28a_a);
+        Enable_RadioButton(LA_28b_a);
+        Enable_RadioButton(LA_28b_b);
+        Enable_RadioButton(LA_28b_c);
+
+
+
+        Enable_RadioButton(LA_29a_v);
+        Enable_RadioButton(LA_29a_b);
+        Enable_RadioButton(LA_29a_c);
+        EnableControls(LA_29a_a);
+        Enable_RadioButton(LA_29b_a);
+        Enable_RadioButton(LA_29b_b);
+        Enable_RadioButton(LA_29b_c);
+
+
+
+        Enable_RadioButton(LA_30a_v);
+        Enable_RadioButton(LA_30a_b);
+        Enable_RadioButton(LA_30a_c);
+        EnableControls(LA_30a_a);
+        Enable_RadioButton(LA_30b_a);
+        Enable_RadioButton(LA_30b_b);
+        Enable_RadioButton(LA_30b_c);
+
+
+        Enable_RadioButton(LA_31a_v);
+        Enable_RadioButton(LA_31a_b);
+        Enable_RadioButton(LA_31a_c);
+        EnableControls(LA_31a_a);
+        Enable_RadioButton(LA_31b_a);
+        Enable_RadioButton(LA_31b_b);
+        Enable_RadioButton(LA_31b_c);
+
+
+        Enable_RadioButton(LA_32a_v);
+        Enable_RadioButton(LA_32a_b);
+        Enable_RadioButton(LA_32a_c);
+        EnableControls(LA_32a_a);
+        Enable_RadioButton(LA_32b_a);
+        Enable_RadioButton(LA_32b_b);
+        Enable_RadioButton(LA_32b_c);
+
+
+        Enable_RadioButton(LA_33a_v);
+        Enable_RadioButton(LA_33a_b);
+        Enable_RadioButton(LA_33a_c);
+        EnableControls(LA_33a_a);
+        Enable_RadioButton(LA_33b_a);
+        Enable_RadioButton(LA_33b_b);
+        Enable_RadioButton(LA_33b_c);
+
+
+        Enable_RadioButton(LA_34a_v);
+        Enable_RadioButton(LA_34a_b);
+        Enable_RadioButton(LA_34a_c);
+        EnableControls(LA_34a_a);
+        Enable_RadioButton(LA_34b_a);
+        Enable_RadioButton(LA_34b_b);
+        Enable_RadioButton(LA_34b_c);
+
+
+        Enable_RadioButton(LA_35a_v);
+        Enable_RadioButton(LA_35a_b);
+        Enable_RadioButton(LA_35a_c);
+        EnableControls(LA_35a_a);
+        Enable_RadioButton(LA_35b_a);
+        Enable_RadioButton(LA_35b_b);
+        Enable_RadioButton(LA_35b_c);
+
+
+        Enable_RadioButton(LA_36a_v);
+        Enable_RadioButton(LA_36a_b);
+        Enable_RadioButton(LA_36a_c);
+        EnableControls(LA_36a_a);
+        Enable_RadioButton(LA_36b_a);
+        Enable_RadioButton(LA_36b_b);
+        Enable_RadioButton(LA_36b_c);
+
+
+        Enable_RadioButton(LA_37a_v);
+        Enable_RadioButton(LA_37a_b);
+        Enable_RadioButton(LA_37a_c);
+        EnableControls(LA_37a_a);
+        Enable_RadioButton(LA_37b_a);
+        Enable_RadioButton(LA_37b_b);
+        Enable_RadioButton(LA_37b_c);
+
+
+        Enable_RadioButton(LA_38a_v);
+        Enable_RadioButton(LA_38a_b);
+        Enable_RadioButton(LA_38a_c);
+        EnableControls(LA_38a_a);
+        Enable_RadioButton(LA_38b_a);
+        Enable_RadioButton(LA_38b_b);
+        Enable_RadioButton(LA_38b_c);
+
+
+        Enable_RadioButton(LA_39a_v);
+        Enable_RadioButton(LA_39a_b);
+        Enable_RadioButton(LA_39a_c);
+        EnableControls(LA_39a_a);
+        Enable_RadioButton(LA_39b_a);
+        Enable_RadioButton(LA_39b_b);
+        Enable_RadioButton(LA_39b_c);
+
+
+
+        Enable_RadioButton(LA_40a_v);
+        Enable_RadioButton(LA_40a_b);
+        Enable_RadioButton(LA_40a_c);
+        EnableControls(LA_40a_a);
+        Enable_RadioButton(LA_40b_a);
+        Enable_RadioButton(LA_40b_b);
+        Enable_RadioButton(LA_40b_c);
+
+
+        Enable_RadioButton(LA_41a_v);
+        Enable_RadioButton(LA_41a_b);
+        Enable_RadioButton(LA_41a_c);
+        EnableControls(LA_41a_a);
+        Enable_RadioButton(LA_41b_a);
+        Enable_RadioButton(LA_41b_b);
+        Enable_RadioButton(LA_41b_c);
+
+
+        Enable_RadioButton(LA_42a_v);
+        Enable_RadioButton(LA_42a_b);
+        Enable_RadioButton(LA_42a_c);
+        EnableControls(LA_42a_a);
+        Enable_RadioButton(LA_42b_a);
+        Enable_RadioButton(LA_42b_b);
+        Enable_RadioButton(LA_42b_c);
+
+
+        Enable_RadioButton(LA_43a_v);
+        Enable_RadioButton(LA_43a_b);
+        Enable_RadioButton(LA_43a_c);
+        EnableControls(LA_43a_a);
+        Enable_RadioButton(LA_43b_a);
+        Enable_RadioButton(LA_43b_b);
+        Enable_RadioButton(LA_43b_c);
+
+
+        Enable_RadioButton(LA_44a_v);
+        Enable_RadioButton(LA_44a_b);
+        Enable_RadioButton(LA_44a_c);
+        EnableControls(LA_44a_a);
+        Enable_RadioButton(LA_44b_a);
+        Enable_RadioButton(LA_44b_b);
+        Enable_RadioButton(LA_44b_c);
+
+
+        Enable_RadioButton(LA_45a_v);
+        Enable_RadioButton(LA_45a_b);
+        Enable_RadioButton(LA_45a_c);
+        EnableControls(LA_45a_a);
+        Enable_RadioButton(LA_45b_a);
+        Enable_RadioButton(LA_45b_b);
+        Enable_RadioButton(LA_45b_c);
+
+
+        Enable_RadioButton(LA_46a_v);
+        Enable_RadioButton(LA_46a_b);
+        Enable_RadioButton(LA_46a_c);
+        EnableControls(LA_46a_a);
+        Enable_RadioButton(LA_46b_a);
+        Enable_RadioButton(LA_46b_b);
+        Enable_RadioButton(LA_46b_c);
+
+
+        Enable_RadioButton(LA_47a_v);
+        Enable_RadioButton(LA_47a_b);
+        Enable_RadioButton(LA_47a_c);
+        EnableControls(LA_47a_a);
+        Enable_RadioButton(LA_47b_a);
+        Enable_RadioButton(LA_47b_b);
+        Enable_RadioButton(LA_47b_c);
+
+
+        Enable_RadioButton(LA_48a_v);
+        Enable_RadioButton(LA_48a_b);
+        Enable_RadioButton(LA_48a_c);
+        EnableControls(LA_48a_a);
+        Enable_RadioButton(LA_48b_a);
+        Enable_RadioButton(LA_48b_b);
+        Enable_RadioButton(LA_48b_c);
+
+
+        Enable_RadioButton(LA_49a_v);
+        Enable_RadioButton(LA_49a_b);
+        Enable_RadioButton(LA_49a_c);
+        EnableControls(LA_49a_a);
+        Enable_RadioButton(LA_49b_a);
+        Enable_RadioButton(LA_49b_b);
+        Enable_RadioButton(LA_49b_c);
+
+
+        Enable_RadioButton(LA_50a_v);
+        Enable_RadioButton(LA_50a_b);
+        Enable_RadioButton(LA_50a_c);
+        EnableControls(LA_50a_a);
+        Enable_RadioButton(LA_50b_a);
+        Enable_RadioButton(LA_50b_b);
+        Enable_RadioButton(LA_50b_c);
+
+
+        Enable_RadioButton(LA_51a_v);
+        Enable_RadioButton(LA_51a_b);
+        Enable_RadioButton(LA_51a_c);
+        EnableControls(LA_51a_a);
+        Enable_RadioButton(LA_51b_a);
+        Enable_RadioButton(LA_51b_b);
+        Enable_RadioButton(LA_51b_c);
+
+
+        Enable_RadioButton(LA_52a_v);
+        Enable_RadioButton(LA_52a_b);
+        Enable_RadioButton(LA_52a_c);
+        EnableControls(LA_52a_a);
+        Enable_RadioButton(LA_52b_a);
+        Enable_RadioButton(LA_52b_b);
+        Enable_RadioButton(LA_52b_c);
+
+        pnl_LA_01.Visible = false;
+        pnl_LA_02.Visible = false;
+        pnl_idrl.Visible = true;
+    }
+
+
+
     private void Disable_RadioButton_ViewOnly(RadioButton rdo)
     {
         rdo.Enabled = false;
@@ -973,15 +2288,15 @@ public partial class sample_results : System.Web.UI.Page
 
     private void Enable_RadioButton(RadioButton rdo)
     {
-        rdo.Visible = true;
+        //rdo.Visible = true;
         rdo.Enabled = true;
     }
 
 
     private void Disable_RadioButton(RadioButton rdo)
     {
-        rdo.Checked = false;
-        rdo.Visible = false;
+        //rdo.Checked = false;
+        //rdo.Visible = false;
         rdo.Enabled = false;
     }
 
@@ -1000,6 +2315,15 @@ public partial class sample_results : System.Web.UI.Page
         rdo.Visible = false;
         rdo.Enabled = false;
     }
+
+
+
+    private void DisableControls1(TextBox rdo)
+    {
+        rdo.Enabled = false;
+        rdo.CssClass = "form-control";
+    }
+
 
 
     protected void Unnamed_Click(object sender, EventArgs e)
@@ -19796,7 +21120,7 @@ public partial class sample_results : System.Web.UI.Page
 
     protected void LA_24a_v_CheckedChanged(object sender, EventArgs e)
     {
-        if(LA_24a_v.Checked)
+        if (LA_24a_v.Checked)
         {
             cntl_LA_24a_a.Visible = true;
             cntl_LA_24b.Visible = true;

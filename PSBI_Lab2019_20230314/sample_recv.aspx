@@ -1329,12 +1329,11 @@
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3")
+                    <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3" || HttpContext.Current.Request.Cookies["labid"].Value == "4")
                         { %>
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
-                    </li>
-                    <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
+                    </li>                    
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
