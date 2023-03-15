@@ -19,7 +19,7 @@ using System.Text;
 using System.IO;
 using System.ServiceModel.Configuration;
 
-public partial class sample_results : System.Web.UI.Page
+public partial class sample_results_20230314 : System.Web.UI.Page
 {
     private int m_currentPageIndex;
     private IList<Stream> m_streams;
@@ -178,7 +178,6 @@ public partial class sample_results : System.Web.UI.Page
 
         EnableControls(LA_01);
         EnableControls(LA_02);
-        EnableControls(LA_02a);
 
         Disable_RadioButton(LA_03_v);
         Disable_RadioButton(LA_03_b);
@@ -1223,7 +1222,6 @@ public partial class sample_results : System.Web.UI.Page
     {
         DisableControls(LA_01);
         DisableControls(LA_02);
-        DisableControls(LA_02a);
 
 
         Enable_RadioButton(LA_03_v);
@@ -5715,7 +5713,6 @@ public partial class sample_results : System.Web.UI.Page
                 qry1 = "UPDATE sample_result set " +
     "LA_01 = '" + LA_01.Text + "', " +
     "LA_02 = '" + LA_02.Text + "', " +
-    "LA_02a = '" + LA_02a.Text + "', " +
     "LA_03_b = '" + var_LA_03_b + "', " +
     "LA_03_a = '" + LA_03_a.Text + "', " +
     "LA_04_b = '" + var_LA_04_b + "', " +
@@ -9371,7 +9368,6 @@ public partial class sample_results : System.Web.UI.Page
     "la_sno," +
     "LA_01," +
     "LA_02," +
-    "LA_02a," +
     "LA_03_b," +
     "LA_03_a," +
     "LA_04_b," +
@@ -9710,7 +9706,6 @@ public partial class sample_results : System.Web.UI.Page
     la_sno.Text + "', '" +
     LA_01.Text + "', '" +
     LA_02.Text + "', '" +
-    LA_02a.Text + "', '" +
     var_LA_03_b + "', '" +
     LA_03_a.Text + "', '" +
     var_LA_04_b + "', '" +
@@ -14894,7 +14889,6 @@ public partial class sample_results : System.Web.UI.Page
     "a.history, " +
     "a.LA_01," +
     "a.LA_02," +
-    "a.LA_02a," +
     "a.LA_03_b," +
     "a.LA_03_a," +
     "a.LA_04_b," +
@@ -15268,7 +15262,6 @@ public partial class sample_results : System.Web.UI.Page
 
                         //LA_01.Text = ds.Tables[0].Rows[0]["LA_01"].ToString();
                         //LA_02.Text = ds.Tables[0].Rows[0]["LA_02"].ToString();
-                        //LA_02a.Text = ds.Tables[0].Rows[0]["LA_02a"].ToString();
 
 
                         if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "")

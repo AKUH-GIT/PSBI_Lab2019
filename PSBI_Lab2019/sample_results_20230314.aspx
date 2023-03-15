@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results.aspx.cs" Inherits="sample_results" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results_20230314.aspx.cs" Inherits="sample_results_20230314" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -708,11 +708,11 @@
                                             $("#LA_01").focus();
                                         }
 
-
+                                                                              
 
                                         $("#cmdSave").show();
                                         $("#cmdSaveDraft").hide();
-
+                                        
                                     }
                                 }
 
@@ -3024,19 +3024,14 @@
                 $("#la_sno").focus();
                 return false;
             }
-            else if ($("#LA_01").val() == "" && $("#LA_01").is(":visible") == true) {
+            else if ($("#LA_01").val() == "") {
                 alert("Please enter result reporting time NRL ");
                 $("#LA_01").focus();
                 return false;
             }
             else if ($("#LA_02").val() == "" && $("#LA_02").is(":visible") == true) {
-                alert("Please enter CRP (GEL tube) result (mg/dL) ");
+                alert("Please enter CRP result (mg/dL) ");
                 $("#LA_02").focus();
-                return false;
-            }
-            else if ($("#LA_02a").val() == "" && $("#LA_02a").is(":visible") == true) {
-                alert("Please enter CRP (Active tube) result (mg/dL) ");
-                $("#LA_02a").focus();
                 return false;
             }
             else if ($('input[name=LA_03]:checked').length <= 0 && ($("#LA_03_v").is(":visible") == true
@@ -5579,7 +5574,7 @@
 
 
                                                     <asp:Panel runat="server" ID="pnl_LA_01">
-                                                        <div class="form-group row" style="display: none;">
+                                                        <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="projectinput5">Result reporting time NRL</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" MaxLength="15" ID="LA_01" class="form-control" name="LA_01"></asp:TextBox>
@@ -5594,15 +5589,9 @@
 
                                                     <asp:Panel runat="server" ID="pnl_LA_02">
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP result (Gel tube) (mg/dL)</label>
+                                                            <label class="col-md-3 label-control" for="projectinput5">CRP result (mg/dL)</label>
                                                             <div class="col-md-9">
                                                                 <asp:TextBox runat="server" MaxLength="15" ID="LA_02" class="form-control" name="LA_02" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP result (Actim tube) (mg/dL)</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" MaxLength="15" ID="LA_02a" class="form-control" name="LA_02a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </asp:Panel>
