@@ -893,8 +893,8 @@
                 alert("Please select CRP Sample Collected In Gel tube ");
                 $("#AS1_Q3a_11").focus();
                 return false;
-            }
-            else if ($("#AS1_Q3a_2").val() == "" && $("#AS1_Q3a_2").is(":visible") == true) {
+            }            
+            else if ($("#AS1_Q3a_2").val() == "") {
                 alert("Please enter Volume of blood for Metagenomics");
                 $("#AS1_Q3a_2").focus();
                 return false;
@@ -978,10 +978,15 @@
                 $("#AS2_Q8_3").focus();
                 return false;
             }
-            else if ($('input[name=AS2_Q8a]:checked').length <= 0 && ($("#AS2_Q8a_1").is(":visible") == true ||
-                $("#AS2_Q8a_2").is(":visible") == true)) {
+            else if ($('input[name=AS2_Q8a]:checked').length <= 0 && ($("#AS2_Q8a_1").is(":visible") == true || $("#AS2_Q8a_2").is(":visible") == true)) {
                 alert("Please select CRP Gel tube Received ");
                 $("#AS2_Q8a_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q8b]:checked').length <= 0 && ($("#AS2_Q8b_1").is(":visible") == true ||
+                $("#AS2_Q8b_2").is(":visible") == true)) {
+                alert("Please select CRP Actim tube Received ");
+                $("#AS2_Q8b_1").focus();
                 return false;
             }
             else if ($("#AS2_Q9").val() == "" && $("#AS2_Q9").is(":visible") == true) {
@@ -1285,8 +1290,207 @@
                 }
             }
 
-
             return true;
+        }
+
+
+
+        function ValidateForm_NRL() {
+
+            if ($("#AS1_screening_ID").val() == "__-_-____") {
+                alert("Please enter valid screening id");
+                $("#AS1_screening_ID").focus();
+                return false;
+            }
+            else if ($("#AS1_screening_ID").val().indexOf("_") != -1) {
+                alert("Please enter full screening id");
+                $("#AS1_screening_ID").focus();
+                return false;
+            }
+            else if ($("#AS1_rand_id").val() == "_-_-_-____") {
+                alert("Please enter valid randomization id");
+                $("#AS1_rand_id").focus();
+                return false;
+            }
+            else if ($("#AS1_rand_id").val().indexOf("_") != -1) {
+                alert("Please enter full randomization id");
+                $("#AS1_rand_id").focus();
+                return false;
+            }
+            else if ($("#AS1_name").val() == "") {
+                alert("Please enter name ");
+                $("#AS1_name").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_sex]:checked').length <= 0) {
+                alert("Please select gender");
+                $("#AS1_sex_a").focus();
+                return false;
+            }
+            else if ($("#AS1_age").val() == "") {
+                alert("Please enter age ");
+                $("#AS1_age").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode").val() == "") {
+                alert("Please enter sample id ");
+                $("#AS1_barcode").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val() == "" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter MR No. ");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val() == "_-_-_-____" && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter valid MR No");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_mrno").val().indexOf("_") != -1 && $("#AS1_mrno").is(":visible") == true
+                && $("#AS1_mrno").is(":disabled") == false) {
+                alert("Please enter full MR No");
+                $("#AS1_mrno").focus();
+                return false;
+            }
+            else if ($("#AS1_lno").val() == "" && $("#AS1_lno").is(":visible") == true
+                && $("#AS1_lno").is(":disabled") == false) {
+                alert("Please enter L Number ");
+                $("#AS1_lno").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val() == "") {
+                alert("Please enter form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val() == "__-_-_-_-____") {
+                alert("Please enter valid form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($("#AS1_barcode1").val().indexOf("_") != -1) {
+                alert("Please enter full form Barcode ");
+                $("#AS1_barcode1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_fsite]:checked').length <= 0) {
+                alert("Please select field site hospital");
+                $("#AS1_fsite_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Samp_1]:checked').length <= 0
+                && $('input[name=AS1_Samp_2]:checked').length <= 0
+                && $('input[name=AS1_Samp_3]:checked').length <= 0
+                && $('input[name=AS1_Samp_4]:checked').length <= 0
+                && $('input[name=AS1_Samp_5]:checked').length <= 0
+                && $('input[name=AS1_Samp_6]:checked').length <= 0
+            ) {
+                alert("Please select sample collected ");
+
+                if ($("#AS1_Samp_1").is(':visible') == true) {
+                    $("#AS1_Samp_1").focus();
+                }
+                else if ($("#AS1_Samp_4").is(':visible') == true) {
+                    $("#AS1_Samp_4").focus();
+                }
+
+                return false;
+            }
+            else if ($('input[name=AS1_Q1_1]:checked').length <= 0
+                && ($("#AS1_Q1_11").is(":visible") == true || $("#AS1_Q1_12").is(":visible") == true)) {
+                alert("Please select CBC Sample Collected In EDTA tube ");
+                $("#AS1_Q1_11").focus();
+                return false;
+            }
+            else if ($("#AS1_Q1_2").val() == "" && ($("#AS1_Q1_2").is(":visible") == true)) {
+                alert("Please enter Volume of blood for CBC mL ");
+                $("#AS1_Q1_2").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q2_1]:checked').length <= 0
+                && ($("#AS1_Q2_11").is(":visible") == true || $("#AS1_Q2_12").is(":visible") == true)) {
+                alert("Please select Blood Culture Sample collection ");
+                $("#AS1_Q2_11").focus();
+                return false;
+            }
+            else if ($("#AS1_Q2_2").val() == "" && ($("#AS1_Q2_2").is(":visible") == true)) {
+                alert("Please enter Volume of blood in Paeds BacT Alert Paeds bottle ml ");
+                $("#AS1_Q2_2").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3]:checked').length <= 0
+                && ($("#AS1_Q3_1").is(":visible") == true || $("#AS1_Q3_2").is(":visible") == true)) {
+                alert("Please select Metagenomics Sample collection ");
+                $("#AS1_Q3_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3a_1]:checked').length <= 0
+                && ($("#AS1_Q3a_11").is(":visible") == true || $("#AS1_Q3a_12").is(":visible") == true)) {
+                alert("Please select CRP Sample Collected In Gel tube ");
+                $("#AS1_Q3a_11").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3b_1]:checked').length <= 0) {
+                alert("Please select CRP Sample Collected In Actim tube ");
+                $("#AS1_Q3b_11").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q8a]:checked').length <= 0 && ($("#AS2_Q8a_1").is(":visible") == true || $("#AS2_Q8a_2").is(":visible") == true)) {
+                alert("Please select CRP Gel tube Received ");
+                $("#AS2_Q8a_1").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q8b]:checked').length <= 0 && ($("#AS2_Q8b_1").is(":visible") == true ||
+                $("#AS2_Q8b_2").is(":visible") == true)) {
+                alert("Please select CRP Actim tube Received ");
+                $("#AS2_Q8b_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q9").val() == "" && $("#AS2_Q9").is(":visible") == true) {
+                alert("Please enter date received ");
+                $("#AS2_Q9").focus();
+                return false;
+            }
+            else if ($("#AS2_Q10").val() == "" && $("#AS2_Q10").is(":visible") == true) {
+                alert("Please enter time received ");
+                $("#AS2_Q10").focus();
+                return false;
+            }
+            else if ($('input[name=AS2_Q11]:checked').length <= 0 && ($('#AS2_Q11_1').is(':visible') == true ||
+                $('#AS2_Q11_2').is(':visible') == true)) {
+                alert("Please enter Condition of sample container received ");
+                $("#AS2_Q11_1").focus();
+                return false;
+            }
+            else if ($("#AS2_Q12_4").val() == "" && $("#AS2_Q12_4").is(":visible") == true) {
+                alert("Please enter Temperature of the Coleman upon arrival at the lab (CRP Gel tube)  ");
+                $("#AS2_Q12_4").focus();
+                return false;
+            }
+            else if ($("#AS2_Q13").val() == "" && $("#AS2_Q13").is(":visible") == true) {
+                alert("Please enter Name of the laboratory person receiving the sample ");
+                $("#AS2_Q13").focus();
+                return false;
+            }
+            else if ($("#AS2_Q13a").val() == "" && $("#AS2_Q13a").is(":visible") == true) {
+                alert("Please enter Time result reported (must be within 20 min - 2 hours of sample receiving) ");
+                $("#AS2_Q13a").focus();
+                return false;
+            }
+            else if ($("#AS1_age").val() != "") {
+
+                if (eval($("#AS1_age").val()) < 0 && eval($("#AS1_age").val()) > 59) {
+                    alert("Age must be 0 - 59 days ");
+                    $("#AS1_age").focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
 
         }
 
@@ -1333,7 +1537,7 @@
                         { %>
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
-                    </li>                    
+                    </li>
                     <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
@@ -1605,6 +1809,19 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Sample Collected In Actim tube</label>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <fieldset>
+                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_11" ID="AS1_Q3b_11" />
+                                                                    <label for="input-radio-11">RCT 1</label>
+                                                                </fieldset>
+                                                                <fieldset>
+                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_12" ID="AS1_Q3b_12" />
+                                                                    <label for="input-radio-12">RCT 2</label>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
                                                     </asp:Panel>
                                                     <asp:Panel runat="server" ID="pnl_AS1_Q3a_2">
                                                         <div class="form-group row">
@@ -1751,11 +1968,24 @@
                                                             <label class="col-md-3 label-control" for="projectinput5">CRP Gel tube Received</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a" ID="AS2_Q8a_1" />
+                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_1" ID="AS2_Q8a_1" />
                                                                     <label for="input-radio-11">Yes</label>
                                                                 </fieldset>
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a" ID="AS2_Q8a_2" />
+                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_2" ID="AS2_Q8a_2" />
+                                                                    <label for="input-radio-12">No</label>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Actim tube Received</label>
+                                                            <div class="col-md-6 col-sm-12">
+                                                                <fieldset>
+                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_1" ID="AS2_Q8b_1" />
+                                                                    <label for="input-radio-11">Yes</label>
+                                                                </fieldset>
+                                                                <fieldset>
+                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_2" ID="AS2_Q8b_2" />
                                                                     <label for="input-radio-12">No</label>
                                                                 </fieldset>
                                                             </div>

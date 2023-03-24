@@ -495,6 +495,11 @@ public partial class sample_recv : System.Web.UI.Page
         string var_AS1_Q3 = "";
         string var_AS1_Q3a_1 = "";
         string var_AS1_Q3a_2 = "";
+
+        string var_AS1_Q3a_11a = "";
+        string var_AS1_Q3a_12a = "";
+
+
         string var_AS1_Q3b_1 = "";
         string var_AS1_Q3b_2 = "";
         string var_AS1_Q4 = "";
@@ -645,6 +650,16 @@ public partial class sample_recv : System.Web.UI.Page
             else if (AS1_Q3a_12.Checked == true)
             {
                 var_AS1_Q3a_1 = "2";
+            }
+
+
+            if (AS1_Q3a_11a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "1";
+            }
+            else if (AS1_Q3a_12a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "2";
             }
 
 
@@ -1074,6 +1089,7 @@ public partial class sample_recv : System.Web.UI.Page
 "AS1_Q2_2," +
 "AS1_Q3," +
 "AS1_Q3a_1," +
+"AS1_Q3a_1a," +
 "AS1_Q3b_1," +
 "AS1_Q3a_2," +
 "AS1_Q4," +
@@ -1167,6 +1183,7 @@ var_AS1_Q2_1 + "', '" +
 AS1_Q2_2.Text + "', '" +
 var_AS1_Q3 + "', '" +
 var_AS1_Q3a_1 + "', '" +
+var_AS1_Q3a_11a + "', '" +
 var_AS1_Q3b_1 + "', '" +
 AS1_Q3a_2.Text + "', '" +
 val_AS1_Q4 + "', '" +
@@ -2314,5 +2331,71 @@ HttpContext.Current.Request["labid"].ToString()
     protected void cmdCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("sample_recv.aspx");
+    }
+
+    protected void AS1_Q3a_11a_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q3a_11a.Checked)
+        {
+            pnl_row_AS1_Q3b_1.Visible = true;
+            pnl_row_AS2_Q8b.Visible = true;
+
+            if (AS1_Q3a_11.Checked == true)
+            {
+                AS1_Q3b_11.Checked = true;
+                AS1_Q3b_12.Checked = false;
+                AS1_Q3b_11.Enabled = false;
+                AS1_Q3b_12.Enabled = false;
+            }
+            else if (AS1_Q3a_12.Checked == true)
+            {
+                AS1_Q3b_11.Checked = false;
+                AS1_Q3b_12.Checked = true;
+                AS1_Q3b_11.Enabled = false;
+                AS1_Q3b_12.Enabled = false;
+            }
+            else
+            {
+                AS1_Q3b_11.Enabled = false;
+                AS1_Q3b_12.Enabled = false;
+            }
+        }
+    }
+
+    protected void AS1_Q3a_12a_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q3a_12a.Checked)
+        {
+            AS1_Q3b_11.Checked = false;
+            AS1_Q3b_12.Checked = false;
+            
+            AS2_Q8b_1.Checked = false;
+            AS2_Q8b_2.Checked = false;
+
+            pnl_row_AS1_Q3b_1.Visible = false;
+            pnl_row_AS2_Q8b.Visible = false;
+        }
+    }
+
+    protected void AS1_Q3a_11_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q3a_11.Checked == true)
+        {
+            AS1_Q3b_11.Checked = true;
+            AS1_Q3b_12.Checked = false;
+            AS1_Q3b_11.Enabled = false;
+            AS1_Q3b_12.Enabled = false;
+        }
+    }
+
+    protected void AS1_Q3a_12_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q3a_12.Checked == true)
+        {
+            AS1_Q3b_11.Checked = false;
+            AS1_Q3b_12.Checked = true;
+            AS1_Q3b_11.Enabled = false;
+            AS1_Q3b_12.Enabled = false;
+        }
     }
 }

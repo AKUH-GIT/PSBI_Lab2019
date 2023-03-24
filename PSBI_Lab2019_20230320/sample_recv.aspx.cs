@@ -27,8 +27,6 @@ public partial class sample_recv : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        cmdSave.OnClientClick = "return ValidateForm();";
-
         if (Session["userid"] == null)
         {
             Response.Redirect("login.aspx");
@@ -43,9 +41,19 @@ public partial class sample_recv : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            if (Request.Cookies["labid"].Value == "2")
+            {
+                cmdSave.OnClientClick = "return ValidateForm_NRL();";
+            }
+            else
+            {
+                cmdSave.OnClientClick = "return ValidateForm();";
+            }
+
+
             if (Request.Cookies["labid"].Value == "3")
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Permission Error", "alert('You are not authorize to view this web page')", false);                
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Permission Error", "alert('You are not authorize to view this web page')", false);
                 Response.Redirect("login.aspx?errmsg=You are not authorize to view this web page");
                 return;
             }
@@ -59,6 +67,15 @@ public partial class sample_recv : System.Web.UI.Page
                 AS1_Q3a_12.Visible = true;
                 AS1_Q3a_12.Enabled = true;
 
+
+                AS1_Q3b_11.Visible = true;
+                AS1_Q3b_11.Enabled = true;
+
+                AS1_Q3b_12.Visible = true;
+                AS1_Q3b_12.Enabled = true;
+
+
+
                 AS1_Q3a_2.Text = "";
                 AS1_Q3a_2.Visible = false;
                 AS1_Q3a_2.Enabled = false;
@@ -68,6 +85,15 @@ public partial class sample_recv : System.Web.UI.Page
 
                 AS2_Q8a_1.Enabled = true;
                 AS2_Q8a_2.Enabled = true;
+
+
+
+                AS2_Q8b_1.Visible = true;
+                AS2_Q8b_2.Visible = true;
+
+                AS2_Q8b_1.Enabled = true;
+                AS2_Q8b_2.Enabled = true;
+
 
 
                 pnl_AS1_Q3a_1.Visible = true;
@@ -469,6 +495,8 @@ public partial class sample_recv : System.Web.UI.Page
         string var_AS1_Q3 = "";
         string var_AS1_Q3a_1 = "";
         string var_AS1_Q3a_2 = "";
+        string var_AS1_Q3b_1 = "";
+        string var_AS1_Q3b_2 = "";
         string var_AS1_Q4 = "";
         string var_AS1_Q5 = "";
         string var_AS1_Q6 = "";
@@ -477,6 +505,7 @@ public partial class sample_recv : System.Web.UI.Page
         string var_AS2_Q8 = "";
         string var_AS2_Q8_3 = "";
         string var_AS2_Q8a = "";
+        string var_AS2_Q8b = "";
         string var_AS2_Q9 = "";
         string var_AS2_Q10 = "";
         string var_AS2_Q11 = "";
@@ -620,6 +649,16 @@ public partial class sample_recv : System.Web.UI.Page
 
 
 
+            if (AS1_Q3b_11.Checked == true)
+            {
+                var_AS1_Q3b_1 = "1";
+            }
+            else if (AS1_Q3b_12.Checked == true)
+            {
+                var_AS1_Q3b_1 = "2";
+            }
+
+
 
             if (AS2_Q7_11.Checked == true)
             {
@@ -651,6 +690,18 @@ public partial class sample_recv : System.Web.UI.Page
             else if (AS2_Q8a_2.Checked == true)
             {
                 var_AS2_Q8a = "2";
+            }
+
+
+
+
+            if (AS2_Q8b_1.Checked == true)
+            {
+                var_AS2_Q8b = "1";
+            }
+            else if (AS2_Q8b_2.Checked == true)
+            {
+                var_AS2_Q8b = "2";
             }
 
 
@@ -1023,6 +1074,7 @@ public partial class sample_recv : System.Web.UI.Page
 "AS1_Q2_2," +
 "AS1_Q3," +
 "AS1_Q3a_1," +
+"AS1_Q3b_1," +
 "AS1_Q3a_2," +
 "AS1_Q4," +
 "AS1_Q5," +
@@ -1038,6 +1090,7 @@ public partial class sample_recv : System.Web.UI.Page
 "AS2_Q8_BacT," +
 "AS2_Q8_3," +
 "AS2_Q8a," +
+"AS2_Q8b," +
 "AS2_Q9," +
 "AS2_Q10," +
 "AS2_Q11," +
@@ -1114,6 +1167,7 @@ var_AS1_Q2_1 + "', '" +
 AS1_Q2_2.Text + "', '" +
 var_AS1_Q3 + "', '" +
 var_AS1_Q3a_1 + "', '" +
+var_AS1_Q3b_1 + "', '" +
 AS1_Q3a_2.Text + "', '" +
 val_AS1_Q4 + "', '" +
 val_AS1_Q5 + "', '" +
@@ -1129,6 +1183,7 @@ var_AS2_Q8 + "', '" +
 AS2_Q8_BacT.Text + "', '" +
 AS2_Q8_3.Text + "', '" +
 var_AS2_Q8a + "', '" +
+var_AS2_Q8b + "', '" +
 val_AS2_Q9 + "', '" +
 dt_AS2_Q10.ToShortTimeString() + "', '" +
 var_AS2_Q11 + "', '" +

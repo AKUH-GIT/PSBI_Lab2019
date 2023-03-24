@@ -19,7 +19,7 @@ using System.Text;
 using System.IO;
 using System.ServiceModel.Configuration;
 
-public partial class sample_results : System.Web.UI.Page
+public partial class sample_results_20230314 : System.Web.UI.Page
 {
     private int m_currentPageIndex;
     private IList<Stream> m_streams;

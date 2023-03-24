@@ -893,7 +893,7 @@
                 alert("Please select CRP Sample Collected In Gel tube ");
                 $("#AS1_Q3a_11").focus();
                 return false;
-            }            
+            }
             else if ($("#AS1_Q3a_2").val() == "") {
                 alert("Please enter Volume of blood for Metagenomics");
                 $("#AS1_Q3a_2").focus();
@@ -1433,7 +1433,13 @@
                 $("#AS1_Q3a_11").focus();
                 return false;
             }
-            else if ($('input[name=AS1_Q3b_1]:checked').length <= 0) {
+            else if ($('input[name=AS1_Q3a_1a]:checked').length <= 0) {
+                alert("Please select CRP Sample Collected In Actim tube ");
+                $("#AS1_Q3a_11a").focus();
+                return false;
+            }
+            else if ($('input[name=AS1_Q3b_1]:checked').length <= 0 && ($("#AS1_Q3b_11").is(":visible") == true ||
+                $("#AS1_Q3b_12").is(":visible") == true)) {
                 alert("Please select CRP Sample Collected In Actim tube ");
                 $("#AS1_Q3b_11").focus();
                 return false;
@@ -1498,6 +1504,7 @@
 </head>
 <body class="vertical-layout vertical-menu 2-columns fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-blue" data-col="2-columns">
     <form id="form1" name="form1" runat="server" autocomplete="off" enctype="multipart/form-data">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <!-- BEGIN: Header-->
         <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
             <div class="navbar-wrapper">
@@ -1793,63 +1800,79 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-
                                                     </asp:Panel>
-                                                    <asp:Panel runat="server" ID="pnl_AS1_Q3a_1">
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Sample Collected In Gel tube</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3a_1" name="AS1_Q3a_11" ID="AS1_Q3a_11" />
-                                                                    <label for="input-radio-11">RCT 1</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3a_1" name="AS1_Q3a_12" ID="AS1_Q3a_12" />
-                                                                    <label for="input-radio-12">RCT 2</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Sample Collected In Actim tube</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_11" ID="AS1_Q3b_11" />
-                                                                    <label for="input-radio-11">RCT 1</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_12" ID="AS1_Q3b_12" />
-                                                                    <label for="input-radio-12">RCT 2</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
-                                                    <asp:Panel runat="server" ID="pnl_AS1_Q3a_2">
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Volume of blood for Metagenomics</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q3a_2" MaxLength="6" class="form-control" name="AS1_Q3a_2" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
-                                                    <asp:Panel ID="pnl_AS1_Q6" runat="server">
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Collection time (hh:mm 24 hr clock)</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q4" class="form-control" name="AS1_Q4"></asp:TextBox>
-                                                                <script src="Scripts/timepicker/timepicki.js"></script>
-                                                                <script>
-                                                                    $('#<%=AS1_Q4.ClientID%>').timepicki();
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Collection date (dd:mm:yy)</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q5" class="form-control" name="AS1_Q5"></asp:TextBox>
-                                                                <div id="Div1" runat="server">
-                                                                    <script type="text/javascript">
-                                                                        $(document).ready(function () {
-                                                                            $('#<%=AS1_Q5.ClientID%>').datepicker({
+                                                    <asp:UpdatePanel ID="updsafasd_pnl11" runat="server">
+                                                        <ContentTemplate>
+                                                            <asp:Panel runat="server" ID="pnl_AS1_Q3a_1">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CRP Sample Collected In Gel tube</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls7" AutoPostBack="true" GroupName="AS1_Q3a_1" name="AS1_Q3a_11" ID="AS1_Q3a_11" OnCheckedChanged="AS1_Q3a_11_CheckedChanged" />
+                                                                            <label for="input-radio-11">RCT 1</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls7" AutoPostBack="true" GroupName="AS1_Q3a_1" name="AS1_Q3a_12" ID="AS1_Q3a_12" OnCheckedChanged="AS1_Q3a_12_CheckedChanged" />
+                                                                            <label for="input-radio-12">RCT 2</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Is Actim tube collected?</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" AutoPostBack="true" class=".radiocls7" GroupName="AS1_Q3a_1a" name="AS1_Q3a_11a" ID="AS1_Q3a_11a" OnCheckedChanged="AS1_Q3a_11a_CheckedChanged" />
+                                                                            <label for="input-radio-11">Yes</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls7" AutoPostBack="true" GroupName="AS1_Q3a_1a" name="AS1_Q3a_12a" ID="AS1_Q3a_12a" OnCheckedChanged="AS1_Q3a_12a_CheckedChanged" />
+                                                                            <label for="input-radio-12">No</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <asp:Panel runat="server" ID="pnl_row_AS1_Q3b_1">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">CRP Sample Collected In Actim tube</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_11" ID="AS1_Q3b_11" />
+                                                                                <label for="input-radio-11">RCT 1</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls7" GroupName="AS1_Q3b_1" name="AS1_Q3b_12" ID="AS1_Q3b_12" />
+                                                                                <label for="input-radio-12">RCT 2</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+                                                                </asp:Panel>
+                                                            </asp:Panel>
+                                                            <asp:Panel runat="server" ID="pnl_AS1_Q3a_2">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Volume of blood for Metagenomics</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q3a_2" MaxLength="6" class="form-control" name="AS1_Q3a_2" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                            </asp:Panel>
+                                                            <asp:Panel ID="pnl_AS1_Q6" runat="server">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Collection time (hh:mm 24 hr clock)</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q4" class="form-control" name="AS1_Q4"></asp:TextBox>
+                                                                        <script src="Scripts/timepicker/timepicki.js"></script>
+                                                                        <script>
+                                                                            $('#<%=AS1_Q4.ClientID%>').timepicki();
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Collection date (dd:mm:yy)</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q5" class="form-control" name="AS1_Q5"></asp:TextBox>
+                                                                        <div id="Div1" runat="server">
+                                                                            <script type="text/javascript">
+                                                                                $(document).ready(function () {
+                                                                                    $('#<%=AS1_Q5.ClientID%>').datepicker({
                                                                                 minDate: -100,
                                                                                 maxDate: "+0D",
                                                                                 dateFormat: 'dd/mm/yy',
@@ -1858,139 +1881,141 @@
                                                                                 onClose: function () { $(this).focus(); }
                                                                             });
                                                                         });
-                                                                    </script>
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Time of Serum separation (hh:mm, 24 hr clock)</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q6" class="form-control" name="AS1_Q6"></asp:TextBox>
-                                                                <script src="Scripts/timepicker/timepicki.js"></script>
-                                                                <script>
-                                                                    $('#<%=AS1_Q6.ClientID%>').timepicki();
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">No. of Aliquots made</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q6a" MaxLength="4" class="form-control" name="AS1_Q6a" onkeypress="return numeralsOnly(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Volume in each aliquot ul</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q6b" MaxLength="6" class="form-control" name="AS1_Q6b" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">Time of sample handed over to NRL</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS1_Q6c" class="form-control" name="AS1_Q6c"></asp:TextBox>
-                                                                <script src="Scripts/timepicker/timepicki.js"></script>
-                                                                <script>
-                                                                    $('#<%=AS1_Q6c.ClientID%>').timepicki();
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
-                                                    <asp:Panel runat="server" ID="pnl_AS2_Q7_1">
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Received</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls8" GroupName="AS2_Q7_1" name="AS2_Q7_11" ID="AS2_Q7_11" />
-                                                                    <label for="input-radio-11">Yes</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls8" GroupName="AS2_Q7_1" name="AS2_Q7_12" ID="AS2_Q7_12" />
-                                                                    <label for="input-radio-12">No</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Charged at AKU clinical lab (MR Number)</label>
-                                                            <div class="col-md-3">
-                                                                <asp:TextBox runat="server" ID="AS2_Q7_2a" class="form-control" MaxLength="20" name="AS2_Q7_2a" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
-                                                                <cc1:MaskedEditExtender ID="MaskedEditExtender6" TargetControlID="AS2_Q7_2a" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <asp:CheckBox ID="chk_AS2_Q7_2a" name="chk_AS2_Q7_2a" class=".radiocls3" runat="server" />
-                                                                <label style="margin-top: 10px;">MR No not available</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Charged at AKU clinical lab (L Number)</label>
-                                                            <div class="col-md-3">
-                                                                <asp:TextBox runat="server" ID="AS2_Q7_2" class="form-control" MaxLength="20" name="AS2_Q7_2" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <asp:CheckBox ID="chk_AS2_Q7_2" name="chk_AS2_Q7_2" class=".radiocls3" runat="server" />
-                                                                <label style="margin-top: 10px;">L No not available</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Bar Code</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS2_Q7_CBC_CODE" class="form-control" MaxLength="20" name="AS2_Q7_CBC_CODE" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
-                                                                <cc1:MaskedEditExtender ID="MaskedEditExtender4" TargetControlID="AS2_Q7_CBC_CODE" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="LL-9-9-9-9999" runat="server"></cc1:MaskedEditExtender>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after)</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls9" GroupName="AS2_Q8" name="AS2_Q8_1" ID="AS2_Q8_1" />
-                                                                    <label for="input-radio-11">Yes</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls9" GroupName="AS2_Q8" name="AS2_Q8_2" ID="AS2_Q8_2" />
-                                                                    <label for="input-radio-12">No</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">BacT Alert Paeds Bottle Bar Code</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS2_Q8_BacT" class="form-control" MaxLength="20" name="AS2_Q8_BacT" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label id="lbl_AS2_Q8_3" runat="server" class="col-md-3 label-control" for="projectinput5">Weight in gm</label>
-                                                            <div class="col-md-9">
-                                                                <asp:TextBox runat="server" ID="AS2_Q8_3" class="form-control" MaxLength="20" name="AS2_Q8_3" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
-                                                    <asp:Panel runat="server" ID="pnl_AS2_Q8a">
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Gel tube Received</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_1" ID="AS2_Q8a_1" />
-                                                                    <label for="input-radio-11">Yes</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_2" ID="AS2_Q8a_2" />
-                                                                    <label for="input-radio-12">No</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="projectinput5">CRP Actim tube Received</label>
-                                                            <div class="col-md-6 col-sm-12">
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_1" ID="AS2_Q8b_1" />
-                                                                    <label for="input-radio-11">Yes</label>
-                                                                </fieldset>
-                                                                <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_2" ID="AS2_Q8b_2" />
-                                                                    <label for="input-radio-12">No</label>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Time of Serum separation (hh:mm, 24 hr clock)</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q6" class="form-control" name="AS1_Q6"></asp:TextBox>
+                                                                        <script src="Scripts/timepicker/timepicki.js"></script>
+                                                                        <script>
+                                                                            $('#<%=AS1_Q6.ClientID%>').timepicki();
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">No. of Aliquots made</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q6a" MaxLength="4" class="form-control" name="AS1_Q6a" onkeypress="return numeralsOnly(event);"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Volume in each aliquot ul</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q6b" MaxLength="6" class="form-control" name="AS1_Q6b" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Time of sample handed over to NRL</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS1_Q6c" class="form-control" name="AS1_Q6c"></asp:TextBox>
+                                                                        <script src="Scripts/timepicker/timepicki.js"></script>
+                                                                        <script>
+                                                                            $('#<%=AS1_Q6c.ClientID%>').timepicki();
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                            </asp:Panel>
+                                                            <asp:Panel runat="server" ID="pnl_AS2_Q7_1">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Received</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls8" GroupName="AS2_Q7_1" name="AS2_Q7_11" ID="AS2_Q7_11" />
+                                                                            <label for="input-radio-11">Yes</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls8" GroupName="AS2_Q7_1" name="AS2_Q7_12" ID="AS2_Q7_12" />
+                                                                            <label for="input-radio-12">No</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Charged at AKU clinical lab (MR Number)</label>
+                                                                    <div class="col-md-3">
+                                                                        <asp:TextBox runat="server" ID="AS2_Q7_2a" class="form-control" MaxLength="20" name="AS2_Q7_2a" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
+                                                                        <cc1:MaskedEditExtender ID="MaskedEditExtender6" TargetControlID="AS2_Q7_2a" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <asp:CheckBox ID="chk_AS2_Q7_2a" name="chk_AS2_Q7_2a" class=".radiocls3" runat="server" />
+                                                                        <label style="margin-top: 10px;">MR No not available</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Charged at AKU clinical lab (L Number)</label>
+                                                                    <div class="col-md-3">
+                                                                        <asp:TextBox runat="server" ID="AS2_Q7_2" class="form-control" MaxLength="20" name="AS2_Q7_2" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <asp:CheckBox ID="chk_AS2_Q7_2" name="chk_AS2_Q7_2" class=".radiocls3" runat="server" />
+                                                                        <label style="margin-top: 10px;">L No not available</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CBC EDTA tube Bar Code</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS2_Q7_CBC_CODE" class="form-control" MaxLength="20" name="AS2_Q7_CBC_CODE" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
+                                                                        <cc1:MaskedEditExtender ID="MaskedEditExtender4" TargetControlID="AS2_Q7_CBC_CODE" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="LL-9-9-9-9999" runat="server"></cc1:MaskedEditExtender>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">BacT Alert Paeds Bottle Received (Difference : Weight Before – Weight after)</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls9" GroupName="AS2_Q8" name="AS2_Q8_1" ID="AS2_Q8_1" />
+                                                                            <label for="input-radio-11">Yes</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls9" GroupName="AS2_Q8" name="AS2_Q8_2" ID="AS2_Q8_2" />
+                                                                            <label for="input-radio-12">No</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">BacT Alert Paeds Bottle Bar Code</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS2_Q8_BacT" class="form-control" MaxLength="20" name="AS2_Q8_BacT" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label id="lbl_AS2_Q8_3" runat="server" class="col-md-3 label-control" for="projectinput5">Weight in gm</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:TextBox runat="server" ID="AS2_Q8_3" class="form-control" MaxLength="20" name="AS2_Q8_3" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                            </asp:Panel>
+                                                            <asp:Panel runat="server" ID="pnl_AS2_Q8a">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CRP Gel tube Received</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_1" ID="AS2_Q8a_1" />
+                                                                            <label for="input-radio-11">Yes</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8a" name="AS2_Q8a_2" ID="AS2_Q8a_2" />
+                                                                            <label for="input-radio-12">No</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row" runat="server" id="pnl_row_AS2_Q8b">
+                                                                    <label class="col-md-3 label-control" for="projectinput5">CRP Actim tube Received</label>
+                                                                    <div class="col-md-6 col-sm-12">
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_1" ID="AS2_Q8b_1" />
+                                                                            <label for="input-radio-11">Yes</label>
+                                                                        </fieldset>
+                                                                        <fieldset>
+                                                                            <asp:RadioButton runat="server" class=".radiocls10" GroupName="AS2_Q8b" name="AS2_Q8b_2" ID="AS2_Q8b_2" />
+                                                                            <label for="input-radio-12">No</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                            </asp:Panel>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="projectinput5">Date received (dd/mm/yyyy)</label>
                                                         <div class="col-md-9">
@@ -2499,10 +2524,9 @@
                                                         </div>
                                                     </asp:Panel>
                                                 </div>
-                                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                     <ContentTemplate>
-
                                                         <div class="form-actions left">
                                                             <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
