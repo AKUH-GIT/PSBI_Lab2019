@@ -18,15 +18,11 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.ServiceModel.Configuration;
-using System.Diagnostics;
-using System.Collections;
 
-public partial class sample_results : System.Web.UI.Page
+public partial class sample_results_20230304 : System.Web.UI.Page
 {
     private int m_currentPageIndex;
     private IList<Stream> m_streams;
-
-    ArrayList arr_organism;
 
     public List<CountryInfo> CountryInformation { get; set; }
     public List<SampleResults> SampleResultList { get; set; }
@@ -84,7 +80,6 @@ public partial class sample_results : System.Web.UI.Page
                 lnkUser = null;
 
 
-
                 if (Request.QueryString["id"] != null && Request.Cookies["labid"].Value == "3")
                 {
                     ViewState["id"] = Request.QueryString["id"].ToString();
@@ -93,10 +88,6 @@ public partial class sample_results : System.Web.UI.Page
                     cmdSaveDraft.Visible = true;
                     cmdCancel.Visible = true;
                     //txthistory.ReadOnly = true;
-
-                    fillGrid_BloodCulture();
-
-                    FillDropDown_BloodCulture_Positive();
 
 
                     Disable_IDRL_Section();
@@ -127,13 +118,6 @@ public partial class sample_results : System.Web.UI.Page
                         pnl_LA_02.Visible = false;
                         pnl_idrl.Visible = true;
 
-
-                        FillDropDown_BloodCulture_Positive();
-
-
-                        fillGrid_BloodCulture();
-
-
                         Enable_IDRL_Section();
 
                         previewReport();
@@ -147,13 +131,6 @@ public partial class sample_results : System.Web.UI.Page
                         cmdSaveDraft.Visible = false;
                         cmdCancel.Visible = true;
                         //txthistory.ReadOnly = true;
-
-
-                        FillDropDown_BloodCulture_Positive();
-
-                        fillGrid_BloodCulture();
-
-
 
                         Disable_IDRL_Section();
 
@@ -182,7 +159,12 @@ public partial class sample_results : System.Web.UI.Page
 
                 }
 
+
+
             }
+
+
+
 
 
         }
@@ -2664,10 +2646,6 @@ public partial class sample_results : System.Web.UI.Page
         var var_LA_51b_a = "-1";
         var var_LA_52b_a = "-1";
 
-        var var_BloodCulture = "";
-
-
-
 
         try
         {
@@ -2790,7 +2768,7 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-            if (LA_11_v.Checked == true)
+            if (LA_11_b.Checked == true)
             {
                 var_LA_11_b = "";
             }
@@ -5711,16 +5689,6 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (rd_BloodCulture_Pos.Checked == true)
-            {
-                var_BloodCulture = "1";
-            }
-            else if (rd_BloodCulture_Neg.Checked == true)
-            {
-                var_BloodCulture = "2";
-            }
-
-
             DateTime dt_entry = new DateTime();
 
             string[] arr_entry = null;
@@ -6079,11 +6047,7 @@ public partial class sample_results : System.Web.UI.Page
     "LA_52b_a = '" + var_LA_52b_a + "', " +
     "uc_01_ca = '" + uc_01_ca.Text + "', " +
     "UR_04a_a = '" + UR_04a_a.Text + "', " +
-    "UR_04a = '" + var_UR_04a + "', " +
-    "txtComments = '" + txtComments.Text + "', " +
-    "rdo_BloodCulture = '" + var_BloodCulture + "', " +
-    "ddl_BloodCulture = '" + ddl_BloodCulture.SelectedIndex + "', " +
-    "txtOtherOrganism = '" + txtOtherOrganism.Text + "' where id='" + ViewState["id"] + "'";
+    "UR_04a = '" + var_UR_04a + "' where id='" + ViewState["id"] + "'";
 
 
                 msg1 = obj_op.ExecuteNonQuery_Message_Qry(qry1);
@@ -6346,8 +6310,6 @@ public partial class sample_results : System.Web.UI.Page
         var var_LA_50b_a = "-1";
         var var_LA_51b_a = "-1";
         var var_LA_52b_a = "-1";
-
-        var var_BloodCulture = "";
 
 
         try
@@ -9393,17 +9355,6 @@ public partial class sample_results : System.Web.UI.Page
             }
 
 
-            if (rd_BloodCulture_Pos.Checked == true)
-            {
-                var_BloodCulture = "1";
-            }
-            else if (rd_BloodCulture_Neg.Checked == true)
-            {
-                var_BloodCulture = "2";
-            }
-
-
-
             DateTime dt_entry = new DateTime();
 
             string[] arr_entry = null;
@@ -9755,11 +9706,7 @@ public partial class sample_results : System.Web.UI.Page
     "LA_52b_a," +
     "UserID," +
     "EntryDate," +
-    "labid," +
-    "txtComments," +
-    "rdo_BloodCulture," +
-    "ddl_BloodCulture," +
-    "txtOtherOrganism) values('" +
+    "labid) values('" +
     la_sno.Text + "', '" +
     LA_01.Text + "', '" +
     LA_02.Text + "', '" +
@@ -9995,7 +9942,7 @@ public partial class sample_results : System.Web.UI.Page
     uc_37a_a.Text + "', '" +
     var_uc_37b + "', '" +
     LA_17.Text + "', '" +
-    ddl_BloodCulture.Value + "', '" +
+    LA_18.Text + "', '" +
     LA_19.Text + "', '" +
     var_LA_20a_b + "', '" +
     LA_20a_a.Text + "', '" +
@@ -10098,11 +10045,7 @@ public partial class sample_results : System.Web.UI.Page
     var_LA_52b_a + "', '" +
     Session["userid"].ToString() + "', '" +
     val_entry + "', '" +
-    HttpContext.Current.Request["labid"].ToString() + "', '" +
-    txtComments.Text + "', '" +
-    var_BloodCulture + "', '" +
-    ddl_BloodCulture.SelectedIndex + "', '" +
-    txtOtherOrganism.Text + "')";
+    HttpContext.Current.Request["labid"].ToString() + "')";
 
 
             //string msg = obj_op.ExecuteNonQuery_Message(fldname, fldvalue, "sp_AddSampleResult");
@@ -14920,86 +14863,6 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-    public void fillGrid_BloodCulture_array(string organismName, string comments)
-    {
-        try
-        {
-
-            DataTable dt = new DataTable();
-
-
-            DataColumn col1 = new DataColumn();
-            col1.ColumnName = "id";
-            col1.DataType = typeof(Int32);
-            col1.Caption = "id";
-            dt.Columns.Add(col1);
-
-
-            DataColumn col2 = new DataColumn();
-            col2.ColumnName = "organismName";
-            col2.DataType = typeof(String);
-            col2.Caption = "Organism Name";
-            dt.Columns.Add(col2);
-
-
-            DataColumn col3 = new DataColumn();
-            col3.ColumnName = "comment";
-            col3.DataType = typeof(String);
-            col3.Caption = "Comments";
-            dt.Columns.Add(col3);
-
-
-            DataRow dr = dt.NewRow();
-            dr["organismName"] = organismName;
-            dr["comment"] = comments;
-            dt.Rows.Add(dr);
-
-
-            //dg_BloodCulture.DataSource = dt;
-            //dg_BloodCulture.DataBind();
-        }
-
-        catch (Exception ex)
-        {
-
-        }
-
-        finally
-        {
-
-        }
-    }
-
-
-
-    public void fillGrid_BloodCulture()
-    {
-        CConnection cn = null;
-
-        try
-        {
-            cn = new CConnection();
-
-            SqlDataAdapter da = new SqlDataAdapter("select * from tblorganism where screeningID = '" + la_sno.Text + "'", cn.cn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            //dg_BloodCulture.DataSource = ds.Tables[0];
-            //dg_BloodCulture.DataBind();
-        }
-
-        catch (Exception ex)
-        {
-
-        }
-
-        finally
-        {
-
-        }
-    }
-
-
     public void getData1(string id)
     {
         CConnection cn = null;
@@ -15363,11 +15226,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_51b_a," +
     "a.LA_52a_b," +
     "a.LA_52a_a," +
-    "a.LA_52b_a," +
-    "a.txtComments," +
-    "a.rdo_BloodCulture," +
-    "a.ddl_BloodCulture," +
-    "a.txtOtherOrganism" +
+    "a.LA_52b_a" +
             " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where a.id = '" + id + "'", cn.cn);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -19028,35 +18887,6 @@ public partial class sample_results : System.Web.UI.Page
                             LA_52b_c.Checked = true;
                         }
 
-
-                        txtComments.Text = ds.Tables[0].Rows[0]["txtComments"].ToString();
-
-
-                        if (ds.Tables[0].Rows[0]["rdo_BloodCulture"].ToString() == "1")
-                        {
-                            rd_BloodCulture_Pos.Checked = true;
-                            rd_BloodCulture_Pos_CheckedChanged(null, null);
-
-                        }
-                        else if (ds.Tables[0].Rows[0]["rdo_BloodCulture"].ToString() == "2")
-                        {
-                            rd_BloodCulture_Neg.Checked = true;
-                            rd_BloodCulture_Neg_CheckedChanged(null, null);
-                        }
-
-
-                        ddl_BloodCulture.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["ddl_BloodCulture"].ToString());
-
-                        if(ddl_BloodCulture.SelectedIndex == 31)
-                        {
-                            txtOtherOrganism.ReadOnly = false;
-                        }
-                        else
-                        {
-                            txtOtherOrganism.ReadOnly = true;
-                        }
-
-                        txtOtherOrganism.Text = ds.Tables[0].Rows[0]["txtOtherOrganism"].ToString();
 
                     }
                 }
@@ -26415,10 +26245,7 @@ public partial class sample_results : System.Web.UI.Page
     {
         if (rd_BloodCulture_Pos.Checked)
         {
-            //    cntl_rdo_Blood_Organism.Visible = true;
-
-            ddl_BloodCulture.Items.Clear();
-            FillDropDown_BloodCulture_Positive();
+            cntl_ddl_Blood_Organism.Visible = true;
         }
     }
 
@@ -26426,247 +26253,7 @@ public partial class sample_results : System.Web.UI.Page
     {
         if (rd_BloodCulture_Neg.Checked)
         {
-            //    cntl_rdo_Blood_Organism.Visible = false;
-            //    BloodCulture_Multiple_Yes.Checked = false;
-            //    BloodCulture_Multiple_No.Checked = false;
-
-            //    //cntl_Blood_Organism.Visible = false;
-
-            //    //dg_BloodCulture.DataSource = null;
-            //    //dg_BloodCulture.DataBind();
-
-            ddl_BloodCulture.Items.Clear();
-            FillDropDown_BloodCulture_Negative();
-            txtOtherOrganism.Text = "";
-            txtOtherOrganism.ReadOnly = true;
+            cntl_ddl_Blood_Organism.Visible = false;
         }
     }
-
-
-    protected void btnAddMore_Click(object sender, EventArgs e)
-    {
-        //CConnection cn = null;
-
-        //try
-        //{
-        //    TextBox txtOrganismName = (TextBox)dg_BloodCulture.FooterRow.FindControl("insertorganismName");
-        //    TextBox txtcomment = (TextBox)dg_BloodCulture.FooterRow.FindControl("insertComments");
-
-
-        //    if (string.IsNullOrEmpty(txtOrganismName.Text))
-        //    {
-        //        string message = "alert('Organism name required');";
-        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
-        //        txtOrganismName.Focus();
-        //        return;
-        //    }
-        //    else if (string.IsNullOrEmpty(txtcomment.Text))
-        //    {
-        //        string message = "alert('Comments required');";
-        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
-        //        txtcomment.Focus();
-        //        return;
-        //    }
-
-
-        //    arr_organism = new ArrayList();
-
-        //    arr_organism.Add(txtOrganismName.Text);
-        //    arr_organism.Add(txtcomment.Text);
-
-
-        //    fillGrid_BloodCulture_array(txtOrganismName.Text, txtcomment.Text);
-
-
-        //    //string sno = getSNO_Organism();
-
-        //    //if (sno == "")
-        //    //{
-        //    //    sno = "1";
-        //    //}
-        //    //else
-        //    //{
-        //    //    sno = Convert.ToString(Convert.ToInt32(sno) + 1);
-        //    //}
-
-
-        //    //cn = new CConnection();
-        //    //SqlCommand cmd = new SqlCommand("insert into tblorganism (sno, screeningID, organismName, comment) values('" + sno + "', '" + la_sno.Text + "', '" + txtOrganismName.Text + "', '" + txtcomment.Text + "')", cn.cn);
-        //    //SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    //DataSet ds = new DataSet();
-        //    //da.Fill(ds);
-
-
-        //    //fillGrid_BloodCulture();
-        //}
-
-        //catch (Exception ex)
-        //{
-
-        //}
-
-        //finally
-        //{
-
-        //}
-    }
-
-
-    private string getSNO_Organism()
-    {
-        string sno = "0";
-
-        CConnection cn = new CConnection();
-
-        SqlDataAdapter da = new SqlDataAdapter("select max(sno) sno from tblorganism where screeningID = '" + la_sno.Text + "'", cn.cn);
-        DataSet ds = new DataSet();
-        da.Fill(ds);
-
-        if (ds != null)
-        {
-            if (ds.Tables.Count > 0)
-            {
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    sno = ds.Tables[0].Rows[0]["sno"].ToString();
-                }
-            }
-        }
-
-        return sno;
-    }
-
-
-    protected void btnAddMore1_Click(object sender, EventArgs e)
-    {
-        //CConnection cn = null;
-
-        //try
-        //{
-        //    TextBox txtOrganismName = (TextBox)dg_BloodCulture.Controls[0].Controls[0].FindControl("addOrganism");
-        //    TextBox txtcomment = (TextBox)dg_BloodCulture.Controls[0].Controls[0].FindControl("addComments");
-
-
-        //    if (string.IsNullOrEmpty(txtOrganismName.Text))
-        //    {
-        //        string message = "alert('Organism name required');";
-        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
-        //        txtOrganismName.Focus();
-        //        return;
-        //    }
-        //    else if (string.IsNullOrEmpty(txtcomment.Text))
-        //    {
-        //        string message = "alert('Comments required');";
-        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
-        //        txtcomment.Focus();
-        //        return;
-        //    }
-
-        //    arr_organism = new ArrayList();
-
-        //    arr_organism.Add(txtOrganismName.Text);
-        //    arr_organism.Add(txtcomment.Text);
-
-
-        //    fillGrid_BloodCulture_array(txtOrganismName.Text, txtcomment.Text);
-
-
-        //    //string sno = getSNO_Organism();
-
-        //    //if (sno == "")
-        //    //    sno = "1";
-
-
-        //    //cn = new CConnection();
-        //    //SqlCommand cmd = new SqlCommand("insert into tblorganism (sno, screeningID, organismName, comment) values('" + sno + "', '" + la_sno.Text + "', '" + txtOrganismName.Text + "', '" + txtcomment.Text + "')", cn.cn);
-        //    //SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    //DataSet ds = new DataSet();
-        //    //da.Fill(ds);
-
-
-        //    //fillGrid_BloodCulture();
-        //}
-
-        //catch (Exception ex)
-        //{
-
-        //}
-
-        //finally
-        //{
-
-        //}
-    }
-
-
-    private void FillDropDown_BloodCulture_Positive()
-    {
-        try
-        {
-            ddl_BloodCulture.Items.Add(new ListItem("Select Organism", "0"));
-            ddl_BloodCulture.Items.Add(new ListItem("Escherichia coli", "1"));
-            ddl_BloodCulture.Items.Add(new ListItem("Klebsiella pneumoniae", "2"));
-            ddl_BloodCulture.Items.Add(new ListItem("Klebsiella species", "3"));
-            ddl_BloodCulture.Items.Add(new ListItem("Acinetobacter baumannii", "4"));
-            ddl_BloodCulture.Items.Add(new ListItem("Acinetobacter species", "5"));
-            ddl_BloodCulture.Items.Add(new ListItem("Salmonella species", "6"));
-            ddl_BloodCulture.Items.Add(new ListItem("Salmonella typhi", "7"));
-            ddl_BloodCulture.Items.Add(new ListItem("Salmonella paratyphi A", "8"));
-            ddl_BloodCulture.Items.Add(new ListItem("Salmonella paratyphi B", "9"));
-            ddl_BloodCulture.Items.Add(new ListItem("Serratia species", "10"));
-            ddl_BloodCulture.Items.Add(new ListItem("Serratia marcescens", "11"));
-            ddl_BloodCulture.Items.Add(new ListItem("Serratia liquefaciens", "12"));
-            ddl_BloodCulture.Items.Add(new ListItem("Staphylococcus epidermidis", "13"));
-            ddl_BloodCulture.Items.Add(new ListItem("Staphylococcus saprophyticus", "14"));
-            ddl_BloodCulture.Items.Add(new ListItem("Staphylococcus species", "15"));
-            ddl_BloodCulture.Items.Add(new ListItem("Micrococcus specie", "16"));
-            ddl_BloodCulture.Items.Add(new ListItem("Streptococcus species", "17"));
-            ddl_BloodCulture.Items.Add(new ListItem("Streptococcus pyogenes (group A Streptococcus)", "18"));
-            ddl_BloodCulture.Items.Add(new ListItem("Streptococcus pneumoniae", "19"));
-            ddl_BloodCulture.Items.Add(new ListItem("Streptococcus mitis", "20"));
-            ddl_BloodCulture.Items.Add(new ListItem("Campylobacter species", "21"));
-            ddl_BloodCulture.Items.Add(new ListItem("Campylobacter jejuni", "22"));
-            ddl_BloodCulture.Items.Add(new ListItem("Enterococcus species", "23"));
-            ddl_BloodCulture.Items.Add(new ListItem("Corynebacterium species", "24"));
-            ddl_BloodCulture.Items.Add(new ListItem("Burkholderia cepacia", "25"));
-            ddl_BloodCulture.Items.Add(new ListItem("Neisseria gonorrhoeae", "26"));
-            ddl_BloodCulture.Items.Add(new ListItem("Candida species", "27"));
-            ddl_BloodCulture.Items.Add(new ListItem("Citrobacter freundii", "28"));
-            ddl_BloodCulture.Items.Add(new ListItem("Citrobacter species", "29"));
-            ddl_BloodCulture.Items.Add(new ListItem("Bacillus species", "30"));
-            ddl_BloodCulture.Items.Add(new ListItem("Others", "31"));
-        }
-
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
-        }
-
-        finally
-        {
-
-        }
-    }
-
-
-
-    private void FillDropDown_BloodCulture_Negative()
-    {
-        try
-        {
-            ddl_BloodCulture.Items.Add(new ListItem("No growth after 07 days", "31"));
-        }
-
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
-        }
-
-        finally
-        {
-
-        }
-    }
-
-
 }

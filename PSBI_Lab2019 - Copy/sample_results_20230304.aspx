@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results.aspx.cs" Inherits="sample_results" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="sample_results_20230304.aspx.cs" Inherits="sample_results_20230304" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/bootstrap-extended.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/colors.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/vendors/css/forms/selects/select2.min.css">
     <!-- END: Theme CSS-->
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
@@ -171,19 +170,7 @@
 
     </script>
 
-    <script>        
-
-        $(document).on("change", "#ddl_BloodCulture", function () {
-            if ($(this + "option:selected").text() == "Others") {
-                $("#txtOtherOrganism").removeAttr("readonly");
-                $("#txtOtherOrganism").css("backgroundcolor", "#000");
-            }
-            else {
-                $("#txtOtherOrganism").val("");
-                $("#txtOtherOrganism").attr("readonly", "readonly");
-                $("#txtOtherOrganism").css("backgroundcolor", "#ccc");
-            }
-        });
+    <script>
 
 
         $(document).on("change", "input[name='uc_01a']:checked", function () {
@@ -4617,22 +4604,6 @@
             )) {
                 alert("Please select   ");
                 $("#uc_37b_a").focus();
-                return false;
-            }
-            else if ($('input[name=BloodCulture]:checked').length <= 0 && ($("#rd_BloodCulture_Pos").is(":visible") == true
-                || $("#rd_BloodCulture_Neg").is(":visible") == true)) {
-                alert("Please select   ");
-                $("#rd_BloodCulture_Pos").focus();
-                return false;
-            }
-            else if ($("#ddl_BloodCulture").val() == "0" && $("#ddl_BloodCulture").is(":visible") == true) {
-                alert("Please select value ");
-                $("#ddl_BloodCulture").focus();
-                return false;
-            }
-            else if ($("#txtOtherOrganism").val() == "" && $("#txtOtherOrganism").attr("readonly") != "readonly") {
-                alert("Please enter value ");
-                $("#txtOtherOrganism").focus();
                 return false;
             }
             else if ($("#LA_18").val() == "" && $("#LA_18").is(":visible") == true) {
@@ -9255,30 +9226,6 @@
                                                                     <h4 class="card-title1">Blood Culture Result / Antibiotic Susceptibility</h4>
                                                                 </div>
 
-                                                                <br />
-                                                                <br />
-
-                                                                <div class="form-body">
-                                                                    <h4 class="card-title1">Blood Culture Provisional Lab Result</h4>
-                                                                </div>
-
-                                                                <br />
-
-
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Comments</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" ID="txtComments" class="form-control" name="txtComments" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
-
-                                                                <br />
-
-                                                                <div class="form-body">
-                                                                    <h4 class="card-title1">Blood Culture Final Lab Result</h4>
-                                                                </div>
-
-                                                                <br />
 
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Is Blood culture positive?</label>
@@ -9295,108 +9242,15 @@
                                                                 </div>
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Organism Name</label>
-                                                                    <div class="col-md-9">
-                                                                        <select class="select2 form-control" id="ddl_BloodCulture" runat="server">
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">If Organism not exists please specify</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" ID="txtOtherOrganism" class="form-control" name="txtOtherOrganism" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <%--<div class="form-group row" runat="server" id="cntl_rdo_Blood_Organism">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Are there multiple Blood Organism?</label>
-                                                                    <div class="col-md-6 col-sm-37">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_Yes" />
-                                                                            <label for="input-radio-37">Yes</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_No" />
-                                                                            <label for="input-radio-37">No</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>--%>
-
-
-                                                                <%--<div class="form-group row" runat="server" id="cntl_Blood_Organism">
+                                                                <div class="form-group row" runat="server" id="cntl_ddl_Blood_Organism">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Blood Organism</label>
                                                                     <div class="col-md-6 col-sm-37">
-                                                                        <asp:GridView ID="dg_BloodCulture" ShowFooter="true" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderColor="#6967CE" BorderStyle="Solid" BorderWidth="2px" Name="dg" PageSize="25" Width="800px">
-                                                                            <Columns>
-                                                                                <asp:BoundField DataField="id" Visible="false" />
-                                                                                <asp:TemplateField HeaderStyle-Height="30px" HeaderText="ID" ItemStyle-Height="30px" Visible="false">
-                                                                                    <EditItemTemplate>
-                                                                                        <asp:TextBox ID="TextBox76" runat="server" Text='<%# Bind("id") %>'></asp:TextBox>
-                                                                                    </EditItemTemplate>
-                                                                                    <ItemTemplate>
-                                                                                        <asp:Label ID="Label76" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                                                                                    </ItemTemplate>
-                                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                                    <ItemStyle Height="30px" />
-                                                                                </asp:TemplateField>
-                                                                                <asp:TemplateField HeaderStyle-Height="30px" HeaderText="Organism Name" ItemStyle-Height="30px">
-                                                                                    <EditItemTemplate>
-                                                                                        <asp:TextBox ID="editorganismName" runat="server" Text='<%# Bind("organismName") %>'></asp:TextBox>
-                                                                                    </EditItemTemplate>
-                                                                                    <FooterTemplate>
-                                                                                        <asp:TextBox ID="insertorganismName" runat="server"></asp:TextBox>
-                                                                                    </FooterTemplate>
-                                                                                    <ItemTemplate>
-                                                                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("organismName") %>'></asp:Label>
-                                                                                    </ItemTemplate>
-                                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                                    <ItemStyle Height="30px" />
-                                                                                </asp:TemplateField>
-                                                                                <asp:TemplateField HeaderText="Comments">
-                                                                                    <EditItemTemplate>
-                                                                                        <asp:TextBox ID="editComments" runat="server" CssClass="txtbox" Text='<%# Bind("comment") %>'></asp:TextBox>
-                                                                                    </EditItemTemplate>
-                                                                                    <FooterTemplate>
-                                                                                        <asp:TextBox ID="insertComments" runat="server"></asp:TextBox>
-                                                                                    </FooterTemplate>
-                                                                                    <ItemTemplate>
-                                                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("comment") %>'></asp:Label>
-                                                                                    </ItemTemplate>
-                                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                                </asp:TemplateField>
-                                                                                <asp:TemplateField>
-                                                                                    <FooterTemplate>
-                                                                                        <asp:Button ID="btnAddMore" OnClick="btnAddMore_Click" runat="server" Text="Add More"></asp:Button>
-                                                                                    </FooterTemplate>
-                                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                                </asp:TemplateField>
-                                                                            </Columns>
-                                                                            <EmptyDataTemplate>
-                                                                                <table>
-                                                                                    <tr>
-                                                                                        <td>Organism Name</td>
-                                                                                        <td>Comments</td>
-                                                                                        <td></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <asp:TextBox ID="addOrganism" runat="server"></asp:TextBox></td>
-                                                                                        <td>
-                                                                                            <asp:TextBox ID="addComments" runat="server"></asp:TextBox></td>
-                                                                                        <td>
-                                                                                            <asp:Button ID="btnAddMore1" OnClick="btnAddMore1_Click" runat="server" Text="Add More"></asp:Button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </EmptyDataTemplate>
-                                                                            <PagerStyle BackColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                        </asp:GridView>
+                                                                        <asp:DropDownList runat="server" class="select2 form-control" ID="ddl_Blood_Organism">
+                                                                            <asp:ListItem>Organism One</asp:ListItem>
+                                                                            <asp:ListItem>Organism Two</asp:ListItem>
+                                                                        </asp:DropDownList>
                                                                     </div>
-                                                                </div>--%>
+                                                                </div>
 
 
                                                                 <div class="form-group row">
@@ -11154,22 +11008,12 @@
         <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/forms/toggle/switchery.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/scripts/forms/switch.min.js" type="text/javascript"></script>
         <!-- BEGIN Vendor JS-->
-
-        <!-- BEGIN: Page Vendor JS-->
-        <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
-        <!-- END: Page Vendor JS-->
-
         <!-- END: Page Vendor JS-->
         <script src="Content/demo/chameleon-admin-template/app-assets/js/core/app-menu.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/core/app.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/js/scripts/customizer.min.js" type="text/javascript"></script>
         <script src="Content/demo/chameleon-admin-template/app-assets/vendors/js/jquery.sharrre.js" type="text/javascript"></script>
         <!-- END: Theme JS-->
-
-        <!-- BEGIN: Page JS-->
-        <script src="Content/demo/chameleon-admin-template/app-assets/js/scripts/forms/select/form-select2.min.js" type="text/javascript"></script>
-        <!-- END: Page JS-->
-
         <!-- END: Body-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
