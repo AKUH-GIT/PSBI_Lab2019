@@ -6085,7 +6085,7 @@ public partial class sample_results : System.Web.UI.Page
         "uc_01_ca = '" + uc_01_ca.Text + "', " +
         "UR_04a_a = '" + UR_04a_a.Text + "', " +
         "UR_04a = '" + var_UR_04a + "', " +
-        "ProvisionalComments = '" + ProvisionalComments.Text + "', " +
+        "ProvisionalResult = '" + ProvisionalResult.Text + "', " +
         "rdo_BloodCulture = '" + var_BloodCulture + "', " +
         "ddl_BloodCulture = '" + ddl_BloodCulture.SelectedIndex + "' where id='" + ViewState["id"] + "'";
 
@@ -6429,7 +6429,7 @@ public partial class sample_results : System.Web.UI.Page
     "uc_01_ca = '" + uc_01_ca.Text + "', " +
     "UR_04a_a = '" + UR_04a_a.Text + "', " +
     "UR_04a = '" + var_UR_04a + "', " +
-    "ProvisionalComments = '" + ProvisionalComments.Text + "', " +
+    "ProvisionalResult = '" + ProvisionalResult.Text + "', " +
     "rdo_BloodCulture = '" + var_BloodCulture + "', " +
     "ddl_BloodCulture = '" + ddl_BloodCulture.SelectedIndex + "' where id='" + ViewState["id"] + "'";
 
@@ -10112,7 +10112,7 @@ public partial class sample_results : System.Web.UI.Page
         "UserID," +
         "EntryDate," +
         "labid," +
-        "txtComments," +
+        "ProvisionalResult," +
         "rdo_BloodCulture," +
         "ddl_BloodCulture) values('" +
         la_sno.Text + "', '" +
@@ -10454,7 +10454,7 @@ public partial class sample_results : System.Web.UI.Page
         Session["userid"].ToString() + "', '" +
         val_entry + "', '" +
         HttpContext.Current.Request["labid"].ToString() + "', '" +
-        ProvisionalComments.Text + "', '" +
+        ProvisionalResult.Text + "', '" +
         var_BloodCulture + "', '" +
         ddl_BloodCulture.SelectedIndex + "')";
 
@@ -10802,7 +10802,7 @@ public partial class sample_results : System.Web.UI.Page
     "UserID," +
     "EntryDate," +
     "labid," +
-    "txtComments," +
+    "ProvisionalResult," +
     "rdo_BloodCulture," +
     "ddl_BloodCulture) values('" +
     la_sno.Text + "', '" +
@@ -11144,7 +11144,7 @@ public partial class sample_results : System.Web.UI.Page
     Session["userid"].ToString() + "', '" +
     val_entry + "', '" +
     HttpContext.Current.Request["labid"].ToString() + "', '" +
-    ProvisionalComments.Text + "', '" +
+    ProvisionalResult.Text + "', '" +
     var_BloodCulture + "', '" +
     ddl_BloodCulture.SelectedIndex + "')";
 
@@ -16409,7 +16409,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_52a_b," +
     "a.LA_52a_a," +
     "a.LA_52b_a," +
-    "a.ProvisionalComments," +
+    "a.ProvisionalResult," +
     "a.rdo_BloodCulture," +
     "a.ddl_BloodCulture," +
     "a.txtOtherOrganism" +
@@ -20074,7 +20074,7 @@ public partial class sample_results : System.Web.UI.Page
                         }
 
 
-                        ProvisionalComments.Text = ds.Tables[0].Rows[0]["ProvisionalComments"].ToString();
+                        ProvisionalResult.Text = ds.Tables[0].Rows[0]["ProvisionalResult"].ToString();
 
 
                         if (ds.Tables[0].Rows[0]["rdo_BloodCulture"].ToString() == "1")

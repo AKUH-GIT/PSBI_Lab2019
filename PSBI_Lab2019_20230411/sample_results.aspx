@@ -9266,9 +9266,9 @@
 
 
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Comments</label>
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Provisional Result</label>
                                                                     <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" ID="ProvisionalComments" class="form-control" name="ProvisionalComments" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
+                                                                        <asp:TextBox runat="server" ID="ProvisionalResult" class="form-control" name="ProvisionalResult" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
                                                                     </div>
                                                                 </div>
 

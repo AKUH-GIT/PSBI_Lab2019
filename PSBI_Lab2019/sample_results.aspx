@@ -9266,9 +9266,9 @@
 
 
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Comments</label>
+                                                                    <label class="col-md-3 label-control" for="projectinput5">Provisional Result</label>
                                                                     <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" ID="ProvisionalComments" class="form-control" name="ProvisionalComments" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
+                                                                        <asp:TextBox runat="server" ID="ProvisionalResult" class="form-control" name="ProvisionalResult" onkeypress="return RestrictSpecialCharacters_New(event);"></asp:TextBox>
                                                                     </div>
                                                                 </div>
 
@@ -9312,22 +9312,22 @@
                                                                 </div>
 
 
-                                                                <%--<div class="form-group row" runat="server" id="cntl_rdo_Blood_Organism">
+                                                                <div class="form-group row" runat="server" id="cntl_rdo_Blood_Organism">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Are there multiple Blood Organism?</label>
                                                                     <div class="col-md-6 col-sm-37">
                                                                         <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_Yes" />
+                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_Yes" OnCheckedChanged="BloodCulture_Multiple_Yes_CheckedChanged" />
                                                                             <label for="input-radio-37">Yes</label>
                                                                         </fieldset>
                                                                         <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_No" />
+                                                                            <asp:RadioButton runat="server" class=".radiocls2" AutoPostBack="true" GroupName="BloodCulture_Multiple" name="BloodCulture_Multiple" ID="BloodCulture_Multiple_No" OnCheckedChanged="BloodCulture_Multiple_No_CheckedChanged" />
                                                                             <label for="input-radio-37">No</label>
                                                                         </fieldset>
                                                                     </div>
-                                                                </div>--%>
+                                                                </div>
 
 
-                                                                <%--<div class="form-group row" runat="server" id="cntl_Blood_Organism">
+                                                                <div class="form-group row" runat="server" id="cntl_Blood_Organism">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Blood Organism</label>
                                                                     <div class="col-md-6 col-sm-37">
                                                                         <asp:GridView ID="dg_BloodCulture" ShowFooter="true" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderColor="#6967CE" BorderStyle="Solid" BorderWidth="2px" Name="dg" PageSize="25" Width="800px">
@@ -9350,6 +9350,7 @@
                                                                                     <FooterTemplate>
                                                                                         <asp:TextBox ID="insertorganismName" runat="server"></asp:TextBox>
                                                                                     </FooterTemplate>
+                                                                                    <FooterStyle VerticalAlign="Top" />
                                                                                     <ItemTemplate>
                                                                                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("organismName") %>'></asp:Label>
                                                                                     </ItemTemplate>
@@ -9358,11 +9359,12 @@
                                                                                 </asp:TemplateField>
                                                                                 <asp:TemplateField HeaderText="Comments">
                                                                                     <EditItemTemplate>
-                                                                                        <asp:TextBox ID="editComments" runat="server" CssClass="txtbox" Text='<%# Bind("comment") %>'></asp:TextBox>
+                                                                                        <asp:TextBox ID="editComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server" CssClass="txtbox" Text='<%# Bind("comment") %>'></asp:TextBox>
                                                                                     </EditItemTemplate>
                                                                                     <FooterTemplate>
-                                                                                        <asp:TextBox ID="insertComments" runat="server"></asp:TextBox>
+                                                                                        <asp:TextBox ID="insertComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server"></asp:TextBox>                                                                                        
                                                                                     </FooterTemplate>
+                                                                                    <FooterStyle VerticalAlign="Top" />
                                                                                     <ItemTemplate>
                                                                                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("comment") %>'></asp:Label>
                                                                                     </ItemTemplate>
@@ -9372,6 +9374,7 @@
                                                                                     <FooterTemplate>
                                                                                         <asp:Button ID="btnAddMore" OnClick="btnAddMore_Click" runat="server" Text="Add More"></asp:Button>
                                                                                     </FooterTemplate>
+                                                                                    <FooterStyle VerticalAlign="Top" />
                                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
                                                                                 </asp:TemplateField>
                                                                             </Columns>
@@ -9383,11 +9386,11 @@
                                                                                         <td></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td>
+                                                                                        <td style="vertical-align:top;">
                                                                                             <asp:TextBox ID="addOrganism" runat="server"></asp:TextBox></td>
                                                                                         <td>
-                                                                                            <asp:TextBox ID="addComments" runat="server"></asp:TextBox></td>
-                                                                                        <td>
+                                                                                            <asp:TextBox ID="addComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server"></asp:TextBox></td>
+                                                                                        <td style="vertical-align:top;">
                                                                                             <asp:Button ID="btnAddMore1" OnClick="btnAddMore1_Click" runat="server" Text="Add More"></asp:Button>
                                                                                         </td>
                                                                                     </tr>
@@ -9396,7 +9399,7 @@
                                                                             <PagerStyle BackColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
                                                                         </asp:GridView>
                                                                     </div>
-                                                                </div>--%>
+                                                                </div>
 
 
                                                                 <div class="form-group row">
