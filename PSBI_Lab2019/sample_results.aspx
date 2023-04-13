@@ -9330,7 +9330,7 @@
                                                                 <div class="form-group row" runat="server" id="cntl_Blood_Organism">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Blood Organism</label>
                                                                     <div class="col-md-6 col-sm-37">
-                                                                        <asp:GridView ID="dg_BloodCulture" ShowFooter="true" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderColor="#6967CE" BorderStyle="Solid" BorderWidth="2px" Name="dg" PageSize="25" Width="800px">
+                                                                        <asp:GridView ID="dg_BloodCulture" ShowFooter="True" runat="server" AutoGenerateColumns="False" BorderColor="#6967CE" BorderStyle="Solid" BorderWidth="2px" Name="dg" PageSize="25" Width="800px" OnRowCancelingEdit="dg_BloodCulture_RowCancelingEdit" OnRowCommand="dg_BloodCulture_RowCommand" OnRowEditing="dg_BloodCulture_RowEditing" OnRowUpdating="dg_BloodCulture_RowUpdating" OnRowDeleting="dg_BloodCulture_RowDeleting">
                                                                             <Columns>
                                                                                 <asp:BoundField DataField="id" Visible="false" />
                                                                                 <asp:TemplateField HeaderStyle-Height="30px" HeaderText="ID" ItemStyle-Height="30px" Visible="false">
@@ -9362,7 +9362,7 @@
                                                                                         <asp:TextBox ID="editComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server" CssClass="txtbox" Text='<%# Bind("comment") %>'></asp:TextBox>
                                                                                     </EditItemTemplate>
                                                                                     <FooterTemplate>
-                                                                                        <asp:TextBox ID="insertComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server"></asp:TextBox>                                                                                        
+                                                                                        <asp:TextBox ID="insertComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server"></asp:TextBox>
                                                                                     </FooterTemplate>
                                                                                     <FooterStyle VerticalAlign="Top" />
                                                                                     <ItemTemplate>
@@ -9377,6 +9377,15 @@
                                                                                     <FooterStyle VerticalAlign="Top" />
                                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
                                                                                 </asp:TemplateField>
+                                                                                <asp:CommandField ShowEditButton="True" HeaderStyle-BackColor="#6967ce">
+                                                                                    <HeaderStyle BackColor="#6967CE" />
+                                                                                </asp:CommandField>
+                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" OnClientClick="return confirm('Are you want you want to delete?');" CommandName="Delete" Text="Delete"></asp:LinkButton>
+                                                                                    </ItemTemplate>
+                                                                                    <HeaderStyle BackColor="#6967CE" />
+                                                                                </asp:TemplateField>
                                                                             </Columns>
                                                                             <EmptyDataTemplate>
                                                                                 <table>
@@ -9386,11 +9395,11 @@
                                                                                         <td></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td style="vertical-align:top;">
+                                                                                        <td style="vertical-align: top;">
                                                                                             <asp:TextBox ID="addOrganism" runat="server"></asp:TextBox></td>
                                                                                         <td>
                                                                                             <asp:TextBox ID="addComments" TextMode="MultiLine" Rows="8" Columns="55" runat="server"></asp:TextBox></td>
-                                                                                        <td style="vertical-align:top;">
+                                                                                        <td style="vertical-align: top;">
                                                                                             <asp:Button ID="btnAddMore1" OnClick="btnAddMore1_Click" runat="server" Text="Add More"></asp:Button>
                                                                                         </td>
                                                                                     </tr>
