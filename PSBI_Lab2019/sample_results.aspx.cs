@@ -949,6 +949,23 @@ public partial class sample_results : System.Web.UI.Page
         Disable_RadioButton(uc_37b_c);
 
 
+        
+        DisableControls1(ProvisionalResult);
+        Disable_RadioButton(rd_BloodCulture_Pos);
+        Disable_RadioButton(rd_BloodCulture_Neg);
+
+        ddl_BloodCulture.Attributes.Add("disabled", "disabled");
+        DisableControls1(txtOtherOrganism);        
+
+        Disable_RadioButton(BloodCulture_Multiple_Yes);
+        Disable_RadioButton(BloodCulture_Multiple_No);
+
+        dg_BloodCulture.FooterRow.Visible = false;
+        
+        dg_BloodCulture.Columns[4].Visible = false;
+        dg_BloodCulture.Columns[5].Visible = false;
+        dg_BloodCulture.Columns[6].Visible = false;
+
 
         DisableControls1(LA_17);
         DisableControls1(LA_18);
@@ -16139,6 +16156,7 @@ public partial class sample_results : System.Web.UI.Page
 
             dg_BloodCulture.Columns[0].Visible = true;
             dg_BloodCulture.DataSource = dt_bloodculture;
+
             dg_BloodCulture.DataBind();
             dg_BloodCulture.Columns[0].Visible = false;
         }
@@ -19021,6 +19039,7 @@ public partial class sample_results : System.Web.UI.Page
                         {
                             uc_37b_c.Checked = true;
                         }
+
 
 
                         LA_17.Text = ds.Tables[0].Rows[0]["LA_17"].ToString();
@@ -27859,13 +27878,13 @@ public partial class sample_results : System.Web.UI.Page
     protected void dg_BloodCulture_RowEditing(object sender, GridViewEditEventArgs e)
     {
         dg_BloodCulture.EditIndex = e.NewEditIndex;
-        fillGrid_BloodCulture();
+        //fillGrid_BloodCulture();
     }
 
     protected void dg_BloodCulture_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         dg_BloodCulture.EditIndex = -1;
-        fillGrid_BloodCulture();
+        //fillGrid_BloodCulture();
     }
 
     protected void dg_BloodCulture_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -27895,17 +27914,25 @@ public partial class sample_results : System.Web.UI.Page
 
             if (ViewState["editid"] != null)
             {
-                cn = new CConnection();
-                SqlCommand cmd = new SqlCommand("update tblorganism set organismName = '" + txtOrganismName.Text + "', comment = '" + txtcomment.Text + "' where id = '" + ViewState["editid"] + "'", cn.cn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
+                dt_bloodculture.Rows[e.RowIndex]["organismName"] = txtOrganismName.Text;
+                dt_bloodculture.Rows[e.RowIndex]["comment"] = txtcomment.Text;
+                dt_bloodculture.AcceptChanges();
+
+
+                //cn = new CConnection();
+                //SqlCommand cmd = new SqlCommand("update tblorganism set organismName = '" + txtOrganismName.Text + "', comment = '" + txtcomment.Text + "' where id = '" + ViewState["editid"] + "'", cn.cn);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //DataSet ds = new DataSet();
+                //da.Fill(ds);
             }
 
             ViewState["editid"] = null;
 
             dg_BloodCulture.EditIndex = -1;
-            fillGrid_BloodCulture();
+            dg_BloodCulture.DataSource = dt_bloodculture;
+            dg_BloodCulture.DataBind();
+
+            //fillGrid_BloodCulture();
         }
 
         catch (Exception ex)
@@ -27931,21 +27958,28 @@ public partial class sample_results : System.Web.UI.Page
 
     protected void dg_BloodCulture_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        CConnection cn = null;
+        //CConnection cn = null;
 
         try
         {
-            cn = new CConnection();
-            SqlCommand cmd = new SqlCommand("delete tblorganism where id = '" + dg_BloodCulture.Rows[e.RowIndex].Cells[0].Text + "'", cn.cn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+
+            dt_bloodculture.Rows[e.RowIndex].Delete();
+            dt_bloodculture.AcceptChanges();
+
+
+            //cn = new CConnection();
+            //SqlCommand cmd = new SqlCommand("delete tblorganism where id = '" + dg_BloodCulture.Rows[e.RowIndex].Cells[0].Text + "'", cn.cn);
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);
 
 
             ViewState["delid"] = null;
 
             dg_BloodCulture.EditIndex = -1;
-            fillGrid_BloodCulture();
+            dg_BloodCulture.DataSource = dt_bloodculture;
+            dg_BloodCulture.DataBind();
+            //fillGrid_BloodCulture();
         }
 
         catch (Exception ex)
@@ -27958,5 +27992,5 @@ public partial class sample_results : System.Web.UI.Page
 
         }
     }
-    
+
 }

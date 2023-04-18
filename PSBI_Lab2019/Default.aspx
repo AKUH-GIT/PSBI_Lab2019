@@ -224,7 +224,14 @@
                             <% if (HttpContext.Current.Request.Cookies["labid"].Value == "3" || HttpContext.Current.Request.Cookies["labid"].Value == "4")
                                 { %>
 
-                            <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                            <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
+                                <ul>
+                                    <li class="nav-item">
+                                        <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
+                                    </li>
+                                    <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <asp:LinkButton Style="font-family: Verdana" ID="LinkButton1" runat="server" OnClick="lnk_logout_Click">Logout</asp:LinkButton>
                             </li>
@@ -246,8 +253,14 @@
 
                             <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a></li>
                             <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
-                            <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
-                            <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                            <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
+                                <ul>
+                                    <li class="nav-item">
+                                        <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
+                                    </li>
+                                    <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="lnk_logout_Click">Logout</asp:LinkButton>
                             </li>

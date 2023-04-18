@@ -1545,7 +1545,14 @@
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a>
                     </li>
-                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                    <li class="nav-item"><a href="#"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
+                        <ul>
+                            <li class="nav-item">
+                                <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
+                            </li>
+                            <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <asp:LinkButton Style="font-family: Verdana" runat="server" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
@@ -1567,8 +1574,14 @@
 
                     <li class="nav-item"><a href="sample_recv.aspx"><span style="font-family: Verdana">Sample Receiving</span></a></li>
                     <li class="nav-item"><a href="sample_results.aspx"><span style="font-family: Verdana">Lab Results</span></a></li>
-                    <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
-                    <li class="nav-item"><a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a></li>
+                    <li class="nav-item"><a href="#"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
+                        <ul>
+                            <li class="nav-item">
+                                <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
+                            </li>
+                            <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <asp:LinkButton runat="server" Style="font-family: Verdana" OnClick="Unnamed_Click">Logout</asp:LinkButton>
                     </li>
@@ -1874,14 +1887,14 @@
                                                                             <script type="text/javascript">
                                                                                 $(document).ready(function () {
                                                                                     $('#<%=AS1_Q5.ClientID%>').datepicker({
-                                                                                minDate: -100,
-                                                                                maxDate: "+0D",
-                                                                                dateFormat: 'dd/mm/yy',
-                                                                                focusOn: 'button',
-                                                                                onSelect: function () { },
-                                                                                onClose: function () { $(this).focus(); }
-                                                                            });
-                                                                        });
+                                                                                        minDate: -100,
+                                                                                        maxDate: "+0D",
+                                                                                        dateFormat: 'dd/mm/yy',
+                                                                                        focusOn: 'button',
+                                                                                        onSelect: function () { },
+                                                                                        onClose: function () { $(this).focus(); }
+                                                                                    });
+                                                                                });
                                                                             </script>
                                                                         </div>
                                                                     </div>
