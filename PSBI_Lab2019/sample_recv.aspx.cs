@@ -41,6 +41,8 @@ public partial class sample_recv : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            IsTestingServer();
+
             if (Request.Cookies["labid"].Value == "2")
             {
                 cmdSave.OnClientClick = "return ValidateForm_NRL();";
@@ -99,6 +101,8 @@ public partial class sample_recv : System.Web.UI.Page
                 pnl_AS1_Q3a_1.Visible = true;
                 pnl_AS1_Q3a_2.Visible = false;
                 pnl_AS2_Q8a.Visible = true;
+
+                ViewState["isupdate"] = "1";
 
                 Disable_IDRL_Questions();
 
@@ -359,6 +363,25 @@ public partial class sample_recv : System.Web.UI.Page
     }
 
 
+    private void IsTestingServer()
+    {
+        if (Server.MachineName.ToString() != "pedres2")
+        {
+            //lbl_testing.InnerText = Server.MachineName;
+            lbl_testing.Visible = true;
+            Div15.InnerText = "Testing Entries";
+            Div15.Style.Add(HtmlTextWriterStyle.Color, "#FF0000");
+            Div15.Style.Add(HtmlTextWriterStyle.FontSize, "15pt");
+            Div15.Style.Add(HtmlTextWriterStyle.TextAlign, "center");
+        }
+        else
+        {
+            lbl_testing.Visible = false;
+            lbl_testing.InnerText = "";
+        }
+    }
+
+
     private void Disable_IDRL_Questions()
     {
         Disable_RadioButton(AS1_Q1_11);
@@ -471,832 +494,14 @@ public partial class sample_recv : System.Web.UI.Page
 
     protected void cmdSave_Click(object sender, EventArgs e)
     {
-
-        CDBOperations obj_op = new CDBOperations();
-
-        string var_AS1_screening_ID = "";
-        string var_AS1_rand_id = "";
-        string var_AS1_name = "";
-        string var_AS1_sex = "";
-        string var_AS1_age = "";
-        string var_AS1_barcode = "";
-        string var_AS1_fsite = "";
-        string var_AS1_Samp = "";
-
-        string var_AS1_Samp_1 = "";
-        string var_AS1_Samp_2 = "";
-        string var_AS1_Samp_3 = "";
-        string var_AS1_Samp_4 = "";
-
-        string var_AS1_Q1_1 = "";
-        string var_AS1_Q1_2 = "";
-        string var_AS1_Q2_1 = "";
-        string var_AS1_Q2_2 = "";
-        string var_AS1_Q3 = "";
-        string var_AS1_Q3a_1 = "";
-        string var_AS1_Q3a_2 = "";
-
-        string var_AS1_Q3a_11a = "";
-        string var_AS1_Q3a_12a = "";
-
-
-        string var_AS1_Q3b_1 = "";
-        string var_AS1_Q3b_2 = "";
-        string var_AS1_Q4 = "";
-        string var_AS1_Q5 = "";
-        string var_AS1_Q6 = "";
-        string var_AS2_Q7_1 = "";
-        string var_AS2_Q7_2 = "";
-        string var_AS2_Q8 = "";
-        string var_AS2_Q8_3 = "";
-        string var_AS2_Q8a = "";
-        string var_AS2_Q8b = "";
-        string var_AS2_Q9 = "";
-        string var_AS2_Q10 = "";
-        string var_AS2_Q11 = "";
-
-        string var_AS5_Q27 = "";
-        string var_AS5_Q28 = "";
-        string var_AS5_Q29 = "";
-        string var_AS5_Q30 = "";
-        string var_AS5_Q31 = "";
-        string var_AS5_Q32 = "";
-        string var_AS5_Q33 = "";
-
-        string var_AS2_Q12 = "";
-        string var_AS2_Q13 = "";
-        string var_AS3_Q14 = "";
-        string var_AS3_Q15 = "";
-        string var_AS3_Q16 = "";
-        string var_AS3_Q17 = "";
-        string var_AS3_Q18 = "";
-        string var_AS3_Q19 = "";
-        string var_AS3_Q20 = "";
-
-        string var_AS4_Q21a = "";
-
-        string var_AS3_Remarks = "";
-        string var_AS3_A1 = "";
-        string var_AS3_A2 = "";
-        string var_AS3_B1 = "";
-        string var_AS3_B2 = "";
-
-
-
-
-        try
+        if (ViewState["isupdate"] == null)
         {
-
-            if (AS1_sex_a.Checked == true)
-            {
-                var_AS1_sex = "1";
-            }
-            else if (AS1_sex_b.Checked == true)
-            {
-                var_AS1_sex = "2";
-            }
-
-
-
-            if (AS1_fsite_1.Checked == true)
-            {
-                var_AS1_fsite = "1";
-            }
-            else if (AS1_fsite_2.Checked == true)
-            {
-                var_AS1_fsite = "2";
-            }
-            else if (AS1_fsite_3.Checked == true)
-            {
-                var_AS1_fsite = "3";
-            }
-            else if (AS1_fsite_4.Checked == true)
-            {
-                var_AS1_fsite = "4";
-            }
-            else if (AS1_fsite_5.Checked == true)
-            {
-                var_AS1_fsite = "5";
-            }
-            else if (AS1_fsite_6.Checked == true)
-            {
-                var_AS1_fsite = "6";
-            }
-
-
-
-            if (AS1_Samp_1.Checked == true)
-            {
-                var_AS1_Samp_1 = "1";
-            }
-
-            if (AS1_Samp_2.Checked == true)
-            {
-                var_AS1_Samp_2 = "2";
-            }
-
-            if (AS1_Samp_3.Checked == true)
-            {
-                var_AS1_Samp_3 = "3";
-            }
-
-            if (AS1_Samp_4.Checked == true)
-            {
-                var_AS1_Samp_4 = "4";
-            }
-
-
-
-            if (AS1_Q1_11.Checked == true)
-            {
-                var_AS1_Q1_1 = "1";
-            }
-            else if (AS1_Q1_12.Checked == true)
-            {
-                var_AS1_Q1_1 = "2";
-            }
-
-
-
-            if (AS1_Q2_11.Checked == true)
-            {
-                var_AS1_Q2_1 = "1";
-            }
-            else if (AS1_Q2_12.Checked == true)
-            {
-                var_AS1_Q2_1 = "2";
-            }
-
-
-
-
-            if (AS1_Q3_1.Checked == true)
-            {
-                var_AS1_Q3 = "1";
-            }
-            else if (AS1_Q3_2.Checked == true)
-            {
-                var_AS1_Q3 = "2";
-            }
-
-
-
-
-
-            if (AS1_Q3a_11.Checked == true)
-            {
-                var_AS1_Q3a_1 = "1";
-            }
-            else if (AS1_Q3a_12.Checked == true)
-            {
-                var_AS1_Q3a_1 = "2";
-            }
-
-
-            if (AS1_Q3a_11a.Checked == true)
-            {
-                var_AS1_Q3a_11a = "1";
-            }
-            else if (AS1_Q3a_12a.Checked == true)
-            {
-                var_AS1_Q3a_11a = "2";
-            }
-
-
-
-            if (AS1_Q3b_11.Checked == true)
-            {
-                var_AS1_Q3b_1 = "1";
-            }
-            else if (AS1_Q3b_12.Checked == true)
-            {
-                var_AS1_Q3b_1 = "2";
-            }
-
-
-
-            if (AS2_Q7_11.Checked == true)
-            {
-                var_AS2_Q7_1 = "1";
-            }
-            else if (AS2_Q7_12.Checked == true)
-            {
-                var_AS2_Q7_1 = "2";
-            }
-
-
-
-            if (AS2_Q8_1.Checked == true)
-            {
-                var_AS2_Q8 = "1";
-            }
-            else if (AS2_Q8_2.Checked == true)
-            {
-                var_AS2_Q8 = "2";
-            }
-
-
-
-
-            if (AS2_Q8a_1.Checked == true)
-            {
-                var_AS2_Q8a = "1";
-            }
-            else if (AS2_Q8a_2.Checked == true)
-            {
-                var_AS2_Q8a = "2";
-            }
-
-
-
-
-            if (AS2_Q8b_1.Checked == true)
-            {
-                var_AS2_Q8b = "1";
-            }
-            else if (AS2_Q8b_2.Checked == true)
-            {
-                var_AS2_Q8b = "2";
-            }
-
-
-
-
-            if (AS2_Q11_1.Checked == true)
-            {
-                var_AS2_Q11 = "1";
-            }
-            else if (AS2_Q11_2.Checked == true)
-            {
-                var_AS2_Q11 = "2";
-            }
-
-
-
-            if (AS4_Q21a.Checked == true)
-            {
-                var_AS4_Q21a = "1";
-            }
-
-
-
-
-            if (AS5_Q27_1.Checked == true)
-            {
-                var_AS5_Q27 = "1";
-            }
-            else if (AS5_Q27_2.Checked == true)
-            {
-                var_AS5_Q27 = "2";
-            }
-
-
-
-            if (AS5_Q28_1.Checked == true)
-            {
-                var_AS5_Q28 = "1";
-            }
-            else if (AS5_Q28_2.Checked == true)
-            {
-                var_AS5_Q28 = "2";
-            }
-
-
-
-            if (AS5_Q29_1.Checked == true)
-            {
-                var_AS5_Q29 = "1";
-            }
-            else if (AS5_Q29_2.Checked == true)
-            {
-                var_AS5_Q29 = "2";
-            }
-            else if (AS5_Q29_3.Checked == true)
-            {
-                var_AS5_Q29 = "3";
-            }
-
-
-
-
-            if (AS5_Q30_1.Checked == true)
-            {
-                var_AS5_Q30 = "1";
-            }
-            else if (AS5_Q30_2.Checked == true)
-            {
-                var_AS5_Q30 = "2";
-            }
-            else if (AS5_Q30_3.Checked == true)
-            {
-                var_AS5_Q30 = "3";
-            }
-
-
-
-
-            if (AS5_Q31_1.Checked == true)
-            {
-                var_AS5_Q31 = "1";
-            }
-            else if (AS5_Q31_2.Checked == true)
-            {
-                var_AS5_Q31 = "2";
-            }
-            else if (AS5_Q31_3.Checked == true)
-            {
-                var_AS5_Q31 = "3";
-            }
-            else if (AS5_Q31_4.Checked == true)
-            {
-                var_AS5_Q31 = "4";
-            }
-
-
-
-
-            if (AS5_Q32_1.Checked == true)
-            {
-                var_AS5_Q32 = "1";
-            }
-            else if (AS5_Q32_2.Checked == true)
-            {
-                var_AS5_Q32 = "2";
-            }
-            else if (AS5_Q32_3.Checked == true)
-            {
-                var_AS5_Q32 = "3";
-            }
-
-
-
-
-            DateTime dt_AS1_Q4 = new DateTime();
-            string[] arr_AS1_Q4 = null;
-            string val_AS1_Q4 = null;
-
-            if (AS1_Q4.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS1_Q4 = Convert.ToDateTime(AS1_Q4.Text);
-
-                arr_AS1_Q4 = dt_AS1_Q4.ToShortDateString().Split('/');
-                val_AS1_Q4 = arr_AS1_Q4[2] + "/" + arr_AS1_Q4[1] + "/" + arr_AS1_Q4[0];
-            }
-
-
-
-
-            DateTime dt_AS1_Q5 = new DateTime();
-            string[] arr_AS1_Q5 = null;
-            string val_AS1_Q5 = null;
-
-            if (AS1_Q5.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS1_Q5 = Convert.ToDateTime(AS1_Q5.Text);
-
-                arr_AS1_Q5 = dt_AS1_Q5.ToShortDateString().Split('/');
-                val_AS1_Q5 = arr_AS1_Q5[2] + "/" + arr_AS1_Q5[1] + "/" + arr_AS1_Q5[0];
-            }
-
-
-
-
-            DateTime dt_AS1_Q6 = new DateTime();
-            string[] arr_AS1_Q6 = null;
-            string val_AS1_Q6 = null;
-
-            if (AS1_Q6.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS1_Q6 = Convert.ToDateTime(AS1_Q6.Text);
-
-                arr_AS1_Q6 = dt_AS1_Q6.ToShortDateString().Split('/');
-                val_AS1_Q6 = arr_AS1_Q6[2] + "/" + arr_AS1_Q6[1] + "/" + arr_AS1_Q6[0];
-            }
-
-
-
-
-            DateTime dt_AS1_Q6c = new DateTime();
-            string[] arr_AS1_Q6c = null;
-            string val_AS1_Q6c = null;
-
-            if (AS1_Q6c.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS1_Q6c = Convert.ToDateTime(AS1_Q6c.Text);
-
-                arr_AS1_Q6c = dt_AS1_Q6c.ToShortDateString().Split('/');
-                val_AS1_Q6c = arr_AS1_Q6c[2] + "/" + arr_AS1_Q6c[1] + "/" + arr_AS1_Q6c[0];
-            }
-
-
-
-
-            DateTime dt_AS2_Q9 = new DateTime();
-            string[] arr_AS2_Q9 = null;
-            string val_AS2_Q9 = null;
-
-            if (AS2_Q9.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS2_Q9 = Convert.ToDateTime(AS2_Q9.Text);
-
-                arr_AS2_Q9 = dt_AS2_Q9.ToShortDateString().Split('/');
-                val_AS2_Q9 = arr_AS2_Q9[2] + "/" + arr_AS2_Q9[1] + "/" + arr_AS2_Q9[0];
-            }
-
-
-
-
-            DateTime dt_AS2_Q10 = new DateTime();
-
-            if (AS2_Q10.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS2_Q10 = Convert.ToDateTime(AS2_Q10.Text);
-            }
-
-
-
-
-            DateTime dt_AS2_Q13a = new DateTime();
-
-            if (AS2_Q13a.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS2_Q13a = Convert.ToDateTime(AS2_Q13a.Text);
-            }
-
-
-
-
-            DateTime dt_AS3_Q14a = new DateTime();
-            string[] arr_AS3_Q14a = null;
-            string val_AS3_Q14a = null;
-
-            if (AS3_Q14a.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_Q14a = Convert.ToDateTime(AS3_Q14a.Text);
-
-                arr_AS3_Q14a = dt_AS3_Q14a.ToShortDateString().Split('/');
-                val_AS3_Q14a = arr_AS3_Q14a[2] + "/" + arr_AS3_Q14a[1] + "/" + arr_AS3_Q14a[0];
-            }
-
-
-
-            DateTime dt_AS3_Q15 = new DateTime();
-
-            if (AS3_Q15.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_Q15 = Convert.ToDateTime(AS3_Q15.Text);
-            }
-
-
-
-
-            DateTime dt_AS3_Q17 = new DateTime();
-
-            if (AS3_Q17.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_Q17 = Convert.ToDateTime(AS3_Q17.Text);
-            }
-
-
-
-
-            DateTime dt_AS3_Q20 = new DateTime();
-
-            if (AS3_Q20.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_Q20 = Convert.ToDateTime(AS3_Q20.Text);
-            }
-
-
-
-
-
-            DateTime dt_AS4_Q22a = new DateTime();
-
-            if (AS4_Q22a.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS4_Q22a = Convert.ToDateTime(AS4_Q22a.Text);
-            }
-
-
-
-
-
-            DateTime dt_AS4_Q22b = new DateTime();
-            string[] arr_AS4_Q22b = null;
-            string val_AS4_Q22b = null;
-
-            if (AS4_Q22b.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS4_Q22b = Convert.ToDateTime(AS4_Q22b.Text);
-
-                arr_AS4_Q22b = dt_AS4_Q22b.ToShortDateString().Split('/');
-                val_AS4_Q22b = arr_AS4_Q22b[2] + "/" + arr_AS4_Q22b[1] + "/" + arr_AS4_Q22b[0];
-            }
-
-
-
-
-
-            DateTime dt_AS4_Q24 = new DateTime();
-
-            if (AS4_Q24.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS4_Q24 = Convert.ToDateTime(AS4_Q24.Text);
-            }
-
-
-
-
-
-            DateTime dt_AS3_A2 = new DateTime();
-            string[] arr_AS3_A2 = null;
-            string val_AS3_A2 = null;
-
-            if (AS3_A2.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_A2 = Convert.ToDateTime(AS3_A2.Text);
-
-                arr_AS3_A2 = dt_AS3_A2.ToShortDateString().Split('/');
-                val_AS3_A2 = arr_AS3_A2[2] + "/" + arr_AS3_A2[1] + "/" + arr_AS3_A2[0];
-            }
-
-
-
-
-
-            DateTime dt_AS3_B2 = new DateTime();
-            string[] arr_AS3_B2 = null;
-            string val_AS3_B2 = null;
-
-            if (AS3_B2.Text != "")
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                dt_AS3_B2 = Convert.ToDateTime(AS3_B2.Text);
-
-                arr_AS3_B2 = dt_AS3_B2.ToShortDateString().Split('/');
-                val_AS3_B2 = arr_AS3_B2[2] + "/" + arr_AS3_B2[1] + "/" + arr_AS3_B2[0];
-            }
-
-
-
-
-            DateTime dt_entry = new DateTime();
-
-            string[] arr_entry = null;
-            string val_entry = null;
-
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-            dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-
-            arr_entry = dt_entry.ToShortDateString().Split('/');
-            val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
-
-
-            string qry = "INSERT INTO form1 (" +
-"AS1_screening_ID," +
-"AS1_rand_id," +
-"AS1_name," +
-"AS1_sex," +
-"AS1_age," +
-"AS1_barcode," +
-"AS1_mrno," +
-"AS1_lno," +
-"AS1_barcode1," +
-"AS1_fsite," +
-"AS1_Samp_1," +
-"AS1_Samp_2," +
-"AS1_Samp_3," +
-"AS1_Samp_4," +
-"AS1_Q1_1," +
-"AS1_Q1_2," +
-"AS1_Q2_1," +
-"AS1_Q2_2," +
-"AS1_Q3," +
-"AS1_Q3a_1," +
-"AS1_Q3a_1a," +
-"AS1_Q3b_1," +
-"AS1_Q3a_2," +
-"AS1_Q4," +
-"AS1_Q5," +
-"AS1_Q6," +
-"AS1_Q6a," +
-"AS1_Q6b," +
-"AS1_Q6c," +
-"AS2_Q7_1," +
-"AS2_Q7_2a," +
-"AS2_Q7_2," +
-"AS2_Q7_CBC_CODE," +
-"AS2_Q8," +
-"AS2_Q8_BacT," +
-"AS2_Q8_3," +
-"AS2_Q8a," +
-"AS2_Q8b," +
-"AS2_Q9," +
-"AS2_Q10," +
-"AS2_Q11," +
-"AS2_Q12_1," +
-"AS2_Q12_2," +
-"AS2_Q12_3," +
-"AS2_Q12_4," +
-"AS2_Q13," +
-"AS2_Q13a," +
-"AS3_Q14," +
-"AS3_Q14a," +
-"AS3_Q15," +
-"AS3_Q16," +
-"AS3_Q17," +
-"AS3_Q18," +
-"AS3_Q19," +
-"AS3_Q20," +
-"AS4_Q21a," +
-"AS4_Q22a," +
-"AS4_Q22b," +
-"AS4_Q23," +
-"AS4_Q24," +
-"AS5_Q25a," +
-"AS5_Q25b," +
-"AS5_Q26," +
-"AS5_Q27," +
-"AS5_Q28," +
-"AS5_Q29," +
-"AS5_Q30," +
-"AS5_Q31," +
-"AS5_Q32," +
-"AS5_Q33a," +
-"AS5_Q33b," +
-"AS3_Remarks," +
-"AS6_Q34," +
-"AS6_Q35," +
-"AS6_Q36," +
-"AS6_Q37," +
-"AS6_Q38," +
-"AS6_Q39," +
-"AS6_Q40," +
-"AS6_Q41," +
-"AS6_Q42," +
-"AS6_Q43," +
-"AS6_Q44," +
-"AS6_Q45," +
-"AS6_Q46," +
-"AS6_Q47," +
-"AS5_R1," +
-"AS3_A1," +
-"AS3_A2," +
-"AS3_B1," +
-"AS3_B2," +
-"UserID," +
-"EntryDate," +
-"labid) VALUES('" +
-AS1_screening_ID.Text + "', '" +
-AS1_rand_id.Text + "', '" +
-AS1_name.Text + "', '" +
-var_AS1_sex + "', '" +
-AS1_age.Text + "', '" +
-AS1_barcode.Text + "', '" +
-AS1_mrno.Text + "', '" +
-AS1_lno.Text + "', '" +
-AS1_barcode1.Text + "', '" +
-var_AS1_fsite + "', '" +
-var_AS1_Samp_1 + "', '" +
-var_AS1_Samp_2 + "', '" +
-var_AS1_Samp_3 + "', '" +
-var_AS1_Samp_4 + "', '" +
-var_AS1_Q1_1 + "', '" +
-AS1_Q1_2.Text + "', '" +
-var_AS1_Q2_1 + "', '" +
-AS1_Q2_2.Text + "', '" +
-var_AS1_Q3 + "', '" +
-var_AS1_Q3a_1 + "', '" +
-var_AS1_Q3a_11a + "', '" +
-var_AS1_Q3b_1 + "', '" +
-AS1_Q3a_2.Text + "', '" +
-val_AS1_Q4 + "', '" +
-val_AS1_Q5 + "', '" +
-val_AS1_Q6 + "', '" +
-AS1_Q6a.Text + "', '" +
-AS1_Q6b.Text + "', '" +
-val_AS1_Q6c + "', '" +
-var_AS2_Q7_1 + "', '" +
-AS2_Q7_2a.Text + "', '" +
-AS2_Q7_2.Text + "', '" +
-AS2_Q7_CBC_CODE.Text + "', '" +
-var_AS2_Q8 + "', '" +
-AS2_Q8_BacT.Text + "', '" +
-AS2_Q8_3.Text + "', '" +
-var_AS2_Q8a + "', '" +
-var_AS2_Q8b + "', '" +
-val_AS2_Q9 + "', '" +
-dt_AS2_Q10.ToShortTimeString() + "', '" +
-var_AS2_Q11 + "', '" +
-AS2_Q12_1.Text + "', '" +
-AS2_Q12_2.Text + "', '" +
-AS2_Q12_3.Text + "', '" +
-AS2_Q12_4.Text + "', '" +
-AS2_Q13.Text + "', '" +
-dt_AS2_Q13a.ToShortTimeString() + "', '" +
-AS3_Q14.Text + "', '" +
-val_AS3_Q14a + "', '" +
-dt_AS3_Q15.ToShortTimeString() + "', '" +
-AS3_Q16.Text + "', '" +
-dt_AS3_Q17.ToShortTimeString() + "', '" +
-AS3_Q18.Text + "', '" +
-AS3_Q19.Text + "', '" +
-dt_AS3_Q20.ToShortTimeString() + "', '" +
-var_AS4_Q21a + "', '" +
-dt_AS4_Q22a.ToShortTimeString() + "', '" +
-val_AS4_Q22b + "', '" +
-AS4_Q23.Text + "', '" +
-dt_AS4_Q24.ToShortTimeString() + "', '" +
-AS5_Q25a.Text + "', '" +
-AS5_Q25b.Text + "', '" +
-AS5_Q26.Text + "', '" +
-var_AS5_Q27 + "', '" +
-var_AS5_Q28 + "', '" +
-var_AS5_Q29 + "', '" +
-var_AS5_Q30 + "', '" +
-var_AS5_Q31 + "', '" +
-var_AS5_Q32 + "', '" +
-AS5_Q33a.Text + "', '" +
-AS5_Q33b.Text + "', '" +
-AS3_Remarks.Text + "', '" +
-AS6_Q34.Text + "', '" +
-AS6_Q35.Text + "', '" +
-AS6_Q36.Text + "', '" +
-AS6_Q37.Text + "', '" +
-AS6_Q38.Text + "', '" +
-AS6_Q39.Text + "', '" +
-AS6_Q40.Text + "', '" +
-AS6_Q41.Text + "', '" +
-AS6_Q42.Text + "', '" +
-AS6_Q43.Text + "', '" +
-AS6_Q44.Text + "', '" +
-AS6_Q45.Text + "', '" +
-AS6_Q46.Text + "', '" +
-AS6_Q47.Text + "', '" +
-AS5_R1.Text + "', '" +
-AS3_A1.Text + "', '" +
-val_AS3_A2 + "', '" +
-AS3_B1.Text + "', '" +
-val_AS3_B2 + "', '" +
-Session["userid"].ToString() + "', '" +
-val_entry + "', '" +
-HttpContext.Current.Request["labid"].ToString() + "')";
-
-
-            string msg = obj_op.ExecuteNonQuery_Message_Qry(qry);
-
-            if (string.IsNullOrEmpty(msg))
-            {
-                ClearFields();
-
-                string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
-                ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
-            }
-            else
-            {
-                string message = msg.Replace("'", "");
-                message = msg.Replace(@"\", "");
-                message = msg.Replace("/", "");
-
-                message = "alert('" + msg + "');";
-                ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
-            }
-
-
-            //ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", "alert('Record saved successfully');", true);
-
-            //Response.Redirect("sample_recv.aspx");
-
-            //lblerr.Text = "Record saved successfully";                                
+            SaveData();
         }
-
-        catch (Exception ex)
+        else
         {
-            string message = "alert('" + ex.Message + "');";
-            ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+            UpdateData();
         }
-
-        finally
-        {
-            obj_op = null;
-        }
-
     }
 
 
@@ -2368,7 +1573,7 @@ HttpContext.Current.Request["labid"].ToString()
         {
             AS1_Q3b_11.Checked = false;
             AS1_Q3b_12.Checked = false;
-            
+
             AS2_Q8b_1.Checked = false;
             AS2_Q8b_2.Checked = false;
 
@@ -2398,4 +1603,1571 @@ HttpContext.Current.Request["labid"].ToString()
             AS1_Q3b_12.Enabled = false;
         }
     }
+
+    protected void cmdSaveDraft_Click(object sender, EventArgs e)
+    {
+        if (ViewState["isupdate"] == null)
+        {
+            SaveData();
+        }
+        else
+        {
+            UpdateData();
+        }
+    }
+
+
+
+
+
+    private void SaveData()
+    {
+        CDBOperations obj_op = new CDBOperations();
+
+        string var_AS1_screening_ID = "";
+        string var_AS1_rand_id = "";
+        string var_AS1_name = "";
+        string var_AS1_sex = "";
+        string var_AS1_age = "";
+        string var_AS1_barcode = "";
+        string var_AS1_fsite = "";
+        string var_AS1_Samp = "";
+
+        string var_AS1_Samp_1 = "";
+        string var_AS1_Samp_2 = "";
+        string var_AS1_Samp_3 = "";
+        string var_AS1_Samp_4 = "";
+
+        string var_AS1_Q1_1 = "";
+        string var_AS1_Q1_2 = "";
+        string var_AS1_Q2_1 = "";
+        string var_AS1_Q2_2 = "";
+        string var_AS1_Q3 = "";
+        string var_AS1_Q3a_1 = "";
+        string var_AS1_Q3a_2 = "";
+
+        string var_AS1_Q3a_11a = "";
+        string var_AS1_Q3a_12a = "";
+
+
+        string var_AS1_Q3b_1 = "";
+        string var_AS1_Q3b_2 = "";
+        string var_AS1_Q4 = "";
+        string var_AS1_Q5 = "";
+        string var_AS1_Q6 = "";
+        string var_AS2_Q7_1 = "";
+        string var_AS2_Q7_2 = "";
+        string var_AS2_Q8 = "";
+        string var_AS2_Q8_3 = "";
+        string var_AS2_Q8a = "";
+        string var_AS2_Q8b = "";
+        string var_AS2_Q9 = "";
+        string var_AS2_Q10 = "";
+        string var_AS2_Q11 = "";
+
+        string var_AS5_Q27 = "";
+        string var_AS5_Q28 = "";
+        string var_AS5_Q29 = "";
+        string var_AS5_Q30 = "";
+        string var_AS5_Q31 = "";
+        string var_AS5_Q32 = "";
+        string var_AS5_Q33 = "";
+
+        string var_AS2_Q12 = "";
+        string var_AS2_Q13 = "";
+        string var_AS3_Q14 = "";
+        string var_AS3_Q15 = "";
+        string var_AS3_Q16 = "";
+        string var_AS3_Q17 = "";
+        string var_AS3_Q18 = "";
+        string var_AS3_Q19 = "";
+        string var_AS3_Q20 = "";
+
+        string var_AS4_Q21a = "";
+
+        string var_AS3_Remarks = "";
+        string var_AS3_A1 = "";
+        string var_AS3_A2 = "";
+        string var_AS3_B1 = "";
+        string var_AS3_B2 = "";
+
+
+
+
+        try
+        {
+
+            if (AS1_sex_a.Checked == true)
+            {
+                var_AS1_sex = "1";
+            }
+            else if (AS1_sex_b.Checked == true)
+            {
+                var_AS1_sex = "2";
+            }
+
+
+
+            if (AS1_fsite_1.Checked == true)
+            {
+                var_AS1_fsite = "1";
+            }
+            else if (AS1_fsite_2.Checked == true)
+            {
+                var_AS1_fsite = "2";
+            }
+            else if (AS1_fsite_3.Checked == true)
+            {
+                var_AS1_fsite = "3";
+            }
+            else if (AS1_fsite_4.Checked == true)
+            {
+                var_AS1_fsite = "4";
+            }
+            else if (AS1_fsite_5.Checked == true)
+            {
+                var_AS1_fsite = "5";
+            }
+            else if (AS1_fsite_6.Checked == true)
+            {
+                var_AS1_fsite = "6";
+            }
+
+
+
+            if (AS1_Samp_1.Checked == true)
+            {
+                var_AS1_Samp_1 = "1";
+            }
+
+            if (AS1_Samp_2.Checked == true)
+            {
+                var_AS1_Samp_2 = "2";
+            }
+
+            if (AS1_Samp_3.Checked == true)
+            {
+                var_AS1_Samp_3 = "3";
+            }
+
+            if (AS1_Samp_4.Checked == true)
+            {
+                var_AS1_Samp_4 = "4";
+            }
+
+
+
+            if (AS1_Q1_11.Checked == true)
+            {
+                var_AS1_Q1_1 = "1";
+            }
+            else if (AS1_Q1_12.Checked == true)
+            {
+                var_AS1_Q1_1 = "2";
+            }
+
+
+
+            if (AS1_Q2_11.Checked == true)
+            {
+                var_AS1_Q2_1 = "1";
+            }
+            else if (AS1_Q2_12.Checked == true)
+            {
+                var_AS1_Q2_1 = "2";
+            }
+
+
+
+
+            if (AS1_Q3_1.Checked == true)
+            {
+                var_AS1_Q3 = "1";
+            }
+            else if (AS1_Q3_2.Checked == true)
+            {
+                var_AS1_Q3 = "2";
+            }
+
+
+
+
+
+            if (AS1_Q3a_11.Checked == true)
+            {
+                var_AS1_Q3a_1 = "1";
+            }
+            else if (AS1_Q3a_12.Checked == true)
+            {
+                var_AS1_Q3a_1 = "2";
+            }
+
+
+            if (AS1_Q3a_11a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "1";
+            }
+            else if (AS1_Q3a_12a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "2";
+            }
+
+
+
+            if (AS1_Q3b_11.Checked == true)
+            {
+                var_AS1_Q3b_1 = "1";
+            }
+            else if (AS1_Q3b_12.Checked == true)
+            {
+                var_AS1_Q3b_1 = "2";
+            }
+
+
+
+            if (AS2_Q7_11.Checked == true)
+            {
+                var_AS2_Q7_1 = "1";
+            }
+            else if (AS2_Q7_12.Checked == true)
+            {
+                var_AS2_Q7_1 = "2";
+            }
+
+
+
+            if (AS2_Q8_1.Checked == true)
+            {
+                var_AS2_Q8 = "1";
+            }
+            else if (AS2_Q8_2.Checked == true)
+            {
+                var_AS2_Q8 = "2";
+            }
+
+
+
+
+            if (AS2_Q8a_1.Checked == true)
+            {
+                var_AS2_Q8a = "1";
+            }
+            else if (AS2_Q8a_2.Checked == true)
+            {
+                var_AS2_Q8a = "2";
+            }
+
+
+
+
+            if (AS2_Q8b_1.Checked == true)
+            {
+                var_AS2_Q8b = "1";
+            }
+            else if (AS2_Q8b_2.Checked == true)
+            {
+                var_AS2_Q8b = "2";
+            }
+
+
+
+
+            if (AS2_Q11_1.Checked == true)
+            {
+                var_AS2_Q11 = "1";
+            }
+            else if (AS2_Q11_2.Checked == true)
+            {
+                var_AS2_Q11 = "2";
+            }
+
+
+
+            if (AS4_Q21a.Checked == true)
+            {
+                var_AS4_Q21a = "1";
+            }
+
+
+
+
+            if (AS5_Q27_1.Checked == true)
+            {
+                var_AS5_Q27 = "1";
+            }
+            else if (AS5_Q27_2.Checked == true)
+            {
+                var_AS5_Q27 = "2";
+            }
+
+
+
+            if (AS5_Q28_1.Checked == true)
+            {
+                var_AS5_Q28 = "1";
+            }
+            else if (AS5_Q28_2.Checked == true)
+            {
+                var_AS5_Q28 = "2";
+            }
+
+
+
+            if (AS5_Q29_1.Checked == true)
+            {
+                var_AS5_Q29 = "1";
+            }
+            else if (AS5_Q29_2.Checked == true)
+            {
+                var_AS5_Q29 = "2";
+            }
+            else if (AS5_Q29_3.Checked == true)
+            {
+                var_AS5_Q29 = "3";
+            }
+
+
+
+
+            if (AS5_Q30_1.Checked == true)
+            {
+                var_AS5_Q30 = "1";
+            }
+            else if (AS5_Q30_2.Checked == true)
+            {
+                var_AS5_Q30 = "2";
+            }
+            else if (AS5_Q30_3.Checked == true)
+            {
+                var_AS5_Q30 = "3";
+            }
+
+
+
+
+            if (AS5_Q31_1.Checked == true)
+            {
+                var_AS5_Q31 = "1";
+            }
+            else if (AS5_Q31_2.Checked == true)
+            {
+                var_AS5_Q31 = "2";
+            }
+            else if (AS5_Q31_3.Checked == true)
+            {
+                var_AS5_Q31 = "3";
+            }
+            else if (AS5_Q31_4.Checked == true)
+            {
+                var_AS5_Q31 = "4";
+            }
+
+
+
+
+            if (AS5_Q32_1.Checked == true)
+            {
+                var_AS5_Q32 = "1";
+            }
+            else if (AS5_Q32_2.Checked == true)
+            {
+                var_AS5_Q32 = "2";
+            }
+            else if (AS5_Q32_3.Checked == true)
+            {
+                var_AS5_Q32 = "3";
+            }
+
+
+
+
+            DateTime dt_AS1_Q4 = new DateTime();
+            string[] arr_AS1_Q4 = null;
+            string val_AS1_Q4 = null;
+
+            if (AS1_Q4.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q4 = Convert.ToDateTime(AS1_Q4.Text);
+
+                arr_AS1_Q4 = dt_AS1_Q4.ToShortDateString().Split('/');
+                val_AS1_Q4 = arr_AS1_Q4[2] + "/" + arr_AS1_Q4[1] + "/" + arr_AS1_Q4[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q5 = new DateTime();
+            string[] arr_AS1_Q5 = null;
+            string val_AS1_Q5 = null;
+
+            if (AS1_Q5.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q5 = Convert.ToDateTime(AS1_Q5.Text);
+
+                arr_AS1_Q5 = dt_AS1_Q5.ToShortDateString().Split('/');
+                val_AS1_Q5 = arr_AS1_Q5[2] + "/" + arr_AS1_Q5[1] + "/" + arr_AS1_Q5[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q6 = new DateTime();
+            string[] arr_AS1_Q6 = null;
+            string val_AS1_Q6 = null;
+
+            if (AS1_Q6.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q6 = Convert.ToDateTime(AS1_Q6.Text);
+
+                arr_AS1_Q6 = dt_AS1_Q6.ToShortDateString().Split('/');
+                val_AS1_Q6 = arr_AS1_Q6[2] + "/" + arr_AS1_Q6[1] + "/" + arr_AS1_Q6[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q6c = new DateTime();
+            string[] arr_AS1_Q6c = null;
+            string val_AS1_Q6c = null;
+
+            if (AS1_Q6c.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q6c = Convert.ToDateTime(AS1_Q6c.Text);
+
+                arr_AS1_Q6c = dt_AS1_Q6c.ToShortDateString().Split('/');
+                val_AS1_Q6c = arr_AS1_Q6c[2] + "/" + arr_AS1_Q6c[1] + "/" + arr_AS1_Q6c[0];
+            }
+
+
+
+
+            DateTime dt_AS2_Q9 = new DateTime();
+            string[] arr_AS2_Q9 = null;
+            string val_AS2_Q9 = null;
+
+            if (AS2_Q9.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q9 = Convert.ToDateTime(AS2_Q9.Text);
+
+                arr_AS2_Q9 = dt_AS2_Q9.ToShortDateString().Split('/');
+                val_AS2_Q9 = arr_AS2_Q9[2] + "/" + arr_AS2_Q9[1] + "/" + arr_AS2_Q9[0];
+            }
+
+
+
+
+            DateTime dt_AS2_Q10 = new DateTime();
+
+            if (AS2_Q10.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q10 = Convert.ToDateTime(AS2_Q10.Text);
+            }
+
+
+
+
+            DateTime dt_AS2_Q13a = new DateTime();
+
+            if (AS2_Q13a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q13a = Convert.ToDateTime(AS2_Q13a.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q14a = new DateTime();
+            string[] arr_AS3_Q14a = null;
+            string val_AS3_Q14a = null;
+
+            if (AS3_Q14a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q14a = Convert.ToDateTime(AS3_Q14a.Text);
+
+                arr_AS3_Q14a = dt_AS3_Q14a.ToShortDateString().Split('/');
+                val_AS3_Q14a = arr_AS3_Q14a[2] + "/" + arr_AS3_Q14a[1] + "/" + arr_AS3_Q14a[0];
+            }
+
+
+
+            DateTime dt_AS3_Q15 = new DateTime();
+
+            if (AS3_Q15.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q15 = Convert.ToDateTime(AS3_Q15.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q17 = new DateTime();
+
+            if (AS3_Q17.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q17 = Convert.ToDateTime(AS3_Q17.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q20 = new DateTime();
+
+            if (AS3_Q20.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q20 = Convert.ToDateTime(AS3_Q20.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q22a = new DateTime();
+
+            if (AS4_Q22a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q22a = Convert.ToDateTime(AS4_Q22a.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q22b = new DateTime();
+            string[] arr_AS4_Q22b = null;
+            string val_AS4_Q22b = null;
+
+            if (AS4_Q22b.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q22b = Convert.ToDateTime(AS4_Q22b.Text);
+
+                arr_AS4_Q22b = dt_AS4_Q22b.ToShortDateString().Split('/');
+                val_AS4_Q22b = arr_AS4_Q22b[2] + "/" + arr_AS4_Q22b[1] + "/" + arr_AS4_Q22b[0];
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q24 = new DateTime();
+
+            if (AS4_Q24.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q24 = Convert.ToDateTime(AS4_Q24.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS3_A2 = new DateTime();
+            string[] arr_AS3_A2 = null;
+            string val_AS3_A2 = null;
+
+            if (AS3_A2.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_A2 = Convert.ToDateTime(AS3_A2.Text);
+
+                arr_AS3_A2 = dt_AS3_A2.ToShortDateString().Split('/');
+                val_AS3_A2 = arr_AS3_A2[2] + "/" + arr_AS3_A2[1] + "/" + arr_AS3_A2[0];
+            }
+
+
+
+
+
+            DateTime dt_AS3_B2 = new DateTime();
+            string[] arr_AS3_B2 = null;
+            string val_AS3_B2 = null;
+
+            if (AS3_B2.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_B2 = Convert.ToDateTime(AS3_B2.Text);
+
+                arr_AS3_B2 = dt_AS3_B2.ToShortDateString().Split('/');
+                val_AS3_B2 = arr_AS3_B2[2] + "/" + arr_AS3_B2[1] + "/" + arr_AS3_B2[0];
+            }
+
+
+
+
+            DateTime dt_entry = new DateTime();
+
+            string[] arr_entry = null;
+            string val_entry = null;
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+            dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            arr_entry = dt_entry.ToShortDateString().Split('/');
+            val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
+
+
+            string qry = "INSERT INTO form1 (" +
+"AS1_screening_ID," +
+"AS1_rand_id," +
+"AS1_name," +
+"AS1_sex," +
+"AS1_age," +
+"AS1_barcode," +
+"AS1_mrno," +
+"AS1_lno," +
+"AS1_barcode1," +
+"AS1_fsite," +
+"AS1_Samp_1," +
+"AS1_Samp_2," +
+"AS1_Samp_3," +
+"AS1_Samp_4," +
+"AS1_Q1_1," +
+"AS1_Q1_2," +
+"AS1_Q2_1," +
+"AS1_Q2_2," +
+"AS1_Q3," +
+"AS1_Q3a_1," +
+"AS1_Q3a_1a," +
+"AS1_Q3b_1," +
+"AS1_Q3a_2," +
+"AS1_Q4," +
+"AS1_Q5," +
+"AS1_Q6," +
+"AS1_Q6a," +
+"AS1_Q6b," +
+"AS1_Q6c," +
+"AS2_Q7_1," +
+"AS2_Q7_2a," +
+"AS2_Q7_2," +
+"AS2_Q7_CBC_CODE," +
+"AS2_Q8," +
+"AS2_Q8_BacT," +
+"AS2_Q8_3," +
+"AS2_Q8a," +
+"AS2_Q8b," +
+"AS2_Q9," +
+"AS2_Q10," +
+"AS2_Q11," +
+"AS2_Q12_1," +
+"AS2_Q12_2," +
+"AS2_Q12_3," +
+"AS2_Q12_4," +
+"AS2_Q13," +
+"AS2_Q13a," +
+"AS3_Q14," +
+"AS3_Q14a," +
+"AS3_Q15," +
+"AS3_Q16," +
+"AS3_Q17," +
+"AS3_Q18," +
+"AS3_Q19," +
+"AS3_Q20," +
+"AS4_Q21a," +
+"AS4_Q22a," +
+"AS4_Q22b," +
+"AS4_Q23," +
+"AS4_Q24," +
+"AS5_Q25a," +
+"AS5_Q25b," +
+"AS5_Q26," +
+"AS5_Q27," +
+"AS5_Q28," +
+"AS5_Q29," +
+"AS5_Q30," +
+"AS5_Q31," +
+"AS5_Q32," +
+"AS5_Q33a," +
+"AS5_Q33b," +
+"AS3_Remarks," +
+"AS6_Q34," +
+"AS6_Q35," +
+"AS6_Q36," +
+"AS6_Q37," +
+"AS6_Q38," +
+"AS6_Q39," +
+"AS6_Q40," +
+"AS6_Q41," +
+"AS6_Q42," +
+"AS6_Q43," +
+"AS6_Q44," +
+"AS6_Q45," +
+"AS6_Q46," +
+"AS6_Q47," +
+"AS5_R1," +
+"AS3_A1," +
+"AS3_A2," +
+"AS3_B1," +
+"AS3_B2," +
+"UserID," +
+"EntryDate," +
+"labid) VALUES('" +
+AS1_screening_ID.Text + "', '" +
+AS1_rand_id.Text + "', '" +
+AS1_name.Text + "', '" +
+var_AS1_sex + "', '" +
+AS1_age.Text + "', '" +
+AS1_barcode.Text + "', '" +
+AS1_mrno.Text + "', '" +
+AS1_lno.Text + "', '" +
+AS1_barcode1.Text + "', '" +
+var_AS1_fsite + "', '" +
+var_AS1_Samp_1 + "', '" +
+var_AS1_Samp_2 + "', '" +
+var_AS1_Samp_3 + "', '" +
+var_AS1_Samp_4 + "', '" +
+var_AS1_Q1_1 + "', '" +
+AS1_Q1_2.Text + "', '" +
+var_AS1_Q2_1 + "', '" +
+AS1_Q2_2.Text + "', '" +
+var_AS1_Q3 + "', '" +
+var_AS1_Q3a_1 + "', '" +
+var_AS1_Q3a_11a + "', '" +
+var_AS1_Q3b_1 + "', '" +
+AS1_Q3a_2.Text + "', '" +
+val_AS1_Q4 + "', '" +
+val_AS1_Q5 + "', '" +
+val_AS1_Q6 + "', '" +
+AS1_Q6a.Text + "', '" +
+AS1_Q6b.Text + "', '" +
+val_AS1_Q6c + "', '" +
+var_AS2_Q7_1 + "', '" +
+AS2_Q7_2a.Text + "', '" +
+AS2_Q7_2.Text + "', '" +
+AS2_Q7_CBC_CODE.Text + "', '" +
+var_AS2_Q8 + "', '" +
+AS2_Q8_BacT.Text + "', '" +
+AS2_Q8_3.Text + "', '" +
+var_AS2_Q8a + "', '" +
+var_AS2_Q8b + "', '" +
+val_AS2_Q9 + "', '" +
+dt_AS2_Q10.ToShortTimeString() + "', '" +
+var_AS2_Q11 + "', '" +
+AS2_Q12_1.Text + "', '" +
+AS2_Q12_2.Text + "', '" +
+AS2_Q12_3.Text + "', '" +
+AS2_Q12_4.Text + "', '" +
+AS2_Q13.Text + "', '" +
+dt_AS2_Q13a.ToShortTimeString() + "', '" +
+AS3_Q14.Text + "', '" +
+val_AS3_Q14a + "', '" +
+dt_AS3_Q15.ToShortTimeString() + "', '" +
+AS3_Q16.Text + "', '" +
+dt_AS3_Q17.ToShortTimeString() + "', '" +
+AS3_Q18.Text + "', '" +
+AS3_Q19.Text + "', '" +
+dt_AS3_Q20.ToShortTimeString() + "', '" +
+var_AS4_Q21a + "', '" +
+dt_AS4_Q22a.ToShortTimeString() + "', '" +
+val_AS4_Q22b + "', '" +
+AS4_Q23.Text + "', '" +
+dt_AS4_Q24.ToShortTimeString() + "', '" +
+AS5_Q25a.Text + "', '" +
+AS5_Q25b.Text + "', '" +
+AS5_Q26.Text + "', '" +
+var_AS5_Q27 + "', '" +
+var_AS5_Q28 + "', '" +
+var_AS5_Q29 + "', '" +
+var_AS5_Q30 + "', '" +
+var_AS5_Q31 + "', '" +
+var_AS5_Q32 + "', '" +
+AS5_Q33a.Text + "', '" +
+AS5_Q33b.Text + "', '" +
+AS3_Remarks.Text + "', '" +
+AS6_Q34.Text + "', '" +
+AS6_Q35.Text + "', '" +
+AS6_Q36.Text + "', '" +
+AS6_Q37.Text + "', '" +
+AS6_Q38.Text + "', '" +
+AS6_Q39.Text + "', '" +
+AS6_Q40.Text + "', '" +
+AS6_Q41.Text + "', '" +
+AS6_Q42.Text + "', '" +
+AS6_Q43.Text + "', '" +
+AS6_Q44.Text + "', '" +
+AS6_Q45.Text + "', '" +
+AS6_Q46.Text + "', '" +
+AS6_Q47.Text + "', '" +
+AS5_R1.Text + "', '" +
+AS3_A1.Text + "', '" +
+val_AS3_A2 + "', '" +
+AS3_B1.Text + "', '" +
+val_AS3_B2 + "', '" +
+Session["userid"].ToString() + "', '" +
+val_entry + "', '" +
+HttpContext.Current.Request["labid"].ToString() + "')";
+
+
+            string msg = obj_op.ExecuteNonQuery_Message_Qry(qry);
+
+            if (string.IsNullOrEmpty(msg))
+            {
+                ClearFields();
+
+                string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+            }
+            else
+            {
+                string message = msg.Replace("'", "");
+                message = msg.Replace(@"\", "");
+                message = msg.Replace("/", "");
+
+                message = "alert('" + msg + "');";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+            }
+
+        }
+
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message + "');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+            obj_op = null;
+        }
+    }
+
+
+    private void UpdateData()
+    {
+        CDBOperations obj_op = new CDBOperations();
+
+        string var_AS1_screening_ID = "";
+        string var_AS1_rand_id = "";
+        string var_AS1_name = "";
+        string var_AS1_sex = "";
+        string var_AS1_age = "";
+        string var_AS1_barcode = "";
+        string var_AS1_fsite = "";
+        string var_AS1_Samp = "";
+
+        string var_AS1_Samp_1 = "";
+        string var_AS1_Samp_2 = "";
+        string var_AS1_Samp_3 = "";
+        string var_AS1_Samp_4 = "";
+
+        string var_AS1_Q1_1 = "";
+        string var_AS1_Q1_2 = "";
+        string var_AS1_Q2_1 = "";
+        string var_AS1_Q2_2 = "";
+        string var_AS1_Q3 = "";
+        string var_AS1_Q3a_1 = "";
+        string var_AS1_Q3a_2 = "";
+
+        string var_AS1_Q3a_11a = "";
+        string var_AS1_Q3a_12a = "";
+
+
+        string var_AS1_Q3b_1 = "";
+        string var_AS1_Q3b_2 = "";
+        string var_AS1_Q4 = "";
+        string var_AS1_Q5 = "";
+        string var_AS1_Q6 = "";
+        string var_AS2_Q7_1 = "";
+        string var_AS2_Q7_2 = "";
+        string var_AS2_Q8 = "";
+        string var_AS2_Q8_3 = "";
+        string var_AS2_Q8a = "";
+        string var_AS2_Q8b = "";
+        string var_AS2_Q9 = "";
+        string var_AS2_Q10 = "";
+        string var_AS2_Q11 = "";
+
+        string var_AS5_Q27 = "";
+        string var_AS5_Q28 = "";
+        string var_AS5_Q29 = "";
+        string var_AS5_Q30 = "";
+        string var_AS5_Q31 = "";
+        string var_AS5_Q32 = "";
+        string var_AS5_Q33 = "";
+
+        string var_AS2_Q12 = "";
+        string var_AS2_Q13 = "";
+        string var_AS3_Q14 = "";
+        string var_AS3_Q15 = "";
+        string var_AS3_Q16 = "";
+        string var_AS3_Q17 = "";
+        string var_AS3_Q18 = "";
+        string var_AS3_Q19 = "";
+        string var_AS3_Q20 = "";
+
+        string var_AS4_Q21a = "";
+
+        string var_AS3_Remarks = "";
+        string var_AS3_A1 = "";
+        string var_AS3_A2 = "";
+        string var_AS3_B1 = "";
+        string var_AS3_B2 = "";
+
+
+
+
+        try
+        {
+
+            if (AS1_sex_a.Checked == true)
+            {
+                var_AS1_sex = "1";
+            }
+            else if (AS1_sex_b.Checked == true)
+            {
+                var_AS1_sex = "2";
+            }
+
+
+
+            if (AS1_fsite_1.Checked == true)
+            {
+                var_AS1_fsite = "1";
+            }
+            else if (AS1_fsite_2.Checked == true)
+            {
+                var_AS1_fsite = "2";
+            }
+            else if (AS1_fsite_3.Checked == true)
+            {
+                var_AS1_fsite = "3";
+            }
+            else if (AS1_fsite_4.Checked == true)
+            {
+                var_AS1_fsite = "4";
+            }
+            else if (AS1_fsite_5.Checked == true)
+            {
+                var_AS1_fsite = "5";
+            }
+            else if (AS1_fsite_6.Checked == true)
+            {
+                var_AS1_fsite = "6";
+            }
+
+
+
+            if (AS1_Samp_1.Checked == true)
+            {
+                var_AS1_Samp_1 = "1";
+            }
+
+            if (AS1_Samp_2.Checked == true)
+            {
+                var_AS1_Samp_2 = "2";
+            }
+
+            if (AS1_Samp_3.Checked == true)
+            {
+                var_AS1_Samp_3 = "3";
+            }
+
+            if (AS1_Samp_4.Checked == true)
+            {
+                var_AS1_Samp_4 = "4";
+            }
+
+
+
+            if (AS1_Q1_11.Checked == true)
+            {
+                var_AS1_Q1_1 = "1";
+            }
+            else if (AS1_Q1_12.Checked == true)
+            {
+                var_AS1_Q1_1 = "2";
+            }
+
+
+
+            if (AS1_Q2_11.Checked == true)
+            {
+                var_AS1_Q2_1 = "1";
+            }
+            else if (AS1_Q2_12.Checked == true)
+            {
+                var_AS1_Q2_1 = "2";
+            }
+
+
+
+
+            if (AS1_Q3_1.Checked == true)
+            {
+                var_AS1_Q3 = "1";
+            }
+            else if (AS1_Q3_2.Checked == true)
+            {
+                var_AS1_Q3 = "2";
+            }
+
+
+
+
+
+            if (AS1_Q3a_11.Checked == true)
+            {
+                var_AS1_Q3a_1 = "1";
+            }
+            else if (AS1_Q3a_12.Checked == true)
+            {
+                var_AS1_Q3a_1 = "2";
+            }
+
+
+            if (AS1_Q3a_11a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "1";
+            }
+            else if (AS1_Q3a_12a.Checked == true)
+            {
+                var_AS1_Q3a_11a = "2";
+            }
+
+
+
+            if (AS1_Q3b_11.Checked == true)
+            {
+                var_AS1_Q3b_1 = "1";
+            }
+            else if (AS1_Q3b_12.Checked == true)
+            {
+                var_AS1_Q3b_1 = "2";
+            }
+
+
+
+            if (AS2_Q7_11.Checked == true)
+            {
+                var_AS2_Q7_1 = "1";
+            }
+            else if (AS2_Q7_12.Checked == true)
+            {
+                var_AS2_Q7_1 = "2";
+            }
+
+
+
+            if (AS2_Q8_1.Checked == true)
+            {
+                var_AS2_Q8 = "1";
+            }
+            else if (AS2_Q8_2.Checked == true)
+            {
+                var_AS2_Q8 = "2";
+            }
+
+
+
+
+            if (AS2_Q8a_1.Checked == true)
+            {
+                var_AS2_Q8a = "1";
+            }
+            else if (AS2_Q8a_2.Checked == true)
+            {
+                var_AS2_Q8a = "2";
+            }
+
+
+
+
+            if (AS2_Q8b_1.Checked == true)
+            {
+                var_AS2_Q8b = "1";
+            }
+            else if (AS2_Q8b_2.Checked == true)
+            {
+                var_AS2_Q8b = "2";
+            }
+
+
+
+
+            if (AS2_Q11_1.Checked == true)
+            {
+                var_AS2_Q11 = "1";
+            }
+            else if (AS2_Q11_2.Checked == true)
+            {
+                var_AS2_Q11 = "2";
+            }
+
+
+
+            if (AS4_Q21a.Checked == true)
+            {
+                var_AS4_Q21a = "1";
+            }
+
+
+
+
+            if (AS5_Q27_1.Checked == true)
+            {
+                var_AS5_Q27 = "1";
+            }
+            else if (AS5_Q27_2.Checked == true)
+            {
+                var_AS5_Q27 = "2";
+            }
+
+
+
+            if (AS5_Q28_1.Checked == true)
+            {
+                var_AS5_Q28 = "1";
+            }
+            else if (AS5_Q28_2.Checked == true)
+            {
+                var_AS5_Q28 = "2";
+            }
+
+
+
+            if (AS5_Q29_1.Checked == true)
+            {
+                var_AS5_Q29 = "1";
+            }
+            else if (AS5_Q29_2.Checked == true)
+            {
+                var_AS5_Q29 = "2";
+            }
+            else if (AS5_Q29_3.Checked == true)
+            {
+                var_AS5_Q29 = "3";
+            }
+
+
+
+
+            if (AS5_Q30_1.Checked == true)
+            {
+                var_AS5_Q30 = "1";
+            }
+            else if (AS5_Q30_2.Checked == true)
+            {
+                var_AS5_Q30 = "2";
+            }
+            else if (AS5_Q30_3.Checked == true)
+            {
+                var_AS5_Q30 = "3";
+            }
+
+
+
+
+            if (AS5_Q31_1.Checked == true)
+            {
+                var_AS5_Q31 = "1";
+            }
+            else if (AS5_Q31_2.Checked == true)
+            {
+                var_AS5_Q31 = "2";
+            }
+            else if (AS5_Q31_3.Checked == true)
+            {
+                var_AS5_Q31 = "3";
+            }
+            else if (AS5_Q31_4.Checked == true)
+            {
+                var_AS5_Q31 = "4";
+            }
+
+
+
+
+            if (AS5_Q32_1.Checked == true)
+            {
+                var_AS5_Q32 = "1";
+            }
+            else if (AS5_Q32_2.Checked == true)
+            {
+                var_AS5_Q32 = "2";
+            }
+            else if (AS5_Q32_3.Checked == true)
+            {
+                var_AS5_Q32 = "3";
+            }
+
+
+
+
+            DateTime dt_AS1_Q4 = new DateTime();
+            string[] arr_AS1_Q4 = null;
+            string val_AS1_Q4 = null;
+
+            if (AS1_Q4.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q4 = Convert.ToDateTime(AS1_Q4.Text);
+
+                arr_AS1_Q4 = dt_AS1_Q4.ToShortDateString().Split('/');
+                val_AS1_Q4 = arr_AS1_Q4[2] + "/" + arr_AS1_Q4[1] + "/" + arr_AS1_Q4[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q5 = new DateTime();
+            string[] arr_AS1_Q5 = null;
+            string val_AS1_Q5 = null;
+
+            if (AS1_Q5.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q5 = Convert.ToDateTime(AS1_Q5.Text);
+
+                arr_AS1_Q5 = dt_AS1_Q5.ToShortDateString().Split('/');
+                val_AS1_Q5 = arr_AS1_Q5[2] + "/" + arr_AS1_Q5[1] + "/" + arr_AS1_Q5[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q6 = new DateTime();
+            string[] arr_AS1_Q6 = null;
+            string val_AS1_Q6 = null;
+
+            if (AS1_Q6.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q6 = Convert.ToDateTime(AS1_Q6.Text);
+
+                arr_AS1_Q6 = dt_AS1_Q6.ToShortDateString().Split('/');
+                val_AS1_Q6 = arr_AS1_Q6[2] + "/" + arr_AS1_Q6[1] + "/" + arr_AS1_Q6[0];
+            }
+
+
+
+
+            DateTime dt_AS1_Q6c = new DateTime();
+            string[] arr_AS1_Q6c = null;
+            string val_AS1_Q6c = null;
+
+            if (AS1_Q6c.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS1_Q6c = Convert.ToDateTime(AS1_Q6c.Text);
+
+                arr_AS1_Q6c = dt_AS1_Q6c.ToShortDateString().Split('/');
+                val_AS1_Q6c = arr_AS1_Q6c[2] + "/" + arr_AS1_Q6c[1] + "/" + arr_AS1_Q6c[0];
+            }
+
+
+
+
+            DateTime dt_AS2_Q9 = new DateTime();
+            string[] arr_AS2_Q9 = null;
+            string val_AS2_Q9 = null;
+
+            if (AS2_Q9.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q9 = Convert.ToDateTime(AS2_Q9.Text);
+
+                arr_AS2_Q9 = dt_AS2_Q9.ToShortDateString().Split('/');
+                val_AS2_Q9 = arr_AS2_Q9[2] + "/" + arr_AS2_Q9[1] + "/" + arr_AS2_Q9[0];
+            }
+
+
+
+
+            DateTime dt_AS2_Q10 = new DateTime();
+
+            if (AS2_Q10.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q10 = Convert.ToDateTime(AS2_Q10.Text);
+            }
+
+
+
+
+            DateTime dt_AS2_Q13a = new DateTime();
+
+            if (AS2_Q13a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS2_Q13a = Convert.ToDateTime(AS2_Q13a.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q14a = new DateTime();
+            string[] arr_AS3_Q14a = null;
+            string val_AS3_Q14a = null;
+
+            if (AS3_Q14a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q14a = Convert.ToDateTime(AS3_Q14a.Text);
+
+                arr_AS3_Q14a = dt_AS3_Q14a.ToShortDateString().Split('/');
+                val_AS3_Q14a = arr_AS3_Q14a[2] + "/" + arr_AS3_Q14a[1] + "/" + arr_AS3_Q14a[0];
+            }
+
+
+
+            DateTime dt_AS3_Q15 = new DateTime();
+
+            if (AS3_Q15.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q15 = Convert.ToDateTime(AS3_Q15.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q17 = new DateTime();
+
+            if (AS3_Q17.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q17 = Convert.ToDateTime(AS3_Q17.Text);
+            }
+
+
+
+
+            DateTime dt_AS3_Q20 = new DateTime();
+
+            if (AS3_Q20.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_Q20 = Convert.ToDateTime(AS3_Q20.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q22a = new DateTime();
+
+            if (AS4_Q22a.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q22a = Convert.ToDateTime(AS4_Q22a.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q22b = new DateTime();
+            string[] arr_AS4_Q22b = null;
+            string val_AS4_Q22b = null;
+
+            if (AS4_Q22b.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q22b = Convert.ToDateTime(AS4_Q22b.Text);
+
+                arr_AS4_Q22b = dt_AS4_Q22b.ToShortDateString().Split('/');
+                val_AS4_Q22b = arr_AS4_Q22b[2] + "/" + arr_AS4_Q22b[1] + "/" + arr_AS4_Q22b[0];
+            }
+
+
+
+
+
+            DateTime dt_AS4_Q24 = new DateTime();
+
+            if (AS4_Q24.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS4_Q24 = Convert.ToDateTime(AS4_Q24.Text);
+            }
+
+
+
+
+
+            DateTime dt_AS3_A2 = new DateTime();
+            string[] arr_AS3_A2 = null;
+            string val_AS3_A2 = null;
+
+            if (AS3_A2.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_A2 = Convert.ToDateTime(AS3_A2.Text);
+
+                arr_AS3_A2 = dt_AS3_A2.ToShortDateString().Split('/');
+                val_AS3_A2 = arr_AS3_A2[2] + "/" + arr_AS3_A2[1] + "/" + arr_AS3_A2[0];
+            }
+
+
+
+
+
+            DateTime dt_AS3_B2 = new DateTime();
+            string[] arr_AS3_B2 = null;
+            string val_AS3_B2 = null;
+
+            if (AS3_B2.Text != "")
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                dt_AS3_B2 = Convert.ToDateTime(AS3_B2.Text);
+
+                arr_AS3_B2 = dt_AS3_B2.ToShortDateString().Split('/');
+                val_AS3_B2 = arr_AS3_B2[2] + "/" + arr_AS3_B2[1] + "/" + arr_AS3_B2[0];
+            }
+
+
+
+
+            DateTime dt_entry = new DateTime();
+
+            string[] arr_entry = null;
+            string val_entry = null;
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+            dt_entry = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            arr_entry = dt_entry.ToShortDateString().Split('/');
+            val_entry = arr_entry[2] + "/" + arr_entry[1] + "/" + arr_entry[0];
+
+
+            string qry = "UPDATE form1 set " +
+"AS1_screening_ID = '" + AS1_screening_ID.Text + "', " +
+"AS1_rand_id = '" + AS1_rand_id.Text + "', " +
+"AS1_name = '" + AS1_name.Text + "', " +
+"AS1_sex = '" + var_AS1_sex + "', " +
+"AS1_age = '" + AS1_age.Text + "', " +
+"AS1_barcode = '" + AS1_barcode.Text + "', " +
+"AS1_mrno = '" + AS1_mrno.Text + "', " +
+"AS1_lno = '" + AS1_lno.Text + "', " +
+"AS1_barcode1 = '" + AS1_barcode1.Text + "', " +
+"AS1_fsite = '" + var_AS1_fsite + "', " +
+"AS1_Samp_1 = '" + var_AS1_Samp_1 + "', " +
+"AS1_Samp_2 = '" + var_AS1_Samp_2 + "', " +
+"AS1_Samp_3 = '" + var_AS1_Samp_3 + "', " +
+"AS1_Samp_4 = '" + var_AS1_Samp_4 + "', " +
+"AS1_Q1_1 = '" + var_AS1_Q1_1 + "', " +
+"AS1_Q1_2 = '" + AS1_Q1_2.Text + "', " +
+"AS1_Q2_1 = '" + var_AS1_Q2_1 + "', " +
+"AS1_Q2_2 = '" + AS1_Q2_2.Text + "', " +
+"AS1_Q3 = '" + var_AS1_Q3 + "', " +
+"AS1_Q3a_1 = '" + var_AS1_Q3a_1 + "', " +
+"AS1_Q3a_1a = '" + var_AS1_Q3a_11a + "', " +
+"AS1_Q3b_1 = '" + var_AS1_Q3b_1 + "', " +
+"AS1_Q3a_2 = '" + AS1_Q3a_2.Text + "', " +
+"AS1_Q4 = '" + val_AS1_Q4 + "', " +
+"AS1_Q5 = '" + val_AS1_Q5 + "', " +
+"AS1_Q6 = '" + val_AS1_Q6 + "', " +
+"AS1_Q6a = '" + AS1_Q6a.Text + "', " +
+"AS1_Q6b = '" + AS1_Q6b.Text + "', " +
+"AS1_Q6c = '" + val_AS1_Q6c + "', " +
+"AS2_Q7_1 = '" + var_AS2_Q7_1 + "', " +
+"AS2_Q7_2a = '" + AS2_Q7_2a.Text + "', " +
+"AS2_Q7_2 = '" + AS2_Q7_2.Text + "', " +
+"AS2_Q7_CBC_CODE = '" + AS2_Q7_CBC_CODE.Text + "', " +
+"AS2_Q8 = '" + var_AS2_Q8 + "', " +
+"AS2_Q8_BacT = '" + AS2_Q8_BacT.Text + "', " +
+"AS2_Q8_3 = '" + AS2_Q8_3.Text + "', " +
+"AS2_Q8a = '" + var_AS2_Q8a + "', " +
+"AS2_Q8b = '" + var_AS2_Q8b + "', " +
+"AS2_Q9 = '" + val_AS2_Q9 + "', " +
+"AS2_Q10 = '" + dt_AS2_Q10.ToShortTimeString() + "', " +
+"AS2_Q11 = '" + var_AS2_Q11 + "', " +
+"AS2_Q12_1 = '" + AS2_Q12_1.Text + "', " +
+"AS2_Q12_2 = '" + AS2_Q12_2.Text + "', " +
+"AS2_Q12_3 = '" + AS2_Q12_3.Text + "', " +
+"AS2_Q12_4 = '" + AS2_Q12_4.Text + "', " +
+"AS2_Q13 = '" + AS2_Q13.Text + "', " +
+"AS2_Q13a = '" + dt_AS2_Q13a.ToShortTimeString() + "', " +
+"AS3_Q14 = '" + AS3_Q14.Text + "', " +
+"AS3_Q14a = '" + val_AS3_Q14a + "', " +
+"AS3_Q15 = '" + dt_AS3_Q15.ToShortTimeString() + "', " +
+"AS3_Q16 = '" + AS3_Q16.Text + "', " +
+"AS3_Q17 = '" + dt_AS3_Q17.ToShortTimeString() + "', " +
+"AS3_Q18 = '" + AS3_Q18.Text + "', " +
+"AS3_Q19 = '" + AS3_Q19.Text + "', " +
+"AS3_Q20 = '" + dt_AS3_Q20.ToShortTimeString() + "', " +
+"AS4_Q21a = '" + var_AS4_Q21a + "', " +
+"AS4_Q22a = '" + dt_AS4_Q22a.ToShortTimeString() + "', " +
+"AS4_Q22b = '" + val_AS4_Q22b + "', " +
+"AS4_Q23 = '" + AS4_Q23.Text + "', " +
+"AS4_Q24 = '" + dt_AS4_Q24.ToShortTimeString() + "', " +
+"AS5_Q25a = '" + AS5_Q25a.Text + "', " +
+"AS5_Q25b = '" + AS5_Q25b.Text + "', " +
+"AS5_Q26 = '" + AS5_Q26.Text + "', " +
+"AS5_Q27 = '" + var_AS5_Q27 + "', " +
+"AS5_Q28 = '" + var_AS5_Q28 + "', " +
+"AS5_Q29 = '" + var_AS5_Q29 + "', " +
+"AS5_Q30 = '" + var_AS5_Q30 + "', " +
+"AS5_Q31 = '" + var_AS5_Q31 + "', " +
+"AS5_Q32 = '" + var_AS5_Q32 + "', " +
+"AS5_Q33a = '" + AS5_Q33a.Text + "', " +
+"AS5_Q33b = '" + AS5_Q33b.Text + "', " +
+"AS3_Remarks = '" + AS3_Remarks.Text + "', " +
+"AS6_Q34 = '" + AS6_Q34.Text + "', " +
+"AS6_Q35 = '" + AS6_Q35.Text + "', " +
+"AS6_Q36 = '" + AS6_Q36.Text + "', " +
+"AS6_Q37 = '" + AS6_Q37.Text + "', " +
+"AS6_Q38 = '" + AS6_Q38.Text + "', " +
+"AS6_Q39 = '" + AS6_Q39.Text + "', " +
+"AS6_Q40 = '" + AS6_Q40.Text + "', " +
+"AS6_Q41= '" + AS6_Q41.Text + "', " +
+"AS6_Q42= '" + AS6_Q42.Text + "', " +
+"AS6_Q43= '" + AS6_Q43.Text + "', " +
+"AS6_Q44= '" + AS6_Q44.Text + "', " +
+"AS6_Q45= '" + AS6_Q45.Text + "', " +
+"AS6_Q46= '" + AS6_Q46.Text + "', " +
+"AS6_Q47= '" + AS6_Q47.Text + "', " +
+"AS5_R1= '" + AS5_R1.Text + "', " +
+"AS3_A1= '" + AS3_A1.Text + "', " +
+"AS3_A2= '" + val_AS3_A2 + "', " +
+"AS3_B1= '" + AS3_B1.Text + "', " +
+"AS3_B2 = '" + val_AS3_B2 + "' WHERE AS1_screening_ID = '" + AS1_screening_ID.Text + "'";
+
+
+
+            string msg = obj_op.ExecuteNonQuery_Message_Qry(qry);
+
+            if (string.IsNullOrEmpty(msg))
+            {
+                ClearFields();
+
+                string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+            }
+            else
+            {
+                string message = msg.Replace("'", "");
+                message = msg.Replace(@"\", "");
+                message = msg.Replace("/", "");
+
+                message = "alert('" + msg + "');";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+            }
+
+        }
+
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message + "');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+            obj_op = null;
+        }
+    }
+
+
 }

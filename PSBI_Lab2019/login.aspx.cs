@@ -25,14 +25,37 @@ public partial class login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!Page.IsPostBack)
+        if (!Page.IsPostBack)
         {
-            if (Request.QueryString["errmsg"] !=null)
+            if (Request.QueryString["errmsg"] != null)
             {
                 lblerr.InnerText = Request.QueryString["errmsg"];
             }
+
+            IsTestingServer();
+
         }
     }
+
+
+    private void IsTestingServer()
+    {
+        if (Server.MachineName.ToString() != "pedres2")
+        {
+            //lbl_testing.InnerText = Server.MachineName;
+            lbl_testing.Visible = true;
+            Div1.InnerText = "Testing Entries";
+            Div1.Style.Add(HtmlTextWriterStyle.Color, "#FF0000");
+            Div1.Style.Add(HtmlTextWriterStyle.FontSize, "15pt");
+            Div1.Style.Add(HtmlTextWriterStyle.TextAlign, "center");
+        }
+        else
+        {
+            lbl_testing.Visible = false;
+            lbl_testing.InnerText = "";
+        }
+    }
+
 
     protected void Cancel(object sender, EventArgs e)
     {

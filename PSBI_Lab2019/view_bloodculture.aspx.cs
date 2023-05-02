@@ -20,12 +20,34 @@ public partial class view_bloodculture : System.Web.UI.Page
         }
         else
         {
+            IsTestingServer();
+
             LinkButton lnkUser = (LinkButton)FindControl("usernme");
             lnkUser.Text = "Welcome: " + HttpContext.Current.Request["mycookie"].ToString();
             lnkUser.CssClass = "dropdown-toggle nav-link";
             lnkUser = null;
         }
     }
+
+
+    private void IsTestingServer()
+    {
+        if (Server.MachineName.ToString() != "pedres2")
+        {
+            //lbl_testing.InnerText = Server.MachineName;
+            lbl_testing.Visible = true;
+            Div19.InnerText = "Testing Entries";
+            Div19.Style.Add(HtmlTextWriterStyle.Color, "#FF0000");
+            Div19.Style.Add(HtmlTextWriterStyle.FontSize, "15pt");
+            Div19.Style.Add(HtmlTextWriterStyle.TextAlign, "center");
+        }
+        else
+        {
+            lbl_testing.Visible = false;
+            lbl_testing.InnerText = "";
+        }
+    }
+
 
     protected void lnk_logout_Click(object sender, EventArgs e)
     {

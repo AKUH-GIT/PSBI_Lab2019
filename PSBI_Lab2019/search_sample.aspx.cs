@@ -34,6 +34,9 @@ public partial class search_sample : System.Web.UI.Page
 
             if (!IsPostBack)
             {
+                IsTestingServer();
+
+
                 if (Request.Cookies["role"].Value == "admin")
                 {
                     fillDropDown_allsites();
@@ -49,6 +52,24 @@ public partial class search_sample : System.Web.UI.Page
         }
     }
 
+
+    private void IsTestingServer()
+    {
+        if (Server.MachineName.ToString() != "pedres2")
+        {
+            //lbl_testing.InnerText = Server.MachineName;
+            lbl_testing.Visible = true;
+            Div1.InnerText = "Testing Entries";
+            Div1.Style.Add(HtmlTextWriterStyle.Color, "#FF0000");
+            Div1.Style.Add(HtmlTextWriterStyle.FontSize, "15pt");
+            Div1.Style.Add(HtmlTextWriterStyle.TextAlign, "center");
+        }
+        else
+        {
+            lbl_testing.Visible = false;
+            lbl_testing.InnerText = "";
+        }
+    }
 
 
     private void fillDropDown_sitewise()

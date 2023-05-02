@@ -1622,6 +1622,13 @@
                                         <div class="card-content collpase show">
                                             <div class="card-body">
                                                 <div class="form-body">
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-12" id="lbl_testing" runat="server">
+                                                            <div id="Div15" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;">Testing Entries</div>
+                                                        </div>
+                                                    </div>
+
                                                     <h4 class="form-section"><i class="ft-clipboard"></i>Sample Details</h4>
                                                     <br />
                                                     <div class="form-group row">
@@ -2542,6 +2549,7 @@
                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                     <ContentTemplate>
                                                         <div class="form-actions left">
+                                                            <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-danger mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
                                                             <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>

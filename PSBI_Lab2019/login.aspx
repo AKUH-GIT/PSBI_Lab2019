@@ -74,6 +74,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
+                        <fieldset id="lbl_testing" class="form-group position-relative has-icon-left" runat="server">
+                            <div id="Div1" runat="server" style="font-size:15pt;font-weight:bold;color: #FF0000; text-align:center;">Testing Entries</div>
+                        </fieldset>
                         <fieldset class="form-group position-relative has-icon-left">
                             <asp:TextBox ID="txtUserID" runat="server" CssClass="form-control round" placeholder="User Name" Text=""></asp:TextBox>
                             <div class="form-control-position">

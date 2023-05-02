@@ -5518,6 +5518,12 @@
                                             <div class="card-body">
                                                 <div class="form-body">
 
+                                                    <div class="form-group row">
+                                                        <div class="col-md-12" id="lbl_testing" runat="server">
+                                                            <div id="Div1" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;">Testing Entries</div>
+                                                        </div>
+                                                    </div>
+
                                                     <h4 class="form-section"><i class="ft-clipboard"></i>Lab Results</h4>
 
                                                     <br />
@@ -9426,16 +9432,18 @@
                                                                 </div>
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Blood Culture Gram Stain Result</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" ID="LA_18" class="form-control" name="LA_18" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                                <asp:Panel runat="server" ID="pnl_BloodCulture_Sensitivity">
+
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Blood Culture Gram Stain Result</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" ID="LA_18" class="form-control" name="LA_18" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <%--<div class="form-group row">
+                                                                    <%--<div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="projectinput5">Blood Culture Result</label>
                                                                     <div class="col-md-9">
                                                                         <asp:TextBox runat="server" ID="LA_19" class="form-control" name="LA_19" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
@@ -9444,1007 +9452,1007 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_v" ID="LA_20a_v" OnCheckedChanged="LA_20a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_b" ID="LA_20a_b" OnCheckedChanged="LA_20a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_c" ID="LA_20a_c" OnCheckedChanged="LA_20a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                                <div class="form-group row" runat="server" id="cntl_LA_20a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_20a_a">Zone Diameter (mm) Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_20a_a" class="form-control" name="LA_20a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
-
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_v" ID="LA_20a_v" OnCheckedChanged="LA_20a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_b" ID="LA_20a_b" OnCheckedChanged="LA_20a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20a" AutoPostBack="true" name="LA_20a_c" ID="LA_20a_c" OnCheckedChanged="LA_20a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_20a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_20a_a">Zone Diameter (mm) Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_20a_a" class="form-control" name="LA_20a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_20b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_20b">Amoxicillin/Clavulanic Acid 2:1 (AMC) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_a" ID="LA_20b_a" OnCheckedChanged="LA_20b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_20b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_b" ID="LA_20b_b" OnCheckedChanged="LA_20b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_20b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_c" ID="LA_20b_c" OnCheckedChanged="LA_20b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_20b_i">I</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_20b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_20b">Amoxicillin/Clavulanic Acid 2:1 (AMC) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_a" ID="LA_20b_a" OnCheckedChanged="LA_20b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_20b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_b" ID="LA_20b_b" OnCheckedChanged="LA_20b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_20b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_20b" name="LA_20b_c" ID="LA_20b_c" OnCheckedChanged="LA_20b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_20b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Ampicillin (AMP) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_v" ID="LA_21a_v" OnCheckedChanged="LA_21a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Ampicillin (AMP) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_b" ID="LA_21a_b" OnCheckedChanged="LA_21a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_c" ID="LA_21a_c" OnCheckedChanged="LA_21a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="form-group row" runat="server" id="cntl_LA_21a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_21a_a">Zone Diameter (mm) Ampicillin (AMP) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_21a_a" class="form-control" name="LA_21a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Ampicillin (AMP) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_v" ID="LA_21a_v" OnCheckedChanged="LA_21a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Ampicillin (AMP) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_b" ID="LA_21a_b" OnCheckedChanged="LA_21a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21a" AutoPostBack="true" name="LA_21a_c" ID="LA_21a_c" OnCheckedChanged="LA_21a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_21a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_21a_a">Zone Diameter (mm) Ampicillin (AMP) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_21a_a" class="form-control" name="LA_21a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_21b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_21b">Ampicillin (AMP) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_a" ID="LA_21b_a" OnCheckedChanged="LA_21b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_21b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_b" ID="LA_21b_b" OnCheckedChanged="LA_21b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_21b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_c" ID="LA_21b_c" OnCheckedChanged="LA_21b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_21b_i">I</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_21b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_21b">Ampicillin (AMP) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_a" ID="LA_21b_a" OnCheckedChanged="LA_21b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_21b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_b" ID="LA_21b_b" OnCheckedChanged="LA_21b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_21b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_21b" name="LA_21b_c" ID="LA_21b_c" OnCheckedChanged="LA_21b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_21b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Amikacin  (AK) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_v" ID="LA_22a_v" OnCheckedChanged="LA_22a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Amikacin  (AK) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_b" ID="LA_22a_b" OnCheckedChanged="LA_22a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_c" ID="LA_22a_c" OnCheckedChanged="LA_22a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="form-group row" runat="server" id="cntl_LA_22a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_22a_a">Zone Diameter (mm) Amikacin  (AK) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_22a_a" class="form-control" name="LA_22a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
-
-
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Amikacin  (AK) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_v" ID="LA_22a_v" OnCheckedChanged="LA_22a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Amikacin  (AK) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_b" ID="LA_22a_b" OnCheckedChanged="LA_22a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22a" AutoPostBack="true" name="LA_22a_c" ID="LA_22a_c" OnCheckedChanged="LA_22a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_22a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_22a_a">Zone Diameter (mm) Amikacin  (AK) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_22a_a" class="form-control" name="LA_22a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+
+
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_22b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_22b">Amikacin  (AK) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_a" ID="LA_22b_a" OnCheckedChanged="LA_22b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_22b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_b" ID="LA_22b_b" OnCheckedChanged="LA_22b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_22b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_c" ID="LA_22b_c" OnCheckedChanged="LA_22b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_22b_i">I</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_22b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_22b">Amikacin  (AK) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_a" ID="LA_22b_a" OnCheckedChanged="LA_22b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_22b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_b" ID="LA_22b_b" OnCheckedChanged="LA_22b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_22b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_22b" name="LA_22b_c" ID="LA_22b_c" OnCheckedChanged="LA_22b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_22b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Aztreonam (ATM) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_v" ID="LA_23a_v" OnCheckedChanged="LA_23a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Aztreonam (ATM) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_b" ID="LA_23a_b" OnCheckedChanged="LA_23a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_c" ID="LA_23a_c" OnCheckedChanged="LA_23a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="form-group row" runat="server" id="cntl_LA_23a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_23a_a">Zone Diameter (mm) Aztreonam (ATM) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_23a_a" class="form-control" name="LA_23a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Aztreonam (ATM) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_v" ID="LA_23a_v" OnCheckedChanged="LA_23a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Aztreonam (ATM) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_b" ID="LA_23a_b" OnCheckedChanged="LA_23a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23a" AutoPostBack="true" name="LA_23a_c" ID="LA_23a_c" OnCheckedChanged="LA_23a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_23a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_23a_a">Zone Diameter (mm) Aztreonam (ATM) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_23a_a" class="form-control" name="LA_23a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+
 
 
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_23b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_23b">Aztreonam (ATM) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_a" ID="LA_23b_a" OnCheckedChanged="LA_23b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_23b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_b" ID="LA_23b_b" OnCheckedChanged="LA_23b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_23b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_c" ID="LA_23b_c" OnCheckedChanged="LA_23b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_23b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
+
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_23b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_23b">Aztreonam (ATM) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_a" ID="LA_23b_a" OnCheckedChanged="LA_23b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_23b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_b" ID="LA_23b_b" OnCheckedChanged="LA_23b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_23b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_23b" name="LA_23b_c" ID="LA_23b_c" OnCheckedChanged="LA_23b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_23b_i">I</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
-
 
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Azithromycin (AZM) 15ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_v" ID="LA_24a_v" OnCheckedChanged="LA_24a_v_CheckedChanged1" />
+                                                                                <label for="input-radio-11">Azithromycin (AZM) 15ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_b" ID="LA_24a_b" OnCheckedChanged="LA_24a_b_CheckedChanged1" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_c" ID="LA_24a_c" OnCheckedChanged="LA_24a_c_CheckedChanged1" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
+
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Azithromycin (AZM) 15ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_v" ID="LA_24a_v" OnCheckedChanged="LA_24a_v_CheckedChanged1" />
-                                                                            <label for="input-radio-11">Azithromycin (AZM) 15ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_b" ID="LA_24a_b" OnCheckedChanged="LA_24a_b_CheckedChanged1" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24a" AutoPostBack="true" name="LA_24a_c" ID="LA_24a_c" OnCheckedChanged="LA_24a_c_CheckedChanged1" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
-
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_24a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_24a_a">Zone Diameter (mm) Azithromycin (AZM) 15ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_24a_a" class="form-control" name="LA_24a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_24a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_24a_a">Zone Diameter (mm) Azithromycin (AZM) 15ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_24a_a" class="form-control" name="LA_24a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
 
 
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_24b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_24b">Azithromycin (AZM) 15ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_a" ID="LA_24b_a" OnCheckedChanged="LA_24b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_24b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_b" ID="LA_24b_b" OnCheckedChanged="LA_24b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_24b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_c" ID="LA_24b_c" OnCheckedChanged="LA_24b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_24b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_24b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_24b">Azithromycin (AZM) 15ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_a" ID="LA_24b_a" OnCheckedChanged="LA_24b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_24b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_b" ID="LA_24b_b" OnCheckedChanged="LA_24b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_24b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_24b" name="LA_24b_c" ID="LA_24b_c" OnCheckedChanged="LA_24b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_24b_i">I</label>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                </div>
-
 
 
 
-
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Chloramphenicol (C)</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_v" ID="LA_25a_v" OnCheckedChanged="LA_25a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Chloramphenicol (C) Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_b" ID="LA_25a_b" OnCheckedChanged="LA_25a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_c" ID="LA_25a_c" OnCheckedChanged="LA_25a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Chloramphenicol (C)</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_v" ID="LA_25a_v" OnCheckedChanged="LA_25a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Chloramphenicol (C) Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_b" ID="LA_25a_b" OnCheckedChanged="LA_25a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25a" AutoPostBack="true" name="LA_25a_c" ID="LA_25a_c" OnCheckedChanged="LA_25a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_25a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_25a_a">Zone Diameter (mm) Chloramphenicol (C)</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_25a_a" class="form-control" name="LA_25a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_25a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_25a_a">Zone Diameter (mm) Chloramphenicol (C)</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_25a_a" class="form-control" name="LA_25a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_25b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_25b">Chloramphenicol (C) Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_a" ID="LA_25b_a" OnCheckedChanged="LA_25b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_25b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_b" ID="LA_25b_b" OnCheckedChanged="LA_25b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_25b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_c" ID="LA_25b_c" OnCheckedChanged="LA_25b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_25b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_25b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_25b">Chloramphenicol (C) Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_a" ID="LA_25b_a" OnCheckedChanged="LA_25b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_25b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_b" ID="LA_25b_b" OnCheckedChanged="LA_25b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_25b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_25b" name="LA_25b_c" ID="LA_25b_c" OnCheckedChanged="LA_25b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_25b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Ceftazidime (CAZ) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_v" ID="LA_26a_v" OnCheckedChanged="LA_26a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Ceftazidime (CAZ) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_b" ID="LA_26a_b" OnCheckedChanged="LA_26a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_c" ID="LA_26a_c" OnCheckedChanged="LA_26a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Ceftazidime (CAZ) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_v" ID="LA_26a_v" OnCheckedChanged="LA_26a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Ceftazidime (CAZ) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_b" ID="LA_26a_b" OnCheckedChanged="LA_26a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26a" AutoPostBack="true" name="LA_26a_c" ID="LA_26a_c" OnCheckedChanged="LA_26a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_26a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_26a_a">Zone Diameter (mm) Ceftazidime (CAZ) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_26a_a" class="form-control" name="LA_26a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_26a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_26a_a">Zone Diameter (mm) Ceftazidime (CAZ) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_26a_a" class="form-control" name="LA_26a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_26b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_26b">Ceftazidime (CAZ) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_a" ID="LA_26b_a" OnCheckedChanged="LA_26b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_26b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_b" ID="LA_26b_b" OnCheckedChanged="LA_26b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_26b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_c" ID="LA_26b_c" OnCheckedChanged="LA_26b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_26b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_26b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_26b">Ceftazidime (CAZ) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_a" ID="LA_26b_a" OnCheckedChanged="LA_26b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_26b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_b" ID="LA_26b_b" OnCheckedChanged="LA_26b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_26b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_26b" name="LA_26b_c" ID="LA_26b_c" OnCheckedChanged="LA_26b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_26b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Cefixime (CFM) 5ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_v" ID="LA_27a_v" OnCheckedChanged="LA_27a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Cefixime (CFM) 5ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_b" ID="LA_27a_b" OnCheckedChanged="LA_27a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_c" ID="LA_27a_c" OnCheckedChanged="LA_27a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Cefixime (CFM) 5ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_v" ID="LA_27a_v" OnCheckedChanged="LA_27a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Cefixime (CFM) 5ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_b" ID="LA_27a_b" OnCheckedChanged="LA_27a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27a" AutoPostBack="true" name="LA_27a_c" ID="LA_27a_c" OnCheckedChanged="LA_27a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_27a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_27a_a">Zone Diameter (mm) Cefixime (CFM) 5ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_27a_a" class="form-control" name="LA_27a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_27a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_27a_a">Zone Diameter (mm) Cefixime (CFM) 5ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_27a_a" class="form-control" name="LA_27a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_27b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_27b">Cefixime (CFM) 5ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_a" ID="LA_27b_a" OnCheckedChanged="LA_27b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_27b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_b" ID="LA_27b_b" OnCheckedChanged="LA_27b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_27b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_c" ID="LA_27b_c" OnCheckedChanged="LA_27b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_27b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_27b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_27b">Cefixime (CFM) 5ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_a" ID="LA_27b_a" OnCheckedChanged="LA_27b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_27b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_b" ID="LA_27b_b" OnCheckedChanged="LA_27b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_27b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_27b" name="LA_27b_c" ID="LA_27b_c" OnCheckedChanged="LA_27b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_27b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Ciprofloxacin (CIP) 5ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_v" ID="LA_28a_v" OnCheckedChanged="LA_28a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Ciprofloxacin (CIP) 5ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_b" ID="LA_28a_b" OnCheckedChanged="LA_28a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_c" ID="LA_28a_c" OnCheckedChanged="LA_28a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Ciprofloxacin (CIP) 5ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_v" ID="LA_28a_v" OnCheckedChanged="LA_28a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Ciprofloxacin (CIP) 5ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_b" ID="LA_28a_b" OnCheckedChanged="LA_28a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28a" AutoPostBack="true" name="LA_28a_c" ID="LA_28a_c" OnCheckedChanged="LA_28a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_28a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_28a_a">Zone Diameter (mm) Ciprofloxacin (CIP) 5ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_28a_a" class="form-control" name="LA_28a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_28a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_28a_a">Zone Diameter (mm) Ciprofloxacin (CIP) 5ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_28a_a" class="form-control" name="LA_28a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_28b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_28b">Ciprofloxacin (CIP) 5ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_a" ID="LA_28b_a" OnCheckedChanged="LA_28b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_28b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_b" ID="LA_28b_b" OnCheckedChanged="LA_28b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_28b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_c" ID="LA_28b_c" OnCheckedChanged="LA_28b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_28b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_28b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_28b">Ciprofloxacin (CIP) 5ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_a" ID="LA_28b_a" OnCheckedChanged="LA_28b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_28b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_b" ID="LA_28b_b" OnCheckedChanged="LA_28b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_28b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_28b" name="LA_28b_c" ID="LA_28b_c" OnCheckedChanged="LA_28b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_28b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Gentamicin (CN) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_v" ID="LA_29a_v" OnCheckedChanged="LA_29a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Gentamicin (CN) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_b" ID="LA_29a_b" OnCheckedChanged="LA_29a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_c" ID="LA_29a_c" OnCheckedChanged="LA_29a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Gentamicin (CN) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_v" ID="LA_29a_v" OnCheckedChanged="LA_29a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Gentamicin (CN) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_b" ID="LA_29a_b" OnCheckedChanged="LA_29a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29a" AutoPostBack="true" name="LA_29a_c" ID="LA_29a_c" OnCheckedChanged="LA_29a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_29a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_29a_a">Zone Diameter (mm) Gentamicin (CN) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_29a_a" class="form-control" name="LA_29a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_29a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_29a_a">Zone Diameter (mm) Gentamicin (CN) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_29a_a" class="form-control" name="LA_29a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_29b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_29b">Gentamicin (CN) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_a" ID="LA_29b_a" OnCheckedChanged="LA_29b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_29b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_b" ID="LA_29b_b" OnCheckedChanged="LA_29b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_29b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_c" ID="LA_29b_c" OnCheckedChanged="LA_29b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_29b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_29b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_29b">Gentamicin (CN) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_a" ID="LA_29b_a" OnCheckedChanged="LA_29b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_29b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_b" ID="LA_29b_b" OnCheckedChanged="LA_29b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_29b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_29b" name="LA_29b_c" ID="LA_29b_c" OnCheckedChanged="LA_29b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_29b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Gentamicin (CN120) 120ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_v" ID="LA_30a_v" OnCheckedChanged="LA_30a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Gentamicin (CN120) 120ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_b" ID="LA_30a_b" OnCheckedChanged="LA_30a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_c" ID="LA_30a_c" OnCheckedChanged="LA_30a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Gentamicin (CN120) 120ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_v" ID="LA_30a_v" OnCheckedChanged="LA_30a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Gentamicin (CN120) 120ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_b" ID="LA_30a_b" OnCheckedChanged="LA_30a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30a" AutoPostBack="true" name="LA_30a_c" ID="LA_30a_c" OnCheckedChanged="LA_30a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_30a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_30a_a">Zone Diameter (mm) Gentamicin (CN120) 120ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_30a_a" class="form-control" name="LA_30a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_30a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_30a_a">Zone Diameter (mm) Gentamicin (CN120) 120ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_30a_a" class="form-control" name="LA_30a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_30b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_30b">Gentamicin (CN120) 120ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_a" ID="LA_30b_a" OnCheckedChanged="LA_30b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_30b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_b" ID="LA_30b_b" OnCheckedChanged="LA_30b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_30b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_c" ID="LA_30b_c" OnCheckedChanged="LA_30b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_30b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_30b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_30b">Gentamicin (CN120) 120ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_a" ID="LA_30b_a" OnCheckedChanged="LA_30b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_30b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_b" ID="LA_30b_b" OnCheckedChanged="LA_30b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_30b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_30b" name="LA_30b_c" ID="LA_30b_c" OnCheckedChanged="LA_30b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_30b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Ceftriaxone (CRO) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_v" ID="LA_31a_v" OnCheckedChanged="LA_31a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Ceftriaxone (CRO) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_b" ID="LA_31a_b" OnCheckedChanged="LA_31a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_c" ID="LA_31a_c" OnCheckedChanged="LA_31a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Ceftriaxone (CRO) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_v" ID="LA_31a_v" OnCheckedChanged="LA_31a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Ceftriaxone (CRO) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_b" ID="LA_31a_b" OnCheckedChanged="LA_31a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31a" AutoPostBack="true" name="LA_31a_c" ID="LA_31a_c" OnCheckedChanged="LA_31a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_31a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_31a_a">Zone Diameter (mm) Ceftriaxone (CRO) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_31a_a" class="form-control" name="LA_31a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_31a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_31a_a">Zone Diameter (mm) Ceftriaxone (CRO) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_31a_a" class="form-control" name="LA_31a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_31b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_31b">Ceftriaxone (CRO) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_a" ID="LA_31b_a" OnCheckedChanged="LA_31b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_31b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_b" ID="LA_31b_b" OnCheckedChanged="LA_31b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_31b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_c" ID="LA_31b_c" OnCheckedChanged="LA_31b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_31b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_31b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_31b">Ceftriaxone (CRO) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_a" ID="LA_31b_a" OnCheckedChanged="LA_31b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_31b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_b" ID="LA_31b_b" OnCheckedChanged="LA_31b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_31b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_31b" name="LA_31b_c" ID="LA_31b_c" OnCheckedChanged="LA_31b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_31b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Cefuroxime (CXM) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_v" ID="LA_32a_v" OnCheckedChanged="LA_32a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Cefuroxime (CXM) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_b" ID="LA_32a_b" OnCheckedChanged="LA_32a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_c" ID="LA_32a_c" OnCheckedChanged="LA_32a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Cefuroxime (CXM) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_v" ID="LA_32a_v" OnCheckedChanged="LA_32a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Cefuroxime (CXM) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_b" ID="LA_32a_b" OnCheckedChanged="LA_32a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32a" AutoPostBack="true" name="LA_32a_c" ID="LA_32a_c" OnCheckedChanged="LA_32a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_32a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_32a_a">Zone Diameter (mm) Cefuroxime (CXM) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_32a_a" class="form-control" name="LA_32a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_32a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_32a_a">Zone Diameter (mm) Cefuroxime (CXM) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_32a_a" class="form-control" name="LA_32a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_32b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_32b">Cefuroxime (CXM) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_a" ID="LA_32b_a" OnCheckedChanged="LA_32b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_32b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_b" ID="LA_32b_b" OnCheckedChanged="LA_32b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_32b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_c" ID="LA_32b_c" OnCheckedChanged="LA_32b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_32b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_32b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_32b">Cefuroxime (CXM) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_a" ID="LA_32b_a" OnCheckedChanged="LA_32b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_32b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_b" ID="LA_32b_b" OnCheckedChanged="LA_32b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_32b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_32b" name="LA_32b_c" ID="LA_32b_c" OnCheckedChanged="LA_32b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_32b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Clindamycin (DA) 2ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_v" ID="LA_33a_v" OnCheckedChanged="LA_33a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Clindamycin (DA) 2ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_b" ID="LA_33a_b" OnCheckedChanged="LA_33a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_c" ID="LA_33a_c" OnCheckedChanged="LA_33a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Clindamycin (DA) 2ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_v" ID="LA_33a_v" OnCheckedChanged="LA_33a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Clindamycin (DA) 2ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_b" ID="LA_33a_b" OnCheckedChanged="LA_33a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33a" AutoPostBack="true" name="LA_33a_c" ID="LA_33a_c" OnCheckedChanged="LA_33a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_33a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_33a_a">Zone Diameter (mm) Clindamycin (DA) 2ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_33a_a" class="form-control" name="LA_33a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_33a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_33a_a">Zone Diameter (mm) Clindamycin (DA) 2ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_33a_a" class="form-control" name="LA_33a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_33b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_33b">Clindamycin (DA) 2ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_a" ID="LA_33b_a" OnCheckedChanged="LA_33b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_33b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_b" ID="LA_33b_b" OnCheckedChanged="LA_33b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_33b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_c" ID="LA_33b_c" OnCheckedChanged="LA_33b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_33b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_33b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_33b">Clindamycin (DA) 2ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_a" ID="LA_33b_a" OnCheckedChanged="LA_33b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_33b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_b" ID="LA_33b_b" OnCheckedChanged="LA_33b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_33b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_33b" name="LA_33b_c" ID="LA_33b_c" OnCheckedChanged="LA_33b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_33b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Erythromycin (E)</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_v" ID="LA_34a_v" OnCheckedChanged="LA_34a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Erythromycin (E) Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_b" ID="LA_34a_b" OnCheckedChanged="LA_34a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_c" ID="LA_34a_c" OnCheckedChanged="LA_34a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Erythromycin (E)</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_v" ID="LA_34a_v" OnCheckedChanged="LA_34a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Erythromycin (E) Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_b" ID="LA_34a_b" OnCheckedChanged="LA_34a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34a" AutoPostBack="true" name="LA_34a_c" ID="LA_34a_c" OnCheckedChanged="LA_34a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_34a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_34a_a">Zone Diameter (mm) Erythromycin (E)</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_34a_a" class="form-control" name="LA_34a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_34a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_34a_a">Zone Diameter (mm) Erythromycin (E)</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_34a_a" class="form-control" name="LA_34a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_34b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_34b">Erythromycin (E) Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_a" ID="LA_34b_a" OnCheckedChanged="LA_34b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_34b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_b" ID="LA_34b_b" OnCheckedChanged="LA_34b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_34b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_c" ID="LA_34b_c" OnCheckedChanged="LA_34b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_34b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_34b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_34b">Erythromycin (E) Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_a" ID="LA_34b_a" OnCheckedChanged="LA_34b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_34b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_b" ID="LA_34b_b" OnCheckedChanged="LA_34b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_34b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_34b" name="LA_34b_c" ID="LA_34b_c" OnCheckedChanged="LA_34b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_34b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Cefipime (FEP) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_v" ID="LA_35a_v" OnCheckedChanged="LA_35a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Cefipime (FEP) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_b" ID="LA_35a_b" OnCheckedChanged="LA_35a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_c" ID="LA_35a_c" OnCheckedChanged="LA_35a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Cefipime (FEP) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_v" ID="LA_35a_v" OnCheckedChanged="LA_35a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Cefipime (FEP) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_b" ID="LA_35a_b" OnCheckedChanged="LA_35a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35a" AutoPostBack="true" name="LA_35a_c" ID="LA_35a_c" OnCheckedChanged="LA_35a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_35a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_35a_a">Zone Diameter (mm) Cefipime (FEP) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_35a_a" class="form-control" name="LA_35a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_35a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_35a_a">Zone Diameter (mm) Cefipime (FEP) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_35a_a" class="form-control" name="LA_35a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_35b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_35b">Cefipime (FEP) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_a" ID="LA_35b_a" OnCheckedChanged="LA_35b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_35b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_b" ID="LA_35b_b" OnCheckedChanged="LA_35b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_35b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_c" ID="LA_35b_c" OnCheckedChanged="LA_35b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_35b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_35b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_35b">Cefipime (FEP) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_a" ID="LA_35b_a" OnCheckedChanged="LA_35b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_35b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_b" ID="LA_35b_b" OnCheckedChanged="LA_35b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_35b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_35b" name="LA_35b_c" ID="LA_35b_c" OnCheckedChanged="LA_35b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_35b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Cefoxitin (FOX) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_v" ID="LA_36a_v" OnCheckedChanged="LA_36a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Cefoxitin (FOX) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_b" ID="LA_36a_b" OnCheckedChanged="LA_36a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_c" ID="LA_36a_c" OnCheckedChanged="LA_36a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Cefoxitin (FOX) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_v" ID="LA_36a_v" OnCheckedChanged="LA_36a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Cefoxitin (FOX) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_b" ID="LA_36a_b" OnCheckedChanged="LA_36a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36a" AutoPostBack="true" name="LA_36a_c" ID="LA_36a_c" OnCheckedChanged="LA_36a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_36a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_36a_a">Zone Diameter (mm) Cefoxitin (FOX) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_36a_a" class="form-control" name="LA_36a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_36a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_36a_a">Zone Diameter (mm) Cefoxitin (FOX) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_36a_a" class="form-control" name="LA_36a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_36b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_36b">Cefoxitin (FOX) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_a" ID="LA_36b_a" OnCheckedChanged="LA_36b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_36b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_b" ID="LA_36b_b" OnCheckedChanged="LA_36b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_36b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_c" ID="LA_36b_c" OnCheckedChanged="LA_36b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_36b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_36b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_36b">Cefoxitin (FOX) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_a" ID="LA_36b_a" OnCheckedChanged="LA_36b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_36b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_b" ID="LA_36b_b" OnCheckedChanged="LA_36b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_36b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_36b" name="LA_36b_c" ID="LA_36b_c" OnCheckedChanged="LA_36b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_36b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Fusidic Acid (FD) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_v" ID="LA_37a_v" OnCheckedChanged="LA_37a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Fusidic Acid (FD) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_b" ID="LA_37a_b" OnCheckedChanged="LA_37a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_c" ID="LA_37a_c" OnCheckedChanged="LA_37a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Fusidic Acid (FD) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_v" ID="LA_37a_v" OnCheckedChanged="LA_37a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Fusidic Acid (FD) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_b" ID="LA_37a_b" OnCheckedChanged="LA_37a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37a" AutoPostBack="true" name="LA_37a_c" ID="LA_37a_c" OnCheckedChanged="LA_37a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_37a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_37a_a">Zone Diameter (mm) Fusidic Acid (FD) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_37a_a" class="form-control" name="LA_37a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_37a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_37a_a">Zone Diameter (mm) Fusidic Acid (FD) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_37a_a" class="form-control" name="LA_37a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_37b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_37b">Fusidic Acid (FD) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_a" ID="LA_37b_a" OnCheckedChanged="LA_37b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_37b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_b" ID="LA_37b_b" OnCheckedChanged="LA_37b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_37b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_c" ID="LA_37b_c" OnCheckedChanged="LA_37b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_37b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_37b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_37b">Fusidic Acid (FD) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_a" ID="LA_37b_a" OnCheckedChanged="LA_37b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_37b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_b" ID="LA_37b_b" OnCheckedChanged="LA_37b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_37b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_37b" name="LA_37b_c" ID="LA_37b_c" OnCheckedChanged="LA_37b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_37b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Imipenem (IPM) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_v" ID="LA_38a_v" OnCheckedChanged="LA_38a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Imipenem (IPM) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_b" ID="LA_38a_b" OnCheckedChanged="LA_38a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_c" ID="LA_38a_c" OnCheckedChanged="LA_38a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Imipenem (IPM) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_v" ID="LA_38a_v" OnCheckedChanged="LA_38a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Imipenem (IPM) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_b" ID="LA_38a_b" OnCheckedChanged="LA_38a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38a" AutoPostBack="true" name="LA_38a_c" ID="LA_38a_c" OnCheckedChanged="LA_38a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_38a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_38a_a">Zone Diameter (mm) Imipenem (IPM) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_38a_a" class="form-control" name="LA_38a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_38a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_38a_a">Zone Diameter (mm) Imipenem (IPM) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_38a_a" class="form-control" name="LA_38a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_38b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_38b">Imipenem (IPM) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_a" ID="LA_38b_a" OnCheckedChanged="LA_38b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_38b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_b" ID="LA_38b_b" OnCheckedChanged="LA_38b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_38b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_c" ID="LA_38b_c" OnCheckedChanged="LA_38b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_38b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_38b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_38b">Imipenem (IPM) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_a" ID="LA_38b_a" OnCheckedChanged="LA_38b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_38b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_b" ID="LA_38b_b" OnCheckedChanged="LA_38b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_38b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_38b" name="LA_38b_c" ID="LA_38b_c" OnCheckedChanged="LA_38b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_38b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Levofloxacin (LEV) 5ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_v" ID="LA_39a_v" OnCheckedChanged="LA_39a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Levofloxacin (LEV) 5ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_b" ID="LA_39a_b" OnCheckedChanged="LA_39a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_c" ID="LA_39a_c" OnCheckedChanged="LA_39a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Levofloxacin (LEV) 5ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_v" ID="LA_39a_v" OnCheckedChanged="LA_39a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Levofloxacin (LEV) 5ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_b" ID="LA_39a_b" OnCheckedChanged="LA_39a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39a" AutoPostBack="true" name="LA_39a_c" ID="LA_39a_c" OnCheckedChanged="LA_39a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_39a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_39a_a">Zone Diameter (mm) Levofloxacin (LEV) 5ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_39a_a" class="form-control" name="LA_39a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_39a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_39a_a">Zone Diameter (mm) Levofloxacin (LEV) 5ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_39a_a" class="form-control" name="LA_39a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_39b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_39b">Levofloxacin (LEV) 5ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_a" ID="LA_39b_a" OnCheckedChanged="LA_39b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_39b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_b" ID="LA_39b_b" OnCheckedChanged="LA_39b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_39b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_c" ID="LA_39b_c" OnCheckedChanged="LA_39b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_39b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_39b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_39b">Levofloxacin (LEV) 5ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_a" ID="LA_39b_a" OnCheckedChanged="LA_39b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_39b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_b" ID="LA_39b_b" OnCheckedChanged="LA_39b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_39b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_39b" name="LA_39b_c" ID="LA_39b_c" OnCheckedChanged="LA_39b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_39b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10452,51 +10460,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Linezolid (LZD) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_v" ID="LA_40a_v" OnCheckedChanged="LA_40a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Linezolid (LZD) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_b" ID="LA_40a_b" OnCheckedChanged="LA_40a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_c" ID="LA_40a_c" OnCheckedChanged="LA_40a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Linezolid (LZD) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_v" ID="LA_40a_v" OnCheckedChanged="LA_40a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Linezolid (LZD) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_b" ID="LA_40a_b" OnCheckedChanged="LA_40a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40a" AutoPostBack="true" name="LA_40a_c" ID="LA_40a_c" OnCheckedChanged="LA_40a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_40a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_40a_a">Zone Diameter (mm) Linezolid (LZD) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_40a_a" class="form-control" name="LA_40a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_40a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_40a_a">Zone Diameter (mm) Linezolid (LZD) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_40a_a" class="form-control" name="LA_40a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_40b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_40b">Linezolid (LZD) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_a" ID="LA_40b_a" OnCheckedChanged="LA_40b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_40b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_b" ID="LA_40b_b" OnCheckedChanged="LA_40b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_40b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_c" ID="LA_40b_c" OnCheckedChanged="LA_40b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_40b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_40b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_40b">Linezolid (LZD) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_a" ID="LA_40b_a" OnCheckedChanged="LA_40b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_40b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_b" ID="LA_40b_b" OnCheckedChanged="LA_40b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_40b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_40b" name="LA_40b_c" ID="LA_40b_c" OnCheckedChanged="LA_40b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_40b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10505,51 +10513,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Meropenem (MEM) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_v" ID="LA_41a_v" OnCheckedChanged="LA_41a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Meropenem (MEM) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_b" ID="LA_41a_b" OnCheckedChanged="LA_41a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_c" ID="LA_41a_c" OnCheckedChanged="LA_41a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Meropenem (MEM) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_v" ID="LA_41a_v" OnCheckedChanged="LA_41a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Meropenem (MEM) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_b" ID="LA_41a_b" OnCheckedChanged="LA_41a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41a" AutoPostBack="true" name="LA_41a_c" ID="LA_41a_c" OnCheckedChanged="LA_41a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_41a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_41a_a">Zone Diameter (mm) Meropenem (MEM) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_41a_a" class="form-control" name="LA_41a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_41a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_41a_a">Zone Diameter (mm) Meropenem (MEM) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_41a_a" class="form-control" name="LA_41a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_41b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_41b">Meropenem (MEM) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_a" ID="LA_41b_a" OnCheckedChanged="LA_41b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_41b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_b" ID="LA_41b_b" OnCheckedChanged="LA_41b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_41b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_c" ID="LA_41b_c" OnCheckedChanged="LA_41b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_41b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_41b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_41b">Meropenem (MEM) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_a" ID="LA_41b_a" OnCheckedChanged="LA_41b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_41b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_b" ID="LA_41b_b" OnCheckedChanged="LA_41b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_41b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_41b" name="LA_41b_c" ID="LA_41b_c" OnCheckedChanged="LA_41b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_41b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10557,51 +10565,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Metronidazole (MTZ) 5ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_v" ID="LA_42a_v" OnCheckedChanged="LA_42a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Metronidazole (MTZ) 5ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_b" ID="LA_42a_b" OnCheckedChanged="LA_42a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_c" ID="LA_42a_c" OnCheckedChanged="LA_42a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Metronidazole (MTZ) 5ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_v" ID="LA_42a_v" OnCheckedChanged="LA_42a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Metronidazole (MTZ) 5ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_b" ID="LA_42a_b" OnCheckedChanged="LA_42a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42a" AutoPostBack="true" name="LA_42a_c" ID="LA_42a_c" OnCheckedChanged="LA_42a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_42a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_42a_a">Zone Diameter (mm) Metronidazole (MTZ) 5ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_42a_a" class="form-control" name="LA_42a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_42a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_42a_a">Zone Diameter (mm) Metronidazole (MTZ) 5ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_42a_a" class="form-control" name="LA_42a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_42b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_42b">Metronidazole (MTZ) 5ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_a" ID="LA_42b_a" OnCheckedChanged="LA_42b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_42b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_b" ID="LA_42b_b" OnCheckedChanged="LA_42b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_42b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_c" ID="LA_42b_c" OnCheckedChanged="LA_42b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_42b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_42b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_42b">Metronidazole (MTZ) 5ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_a" ID="LA_42b_a" OnCheckedChanged="LA_42b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_42b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_b" ID="LA_42b_b" OnCheckedChanged="LA_42b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_42b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_42b" name="LA_42b_c" ID="LA_42b_c" OnCheckedChanged="LA_42b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_42b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10610,51 +10618,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Nalidixic Acid (NA) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_v" ID="LA_43a_v" OnCheckedChanged="LA_43a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Nalidixic Acid (NA) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_b" ID="LA_43a_b" OnCheckedChanged="LA_43a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_c" ID="LA_43a_c" OnCheckedChanged="LA_43a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Nalidixic Acid (NA) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_v" ID="LA_43a_v" OnCheckedChanged="LA_43a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Nalidixic Acid (NA) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_b" ID="LA_43a_b" OnCheckedChanged="LA_43a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43a" AutoPostBack="true" name="LA_43a_c" ID="LA_43a_c" OnCheckedChanged="LA_43a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_43a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_43a_a">Zone Diameter (mm) Nalidixic Acid (NA) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_43a_a" class="form-control" name="LA_43a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_43a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_43a_a">Zone Diameter (mm) Nalidixic Acid (NA) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_43a_a" class="form-control" name="LA_43a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_43b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_43b">Nalidixic Acid (NA) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_a" ID="LA_43b_a" OnCheckedChanged="LA_43b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_43b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_b" ID="LA_43b_b" OnCheckedChanged="LA_43b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_43b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_c" ID="LA_43b_c" OnCheckedChanged="LA_43b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_43b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_43b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_43b">Nalidixic Acid (NA) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_a" ID="LA_43b_a" OnCheckedChanged="LA_43b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_43b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_b" ID="LA_43b_b" OnCheckedChanged="LA_43b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_43b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_43b" name="LA_43b_c" ID="LA_43b_c" OnCheckedChanged="LA_43b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_43b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10662,153 +10670,153 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Ofloxacin(OFX) 5ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_v" ID="LA_44a_v" OnCheckedChanged="LA_44a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Ofloxacin(OFX) 5ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_b" ID="LA_44a_b" OnCheckedChanged="LA_44a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_c" ID="LA_44a_c" OnCheckedChanged="LA_44a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Ofloxacin(OFX) 5ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_v" ID="LA_44a_v" OnCheckedChanged="LA_44a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Ofloxacin(OFX) 5ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_b" ID="LA_44a_b" OnCheckedChanged="LA_44a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44a" AutoPostBack="true" name="LA_44a_c" ID="LA_44a_c" OnCheckedChanged="LA_44a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_44a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_44a_a">Zone Diameter (mm) Ofloxacin(OFX) 5ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_44a_a" class="form-control" name="LA_44a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_44a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_44a_a">Zone Diameter (mm) Ofloxacin(OFX) 5ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_44a_a" class="form-control" name="LA_44a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_44b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_44b">Ofloxacin(OFX) 5ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_a" ID="LA_44b_a" OnCheckedChanged="LA_44b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_44b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_b" ID="LA_44b_b" OnCheckedChanged="LA_44b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_44b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_c" ID="LA_44b_c" OnCheckedChanged="LA_44b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_44b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_44b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_44b">Ofloxacin(OFX) 5ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_a" ID="LA_44b_a" OnCheckedChanged="LA_44b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_44b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_b" ID="LA_44b_b" OnCheckedChanged="LA_44b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_44b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_44b" name="LA_44b_c" ID="LA_44b_c" OnCheckedChanged="LA_44b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_44b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Oxacillin (OX) 1ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_v" ID="LA_45a_v" OnCheckedChanged="LA_45a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Oxacillin (OX) 1ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_b" ID="LA_45a_b" OnCheckedChanged="LA_45a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_c" ID="LA_45a_c" OnCheckedChanged="LA_45a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Oxacillin (OX) 1ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_v" ID="LA_45a_v" OnCheckedChanged="LA_45a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Oxacillin (OX) 1ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_b" ID="LA_45a_b" OnCheckedChanged="LA_45a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45a" AutoPostBack="true" name="LA_45a_c" ID="LA_45a_c" OnCheckedChanged="LA_45a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_45a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_45a_a">Zone Diameter (mm) Oxacillin (OX) 1ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_45a_a" class="form-control" name="LA_45a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_45a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_45a_a">Zone Diameter (mm) Oxacillin (OX) 1ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_45a_a" class="form-control" name="LA_45a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_45b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_45b">Oxacillin (OX) 1ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_a" ID="LA_45b_a" OnCheckedChanged="LA_45b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_45b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_b" ID="LA_45b_b" OnCheckedChanged="LA_45b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_45b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_c" ID="LA_45b_c" OnCheckedChanged="LA_45b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_45b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_45b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_45b">Oxacillin (OX) 1ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_a" ID="LA_45b_a" OnCheckedChanged="LA_45b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_45b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_b" ID="LA_45b_b" OnCheckedChanged="LA_45b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_45b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_45b" name="LA_45b_c" ID="LA_45b_c" OnCheckedChanged="LA_45b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_45b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Penicillin (P) 10units</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_v" ID="LA_46a_v" OnCheckedChanged="LA_46a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Penicillin (P) 10units Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_b" ID="LA_46a_b" OnCheckedChanged="LA_46a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_c" ID="LA_46a_c" OnCheckedChanged="LA_46a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Penicillin (P) 10units</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_v" ID="LA_46a_v" OnCheckedChanged="LA_46a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Penicillin (P) 10units Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_b" ID="LA_46a_b" OnCheckedChanged="LA_46a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46a" AutoPostBack="true" name="LA_46a_c" ID="LA_46a_c" OnCheckedChanged="LA_46a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_46a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_46a_a">Zone Diameter (mm) Penicillin (P) 10units</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_46a_a" class="form-control" name="LA_46a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_46a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_46a_a">Zone Diameter (mm) Penicillin (P) 10units</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_46a_a" class="form-control" name="LA_46a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_46b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_46b">Penicillin (P) 10units Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_a" ID="LA_46b_a" OnCheckedChanged="LA_46b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_46b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_b" ID="LA_46b_b" OnCheckedChanged="LA_46b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_46b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_c" ID="LA_46b_c" OnCheckedChanged="LA_46b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_46b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_46b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_46b">Penicillin (P) 10units Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_a" ID="LA_46b_a" OnCheckedChanged="LA_46b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_46b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_b" ID="LA_46b_b" OnCheckedChanged="LA_46b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_46b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_46b" name="LA_46b_c" ID="LA_46b_c" OnCheckedChanged="LA_46b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_46b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10816,51 +10824,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Polymixin B (PB) 300 units</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_v" ID="LA_47a_v" OnCheckedChanged="LA_47a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Polymixin B (PB) 300 units Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_b" ID="LA_47a_b" OnCheckedChanged="LA_47a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_c" ID="LA_47a_c" OnCheckedChanged="LA_47a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Polymixin B (PB) 300 units</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_v" ID="LA_47a_v" OnCheckedChanged="LA_47a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Polymixin B (PB) 300 units Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_b" ID="LA_47a_b" OnCheckedChanged="LA_47a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47a" AutoPostBack="true" name="LA_47a_c" ID="LA_47a_c" OnCheckedChanged="LA_47a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_47a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_47a_a">Zone Diameter (mm) Polymixin B (PB) 300 units</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_47a_a" class="form-control" name="LA_47a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_47a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_47a_a">Zone Diameter (mm) Polymixin B (PB) 300 units</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_47a_a" class="form-control" name="LA_47a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_47b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_47b">Polymixin B (PB) 300 units Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_a" ID="LA_47b_a" OnCheckedChanged="LA_47b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_47b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_b" ID="LA_47b_b" OnCheckedChanged="LA_47b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_47b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_c" ID="LA_47b_c" OnCheckedChanged="LA_47b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_47b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_47b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_47b">Polymixin B (PB) 300 units Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_a" ID="LA_47b_a" OnCheckedChanged="LA_47b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_47b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_b" ID="LA_47b_b" OnCheckedChanged="LA_47b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_47b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_47b" name="LA_47b_c" ID="LA_47b_c" OnCheckedChanged="LA_47b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_47b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10868,51 +10876,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Cotrimoxazole(SXT) 25ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_v" ID="LA_48a_v" OnCheckedChanged="LA_48a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Cotrimoxazole(SXT) 25ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_b" ID="LA_48a_b" OnCheckedChanged="LA_48a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_c" ID="LA_48a_c" OnCheckedChanged="LA_48a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Cotrimoxazole(SXT) 25ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_v" ID="LA_48a_v" OnCheckedChanged="LA_48a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Cotrimoxazole(SXT) 25ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_b" ID="LA_48a_b" OnCheckedChanged="LA_48a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48a" AutoPostBack="true" name="LA_48a_c" ID="LA_48a_c" OnCheckedChanged="LA_48a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_48a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_48a_a">Zone Diameter (mm) Cotrimoxazole(SXT) 25ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_48a_a" class="form-control" name="LA_48a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_48a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_48a_a">Zone Diameter (mm) Cotrimoxazole(SXT) 25ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_48a_a" class="form-control" name="LA_48a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_48b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_48b">Cotrimoxazole(SXT) 25ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_a" ID="LA_48b_a" OnCheckedChanged="LA_48b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_48b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_b" ID="LA_48b_b" OnCheckedChanged="LA_48b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_48b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_c" ID="LA_48b_c" OnCheckedChanged="LA_48b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_48b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_48b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_48b">Cotrimoxazole(SXT) 25ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_a" ID="LA_48b_a" OnCheckedChanged="LA_48b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_48b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_b" ID="LA_48b_b" OnCheckedChanged="LA_48b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_48b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_48b" name="LA_48b_c" ID="LA_48b_c" OnCheckedChanged="LA_48b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_48b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10920,51 +10928,51 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Tetracyclin (TE) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_v" ID="LA_49a_v" OnCheckedChanged="LA_49a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Tetracyclin (TE) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_b" ID="LA_49a_b" OnCheckedChanged="LA_49a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_c" ID="LA_49a_c" OnCheckedChanged="LA_49a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Tetracyclin (TE) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_v" ID="LA_49a_v" OnCheckedChanged="LA_49a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Tetracyclin (TE) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_b" ID="LA_49a_b" OnCheckedChanged="LA_49a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49a" AutoPostBack="true" name="LA_49a_c" ID="LA_49a_c" OnCheckedChanged="LA_49a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_49a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_49a_a">Zone Diameter (mm) Tetracyclin (TE) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_49a_a" class="form-control" name="LA_49a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_49a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_49a_a">Zone Diameter (mm) Tetracyclin (TE) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_49a_a" class="form-control" name="LA_49a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_49b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_49b">Tetracyclin (TE) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_a" ID="LA_49b_a" OnCheckedChanged="LA_49b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_49b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_b" ID="LA_49b_b" OnCheckedChanged="LA_49b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_49b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_c" ID="LA_49b_c" OnCheckedChanged="LA_49b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_49b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_49b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_49b">Tetracyclin (TE) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_a" ID="LA_49b_a" OnCheckedChanged="LA_49b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_49b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_b" ID="LA_49b_b" OnCheckedChanged="LA_49b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_49b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_49b" name="LA_49b_c" ID="LA_49b_c" OnCheckedChanged="LA_49b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_49b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
@@ -10972,145 +10980,147 @@
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Tobramycin (TOB) 10ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_v" ID="LA_50a_v" OnCheckedChanged="LA_50a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Tobramycin (TOB) 10ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_b" ID="LA_50a_b" OnCheckedChanged="LA_50a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_c" ID="LA_50a_c" OnCheckedChanged="LA_50a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Tobramycin (TOB) 10ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_v" ID="LA_50a_v" OnCheckedChanged="LA_50a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Tobramycin (TOB) 10ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_b" ID="LA_50a_b" OnCheckedChanged="LA_50a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50a" AutoPostBack="true" name="LA_50a_c" ID="LA_50a_c" OnCheckedChanged="LA_50a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_50a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_50a_a">Zone Diameter (mm) Tobramycin (TOB) 10ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_50a_a" class="form-control" name="LA_50a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_50a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_50a_a">Zone Diameter (mm) Tobramycin (TOB) 10ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_50a_a" class="form-control" name="LA_50a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_50b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_50b">Tobramycin (TOB) 10ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_a" ID="LA_50b_a" OnCheckedChanged="LA_50b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_50b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_b" ID="LA_50b_b" OnCheckedChanged="LA_50b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_50b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_c" ID="LA_50b_c" OnCheckedChanged="LA_50b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_50b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_50b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_50b">Tobramycin (TOB) 10ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_a" ID="LA_50b_a" OnCheckedChanged="LA_50b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_50b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_b" ID="LA_50b_b" OnCheckedChanged="LA_50b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_50b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_50b" name="LA_50b_c" ID="LA_50b_c" OnCheckedChanged="LA_50b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_50b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
 
 
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Piperacillin/Tazobactam (TZP) 110ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_v" ID="LA_51a_v" OnCheckedChanged="LA_51a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Piperacillin/Tazobactam (TZP) 110ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_b" ID="LA_51a_b" OnCheckedChanged="LA_51a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_c" ID="LA_51a_c" OnCheckedChanged="LA_51a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Piperacillin/Tazobactam (TZP) 110ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_v" ID="LA_51a_v" OnCheckedChanged="LA_51a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Piperacillin/Tazobactam (TZP) 110ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_b" ID="LA_51a_b" OnCheckedChanged="LA_51a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51a" AutoPostBack="true" name="LA_51a_c" ID="LA_51a_c" OnCheckedChanged="LA_51a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_51a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_51a_a">Zone Diameter (mm) Piperacillin/Tazobactam (TZP) 110ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_51a_a" class="form-control" name="LA_51a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_51a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_51a_a">Zone Diameter (mm) Piperacillin/Tazobactam (TZP) 110ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_51a_a" class="form-control" name="LA_51a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
 
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_51b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_51b">Piperacillin/Tazobactam (TZP) 110ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_a" ID="LA_51b_a" OnCheckedChanged="LA_51b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_51b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_b" ID="LA_51b_b" OnCheckedChanged="LA_51b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_51b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_c" ID="LA_51b_c" OnCheckedChanged="LA_51b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_51b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_51b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_51b">Piperacillin/Tazobactam (TZP) 110ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_a" ID="LA_51b_a" OnCheckedChanged="LA_51b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_51b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_b" ID="LA_51b_b" OnCheckedChanged="LA_51b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_51b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_51b" name="LA_51b_c" ID="LA_51b_c" OnCheckedChanged="LA_51b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_51b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="projectinput5">Vancomycin(VA) 30ug</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_v" ID="LA_52a_v" OnCheckedChanged="LA_52a_v_CheckedChanged" />
-                                                                            <label for="input-radio-11">Vancomycin(VA) 30ug Value</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_b" ID="LA_52a_b" OnCheckedChanged="LA_52a_b_CheckedChanged" />
-                                                                            <label for="input-radio-11">NA</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_c" ID="LA_52a_c" OnCheckedChanged="LA_52a_c_CheckedChanged" />
-                                                                            <label for="input-radio-12">NR</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="projectinput5">Vancomycin(VA) 30ug</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_v" ID="LA_52a_v" OnCheckedChanged="LA_52a_v_CheckedChanged" />
+                                                                                <label for="input-radio-11">Vancomycin(VA) 30ug Value</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_b" ID="LA_52a_b" OnCheckedChanged="LA_52a_b_CheckedChanged" />
+                                                                                <label for="input-radio-11">NA</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52a" AutoPostBack="true" name="LA_52a_c" ID="LA_52a_c" OnCheckedChanged="LA_52a_c_CheckedChanged" />
+                                                                                <label for="input-radio-12">NR</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_52a_a">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52a_a">Zone Diameter (mm) Vancomycin(VA) 30ug</label>
-                                                                    <div class="col-md-9">
-                                                                        <asp:TextBox runat="server" MaxLength="15" ID="LA_52a_a" class="form-control" name="LA_52a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_52a_a">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52a_a">Zone Diameter (mm) Vancomycin(VA) 30ug</label>
+                                                                        <div class="col-md-9">
+                                                                            <asp:TextBox runat="server" MaxLength="15" ID="LA_52a_a" class="form-control" name="LA_52a_a" onkeypress="return numeralsOnly_decimal(event);"></asp:TextBox>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row" runat="server" id="cntl_LA_52b">
-                                                                    <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52b">Vancomycin(VA) 30ug Interpretation</label>
-                                                                    <div class="col-md-6 col-sm-12">
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_a" ID="LA_52b_a" OnCheckedChanged="LA_52b_a_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_52b_s">S</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_b" ID="LA_52b_b" OnCheckedChanged="LA_52b_b_CheckedChanged" />
-                                                                            <label for="input-radio-11" id="lbl_LA_52b_r">R</label>
-                                                                        </fieldset>
-                                                                        <fieldset>
-                                                                            <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_c" ID="LA_52b_c" OnCheckedChanged="LA_52b_c_CheckedChanged" />
-                                                                            <label for="input-radio-12" id="lbl_LA_52b_i">I</label>
-                                                                        </fieldset>
+                                                                    <div class="form-group row" runat="server" id="cntl_LA_52b">
+                                                                        <label class="col-md-3 label-control" for="projectinput5" id="lbl_LA_52b">Vancomycin(VA) 30ug Interpretation</label>
+                                                                        <div class="col-md-6 col-sm-12">
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_a" ID="LA_52b_a" OnCheckedChanged="LA_52b_a_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_52b_s">S</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_b" ID="LA_52b_b" OnCheckedChanged="LA_52b_b_CheckedChanged" />
+                                                                                <label for="input-radio-11" id="lbl_LA_52b_r">R</label>
+                                                                            </fieldset>
+                                                                            <fieldset>
+                                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="LA_52b" name="LA_52b_c" ID="LA_52b_c" OnCheckedChanged="LA_52b_c_CheckedChanged" />
+                                                                                <label for="input-radio-12" id="lbl_LA_52b_i">I</label>
+                                                                            </fieldset>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
+
+                                                                </asp:Panel>
 
                                                             </ContentTemplate>
                                                         </asp:UpdatePanel>
