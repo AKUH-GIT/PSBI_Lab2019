@@ -186,7 +186,7 @@ public partial class search_sample : System.Web.UI.Page
                 cn = new CConnection();
                 string qry;
 
-                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno and a.labid = 1 and b.labid = 1 ";
+                qry = "select b.ID, b.id id1, a.id id_sample_recv, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno and a.labid = 1 and b.labid = 1 ";
                 qry = SearchingCriteria(qry);
 
 
@@ -497,8 +497,9 @@ public partial class search_sample : System.Web.UI.Page
             }
             else if (e.CommandName == "Edit")
             {
-                Label lbl = (Label)dg.Rows[Convert.ToInt32(e.CommandArgument)].Cells[1].FindControl("Label76");
-                getData(lbl.Text);
+                Label lbl = (Label)dg.Rows[Convert.ToInt32(e.CommandArgument)].Cells[1].FindControl("Label769");
+                string id = lbl.Text;
+                Response.Redirect("sample_recv.aspx?id=" + id);
             }
         }
 
@@ -4170,7 +4171,7 @@ public partial class search_sample : System.Web.UI.Page
 
             string qry;
 
-            qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno and a.labid = 1 and (b.history is null) or (b.history = '') ";
+            qry = "select b.ID, b.id id1, a.id id_sample_recv, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno and a.labid = 1 and (b.history is null) or (b.history = '') ";
 
 
             SqlDataAdapter da = new SqlDataAdapter(qry, cn.cn);

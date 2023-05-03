@@ -62,7 +62,7 @@ public partial class view_bloodculture : System.Web.UI.Page
     }
 
 
-    private void FillGrid_BloodCulture()
+    private bool FillGrid_BloodCulture()
     {
         CConnection cn = null;
 
@@ -91,7 +91,21 @@ public partial class view_bloodculture : System.Web.UI.Page
 
                 string[] arr_enddt = dt_EndDate.ToShortDateString().Split('/');
                 val_enddt = arr_enddt[2] + "/" + arr_enddt[1] + "/" + arr_enddt[0];
+
+
+                if (Convert.ToDateTime(dt_StartDate.ToShortDateString()) > Convert.ToDateTime(dt_EndDate.ToShortDateString()))
+                {
+                    lblerr.Text = "Start date cannot be greater than end date";
+                    return false;
+
+                }
+                else
+                {
+                    lblerr.Text = "";
+                }
+
             }
+
 
 
             if (!string.IsNullOrEmpty(txtStartDate.Text) && !string.IsNullOrEmpty(txtEndDate.Text) && chkBloodCulture.Checked == true)
@@ -111,7 +125,7 @@ public partial class view_bloodculture : System.Web.UI.Page
             }
             else
             {
-                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno ";
+                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno where a.labid = 1 and b.labid = 1 ";
             }
 
 
@@ -132,6 +146,8 @@ public partial class view_bloodculture : System.Web.UI.Page
         {
             cn = null;
         }
+
+        return true;
     }
 
     protected void cmdCancel_Click(object sender, EventArgs e)

@@ -228,7 +228,7 @@
 
                     <li class="nav-item"><a href="#"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
                         <ul>
-                            <li class="nav-item">
+                            <li class="active">
                                 <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
                             </li>
                             <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
@@ -246,7 +246,7 @@
                     <li class="nav-item"><a href="sample_results.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Lab Results</span></span></a></li>
                     <li class="nav-item"><a href="#"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Searching</span></span></a>
                         <ul>
-                            <li class="nav-item">
+                            <li class="active">
                                 <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
                             </li>
                             <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
@@ -354,6 +354,16 @@
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
                                                                     <ItemStyle Height="30px" />
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderStyle-Height="30px" HeaderText="id_sample_recv" ItemStyle-Height="30px" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox769" runat="server" Text='<%# Bind("id_sample_recv") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label769" runat="server" Text='<%# Bind("id_sample_recv") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
+                                                                    <ItemStyle Height="30px" />
+                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderStyle-Height="30px" HeaderText="Screening ID" ItemStyle-Height="30px">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("AS1_screening_ID") %>'></asp:TextBox>
@@ -409,8 +419,11 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:CommandField ShowSelectButton="True">
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" />
+                                                                <asp:CommandField ShowSelectButton="True" HeaderText="Lab Result">
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" ForeColor="White" />
+                                                                </asp:CommandField>
+                                                                <asp:CommandField EditText="Select" ShowEditButton="True" HeaderText="Lab Receiving">
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" ForeColor="White" />
                                                                 </asp:CommandField>
                                                             </Columns>
                                                             <PagerStyle BackColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />

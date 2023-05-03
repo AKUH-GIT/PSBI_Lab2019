@@ -248,31 +248,31 @@
 
 
 
-        $(document).on("click", "#chkMRNo", function () {
-            if ($(this).is(":checked") == true) {
-                DisableControls1("AS1_mrno", "txt");
-                EnableControls1("AS1_lno", "txt");
-                $("#chkLNumber").removeAttr("checked");
-            }
-            else {
-                EnableControls1("AS1_mrno", "txt");
-                //DisableControls1("AS1_lno", "txt");
-            }
-        });
+        //$(document).on("click", "#chkMRNo", function () {
+        //    if ($(this).is(":checked") == true) {
+        //        DisableControls1("AS1_mrno", "txt");
+        //        EnableControls1("AS1_lno", "txt");
+        //        $("#chkLNumber").removeAttr("checked");
+        //    }
+        //    else {
+        //        EnableControls1("AS1_mrno", "txt");
+        //        //DisableControls1("AS1_lno", "txt");
+        //    }
+        //});
 
 
 
-        $(document).on("click", "#chkLNumber", function () {
-            if ($(this).is(":checked") == true) {
-                DisableControls1("AS1_lno", "txt");
-                EnableControls1("AS1_mrno", "txt");
-                $("#chkMRNo").removeAttr("checked");
-            }
-            else {
-                EnableControls1("AS1_lno", "txt");
-                //DisableControls1("AS1_mrno", "txt");
-            }
-        });
+        //$(document).on("click", "#chkLNumber", function () {
+        //    if ($(this).is(":checked") == true) {
+        //        DisableControls1("AS1_lno", "txt");
+        //        EnableControls1("AS1_mrno", "txt");
+        //        $("#chkMRNo").removeAttr("checked");
+        //    }
+        //    else {
+        //        EnableControls1("AS1_lno", "txt");
+        //        //DisableControls1("AS1_mrno", "txt");
+        //    }
+        //});
 
 
 
@@ -755,6 +755,24 @@
     </script>
 
     <script>
+
+
+        function ValidateForm1() {
+
+            if ($("#AS1_screening_ID").val() == "__-_-____") {
+                alert("Please enter screening id");
+                $("#AS1_screening_ID").focus();
+                return false;
+            }
+            else if ($("#AS1_screening_ID").val().indexOf("_") != -1) {
+                alert("Please enter full screening id");
+                $("#AS1_screening_ID").focus();
+                return false;
+            }
+
+            return true;
+        }
+
 
         function ValidateForm() {
 
@@ -1688,7 +1706,7 @@
                                                             <cc1:MaskedEditExtender ID="MaskedEditExtender3" TargetControlID="AS1_mrno" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <asp:CheckBox ID="chkMRNo" name="chkMRNo" class=".radiocls3" runat="server" />
+                                                            <asp:CheckBox ID="chkMRNo" name="chkMRNo" AutoPostBack="true" OnCheckedChanged="chkMRNo_CheckedChanged" class=".radiocls3" runat="server" />
                                                             <label style="margin-top: 10px;">MR No not available</label>
                                                         </div>
                                                     </div>
@@ -1698,7 +1716,7 @@
                                                             <asp:TextBox runat="server" ID="AS1_lno" class="form-control" MaxLength="50" name="AS1_lno" onkeypress="return RestrictSpecialCharacters(event);"></asp:TextBox>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <asp:CheckBox ID="chkLNumber" class=".radiocls3" runat="server" />
+                                                            <asp:CheckBox ID="chkLNumber" class=".radiocls3" AutoPostBack="true" OnCheckedChanged="chkLNumber_CheckedChanged" runat="server" />
                                                             <label style="margin-top: 10px;">L Number not available</label>
                                                         </div>
                                                     </div>
@@ -1960,7 +1978,7 @@
                                                                         <cc1:MaskedEditExtender ID="MaskedEditExtender6" TargetControlID="AS2_Q7_2a" MaskType="Number" AutoComplete="false" ClearMaskOnLostFocus="false" Mask="999-99-99" runat="server"></cc1:MaskedEditExtender>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <asp:CheckBox ID="chk_AS2_Q7_2a" name="chk_AS2_Q7_2a" class=".radiocls3" runat="server" />
+                                                                        <asp:CheckBox ID="chk_AS2_Q7_2a" AutoPostBack="true" OnCheckedChanged="chk_AS2_Q7_2a_CheckedChanged" name="chk_AS2_Q7_2a" class=".radiocls3" runat="server" />
                                                                         <label style="margin-top: 10px;">MR No not available</label>
                                                                     </div>
                                                                 </div>
@@ -1970,7 +1988,7 @@
                                                                         <asp:TextBox runat="server" ID="AS2_Q7_2" class="form-control" MaxLength="20" name="AS2_Q7_2" onkeypress="return RestrictSpecialCharacters_New2(event);"></asp:TextBox>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <asp:CheckBox ID="chk_AS2_Q7_2" name="chk_AS2_Q7_2" class=".radiocls3" runat="server" />
+                                                                        <asp:CheckBox ID="chk_AS2_Q7_2" AutoPostBack="true" OnCheckedChanged="chk_AS2_Q7_2_CheckedChanged" name="chk_AS2_Q7_2" class=".radiocls3" runat="server" />
                                                                         <label style="margin-top: 10px;">L No not available</label>
                                                                     </div>
                                                                 </div>
@@ -2549,7 +2567,7 @@
                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                     <ContentTemplate>
                                                         <div class="form-actions left">
-                                                            <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-danger mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
+                                                            <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-cyan mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
                                                             <asp:Button runat="server" ID="cmdSave" class="btn btn-danger mr-1" Text=" Save " OnClick="cmdSave_Click"></asp:Button>
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>

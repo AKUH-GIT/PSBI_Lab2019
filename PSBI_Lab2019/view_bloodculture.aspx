@@ -235,7 +235,7 @@
                             <li class="nav-item">
                                 <a href="search_sample.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">Search Record</span></span></a>
                             </li>
-                            <li class="nav-item"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
+                            <li class="active"><a href="view_bloodculture.aspx"><span class="menu-title" data-i18n=""><span style="font-family: Verdana">View Blood Culture</span></span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -8,6 +8,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Services;
 using System.Web.Services;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using System.ServiceModel.Configuration;
 
 public partial class sample_recv : System.Web.UI.Page
 {
@@ -52,6 +55,8 @@ public partial class sample_recv : System.Web.UI.Page
                 cmdSave.OnClientClick = "return ValidateForm();";
             }
 
+            cmdSaveDraft.OnClientClick = "return ValidateForm1();";
+
 
             if (Request.Cookies["labid"].Value == "3")
             {
@@ -61,7 +66,151 @@ public partial class sample_recv : System.Web.UI.Page
             }
 
 
-            if (Request.Cookies["labid"].Value == "2")
+            if (Request.Cookies["labid"].Value == "1" && Request.QueryString["id"].ToString() != null)
+            {
+                ViewState["id"] = Request.QueryString["id"].ToString();
+
+
+                AS1_Q3a_11.Checked = false;
+                AS1_Q3a_12.Checked = false;
+
+                AS1_Q3a_11.Visible = false;
+                AS1_Q3a_12.Visible = false;
+
+                AS1_Q3a_11.Enabled = false;
+                AS1_Q3a_12.Enabled = false;
+
+                AS2_Q8a_1.Checked = false;
+                AS2_Q8a_2.Checked = false;
+
+                AS2_Q8a_1.Visible = false;
+                AS2_Q8a_2.Visible = false;
+
+                AS2_Q8a_1.Enabled = false;
+                AS2_Q8a_2.Enabled = false;
+
+
+                AS1_Q3a_2.Visible = true;
+                AS1_Q3a_2.Enabled = true;
+
+
+                pnl_AS1_Q3a_1.Visible = false;
+                pnl_AS1_Q3a_2.Visible = true;
+                pnl_AS2_Q8a.Visible = false;
+
+                Enable_IDRL_Questions();
+
+                pnl_AS1_Samp_1.Visible = true;
+                pnl_AS1_Samp_4.Visible = false;
+
+
+                pnl_AS2_Q12_4.Visible = false;
+                AS2_Q12_4.Text = "";
+                AS2_Q12_4.Visible = false;
+                AS2_Q12_4.Enabled = false;
+
+
+                pnl_AS1_Q6.Visible = false;
+
+
+                EnableControls(AS1_Q4);
+                EnableControls(AS1_Q5);
+                EnableControls(AS1_Q6);
+                EnableControls(AS1_Q6a);
+                EnableControls(AS1_Q6b);
+                EnableControls(AS1_Q6c);
+
+
+
+                pnl_AS2_Q13a.Visible = false;
+                AS2_Q13a.Text = "";
+                AS2_Q13a.Enabled = false;
+                AS2_Q13a.Visible = false;
+
+                pnl_AS3_Q14.Visible = true;
+                EnableControls(AS3_Q14);
+                EnableControls(AS3_Q14a);
+                EnableControls(AS3_Q15);
+                EnableControls(AS3_Q16);
+                EnableControls(AS3_Q17);
+                EnableControls(AS3_Q18);
+                EnableControls(AS3_Q19);
+                EnableControls(AS3_Q20);
+
+
+                pnl_AS4_Q21a.Visible = true;
+                pnl_AS2_Q12_1.Visible = true;
+
+
+
+
+
+                pnl_AS5_Q25a.Visible = true;
+
+                EnableControls(AS5_Q25a);
+                EnableControls(AS5_Q25b);
+                EnableControls(AS5_Q26);
+
+                Enable_RadioButton(AS5_Q27_1);
+                Enable_RadioButton(AS5_Q27_2);
+
+                Enable_RadioButton(AS5_Q28_1);
+                Enable_RadioButton(AS5_Q28_2);
+
+                Enable_RadioButton(AS5_Q29_1);
+                Enable_RadioButton(AS5_Q29_2);
+                Enable_RadioButton(AS5_Q29_3);
+
+                Enable_RadioButton(AS5_Q30_1);
+                Enable_RadioButton(AS5_Q30_2);
+                Enable_RadioButton(AS5_Q30_3);
+
+                Enable_RadioButton(AS5_Q31_1);
+                Enable_RadioButton(AS5_Q31_2);
+                Enable_RadioButton(AS5_Q31_3);
+                Enable_RadioButton(AS5_Q31_4);
+
+                Enable_RadioButton(AS5_Q32_1);
+                Enable_RadioButton(AS5_Q32_2);
+                Enable_RadioButton(AS5_Q32_3);
+
+                EnableControls(AS5_Q33a);
+                EnableControls(AS5_Q33b);
+                EnableControls(AS3_Remarks);
+
+
+
+
+                pnl_lyari_sample.Visible = true;
+
+                EnableControls(AS6_Q34);
+                EnableControls(AS6_Q35);
+                EnableControls(AS6_Q36);
+                EnableControls(AS6_Q37);
+                EnableControls(AS6_Q38);
+                EnableControls(AS6_Q39);
+                EnableControls(AS6_Q40);
+                EnableControls(AS6_Q41);
+                EnableControls(AS6_Q42);
+                EnableControls(AS6_Q43);
+                EnableControls(AS6_Q44);
+                EnableControls(AS6_Q45);
+                EnableControls(AS6_Q46);
+                EnableControls(AS6_Q47);
+                EnableControls(AS5_R1);
+
+
+                pnl_sign.Visible = true;
+
+                EnableControls(AS3_A1);
+                EnableControls(AS3_A2);
+                EnableControls(AS3_B1);
+                EnableControls(AS3_B2);
+
+
+                getData();
+            }
+            else if (Request.Cookies["labid"].Value == "2")
             {
                 AS1_Q3a_11.Visible = true;
                 AS1_Q3a_11.Enabled = true;
@@ -219,6 +368,7 @@ public partial class sample_recv : System.Web.UI.Page
             }
             else
             {
+
                 AS1_Q3a_11.Checked = false;
                 AS1_Q3a_12.Checked = false;
 
@@ -355,12 +505,753 @@ public partial class sample_recv : System.Web.UI.Page
                 EnableControls(AS3_B1);
                 EnableControls(AS3_B2);
 
-
             }
 
         }
 
     }
+
+
+
+    private void getData()
+    {
+        CConnection cn = null;
+
+        try
+        {
+            cn = new CConnection();
+
+            SqlDataAdapter da = new SqlDataAdapter("select " +
+    "b.AS1_screening_ID," +
+    "b.AS1_rand_id," +
+    "b.AS1_name," +
+    "b.AS1_sex," +
+    "b.AS1_age," +
+    "b.AS1_barcode," +
+    "b.AS1_mrno," +
+    "b.AS1_barcode1," +
+    "b.AS1_fsite," +
+    "b.AS1_Samp_1," +
+    "b.AS1_Samp_2," +
+    "b.AS1_Samp_3," +
+    "b.AS1_Samp_4," +
+    "b.AS1_Q1_1," +
+    "b.AS1_Q1_2," +
+    "b.AS1_Q2_1," +
+    "b.AS1_Q2_2," +
+    "[AS1_Q3]," +
+    "[AS1_Q3a_1]," +
+    "[AS1_Q3a_1a]," +
+    "[AS1_Q3b_1]," +
+    "[AS1_Q3a_2]," +
+    "[AS1_Q4]," +
+    "[AS1_Q5]," +
+    "[AS1_Q6]," +
+    "[AS1_Q6a]," +
+    "[AS1_Q6b]," +
+    "[AS1_Q6c]," +
+    "[AS2_Q7_1]," +
+    "[AS2_Q7_2]," +
+    "[AS2_Q7_CBC_CODE]," +
+    "[AS2_Q8]," +
+    "[AS2_Q8_BacT]," +
+    "[AS2_Q8_3]," +
+    "[AS2_Q8a]," +
+    "[AS2_Q8b]," +
+    "convert(varchar(13), [AS2_Q9], 103) AS2_Q9," +
+    "convert(varchar(5), [AS2_Q10], 114) [AS2_Q10]," +
+    "[AS2_Q11]," +
+    "[AS2_Q12_1]," +
+    "[AS2_Q12_2]," +
+    "[AS2_Q12_3]," +
+    "[AS2_Q12_4]," +
+    "[AS2_Q13]," +
+    "[AS2_Q13a]," +
+    "[AS3_Q14]," +
+    "convert(varchar(13), [AS3_Q14a], 103) [AS3_Q14a]," +
+    "convert(varchar(5), [AS3_Q15], 114) AS3_Q15," +
+    "[AS3_Q16]," +
+    "convert(varchar(5), [AS3_Q17], 114) [AS3_Q17]," +
+    "[AS3_Q18]," +
+    "[AS3_Q19]," +
+    "convert(varchar(5), [AS3_Q20], 114) [AS3_Q20]," +
+    "[AS4_Q21a]," +
+    "convert(varchar(5), [AS4_Q22a], 114) [AS4_Q22a]," +
+    "convert(varchar(13), [AS4_Q22b], 103) [AS4_Q22b]," +
+    "[AS4_Q23]," +
+    "convert(varchar(5), [AS4_Q24], 114) [AS4_Q24]," +
+    "[AS5_Q25a]," +
+    "[AS5_Q25b]," +
+    "[AS5_Q26]," +
+    "[AS5_Q27]," +
+    "[AS5_Q28]," +
+    "[AS5_Q29]," +
+    "[AS5_Q30]," +
+    "[AS5_Q31]," +
+    "[AS5_Q32]," +
+    "[AS5_Q33a]," +
+    "[AS5_Q33b]," +
+    "[AS3_Remarks]," +
+    "[AS6_Q34]," +
+    "[AS6_Q35]," +
+    "[AS6_Q36]," +
+    "[AS6_Q37]," +
+    "[AS6_Q38]," +
+    "[AS6_Q39]," +
+    "[AS6_Q40]," +
+    "[AS6_Q41]," +
+    "[AS6_Q42]," +
+    "[AS6_Q43]," +
+    "[AS6_Q44]," +
+    "[AS6_Q45]," +
+    "[AS6_Q46]," +
+    "[AS6_Q47]," +
+    "[AS5_R1]," +
+    "[AS3_A1]," +
+    "convert(varchar(13), [AS3_A2], 103) [AS3_A2]," +
+    "[AS3_B1]," +
+    "convert(varchar(13), [AS3_B2], 103) [AS3_B2]," +
+    "[AS1_lno]," +
+    "[AS2_Q7_2a]," +
+    "a.la_sno," +
+    "a.LA_01," +
+    "a.LA_02," +
+    "a.LA_03_b," +
+    "a.LA_03_a," +
+    "a.LA_04_b," +
+    "a.LA_04_a," +
+    "a.LA_05_b," +
+    "a.LA_05_a," +
+    "a.LA_06_b," +
+    "a.LA_06_a," +
+    "a.LA_07_b," +
+    "a.LA_07_a," +
+    "a.LA_08_b," +
+    "a.LA_08_a," +
+    "a.LA_09_b," +
+    "a.LA_09_a," +
+    "a.LA_10_b," +
+    "a.LA_10_a," +
+    "a.LA_11_b," +
+    "a.LA_11_a," +
+    "a.LA_12_b," +
+    "a.LA_12_a," +
+    "a.LA_13_b," +
+    "a.LA_13_a," +
+    "a.LA_14_b," +
+    "a.LA_14_a," +
+    "a.LA_15_b," +
+    "a.LA_15_a," +
+    "a.LA_16_b," +
+    "a.LA_16_a," +
+    "a.LF_01," +
+    "a.LF_01_a," +
+    "a.LF_02," +
+    "a.LF_02_a," +
+    "a.LF_03," +
+    "a.LF_03_a," +
+    "a.LF_04," +
+    "a.LF_04_a," +
+    "a.LF_05," +
+    "a.LF_05_a," +
+    "a.LF_06," +
+    "a.LF_06_a," +
+    "a.LF_07," +
+    "a.LF_07_a," +
+    "a.RF_01," +
+    "a.RF_01_a," +
+    "a.RF_02," +
+    "a.RF_02_a," +
+    "a.RF_03," +
+    "a.RF_03_a," +
+    "a.RF_04," +
+    "a.RF_04_a," +
+    "a.SE_01," +
+    "a.SE_01_a," +
+    "a.SE_02," +
+    "a.SE_02_a," +
+    "a.SE_03," +
+    "a.SE_03_a," +
+    "a.SE_04," +
+    "a.SE_04_a," +
+    "a.CS_01," +
+    "a.CS_01_a," +
+    "a.CS_02," +
+    "a.CS_02_a," +
+    "a.CS_03," +
+    "a.CS_03_a," +
+    "a.CS_04," +
+    "a.CS_04_a," +
+    "a.CS_05," +
+    "a.CS_05_a," +
+    "a.CS_06," +
+    "a.CS_06_a," +
+    "a.CS_07," +
+    "a.CS_07_a," +
+    "a.CS_08," +
+    "a.CS_08_a," +
+    "a.CS_09," +
+    "a.CS_09_a," +
+    "a.CS_10," +
+    "a.CS_10_a," +
+    "a.UR_01," +
+    "a.UR_01_a," +
+    "a.UR_02," +
+    "a.UR_02_a," +
+    "a.UR_03," +
+    "a.UR_03_a," +
+    "a.UR_04," +
+    "a.UR_04_a," +
+    "a.UR_04a," +
+    "a.UR_04a_a," +
+    "a.UR_05," +
+    "a.UR_05_a," +
+    "a.UR_06," +
+    "a.UR_06_a," +
+    "a.UR_07," +
+    "a.UR_07_a," +
+    "a.UR_08," +
+    "a.UR_08_a," +
+    "a.UR_10," +
+    "a.UR_10_a," +
+    "a.UR_11," +
+    "a.UR_11_a," +
+    "a.UR_12," +
+    "a.UR_12_a," +
+    "a.UR_13," +
+    "a.UR_13_a," +
+    "a.UR_14," +
+    "a.UR_14_a," +
+    "a.UR_15," +
+    "a.UR_15_a," +
+    "a.UR_16," +
+    "a.UR_16_a," +
+    "a.UR_17," +
+    "a.UR_17_a," +
+    "a.UR_18," +
+    "a.UR_18_a," +
+    "a.UR_19," +
+    "a.UR_19_a," +
+    "a.UR_20," +
+    "a.UR_20_a," +
+    "a.UR_21," +
+    "a.UR_21_a," +
+    "a.uc_01_ca," +
+    "a.uc_01a," +
+    "a.uc_02a," +
+    "a.uc_02a_a," +
+    "a.uc_02b," +
+    "a.uc_03a," +
+    "a.uc_03a_a," +
+    "a.uc_03b," +
+    "a.uc_04a," +
+    "a.uc_04a_a," +
+    "a.uc_04b," +
+    "a.uc_05a," +
+    "a.uc_05a_a," +
+    "a.uc_05b," +
+    "a.uc_06a," +
+    "a.uc_06a_a," +
+    "a.uc_06b," +
+    "a.uc_07a," +
+    "a.uc_07a_a," +
+    "a.uc_07b," +
+    "a.uc_08a," +
+    "a.uc_08a_a," +
+    "a.uc_08b," +
+    "a.uc_09a," +
+    "a.uc_09a_a," +
+    "a.uc_09b," +
+    "a.uc_10a," +
+    "a.uc_10a_a," +
+    "a.uc_10b," +
+    "a.uc_11a," +
+    "a.uc_11a_a," +
+    "a.uc_11b," +
+    "a.uc_12a," +
+    "a.uc_12a_a," +
+    "a.uc_12b," +
+    "a.uc_13a," +
+    "a.uc_13a_a," +
+    "a.uc_13b," +
+    "a.uc_14a," +
+    "a.uc_14a_a," +
+    "a.uc_14b," +
+    "a.uc_15a," +
+    "a.uc_15a_a," +
+    "a.uc_15b," +
+    "a.uc_16a," +
+    "a.uc_16a_a," +
+    "a.uc_16b," +
+    "a.uc_17a," +
+    "a.uc_17a_a," +
+    "a.uc_17b," +
+    "a.uc_18a," +
+    "a.uc_18a_a," +
+    "a.uc_18b," +
+    "a.uc_19a," +
+    "a.uc_19a_a," +
+    "a.uc_19b," +
+    "a.uc_20a," +
+    "a.uc_20a_a," +
+    "a.uc_20b," +
+    "a.uc_21a," +
+    "a.uc_21a_a," +
+    "a.uc_21b," +
+    "a.uc_22a," +
+    "a.uc_22a_a," +
+    "a.uc_22b," +
+    "a.uc_23a," +
+    "a.uc_23a_a," +
+    "a.uc_23b," +
+    "a.uc_24a," +
+    "a.uc_24a_a," +
+    "a.uc_24b," +
+    "a.uc_25a," +
+    "a.uc_25a_a," +
+    "a.uc_25b," +
+    "a.uc_26a," +
+    "a.uc_26a_a," +
+    "a.uc_26b," +
+    "a.uc_27a," +
+    "a.uc_27a_a," +
+    "a.uc_27b," +
+    "a.uc_28a," +
+    "a.uc_28a_a," +
+    "a.uc_28b," +
+    "a.uc_29a," +
+    "a.uc_29a_a," +
+    "a.uc_29b," +
+    "a.uc_30a," +
+    "a.uc_30a_a," +
+    "a.uc_30b," +
+    "a.uc_31a," +
+    "a.uc_31a_a," +
+    "a.uc_31b," +
+    "a.uc_32a," +
+    "a.uc_32a_a," +
+    "a.uc_32b," +
+    "a.uc_33a," +
+    "a.uc_33a_a," +
+    "a.uc_33b," +
+    "a.uc_34a," +
+    "a.uc_34a_a," +
+    "a.uc_34b," +
+    "a.uc_35a," +
+    "a.uc_35a_a," +
+    "a.uc_35b," +
+    "a.uc_36a," +
+    "a.uc_36a_a," +
+    "a.uc_36b," +
+    "a.uc_37a," +
+    "a.uc_37a_a," +
+    "a.uc_37b," +
+    "a.LA_17," +
+    "a.LA_18," +
+    "a.LA_19," +
+    "a.LA_20a_b," +
+    "a.LA_20a_a," +
+    "a.LA_20b_a," +
+    "a.LA_21a_b," +
+    "a.LA_21a_a," +
+    "a.LA_21b_a," +
+    "a.LA_22a_b," +
+    "a.LA_22a_a," +
+    "a.LA_22b_a," +
+    "a.LA_23a_b," +
+    "a.LA_23a_a," +
+    "a.LA_23b_a," +
+    "a.LA_24a_b," +
+    "a.LA_24a_a," +
+    "a.LA_24b_a," +
+    "a.LA_25a_b," +
+    "a.LA_25a_a," +
+    "a.LA_25b_a," +
+    "a.LA_26a_b," +
+    "a.LA_26a_a," +
+    "a.LA_26b_a," +
+    "a.LA_27a_b," +
+    "a.LA_27a_a," +
+    "a.LA_27b_a," +
+    "a.LA_28a_b," +
+    "a.LA_28a_a," +
+    "a.LA_28b_a," +
+    "a.LA_29a_b," +
+    "a.LA_29a_a," +
+    "a.LA_29b_a," +
+    "a.LA_30a_b," +
+    "a.LA_30a_a," +
+    "a.LA_30b_a," +
+    "a.LA_31a_b," +
+    "a.LA_31a_a," +
+    "a.LA_31b_a," +
+    "a.LA_32a_b," +
+    "a.LA_32a_a," +
+    "a.LA_32b_a," +
+    "a.LA_33a_b," +
+    "a.LA_33a_a," +
+    "a.LA_33b_a," +
+    "a.LA_34a_b," +
+    "a.LA_34a_a," +
+    "a.LA_34b_a," +
+    "a.LA_35a_b," +
+    "a.LA_35a_a," +
+    "a.LA_35b_a," +
+    "a.LA_36a_b," +
+    "a.LA_36a_a," +
+    "a.LA_36b_a," +
+    "a.LA_37a_b," +
+    "a.LA_37a_a," +
+    "a.LA_37b_a," +
+    "a.LA_38a_b," +
+    "a.LA_38a_a," +
+    "a.LA_38b_a," +
+    "a.LA_39a_b," +
+    "a.LA_39a_a," +
+    "a.LA_39b_a," +
+    "a.LA_40a_b," +
+    "a.LA_40a_a," +
+    "a.LA_40b_a," +
+    "a.LA_41a_b," +
+    "a.LA_41a_a," +
+    "a.LA_41b_a," +
+    "a.LA_42a_b," +
+    "a.LA_42a_a," +
+    "a.LA_42b_a," +
+    "a.LA_43a_b," +
+    "a.LA_43a_a," +
+    "a.LA_43b_a," +
+    "a.LA_44a_b," +
+    "a.LA_44a_a," +
+    "a.LA_44b_a," +
+    "a.LA_45a_b," +
+    "a.LA_45a_a," +
+    "a.LA_45b_a," +
+    "a.LA_46a_b," +
+    "a.LA_46a_a," +
+    "a.LA_46b_a," +
+    "a.LA_47a_b," +
+    "a.LA_47a_a," +
+    "a.LA_47b_a," +
+    "a.LA_48a_b," +
+    "a.LA_48a_a," +
+    "a.LA_48b_a," +
+    "a.LA_49a_b," +
+    "a.LA_49a_a," +
+    "a.LA_49b_a," +
+    "a.LA_50a_b," +
+    "a.LA_50a_a," +
+    "a.LA_50b_a," +
+    "a.LA_51a_b," +
+    "a.LA_51a_a," +
+    "a.LA_51b_a," +
+    "a.LA_52a_b," +
+    "a.LA_52a_a," +
+    "a.LA_52b_a" +
+            " from sample_result a inner join form1 b on a.la_sno = b.AS1_screening_ID where b.id = '" + ViewState["id"].ToString() + "'", cn.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+
+            if (ds != null)
+            {
+                if (ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+
+                        AS1_screening_ID.Text = ds.Tables[0].Rows[0]["AS1_screening_ID"].ToString();
+                        AS1_rand_id.Text = ds.Tables[0].Rows[0]["AS1_rand_id"].ToString();
+                        AS1_name.Text = ds.Tables[0].Rows[0]["AS1_name"].ToString();
+
+                        if (ds.Tables[0].Rows[0]["AS1_sex"].ToString() == "1")
+                        {
+                            AS1_sex_a.Checked = true;
+                        }
+                        else
+                        {
+                            AS1_sex_b.Checked = true;
+                        }
+
+                        AS1_age.Text = ds.Tables[0].Rows[0]["AS1_age"].ToString();
+                        AS1_barcode.Text = ds.Tables[0].Rows[0]["AS1_barcode"].ToString();
+
+
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["AS1_mrno"].ToString()))
+                        {
+                            AS1_mrno.Text = ds.Tables[0].Rows[0]["AS1_mrno"].ToString();
+                            chkMRNo.Checked = false;
+                            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+                        }
+                        else
+                        {
+                            AS1_lno.Text = ds.Tables[0].Rows[0]["AS1_lno"].ToString();
+                            AS1_mrno.Text = "";
+                            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+                            AS1_mrno.ReadOnly = true;
+                            chkMRNo.Checked = true;
+                        }
+
+
+                        AS1_barcode1.Text = ds.Tables[0].Rows[0]["AS1_barcode1"].ToString();
+
+                        if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "1")
+                        {
+                            AS1_fsite_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "2")
+                        {
+                            AS1_fsite_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "3")
+                        {
+                            AS1_fsite_3.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "4")
+                        {
+                            AS1_fsite_4.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "5")
+                        {
+                            AS1_fsite_5.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "6")
+                        {
+                            AS1_fsite_6.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["AS1_Samp_1"].ToString() == "1")
+                        {
+                            AS1_Samp_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_Samp_2"].ToString() == "2")
+                        {
+                            AS1_Samp_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_Samp_3"].ToString() == "3")
+                        {
+                            AS1_Samp_3.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS1_Samp_4"].ToString() == "4")
+                        {
+                            AS1_Samp_4.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["AS1_Q1_1"].ToString() == "1")
+                        {
+                            AS1_Q1_11.Checked = true;
+                        }
+                        else
+                        {
+                            AS1_Q1_12.Checked = true;
+                        }
+
+
+
+                        AS1_Q1_2.Text = ds.Tables[0].Rows[0]["AS1_Q1_2"].ToString();
+                        AS1_Q2_2.Text = ds.Tables[0].Rows[0]["AS1_Q2_2"].ToString();
+                        AS1_Q3a_2.Text = ds.Tables[0].Rows[0]["AS1_Q3a_2"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["AS2_Q7_1"].ToString() == "1")
+                        {
+                            AS2_Q7_11.Checked = true;
+                        }
+                        else
+                        {
+                            AS2_Q7_12.Checked = true;
+                        }
+
+                        AS2_Q7_2a.Text = ds.Tables[0].Rows[0]["AS2_Q7_2a"].ToString();
+                        AS2_Q7_2.Text = ds.Tables[0].Rows[0]["AS2_Q7_2"].ToString();
+                        AS2_Q7_CBC_CODE.Text = ds.Tables[0].Rows[0]["AS2_Q7_CBC_CODE"].ToString();
+
+
+                        if (ds.Tables[0].Rows[0]["AS2_Q8"].ToString() == "1")
+                        {
+                            AS2_Q8_1.Checked = true;
+                        }
+                        else
+                        {
+                            AS2_Q8_1.Checked = true;
+                        }
+
+                        AS2_Q8_BacT.Text = ds.Tables[0].Rows[0]["AS2_Q8_BacT"].ToString();
+                        AS2_Q8_3.Text = ds.Tables[0].Rows[0]["AS2_Q8_3"].ToString();
+                        AS2_Q9.Text = ds.Tables[0].Rows[0]["AS2_Q9"].ToString();
+                        AS2_Q10.Text = ds.Tables[0].Rows[0]["AS2_Q10"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS2_Q11"].ToString() == "1")
+                        {
+                            AS2_Q11_1.Checked = true;
+                        }
+                        else
+                        {
+                            AS2_Q11_2.Checked = true;
+                        }
+
+                        AS2_Q12_2.Text = ds.Tables[0].Rows[0]["AS2_Q12_2"].ToString();
+                        AS2_Q12_3.Text = ds.Tables[0].Rows[0]["AS2_Q12_3"].ToString();
+                        AS2_Q13.Text = ds.Tables[0].Rows[0]["AS2_Q13"].ToString();
+                        AS3_Q14.Text = ds.Tables[0].Rows[0]["AS3_Q14"].ToString();
+                        AS3_Q14a.Text = ds.Tables[0].Rows[0]["AS3_Q14a"].ToString();
+                        AS3_Q15.Text = ds.Tables[0].Rows[0]["AS3_Q15"].ToString();
+                        AS3_Q16.Text = ds.Tables[0].Rows[0]["AS3_Q16"].ToString();
+                        AS3_Q17.Text = ds.Tables[0].Rows[0]["AS3_Q17"].ToString();
+                        AS3_Q18.Text = ds.Tables[0].Rows[0]["AS3_Q18"].ToString();
+                        AS3_Q19.Text = ds.Tables[0].Rows[0]["AS3_Q19"].ToString();
+                        AS3_Q20.Text = ds.Tables[0].Rows[0]["AS3_Q20"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS4_Q21a"].ToString() == "1")
+                        {
+                            AS4_Q21a.Checked = true;
+                        }
+                        else
+                        {
+                            AS4_Q21a.Checked = false;
+                        }
+
+                        AS4_Q22a.Text = ds.Tables[0].Rows[0]["AS4_Q22a"].ToString();
+                        AS4_Q22b.Text = ds.Tables[0].Rows[0]["AS4_Q22b"].ToString();
+                        AS4_Q23.Text = ds.Tables[0].Rows[0]["AS4_Q23"].ToString();
+                        AS4_Q24.Text = ds.Tables[0].Rows[0]["AS4_Q24"].ToString();
+                        AS5_Q25a.Text = ds.Tables[0].Rows[0]["AS5_Q25a"].ToString();
+                        AS5_Q25b.Text = ds.Tables[0].Rows[0]["AS5_Q25b"].ToString();
+                        AS5_Q26.Text = ds.Tables[0].Rows[0]["AS5_Q26"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q27"].ToString() == "1")
+                        {
+                            AS5_Q27_1.Checked = true;
+                        }
+                        else
+                        {
+                            AS5_Q27_2.Checked = true;
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q28"].ToString() == "1")
+                        {
+                            AS5_Q28_1.Checked = true;
+                        }
+                        else
+                        {
+                            AS5_Q28_2.Checked = true;
+                        }
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q29"].ToString() == "1")
+                        {
+                            AS5_Q29_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q29"].ToString() == "2")
+                        {
+                            AS5_Q29_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q29"].ToString() == "3")
+                        {
+                            AS5_Q29_3.Checked = true;
+                        }
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q30"].ToString() == "1")
+                        {
+                            AS5_Q30_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q30"].ToString() == "2")
+                        {
+                            AS5_Q30_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q30"].ToString() == "3")
+                        {
+                            AS5_Q30_3.Checked = true;
+                        }
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q31"].ToString() == "1")
+                        {
+                            AS5_Q31_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q31"].ToString() == "2")
+                        {
+                            AS5_Q31_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q31"].ToString() == "3")
+                        {
+                            AS5_Q31_3.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q31"].ToString() == "4")
+                        {
+                            AS5_Q31_4.Checked = true;
+                        }
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS5_Q32"].ToString() == "1")
+                        {
+                            AS5_Q32_1.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q32"].ToString() == "2")
+                        {
+                            AS5_Q32_2.Checked = true;
+                        }
+                        else if (ds.Tables[0].Rows[0]["AS5_Q32"].ToString() == "3")
+                        {
+                            AS5_Q32_3.Checked = true;
+                        }
+
+
+
+                        AS5_Q33a.Text = ds.Tables[0].Rows[0]["AS5_Q33a"].ToString();
+                        AS5_Q33b.Text = ds.Tables[0].Rows[0]["AS5_Q33b"].ToString();
+                        AS3_Remarks.Text = ds.Tables[0].Rows[0]["AS3_Remarks"].ToString();
+                        AS6_Q34.Text = ds.Tables[0].Rows[0]["AS6_Q34"].ToString();
+                        AS6_Q35.Text = ds.Tables[0].Rows[0]["AS6_Q35"].ToString();
+                        AS6_Q36.Text = ds.Tables[0].Rows[0]["AS6_Q36"].ToString();
+                        AS6_Q37.Text = ds.Tables[0].Rows[0]["AS6_Q37"].ToString();
+                        AS6_Q38.Text = ds.Tables[0].Rows[0]["AS6_Q38"].ToString();
+                        AS6_Q39.Text = ds.Tables[0].Rows[0]["AS6_Q39"].ToString();
+                        AS6_Q40.Text = ds.Tables[0].Rows[0]["AS6_Q40"].ToString();
+                        AS6_Q41.Text = ds.Tables[0].Rows[0]["AS6_Q41"].ToString();
+                        AS6_Q42.Text = ds.Tables[0].Rows[0]["AS6_Q42"].ToString();
+                        AS6_Q43.Text = ds.Tables[0].Rows[0]["AS6_Q43"].ToString();
+                        AS6_Q44.Text = ds.Tables[0].Rows[0]["AS6_Q44"].ToString();
+                        AS6_Q45.Text = ds.Tables[0].Rows[0]["AS6_Q45"].ToString();
+                        AS6_Q46.Text = ds.Tables[0].Rows[0]["AS6_Q46"].ToString();
+                        AS6_Q47.Text = ds.Tables[0].Rows[0]["AS6_Q47"].ToString();
+                        AS5_R1.Text = ds.Tables[0].Rows[0]["AS5_R1"].ToString();
+                        AS3_A1.Text = ds.Tables[0].Rows[0]["AS3_A1"].ToString();
+                        AS3_A2.Text = ds.Tables[0].Rows[0]["AS3_A2"].ToString();
+                        AS3_B1.Text = ds.Tables[0].Rows[0]["AS3_B1"].ToString();
+                        AS3_B2.Text = ds.Tables[0].Rows[0]["AS3_B2"].ToString();
+
+                    }
+                }
+            }
+        }
+
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message.Replace("'", "") + "');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+            cn = null;
+        }
+    }
+
 
 
     private void IsTestingServer()
@@ -3170,4 +4061,85 @@ HttpContext.Current.Request["labid"].ToString() + "')";
     }
 
 
+
+    protected void chkMRNo_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkMRNo.Checked)
+        {
+            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+            AS1_mrno.Text = "";
+            AS1_mrno.ReadOnly = true;
+
+            chkLNumber.Checked = false;
+            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS1_lno.ReadOnly = false;
+            AS1_lno.Focus();
+        }
+        else
+        {
+            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS1_mrno.ReadOnly = false;
+            AS1_mrno.Focus();
+        }
+    }
+
+    protected void chkLNumber_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkLNumber.Checked)
+        {
+            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+            AS1_lno.Text = "";
+            AS1_lno.ReadOnly = true;
+
+            chkMRNo.Checked = false;
+            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS1_mrno.ReadOnly = false;
+            AS1_mrno.Focus();
+        }
+        else
+        {
+            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS1_lno.ReadOnly = false;
+            AS1_lno.Focus();
+        }
+    }
+
+    protected void chk_AS2_Q7_2a_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chk_AS2_Q7_2a.Checked)
+        {
+            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+            AS2_Q7_2a.Text = "";
+            AS2_Q7_2a.ReadOnly = true;
+
+            chk_AS2_Q7_2.Checked = false;
+            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS2_Q7_2.ReadOnly = false;
+            AS2_Q7_2.Focus();
+        }
+        else
+        {
+            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS2_Q7_2a.ReadOnly = false;
+        }
+    }
+
+    protected void chk_AS2_Q7_2_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chk_AS2_Q7_2.Checked)
+        {
+            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+            AS2_Q7_2.Text = "";
+            AS2_Q7_2.ReadOnly = true;
+
+            chk_AS2_Q7_2a.Checked = false;
+            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS2_Q7_2a.ReadOnly = false;
+        }
+        else
+        {
+            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
+            AS2_Q7_2.ReadOnly = false;
+        }
+    }
 }
