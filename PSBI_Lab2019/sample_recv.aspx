@@ -168,79 +168,79 @@
     </script>
     <script>        
 
-        $(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
+        //$(document).on("click", "input[name='AS1_Q1_1']:checked", function () {
 
-            var arr = $(this).val().split('_');
+        //    var arr = $(this).val().split('_');
 
-            if (arr[2] === "11") {
+        //    if (arr[2] === "11") {
 
-                $("#pnl_AS4_Q21a").css("display", "none");
+        //        $("#pnl_AS4_Q21a").css("display", "none");
 
-                EnableControls1("AS3_Q16", "txt");
-                EnableControls1("AS3_Q17", "txt");
-                EnableControls1("AS3_Q18", "txt");
-                EnableControls1("AS3_Q19", "txt");
-                EnableControls1("AS3_Q20", "txt");
-
-
-                DisableControls1("AS4_Q21a", "rdo");
-
-                DisableControls1("AS4_Q22a", "txt");
-                DisableControls1("AS4_Q22b", "txt");
-                DisableControls1("AS4_Q23", "txt");
-                DisableControls1("AS4_Q24", "txt");
-                DisableControls1("AS5_Q25a", "txt");
-                DisableControls1("AS5_Q25b", "txt");
-                DisableControls1("AS5_Q26", "txt");
-
-                DisableControls1("AS5_Q27", "rdo");
-                DisableControls1("AS5_Q28", "rdo");
-                DisableControls1("AS5_Q29", "rdo");
-                DisableControls1("AS5_Q30", "rdo");
-                DisableControls1("AS5_Q31", "rdo");
-                DisableControls1("AS5_Q32", "rdo");
-
-                DisableControls1("AS5_Q33a", "txt");
-                DisableControls1("AS5_Q33b", "txt");
-                DisableControls1("AS3_Remarks", "txt");
-
-            }
-            else {
-
-                $("#pnl_AS4_Q21a").css("display", "block");
-
-                DisableControls1("AS3_Q16", "txt");
-                DisableControls1("AS3_Q17", "txt");
-                DisableControls1("AS3_Q18", "txt");
-                DisableControls1("AS3_Q19", "txt");
-                DisableControls1("AS3_Q20", "txt");
+        //        EnableControls1("AS3_Q16", "txt");
+        //        EnableControls1("AS3_Q17", "txt");
+        //        EnableControls1("AS3_Q18", "txt");
+        //        EnableControls1("AS3_Q19", "txt");
+        //        EnableControls1("AS3_Q20", "txt");
 
 
-                EnableControls1("AS4_Q21a", "rdo");
+        //        DisableControls1("AS4_Q21a", "rdo");
 
-                EnableControls1("AS4_Q22a", "txt");
-                EnableControls1("AS4_Q22b", "txt");
-                EnableControls1("AS4_Q23", "txt");
-                EnableControls1("AS4_Q24", "txt");
-                EnableControls1("AS5_Q25a", "txt");
-                EnableControls1("AS5_Q25b", "txt");
-                EnableControls1("AS5_Q26", "txt");
+        //        DisableControls1("AS4_Q22a", "txt");
+        //        DisableControls1("AS4_Q22b", "txt");
+        //        DisableControls1("AS4_Q23", "txt");
+        //        DisableControls1("AS4_Q24", "txt");
+        //        DisableControls1("AS5_Q25a", "txt");
+        //        DisableControls1("AS5_Q25b", "txt");
+        //        DisableControls1("AS5_Q26", "txt");
 
-                EnableControls1("AS5_Q27", "rdo");
-                EnableControls1("AS5_Q28", "rdo");
-                EnableControls1("AS5_Q29", "rdo");
-                EnableControls1("AS5_Q30", "rdo");
-                EnableControls1("AS5_Q31", "rdo");
-                EnableControls1("AS5_Q32", "rdo");
+        //        DisableControls1("AS5_Q27", "rdo");
+        //        DisableControls1("AS5_Q28", "rdo");
+        //        DisableControls1("AS5_Q29", "rdo");
+        //        DisableControls1("AS5_Q30", "rdo");
+        //        DisableControls1("AS5_Q31", "rdo");
+        //        DisableControls1("AS5_Q32", "rdo");
 
-                EnableControls1("AS5_Q33a", "txt");
-                EnableControls1("AS5_Q33b", "txt");
-                EnableControls1("AS3_Remarks", "txt");
+        //        DisableControls1("AS5_Q33a", "txt");
+        //        DisableControls1("AS5_Q33b", "txt");
+        //        DisableControls1("AS3_Remarks", "txt");
 
-            }
+        //    }
+        //    else {
+
+        //        $("#pnl_AS4_Q21a").css("display", "block");
+
+        //        DisableControls1("AS3_Q16", "txt");
+        //        DisableControls1("AS3_Q17", "txt");
+        //        DisableControls1("AS3_Q18", "txt");
+        //        DisableControls1("AS3_Q19", "txt");
+        //        DisableControls1("AS3_Q20", "txt");
 
 
-        });
+        //        EnableControls1("AS4_Q21a", "rdo");
+
+        //        EnableControls1("AS4_Q22a", "txt");
+        //        EnableControls1("AS4_Q22b", "txt");
+        //        EnableControls1("AS4_Q23", "txt");
+        //        EnableControls1("AS4_Q24", "txt");
+        //        EnableControls1("AS5_Q25a", "txt");
+        //        EnableControls1("AS5_Q25b", "txt");
+        //        EnableControls1("AS5_Q26", "txt");
+
+        //        EnableControls1("AS5_Q27", "rdo");
+        //        EnableControls1("AS5_Q28", "rdo");
+        //        EnableControls1("AS5_Q29", "rdo");
+        //        EnableControls1("AS5_Q30", "rdo");
+        //        EnableControls1("AS5_Q31", "rdo");
+        //        EnableControls1("AS5_Q32", "rdo");
+
+        //        EnableControls1("AS5_Q33a", "txt");
+        //        EnableControls1("AS5_Q33b", "txt");
+        //        EnableControls1("AS3_Remarks", "txt");
+
+        //    }
+
+
+        //});
 
 
 
@@ -1284,7 +1284,8 @@
                 }
                 else {
 
-                    if ($("#AS2_Q7_2a").val() != "" && $("#AS2_Q7_2a").is(":visible") == true) {
+                    if ($("#AS2_Q7_2a").val() != "" && $("#AS2_Q7_2a").is(":visible") == true
+                        && $("#AS2_Q7_2a").is(":disabled") == false) {
 
                         if ($("#AS2_Q7_2a").val().indexOf("_") != -1) {
                             alert("Please enter full (MR Number) 3 ");
@@ -1786,11 +1787,11 @@
                                                             <label class="col-md-3 label-control" for="projectinput5">CBC Sample Collected In EDTA tube</label>
                                                             <div class="col-md-6 col-sm-12">
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls4" GroupName="AS1_Q1_1" name="AS1_Q1_11" ID="AS1_Q1_11" />
+                                                                    <asp:RadioButton runat="server" class=".radiocls4" AutoPostBack="true" OnCheckedChanged="AS1_Q1_11_CheckedChanged" GroupName="AS1_Q1_1" name="AS1_Q1_11" ID="AS1_Q1_11" />
                                                                     <label for="input-radio-11">RCT 1</label>
                                                                 </fieldset>
                                                                 <fieldset>
-                                                                    <asp:RadioButton runat="server" class=".radiocls4" GroupName="AS1_Q1_1" name="AS1_Q1_12" ID="AS1_Q1_12" />
+                                                                    <asp:RadioButton runat="server" class=".radiocls4" AutoPostBack="true" OnCheckedChanged="AS1_Q1_12_CheckedChanged" GroupName="AS1_Q1_1" name="AS1_Q1_12" ID="AS1_Q1_12" />
                                                                     <label for="input-radio-12">RCT 2</label>
                                                                 </fieldset>
                                                             </div>
@@ -2564,7 +2565,7 @@
                                                     </asp:Panel>
                                                 </div>
 
-                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                                     <ContentTemplate>
                                                         <div class="form-actions left">
                                                             <asp:Button runat="server" ID="cmdSaveDraft" class="btn btn-cyan mr-1" Text="Save Draft" OnClick="cmdSaveDraft_Click"></asp:Button>
@@ -2572,6 +2573,10 @@
                                                             <asp:Button ID="cmdCancel" runat="server" class="btn btn-primary" Text="Cancel" OnClick="cmdCancel_Click"></asp:Button>
                                                         </div>
                                                     </ContentTemplate>
+                                                    <Triggers>
+                                                        <asp:PostBackTrigger ControlID="AS1_Q1_11" />
+                                                        <asp:PostBackTrigger ControlID="AS1_Q1_12" />
+                                                    </Triggers>
                                                 </asp:UpdatePanel>
 
                                                 <%--<div class="form-actions right">

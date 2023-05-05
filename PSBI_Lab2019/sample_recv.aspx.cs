@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.ServiceModel.Configuration;
 
+
 public partial class sample_recv : System.Web.UI.Page
 {
     public List<CountryInfo> CountryInformation { get; set; }
@@ -66,9 +67,10 @@ public partial class sample_recv : System.Web.UI.Page
             }
 
 
-            if (Request.Cookies["labid"].Value == "1" && Request.QueryString["id"].ToString() != null)
+            if (Request.Cookies["labid"].Value == "1" && Request.QueryString["id"] != null)
             {
                 ViewState["id"] = Request.QueryString["id"].ToString();
+                ViewState["isupdate"] = "1";
 
 
                 AS1_Q3a_11.Checked = false;
@@ -251,7 +253,6 @@ public partial class sample_recv : System.Web.UI.Page
                 pnl_AS1_Q3a_2.Visible = false;
                 pnl_AS2_Q8a.Visible = true;
 
-                ViewState["isupdate"] = "1";
 
                 Disable_IDRL_Questions();
 
@@ -981,15 +982,27 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS1_mrno.Text = ds.Tables[0].Rows[0]["AS1_mrno"].ToString();
                             chkMRNo.Checked = false;
-                            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+                            AS1_mrno.CssClass = "form-control";
                         }
                         else
                         {
-                            AS1_lno.Text = ds.Tables[0].Rows[0]["AS1_lno"].ToString();
-                            AS1_mrno.Text = "";
-                            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
-                            AS1_mrno.ReadOnly = true;
                             chkMRNo.Checked = true;
+                            AS1_mrno.CssClass = "form-control";
+                            AS1_mrno.Enabled = false;
+                        }
+
+
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["AS1_lno"].ToString()))
+                        {
+                            AS1_lno.Text = ds.Tables[0].Rows[0]["AS1_lno"].ToString();
+                            chkLNumber.Checked = false;
+                            AS1_mrno.CssClass = "form-control";
+                        }
+                        else
+                        {
+                            chkLNumber.Checked = true;
+                            AS1_lno.CssClass = "form-control";
+                            AS1_lno.Enabled = false;
                         }
 
 
@@ -1042,10 +1055,12 @@ public partial class sample_recv : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["AS1_Q1_1"].ToString() == "1")
                         {
                             AS1_Q1_11.Checked = true;
+                            AS1_Q1_11_CheckedChanged(null, null);
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS1_Q1_1"].ToString() == "2")
                         {
                             AS1_Q1_12.Checked = true;
+                            AS1_Q1_12_CheckedChanged(null, null);
                         }
 
 
@@ -1059,13 +1074,42 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS2_Q7_11.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS2_Q7_1"].ToString() == "2")
                         {
                             AS2_Q7_12.Checked = true;
                         }
 
-                        AS2_Q7_2a.Text = ds.Tables[0].Rows[0]["AS2_Q7_2a"].ToString();
-                        AS2_Q7_2.Text = ds.Tables[0].Rows[0]["AS2_Q7_2"].ToString();
+
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["AS2_Q7_2a"].ToString()))
+                        {
+                            AS2_Q7_2a.Text = ds.Tables[0].Rows[0]["AS2_Q7_2a"].ToString();
+                            chk_AS2_Q7_2a.Checked = false;
+                            AS2_Q7_2a.Enabled = true;
+                        }
+                        else
+                        {
+                            chk_AS2_Q7_2a.Checked = true;
+                            AS2_Q7_2a.Enabled = false;
+                            AS2_Q7_2a.CssClass = "form-control";
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["AS2_Q7_2"].ToString()))
+                        {
+                            AS2_Q7_2.Text = ds.Tables[0].Rows[0]["AS2_Q7_2"].ToString();
+                            AS2_Q7_2.Enabled = true;
+                            chk_AS2_Q7_2.Checked = false;
+                        }
+                        else
+                        {
+                            AS2_Q7_2.Enabled = false;
+                            AS2_Q7_2.CssClass = "form-control";
+                            chk_AS2_Q7_2.Checked = true;
+                        }
+
+
+
                         AS2_Q7_CBC_CODE.Text = ds.Tables[0].Rows[0]["AS2_Q7_CBC_CODE"].ToString();
 
 
@@ -1073,7 +1117,7 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS2_Q8_1.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS2_Q8"].ToString() == "2")
                         {
                             AS2_Q8_1.Checked = true;
                         }
@@ -1089,7 +1133,7 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS2_Q11_1.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS2_Q11"].ToString() == "2")
                         {
                             AS2_Q11_2.Checked = true;
                         }
@@ -1112,7 +1156,7 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS4_Q21a.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS4_Q21a"].ToString() == "2")
                         {
                             AS4_Q21a.Checked = false;
                         }
@@ -1131,7 +1175,7 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS5_Q27_1.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS5_Q27"].ToString() == "2")
                         {
                             AS5_Q27_2.Checked = true;
                         }
@@ -1141,7 +1185,7 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS5_Q28_1.Checked = true;
                         }
-                        else
+                        else if (ds.Tables[0].Rows[0]["AS5_Q28"].ToString() == "2")
                         {
                             AS5_Q28_2.Checked = true;
                         }
@@ -1378,6 +1422,35 @@ public partial class sample_recv : System.Web.UI.Page
     {
         rdo.Text = "";
         rdo.Visible = false;
+        rdo.Enabled = false;
+    }
+
+
+
+    private void EnableControls1(TextBox rdo)
+    {
+        rdo.Enabled = true;
+    }
+
+
+    private void DisableControls1(TextBox rdo)
+    {
+        rdo.Text = "";
+        rdo.Enabled = false;
+        rdo.CssClass = "form-control";
+    }
+
+
+
+    private void Enable_RadioButton1(RadioButton rdo)
+    {
+        rdo.Enabled = true;
+    }
+
+
+    private void Disable_RadioButton1(RadioButton rdo)
+    {
+        rdo.Checked = false;
         rdo.Enabled = false;
     }
 
@@ -2524,6 +2597,12 @@ HttpContext.Current.Request["labid"].ToString()
         string var_AS1_fsite = "";
         string var_AS1_Samp = "";
 
+        string var_mrno1 = "";
+        string var_lno1 = "";
+
+        string var_mrno2 = "";
+        string var_lno2 = "";
+
         string var_AS1_Samp_1 = "";
         string var_AS1_Samp_2 = "";
         string var_AS1_Samp_3 = "";
@@ -2587,6 +2666,30 @@ HttpContext.Current.Request["labid"].ToString()
 
         try
         {
+
+            if (chkMRNo.Checked)
+            {
+                var_mrno1 = AS1_mrno.Text;
+            }
+
+            if (chkLNumber.Checked)
+            {
+                var_lno1 = AS1_lno.Text;
+            }
+
+
+            if (chk_AS2_Q7_2a.Checked)
+            {
+                var_mrno2 = AS2_Q7_2a.Text;
+            }
+
+
+            if (chk_AS2_Q7_2.Checked)
+            {
+                var_lno2 = AS2_Q7_2.Text;
+            }
+
+
 
             if (AS1_sex_a.Checked == true)
             {
@@ -3210,8 +3313,8 @@ AS1_name.Text + "', '" +
 var_AS1_sex + "', '" +
 AS1_age.Text + "', '" +
 AS1_barcode.Text + "', '" +
-AS1_mrno.Text + "', '" +
-AS1_lno.Text + "', '" +
+var_mrno1 + "', '" +
+var_lno1 + "', '" +
 AS1_barcode1.Text + "', '" +
 var_AS1_fsite + "', '" +
 var_AS1_Samp_1 + "', '" +
@@ -3234,8 +3337,8 @@ AS1_Q6a.Text + "', '" +
 AS1_Q6b.Text + "', '" +
 val_AS1_Q6c + "', '" +
 var_AS2_Q7_1 + "', '" +
-AS2_Q7_2a.Text + "', '" +
-AS2_Q7_2.Text + "', '" +
+var_mrno2 + "', '" +
+var_lno2 + "', '" +
 AS2_Q7_CBC_CODE.Text + "', '" +
 var_AS2_Q8 + "', '" +
 AS2_Q8_BacT.Text + "', '" +
@@ -3347,6 +3450,12 @@ HttpContext.Current.Request["labid"].ToString() + "')";
         string var_AS1_fsite = "";
         string var_AS1_Samp = "";
 
+        string var_mrno1 = "";
+        string var_lno1 = "";
+
+        string var_mrno2 = "";
+        string var_lno2 = "";
+
         string var_AS1_Samp_1 = "";
         string var_AS1_Samp_2 = "";
         string var_AS1_Samp_3 = "";
@@ -3445,6 +3554,30 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             else if (AS1_fsite_6.Checked == true)
             {
                 var_AS1_fsite = "6";
+            }
+
+
+            if (!chkMRNo.Checked)
+            {
+                var_mrno1 = AS1_mrno.Text;
+            }
+
+
+            if (!chkLNumber.Checked)
+            {
+                var_lno1 = AS1_lno.Text;
+            }
+
+
+            if (!chk_AS2_Q7_2a.Checked)
+            {
+                var_mrno2 = AS2_Q7_2a.Text;
+            }
+
+
+            if (!chk_AS2_Q7_2.Checked)
+            {
+                var_lno2 = AS2_Q7_2.Text;
             }
 
 
@@ -3939,8 +4072,8 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 "AS1_sex = '" + var_AS1_sex + "', " +
 "AS1_age = '" + AS1_age.Text + "', " +
 "AS1_barcode = '" + AS1_barcode.Text + "', " +
-"AS1_mrno = '" + AS1_mrno.Text + "', " +
-"AS1_lno = '" + AS1_lno.Text + "', " +
+"AS1_mrno = '" + var_mrno1 + "', " +
+"AS1_lno = '" + var_lno1 + "', " +
 "AS1_barcode1 = '" + AS1_barcode1.Text + "', " +
 "AS1_fsite = '" + var_AS1_fsite + "', " +
 "AS1_Samp_1 = '" + var_AS1_Samp_1 + "', " +
@@ -3963,8 +4096,8 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 "AS1_Q6b = '" + AS1_Q6b.Text + "', " +
 "AS1_Q6c = '" + val_AS1_Q6c + "', " +
 "AS2_Q7_1 = '" + var_AS2_Q7_1 + "', " +
-"AS2_Q7_2a = '" + AS2_Q7_2a.Text + "', " +
-"AS2_Q7_2 = '" + AS2_Q7_2.Text + "', " +
+"AS2_Q7_2a = '" + var_mrno2 + "', " +
+"AS2_Q7_2 = '" + var_lno2 + "', " +
 "AS2_Q7_CBC_CODE = '" + AS2_Q7_CBC_CODE.Text + "', " +
 "AS2_Q8 = '" + var_AS2_Q8 + "', " +
 "AS2_Q8_BacT = '" + AS2_Q8_BacT.Text + "', " +
@@ -4023,7 +4156,7 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 "AS3_A1= '" + AS3_A1.Text + "', " +
 "AS3_A2= '" + val_AS3_A2 + "', " +
 "AS3_B1= '" + AS3_B1.Text + "', " +
-"AS3_B2 = '" + val_AS3_B2 + "' WHERE AS1_screening_ID = '" + AS1_screening_ID.Text + "'";
+"AS3_B2 = '" + val_AS3_B2 + "' WHERE id = '" + ViewState["id"].ToString() + "'";
 
 
 
@@ -4066,19 +4199,17 @@ HttpContext.Current.Request["labid"].ToString() + "')";
     {
         if (chkMRNo.Checked)
         {
-            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
             AS1_mrno.Text = "";
-            AS1_mrno.ReadOnly = true;
+            AS1_mrno.Enabled = false;
+            AS1_mrno.CssClass = "form-control";
 
             chkLNumber.Checked = false;
-            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS1_lno.ReadOnly = false;
+            AS1_lno.Enabled = true;
             AS1_lno.Focus();
         }
         else
         {
-            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS1_mrno.ReadOnly = false;
+            AS1_mrno.Enabled = true;
             AS1_mrno.Focus();
         }
     }
@@ -4087,19 +4218,18 @@ HttpContext.Current.Request["labid"].ToString() + "')";
     {
         if (chkLNumber.Checked)
         {
-            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
-            AS1_lno.Text = "";
-            AS1_lno.ReadOnly = true;
+            AS1_mrno.Enabled = true;
+            AS1_mrno.Focus();
+
 
             chkMRNo.Checked = false;
-            AS1_mrno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS1_mrno.ReadOnly = false;
-            AS1_mrno.Focus();
+            AS1_lno.Enabled = false;
+            AS1_lno.Text = "";
+            AS1_lno.CssClass = "form-control";
         }
         else
         {
-            AS1_lno.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS1_lno.ReadOnly = false;
+            AS1_lno.Enabled = true;
             AS1_lno.Focus();
         }
     }
@@ -4108,19 +4238,18 @@ HttpContext.Current.Request["labid"].ToString() + "')";
     {
         if (chk_AS2_Q7_2a.Checked)
         {
-            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
+            AS2_Q7_2a.CssClass = "form-control";
             AS2_Q7_2a.Text = "";
-            AS2_Q7_2a.ReadOnly = true;
+            AS2_Q7_2a.Enabled = false;
 
             chk_AS2_Q7_2.Checked = false;
-            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS2_Q7_2.ReadOnly = false;
+            AS2_Q7_2.Enabled = true;
             AS2_Q7_2.Focus();
         }
         else
         {
-            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS2_Q7_2a.ReadOnly = false;
+            AS2_Q7_2a.Enabled = true;
+            AS2_Q7_2a.Focus();
         }
     }
 
@@ -4128,18 +4257,112 @@ HttpContext.Current.Request["labid"].ToString() + "')";
     {
         if (chk_AS2_Q7_2.Checked)
         {
-            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccc");
             AS2_Q7_2.Text = "";
-            AS2_Q7_2.ReadOnly = true;
+            AS2_Q7_2.Enabled = false;
+            AS2_Q7_2.CssClass = "form-control";
 
             chk_AS2_Q7_2a.Checked = false;
-            AS2_Q7_2a.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS2_Q7_2a.ReadOnly = false;
+            AS2_Q7_2a.Enabled = true;
+            AS2_Q7_2a.Focus();
         }
         else
         {
-            AS2_Q7_2.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#fff");
-            AS2_Q7_2.ReadOnly = false;
+            AS2_Q7_2.CssClass = "form-control";
+            AS2_Q7_2.Enabled = true;
+        }
+    }
+
+    protected void AS1_Q1_11_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q1_11.Checked)
+        {
+            pnl_AS4_Q21a.Visible = false;
+
+            EnableControls1(AS3_Q16);
+            EnableControls1(AS3_Q17);
+            EnableControls1(AS3_Q18);
+            EnableControls1(AS3_Q19);
+            EnableControls1(AS3_Q20);
+
+            AS4_Q21a.Checked = false;
+
+            DisableControls1(AS4_Q22a);
+            DisableControls1(AS4_Q22b);
+            DisableControls1(AS4_Q23);
+            DisableControls1(AS4_Q24);
+            DisableControls1(AS5_Q25a);
+            DisableControls1(AS5_Q25b);
+            DisableControls1(AS5_Q26);
+
+
+            Disable_RadioButton1(AS5_Q27_1);
+            Disable_RadioButton1(AS5_Q27_2);
+            Disable_RadioButton1(AS5_Q28_1);
+            Disable_RadioButton1(AS5_Q28_2);
+            Disable_RadioButton1(AS5_Q29_1);
+            Disable_RadioButton1(AS5_Q29_2);
+            Disable_RadioButton1(AS5_Q29_3);
+            Disable_RadioButton1(AS5_Q30_1);
+            Disable_RadioButton1(AS5_Q30_2);
+            Disable_RadioButton1(AS5_Q30_3);
+            Disable_RadioButton1(AS5_Q31_1);
+            Disable_RadioButton1(AS5_Q31_2);
+            Disable_RadioButton1(AS5_Q31_3);
+            Disable_RadioButton1(AS5_Q31_4);
+            Disable_RadioButton1(AS5_Q32_1);
+            Disable_RadioButton1(AS5_Q32_2);
+            Disable_RadioButton1(AS5_Q32_3);
+
+            DisableControls1(AS5_Q33a);
+            DisableControls1(AS5_Q33b);
+            DisableControls1(AS3_Remarks);
+
+        }
+    }
+
+    protected void AS1_Q1_12_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Q1_12.Checked)
+        {
+            pnl_AS4_Q21a.Visible = true;
+
+            DisableControls1(AS3_Q16);
+            DisableControls1(AS3_Q17);
+            DisableControls1(AS3_Q18);
+            DisableControls1(AS3_Q19);
+            DisableControls1(AS3_Q20);
+
+
+            EnableControls1(AS4_Q22a);
+            EnableControls1(AS4_Q22b);
+            EnableControls1(AS4_Q23);
+            EnableControls1(AS4_Q24);
+            EnableControls1(AS5_Q25a);
+            EnableControls1(AS5_Q25b);
+            EnableControls1(AS5_Q26);
+
+
+            Enable_RadioButton1(AS5_Q27_1);
+            Enable_RadioButton1(AS5_Q27_2);
+            Enable_RadioButton1(AS5_Q28_1);
+            Enable_RadioButton1(AS5_Q28_2);
+            Enable_RadioButton1(AS5_Q29_1);
+            Enable_RadioButton1(AS5_Q29_2);
+            Enable_RadioButton1(AS5_Q29_3);
+            Enable_RadioButton1(AS5_Q30_1);
+            Enable_RadioButton1(AS5_Q30_2);
+            Enable_RadioButton1(AS5_Q30_3);
+            Enable_RadioButton1(AS5_Q31_1);
+            Enable_RadioButton1(AS5_Q31_2);
+            Enable_RadioButton1(AS5_Q31_3);
+            Enable_RadioButton1(AS5_Q31_4);
+            Enable_RadioButton1(AS5_Q32_1);
+            Enable_RadioButton1(AS5_Q32_2);
+            Enable_RadioButton1(AS5_Q32_3);
+
+            EnableControls1(AS5_Q33a);
+            EnableControls1(AS5_Q33b);
+            EnableControls1(AS3_Remarks);
         }
     }
 }
