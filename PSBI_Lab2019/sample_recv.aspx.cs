@@ -1038,17 +1038,17 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS1_Samp_1.Checked = true;
                         }
-                        
+
                         if (ds.Tables[0].Rows[0]["AS1_Samp_2"].ToString() == "2")
                         {
                             AS1_Samp_2.Checked = true;
                         }
-                        
+
                         if (ds.Tables[0].Rows[0]["AS1_Samp_3"].ToString() == "3")
                         {
                             AS1_Samp_3.Checked = true;
                         }
-                        
+
                         if (ds.Tables[0].Rows[0]["AS1_Samp_4"].ToString() == "4")
                         {
                             AS1_Samp_4.Checked = true;
@@ -1467,8 +1467,10 @@ public partial class sample_recv : System.Web.UI.Page
         }
         else
         {
-            AuditTrials();
-            UpdateData();
+            if (AuditTrials())
+            {
+                UpdateData();
+            }
         }
     }
 
@@ -2580,8 +2582,10 @@ HttpContext.Current.Request["labid"].ToString()
         }
         else
         {
-            UpdateData();
-            AuditTrials();
+            if (AuditTrials())
+            {
+                UpdateData();
+            }
         }
     }
 
@@ -4503,8 +4507,10 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
 
 
-    private void AuditTrials()
+    private bool AuditTrials()
     {
+        bool IsSucess = false;
+
         CDBOperations obj_op = null;
         DataSet ds = null;
         DataSet ds_dict = null;
@@ -5217,7 +5223,47 @@ HttpContext.Current.Request["labid"].ToString() + "')";
                             }
 
 
-                        }                        
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_mrno")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString());
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != txt.Text)
+                            {
+
+                                if (txt.Text == "___-__-__" && string.IsNullOrEmpty(ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim()))
+                                {
+
+                                }
+                                else
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), txt.Text, "", "");
+                                }
+
+                            }
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q7_2a")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString());
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != txt.Text)
+                            {
+
+                                if (txt.Text == "___-__-__" && string.IsNullOrEmpty(ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim()))
+                                {
+
+                                }
+                                else
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), txt.Text, "", "");
+                                }
+
+                            }
+
+                        }
                         else
                         {
 
@@ -5245,6 +5291,7 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
             }     //    for (int a = 0; a <= ds.Tables[0].Columns.Count - 1; a++)
 
+            IsSucess = true;
 
         }
 
@@ -5254,6 +5301,7 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             string message = "alert('" + ex.Message.Replace("'", "") + "');";
             message = "alert('" + ex.Message.Replace("\"", "") + "');";
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+            IsSucess = false;
         }
 
         finally
@@ -5261,6 +5309,8 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             obj_op = null;
             ds = null;
         }
+
+        return IsSucess;
     }
 
 
