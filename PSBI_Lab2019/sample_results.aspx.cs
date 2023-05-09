@@ -23787,6 +23787,21 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         }
+                        else
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["var_id"].ToString());
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+
+                            }
+
+
+                        }
 
 
 

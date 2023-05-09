@@ -11,7 +11,7 @@ using System.Web.Services;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.ServiceModel.Configuration;
-
+using System.Globalization;
 
 public partial class sample_recv : System.Web.UI.Page
 {
@@ -1038,15 +1038,18 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS1_Samp_1.Checked = true;
                         }
-                        else if (ds.Tables[0].Rows[0]["AS1_Samp_2"].ToString() == "2")
+                        
+                        if (ds.Tables[0].Rows[0]["AS1_Samp_2"].ToString() == "2")
                         {
                             AS1_Samp_2.Checked = true;
                         }
-                        else if (ds.Tables[0].Rows[0]["AS1_Samp_3"].ToString() == "3")
+                        
+                        if (ds.Tables[0].Rows[0]["AS1_Samp_3"].ToString() == "3")
                         {
                             AS1_Samp_3.Checked = true;
                         }
-                        else if (ds.Tables[0].Rows[0]["AS1_Samp_4"].ToString() == "4")
+                        
+                        if (ds.Tables[0].Rows[0]["AS1_Samp_4"].ToString() == "4")
                         {
                             AS1_Samp_4.Checked = true;
                         }
@@ -1464,6 +1467,7 @@ public partial class sample_recv : System.Web.UI.Page
         }
         else
         {
+            AuditTrials();
             UpdateData();
         }
     }
@@ -2577,6 +2581,7 @@ HttpContext.Current.Request["labid"].ToString()
         else
         {
             UpdateData();
+            AuditTrials();
         }
     }
 
@@ -2602,6 +2607,9 @@ HttpContext.Current.Request["labid"].ToString()
 
         string var_mrno2 = "";
         string var_lno2 = "";
+
+
+        string var_random = "";
 
         string var_AS1_Samp_1 = "";
         string var_AS1_Samp_2 = "";
@@ -2698,6 +2706,13 @@ HttpContext.Current.Request["labid"].ToString()
             else if (AS1_sex_b.Checked == true)
             {
                 var_AS1_sex = "2";
+            }
+
+
+
+            if (AS1_rand_id.Text != "_-_-_-____")
+            {
+                var_random = AS1_rand_id.Text;
             }
 
 
@@ -3308,7 +3323,7 @@ HttpContext.Current.Request["labid"].ToString()
 "EntryDate," +
 "labid) VALUES('" +
 AS1_screening_ID.Text + "', '" +
-AS1_rand_id.Text + "', '" +
+var_random + "', '" +
 AS1_name.Text + "', '" +
 var_AS1_sex + "', '" +
 AS1_age.Text + "', '" +
@@ -3435,6 +3450,10 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             obj_op = null;
         }
     }
+
+
+
+
 
 
     private void UpdateData()
@@ -4365,4 +4384,986 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             EnableControls1(AS3_Remarks);
         }
     }
+
+
+
+    private DataSet getSampleResult_ScrID()
+    {
+        CConnection cn = new CConnection();
+
+        SqlDataAdapter da = new SqlDataAdapter("select " +
+    "b.AS1_screening_ID," +
+    "b.AS1_rand_id," +
+    "b.AS1_name," +
+    "b.AS1_sex," +
+    "b.AS1_age," +
+    "b.AS1_barcode," +
+    "b.AS1_mrno," +
+    "b.AS1_barcode1," +
+    "b.AS1_fsite," +
+    "b.AS1_Samp_1," +
+    "b.AS1_Samp_2," +
+    "b.AS1_Samp_3," +
+    "b.AS1_Samp_4," +
+    "b.AS1_Q1_1," +
+    "b.AS1_Q1_2," +
+    "b.AS1_Q2_1," +
+    "b.AS1_Q2_2," +
+    "[AS1_Q3]," +
+    "[AS1_Q3a_1]," +
+    "[AS1_Q3a_1a]," +
+    "[AS1_Q3b_1]," +
+    "[AS1_Q3a_2]," +
+    "[AS1_Q4]," +
+    "[AS1_Q5]," +
+    "[AS1_Q6]," +
+    "[AS1_Q6a]," +
+    "[AS1_Q6b]," +
+    "[AS1_Q6c]," +
+    "[AS2_Q7_1]," +
+    "[AS2_Q7_2]," +
+    "[AS2_Q7_CBC_CODE]," +
+    "[AS2_Q8]," +
+    "[AS2_Q8_BacT]," +
+    "[AS2_Q8_3]," +
+    "[AS2_Q8a]," +
+    "[AS2_Q8b]," +
+    "convert(varchar(13), [AS2_Q9], 103) AS2_Q9," +
+    "convert(varchar(5), [AS2_Q10], 114) [AS2_Q10]," +
+    "[AS2_Q11]," +
+    "[AS2_Q12_1]," +
+    "[AS2_Q12_2]," +
+    "[AS2_Q12_3]," +
+    "[AS2_Q12_4]," +
+    "[AS2_Q13]," +
+    "[AS2_Q13a]," +
+    "[AS3_Q14]," +
+    "convert(varchar(13), [AS3_Q14a], 103) [AS3_Q14a]," +
+    "convert(varchar(5), [AS3_Q15], 114) AS3_Q15," +
+    "[AS3_Q16]," +
+    "convert(varchar(5), [AS3_Q17], 114) [AS3_Q17]," +
+    "[AS3_Q18]," +
+    "[AS3_Q19]," +
+    "convert(varchar(5), [AS3_Q20], 114) [AS3_Q20]," +
+    "[AS4_Q21a]," +
+    "convert(varchar(5), [AS4_Q22a], 114) [AS4_Q22a]," +
+    "convert(varchar(13), [AS4_Q22b], 103) [AS4_Q22b]," +
+    "[AS4_Q23]," +
+    "convert(varchar(5), [AS4_Q24], 114) [AS4_Q24]," +
+    "[AS5_Q25a]," +
+    "[AS5_Q25b]," +
+    "[AS5_Q26]," +
+    "[AS5_Q27]," +
+    "[AS5_Q28]," +
+    "[AS5_Q29]," +
+    "[AS5_Q30]," +
+    "[AS5_Q31]," +
+    "[AS5_Q32]," +
+    "[AS5_Q33a]," +
+    "[AS5_Q33b]," +
+    "[AS3_Remarks]," +
+    "[AS6_Q34]," +
+    "[AS6_Q35]," +
+    "[AS6_Q36]," +
+    "[AS6_Q37]," +
+    "[AS6_Q38]," +
+    "[AS6_Q39]," +
+    "[AS6_Q40]," +
+    "[AS6_Q41]," +
+    "[AS6_Q42]," +
+    "[AS6_Q43]," +
+    "[AS6_Q44]," +
+    "[AS6_Q45]," +
+    "[AS6_Q46]," +
+    "[AS6_Q47]," +
+    "[AS5_R1]," +
+    "[AS3_A1]," +
+    "convert(varchar(13), [AS3_A2], 103) [AS3_A2]," +
+    "[AS3_B1]," +
+    "convert(varchar(13), [AS3_B2], 103) [AS3_B2]," +
+    "[AS1_lno]," +
+    "[AS2_Q7_2a]" +
+    " from form1 b where b.id = '" + ViewState["id"] + "'", cn.cn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+
+        return ds;
+    }
+
+
+    private DataSet getDictionary_Cols(string formname)
+    {
+        CConnection cn = new CConnection();
+        SqlDataAdapter da = new SqlDataAdapter("select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" + formname + "' order by ordinal_position", cn.cn);
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+
+        return ds;
+    }
+
+
+
+    private void AuditTrials()
+    {
+        CDBOperations obj_op = null;
+        DataSet ds = null;
+        DataSet ds_dict = null;
+
+
+        try
+        {
+
+            obj_op = new CDBOperations();
+
+            //ds = obj_op.GetFormData_VisitID("sp_GetRecords", "5", la_sno.Text, "");
+            ds = getSampleResult_ScrID();
+
+
+            //ds_dict = obj_op.GetFormData_VisitID1("sp_GetRecords1", "0", "", "", "sample_result");
+            ds_dict = getDictionary_Cols("form1");
+
+
+
+            for (int a = 0; a <= ds_dict.Tables[0].Rows.Count - 1; a++)
+            {
+
+                for (int b = 0; b <= ds.Tables[0].Rows.Count - 1; b++)
+                {
+
+                    //if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "FORM_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "COMP_ID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "EntryDate" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "UserID" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "IsPilotPhase" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR1_DIFF" && ds_dict.Tables[0].Rows[a]["var_id"].ToString() != "RR2_DIFF")
+
+                    if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "ID"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "UserID"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "EntryDate"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "labid"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_screening_ID"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Samp_4"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q2_1"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q3"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q3a_1"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q3a_1a"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q3b_1"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS2_Q8a"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS2_Q8b"
+                        && ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() != "AS1_Q6a"
+                        )
+                    {
+
+                        //if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString() != tabControl1.TabPages[Convert.ToInt32(ds_dict.Tables[0].Rows[a]["TabPageNo"].ToString())].Controls[ds_dict.Tables[0].Rows[a]["var_id"].ToString()].Text)
+
+
+                        if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_sex")
+                        {
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_a";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_b";
+
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+
+                            string rdo_val = "0";
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Q1_1" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q7_1"
+                            )
+                        {
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_11";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_12";
+
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+
+                            string rdo_val = "0";
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q8" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q11" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q27" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q28"
+                            )
+                        {
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_1";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_2";
+
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+
+                            string rdo_val = "0";
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q29" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q30" ||
+                            ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q32"
+                            )
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_1";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_2";
+                            string rdo_id_c = arr[0] + "_" + arr[1] + "_3";
+
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+                            RadioButton rdo_c = (RadioButton)Page.FindControl(rdo_id_c);
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+                            else if (rdo_c.Checked == true)
+                            {
+                                rdo_val = "3";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_fsite")
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_1";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_2";
+                            string rdo_id_c = arr[0] + "_" + arr[1] + "_3";
+                            string rdo_id_d = arr[0] + "_" + arr[1] + "_4";
+                            string rdo_id_e = arr[0] + "_" + arr[1] + "_5";
+                            string rdo_id_f = arr[0] + "_" + arr[1] + "_6";
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+                            RadioButton rdo_c = (RadioButton)Page.FindControl(rdo_id_c);
+                            RadioButton rdo_d = (RadioButton)Page.FindControl(rdo_id_d);
+                            RadioButton rdo_e = (RadioButton)Page.FindControl(rdo_id_e);
+                            RadioButton rdo_f = (RadioButton)Page.FindControl(rdo_id_f);
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+                            else if (rdo_c.Checked == true)
+                            {
+                                rdo_val = "3";
+                            }
+                            else if (rdo_d.Checked == true)
+                            {
+                                rdo_val = "4";
+                            }
+                            else if (rdo_e.Checked == true)
+                            {
+                                rdo_val = "5";
+                            }
+                            else if (rdo_f.Checked == true)
+                            {
+                                rdo_val = "6";
+                            }
+
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Samp_1")
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_1";
+
+
+                            CheckBox rdo_a = (CheckBox)Page.FindControl(rdo_id_a);
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Samp_2")
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_2";
+
+                            CheckBox rdo_b = (CheckBox)Page.FindControl(rdo_id_b);
+
+
+                            if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Samp_3")
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_3";
+
+
+                            CheckBox rdo_a = (CheckBox)Page.FindControl(rdo_id_a);
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "3";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS4_Q21a")
+                        {
+
+
+                            string rdo_val = "0";
+
+                            CheckBox rdo_a = (CheckBox)Page.FindControl("AS4_Q21a");
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS5_Q31")
+                        {
+
+
+                            string rdo_val = "0";
+
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString().Split('_');
+                            string rdo_id_a = arr[0] + "_" + arr[1] + "_1";
+                            string rdo_id_b = arr[0] + "_" + arr[1] + "_2";
+                            string rdo_id_c = arr[0] + "_" + arr[1] + "_3";
+                            string rdo_id_d = arr[0] + "_" + arr[1] + "_4";
+
+                            RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
+                            RadioButton rdo_c = (RadioButton)Page.FindControl(rdo_id_c);
+                            RadioButton rdo_d = (RadioButton)Page.FindControl(rdo_id_d);
+
+
+                            if (rdo_a.Checked == true)
+                            {
+                                rdo_val = "1";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "2";
+                            }
+                            else if (rdo_c.Checked == true)
+                            {
+                                rdo_val = "3";
+                            }
+                            else if (rdo_d.Checked == true)
+                            {
+                                rdo_val = "4";
+                            }
+
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q9")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS2_Q9.Text);
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_Q14a")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_Q14a.Text);
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_A2")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_A2.Text);
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_B2")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_B2.Text);
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q10")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS2_Q10.Text);
+
+                            string[] arr_tm = dt.ToShortTimeString().Split(':');
+                            string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_Q15")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_Q15.Text);
+
+                            string[] arr_tm = dt.ToShortTimeString().Split(':');
+                            string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_Q17")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_Q17.Text);
+
+                            string[] arr_tm = dt.ToShortTimeString().Split(':');
+                            string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_Q20")
+                        {
+
+
+                            DateTime dt = new DateTime();
+                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                            dt = Convert.ToDateTime(AS3_Q20.Text);
+
+                            string[] arr_tm = dt.ToShortTimeString().Split(':');
+                            string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Q4")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl("AS1_Q4");
+
+
+                            if (txt.Enabled == true && txt.Visible == true)
+                            {
+
+                                DateTime dt = new DateTime();
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS1_Q4.Text);
+
+                                string[] arr_tm = dt.ToShortTimeString().Split(':');
+                                string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                                }
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Q5")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl("AS1_Q5");
+
+
+                            if (txt.Enabled == true && txt.Visible == true)
+                            {
+
+                                DateTime dt = new DateTime();
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS1_Q5.Text);
+
+
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                                }
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Q6")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl("AS1_Q6");
+
+
+                            if (txt.Enabled == true && txt.Visible == true)
+                            {
+
+                                DateTime dt = new DateTime();
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS1_Q6.Text);
+
+
+                                string[] arr_tm = dt.ToShortTimeString().Split(':');
+                                string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                                }
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS1_Q6c")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl("AS1_Q6c");
+
+
+                            if (txt.Enabled == true && txt.Visible == true)
+                            {
+
+                                DateTime dt = new DateTime();
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS1_Q6c.Text);
+
+
+                                string[] arr_tm = dt.ToShortTimeString().Split(':');
+                                string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                                }
+
+                            }
+
+
+                        }
+                        else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q13a")
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl("AS2_Q13a");
+
+
+                            if (txt.Enabled == true && txt.Visible == true)
+                            {
+
+                                DateTime dt = new DateTime();
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS2_Q13a.Text);
+
+
+                                string[] arr_tm = dt.ToShortTimeString().Split(':');
+                                string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+
+
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortTimeString(), "", "");
+
+                                }
+
+                            }
+
+
+                        }                        
+                        else
+                        {
+
+                            TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString());
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != txt.Text.Trim())
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), txt.Text, "", "");
+
+                            }
+
+
+                        }
+
+
+
+                    }  //   if (ds.Tables[0].Rows[0][a].ToString() == tabControl1.TabPages[b].Controls[c].Name)
+
+
+
+                }     //   for (int b = 0; b <= tabControl1.TabPages[b].Controls.Count - 1; c++)
+
+
+            }     //    for (int a = 0; a <= ds.Tables[0].Columns.Count - 1; a++)
+
+
+        }
+
+
+        catch (Exception ex)
+        {
+            string message = "alert('" + ex.Message.Replace("'", "") + "');";
+            message = "alert('" + ex.Message.Replace("\"", "") + "');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+            obj_op = null;
+            ds = null;
+        }
+    }
+
+
+
+    private bool IsIncludedAudit(string tabname, string fieldname)
+    {
+        CDBOperations obj_op = new CDBOperations();
+        CConnection cn = new CConnection();
+
+        DataSet ds = null;
+
+        bool IsError = false;
+
+        try
+        {
+            //string[] fldname = { "tabname", "var_name", "var_id", "var_nmae", "var_seq", "field_desc", "remarks", "data_type", "field_len", "field_decimal", "MinValue", "MaxValue", "value1", "value2", "value3", "value4", "value5", "taborder", "msg", "IsOthers", "Others_Value", "No_Options", "Isblank", "fldvalue" };
+            //string[] fldvalue = { tabname, "", fieldname, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "8" };
+
+            //ds = obj_op.ExecuteNonQuery(fldname, fldvalue, "sp_CreateDictionary");
+
+            SqlDataAdapter da = new SqlDataAdapter("select * from tbldict where tabname = '" + tabname + "' and var_id  = '" + fieldname + "' and isaudit is not null", cn.cn);
+            ds = new DataSet();
+            da.Fill(ds);
+
+
+            if (ds != null)
+            {
+                if (ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        IsError = true;
+                    }
+                }
+            }
+        }
+
+        catch (Exception ex)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
+        }
+
+        finally
+        {
+            ds = null;
+            obj_op = null;
+        }
+
+        return IsError;
+    }
+
+
+
+    private void AddRecord(string spName, string ChildID, string VisitID, string formNo, string FormName, string ActionPerformed, string FieldName, string OldValue, string NewValue, string IsUpdateNormal, string IsDualUpdate)
+    {
+        CConnection cn = new CConnection();
+        CDBOperations obj_op = null;
+        string[] st_dt;
+
+        try
+        {
+            obj_op = new CDBOperations();
+
+            st_dt = DateTime.Now.ToShortDateString().Split('/');
+
+
+            DateTime start_dt = new DateTime();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+            start_dt = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            DateTime start_dt1 = new DateTime();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+            start_dt1 = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
+
+
+            //string[] fldname = { "FormID", "VisitID", "FormNo", "FormName", "ActionPerformed", "EntryDate", "EntryTime", "ComputerName", "WinUserName", "LoginUserName", "FieldName", "OldValue", "NewValue", "IsUpdateNormal", "IsDualUpdate" };
+            ///string[] fldvalue = { ChildID, VisitID, formNo, FormName, ActionPerformed, start_dt.ToShortDateString(), start_dt1.ToShortTimeString(), "", Session["userid"].ToString(), Session["userid"].ToString(), FieldName, OldValue, NewValue, IsUpdateNormal, IsDualUpdate };
+
+            //obj_op.ExecuteNonQuery(fldname, fldvalue, spName);
+
+
+            string qry = "insert into tblAuditTrials (FormID, VisitID, FormNo, FormName, ActionPerformed, EntryDate, EntryTime, ComputerName, WinUserName, LoginUserName, FieldName, OldValue, NewValue, IsUpdateNormal, IsDualUpdate) values ('" +
+                ChildID + "', '" + VisitID + "', '" + formNo + "', '" + FormName + "', '" + ActionPerformed + "', '" + start_dt.ToShortDateString() + "', '" + start_dt1.ToShortTimeString() + "', ''" + ", '" + Session["userid"].ToString() + "', '" + Session["userid"].ToString() + "', '" + FieldName + "', '" + OldValue + "', '" + NewValue + "', '" + IsUpdateNormal + "', '" + IsDualUpdate + "')";
+
+
+            SqlDataAdapter da = new SqlDataAdapter(qry, cn.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+        }
+
+        catch (Exception ex)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
+        }
+
+        finally
+        {
+            obj_op = null;
+        }
+    }
+
+
+
+
 }
