@@ -22,7 +22,7 @@ using System.ServiceModel.Configuration;
 using System.Diagnostics;
 using System.Collections;
 using System.Xml.Linq;
-
+using Microsoft.SqlServer.Server;
 
 public partial class sample_results : System.Web.UI.Page
 {
@@ -2458,7 +2458,10 @@ public partial class sample_results : System.Web.UI.Page
             }
             else
             {
-                UpdateData("Done");
+                if (AuditTrials())
+                {
+                    UpdateData("Done");
+                }
             }
 
         }
@@ -21714,13 +21717,17 @@ public partial class sample_results : System.Web.UI.Page
         {
             if (Request["labid"].ToString() == "3")
             {
-                AuditTrials();
-                UpdateData_historyonly("history");
+                if (AuditTrials())
+                {
+                    UpdateData_historyonly("history");
+                }
             }
             else
             {
-                AuditTrials();
-                UpdateData("Draft");
+                if (AuditTrials())
+                {
+                    UpdateData("Draft");
+                }
             }
 
         }
@@ -23293,7 +23300,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_52a_b," +
     "a.LA_52a_a," +
     "a.LA_52b_a" +
-            " from sample_result a where a.la_sno = '" + la_sno.Text + "' and a.labid='1'", cn.cn);
+            " from sample_result a where a.id = '" + ViewState["id"].ToString() + "'", cn.cn);
         DataSet ds = new DataSet();
         da.Fill(ds);
 
@@ -23313,8 +23320,10 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-    private void AuditTrials()
+    private bool AuditTrials()
     {
+        bool IsSuccess = false;
+
         CDBOperations obj_op = null;
         DataSet ds = null;
         DataSet ds_dict = null;
@@ -23350,153 +23359,157 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         if (ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_05_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_06_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_07_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_08_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_09_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_10_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_11_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_12_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_13_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_14_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_15_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_16_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_17" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_01_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_02_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_05_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_06_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_07_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_01_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_02_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_01_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_02_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_01_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_02_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_05_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_06_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_07_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_08_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_09_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_10_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_01_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_02_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_03_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_05_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_06_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_07_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_08_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_09_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_10_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_11_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_12_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_13_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_14_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_15_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_16_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_17_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_18_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_19_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_20_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_21_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_01_ca" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_02a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_03a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_04a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_05a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_06a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_07a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_08a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_09a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_10a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_11a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_12a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_13a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_14a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_15a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_16a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_17a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_18a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_19a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_20a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_21a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_22a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_23a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_24a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_25a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_26a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_27a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_28a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_29a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_30a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_31a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_32a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_33a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_34a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_35a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_36a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_37a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_18" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_19" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_20a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_21a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_22a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_23a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_24a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_25a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_26a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_27a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_28a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_29a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_30a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_31a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_32a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_33a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_34a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_35a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_36a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_37a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_38a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_39a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_40a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_41a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_42a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_43a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_44a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_45a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_46a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_47a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_48a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_49a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_50a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_51a_a" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_52a_a"
-                            )
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_05_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_06_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_07_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_08_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_09_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_10_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_11_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_12_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_13_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_14_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_15_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_16_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_17" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_01_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_02_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_03_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_05_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_06_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_07_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_01_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_02_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_03_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_01_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_02_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_03_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_01_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_02_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_03_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_05_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_06_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_07_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_08_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_09_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_10_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_01_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_02_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_03_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_05_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_06_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_07_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_08_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_09_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_10_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_11_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_12_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_13_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_14_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_15_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_16_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_17_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_18_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_19_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_20_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_21_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_01_ca" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_02a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_03a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_04a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_05a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_06a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_07a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_08a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_09a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_10a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_11a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_12a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_13a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_14a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_15a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_16a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_17a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_18a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_19a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_20a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_21a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_22a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_23a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_24a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_25a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_26a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_27a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_28a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_29a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_30a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_31a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_32a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_33a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_34a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_35a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_36a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_37a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_18" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_19" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_20a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_21a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_22a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_23a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_24a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_25a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_26a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_27a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_28a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_29a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_30a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_31a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_32a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_33a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_34a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_35a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_36a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_37a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_38a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_39a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_40a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_41a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_42a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_43a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_44a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_45a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_46a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_47a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_48a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_49a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_50a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_51a_a" ||
+                        ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_52a_a"
+                        )
                         {
 
 
                             TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["var_id"].ToString());
 
 
-
-                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text.Trim())
+                            if (txt.Enabled == true && txt.Visible == true)
                             {
 
-                                AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text.Trim())
+                                {
+
+                                    AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+
+                                }
 
                             }
-
 
                         }
                         else if (
@@ -23514,52 +23527,53 @@ public partial class sample_results : System.Web.UI.Page
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_14_b" ||
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_15_b" ||
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_16_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_01_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_02_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_03_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_04_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_05_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_06_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_07_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_01_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_02_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_03_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_04_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_01_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_02_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_03_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_04_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_01_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_02_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_03_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_04_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_05_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_06_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_07_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_08_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_09_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_10_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_01_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_02_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_03_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_05_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_06_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_07_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_08_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_09_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_10_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_11_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_12_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_13_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_14_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_15_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_16_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_17_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_18_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_19_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_20_b" ||
-                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_21_b"
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_01" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_02" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_03" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_04" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_05" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_06" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LF_07" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_01" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_02" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_03" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "RF_04" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_01" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_02" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_03" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "SE_04" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_01" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_02" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_03" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_04" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_05" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_06" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_07" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_08" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_09" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "CS_10" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_01" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_02" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_03" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_04a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_05" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_06" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_07" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_08" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_09" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_10" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_11" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_12" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_13" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_14" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_15" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_16" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_17" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_18" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_19" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_20" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "UR_21"
                             )
                         {
 
@@ -23713,6 +23727,77 @@ public partial class sample_results : System.Web.UI.Page
 
                         }
                         else if (
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_20a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_21a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_22a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_23a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_24a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_25a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_26a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_27a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_28a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_29a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_30a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_31a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_32a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_33a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_34a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_35a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_36a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_37a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_38a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_39a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_40a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_41a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_42a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_43a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_44a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_45a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_46a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_47a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_48a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_49a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_50a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_51a_b" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_52a_b"
+                            )
+                        {
+
+
+                            string rdo_val = "-1";
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["var_id"].ToString().Split('_');
+                            string rdo_id = arr[0] + "_" + arr[1];
+
+                            RadioButton rdo_v = (RadioButton)Page.FindControl(rdo_id + "_v");
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id + "_b");
+                            RadioButton rdo_c = (RadioButton)Page.FindControl(rdo_id + "_c");
+
+
+                            if (rdo_v.Checked == true)
+                            {
+                                rdo_val = "";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "999";
+                            }
+                            else if (rdo_c.Checked == true)
+                            {
+                                rdo_val = "888";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
+                        else if (
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_02b" ||
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_03b" ||
                             ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "uc_04b" ||
@@ -23756,7 +23841,6 @@ public partial class sample_results : System.Web.UI.Page
                             string rdo_val = "-1";
 
                             int var_len = ds_dict.Tables[0].Rows[a]["var_id"].ToString().Length - 1;
-
                             string rdo_id = ds_dict.Tables[0].Rows[a]["var_id"].ToString().Substring(0, var_len);
 
                             RadioButton rdo_v = (RadioButton)Page.FindControl(rdo_id + "b_a");
@@ -23787,19 +23871,93 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         }
+                        else if (
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_20b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_21b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_22b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_23b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_24b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_25b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_26b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_27b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_28b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_29b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_30b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_31b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_32b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_33b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_34b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_35b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_36b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_37b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_38b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_39b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_40b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_41b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_42b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_43b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_44b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_45b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_46b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_47b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_48b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_49b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_50b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_51b_a" ||
+                            ds_dict.Tables[0].Rows[a]["var_id"].ToString() == "LA_52b_a"
+                            )
+                        {
+
+
+
+                            string rdo_val = "-1";
+
+                            string[] arr = ds_dict.Tables[0].Rows[a]["var_id"].ToString().Split('_');
+                            string rdo_id = arr[0] + "_" + arr[1];
+
+                            RadioButton rdo_v = (RadioButton)Page.FindControl(rdo_id + "_a");
+                            RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id + "_b");
+                            RadioButton rdo_c = (RadioButton)Page.FindControl(rdo_id + "_c");
+
+
+                            if (rdo_v.Checked == true)
+                            {
+                                rdo_val = "";
+                            }
+                            else if (rdo_b.Checked == true)
+                            {
+                                rdo_val = "999";
+                            }
+                            else if (rdo_c.Checked == true)
+                            {
+                                rdo_val = "888";
+                            }
+
+
+                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != rdo_val)
+                            {
+
+                                AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), rdo_val, "", "");
+
+                            }
+
+
+                        }
                         else
                         {
 
                             TextBox txt = (TextBox)Page.FindControl(ds_dict.Tables[0].Rows[a]["var_id"].ToString());
 
-
-                            if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text)
+                            if (txt.Enabled == true && txt.Visible == true)
                             {
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString().Trim() != txt.Text.Trim())
+                                {
 
-                                AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+                                    AddRecord("", ds.Tables[0].Rows[b]["la_sno"].ToString(), "", "", "sample_result", "Update", ds_dict.Tables[0].Rows[a]["var_id"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["var_id"].ToString()].ToString(), txt.Text, "", "");
+
+                                }
 
                             }
-
 
                         }
 
@@ -23815,11 +23973,15 @@ public partial class sample_results : System.Web.UI.Page
             }     //    for (int a = 0; a <= ds.Tables[0].Columns.Count - 1; a++)
 
 
+            IsSuccess = true;
+
+
         }
 
 
         catch (Exception ex)
         {
+            IsSuccess = false;
             string message = "alert('" + ex.Message.Replace("'", "") + "');";
             message = "alert('" + ex.Message.Replace("\"", "") + "');";
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
@@ -23830,6 +23992,8 @@ public partial class sample_results : System.Web.UI.Page
             obj_op = null;
             ds = null;
         }
+
+        return IsSuccess;
     }
 
 
