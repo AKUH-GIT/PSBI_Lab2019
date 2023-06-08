@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/components.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/vendors/css/forms/selects/select2.min.css">
     <!-- END: Theme CSS-->
+
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
     <link rel="stylesheet" type="text/css" href="Content/demo/chameleon-admin-template/app-assets/css/core/colors/palette-gradient.min.css">
