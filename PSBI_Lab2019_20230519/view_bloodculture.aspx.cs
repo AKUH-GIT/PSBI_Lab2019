@@ -20,7 +20,7 @@ public partial class view_bloodculture : System.Web.UI.Page
         }
         else
         {
-            IsTestingServer();
+            //IsTestingServer();
 
             LinkButton lnkUser = (LinkButton)FindControl("usernme");
             lnkUser.Text = "Welcome: " + HttpContext.Current.Request["mycookie"].ToString();
@@ -32,7 +32,7 @@ public partial class view_bloodculture : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Server.MachineName.ToString() != "pedres2.aku.edu")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;

@@ -45,7 +45,7 @@ public partial class sample_recv : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            IsTestingServer();
+            //IsTestingServer();
 
             if (Request.Cookies["labid"].Value == "2")
             {
@@ -1032,6 +1032,10 @@ public partial class sample_recv : System.Web.UI.Page
                         {
                             AS1_fsite_6.Checked = true;
                         }
+                        else if (ds.Tables[0].Rows[0]["AS1_fsite"].ToString() == "7")
+                        {
+                            AS1_fsite_7.Checked = true;
+                        }
 
 
                         if (ds.Tables[0].Rows[0]["AS1_Samp_1"].ToString() == "1")
@@ -1303,7 +1307,7 @@ public partial class sample_recv : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Request.Url.Authority != "pedres2.aku.edu")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;
@@ -2745,6 +2749,10 @@ HttpContext.Current.Request["labid"].ToString()
             {
                 var_AS1_fsite = "6";
             }
+            else if (AS1_fsite_7.Checked == true)
+            {
+                var_AS1_fsite = "7";
+            }
 
 
 
@@ -3578,6 +3586,11 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             {
                 var_AS1_fsite = "6";
             }
+            else if (AS1_fsite_7.Checked == true)
+            {
+                var_AS1_fsite = "7";
+            }
+
 
 
             if (!chkMRNo.Checked)

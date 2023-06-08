@@ -90,7 +90,7 @@ public partial class sample_results : System.Web.UI.Page
                 lnkUser = null;
 
 
-                IsTestingServer();
+                //IsTestingServer();
 
 
                 if (Request.QueryString["id"] != null && Request.Cookies["labid"].Value == "3")
@@ -220,7 +220,7 @@ public partial class sample_results : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Server.MachineName.ToString() != "pedres2.aku.edu")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;

@@ -45,7 +45,7 @@ public partial class sample_recv : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            IsTestingServer();
+            //IsTestingServer();
 
             if (Request.Cookies["labid"].Value == "2")
             {
@@ -1307,7 +1307,7 @@ public partial class sample_recv : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Request.Url.Authority != "pedres2.aku.edu")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;

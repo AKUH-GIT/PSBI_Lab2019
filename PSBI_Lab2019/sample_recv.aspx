@@ -1644,7 +1644,7 @@
 
                                                     <div class="form-group row">
                                                         <div class="col-md-12" id="lbl_testing" runat="server">
-                                                            <div id="Div15" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;">Testing Entries</div>
+                                                            <div id="Div15" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;"></div>
                                                         </div>
                                                     </div>
 

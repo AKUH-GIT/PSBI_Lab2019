@@ -34,7 +34,7 @@ public partial class search_sample : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                IsTestingServer();
+                //IsTestingServer();
 
 
                 if (Request.Cookies["role"].Value == "admin")
@@ -55,7 +55,7 @@ public partial class search_sample : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Server.MachineName.ToString() != "pedres2.aku.edu")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;

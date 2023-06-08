@@ -1644,7 +1644,7 @@
 
                                                     <div class="form-group row">
                                                         <div class="col-md-12" id="lbl_testing" runat="server">
-                                                            <div id="Div15" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;">Testing Entries</div>
+                                                            <div id="Div15" runat="server" style="font-size: 15pt; font-weight: bold; color: #FF0000; text-align: center;"></div>
                                                         </div>
                                                     </div>
 
@@ -1754,6 +1754,10 @@
                                                             <fieldset>
                                                                 <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_6" ID="AS1_fsite_6" />
                                                                 <label for="input-radio-12">Sheikh Saeed Memorial Hospital</label>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <asp:RadioButton runat="server" class=".radiocls2" GroupName="AS1_fsite" name="AS1_fsite_7" ID="AS1_fsite_7" />
+                                                                <label for="input-radio-12">Sindh Institute of Child Health and Neonatology</label>
                                                             </fieldset>
                                                         </div>
                                                     </div>

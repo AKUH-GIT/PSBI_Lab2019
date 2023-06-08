@@ -32,7 +32,7 @@ public partial class login : System.Web.UI.Page
                 lblerr.InnerText = Request.QueryString["errmsg"];
             }
 
-            IsTestingServer();
+            //IsTestingServer();
 
         }
     }
@@ -40,7 +40,7 @@ public partial class login : System.Web.UI.Page
 
     private void IsTestingServer()
     {
-        if (Server.MachineName.ToString() != "pedres2")
+        if (Request.Url.Authority != "CLS-PAE-FP59408")
         {
             //lbl_testing.InnerText = Server.MachineName;
             lbl_testing.Visible = true;
