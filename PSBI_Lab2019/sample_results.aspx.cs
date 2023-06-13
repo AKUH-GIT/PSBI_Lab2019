@@ -6617,6 +6617,25 @@ public partial class sample_results : System.Web.UI.Page
     {
         CDBOperations obj_op = new CDBOperations();
 
+
+        string var_LA_03_rdo = "-1";
+        string var_LA_03_b = "-1";
+        string var_LA_04_b = "-1";
+        string var_LA_05_b = "-1";
+        string var_LA_06_b = "-1";
+        string var_LA_07_b = "-1";
+        string var_LA_08_b = "-1";
+        string var_LA_09_b = "-1";
+        string var_LA_10_b = "-1";
+        string var_LA_11_b = "-1";
+        string var_LA_12_b = "-1";
+        string var_LA_13_b = "-1";
+        string var_LA_14_b = "-1";
+        string var_LA_15_b = "-1";
+        string var_LA_16_b = "-1";
+
+
+        string var_LF_01_rdo = "-1";
         string var_LF_01 = "-1";
         string var_LF_02 = "-1";
         string var_LF_03 = "-1";
@@ -6626,18 +6645,21 @@ public partial class sample_results : System.Web.UI.Page
         string var_LF_07 = "-1";
 
 
+        string var_RF_01_rdo = "-1";
         string var_RF_01 = "-1";
         string var_RF_02 = "-1";
         string var_RF_03 = "-1";
         string var_RF_04 = "-1";
 
 
+        string var_SE_01_rdo = "-1";
         string var_SE_01 = "-1";
         string var_SE_02 = "-1";
         string var_SE_03 = "-1";
         string var_SE_04 = "-1";
 
 
+        string var_CS_01_rdo = "-1";
         string var_CS_01 = "-1";
         string var_CS_02 = "-1";
         string var_CS_03 = "-1";
@@ -6650,6 +6672,7 @@ public partial class sample_results : System.Web.UI.Page
         string var_CS_10 = "-1";
 
 
+        string var_UR_01_rdo = "-1";
         string var_UR_01 = "-1";
         string var_UR_02 = "-1";
         string var_UR_03 = "-1";
@@ -6672,6 +6695,7 @@ public partial class sample_results : System.Web.UI.Page
         string var_UR_20 = "-1";
         string var_UR_21 = "-1";
 
+        string var_uc_01a_rdo = "-1";
         string var_uc_01a = "-1";
 
 
@@ -6753,22 +6777,10 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
-        string var_LA_03_b = "-1";
-        string var_LA_04_b = "-1";
-        string var_LA_05_b = "-1";
-        string var_LA_06_b = "-1";
-        string var_LA_07_b = "-1";
-        string var_LA_08_b = "-1";
-        string var_LA_09_b = "-1";
-        string var_LA_10_b = "-1";
-        string var_LA_11_b = "-1";
-        string var_LA_12_b = "-1";
-        string var_LA_13_b = "-1";
-        string var_LA_14_b = "-1";
-        string var_LA_15_b = "-1";
-        string var_LA_16_b = "-1";
 
 
+
+        string var_LA_20a_b_rdo = "-1";
         string var_LA_20a_b = "-1";
         string var_LA_21a_b = "-1";
         string var_LA_22a_b = "-1";
@@ -6843,6 +6855,15 @@ public partial class sample_results : System.Web.UI.Page
 
         try
         {
+
+            if (LA_03_rdo1.Checked)
+            {
+                var_LA_03_rdo = "1";
+            }
+            else if (LA_03_rdo2.Checked)
+            {
+                var_LA_03_rdo = "2";
+            }
 
 
             if (LA_03_v.Checked == true)
@@ -7054,6 +7075,16 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+            if (LF_01_rdo1.Checked)
+            {
+                var_LF_01_rdo = "1";
+            }
+            else if (LF_01_rdo2.Checked)
+            {
+                var_LF_01_rdo = "2";
+            }
+
+
 
             if (LF_01_v.Checked == true)
             {
@@ -7161,6 +7192,17 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+            if (RF_01_rdo1.Checked)
+            {
+                var_RF_01_rdo = "1";
+            }
+            else if (RF_01_rdo2.Checked)
+            {
+                var_RF_01_rdo = "2";
+            }
+
+
+
             if (RF_01_v.Checked == true)
             {
                 var_RF_01 = "";
@@ -7217,6 +7259,17 @@ public partial class sample_results : System.Web.UI.Page
             else if (RF_04_c.Checked == true)
             {
                 var_RF_04 = "888";
+            }
+
+
+
+            if (SE_01_rdo1.Checked)
+            {
+                var_SE_01_rdo = "1";
+            }
+            else if (SE_01_rdo2.Checked)
+            {
+                var_SE_01_rdo = "2";
             }
 
 
@@ -7278,6 +7331,17 @@ public partial class sample_results : System.Web.UI.Page
             else if (SE_04_c.Checked == true)
             {
                 var_SE_04 = "888";
+            }
+
+
+
+            if (CS_01_rdo1.Checked)
+            {
+                var_CS_01_rdo = "1";
+            }
+            else if (CS_01_rdo2.Checked)
+            {
+                var_CS_01_rdo = "2";
             }
 
 
@@ -7430,6 +7494,19 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_CS_10 = "888";
             }
+
+
+
+
+            if (UR_01_rdo1.Checked)
+            {
+                var_UR_01_rdo = "1";
+            }
+            else if (UR_01_rdo2.Checked)
+            {
+                var_UR_01_rdo = "2";
+            }
+
 
 
 
@@ -7750,6 +7827,18 @@ public partial class sample_results : System.Web.UI.Page
             else if (UR_21_c.Checked == true)
             {
                 var_UR_21 = "888";
+            }
+
+
+
+
+            if (uc_01a_rdo1.Checked)
+            {
+                var_uc_01a_rdo = "1";
+            }
+            else if (uc_01a_rdo2.Checked)
+            {
+                var_uc_01a_rdo = "2";
             }
 
 
@@ -17647,6 +17736,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_01," +
     "a.LA_02," +
     "a.LA_02a," +
+    "a.LA_03_rdo," +
     "a.LA_03_b," +
     "a.LA_03_a," +
     "a.LA_04_b," +
@@ -17675,6 +17765,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_15_a," +
     "a.LA_16_b," +
     "a.LA_16_a," +
+    "a.LF_01_rdo," +
     "a.LF_01," +
     "a.LF_01_a," +
     "a.LF_02," +
@@ -17689,6 +17780,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LF_06_a," +
     "a.LF_07," +
     "a.LF_07_a," +
+    "a.RF_01_rdo," +
     "a.RF_01," +
     "a.RF_01_a," +
     "a.RF_02," +
@@ -17697,6 +17789,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.RF_03_a," +
     "a.RF_04," +
     "a.RF_04_a," +
+    "a.SE_01_rdo," +
     "a.SE_01," +
     "a.SE_01_a," +
     "a.SE_02," +
@@ -17705,6 +17798,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.SE_03_a," +
     "a.SE_04," +
     "a.SE_04_a," +
+    "a.CS_01_rdo," +
     "a.CS_01," +
     "a.CS_01_a," +
     "a.CS_02," +
@@ -17725,6 +17819,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.CS_09_a," +
     "a.CS_10," +
     "a.CS_10_a," +
+    "a.UR_01_rdo," +
     "a.UR_01," +
     "a.UR_01_a," +
     "a.UR_02," +
@@ -17767,6 +17862,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.UR_20_a," +
     "a.UR_21," +
     "a.UR_21_a," +
+    "a.uc_01a_rdo," +
     "a.uc_01_ca," +
     "a.uc_01a," +
     "a.uc_02a," +
@@ -17880,6 +17976,7 @@ public partial class sample_results : System.Web.UI.Page
     "a.LA_17," +
     "a.LA_18," +
     "a.LA_19," +
+    "a.LA_20a_rdo," +
     "a.LA_20a_b," +
     "a.LA_20a_a," +
     "a.LA_20b_a," +
@@ -18027,6 +18124,20 @@ public partial class sample_results : System.Web.UI.Page
                         //LA_01.Text = ds.Tables[0].Rows[0]["LA_01"].ToString();
                         //LA_02.Text = ds.Tables[0].Rows[0]["LA_02"].ToString();
                         //LA_02a.Text = ds.Tables[0].Rows[0]["LA_02a"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["LA_03_rdo"].ToString() == "1")
+                        {
+                            LA_03_rdo1.Checked = true;
+                            LA_03_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_03_rdo"].ToString() == "2")
+                        {
+                            LA_03_rdo2.Checked = true;
+                            LA_03_rdo2_CheckedChanged(null, null);
+                        }
+
 
 
                         if (ds.Tables[0].Rows[0]["LA_03_b"].ToString() == "")
@@ -18312,6 +18423,20 @@ public partial class sample_results : System.Web.UI.Page
                         LA_16_a.Text = ds.Tables[0].Rows[0]["LA_16_a"].ToString();
 
 
+
+                        if (ds.Tables[0].Rows[0]["LF_01_rdo"].ToString() == "1")
+                        {
+                            LF_01_rdo1.Checked = true;
+                            LF_01_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["LF_01_rdo"].ToString() == "2")
+                        {
+                            LF_01_rdo2.Checked = true;
+                            LF_01_rdo2_CheckedChanged(null, null);
+                        }
+
+
+
                         if (ds.Tables[0].Rows[0]["LF_01"].ToString() == "")
                         {
                             LF_01_v.Checked = true;
@@ -18452,6 +18577,20 @@ public partial class sample_results : System.Web.UI.Page
                         LF_07_a.Text = ds.Tables[0].Rows[0]["LF_07_a"].ToString();
 
 
+
+                        if (ds.Tables[0].Rows[0]["RF_01_rdo"].ToString() == "1")
+                        {
+                            RF_01_rdo1.Checked = true;
+                            RF_01_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["RF_01_rdo"].ToString() == "2")
+                        {
+                            RF_01_rdo2.Checked = true;
+                            RF_01_rdo2_CheckedChanged(null, null);
+                        }
+
+
+
                         if (ds.Tables[0].Rows[0]["RF_01"].ToString() == "")
                         {
                             RF_01_v.Checked = true;
@@ -18532,6 +18671,20 @@ public partial class sample_results : System.Web.UI.Page
                         RF_04_a.Text = ds.Tables[0].Rows[0]["RF_04_a"].ToString();
 
 
+
+                        if (ds.Tables[0].Rows[0]["SE_01_rdo"].ToString() == "1")
+                        {
+                            SE_01_rdo1.Checked = true;
+                            SE_01_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["SE_01_rdo"].ToString() == "2")
+                        {
+                            SE_01_rdo2.Checked = true;
+                            SE_01_rdo2_CheckedChanged(null, null);
+                        }
+
+
+
                         if (ds.Tables[0].Rows[0]["SE_01"].ToString() == "")
                         {
                             SE_01_v.Checked = true;
@@ -18610,6 +18763,20 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         SE_04_a.Text = ds.Tables[0].Rows[0]["SE_04_a"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["CS_01_rdo"].ToString() == "1")
+                        {
+                            CS_01_rdo1.Checked = true;
+                            CS_01_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["CS_01_rdo"].ToString() == "2")
+                        {
+                            CS_01_rdo2.Checked = true;
+                            CS_01_rdo2_CheckedChanged(null, null);
+                        }
+
 
 
                         if (ds.Tables[0].Rows[0]["CS_01"].ToString() == "")
@@ -18810,6 +18977,23 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         CS_10_a.Text = ds.Tables[0].Rows[0]["CS_10_a"].ToString();
+
+
+
+
+                        if (ds.Tables[0].Rows[0]["UR_01_rdo"].ToString() == "1")
+                        {
+                            UR_01_rdo1.Checked = true;
+                            UR_01_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["UR_01_rdo"].ToString() == "2")
+                        {
+                            UR_01_rdo2.Checked = true;
+                            UR_01_rdo2_CheckedChanged(null, null);
+                        }
+
+
+
 
 
                         if (ds.Tables[0].Rows[0]["UR_01"].ToString() == "")
@@ -19235,6 +19419,20 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         UR_21_a.Text = ds.Tables[0].Rows[0]["UR_21_a"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["uc_01a_rdo"].ToString() == "1")
+                        {
+                            uc_01a_rdo1.Checked = true;
+                            uc_01a_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["uc_01a_rdo"].ToString() == "2")
+                        {
+                            uc_01a_rdo2.Checked = true;
+                            uc_01a_rdo2_CheckedChanged(null, null);
+                        }
+
 
 
                         uc_01_ca.Text = ds.Tables[0].Rows[0]["uc_01_ca"].ToString();
@@ -20491,6 +20689,19 @@ public partial class sample_results : System.Web.UI.Page
 
 
                         //LA_19.Text = ds.Tables[0].Rows[0]["LA_19"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["LA_20a_rdo"].ToString() == "1")
+                        {
+                            LA_20a_rdo1.Checked = true;
+                            LA_20a_rdo1_CheckedChanged(null, null);
+                        }
+                        else if (ds.Tables[0].Rows[0]["LA_20a_rdo"].ToString() == "2")
+                        {
+                            LA_20a_rdo2.Checked = true;
+                            LA_20a_rdo2_CheckedChanged(null, null);
+                        }
 
 
 
