@@ -2538,6 +2538,24 @@ public partial class sample_results : System.Web.UI.Page
     {
         CDBOperations obj_op = new CDBOperations();
 
+        string var_LA_03_rdo = "-1";
+        string var_LA_03_b = "-1";
+        string var_LA_04_b = "-1";
+        string var_LA_05_b = "-1";
+        string var_LA_06_b = "-1";
+        string var_LA_07_b = "-1";
+        string var_LA_08_b = "-1";
+        string var_LA_09_b = "-1";
+        string var_LA_10_b = "-1";
+        string var_LA_11_b = "-1";
+        string var_LA_12_b = "-1";
+        string var_LA_13_b = "-1";
+        string var_LA_14_b = "-1";
+        string var_LA_15_b = "-1";
+        string var_LA_16_b = "-1";
+
+
+        string var_LF_01_rdo = "-1";
         string var_LF_01 = "-1";
         string var_LF_02 = "-1";
         string var_LF_03 = "-1";
@@ -2547,18 +2565,21 @@ public partial class sample_results : System.Web.UI.Page
         string var_LF_07 = "-1";
 
 
+        string var_RF_01_rdo = "-1";
         string var_RF_01 = "-1";
         string var_RF_02 = "-1";
         string var_RF_03 = "-1";
         string var_RF_04 = "-1";
 
 
+        string var_SE_01_rdo = "-1";
         string var_SE_01 = "-1";
         string var_SE_02 = "-1";
         string var_SE_03 = "-1";
         string var_SE_04 = "-1";
 
 
+        string var_CS_01_rdo = "-1";
         string var_CS_01 = "-1";
         string var_CS_02 = "-1";
         string var_CS_03 = "-1";
@@ -2571,6 +2592,7 @@ public partial class sample_results : System.Web.UI.Page
         string var_CS_10 = "-1";
 
 
+        string var_UR_01_rdo = "-1";
         string var_UR_01 = "-1";
         string var_UR_02 = "-1";
         string var_UR_03 = "-1";
@@ -2593,6 +2615,8 @@ public partial class sample_results : System.Web.UI.Page
         string var_UR_20 = "-1";
         string var_UR_21 = "-1";
 
+
+        string var_uc_01a_rdo = "-1";
         string var_uc_01a = "-1";
 
 
@@ -2673,23 +2697,7 @@ public partial class sample_results : System.Web.UI.Page
         string var_uc_37b = "-1";
 
 
-
-        string var_LA_03_b = "-1";
-        string var_LA_04_b = "-1";
-        string var_LA_05_b = "-1";
-        string var_LA_06_b = "-1";
-        string var_LA_07_b = "-1";
-        string var_LA_08_b = "-1";
-        string var_LA_09_b = "-1";
-        string var_LA_10_b = "-1";
-        string var_LA_11_b = "-1";
-        string var_LA_12_b = "-1";
-        string var_LA_13_b = "-1";
-        string var_LA_14_b = "-1";
-        string var_LA_15_b = "-1";
-        string var_LA_16_b = "-1";
-
-
+        string var_LA_20a_rdo = "-1";
         string var_LA_20a_b = "-1";
         string var_LA_21a_b = "-1";
         string var_LA_22a_b = "-1";
@@ -2767,6 +2775,16 @@ public partial class sample_results : System.Web.UI.Page
 
         try
         {
+
+            if (LA_03_rdo1.Checked)
+            {
+                var_LA_03_rdo = "1";
+            }
+            else if (LA_03_rdo2.Checked)
+            {
+                var_LA_03_rdo = "2";
+            }
+
 
             if (LA_03_v.Checked == true)
             {
@@ -2977,6 +2995,16 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+            if (LF_01_rdo1.Checked)
+            {
+                var_LF_01_rdo = "1";
+            }
+            else if (LF_01_rdo2.Checked)
+            {
+                var_LF_01_rdo = "2";
+            }
+
+
 
             if (LF_01_v.Checked == true)
             {
@@ -3084,6 +3112,17 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+            if (RF_01_rdo1.Checked)
+            {
+                var_RF_01_rdo = "1";
+            }
+            else if (RF_01_rdo2.Checked)
+            {
+                var_RF_01_rdo = "2";
+            }
+
+
+
             if (RF_01_v.Checked == true)
             {
                 var_RF_01 = "";
@@ -3140,6 +3179,17 @@ public partial class sample_results : System.Web.UI.Page
             else if (RF_04_c.Checked == true)
             {
                 var_RF_04 = "888";
+            }
+
+
+
+            if (SE_01_rdo1.Checked)
+            {
+                var_SE_01_rdo = "1";
+            }
+            else if (SE_01_rdo2.Checked)
+            {
+                var_SE_01_rdo = "2";
             }
 
 
@@ -3201,6 +3251,17 @@ public partial class sample_results : System.Web.UI.Page
             else if (SE_04_c.Checked == true)
             {
                 var_SE_04 = "888";
+            }
+
+
+
+            if (CS_01_rdo1.Checked)
+            {
+                var_CS_01_rdo = "1";
+            }
+            else if (CS_01_rdo2.Checked)
+            {
+                var_CS_01_rdo = "2";
             }
 
 
@@ -3353,6 +3414,18 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_CS_10 = "888";
             }
+
+
+
+            if (UR_01_rdo1.Checked)
+            {
+                var_UR_01_rdo = "1";
+            }
+            else if (UR_01_rdo2.Checked)
+            {
+                var_UR_01_rdo = "2";
+            }
+
 
 
 
@@ -3674,6 +3747,19 @@ public partial class sample_results : System.Web.UI.Page
             {
                 var_UR_21 = "888";
             }
+
+
+
+
+            if (uc_01a_rdo1.Checked)
+            {
+                var_uc_01a_rdo = "1";
+            }
+            else if (uc_01a_rdo2.Checked)
+            {
+                var_uc_01a_rdo = "2";
+            }
+
 
 
 
@@ -4802,6 +4888,16 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+            if (LA_20a_rdo1.Checked)
+            {
+                var_LA_20a_rdo = "1";
+            }
+            else if (LA_20a_rdo2.Checked)
+            {
+                var_LA_20a_rdo = "2";
+            }
+
+
 
 
             if (LA_20a_v.Checked == true)
@@ -5857,6 +5953,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_01 = '" + LA_01.Text + "', " +
         "LA_02 = '" + LA_02.Text + "', " +
         "LA_02a = '" + LA_02a.Text + "', " +
+        "LA_03_rdo = '" + var_LA_03_rdo + "', " +
         "LA_03_b = '" + var_LA_03_b + "', " +
         "LA_03_a = '" + LA_03_a.Text + "', " +
         "LA_04_b = '" + var_LA_04_b + "', " +
@@ -5885,6 +5982,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_15_a = '" + LA_15_a.Text + "', " +
         "LA_16_b = '" + var_LA_16_b + "', " +
         "LA_16_a = '" + LA_16_a.Text + "', " +
+        "LF_01_rdo = '" + var_LF_01_rdo + "', " +
         "LF_01 = '" + var_LF_01 + "', " +
         "LF_01_a = '" + LF_01_a.Text + "', " +
         "LF_02 = '" + var_LF_02 + "', " +
@@ -5899,6 +5997,7 @@ public partial class sample_results : System.Web.UI.Page
         "LF_06_a = '" + LF_06_a.Text + "', " +
         "LF_07 = '" + var_LF_07 + "', " +
         "LF_07_a = '" + LF_07_a.Text + "', " +
+        "RF_01_rdo = '" + var_RF_01_rdo + "', " +
         "RF_01 = '" + var_RF_01 + "', " +
         "RF_01_a = '" + RF_01_a.Text + "', " +
         "RF_02 = '" + var_RF_02 + "', " +
@@ -5907,6 +6006,7 @@ public partial class sample_results : System.Web.UI.Page
         "RF_03_a = '" + RF_03_a.Text + "', " +
         "RF_04 = '" + var_RF_04 + "', " +
         "RF_04_a = '" + RF_04_a.Text + "', " +
+        "SE_01_rdo = '" + var_SE_01_rdo + "', " +
         "SE_01 = '" + var_SE_01 + "', " +
         "SE_01_a = '" + SE_01_a.Text + "', " +
         "SE_02 = '" + var_SE_02 + "', " +
@@ -5915,6 +6015,7 @@ public partial class sample_results : System.Web.UI.Page
         "SE_03_a = '" + SE_03_a.Text + "', " +
         "SE_04 = '" + var_SE_04 + "', " +
         "SE_04_a = '" + SE_04_a.Text + "', " +
+        "CS_01_rdo = '" + var_CS_01_rdo + "', " +
         "CS_01 = '" + var_CS_01 + "', " +
         "CS_01_a = '" + CS_01_a.Text + "', " +
         "CS_02 = '" + var_CS_02 + "', " +
@@ -5935,6 +6036,7 @@ public partial class sample_results : System.Web.UI.Page
         "CS_09_a = '" + CS_09_a.Text + "', " +
         "CS_10 = '" + var_CS_10 + "', " +
         "CS_10_a = '" + CS_10_a.Text + "', " +
+        "UR_01_rdo = '" + var_UR_01_rdo + "', " +
         "UR_01 = '" + var_UR_01 + "', " +
         "UR_01_a = '" + UR_01_a.Text + "', " +
         "UR_02 = '" + var_UR_02 + "', " +
@@ -5975,6 +6077,7 @@ public partial class sample_results : System.Web.UI.Page
         "UR_20_a = '" + UR_20_a.Text + "', " +
         "UR_21 = '" + var_UR_21 + "', " +
         "UR_21_a = '" + UR_21_a.Text + "', " +
+        "uc_01a_rdo = '" + var_uc_01a_rdo + "', " +
         "uc_01a = '" + var_uc_01a + "', " +
         "uc_02a = '" + var_uc_02a + "', " +
         "uc_02a_a = '" + uc_02a_a.Text + "', " +
@@ -6087,6 +6190,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_17 = '" + LA_17.Text + "', " +
         "LA_18 = '" + LA_18.Text + "', " +
         "LA_19 = '" + txtOtherOrganism.Text + "', " +
+        "LA_20a_rdo = '" + var_LA_20a_rdo + "', " +
         "LA_20a_b = '" + var_LA_20a_b + "', " +
         "LA_20a_a = '" + LA_20a_a.Text + "', " +
         "LA_20b_a = '" + var_LA_20b_a + "', " +
@@ -6202,6 +6306,7 @@ public partial class sample_results : System.Web.UI.Page
     "LA_01 = '" + LA_01.Text + "', " +
     "LA_02 = '" + LA_02.Text + "', " +
     "LA_02a = '" + LA_02a.Text + "', " +
+    "LA_03_rdo = '" + var_LA_03_rdo + "', " +
     "LA_03_b = '" + var_LA_03_b + "', " +
     "LA_03_a = '" + LA_03_a.Text + "', " +
     "LA_04_b = '" + var_LA_04_b + "', " +
@@ -6230,6 +6335,7 @@ public partial class sample_results : System.Web.UI.Page
     "LA_15_a = '" + LA_15_a.Text + "', " +
     "LA_16_b = '" + var_LA_16_b + "', " +
     "LA_16_a = '" + LA_16_a.Text + "', " +
+    "LF_01_rdo = '" + var_LF_01_rdo + "', " +
     "LF_01 = '" + var_LF_01 + "', " +
     "LF_01_a = '" + LF_01_a.Text + "', " +
     "LF_02 = '" + var_LF_02 + "', " +
@@ -6244,6 +6350,7 @@ public partial class sample_results : System.Web.UI.Page
     "LF_06_a = '" + LF_06_a.Text + "', " +
     "LF_07 = '" + var_LF_07 + "', " +
     "LF_07_a = '" + LF_07_a.Text + "', " +
+    "RF_01_rdo = '" + var_RF_01_rdo + "', " +
     "RF_01 = '" + var_RF_01 + "', " +
     "RF_01_a = '" + RF_01_a.Text + "', " +
     "RF_02 = '" + var_RF_02 + "', " +
@@ -6252,6 +6359,7 @@ public partial class sample_results : System.Web.UI.Page
     "RF_03_a = '" + RF_03_a.Text + "', " +
     "RF_04 = '" + var_RF_04 + "', " +
     "RF_04_a = '" + RF_04_a.Text + "', " +
+    "SE_01_rdo = '" + var_SE_01_rdo + "', " +
     "SE_01 = '" + var_SE_01 + "', " +
     "SE_01_a = '" + SE_01_a.Text + "', " +
     "SE_02 = '" + var_SE_02 + "', " +
@@ -6260,6 +6368,7 @@ public partial class sample_results : System.Web.UI.Page
     "SE_03_a = '" + SE_03_a.Text + "', " +
     "SE_04 = '" + var_SE_04 + "', " +
     "SE_04_a = '" + SE_04_a.Text + "', " +
+    "CS_01_rdo = '" + var_CS_01_rdo + "', " +
     "CS_01 = '" + var_CS_01 + "', " +
     "CS_01_a = '" + CS_01_a.Text + "', " +
     "CS_02 = '" + var_CS_02 + "', " +
@@ -6280,6 +6389,7 @@ public partial class sample_results : System.Web.UI.Page
     "CS_09_a = '" + CS_09_a.Text + "', " +
     "CS_10 = '" + var_CS_10 + "', " +
     "CS_10_a = '" + CS_10_a.Text + "', " +
+    "UR_01_rdo = '" + var_UR_01_rdo + "', " +
     "UR_01 = '" + var_UR_01 + "', " +
     "UR_01_a = '" + UR_01_a.Text + "', " +
     "UR_02 = '" + var_UR_02 + "', " +
@@ -6320,6 +6430,7 @@ public partial class sample_results : System.Web.UI.Page
     "UR_20_a = '" + UR_20_a.Text + "', " +
     "UR_21 = '" + var_UR_21 + "', " +
     "UR_21_a = '" + UR_21_a.Text + "', " +
+    "uc_01a_rdo = '" + var_uc_01a_rdo + "', " +
     "uc_01a = '" + var_uc_01a + "', " +
     "uc_02a = '" + var_uc_02a + "', " +
     "uc_02a_a = '" + uc_02a_a.Text + "', " +
@@ -6432,6 +6543,7 @@ public partial class sample_results : System.Web.UI.Page
     "LA_17 = '" + LA_17.Text + "', " +
     "LA_18 = '" + LA_18.Text + "', " +
     "LA_19 = '" + ddl_BloodCulture.Items[ddl_BloodCulture.SelectedIndex].Text + "', " +
+    "LA_20a_rdo = '" + var_LA_20a_rdo + "', " +
     "LA_20a_b = '" + var_LA_20a_b + "', " +
     "LA_20a_a = '" + LA_20a_a.Text + "', " +
     "LA_20b_a = '" + var_LA_20b_a + "', " +
@@ -10007,6 +10119,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_01," +
         "LA_02," +
         "LA_02a," +
+        "LA_03_rdo," +
         "LA_03_b," +
         "LA_03_a," +
         "LA_04_b," +
@@ -10035,6 +10148,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_15_a," +
         "LA_16_b," +
         "LA_16_a," +
+        "LF_01_rdo," +
         "LF_01," +
         "LF_01_a," +
         "LF_02," +
@@ -10049,6 +10163,7 @@ public partial class sample_results : System.Web.UI.Page
         "LF_06_a," +
         "LF_07," +
         "LF_07_a," +
+        "RF_01_rdo," +
         "RF_01," +
         "RF_01_a," +
         "RF_02," +
@@ -10057,6 +10172,7 @@ public partial class sample_results : System.Web.UI.Page
         "RF_03_a," +
         "RF_04," +
         "RF_04_a," +
+        "SE_01_rdo," +
         "SE_01," +
         "SE_01_a," +
         "SE_02," +
@@ -10065,6 +10181,7 @@ public partial class sample_results : System.Web.UI.Page
         "SE_03_a," +
         "SE_04," +
         "SE_04_a," +
+        "CS_01_rdo," +
         "CS_01," +
         "CS_01_a," +
         "CS_02," +
@@ -10085,6 +10202,7 @@ public partial class sample_results : System.Web.UI.Page
         "CS_09_a," +
         "CS_10," +
         "CS_10_a," +
+        "UR_01_rdo," +
         "UR_01," +
         "UR_01_a," +
         "UR_02," +
@@ -10127,6 +10245,7 @@ public partial class sample_results : System.Web.UI.Page
         "UR_20_a," +
         "UR_21," +
         "UR_21_a," +
+        "uc_01a_rdo," +
         "uc_01a," +
         "uc_01_ca," +
         "uc_02a," +
@@ -10240,6 +10359,7 @@ public partial class sample_results : System.Web.UI.Page
         "LA_17," +
         "LA_18," +
         "LA_19," +
+        "LA_20a_rdo," +
         "LA_20a_b," +
         "LA_20a_a," +
         "LA_20b_a," +
@@ -10349,6 +10469,7 @@ public partial class sample_results : System.Web.UI.Page
         LA_01.Text + "', '" +
         LA_02.Text + "', '" +
         LA_02a.Text + "', '" +
+        var_LA_03_rdo + "', '" +
         var_LA_03_b + "', '" +
         LA_03_a.Text + "', '" +
         var_LA_04_b + "', '" +
@@ -10377,6 +10498,7 @@ public partial class sample_results : System.Web.UI.Page
         LA_15_a.Text + "', '" +
         var_LA_16_b + "', '" +
         LA_16_a.Text + "', '" +
+        var_LF_01_rdo + "', '" +
         var_LF_01 + "', '" +
         LF_01_a.Text + "', '" +
         var_LF_02 + "', '" +
@@ -10391,6 +10513,7 @@ public partial class sample_results : System.Web.UI.Page
         LF_06_a.Text + "', '" +
         var_LF_07 + "', '" +
         LF_07_a.Text + "', '" +
+        var_RF_01_rdo + "', '" +
         var_RF_01 + "', '" +
         RF_01_a.Text + "', '" +
         var_RF_02 + "', '" +
@@ -10399,6 +10522,7 @@ public partial class sample_results : System.Web.UI.Page
         RF_03_a.Text + "', '" +
         var_RF_04 + "', '" +
         RF_04_a.Text + "', '" +
+        var_SE_01_rdo + "', '" +
         var_SE_01 + "', '" +
         SE_01_a.Text + "', '" +
         var_SE_02 + "', '" +
@@ -10407,6 +10531,7 @@ public partial class sample_results : System.Web.UI.Page
         SE_03_a.Text + "', '" +
         var_SE_04 + "', '" +
         SE_04_a.Text + "', '" +
+        var_CS_01_rdo + "', '" +
         var_CS_01 + "', '" +
         CS_01_a.Text + "', '" +
         var_CS_02 + "', '" +
@@ -10427,6 +10552,7 @@ public partial class sample_results : System.Web.UI.Page
         CS_09_a.Text + "', '" +
         var_CS_10 + "', '" +
         CS_10_a.Text + "', '" +
+        var_UR_01_rdo + "', '" +
         var_UR_01 + "', '" +
         UR_01_a.Text + "', '" +
         var_UR_02 + "', '" +
@@ -10469,6 +10595,7 @@ public partial class sample_results : System.Web.UI.Page
         UR_20_a.Text + "', '" +
         var_UR_21 + "', '" +
         UR_21_a.Text + "', '" +
+        var_uc_01a_rdo + "', '" +
         var_uc_01a + "', '" +
         uc_01_ca.Text + "', '" +
         var_uc_02a + "', '" +
@@ -10582,6 +10709,7 @@ public partial class sample_results : System.Web.UI.Page
         LA_17.Text + "', '" +
         LA_18.Text + "', '" +
         txtOtherOrganism.Text + "', '" +
+        var_LA_20a_b_rdo + "', '" +
         var_LA_20a_b + "', '" +
         LA_20a_a.Text + "', '" +
         var_LA_20b_a + "', '" +
