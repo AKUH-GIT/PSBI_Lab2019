@@ -13,6 +13,7 @@ using System.Drawing;
 using System.ServiceModel.Configuration;
 using System.Globalization;
 
+
 public partial class sample_recv : System.Web.UI.Page
 {
     public List<CountryInfo> CountryInformation { get; set; }
@@ -1041,16 +1042,19 @@ public partial class sample_recv : System.Web.UI.Page
                         if (ds.Tables[0].Rows[0]["AS1_Samp_1"].ToString() == "1")
                         {
                             AS1_Samp_1.Checked = true;
+                            AS1_Samp_1_CheckedChanged(null, null);
                         }
 
                         if (ds.Tables[0].Rows[0]["AS1_Samp_2"].ToString() == "2")
                         {
                             AS1_Samp_2.Checked = true;
+                            AS1_Samp_2_CheckedChanged(null, null);
                         }
 
                         if (ds.Tables[0].Rows[0]["AS1_Samp_3"].ToString() == "3")
                         {
                             AS1_Samp_3.Checked = true;
+                            AS1_Samp_3_CheckedChanged(null, null);
                         }
 
                         if (ds.Tables[0].Rows[0]["AS1_Samp_4"].ToString() == "4")
@@ -1131,8 +1135,19 @@ public partial class sample_recv : System.Web.UI.Page
 
                         AS2_Q8_BacT.Text = ds.Tables[0].Rows[0]["AS2_Q8_BacT"].ToString();
                         AS2_Q8_3.Text = ds.Tables[0].Rows[0]["AS2_Q8_3"].ToString();
-                        AS2_Q9.Text = ds.Tables[0].Rows[0]["AS2_Q9"].ToString();
-                        AS2_Q10.Text = ds.Tables[0].Rows[0]["AS2_Q10"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS2_Q9"].ToString() != "01/01/1900")
+                        {
+                            AS2_Q9.Text = ds.Tables[0].Rows[0]["AS2_Q9"].ToString();
+                        }
+
+
+                        if (ds.Tables[0].Rows[0]["AS2_Q10"].ToString() != "00:00")
+                        {
+                            AS2_Q10.Text = ds.Tables[0].Rows[0]["AS2_Q10"].ToString();
+                        }
 
 
 
@@ -1168,10 +1183,30 @@ public partial class sample_recv : System.Web.UI.Page
                             AS4_Q21a.Checked = false;
                         }
 
-                        AS4_Q22a.Text = ds.Tables[0].Rows[0]["AS4_Q22a"].ToString();
-                        AS4_Q22b.Text = ds.Tables[0].Rows[0]["AS4_Q22b"].ToString();
+
+                        if (ds.Tables[0].Rows[0]["AS4_Q22a"].ToString() != "00:00")
+                        {
+                            AS4_Q22a.Text = ds.Tables[0].Rows[0]["AS4_Q22a"].ToString();
+                        }
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS4_Q22b"].ToString() != "01/01/1900")
+                        {
+                            AS4_Q22b.Text = ds.Tables[0].Rows[0]["AS4_Q22b"].ToString();
+                        }
+
+
                         AS4_Q23.Text = ds.Tables[0].Rows[0]["AS4_Q23"].ToString();
-                        AS4_Q24.Text = ds.Tables[0].Rows[0]["AS4_Q24"].ToString();
+
+
+
+                        if (ds.Tables[0].Rows[0]["AS4_Q24"].ToString() != "00:00")
+                        {
+                            AS4_Q24.Text = ds.Tables[0].Rows[0]["AS4_Q24"].ToString();
+                        }
+
+
                         AS5_Q25a.Text = ds.Tables[0].Rows[0]["AS5_Q25a"].ToString();
                         AS5_Q25b.Text = ds.Tables[0].Rows[0]["AS5_Q25b"].ToString();
                         AS5_Q26.Text = ds.Tables[0].Rows[0]["AS5_Q26"].ToString();
@@ -2683,24 +2718,24 @@ HttpContext.Current.Request["labid"].ToString()
         try
         {
 
-            if (chkMRNo.Checked)
+            if (!chkMRNo.Checked)
             {
                 var_mrno1 = AS1_mrno.Text;
             }
 
-            if (chkLNumber.Checked)
+            if (!chkLNumber.Checked)
             {
                 var_lno1 = AS1_lno.Text;
             }
 
 
-            if (chk_AS2_Q7_2a.Checked)
+            if (!chk_AS2_Q7_2a.Checked)
             {
                 var_mrno2 = AS2_Q7_2a.Text;
             }
 
 
-            if (chk_AS2_Q7_2.Checked)
+            if (!chk_AS2_Q7_2.Checked)
             {
                 var_lno2 = AS2_Q7_2.Text;
             }
@@ -3551,6 +3586,30 @@ HttpContext.Current.Request["labid"].ToString() + "')";
         try
         {
 
+            if (!chkMRNo.Checked)
+            {
+                var_mrno1 = AS1_mrno.Text;
+            }
+
+            if (!chkLNumber.Checked)
+            {
+                var_lno1 = AS1_lno.Text;
+            }
+
+
+            if (!chk_AS2_Q7_2a.Checked)
+            {
+                var_mrno2 = AS2_Q7_2a.Text;
+            }
+
+
+            if (!chk_AS2_Q7_2.Checked)
+            {
+                var_lno2 = AS2_Q7_2.Text;
+            }
+
+
+
             if (AS1_sex_a.Checked == true)
             {
                 var_AS1_sex = "1";
@@ -3592,29 +3651,6 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             }
 
 
-
-            if (!chkMRNo.Checked)
-            {
-                var_mrno1 = AS1_mrno.Text;
-            }
-
-
-            if (!chkLNumber.Checked)
-            {
-                var_lno1 = AS1_lno.Text;
-            }
-
-
-            if (!chk_AS2_Q7_2a.Checked)
-            {
-                var_mrno2 = AS2_Q7_2a.Text;
-            }
-
-
-            if (!chk_AS2_Q7_2.Checked)
-            {
-                var_lno2 = AS2_Q7_2.Text;
-            }
 
 
 
@@ -4735,6 +4771,7 @@ HttpContext.Current.Request["labid"].ToString() + "')";
                             string rdo_id_d = arr[0] + "_" + arr[1] + "_4";
                             string rdo_id_e = arr[0] + "_" + arr[1] + "_5";
                             string rdo_id_f = arr[0] + "_" + arr[1] + "_6";
+                            string rdo_id_g = arr[0] + "_" + arr[1] + "_7";
 
                             RadioButton rdo_a = (RadioButton)Page.FindControl(rdo_id_a);
                             RadioButton rdo_b = (RadioButton)Page.FindControl(rdo_id_b);
@@ -4742,6 +4779,7 @@ HttpContext.Current.Request["labid"].ToString() + "')";
                             RadioButton rdo_d = (RadioButton)Page.FindControl(rdo_id_d);
                             RadioButton rdo_e = (RadioButton)Page.FindControl(rdo_id_e);
                             RadioButton rdo_f = (RadioButton)Page.FindControl(rdo_id_f);
+                            RadioButton rdo_g = (RadioButton)Page.FindControl(rdo_id_g);
 
 
                             if (rdo_a.Checked == true)
@@ -4767,6 +4805,10 @@ HttpContext.Current.Request["labid"].ToString() + "')";
                             else if (rdo_f.Checked == true)
                             {
                                 rdo_val = "6";
+                            }
+                            else if (rdo_g.Checked == true)
+                            {
+                                rdo_val = "7";
                             }
 
 
@@ -4941,19 +4983,33 @@ HttpContext.Current.Request["labid"].ToString() + "')";
                         else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS2_Q9")
                         {
 
+                            DateTime dt_AS2_Q9 = new DateTime();
+                            string[] arr_AS2_Q9 = null;
+                            string val_AS2_Q9 = null;
+
 
                             DateTime dt = new DateTime();
-                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                            dt = Convert.ToDateTime(AS2_Q9.Text);
+
+                            if (AS2_Q9.Text != "")
+                            {
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS2_Q9.Text);
+                            }
+
+
 
 
                             if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
                             {
 
-                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != "01/01/1900"
+                                    && dt.ToShortDateString() != "1/1/0001")
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                                }
 
                             }
-
 
                         }
                         else if (ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString() == "AS3_Q14a")
@@ -4967,8 +5023,11 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
                             if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
                             {
-
-                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != "01/01/1900"
+                                    && dt.ToShortDateString() != "1/1/0001")
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+                                }
 
                             }
 
@@ -4985,8 +5044,12 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
                             if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
                             {
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != "01/01/1900"
+                                    && dt.ToShortDateString() != "1/1/0001")
+                                {
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
 
-                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+                                }
 
                             }
 
@@ -5003,8 +5066,13 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
                             if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != dt.ToShortDateString())
                             {
+                                if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != "01/01/1900"
+                                    && dt.ToShortDateString() != "1/1/0001")
+                                {
 
-                                AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+                                    AddRecord("", ds.Tables[0].Rows[b]["AS1_screening_ID"].ToString(), "", "", "form1", "Update", ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString(), ds.Tables[0].Rows[0][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString(), dt.ToShortDateString(), "", "");
+
+                                }
 
                             }
 
@@ -5015,11 +5083,18 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
 
                             DateTime dt = new DateTime();
-                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
-                            dt = Convert.ToDateTime(AS2_Q10.Text);
+                            string[] arr_tm = { "" };
+                            string str_tm = "";
 
-                            string[] arr_tm = dt.ToShortTimeString().Split(':');
-                            string str_tm = arr_tm[0] + ":" + arr_tm[1];
+
+                            if (AS2_Q10.Text != "")
+                            {
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
+                                dt = Convert.ToDateTime(AS2_Q10.Text);
+
+                                arr_tm = dt.ToShortTimeString().Split(':');
+                                str_tm = arr_tm[0] + ":" + arr_tm[1];
+                            }
 
 
                             if (ds.Tables[0].Rows[b][ds_dict.Tables[0].Rows[a]["COLUMN_NAME"].ToString()].ToString().Trim() != str_tm)
@@ -5429,4 +5504,270 @@ HttpContext.Current.Request["labid"].ToString() + "')";
 
 
 
+
+    protected void AS1_Samp_1_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Samp_1.Checked)
+        {
+            pnl_IsCBCCollected.Visible = true;
+            pnl_IsCBCCollected1.Visible = true;
+            pnl_IsCBCCollected2.Visible = true;
+
+
+            if (!AS1_Samp_3.Checked)
+            {
+                pnl_AS1_Q3a_2.Visible = false;
+                DisableControls(AS1_Q3a_2);
+            }
+
+
+            pnl_IsBloodCultureChecked.Visible = false;
+            DisableControls(AS1_Q2_2);
+
+            pnl_IsBloodCultureChecked1.Visible = false;
+            Disable_RadioButton(AS2_Q8_1);
+            Disable_RadioButton(AS2_Q8_2);
+            DisableControls(AS2_Q8_BacT);
+            DisableControls(AS2_Q8_3);
+
+
+            pnl_IsBloodCultureChecked2.Visible = false;
+            DisableControls(AS2_Q9);
+            DisableControls(AS2_Q10);
+            Disable_RadioButton(AS2_Q11_1);
+            Disable_RadioButton(AS2_Q11_2);
+
+
+            pnl_IsBloodCultureChecked3.Visible = false;
+            DisableControls(AS2_Q12_2);
+
+
+            pnl_IsMetagenomicsCollected.Visible = false;
+            DisableControls(AS2_Q12_3);
+
+
+            Enable_RadioButton(AS1_Q1_11);
+            Enable_RadioButton(AS1_Q1_12);
+
+            AS1_Q1_11_CheckedChanged(null, null);
+            AS1_Q1_12_CheckedChanged(null, null);
+
+            EnableControls(AS1_Q1_2);
+            Enable_RadioButton(AS2_Q7_11);
+            Enable_RadioButton(AS2_Q7_12);
+            EnableControls(AS2_Q7_2a);
+            chk_AS2_Q7_2a.Visible = true;
+            chk_AS2_Q7_2a.Enabled = true;
+
+            chk_AS2_Q7_2.Visible = true;
+            chk_AS2_Q7_2.Enabled = true;
+
+            EnableControls(AS2_Q7_2);
+            EnableControls(AS2_Q7_CBC_CODE);
+        }
+        else
+        {
+            if (!AS1_Samp_3.Checked)
+            {
+                pnl_IsCBCCollected.Visible = false;
+
+                Disable_RadioButton(AS1_Q1_11);
+                Disable_RadioButton(AS1_Q1_12);
+
+                AS1_Q1_11_CheckedChanged(null, null);
+                AS1_Q1_12_CheckedChanged(null, null);
+
+            }
+
+
+            pnl_IsCBCCollected1.Visible = false;
+            pnl_IsCBCCollected2.Visible = false;
+
+            DisableControls(AS1_Q1_2);
+            Disable_RadioButton(AS2_Q7_11);
+            Disable_RadioButton(AS2_Q7_12);
+            DisableControls(AS2_Q7_2a);
+            chk_AS2_Q7_2a.Checked = false;
+            chk_AS2_Q7_2a.Visible = false;
+            chk_AS2_Q7_2a.Enabled = false;
+
+            chk_AS2_Q7_2.Checked = false;
+            chk_AS2_Q7_2.Visible = false;
+            chk_AS2_Q7_2.Enabled = false;
+
+            DisableControls(AS2_Q7_2);
+            DisableControls(AS2_Q7_CBC_CODE);
+        }
+    }
+
+    protected void AS1_Samp_2_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Samp_2.Checked)
+        {
+            pnl_IsBloodCultureChecked.Visible = true;
+            pnl_IsBloodCultureChecked1.Visible = true;
+            pnl_IsBloodCultureChecked2.Visible = true;
+            pnl_IsBloodCultureChecked3.Visible = true;
+
+
+            pnl_IsCBCCollected1.Visible = false;
+            DisableControls(AS1_Q1_2);
+
+
+            pnl_AS1_Q3a_2.Visible = false;
+            DisableControls(AS1_Q3a_2);
+
+
+            pnl_IsMetagenomicsCollected.Visible = false;
+            DisableControls(AS2_Q12_3);
+
+
+            pnl_IsCBCCollected2.Visible = false;
+            Disable_RadioButton(AS2_Q7_11);
+            Disable_RadioButton(AS2_Q7_12);
+            DisableControls(AS2_Q7_2a);
+            chk_AS2_Q7_2a.Checked = false;
+            DisableControls(AS2_Q7_2);
+            chk_AS2_Q7_2.Checked = false;
+            DisableControls(AS2_Q7_CBC_CODE);
+
+
+            EnableControls(AS1_Q2_2);
+            Enable_RadioButton(AS2_Q8_1);
+            Enable_RadioButton(AS2_Q8_2);
+            EnableControls(AS2_Q8_BacT);
+            EnableControls(AS2_Q8_3);
+            EnableControls(AS2_Q9);
+            EnableControls(AS2_Q10);
+            Enable_RadioButton(AS2_Q11_1);
+            Enable_RadioButton(AS2_Q11_2);
+            EnableControls(AS2_Q12_2);
+        }
+        else
+        {
+            pnl_IsBloodCultureChecked.Visible = false;
+            pnl_IsBloodCultureChecked1.Visible = false;
+            pnl_IsBloodCultureChecked2.Visible = false;
+            pnl_IsBloodCultureChecked3.Visible = false;
+
+            DisableControls(AS1_Q2_2);
+            Disable_RadioButton(AS2_Q8_1);
+            Disable_RadioButton(AS2_Q8_2);
+            DisableControls(AS2_Q8_BacT);
+            DisableControls(AS2_Q8_3);
+            DisableControls(AS2_Q9);
+            DisableControls(AS2_Q10);
+            Disable_RadioButton(AS2_Q11_1);
+            Disable_RadioButton(AS2_Q11_2);
+            DisableControls(AS2_Q12_2);
+
+        }
+    }
+
+    protected void AS1_Samp_3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (AS1_Samp_3.Checked)
+        {
+            pnl_AS1_Q3a_2.Visible = true;
+            pnl_IsCBCCollected.Visible = true;
+            pnl_IsMetagenomicsCollected.Visible = true;
+
+
+            pnl_IsCBCCollected.Visible = false;
+            Disable_RadioButton(AS1_Q1_11);
+            Disable_RadioButton(AS1_Q1_12);
+
+
+            pnl_IsCBCCollected2.Visible = true;
+            Enable_RadioButton(AS2_Q7_11);
+            Enable_RadioButton(AS2_Q7_12);
+            EnableControls(AS2_Q7_2a);
+            chk_AS2_Q7_2a.Visible = true;
+            EnableControls(AS2_Q7_2);
+            chk_AS2_Q7_2.Visible = true;
+            EnableControls(AS2_Q7_CBC_CODE);
+
+
+            pnl_IsCBCCollected1.Visible = false;
+            DisableControls(AS1_Q1_2);
+
+
+            pnl_IsBloodCultureChecked.Visible = false;
+            DisableControls(AS1_Q2_2);
+
+
+            pnl_IsBloodCultureChecked1.Visible = false;
+            Disable_RadioButton(AS2_Q8_1);
+            Disable_RadioButton(AS2_Q8_2);
+            DisableControls(AS2_Q8_BacT);
+            DisableControls(AS2_Q8_3);
+
+
+            pnl_IsBloodCultureChecked2.Visible = false;
+            DisableControls(AS2_Q9);
+            DisableControls(AS2_Q10);
+            Disable_RadioButton(AS2_Q11_1);
+            Disable_RadioButton(AS2_Q11_2);
+
+
+            pnl_IsBloodCultureChecked3.Visible = false;
+            DisableControls(AS2_Q12_2);
+
+
+            pnl_AS4_Q21a.Visible = false;
+            AS4_Q21a.Checked = false;
+            DisableControls1(AS4_Q22a);
+            DisableControls1(AS4_Q22b);
+            DisableControls1(AS4_Q23);
+            DisableControls1(AS4_Q24);
+
+
+            DisableControls1(AS5_Q25a);
+            DisableControls1(AS5_Q25b);
+            DisableControls1(AS5_Q26);
+            Disable_RadioButton1(AS5_Q27_1);
+            Disable_RadioButton1(AS5_Q27_2);
+            Disable_RadioButton1(AS5_Q28_1);
+            Disable_RadioButton1(AS5_Q28_2);
+            Disable_RadioButton1(AS5_Q29_1);
+            Disable_RadioButton1(AS5_Q29_2);
+            Disable_RadioButton1(AS5_Q29_3);
+            Disable_RadioButton1(AS5_Q30_1);
+            Disable_RadioButton1(AS5_Q30_2);
+            Disable_RadioButton1(AS5_Q30_3);
+            Disable_RadioButton1(AS5_Q31_1);
+            Disable_RadioButton1(AS5_Q31_2);
+            Disable_RadioButton1(AS5_Q31_3);
+            Disable_RadioButton1(AS5_Q31_4);
+            Disable_RadioButton1(AS5_Q32_1);
+            Disable_RadioButton1(AS5_Q32_2);
+            Disable_RadioButton1(AS5_Q32_3);
+            DisableControls1(AS5_Q33a);
+            DisableControls1(AS5_Q33b);
+            DisableControls1(AS3_Remarks);
+
+
+
+            EnableControls(AS1_Q3a_2);
+            Enable_RadioButton(AS1_Q1_11);
+            Enable_RadioButton(AS1_Q1_12);
+            EnableControls(AS2_Q12_3);
+        }
+        else
+        {
+            if (!AS1_Samp_1.Checked)
+            {
+                pnl_IsCBCCollected.Visible = false;
+
+                Disable_RadioButton(AS1_Q1_11);
+                Disable_RadioButton(AS1_Q1_12);
+            }
+
+            pnl_AS1_Q3a_2.Visible = false;
+            pnl_IsMetagenomicsCollected.Visible = false;
+
+            DisableControls(AS1_Q3a_2);
+            DisableControls(AS2_Q12_3);
+        }
+    }
 }
