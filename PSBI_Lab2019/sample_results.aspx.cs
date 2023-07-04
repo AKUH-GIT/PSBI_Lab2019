@@ -10829,6 +10829,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_01," +
                 "LA_02," +
                 "LA_02a," +
+                "LA_03_rdo," +
                 "LA_03_b," +
                 "LA_03_a," +
                 "LA_04_b," +
@@ -10857,6 +10858,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_15_a," +
                 "LA_16_b," +
                 "LA_16_a," +
+                "LF_01_rdo," +
                 "LF_01," +
                 "LF_01_a," +
                 "LF_02," +
@@ -10871,6 +10873,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LF_06_a," +
                 "LF_07," +
                 "LF_07_a," +
+                "RF_01_rdo," +
                 "RF_01," +
                 "RF_01_a," +
                 "RF_02," +
@@ -10879,6 +10882,7 @@ public partial class sample_results : System.Web.UI.Page
                 "RF_03_a," +
                 "RF_04," +
                 "RF_04_a," +
+                "SE_01_rdo," +
                 "SE_01," +
                 "SE_01_a," +
                 "SE_02," +
@@ -10887,6 +10891,7 @@ public partial class sample_results : System.Web.UI.Page
                 "SE_03_a," +
                 "SE_04," +
                 "SE_04_a," +
+                "CS_01_rdo," +
                 "CS_01," +
                 "CS_01_a," +
                 "CS_02," +
@@ -10907,6 +10912,7 @@ public partial class sample_results : System.Web.UI.Page
                 "CS_09_a," +
                 "CS_10," +
                 "CS_10_a," +
+                "UR_01_rdo," +
                 "UR_01," +
                 "UR_01_a," +
                 "UR_02," +
@@ -10949,6 +10955,7 @@ public partial class sample_results : System.Web.UI.Page
                 "UR_20_a," +
                 "UR_21," +
                 "UR_21_a," +
+                "uc_01a_rdo," +
                 "uc_01a," +
                 "uc_01_ca," +
                 "uc_02a," +
@@ -11062,6 +11069,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_17," +
                 "LA_18," +
                 "LA_19," +
+                "LA_20a_rdo," +
                 "LA_20a_b," +
                 "LA_20a_a," +
                 "LA_20b_a," +
@@ -11171,6 +11179,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_01.Text + "', '" +
                 LA_02.Text + "', '" +
                 LA_02a.Text + "', '" +
+                var_LA_03_rdo + "', '" +
                 var_LA_03_b + "', '" +
                 LA_03_a.Text + "', '" +
                 var_LA_04_b + "', '" +
@@ -11199,6 +11208,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_15_a.Text + "', '" +
                 var_LA_16_b + "', '" +
                 LA_16_a.Text + "', '" +
+                var_LF_01_rdo + "', '" +
                 var_LF_01 + "', '" +
                 LF_01_a.Text + "', '" +
                 var_LF_02 + "', '" +
@@ -11213,6 +11223,7 @@ public partial class sample_results : System.Web.UI.Page
                 LF_06_a.Text + "', '" +
                 var_LF_07 + "', '" +
                 LF_07_a.Text + "', '" +
+                var_RF_01_rdo + "', '" +
                 var_RF_01 + "', '" +
                 RF_01_a.Text + "', '" +
                 var_RF_02 + "', '" +
@@ -11221,6 +11232,7 @@ public partial class sample_results : System.Web.UI.Page
                 RF_03_a.Text + "', '" +
                 var_RF_04 + "', '" +
                 RF_04_a.Text + "', '" +
+                var_SE_01_rdo + "', '" +
                 var_SE_01 + "', '" +
                 SE_01_a.Text + "', '" +
                 var_SE_02 + "', '" +
@@ -11229,6 +11241,7 @@ public partial class sample_results : System.Web.UI.Page
                 SE_03_a.Text + "', '" +
                 var_SE_04 + "', '" +
                 SE_04_a.Text + "', '" +
+                var_CS_01_rdo + "', '" +
                 var_CS_01 + "', '" +
                 CS_01_a.Text + "', '" +
                 var_CS_02 + "', '" +
@@ -11249,6 +11262,7 @@ public partial class sample_results : System.Web.UI.Page
                 CS_09_a.Text + "', '" +
                 var_CS_10 + "', '" +
                 CS_10_a.Text + "', '" +
+                var_UR_01_rdo + "', '" +
                 var_UR_01 + "', '" +
                 UR_01_a.Text + "', '" +
                 var_UR_02 + "', '" +
@@ -11291,6 +11305,7 @@ public partial class sample_results : System.Web.UI.Page
                 UR_20_a.Text + "', '" +
                 var_UR_21 + "', '" +
                 UR_21_a.Text + "', '" +
+                var_uc_01a_rdo + "', '" +
                 var_uc_01a + "', '" +
                 uc_01_ca.Text + "', '" +
                 var_uc_02a + "', '" +
@@ -11404,6 +11419,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_17.Text + "', '" +
                 LA_18.Text + "', '" +
                 txtOtherOrganism.Text + "', '" +
+                var_LA_20a_b_rdo + "', '" +
                 var_LA_20a_b + "', '" +
                 LA_20a_a.Text + "', '" +
                 var_LA_20b_a + "', '" +
@@ -11522,6 +11538,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_01," +
                 "LA_02," +
                 "LA_02a," +
+                "LA_03_rdo," +
                 "LA_03_b," +
                 "LA_03_a," +
                 "LA_04_b," +
@@ -11550,6 +11567,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_15_a," +
                 "LA_16_b," +
                 "LA_16_a," +
+                "LF_01_rdo," +
                 "LF_01," +
                 "LF_01_a," +
                 "LF_02," +
@@ -11564,6 +11582,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LF_06_a," +
                 "LF_07," +
                 "LF_07_a," +
+                "RF_01_rdo," +
                 "RF_01," +
                 "RF_01_a," +
                 "RF_02," +
@@ -11572,6 +11591,7 @@ public partial class sample_results : System.Web.UI.Page
                 "RF_03_a," +
                 "RF_04," +
                 "RF_04_a," +
+                "SE_01_rdo," +
                 "SE_01," +
                 "SE_01_a," +
                 "SE_02," +
@@ -11580,6 +11600,7 @@ public partial class sample_results : System.Web.UI.Page
                 "SE_03_a," +
                 "SE_04," +
                 "SE_04_a," +
+                "CS_01_rdo," +
                 "CS_01," +
                 "CS_01_a," +
                 "CS_02," +
@@ -11600,6 +11621,7 @@ public partial class sample_results : System.Web.UI.Page
                 "CS_09_a," +
                 "CS_10," +
                 "CS_10_a," +
+                "UR_01_rdo," +
                 "UR_01," +
                 "UR_01_a," +
                 "UR_02," +
@@ -11642,6 +11664,7 @@ public partial class sample_results : System.Web.UI.Page
                 "UR_20_a," +
                 "UR_21," +
                 "UR_21_a," +
+                "uc_01a_rdo," +
                 "uc_01a," +
                 "uc_01_ca," +
                 "uc_02a," +
@@ -11755,6 +11778,7 @@ public partial class sample_results : System.Web.UI.Page
                 "LA_17," +
                 "LA_18," +
                 "LA_19," +
+                "LA_20a_rdo," +
                 "LA_20a_b," +
                 "LA_20a_a," +
                 "LA_20b_a," +
@@ -11864,6 +11888,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_01.Text + "', '" +
                 LA_02.Text + "', '" +
                 LA_02a.Text + "', '" +
+                var_LA_03_rdo + "', '" +
                 var_LA_03_b + "', '" +
                 LA_03_a.Text + "', '" +
                 var_LA_04_b + "', '" +
@@ -11892,6 +11917,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_15_a.Text + "', '" +
                 var_LA_16_b + "', '" +
                 LA_16_a.Text + "', '" +
+                var_LF_01_rdo + "', '" +
                 var_LF_01 + "', '" +
                 LF_01_a.Text + "', '" +
                 var_LF_02 + "', '" +
@@ -11906,6 +11932,7 @@ public partial class sample_results : System.Web.UI.Page
                 LF_06_a.Text + "', '" +
                 var_LF_07 + "', '" +
                 LF_07_a.Text + "', '" +
+                var_RF_01_rdo + "', '" +
                 var_RF_01 + "', '" +
                 RF_01_a.Text + "', '" +
                 var_RF_02 + "', '" +
@@ -11914,6 +11941,7 @@ public partial class sample_results : System.Web.UI.Page
                 RF_03_a.Text + "', '" +
                 var_RF_04 + "', '" +
                 RF_04_a.Text + "', '" +
+                var_SE_01_rdo + "', '" +
                 var_SE_01 + "', '" +
                 SE_01_a.Text + "', '" +
                 var_SE_02 + "', '" +
@@ -11922,6 +11950,7 @@ public partial class sample_results : System.Web.UI.Page
                 SE_03_a.Text + "', '" +
                 var_SE_04 + "', '" +
                 SE_04_a.Text + "', '" +
+                var_CS_01_rdo + "', '" +
                 var_CS_01 + "', '" +
                 CS_01_a.Text + "', '" +
                 var_CS_02 + "', '" +
@@ -11942,6 +11971,7 @@ public partial class sample_results : System.Web.UI.Page
                 CS_09_a.Text + "', '" +
                 var_CS_10 + "', '" +
                 CS_10_a.Text + "', '" +
+                var_UR_01_rdo + "', '" +
                 var_UR_01 + "', '" +
                 UR_01_a.Text + "', '" +
                 var_UR_02 + "', '" +
@@ -11984,6 +12014,7 @@ public partial class sample_results : System.Web.UI.Page
                 UR_20_a.Text + "', '" +
                 var_UR_21 + "', '" +
                 UR_21_a.Text + "', '" +
+                var_uc_01a_rdo + "', '" +
                 var_uc_01a + "', '" +
                 uc_01_ca.Text + "', '" +
                 var_uc_02a + "', '" +
@@ -12097,6 +12128,7 @@ public partial class sample_results : System.Web.UI.Page
                 LA_17.Text + "', '" +
                 LA_18.Text + "', '" +
                 txtOtherOrganism.Text + "', '" +
+                var_LA_20a_b_rdo + "', '" +
                 var_LA_20a_b + "', '" +
                 LA_20a_a.Text + "', '" +
                 var_LA_20b_a + "', '" +
@@ -12212,6 +12244,7 @@ public partial class sample_results : System.Web.UI.Page
             "LA_01," +
             "LA_02," +
             "LA_02a," +
+            "LA_03_rdo," +
             "LA_03_b," +
             "LA_03_a," +
             "LA_04_b," +
@@ -12240,6 +12273,7 @@ public partial class sample_results : System.Web.UI.Page
             "LA_15_a," +
             "LA_16_b," +
             "LA_16_a," +
+            "LF_01_rdo," +
             "LF_01," +
             "LF_01_a," +
             "LF_02," +
@@ -12254,6 +12288,7 @@ public partial class sample_results : System.Web.UI.Page
             "LF_06_a," +
             "LF_07," +
             "LF_07_a," +
+            "RF_01_rdo," +
             "RF_01," +
             "RF_01_a," +
             "RF_02," +
@@ -12262,6 +12297,7 @@ public partial class sample_results : System.Web.UI.Page
             "RF_03_a," +
             "RF_04," +
             "RF_04_a," +
+            "SE_01_rdo," +
             "SE_01," +
             "SE_01_a," +
             "SE_02," +
@@ -12270,6 +12306,7 @@ public partial class sample_results : System.Web.UI.Page
             "SE_03_a," +
             "SE_04," +
             "SE_04_a," +
+            "CS_01_rdo," +
             "CS_01," +
             "CS_01_a," +
             "CS_02," +
@@ -12290,6 +12327,7 @@ public partial class sample_results : System.Web.UI.Page
             "CS_09_a," +
             "CS_10," +
             "CS_10_a," +
+            "UR_01_rdo," +
             "UR_01," +
             "UR_01_a," +
             "UR_02," +
@@ -12332,6 +12370,7 @@ public partial class sample_results : System.Web.UI.Page
             "UR_20_a," +
             "UR_21," +
             "UR_21_a," +
+            "uc_01a_rdo," +
             "uc_01a," +
             "uc_01_ca," +
             "uc_02a," +
@@ -12445,6 +12484,7 @@ public partial class sample_results : System.Web.UI.Page
             "LA_17," +
             "LA_18," +
             "LA_19," +
+            "LA_20a_rdo," +
             "LA_20a_b," +
             "LA_20a_a," +
             "LA_20b_a," +
@@ -12554,6 +12594,7 @@ public partial class sample_results : System.Web.UI.Page
             LA_01.Text + "', '" +
             LA_02.Text + "', '" +
             LA_02a.Text + "', '" +
+            var_LA_03_rdo + "', '" +
             var_LA_03_b + "', '" +
             LA_03_a.Text + "', '" +
             var_LA_04_b + "', '" +
@@ -12582,6 +12623,7 @@ public partial class sample_results : System.Web.UI.Page
             LA_15_a.Text + "', '" +
             var_LA_16_b + "', '" +
             LA_16_a.Text + "', '" +
+            var_LF_01_rdo + "', '" +
             var_LF_01 + "', '" +
             LF_01_a.Text + "', '" +
             var_LF_02 + "', '" +
@@ -12596,6 +12638,7 @@ public partial class sample_results : System.Web.UI.Page
             LF_06_a.Text + "', '" +
             var_LF_07 + "', '" +
             LF_07_a.Text + "', '" +
+            var_RF_01_rdo + "', '" +
             var_RF_01 + "', '" +
             RF_01_a.Text + "', '" +
             var_RF_02 + "', '" +
@@ -12604,6 +12647,7 @@ public partial class sample_results : System.Web.UI.Page
             RF_03_a.Text + "', '" +
             var_RF_04 + "', '" +
             RF_04_a.Text + "', '" +
+            var_SE_01_rdo + "', '" +
             var_SE_01 + "', '" +
             SE_01_a.Text + "', '" +
             var_SE_02 + "', '" +
@@ -12612,6 +12656,7 @@ public partial class sample_results : System.Web.UI.Page
             SE_03_a.Text + "', '" +
             var_SE_04 + "', '" +
             SE_04_a.Text + "', '" +
+            var_CS_01_rdo + "', '" +
             var_CS_01 + "', '" +
             CS_01_a.Text + "', '" +
             var_CS_02 + "', '" +
@@ -12632,6 +12677,7 @@ public partial class sample_results : System.Web.UI.Page
             CS_09_a.Text + "', '" +
             var_CS_10 + "', '" +
             CS_10_a.Text + "', '" +
+            var_UR_01_rdo + "', '" +
             var_UR_01 + "', '" +
             UR_01_a.Text + "', '" +
             var_UR_02 + "', '" +
@@ -12674,6 +12720,7 @@ public partial class sample_results : System.Web.UI.Page
             UR_20_a.Text + "', '" +
             var_UR_21 + "', '" +
             UR_21_a.Text + "', '" +
+            var_uc_01a_rdo + "', '" +
             var_uc_01a + "', '" +
             uc_01_ca.Text + "', '" +
             var_uc_02a + "', '" +
@@ -12787,6 +12834,7 @@ public partial class sample_results : System.Web.UI.Page
             LA_17.Text + "', '" +
             LA_18.Text + "', '" +
             ddl_BloodCulture.Items[ddl_BloodCulture.SelectedIndex].Text + "', '" +
+            var_LA_20a_b_rdo + "', '" +
             var_LA_20a_b + "', '" +
             LA_20a_a.Text + "', '" +
             var_LA_20b_a + "', '" +

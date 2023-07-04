@@ -110,12 +110,42 @@ public partial class view_bloodculture : System.Web.UI.Page
 
             if (!string.IsNullOrEmpty(txtStartDate.Text) && !string.IsNullOrEmpty(txtEndDate.Text) && chkBloodCulture.Checked == true)
             {
-                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno "
+                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9, " +
+                    " case when b.LA_03_a <> '' then b.LA_03_a when b.LA_03_a = '' then '888' when b.LA_03_a = '' then '999' end  LA_03_a, " +
+                    " case when b.LA_04_a <> '' then b.LA_04_a when b.LA_04_a = '' then '888' when b.LA_04_a = '' then '999' end  LA_04_a, " +
+                    " case when b.LA_05_a <> '' then b.LA_05_a when b.LA_05_a = '' then '888' when b.LA_05_a = '' then '999' end  LA_05_a, " +
+                    " case when b.LA_06_a <> '' then b.LA_06_a when b.LA_06_a = '' then '888' when b.LA_06_a = '' then '999' end  LA_06_a, " +
+                    " case when b.LA_07_a <> '' then b.LA_07_a when b.LA_07_a = '' then '888' when b.LA_07_a = '' then '999' end  LA_07_a, " +
+                    " case when b.LA_08_a <> '' then b.LA_08_a when b.LA_08_a = '' then '888' when b.LA_08_a = '' then '999' end  LA_08_a, " +
+                    " case when b.LA_09_a <> '' then b.LA_09_a when b.LA_09_a = '' then '888' when b.LA_09_a = '' then '999' end  LA_09_a, " +
+                    " case when b.LA_10_a <> '' then b.LA_10_a when b.LA_10_a = '' then '888' when b.LA_10_a = '' then '999' end  LA_10_a, " +
+                    " case when b.LA_11_a <> '' then b.LA_11_a when b.LA_11_a = '' then '888' when b.LA_11_a = '' then '999' end  LA_11_a, " +
+                    " case when b.LA_12_a <> '' then b.LA_12_a when b.LA_12_a = '' then '888' when b.LA_12_a = '' then '999' end  LA_12_a, " +
+                    " case when b.LA_13_a <> '' then b.LA_13_a when b.LA_13_a = '' then '888' when b.LA_13_a = '' then '999' end  LA_13_a, " +
+                    " case when b.LA_14_a <> '' then b.LA_14_a when b.LA_14_a = '' then '888' when b.LA_14_a = '' then '999' end  LA_14_a, " +
+                    " case when b.LA_15_a <> '' then b.LA_15_a when b.LA_15_a = '' then '888' when b.LA_15_a = '' then '999' end  LA_15_a, " +
+                    " case when b.LA_16_a <> '' then b.LA_16_a when b.LA_16_a = '' then '888' when b.LA_16_a = '' then '999' end  LA_16_a " +
+                    " from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno "
                 + " where a.AS2_Q9 between '" + val_startdt + "' and '" + val_enddt + "' and a.labid = 1 and b.labid = 1 and b.rdo_BloodCulture = 1 ";
             }
             else if (!string.IsNullOrEmpty(txtStartDate.Text) && !string.IsNullOrEmpty(txtEndDate.Text) && chkBloodCulture.Checked == false)
             {
-                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno "
+                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 " +
+                    " case when b.LA_03_a <> '' then b.LA_03_a when b.LA_03_a = '' then '888' when b.LA_03_a = '' then '999' end  LA_03_a, " +
+                    " case when b.LA_04_a <> '' then b.LA_04_a when b.LA_04_a = '' then '888' when b.LA_04_a = '' then '999' end  LA_04_a, " +
+                    " case when b.LA_05_a <> '' then b.LA_05_a when b.LA_05_a = '' then '888' when b.LA_05_a = '' then '999' end  LA_05_a, " +
+                    " case when b.LA_06_a <> '' then b.LA_06_a when b.LA_06_a = '' then '888' when b.LA_06_a = '' then '999' end  LA_06_a, " +
+                    " case when b.LA_07_a <> '' then b.LA_07_a when b.LA_07_a = '' then '888' when b.LA_07_a = '' then '999' end  LA_07_a, " +
+                    " case when b.LA_08_a <> '' then b.LA_08_a when b.LA_08_a = '' then '888' when b.LA_08_a = '' then '999' end  LA_08_a, " +
+                    " case when b.LA_09_a <> '' then b.LA_09_a when b.LA_09_a = '' then '888' when b.LA_09_a = '' then '999' end  LA_09_a, " +
+                    " case when b.LA_10_a <> '' then b.LA_10_a when b.LA_10_a = '' then '888' when b.LA_10_a = '' then '999' end  LA_10_a, " +
+                    " case when b.LA_11_a <> '' then b.LA_11_a when b.LA_11_a = '' then '888' when b.LA_11_a = '' then '999' end  LA_11_a, " +
+                    " case when b.LA_12_a <> '' then b.LA_12_a when b.LA_12_a = '' then '888' when b.LA_12_a = '' then '999' end  LA_12_a, " +
+                    " case when b.LA_13_a <> '' then b.LA_13_a when b.LA_13_a = '' then '888' when b.LA_13_a = '' then '999' end  LA_13_a, " +
+                    " case when b.LA_14_a <> '' then b.LA_14_a when b.LA_14_a = '' then '888' when b.LA_14_a = '' then '999' end  LA_14_a, " +
+                    " case when b.LA_15_a <> '' then b.LA_15_a when b.LA_15_a = '' then '888' when b.LA_15_a = '' then '999' end  LA_15_a, " +
+                    " case when b.LA_16_a <> '' then b.LA_16_a when b.LA_16_a = '' then '888' when b.LA_16_a = '' then '999' end  LA_16_a " +
+                    " from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno "
                     + " where a.AS2_Q9 between '" + val_startdt + "' and '" + val_enddt + "' and a.labid = 1 and b.labid = 1 and b.rdo_BloodCulture = 2 ";
             }
             else if (string.IsNullOrEmpty(txtStartDate.Text) && string.IsNullOrEmpty(txtEndDate.Text) && chkBloodCulture.Checked == true)
@@ -125,7 +155,22 @@ public partial class view_bloodculture : System.Web.UI.Page
             }
             else
             {
-                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9 from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno where a.labid = 1 and b.labid = 1 ";
+                qry = "select b.ID, b.id id1, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9, " + 
+                    " case when b.LA_03_a <> '' then b.LA_03_a when b.LA_03_a = '' then '888' when b.LA_03_a = '' then '999' end  LA_03_a, " +
+                    " case when b.LA_04_a <> '' then b.LA_04_a when b.LA_04_a = '' then '888' when b.LA_04_a = '' then '999' end  LA_04_a, " +
+                    " case when b.LA_05_a <> '' then b.LA_05_a when b.LA_05_a = '' then '888' when b.LA_05_a = '' then '999' end  LA_05_a, " +
+                    " case when b.LA_06_a <> '' then b.LA_06_a when b.LA_06_a = '' then '888' when b.LA_06_a = '' then '999' end  LA_06_a, " +
+                    " case when b.LA_07_a <> '' then b.LA_07_a when b.LA_07_a = '' then '888' when b.LA_07_a = '' then '999' end  LA_07_a, " +
+                    " case when b.LA_08_a <> '' then b.LA_08_a when b.LA_08_a = '' then '888' when b.LA_08_a = '' then '999' end  LA_08_a, " +
+                    " case when b.LA_09_a <> '' then b.LA_09_a when b.LA_09_a = '' then '888' when b.LA_09_a = '' then '999' end  LA_09_a, " +
+                    " case when b.LA_10_a <> '' then b.LA_10_a when b.LA_10_a = '' then '888' when b.LA_10_a = '' then '999' end  LA_10_a, " +
+                    " case when b.LA_11_a <> '' then b.LA_11_a when b.LA_11_a = '' then '888' when b.LA_11_a = '' then '999' end  LA_11_a, " +
+                    " case when b.LA_12_a <> '' then b.LA_12_a when b.LA_12_a = '' then '888' when b.LA_12_a = '' then '999' end  LA_12_a, " +
+                    " case when b.LA_13_a <> '' then b.LA_13_a when b.LA_13_a = '' then '888' when b.LA_13_a = '' then '999' end  LA_13_a, " +
+                    " case when b.LA_14_a <> '' then b.LA_14_a when b.LA_14_a = '' then '888' when b.LA_14_a = '' then '999' end  LA_14_a, " +
+                    " case when b.LA_15_a <> '' then b.LA_15_a when b.LA_15_a = '' then '888' when b.LA_15_a = '' then '999' end  LA_15_a, " +
+                    " case when b.LA_16_a <> '' then b.LA_16_a when b.LA_16_a = '' then '888' when b.LA_16_a = '' then '999' end  LA_16_a " +
+                    " from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno where a.labid = 1 and b.labid = 1 ";
             }
 
 
@@ -163,6 +208,21 @@ public partial class view_bloodculture : System.Web.UI.Page
 
     protected void cmdExportExcel_Click(object sender, EventArgs e)
     {
+        dg_BloodCulture.Columns[9].Visible = true;
+        dg_BloodCulture.Columns[10].Visible = true;
+        dg_BloodCulture.Columns[11].Visible = true;
+        dg_BloodCulture.Columns[12].Visible = true;
+        dg_BloodCulture.Columns[13].Visible = true;
+        dg_BloodCulture.Columns[14].Visible = true;
+        dg_BloodCulture.Columns[15].Visible = true;
+        dg_BloodCulture.Columns[16].Visible = true;
+        dg_BloodCulture.Columns[17].Visible = true;
+        dg_BloodCulture.Columns[18].Visible = true;
+        dg_BloodCulture.Columns[19].Visible = true;
+        dg_BloodCulture.Columns[20].Visible = true;
+        dg_BloodCulture.Columns[21].Visible = true;
+        dg_BloodCulture.Columns[22].Visible = true;
+
         Response.Clear();
         Response.Buffer = true;
         Response.ClearContent();
@@ -179,6 +239,21 @@ public partial class view_bloodculture : System.Web.UI.Page
         dg_BloodCulture.RenderControl(htmltextwrtter);
         Response.Write(strwritter.ToString());
         Response.End();
+
+        dg_BloodCulture.Columns[9].Visible = false;
+        dg_BloodCulture.Columns[10].Visible = false;
+        dg_BloodCulture.Columns[11].Visible = false;
+        dg_BloodCulture.Columns[12].Visible = false;
+        dg_BloodCulture.Columns[13].Visible = false;
+        dg_BloodCulture.Columns[14].Visible = false;
+        dg_BloodCulture.Columns[15].Visible = false;
+        dg_BloodCulture.Columns[16].Visible = false;
+        dg_BloodCulture.Columns[17].Visible = false;
+        dg_BloodCulture.Columns[18].Visible = false;
+        dg_BloodCulture.Columns[19].Visible = false;
+        dg_BloodCulture.Columns[20].Visible = false;
+        dg_BloodCulture.Columns[21].Visible = false;
+        dg_BloodCulture.Columns[22].Visible = false;
     }
 
 

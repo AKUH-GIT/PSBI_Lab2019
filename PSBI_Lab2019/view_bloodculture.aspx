@@ -435,6 +435,132 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Haemoglobin" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox101" runat="server" CssClass="txtbox" Text='<%# Bind("LA_03_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label101" runat="server" Text='<%# Bind("LA_03_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Haematocrit" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox102" runat="server" CssClass="txtbox" Text='<%# Bind("LA_04_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label102" runat="server" Text='<%# Bind("LA_04_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="R.B.C" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox103" runat="server" CssClass="txtbox" Text='<%# Bind("LA_05_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label103" runat="server" Text='<%# Bind("LA_05_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="M.C.V" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox104" runat="server" CssClass="txtbox" Text='<%# Bind("LA_06_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label104" runat="server" Text='<%# Bind("LA_06_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="M.C.H" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox105" runat="server" CssClass="txtbox" Text='<%# Bind("LA_07_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label105" runat="server" Text='<%# Bind("LA_07_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="M.C.H.C" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox106" runat="server" CssClass="txtbox" Text='<%# Bind("LA_08_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label106" runat="server" Text='<%# Bind("LA_08_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="R.D.W" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox107" runat="server" CssClass="txtbox" Text='<%# Bind("LA_09_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label107" runat="server" Text='<%# Bind("LA_09_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="W.B.C Count" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox108" runat="server" CssClass="txtbox" Text='<%# Bind("LA_10_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label108" runat="server" Text='<%# Bind("LA_10_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Neutrophils" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox109" runat="server" CssClass="txtbox" Text='<%# Bind("LA_11_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label109" runat="server" Text='<%# Bind("LA_11_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Lymphocytes" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox110" runat="server" CssClass="txtbox" Text='<%# Bind("LA_12_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label110" runat="server" Text='<%# Bind("LA_12_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Eosinophils" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox111" runat="server" CssClass="txtbox" Text='<%# Bind("LA_13_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label111" runat="server" Text='<%# Bind("LA_13_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Monocytes" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox112" runat="server" CssClass="txtbox" Text='<%# Bind("LA_14_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label112" runat="server" Text='<%# Bind("LA_14_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Basophils" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox113" runat="server" CssClass="txtbox" Text='<%# Bind("LA_15_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label113" runat="server" Text='<%# Bind("LA_15_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Platelets Count" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox114" runat="server" CssClass="txtbox" Text='<%# Bind("LA_16_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label114" runat="server" Text='<%# Bind("LA_16_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
                                                                 <%--<asp:CommandField ShowSelectButton="True" EditText="View Data" ShowEditButton="True">
                                                                             <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" />
                                                                         </asp:CommandField>--%>
