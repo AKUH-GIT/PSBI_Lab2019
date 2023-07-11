@@ -5673,9 +5673,12 @@ HttpContext.Current.Request["labid"].ToString() + "')";
             pnl_IsMetagenomicsCollected.Visible = true;
 
 
-            pnl_IsCBCCollected.Visible = false;
-            Disable_RadioButton(AS1_Q1_11);
-            Disable_RadioButton(AS1_Q1_12);
+            if (!AS1_Samp_1.Checked)
+            {
+                pnl_IsCBCCollected.Visible = false;
+                Disable_RadioButton(AS1_Q1_11);
+                Disable_RadioButton(AS1_Q1_12);
+            }
 
 
             pnl_IsCBCCollected2.Visible = true;

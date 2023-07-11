@@ -248,6 +248,10 @@ public partial class sample_results : System.Web.UI.Page
         EnableControls(LA_02);
         EnableControls(LA_02a);
 
+
+
+        Disable_RadioButton(LA_03_rdo1);
+        Disable_RadioButton(LA_03_rdo2);
         Disable_RadioButton(LA_03_v);
         Disable_RadioButton(LA_03_b);
         Disable_RadioButton(LA_03_c);
@@ -333,6 +337,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Disable_RadioButton(LF_01_rdo1);
+        Disable_RadioButton(LF_01_rdo2);
         Disable_RadioButton(LF_01_v);
         Disable_RadioButton(LF_01_b);
         Disable_RadioButton(LF_01_c);
@@ -377,6 +383,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Disable_RadioButton(RF_01_rdo1);
+        Disable_RadioButton(RF_01_rdo2);
         Disable_RadioButton(RF_01_v);
         Disable_RadioButton(RF_01_b);
         Disable_RadioButton(RF_01_c);
@@ -396,6 +404,8 @@ public partial class sample_results : System.Web.UI.Page
         DisableControls1(RF_04_a);
 
 
+        Disable_RadioButton(SE_01_rdo1);
+        Disable_RadioButton(SE_01_rdo2);
         Disable_RadioButton(SE_01_v);
         Disable_RadioButton(SE_01_b);
         Disable_RadioButton(SE_01_c);
@@ -420,6 +430,8 @@ public partial class sample_results : System.Web.UI.Page
         DisableControls1(SE_04_a);
 
 
+        Disable_RadioButton(CS_01_rdo1);
+        Disable_RadioButton(CS_01_rdo2);
         Disable_RadioButton(CS_01_v);
         Disable_RadioButton(CS_01_b);
         Disable_RadioButton(CS_01_c);
@@ -485,6 +497,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Disable_RadioButton(UR_01_rdo1);
+        Disable_RadioButton(UR_01_rdo2);
         Disable_RadioButton(UR_01_v);
         Disable_RadioButton(UR_01_b);
         Disable_RadioButton(UR_01_c);
@@ -615,6 +629,8 @@ public partial class sample_results : System.Web.UI.Page
         DisableControls1(UR_21_a);
 
 
+        Disable_RadioButton(uc_01a_rdo1);
+        Disable_RadioButton(uc_01a_rdo2);
         Disable_RadioButton(uc_01_a);
         Disable_RadioButton(uc_01_b);
         Disable_RadioButton(uc_01_c);
@@ -1009,6 +1025,8 @@ public partial class sample_results : System.Web.UI.Page
         //DisableControls1(LA_19);
 
 
+        Disable_RadioButton(LA_20a_rdo1);
+        Disable_RadioButton(LA_20a_rdo2);
         Disable_RadioButton(LA_20a_v);
         Disable_RadioButton(LA_20a_b);
         Disable_RadioButton(LA_20a_c);
@@ -1323,6 +1341,8 @@ public partial class sample_results : System.Web.UI.Page
         DisableControls(LA_02a);
 
 
+        Enable_RadioButton(LA_03_rdo1);
+        Enable_RadioButton(LA_03_rdo2);
         Enable_RadioButton(LA_03_v);
         Enable_RadioButton(LA_03_b);
         Enable_RadioButton(LA_03_c);
@@ -1408,6 +1428,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Enable_RadioButton(LF_01_rdo1);
+        Enable_RadioButton(LF_01_rdo2);
         Enable_RadioButton(LF_01_v);
         Enable_RadioButton(LF_01_b);
         Enable_RadioButton(LF_01_c);
@@ -1456,6 +1478,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Enable_RadioButton(RF_01_rdo1);
+        Enable_RadioButton(RF_01_rdo2);
         Enable_RadioButton(RF_01_v);
         Enable_RadioButton(RF_01_b);
         Enable_RadioButton(RF_01_c);
@@ -1474,6 +1498,8 @@ public partial class sample_results : System.Web.UI.Page
         EnableControls(RF_04_a);
 
 
+        Enable_RadioButton(SE_01_rdo1);
+        Enable_RadioButton(SE_01_rdo2);
         Enable_RadioButton(SE_01_v);
         Enable_RadioButton(SE_01_b);
         Enable_RadioButton(SE_01_c);
@@ -1499,6 +1525,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Enable_RadioButton(CS_01_rdo1);
+        Enable_RadioButton(CS_01_rdo2);
         Enable_RadioButton(CS_01_v);
         Enable_RadioButton(CS_01_b);
         Enable_RadioButton(CS_01_c);
@@ -1569,6 +1597,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Enable_RadioButton(UR_01_rdo1);
+        Enable_RadioButton(UR_01_rdo2);
         Enable_RadioButton(UR_01_v);
         Enable_RadioButton(UR_01_b);
         Enable_RadioButton(UR_01_c);
@@ -1704,6 +1734,8 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+        Enable_RadioButton(uc_01a_rdo1);
+        Enable_RadioButton(uc_01a_rdo2);
         Enable_RadioButton(uc_01_a);
         Enable_RadioButton(uc_01_b);
         Enable_RadioButton(uc_01_c);
@@ -2072,6 +2104,8 @@ public partial class sample_results : System.Web.UI.Page
         //EnableControls(LA_19);
 
 
+        Enable_RadioButton(LA_20a_rdo1);
+        Enable_RadioButton(LA_20a_rdo2);
         Enable_RadioButton(LA_20a_v);
         Enable_RadioButton(LA_20a_b);
         Enable_RadioButton(LA_20a_c);
@@ -18293,9 +18327,20 @@ public partial class sample_results : System.Web.UI.Page
                         }
                         else
                         {
-                            txthistory.Enabled = true;
-                            txthistory.CssClass = "form-control";
-                            txthistory.ReadOnly = false;
+
+                            if (ds.Tables[0].Rows[0]["rdo_BloodCulture"].ToString() == "1")
+                            {
+                                txthistory.Enabled = true;
+                                txthistory.CssClass = "form-control";
+                                txthistory.ReadOnly = false;
+                            }
+                            else
+                            {
+                                txthistory.Enabled = false;
+                                txthistory.CssClass = "form-control";
+                                txthistory.ReadOnly = true;
+                            }
+
                         }
 
 
