@@ -379,7 +379,7 @@
                                                                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("AS1_screening_ID") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
-                                                                    <ItemStyle Height="30px" />
+                                                                    <ItemStyle Height="30px" HorizontalAlign="Left" />
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Randomization ID">
                                                                     <EditItemTemplate>
@@ -416,6 +416,7 @@
                                                                         <asp:Label ID="Label291" runat="server" Text='<%# Bind("AS1_mrno") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" />
+                                                                    <ItemStyle HorizontalAlign="Left" />
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="L Number">
                                                                     <EditItemTemplate>
@@ -425,6 +426,7 @@
                                                                         <asp:Label ID="Label369" runat="server" Text='<%# Bind("AS1_lno") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                    <ItemStyle HorizontalAlign="Left" />
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Receiving Date">
                                                                     <EditItemTemplate>
@@ -434,6 +436,7 @@
                                                                         <asp:Label ID="Label369" runat="server" Text='<%# Bind("AS2_Q9") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                    <ItemStyle HorizontalAlign="Left" />
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Haemoglobin" Visible="false">
                                                                     <EditItemTemplate>
@@ -561,15 +564,6 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="Blood Culture" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox115" runat="server" CssClass="txtbox" Text='<%# Bind("rdo_BloodCulture") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label115" runat="server" Text='<%# Bind("rdo_BloodCulture") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="History" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox116" runat="server" CssClass="txtbox" Text='<%# Bind("history") %>'></asp:TextBox>
@@ -669,7 +663,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Amikacin (AK) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox127" runat="server" CssClass="txtbox" Text='<%# Bind("LA_22a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -678,7 +672,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Amikacin (AK) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox128" runat="server" CssClass="txtbox" Text='<%# Bind("LA_22a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -687,7 +681,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Amikacin (AK) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox129" runat="server" CssClass="txtbox" Text='<%# Bind("LA_22b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -696,7 +690,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Aztreonam (ATM) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox130" runat="server" CssClass="txtbox" Text='<%# Bind("LA_23a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -705,7 +699,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Aztreonam (ATM) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox131" runat="server" CssClass="txtbox" Text='<%# Bind("LA_23a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -714,7 +708,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Aztreonam (ATM) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox132" runat="server" CssClass="txtbox" Text='<%# Bind("LA_23b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -723,7 +717,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Azithromycin (AZM) 15ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox133" runat="server" CssClass="txtbox" Text='<%# Bind("LA_24a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -732,7 +726,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Azithromycin (AZM) 15ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox134" runat="server" CssClass="txtbox" Text='<%# Bind("LA_24a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -741,7 +735,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Azithromycin (AZM) 15ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox135" runat="server" CssClass="txtbox" Text='<%# Bind("LA_24b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -750,7 +744,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Chloramphenicol (C)" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox136" runat="server" CssClass="txtbox" Text='<%# Bind("LA_25a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -759,7 +753,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Chloramphenicol (C)" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox137" runat="server" CssClass="txtbox" Text='<%# Bind("LA_25a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -768,7 +762,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Chloramphenicol (C) Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox138" runat="server" CssClass="txtbox" Text='<%# Bind("LA_25b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -777,7 +771,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ceftazidime (CAZ) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox139" runat="server" CssClass="txtbox" Text='<%# Bind("LA_26a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -786,7 +780,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Ceftazidime (CAZ) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox140" runat="server" CssClass="txtbox" Text='<%# Bind("LA_26a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -795,25 +789,34 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ceftazidime (CAZ) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox141" runat="server" CssClass="txtbox" Text='<%# Bind("LA_27a_b") %>'></asp:TextBox>
+                                                                        <asp:TextBox ID="TextBox141" runat="server" CssClass="txtbox" Text='<%# Bind("LA_26b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="Label141" runat="server" Text='<%# Bind("LA_27a_b") %>'></asp:Label>
+                                                                        <asp:Label ID="Label141" runat="server" Text='<%# Bind("LA_26b_a") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefixime (CFM) 5ug" Visible="false">
                                                                     <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox142" runat="server" CssClass="txtbox" Text='<%# Bind("LA_27a_a") %>'></asp:TextBox>
+                                                                        <asp:TextBox ID="TextBox142" runat="server" CssClass="txtbox" Text='<%# Bind("LA_27a_b") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label142" runat="server" Text='<%# Bind("LA_27a_b") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Cefixime (CFM) 5ug" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox1430" runat="server" CssClass="txtbox" Text='<%# Bind("LA_27a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="Label142" runat="server" Text='<%# Bind("LA_27a_a") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefixime (CFM) 5ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox143" runat="server" CssClass="txtbox" Text='<%# Bind("LA_27b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -822,7 +825,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ciprofloxacin (CIP) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox144" runat="server" CssClass="txtbox" Text='<%# Bind("LA_28a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -831,7 +834,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Ciprofloxacin (CIP) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox145" runat="server" CssClass="txtbox" Text='<%# Bind("LA_28a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -840,7 +843,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ciprofloxacin (CIP) 5ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox146" runat="server" CssClass="txtbox" Text='<%# Bind("LA_28b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -849,7 +852,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Gentamicin (CN) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox147" runat="server" CssClass="txtbox" Text='<%# Bind("LA_29a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -858,7 +861,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Gentamicin (CN) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox148" runat="server" CssClass="txtbox" Text='<%# Bind("LA_29a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -867,7 +870,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Gentamicin (CN) 10ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox149" runat="server" CssClass="txtbox" Text='<%# Bind("LA_29b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -876,7 +879,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Gentamicin (CN120) 120ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox150" runat="server" CssClass="txtbox" Text='<%# Bind("LA_30a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -885,7 +888,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Gentamicin (CN120) 120ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox151" runat="server" CssClass="txtbox" Text='<%# Bind("LA_30a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -894,7 +897,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Gentamicin (CN120) 120ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox152" runat="server" CssClass="txtbox" Text='<%# Bind("LA_30b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -903,7 +906,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ceftriaxone (CRO) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox153" runat="server" CssClass="txtbox" Text='<%# Bind("LA_31a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -912,7 +915,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Ceftriaxone (CRO) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox154" runat="server" CssClass="txtbox" Text='<%# Bind("LA_31a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -921,7 +924,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ceftriaxone (CRO) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox155" runat="server" CssClass="txtbox" Text='<%# Bind("LA_31b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -930,7 +933,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefuroxime (CXM) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox156" runat="server" CssClass="txtbox" Text='<%# Bind("LA_32a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -939,7 +942,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Cefuroxime (CXM) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox157" runat="server" CssClass="txtbox" Text='<%# Bind("LA_32a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -948,7 +951,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefuroxime (CXM) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox158" runat="server" CssClass="txtbox" Text='<%# Bind("LA_32b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -957,7 +960,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Clindamycin (DA) 2ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox159" runat="server" CssClass="txtbox" Text='<%# Bind("LA_33a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -966,7 +969,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Clindamycin (DA) 2ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox160" runat="server" CssClass="txtbox" Text='<%# Bind("LA_33a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -975,7 +978,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Clindamycin (DA) 2ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox161" runat="server" CssClass="txtbox" Text='<%# Bind("LA_33b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -984,7 +987,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Erythromycin (E)" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox162" runat="server" CssClass="txtbox" Text='<%# Bind("LA_34a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -993,7 +996,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Erythromycin (E)" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox163" runat="server" CssClass="txtbox" Text='<%# Bind("LA_34a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1002,7 +1005,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Erythromycin (E) Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox164" runat="server" CssClass="txtbox" Text='<%# Bind("LA_34b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1011,7 +1014,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefipime (FEP) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox165" runat="server" CssClass="txtbox" Text='<%# Bind("LA_35a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1020,7 +1023,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Cefipime (FEP) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox166" runat="server" CssClass="txtbox" Text='<%# Bind("LA_35a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1029,7 +1032,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefipime (FEP) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox167" runat="server" CssClass="txtbox" Text='<%# Bind("LA_35b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1038,7 +1041,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefoxitin (FOX) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox168" runat="server" CssClass="txtbox" Text='<%# Bind("LA_36a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1047,7 +1050,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Cefoxitin (FOX) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox169" runat="server" CssClass="txtbox" Text='<%# Bind("LA_36a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1056,7 +1059,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cefoxitin (FOX) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox170" runat="server" CssClass="txtbox" Text='<%# Bind("LA_36b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1065,7 +1068,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Fusidic Acid (FD) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox171" runat="server" CssClass="txtbox" Text='<%# Bind("LA_37a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1074,7 +1077,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Fusidic Acid (FD) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox172" runat="server" CssClass="txtbox" Text='<%# Bind("LA_37a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1083,7 +1086,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Fusidic Acid (FD) 10ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox173" runat="server" CssClass="txtbox" Text='<%# Bind("LA_37b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1092,7 +1095,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Imipenem (IPM) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox174" runat="server" CssClass="txtbox" Text='<%# Bind("LA_38a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1101,7 +1104,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Imipenem (IPM) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox175" runat="server" CssClass="txtbox" Text='<%# Bind("LA_38a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1110,7 +1113,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Imipenem (IPM) 10ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox176" runat="server" CssClass="txtbox" Text='<%# Bind("LA_38b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1119,7 +1122,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Levofloxacin (LEV) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox177" runat="server" CssClass="txtbox" Text='<%# Bind("LA_39a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1128,7 +1131,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Levofloxacin (LEV) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox178" runat="server" CssClass="txtbox" Text='<%# Bind("LA_39a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1137,7 +1140,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Levofloxacin (LEV) 5ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox179" runat="server" CssClass="txtbox" Text='<%# Bind("LA_39b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1146,7 +1149,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Linezolid (LZD) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox180" runat="server" CssClass="txtbox" Text='<%# Bind("LA_40a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1155,7 +1158,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Linezolid (LZD) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox181" runat="server" CssClass="txtbox" Text='<%# Bind("LA_40a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1164,7 +1167,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Linezolid (LZD) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox182" runat="server" CssClass="txtbox" Text='<%# Bind("LA_40b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1173,7 +1176,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Meropenem (MEM) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox183" runat="server" CssClass="txtbox" Text='<%# Bind("LA_41a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1182,7 +1185,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Meropenem (MEM) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox184" runat="server" CssClass="txtbox" Text='<%# Bind("LA_41a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1191,7 +1194,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Meropenem (MEM) 10ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox185" runat="server" CssClass="txtbox" Text='<%# Bind("LA_41b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1200,16 +1203,34 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Metronidazole (MTZ) 5ug" Visible="false">
                                                                     <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox186" runat="server" CssClass="txtbox" Text='<%# Bind("LA_42a_b") %>'></asp:TextBox>
+                                                                        <asp:TextBox ID="TextBox18601" runat="server" CssClass="txtbox" Text='<%# Bind("LA_42a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="Label186" runat="server" Text='<%# Bind("LA_42a_b") %>'></asp:Label>
+                                                                        <asp:Label ID="Label1860" runat="server" Text='<%# Bind("LA_42a_b") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Metronidazole (MTZ) 5ug" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox18612" runat="server" CssClass="txtbox" Text='<%# Bind("LA_42a_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label1861" runat="server" Text='<%# Bind("LA_42a_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Metronidazole (MTZ) 5ug Interpretation" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox18642" runat="server" CssClass="txtbox" Text='<%# Bind("LA_42b_a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label1186" runat="server" Text='<%# Bind("LA_42b_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Nalidixic Acid (NA) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox187" runat="server" CssClass="txtbox" Text='<%# Bind("LA_43a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1218,7 +1239,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Nalidixic Acid (NA) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox188" runat="server" CssClass="txtbox" Text='<%# Bind("LA_43a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1227,7 +1248,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Nalidixic Acid (NA) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox189" runat="server" CssClass="txtbox" Text='<%# Bind("LA_43b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1236,25 +1257,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox190" runat="server" CssClass="txtbox" Text='<%# Bind("LA_43a_a") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label190" runat="server" Text='<%# Bind("LA_43a_a") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox191" runat="server" CssClass="txtbox" Text='<%# Bind("LA_43b_a") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label191" runat="server" Text='<%# Bind("LA_43b_a") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ofloxacin(OFX) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox192" runat="server" CssClass="txtbox" Text='<%# Bind("LA_44a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1263,7 +1266,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Ofloxacin(OFX) 5ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox193" runat="server" CssClass="txtbox" Text='<%# Bind("LA_44a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1272,7 +1275,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Ofloxacin(OFX) 5ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox194" runat="server" CssClass="txtbox" Text='<%# Bind("LA_44b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1281,7 +1284,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Oxacillin (OX) 1ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox195" runat="server" CssClass="txtbox" Text='<%# Bind("LA_45a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1290,7 +1293,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Oxacillin (OX) 1ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox196" runat="server" CssClass="txtbox" Text='<%# Bind("LA_45a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1299,7 +1302,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Oxacillin (OX) 1ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox197" runat="server" CssClass="txtbox" Text='<%# Bind("LA_45b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1308,7 +1311,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Penicillin (P) 10units" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox198" runat="server" CssClass="txtbox" Text='<%# Bind("LA_46a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1317,7 +1320,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Penicillin (P) 10units" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox199" runat="server" CssClass="txtbox" Text='<%# Bind("LA_46a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1326,7 +1329,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Penicillin (P) 10units Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox200" runat="server" CssClass="txtbox" Text='<%# Bind("LA_46b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1335,7 +1338,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Polymixin B (PB) 300 units" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox201" runat="server" CssClass="txtbox" Text='<%# Bind("LA_47a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1344,7 +1347,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Polymixin B (PB) 300 units" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox202" runat="server" CssClass="txtbox" Text='<%# Bind("LA_47a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1353,7 +1356,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Polymixin B (PB) 300 units Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox203" runat="server" CssClass="txtbox" Text='<%# Bind("LA_47b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1362,7 +1365,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cotrimoxazole(SXT) 25ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox204" runat="server" CssClass="txtbox" Text='<%# Bind("LA_48a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1371,7 +1374,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Cotrimoxazole(SXT) 25ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox205" runat="server" CssClass="txtbox" Text='<%# Bind("LA_48a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1380,7 +1383,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Cotrimoxazole(SXT) 25ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox206" runat="server" CssClass="txtbox" Text='<%# Bind("LA_48b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1389,7 +1392,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Tetracyclin (TE) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox207" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1398,7 +1401,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Tetracyclin (TE) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox208" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1407,7 +1410,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Tetracyclin (TE) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox209" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1416,34 +1419,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox210" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49a_b") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label210" runat="server" Text='<%# Bind("LA_49a_b") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox211" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49a_a") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label211" runat="server" Text='<%# Bind("LA_49a_a") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
-                                                                    <EditItemTemplate>
-                                                                        <asp:TextBox ID="TextBox212" runat="server" CssClass="txtbox" Text='<%# Bind("LA_49b_a") %>'></asp:TextBox>
-                                                                    </EditItemTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="Label212" runat="server" Text='<%# Bind("LA_49b_a") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                                </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Tobramycin (TOB) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox213" runat="server" CssClass="txtbox" Text='<%# Bind("LA_50a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1452,7 +1428,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Tobramycin (TOB) 10ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox214" runat="server" CssClass="txtbox" Text='<%# Bind("LA_50a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1461,7 +1437,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Tobramycin (TOB) 10ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox215" runat="server" CssClass="txtbox" Text='<%# Bind("LA_50b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1470,7 +1446,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Piperacillin/Tazobactam (TZP) 110ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox216" runat="server" CssClass="txtbox" Text='<%# Bind("LA_51a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1479,7 +1455,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Piperacillin/Tazobactam (TZP) 110ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox217" runat="server" CssClass="txtbox" Text='<%# Bind("LA_51a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1488,7 +1464,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Piperacillin/Tazobactam (TZP) 110ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox218" runat="server" CssClass="txtbox" Text='<%# Bind("LA_51b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1497,7 +1473,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Vancomycin(VA) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox219" runat="server" CssClass="txtbox" Text='<%# Bind("LA_52a_b") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1506,7 +1482,7 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Zone Diameter (mm) Vancomycin(VA) 30ug" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox220" runat="server" CssClass="txtbox" Text='<%# Bind("LA_52a_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
@@ -1515,12 +1491,30 @@
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="" Visible="false">
+                                                                <asp:TemplateField HeaderText="Vancomycin(VA) 30ug Interpretation" Visible="false">
                                                                     <EditItemTemplate>
                                                                         <asp:TextBox ID="TextBox221" runat="server" CssClass="txtbox" Text='<%# Bind("LA_52b_a") %>'></asp:TextBox>
                                                                     </EditItemTemplate>
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="Label221" runat="server" Text='<%# Bind("LA_52b_a") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="CRP result (Gel tube) (mg/dL)" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox222" runat="server" CssClass="txtbox" Text='<%# Bind("LA_02") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label223" runat="server" Text='<%# Bind("LA_02") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="CRP result (Actim tube) (mg/dL)" Visible="false">
+                                                                    <EditItemTemplate>
+                                                                        <asp:TextBox ID="TextBox224" runat="server" CssClass="txtbox" Text='<%# Bind("LA_02a") %>'></asp:TextBox>
+                                                                    </EditItemTemplate>
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label225" runat="server" Text='<%# Bind("LA_02a") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle BackColor="#6967ce" BorderColor="#6967ce" Font-Bold="True" Font-Names="Verdana" Font-Size="10pt" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                                 </asp:TemplateField>
