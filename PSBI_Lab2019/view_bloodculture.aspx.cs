@@ -820,6 +820,8 @@ public partial class view_bloodculture : System.Web.UI.Page
 
 
 
+
+
             if (!string.IsNullOrEmpty(txtStartDate.Text) && !string.IsNullOrEmpty(txtEndDate.Text) && chkBloodCulture.Checked == true)
             {
                 qry = "select b.ID, b.id id1, CONCAT('', a.AS1_screening_ID) AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno, convert(varchar(13), AS2_Q9, 103) AS2_Q9, case when rdo_BloodCulture = 1 then 'POS' else 'NEG' end rdo_BloodCulture, " +
