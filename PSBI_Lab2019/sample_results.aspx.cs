@@ -33,8 +33,14 @@ public partial class sample_results : System.Web.UI.Page
     private IList<Stream> m_streams;
 
     static DataTable dt_bloodculture = new DataTable();
+    static DataTable dt_multiple_bloodculture = new DataTable();
+
     DataRow dr_bloodculture = null;
+    DataRow[] dr_bloodculture_update;
+    DataRow dr_multiple_bloodculture = null;
+
     static private int organism_sno;
+    static private int bloodculture_sno;
 
 
     public List<CountryInfo> CountryInformation { get; set; }
@@ -102,9 +108,29 @@ public partial class sample_results : System.Web.UI.Page
 
 
                     getData1(ViewState["id"].ToString());
-                    cmdSave.Visible = false;
-                    cmdSaveDraft.Visible = true;
-                    cmdCancel.Visible = true;
+
+
+                    if (ViewState["rdo_BloodCulture"] != null)
+                    {
+                        if (ViewState["rdo_BloodCulture"] == "1")
+                        {
+                            cmdSave.Visible = false;
+                            cmdSaveDraft.Visible = false;
+                            cmdCancel.Visible = true;
+                            cmdAddMoreBloodCulture.Visible = false;
+                        }
+                        else
+                        {
+                            cmdSave.Visible = false;
+                            cmdSaveDraft.Visible = true;
+                            cmdCancel.Visible = true;
+                            cmdAddMoreBloodCulture.Visible = false;
+                        }
+                    }
+
+
+
+
                     //txthistory.ReadOnly = true;
 
                     if (ViewState["organism_sno"] == "0")
@@ -115,6 +141,13 @@ public partial class sample_results : System.Web.UI.Page
                     {
                         fillGrid_BloodCulture();
                     }
+
+
+
+                    CreateColsMultipleBloodCultureGrid();
+                    fillGrid_MultipleBloodCulture();
+
+
 
 
                     Disable_IDRL_Section();
@@ -133,6 +166,7 @@ public partial class sample_results : System.Web.UI.Page
 
                     if (Request.QueryString["id"] != null && Request.Cookies["labid"].Value == "1")
                     {
+
                         ViewState["id"] = Request.QueryString["id"].ToString();
 
 
@@ -141,6 +175,7 @@ public partial class sample_results : System.Web.UI.Page
                         cmdSave.Visible = true;
                         cmdSaveDraft.Visible = true;
                         cmdCancel.Visible = true;
+                        cmdAddMoreBloodCulture.Visible = true;
                         txthistory.ReadOnly = false;
 
                         pnl_LA_01.Visible = false;
@@ -158,6 +193,11 @@ public partial class sample_results : System.Web.UI.Page
                         }
 
 
+
+                        CreateColsMultipleBloodCultureGrid();
+                        fillGrid_MultipleBloodCulture();
+
+
                         Enable_IDRL_Section();
 
                         previewReport();
@@ -172,6 +212,7 @@ public partial class sample_results : System.Web.UI.Page
                         cmdSave.Visible = false;
                         cmdSaveDraft.Visible = false;
                         cmdCancel.Visible = true;
+                        cmdAddMoreBloodCulture.Visible = false;
                         //txthistory.ReadOnly = true;
 
                         if (ViewState["organism_sno"] == "0")
@@ -183,6 +224,10 @@ public partial class sample_results : System.Web.UI.Page
                             fillGrid_BloodCulture();
                         }
 
+
+
+                        CreateColsMultipleBloodCultureGrid();
+                        fillGrid_MultipleBloodCulture();
 
 
                         Disable_IDRL_Section();
@@ -198,13 +243,14 @@ public partial class sample_results : System.Web.UI.Page
                     }
                     else
                     {
-
                         if (Request.QueryString["id"] == null && Request.Cookies["labid"].Value == "2")
                         {
                             Disable_IDRL_Section();
                         }
                         else
                         {
+                            CreateColsMultipleBloodCultureGrid();
+                            CreateColsBloodCultureGrid();
                             Enable_IDRL_Section();
                         }
 
@@ -2449,6 +2495,13 @@ public partial class sample_results : System.Web.UI.Page
 
 
 
+    private void Disable_RadioButton1(RadioButton rdo)
+    {
+        rdo.Checked = false;
+    }
+
+
+
     private void EnableControls(TextBox rdo)
     {
         rdo.Visible = true;
@@ -2461,6 +2514,13 @@ public partial class sample_results : System.Web.UI.Page
         rdo.Text = "";
         rdo.Visible = false;
         rdo.Enabled = false;
+    }
+
+
+
+    private void DisableControls2(TextBox rdo)
+    {
+        rdo.Text = "";
     }
 
 
@@ -6712,6 +6772,7 @@ public partial class sample_results : System.Web.UI.Page
                     DataTable dt_select = null;
 
                     int sno = 0;
+                    int sno_blcs = 0;
 
                     qry = "delete from tblorganism where screeningID = '" + la_sno.Text + "'";
                     cmd_select = new SqlCommand(qry, cn.cn);
@@ -6720,19 +6781,169 @@ public partial class sample_results : System.Web.UI.Page
                     da_select.Fill(dt_select);
 
 
-                    for (int a = 0; a <= dg_BloodCulture.Rows.Count - 1; a++)
+                    for (int b = 0; b <= DG_ShowMultiple_BloodCulture.Rows.Count - 1; b++)
                     {
-                        sno += 1;
+                        sno_blcs += 1;
 
-                        qry = "insert into tblorganism(sno, screeningID, organismName, comment) values('" + sno + "', '" + la_sno.Text + "', '" + dt_bloodculture.Rows[a].ItemArray[1] + "', '" + dt_bloodculture.Rows[a].ItemArray[2] + "')";
+                        qry = "insert into tblMultipleBloodCulture(sno, screeningID, "
+                            + " LA_20a_b, LA_20a_a, LA_20b_a, " +
+                            " LA_21a_b, LA_21a_a, LA_21b_a, " +
+                            " LA_22a_b, LA_22a_a, LA_22b_a, " +
+                            " LA_23a_b, LA_23a_a, LA_23b_a, " +
+                            " LA_24a_b, LA_24a_a, LA_24b_a, " +
+                            " LA_25a_b, LA_25a_a, LA_25b_a, " +
+                            " LA_26a_b, LA_26a_a, LA_26b_a, " +
+                            " LA_27a_b, LA_27a_a, LA_27b_a, " +
+                            " LA_28a_b, LA_28a_a, LA_28b_a, " +
+                            " LA_29a_b, LA_29a_a, LA_29b_a, " +
+                            " LA_30a_b, LA_30a_a, LA_30b_a, " +
+                            " LA_31a_b, LA_31a_a, LA_31b_a, " +
+                            " LA_32a_b, LA_32a_a, LA_32b_a, " +
+                            " LA_33a_b, LA_33a_a, LA_33b_a, " +
+                            " LA_34a_b, LA_34a_a, LA_34b_a, " +
+                            " LA_35a_b, LA_35a_a, LA_35b_a, " +
+                            " LA_36a_b, LA_36a_a, LA_36b_a, " +
+                            " LA_37a_b, LA_37a_a, LA_37b_a, " +
+                            " LA_38a_b, LA_38a_a, LA_38b_a, " +
+                            " LA_39a_b, LA_39a_a, LA_39b_a, " +
+                            " LA_40a_b, LA_40a_a, LA_40b_a, " +
+                            " LA_41a_b, LA_41a_a, LA_41b_a, " +
+                            " LA_42a_b, LA_42a_a, LA_42b_a, " +
+                            " LA_43a_b, LA_43a_a, LA_43b_a, " +
+                            " LA_44a_b, LA_44a_a, LA_44b_a, " +
+                            " LA_45a_b, LA_45a_a, LA_45b_a, " +
+                            " LA_46a_b, LA_46a_a, LA_46b_a, " +
+                            " LA_47a_b, LA_47a_a, LA_47b_a, " +
+                            " LA_48a_b, LA_48a_a, LA_48b_a, " +
+                            " LA_49a_b, LA_49a_a, LA_49b_a, " +
+                            " LA_50a_b, LA_50a_a, LA_50b_a, " +
+                            " LA_51a_b, LA_51a_a, LA_51b_a, " +
+                            " LA_52a_b, LA_52a_a, LA_52b_a)" +
+                             " values('" + sno + "', '" + la_sno.Text + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[1] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[2] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[3] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[4] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[5] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[6] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[7] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[8] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[9] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[10] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[11] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[12] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[13] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[14] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[15] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[16] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[17] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[18] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[19] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[20] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[21] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[22] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[23] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[24] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[25] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[26] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[27] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[28] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[29] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[30] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[31] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[32] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[33] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[34] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[35] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[36] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[37] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[38] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[39] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[40] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[41] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[42] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[43] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[44] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[45] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[46] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[47] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[48] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[49] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[50] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[51] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[52] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[53] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[54] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[55] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[56] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[57] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[58] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[59] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[60] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[61] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[62] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[63] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[64] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[65] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[66] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[67] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[68] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[69] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[70] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[71] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[72] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[73] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[74] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[75] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[76] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[77] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[78] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[79] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[80] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[81] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[82] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[83] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[84] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[85] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[86] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[87] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[88] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[89] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[90] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[91] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[92] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[93] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[94] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[95] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[96] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[97] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[98] + "', '" +
+                             dt_multiple_bloodculture.Rows[b].ItemArray[99] + "')";
 
                         cmd = new SqlCommand(qry, cn.cn);
                         da = new SqlDataAdapter(cmd);
                         dt = new DataTable();
                         da.Fill(dt);
+
+
+                        for (int a = 0; a <= dg_BloodCulture.Rows.Count - 1; a++)
+                        {
+                            sno += 1;
+
+                            qry = "insert into tblorganism(sno, screeningID, bloodcultureid, organismName, comment) values('"
+                                + sno + "', '" + la_sno.Text + "', '" + dt_multiple_bloodculture.Rows[b].ItemArray[1] + "', '" + dt_bloodculture.Rows[a].ItemArray[1] +
+                                "', '" + dt_bloodculture.Rows[a].ItemArray[2] + "')";
+
+                            cmd = new SqlCommand(qry, cn.cn);
+                            da = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            da.Fill(dt);
+                        }
+
                     }
 
                     dt_bloodculture = null;
+                    dt_multiple_bloodculture = null;
 
                 }
                 else
@@ -13016,6 +13227,182 @@ public partial class sample_results : System.Web.UI.Page
                 }
 
 
+                int sno = 0;
+                int sno_blcs = 0;
+
+                DataTable dt = null;
+                SqlCommand cmd = null;
+                da = null;
+
+
+
+                for (int b = 0; b <= DG_ShowMultiple_BloodCulture.Rows.Count - 1; b++)
+                {
+                    sno_blcs += 1;
+
+                    qry = "insert into tblMultipleBloodCulture(sno, screeningID, "
+                        + " LA_20a_b, LA_20a_a, LA_20b_a, " +
+                        " LA_21a_b, LA_21a_a, LA_21b_a, " +
+                        " LA_22a_b, LA_22a_a, LA_22b_a, " +
+                        " LA_23a_b, LA_23a_a, LA_23b_a, " +
+                        " LA_24a_b, LA_24a_a, LA_24b_a, " +
+                        " LA_25a_b, LA_25a_a, LA_25b_a, " +
+                        " LA_26a_b, LA_26a_a, LA_26b_a, " +
+                        " LA_27a_b, LA_27a_a, LA_27b_a, " +
+                        " LA_28a_b, LA_28a_a, LA_28b_a, " +
+                        " LA_29a_b, LA_29a_a, LA_29b_a, " +
+                        " LA_30a_b, LA_30a_a, LA_30b_a, " +
+                        " LA_31a_b, LA_31a_a, LA_31b_a, " +
+                        " LA_32a_b, LA_32a_a, LA_32b_a, " +
+                        " LA_33a_b, LA_33a_a, LA_33b_a, " +
+                        " LA_34a_b, LA_34a_a, LA_34b_a, " +
+                        " LA_35a_b, LA_35a_a, LA_35b_a, " +
+                        " LA_36a_b, LA_36a_a, LA_36b_a, " +
+                        " LA_37a_b, LA_37a_a, LA_37b_a, " +
+                        " LA_38a_b, LA_38a_a, LA_38b_a, " +
+                        " LA_39a_b, LA_39a_a, LA_39b_a, " +
+                        " LA_40a_b, LA_40a_a, LA_40b_a, " +
+                        " LA_41a_b, LA_41a_a, LA_41b_a, " +
+                        " LA_42a_b, LA_42a_a, LA_42b_a, " +
+                        " LA_43a_b, LA_43a_a, LA_43b_a, " +
+                        " LA_44a_b, LA_44a_a, LA_44b_a, " +
+                        " LA_45a_b, LA_45a_a, LA_45b_a, " +
+                        " LA_46a_b, LA_46a_a, LA_46b_a, " +
+                        " LA_47a_b, LA_47a_a, LA_47b_a, " +
+                        " LA_48a_b, LA_48a_a, LA_48b_a, " +
+                        " LA_49a_b, LA_49a_a, LA_49b_a, " +
+                        " LA_50a_b, LA_50a_a, LA_50b_a, " +
+                        " LA_51a_b, LA_51a_a, LA_51b_a, " +
+                        " LA_52a_b, LA_52a_a, LA_52b_a)" +
+                         " values('" + sno + "', '" + la_sno.Text + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[1] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[2] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[3] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[4] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[5] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[6] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[7] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[8] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[9] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[10] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[11] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[12] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[13] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[14] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[15] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[16] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[17] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[18] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[19] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[20] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[21] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[22] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[23] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[24] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[25] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[26] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[27] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[28] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[29] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[30] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[31] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[32] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[33] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[34] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[35] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[36] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[37] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[38] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[39] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[40] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[41] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[42] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[43] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[44] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[45] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[46] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[47] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[48] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[49] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[50] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[51] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[52] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[53] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[54] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[55] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[56] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[57] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[58] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[59] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[60] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[61] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[62] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[63] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[64] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[65] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[66] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[67] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[68] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[69] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[70] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[71] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[72] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[73] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[74] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[75] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[76] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[77] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[78] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[79] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[80] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[81] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[82] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[83] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[84] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[85] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[86] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[87] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[88] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[89] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[90] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[91] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[92] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[93] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[94] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[95] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[96] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[97] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[98] + "', '" +
+                         dt_multiple_bloodculture.Rows[b].ItemArray[99] + "')";
+
+                    cmd = new SqlCommand(qry, cn.cn);
+                    da = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+
+                    for (int a = 0; a <= dg_BloodCulture.Rows.Count - 1; a++)
+                    {
+                        sno += 1;
+
+                        qry = "insert into tblorganism(sno, screeningID, bloodcultureid, organismName, comment) values('"
+                            + sno + "', '" + la_sno.Text + "', '" + dt_multiple_bloodculture.Rows[b].ItemArray[1] + "', '" + dt_bloodculture.Rows[a].ItemArray[1] +
+                            "', '" + dt_bloodculture.Rows[a].ItemArray[2] + "')";
+
+                        cmd = new SqlCommand(qry, cn.cn);
+                        da = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        da.Fill(dt);
+                    }
+
+                }
+
+                dt_bloodculture = null;
+                dt_multiple_bloodculture = null;
+
+
+
+
                 string message = "alert('Record saved successfully');window.location.href='sample_recv.aspx'";
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
             }
@@ -17808,17 +18195,31 @@ public partial class sample_results : System.Web.UI.Page
 
 
             DataColumn col2 = new DataColumn();
-            col2.ColumnName = "organismName";
+            col2.ColumnName = "screeningID";
             col2.DataType = typeof(String);
-            col2.Caption = "Organism Name";
+            col2.Caption = "screeningID";
             dt_bloodculture.Columns.Add(col2);
 
 
             DataColumn col3 = new DataColumn();
-            col3.ColumnName = "comment";
+            col3.ColumnName = "bloodcultureid";
             col3.DataType = typeof(String);
-            col3.Caption = "Comments";
+            col3.Caption = "bloodcultureid";
             dt_bloodculture.Columns.Add(col3);
+
+
+            DataColumn col4 = new DataColumn();
+            col4.ColumnName = "organismName";
+            col4.DataType = typeof(String);
+            col4.Caption = "Organism Name";
+            dt_bloodculture.Columns.Add(col4);
+
+
+            DataColumn col5 = new DataColumn();
+            col5.ColumnName = "comment";
+            col5.DataType = typeof(String);
+            col5.Caption = "Comments";
+            dt_bloodculture.Columns.Add(col5);
 
 
             if (ViewState["organism_sno"] == "0")
@@ -17860,6 +18261,8 @@ public partial class sample_results : System.Web.UI.Page
             dr_bloodculture = dt_bloodculture.NewRow();
 
             dr_bloodculture["id"] = organism_sno;
+            dr_bloodculture["screeningID"] = la_sno.Text;
+            dr_bloodculture["bloodcultureid"] = 0;
             dr_bloodculture["organismName"] = organismName;
             dr_bloodculture["comment"] = comments;
 
@@ -17892,7 +18295,7 @@ public partial class sample_results : System.Web.UI.Page
         {
             cn = new CConnection();
 
-            SqlDataAdapter da = new SqlDataAdapter("select id, organismName, comment from tblorganism where screeningID = '" + la_sno.Text + "'", cn.cn);
+            SqlDataAdapter da = new SqlDataAdapter("select id, screeningID, bloodcultureid, organismName, comment from tblorganism where screeningID = '" + la_sno.Text + "'", cn.cn);
             //DataSet ds = new DataSet();
             dt_bloodculture = new DataTable();
             da.Fill(dt_bloodculture);
@@ -17906,6 +18309,196 @@ public partial class sample_results : System.Web.UI.Page
 
         catch (Exception ex)
         {
+            string message = "alert('Exception Occured');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+
+        }
+    }
+
+
+
+
+    private void CreateColsMultipleBloodCultureGrid()
+    {
+        try
+        {
+
+            DataColumn col1 = new DataColumn();
+            col1.ColumnName = "id";
+            col1.DataType = typeof(Int32);
+            col1.Caption = "id";
+            dt_multiple_bloodculture.Columns.Add(col1);
+
+
+            DataColumn col2 = new DataColumn();
+            col2.ColumnName = "sno";
+            col2.DataType = typeof(Int32);
+            col2.Caption = "sno";
+            dt_multiple_bloodculture.Columns.Add(col2);
+
+
+            DataColumn col3 = new DataColumn();
+            col3.ColumnName = "screeningID";
+            col3.DataType = typeof(string);
+            col3.Caption = "Screening ID";
+            dt_multiple_bloodculture.Columns.Add(col3);
+
+
+
+            DataColumn col4 = new DataColumn();
+            col4.ColumnName = "LA_20a_b";
+            col4.DataType = typeof(String);
+            col4.Caption = "Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col4);
+
+
+            DataColumn col5 = new DataColumn();
+            col5.ColumnName = "LA_20a_a";
+            col5.DataType = typeof(String);
+            col5.Caption = "Zone Diameter (mm) Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col5);
+
+
+            DataColumn col6 = new DataColumn();
+            col6.ColumnName = "LA_20b_a";
+            col6.DataType = typeof(String);
+            col6.Caption = "Amoxicillin/Clavulanic Acid 2:1 (AMC) 30ug Interpretation";
+            dt_multiple_bloodculture.Columns.Add(col6);
+
+
+            DataColumn col7 = new DataColumn();
+            col7.ColumnName = "LA_21a_b";
+            col7.DataType = typeof(String);
+            col7.Caption = "Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col7);
+
+
+            DataColumn col8 = new DataColumn();
+            col8.ColumnName = "LA_21a_a";
+            col8.DataType = typeof(String);
+            col8.Caption = "Zone Diameter (mm) Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col8);
+
+
+            DataColumn col9 = new DataColumn();
+            col9.ColumnName = "LA_21b_a";
+            col9.DataType = typeof(String);
+            col9.Caption = "Amoxicillin/Clavulanic Acid 2:1 (AMC) 30ug Interpretation";
+            dt_multiple_bloodculture.Columns.Add(col9);
+
+
+            DataColumn col10 = new DataColumn();
+            col10.ColumnName = "LA_22a_b";
+            col10.DataType = typeof(String);
+            col10.Caption = "Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col10);
+
+
+            DataColumn col11 = new DataColumn();
+            col11.ColumnName = "LA_22a_a";
+            col11.DataType = typeof(String);
+            col11.Caption = "Zone Diameter (mm) Amoxicillin/ Clavulanic Acid 2:1 (AMC) 30ug";
+            dt_multiple_bloodculture.Columns.Add(col11);
+
+
+            DataColumn col12 = new DataColumn();
+            col12.ColumnName = "LA_22b_a";
+            col12.DataType = typeof(String);
+            col12.Caption = "Amoxicillin/Clavulanic Acid 2:1 (AMC) 30ug Interpretation";
+            dt_multiple_bloodculture.Columns.Add(col12);
+
+
+
+
+            if (ViewState["organism_sno"] == "0")
+            {
+                bloodculture_sno = 0;
+            }
+
+
+            //DG_BloodCultureMultiple.DataSource = dt_multiple_bloodculture;
+            //DG_BloodCultureMultiple.DataBind();
+
+            //cntl_Multiple_Blood_Culture.Visible = false;
+        }
+
+        catch (Exception ex)
+        {
+            string message = "alert('Exception Occured');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+
+        }
+    }
+
+
+
+
+    public void fillGrid_MultipleBloodCulture()
+    {
+        CConnection cn = null;
+
+        try
+        {
+            cn = new CConnection();
+
+            SqlDataAdapter da = new SqlDataAdapter("select id, sno, screeningID, " +
+                " LA_20a_b, LA_20a_a, LA_20b_a, " +
+                " LA_21a_b, LA_21b_a, LA_21b_a, " +
+                " LA_22a_a, LA_22a_a, LA_22b_a, " +
+                " LA_23a_a, LA_23a_a, LA_23b_a, " +
+                " LA_24a_a, LA_24a_a, LA_24b_a, " +
+                " LA_24a_a, LA_24a_a, LA_24b_a, " +
+                " LA_25a_a, LA_25a_a, LA_25b_a, " +
+                " LA_26a_a, LA_26a_a, LA_26b_a, " +
+                " LA_27a_a, LA_27a_a, LA_27b_a, " +
+                " LA_28a_a, LA_28a_a, LA_28b_a, " +
+                " LA_29a_a, LA_29a_a, LA_29b_a, " +
+                " LA_30a_a, LA_30a_a, LA_30b_a, " +
+                " LA_31a_a, LA_31a_a, LA_31b_a, " +
+                " LA_32a_a, LA_32a_a, LA_32b_a, " +
+                " LA_33a_a, LA_33a_a, LA_33b_a, " +
+                " LA_34a_a, LA_34a_a, LA_34b_a, " +
+                " LA_35a_a, LA_35a_a, LA_35b_a, " +
+                " LA_36a_a, LA_36a_a, LA_36b_a, " +
+                " LA_37a_a, LA_37a_a, LA_37b_a, " +
+                " LA_38a_a, LA_38a_a, LA_38b_a, " +
+                " LA_39a_a, LA_39a_a, LA_39b_a, " +
+                " LA_40a_a, LA_40a_a, LA_40b_a, " +
+                " LA_41a_a, LA_41a_a, LA_41b_a, " +
+                " LA_42a_a, LA_42a_a, LA_42b_a, " +
+                " LA_43a_a, LA_43a_a, LA_43b_a, " +
+                " LA_44a_a, LA_44a_a, LA_44b_a, " +
+                " LA_45a_a, LA_45a_a, LA_45b_a, " +
+                " LA_46a_a, LA_46a_a, LA_46b_a, " +
+                " LA_47a_a, LA_47a_a, LA_47b_a, " +
+                " LA_48a_a, LA_48a_a, LA_48b_a, " +
+                " LA_49a_a, LA_49a_a, LA_49b_a, " +
+                " LA_50a_a, LA_50a_a, LA_50b_a, " +
+                " LA_51a_a, LA_51a_a, LA_51b_a, " +
+                " LA_52a_a, LA_52a_a, LA_52b_a, " +
+                " from tblMultipleBloodCulture where screeningID = '" + la_sno.Text + "'", cn.cn);
+
+            dt_multiple_bloodculture = new DataTable();
+            da.Fill(dt_multiple_bloodculture);
+
+
+            DG_ShowMultiple_BloodCulture.Columns[0].Visible = true;
+            DG_ShowMultiple_BloodCulture.DataSource = dt_multiple_bloodculture;
+            DG_ShowMultiple_BloodCulture.DataBind();
+            DG_ShowMultiple_BloodCulture.Columns[0].Visible = false;
+
+        }
+
+        catch (Exception ex)
+        {
 
         }
 
@@ -17914,6 +18507,67 @@ public partial class sample_results : System.Web.UI.Page
 
         }
     }
+
+
+
+    public void fillGrid_Multiple_BloodCulture_array(string LA_20a_b, string LA_20a_a, string LA_20b_a,
+        string LA_21a_b, string LA_21a_a, string LA_21b_a,
+        string LA_22a_b, string LA_22a_a, string LA_22b_a
+        )
+    {
+        try
+        {
+
+            //DataTable dt = new DataTable();            
+
+            //DataRow dr = dt.NewRow();
+
+            bloodculture_sno += 1;
+
+
+            dr_bloodculture_update = dt_bloodculture.Select("screeningID = '" + la_sno.Text + "'");
+
+            foreach (DataRow dr in dr_bloodculture_update)
+            {
+                dr["bloodcultureid"] = bloodculture_sno;
+            }
+
+
+            dr_multiple_bloodculture = dt_multiple_bloodculture.NewRow();
+
+            dr_multiple_bloodculture["id"] = bloodculture_sno;
+            dr_multiple_bloodculture["sno"] = bloodculture_sno;
+            dr_multiple_bloodculture["screeningID"] = la_sno.Text;
+            dr_multiple_bloodculture["LA_20a_b"] = LA_20a_b;
+            dr_multiple_bloodculture["LA_20a_a"] = LA_20a_a;
+            dr_multiple_bloodculture["LA_20b_a"] = LA_20b_a;
+            dr_multiple_bloodculture["LA_21a_b"] = LA_21a_b;
+            dr_multiple_bloodculture["LA_21a_a"] = LA_21a_a;
+            dr_multiple_bloodculture["LA_21b_a"] = LA_21b_a;
+            dr_multiple_bloodculture["LA_22a_b"] = LA_22a_b;
+            dr_multiple_bloodculture["LA_22a_a"] = LA_22a_a;
+            dr_multiple_bloodculture["LA_22b_a"] = LA_22b_a;
+
+
+            dt_multiple_bloodculture.Rows.Add(dr_multiple_bloodculture);
+
+
+            DG_ShowMultiple_BloodCulture.DataSource = dt_multiple_bloodculture;
+            DG_ShowMultiple_BloodCulture.DataBind();
+        }
+
+        catch (Exception ex)
+        {
+            string message = "alert('Exception Occured');";
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+        }
+
+        finally
+        {
+
+        }
+    }
+
 
 
     public void getData1(string id)
@@ -18319,11 +18973,17 @@ public partial class sample_results : System.Web.UI.Page
                         txthistory.Text = ds.Tables[0].Rows[0]["history"].ToString();
 
 
+                        ViewState["rdo_BloodCulture"] = ds.Tables[0].Rows[0]["rdo_BloodCulture"].ToString();
+
+
                         if (Request.Cookies["labid"].Value == "1" && Request.Cookies["labid"].Value == "4")
                         {
                             txthistory.Enabled = false;
                             txthistory.CssClass = "form-control";
                             txthistory.ReadOnly = true;
+
+                            la_sno.Enabled = true;
+                            la_sno.CssClass = "form-control";
                         }
                         else
                         {
@@ -18333,12 +18993,19 @@ public partial class sample_results : System.Web.UI.Page
                                 txthistory.Enabled = true;
                                 txthistory.CssClass = "form-control";
                                 txthistory.ReadOnly = false;
+
+                                la_sno.Enabled = false;
+                                la_sno.CssClass = "form-control";
+
                             }
                             else
                             {
                                 txthistory.Enabled = false;
                                 txthistory.CssClass = "form-control";
                                 txthistory.ReadOnly = true;
+
+                                la_sno.Enabled = true;
+                                la_sno.CssClass = "form-control";
                             }
 
                         }
@@ -32877,4 +33544,1007 @@ public partial class sample_results : System.Web.UI.Page
 
         }
     }
+
+    protected void cmdAddMoreBloodCulture_Click(object sender, EventArgs e)
+    {
+
+        CConnection cn = null;
+
+
+        string var_LA_20a_b = "-1";
+        string var_LA_21a_b = "-1";
+        string var_LA_22a_b = "-1";
+        string var_LA_23a_b = "-1";
+        string var_LA_24a_b = "-1";
+        string var_LA_25a_b = "-1";
+        string var_LA_26a_b = "-1";
+        string var_LA_27a_b = "-1";
+        string var_LA_28a_b = "-1";
+        string var_LA_29a_b = "-1";
+        string var_LA_30a_b = "-1";
+        string var_LA_31a_b = "-1";
+        string var_LA_32a_b = "-1";
+        string var_LA_33a_b = "-1";
+        string var_LA_34a_b = "-1";
+        string var_LA_35a_b = "-1";
+        string var_LA_36a_b = "-1";
+        string var_LA_37a_b = "-1";
+        string var_LA_38a_b = "-1";
+        string var_LA_39a_b = "-1";
+        string var_LA_40a_b = "-1";
+        string var_LA_41a_b = "-1";
+        string var_LA_42a_b = "-1";
+        string var_LA_43a_b = "-1";
+        string var_LA_44a_b = "-1";
+        string var_LA_45a_b = "-1";
+        string var_LA_46a_b = "-1";
+        string var_LA_47a_b = "-1";
+        string var_LA_48a_b = "-1";
+        string var_LA_49a_b = "-1";
+        string var_LA_50a_b = "-1";
+        string var_LA_51a_b = "-1";
+        string var_LA_52a_b = "-1";
+
+
+        var var_LA_20b_a = "-1";
+        var var_LA_21b_a = "-1";
+        var var_LA_22b_a = "-1";
+        var var_LA_23b_a = "-1";
+        var var_LA_24b_a = "-1";
+        var var_LA_25b_a = "-1";
+        var var_LA_26b_a = "-1";
+        var var_LA_27b_a = "-1";
+        var var_LA_28b_a = "-1";
+        var var_LA_29b_a = "-1";
+        var var_LA_30b_a = "-1";
+        var var_LA_31b_a = "-1";
+        var var_LA_32b_a = "-1";
+        var var_LA_33b_a = "-1";
+        var var_LA_34b_a = "-1";
+        var var_LA_35b_a = "-1";
+        var var_LA_36b_a = "-1";
+        var var_LA_37b_a = "-1";
+        var var_LA_38b_a = "-1";
+        var var_LA_39b_a = "-1";
+        var var_LA_40b_a = "-1";
+        var var_LA_41b_a = "-1";
+        var var_LA_42b_a = "-1";
+        var var_LA_43b_a = "-1";
+        var var_LA_44b_a = "-1";
+        var var_LA_45b_a = "-1";
+        var var_LA_46b_a = "-1";
+        var var_LA_47b_a = "-1";
+        var var_LA_48b_a = "-1";
+        var var_LA_49b_a = "-1";
+        var var_LA_50b_a = "-1";
+        var var_LA_51b_a = "-1";
+        var var_LA_52b_a = "-1";
+
+
+        try
+        {
+            UpdatePanel upd_pnl = (UpdatePanel)Page.FindControl("UpdatePanel2");
+
+            RadioButton rdo_LA_20a_v = (RadioButton)upd_pnl.FindControl("LA_20a_v");
+            RadioButton rdo_LA_20a_b = (RadioButton)upd_pnl.FindControl("LA_20a_b");
+            RadioButton rdo_LA_20a_c = (RadioButton)upd_pnl.FindControl("LA_20a_c");
+
+            TextBox txt_LA_20a_a = (TextBox)upd_pnl.FindControl("LA_20a_a");
+
+            RadioButton rdo_LA_20b_a = (RadioButton)upd_pnl.FindControl("LA_20b_a");
+            RadioButton rdo_LA_20b_b = (RadioButton)upd_pnl.FindControl("LA_20b_b");
+            RadioButton rdo_LA_20b_c = (RadioButton)upd_pnl.FindControl("LA_20b_c");
+
+
+            RadioButton rdo_LA_21a_v = (RadioButton)upd_pnl.FindControl("LA_21a_v");
+            RadioButton rdo_LA_21a_b = (RadioButton)upd_pnl.FindControl("LA_21a_b");
+            RadioButton rdo_LA_21a_c = (RadioButton)upd_pnl.FindControl("LA_21a_c");
+
+            TextBox txt_LA_21a_a = (TextBox)upd_pnl.FindControl("LA_21a_a");
+
+            RadioButton rdo_LA_21b_a = (RadioButton)upd_pnl.FindControl("LA_21b_a");
+            RadioButton rdo_LA_21b_b = (RadioButton)upd_pnl.FindControl("LA_21b_b");
+            RadioButton rdo_LA_21b_c = (RadioButton)upd_pnl.FindControl("LA_21b_c");
+
+
+            RadioButton rdo_LA_22a_v = (RadioButton)upd_pnl.FindControl("LA_22a_v");
+            RadioButton rdo_LA_22a_b = (RadioButton)upd_pnl.FindControl("LA_22a_b");
+            RadioButton rdo_LA_22a_c = (RadioButton)upd_pnl.FindControl("LA_22a_c");
+
+            TextBox txt_LA_22a_a = (TextBox)upd_pnl.FindControl("LA_22a_a");
+
+            RadioButton rdo_LA_22b_a = (RadioButton)upd_pnl.FindControl("LA_22b_a");
+            RadioButton rdo_LA_22b_b = (RadioButton)upd_pnl.FindControl("LA_22b_b");
+            RadioButton rdo_LA_22b_c = (RadioButton)upd_pnl.FindControl("LA_22b_c");
+
+
+
+
+            RadioButton rdo_LA_23a_v = (RadioButton)upd_pnl.FindControl("LA_23a_v");
+            RadioButton rdo_LA_23a_b = (RadioButton)upd_pnl.FindControl("LA_23a_b");
+            RadioButton rdo_LA_23a_c = (RadioButton)upd_pnl.FindControl("LA_23a_c");
+
+            TextBox txt_LA_23a_a = (TextBox)upd_pnl.FindControl("LA_23a_a");
+
+            RadioButton rdo_LA_23b_a = (RadioButton)upd_pnl.FindControl("LA_23b_a");
+            RadioButton rdo_LA_23b_b = (RadioButton)upd_pnl.FindControl("LA_23b_b");
+            RadioButton rdo_LA_23b_c = (RadioButton)upd_pnl.FindControl("LA_23b_c");
+
+
+
+            RadioButton rdo_LA_24a_v = (RadioButton)upd_pnl.FindControl("LA_24a_v");
+            RadioButton rdo_LA_24a_b = (RadioButton)upd_pnl.FindControl("LA_24a_b");
+            RadioButton rdo_LA_24a_c = (RadioButton)upd_pnl.FindControl("LA_24a_c");
+
+            TextBox txt_LA_24a_a = (TextBox)upd_pnl.FindControl("LA_24a_a");
+
+            RadioButton rdo_LA_24b_a = (RadioButton)upd_pnl.FindControl("LA_24b_a");
+            RadioButton rdo_LA_24b_b = (RadioButton)upd_pnl.FindControl("LA_24b_b");
+            RadioButton rdo_LA_24b_c = (RadioButton)upd_pnl.FindControl("LA_24b_c");
+
+
+
+            RadioButton rdo_LA_25a_v = (RadioButton)upd_pnl.FindControl("LA_25a_v");
+            RadioButton rdo_LA_25a_b = (RadioButton)upd_pnl.FindControl("LA_25a_b");
+            RadioButton rdo_LA_25a_c = (RadioButton)upd_pnl.FindControl("LA_25a_c");
+
+            TextBox txt_LA_25a_a = (TextBox)upd_pnl.FindControl("LA_25a_a");
+
+            RadioButton rdo_LA_25b_a = (RadioButton)upd_pnl.FindControl("LA_25b_a");
+            RadioButton rdo_LA_25b_b = (RadioButton)upd_pnl.FindControl("LA_25b_b");
+            RadioButton rdo_LA_25b_c = (RadioButton)upd_pnl.FindControl("LA_25b_c");
+
+
+            RadioButton rdo_LA_26a_v = (RadioButton)upd_pnl.FindControl("LA_26a_v");
+            RadioButton rdo_LA_26a_b = (RadioButton)upd_pnl.FindControl("LA_26a_b");
+            RadioButton rdo_LA_26a_c = (RadioButton)upd_pnl.FindControl("LA_26a_c");
+
+            TextBox txt_LA_26a_a = (TextBox)upd_pnl.FindControl("LA_26a_a");
+
+            RadioButton rdo_LA_26b_a = (RadioButton)upd_pnl.FindControl("LA_26b_a");
+            RadioButton rdo_LA_26b_b = (RadioButton)upd_pnl.FindControl("LA_26b_b");
+            RadioButton rdo_LA_26b_c = (RadioButton)upd_pnl.FindControl("LA_26b_c");
+
+
+
+            RadioButton rdo_LA_27a_v = (RadioButton)upd_pnl.FindControl("LA_27a_v");
+            RadioButton rdo_LA_27a_b = (RadioButton)upd_pnl.FindControl("LA_27a_b");
+            RadioButton rdo_LA_27a_c = (RadioButton)upd_pnl.FindControl("LA_27a_c");
+
+            TextBox txt_LA_27a_a = (TextBox)upd_pnl.FindControl("LA_27a_a");
+
+            RadioButton rdo_LA_27b_a = (RadioButton)upd_pnl.FindControl("LA_27b_a");
+            RadioButton rdo_LA_27b_b = (RadioButton)upd_pnl.FindControl("LA_27b_b");
+            RadioButton rdo_LA_27b_c = (RadioButton)upd_pnl.FindControl("LA_27b_c");
+
+
+
+
+            RadioButton rdo_LA_28a_v = (RadioButton)upd_pnl.FindControl("LA_28a_v");
+            RadioButton rdo_LA_28a_b = (RadioButton)upd_pnl.FindControl("LA_28a_b");
+            RadioButton rdo_LA_28a_c = (RadioButton)upd_pnl.FindControl("LA_28a_c");
+
+            TextBox txt_LA_28a_a = (TextBox)upd_pnl.FindControl("LA_28a_a");
+
+            RadioButton rdo_LA_28b_a = (RadioButton)upd_pnl.FindControl("LA_28b_a");
+            RadioButton rdo_LA_28b_b = (RadioButton)upd_pnl.FindControl("LA_28b_b");
+            RadioButton rdo_LA_28b_c = (RadioButton)upd_pnl.FindControl("LA_28b_c");
+
+
+            RadioButton rdo_LA_29a_v = (RadioButton)upd_pnl.FindControl("LA_29a_v");
+            RadioButton rdo_LA_29a_b = (RadioButton)upd_pnl.FindControl("LA_29a_b");
+            RadioButton rdo_LA_29a_c = (RadioButton)upd_pnl.FindControl("LA_29a_c");
+
+            TextBox txt_LA_29a_a = (TextBox)upd_pnl.FindControl("LA_29a_a");
+
+            RadioButton rdo_LA_29b_a = (RadioButton)upd_pnl.FindControl("LA_29b_a");
+            RadioButton rdo_LA_29b_b = (RadioButton)upd_pnl.FindControl("LA_29b_b");
+            RadioButton rdo_LA_29b_c = (RadioButton)upd_pnl.FindControl("LA_29b_c");
+
+
+
+            RadioButton rdo_LA_30a_v = (RadioButton)upd_pnl.FindControl("LA_30a_v");
+            RadioButton rdo_LA_30a_b = (RadioButton)upd_pnl.FindControl("LA_30a_b");
+            RadioButton rdo_LA_30a_c = (RadioButton)upd_pnl.FindControl("LA_30a_c");
+
+            TextBox txt_LA_30a_a = (TextBox)upd_pnl.FindControl("LA_30a_a");
+
+            RadioButton rdo_LA_30b_a = (RadioButton)upd_pnl.FindControl("LA_30b_a");
+            RadioButton rdo_LA_30b_b = (RadioButton)upd_pnl.FindControl("LA_30b_b");
+            RadioButton rdo_LA_30b_c = (RadioButton)upd_pnl.FindControl("LA_30b_c");
+
+
+            RadioButton rdo_LA_31a_v = (RadioButton)upd_pnl.FindControl("LA_31a_v");
+            RadioButton rdo_LA_31a_b = (RadioButton)upd_pnl.FindControl("LA_31a_b");
+            RadioButton rdo_LA_31a_c = (RadioButton)upd_pnl.FindControl("LA_31a_c");
+
+            TextBox txt_LA_31a_a = (TextBox)upd_pnl.FindControl("LA_31a_a");
+
+            RadioButton rdo_LA_31b_a = (RadioButton)upd_pnl.FindControl("LA_31b_a");
+            RadioButton rdo_LA_31b_b = (RadioButton)upd_pnl.FindControl("LA_31b_b");
+            RadioButton rdo_LA_31b_c = (RadioButton)upd_pnl.FindControl("LA_31b_c");
+
+
+
+            RadioButton rdo_LA_32a_v = (RadioButton)upd_pnl.FindControl("LA_32a_v");
+            RadioButton rdo_LA_32a_b = (RadioButton)upd_pnl.FindControl("LA_32a_b");
+            RadioButton rdo_LA_32a_c = (RadioButton)upd_pnl.FindControl("LA_32a_c");
+
+            TextBox txt_LA_32a_a = (TextBox)upd_pnl.FindControl("LA_32a_a");
+
+            RadioButton rdo_LA_32b_a = (RadioButton)upd_pnl.FindControl("LA_32b_a");
+            RadioButton rdo_LA_32b_b = (RadioButton)upd_pnl.FindControl("LA_32b_b");
+            RadioButton rdo_LA_32b_c = (RadioButton)upd_pnl.FindControl("LA_32b_c");
+
+
+
+            RadioButton rdo_LA_33a_v = (RadioButton)upd_pnl.FindControl("LA_33a_v");
+            RadioButton rdo_LA_33a_b = (RadioButton)upd_pnl.FindControl("LA_33a_b");
+            RadioButton rdo_LA_33a_c = (RadioButton)upd_pnl.FindControl("LA_33a_c");
+
+            TextBox txt_LA_33a_a = (TextBox)upd_pnl.FindControl("LA_33a_a");
+
+            RadioButton rdo_LA_33b_a = (RadioButton)upd_pnl.FindControl("LA_33b_a");
+            RadioButton rdo_LA_33b_b = (RadioButton)upd_pnl.FindControl("LA_33b_b");
+            RadioButton rdo_LA_33b_c = (RadioButton)upd_pnl.FindControl("LA_33b_c");
+
+
+
+            RadioButton rdo_LA_34a_v = (RadioButton)upd_pnl.FindControl("LA_34a_v");
+            RadioButton rdo_LA_34a_b = (RadioButton)upd_pnl.FindControl("LA_34a_b");
+            RadioButton rdo_LA_34a_c = (RadioButton)upd_pnl.FindControl("LA_34a_c");
+
+            TextBox txt_LA_34a_a = (TextBox)upd_pnl.FindControl("LA_34a_a");
+
+            RadioButton rdo_LA_34b_a = (RadioButton)upd_pnl.FindControl("LA_34b_a");
+            RadioButton rdo_LA_34b_b = (RadioButton)upd_pnl.FindControl("LA_34b_b");
+            RadioButton rdo_LA_34b_c = (RadioButton)upd_pnl.FindControl("LA_34b_c");
+
+
+
+            RadioButton rdo_LA_35a_v = (RadioButton)upd_pnl.FindControl("LA_35a_v");
+            RadioButton rdo_LA_35a_b = (RadioButton)upd_pnl.FindControl("LA_35a_b");
+            RadioButton rdo_LA_35a_c = (RadioButton)upd_pnl.FindControl("LA_35a_c");
+
+            TextBox txt_LA_35a_a = (TextBox)upd_pnl.FindControl("LA_35a_a");
+
+            RadioButton rdo_LA_35b_a = (RadioButton)upd_pnl.FindControl("LA_35b_a");
+            RadioButton rdo_LA_35b_b = (RadioButton)upd_pnl.FindControl("LA_35b_b");
+            RadioButton rdo_LA_35b_c = (RadioButton)upd_pnl.FindControl("LA_35b_c");
+
+
+
+            RadioButton rdo_LA_36a_v = (RadioButton)upd_pnl.FindControl("LA_36a_v");
+            RadioButton rdo_LA_36a_b = (RadioButton)upd_pnl.FindControl("LA_36a_b");
+            RadioButton rdo_LA_36a_c = (RadioButton)upd_pnl.FindControl("LA_36a_c");
+
+            TextBox txt_LA_36a_a = (TextBox)upd_pnl.FindControl("LA_36a_a");
+
+            RadioButton rdo_LA_36b_a = (RadioButton)upd_pnl.FindControl("LA_36b_a");
+            RadioButton rdo_LA_36b_b = (RadioButton)upd_pnl.FindControl("LA_36b_b");
+            RadioButton rdo_LA_36b_c = (RadioButton)upd_pnl.FindControl("LA_36b_c");
+
+
+            RadioButton rdo_LA_37a_v = (RadioButton)upd_pnl.FindControl("LA_37a_v");
+            RadioButton rdo_LA_37a_b = (RadioButton)upd_pnl.FindControl("LA_37a_b");
+            RadioButton rdo_LA_37a_c = (RadioButton)upd_pnl.FindControl("LA_37a_c");
+
+            TextBox txt_LA_37a_a = (TextBox)upd_pnl.FindControl("LA_37a_a");
+
+            RadioButton rdo_LA_37b_a = (RadioButton)upd_pnl.FindControl("LA_37b_a");
+            RadioButton rdo_LA_37b_b = (RadioButton)upd_pnl.FindControl("LA_37b_b");
+            RadioButton rdo_LA_37b_c = (RadioButton)upd_pnl.FindControl("LA_37b_c");
+
+
+
+            RadioButton rdo_LA_38a_v = (RadioButton)upd_pnl.FindControl("LA_38a_v");
+            RadioButton rdo_LA_38a_b = (RadioButton)upd_pnl.FindControl("LA_38a_b");
+            RadioButton rdo_LA_38a_c = (RadioButton)upd_pnl.FindControl("LA_38a_c");
+
+            TextBox txt_LA_38a_a = (TextBox)upd_pnl.FindControl("LA_38a_a");
+
+            RadioButton rdo_LA_38b_a = (RadioButton)upd_pnl.FindControl("LA_38b_a");
+            RadioButton rdo_LA_38b_b = (RadioButton)upd_pnl.FindControl("LA_38b_b");
+            RadioButton rdo_LA_38b_c = (RadioButton)upd_pnl.FindControl("LA_38b_c");
+
+
+
+            RadioButton rdo_LA_39a_v = (RadioButton)upd_pnl.FindControl("LA_39a_v");
+            RadioButton rdo_LA_39a_b = (RadioButton)upd_pnl.FindControl("LA_39a_b");
+            RadioButton rdo_LA_39a_c = (RadioButton)upd_pnl.FindControl("LA_39a_c");
+
+            TextBox txt_LA_39a_a = (TextBox)upd_pnl.FindControl("LA_39a_a");
+
+            RadioButton rdo_LA_39b_a = (RadioButton)upd_pnl.FindControl("LA_39b_a");
+            RadioButton rdo_LA_39b_b = (RadioButton)upd_pnl.FindControl("LA_39b_b");
+            RadioButton rdo_LA_39b_c = (RadioButton)upd_pnl.FindControl("LA_39b_c");
+
+
+
+            RadioButton rdo_LA_40a_v = (RadioButton)upd_pnl.FindControl("LA_40a_v");
+            RadioButton rdo_LA_40a_b = (RadioButton)upd_pnl.FindControl("LA_40a_b");
+            RadioButton rdo_LA_40a_c = (RadioButton)upd_pnl.FindControl("LA_40a_c");
+
+            TextBox txt_LA_40a_a = (TextBox)upd_pnl.FindControl("LA_40a_a");
+
+            RadioButton rdo_LA_40b_a = (RadioButton)upd_pnl.FindControl("LA_40b_a");
+            RadioButton rdo_LA_40b_b = (RadioButton)upd_pnl.FindControl("LA_40b_b");
+            RadioButton rdo_LA_40b_c = (RadioButton)upd_pnl.FindControl("LA_40b_c");
+
+
+
+            RadioButton rdo_LA_41a_v = (RadioButton)upd_pnl.FindControl("LA_41a_v");
+            RadioButton rdo_LA_41a_b = (RadioButton)upd_pnl.FindControl("LA_41a_b");
+            RadioButton rdo_LA_41a_c = (RadioButton)upd_pnl.FindControl("LA_41a_c");
+
+            TextBox txt_LA_41a_a = (TextBox)upd_pnl.FindControl("LA_41a_a");
+
+            RadioButton rdo_LA_41b_a = (RadioButton)upd_pnl.FindControl("LA_41b_a");
+            RadioButton rdo_LA_41b_b = (RadioButton)upd_pnl.FindControl("LA_41b_b");
+            RadioButton rdo_LA_41b_c = (RadioButton)upd_pnl.FindControl("LA_41b_c");
+
+
+
+            RadioButton rdo_LA_42a_v = (RadioButton)upd_pnl.FindControl("LA_42a_v");
+            RadioButton rdo_LA_42a_b = (RadioButton)upd_pnl.FindControl("LA_42a_b");
+            RadioButton rdo_LA_42a_c = (RadioButton)upd_pnl.FindControl("LA_42a_c");
+
+            TextBox txt_LA_42a_a = (TextBox)upd_pnl.FindControl("LA_42a_a");
+
+            RadioButton rdo_LA_42b_a = (RadioButton)upd_pnl.FindControl("LA_42b_a");
+            RadioButton rdo_LA_42b_b = (RadioButton)upd_pnl.FindControl("LA_42b_b");
+            RadioButton rdo_LA_42b_c = (RadioButton)upd_pnl.FindControl("LA_42b_c");
+
+
+
+            RadioButton rdo_LA_43a_v = (RadioButton)upd_pnl.FindControl("LA_43a_v");
+            RadioButton rdo_LA_43a_b = (RadioButton)upd_pnl.FindControl("LA_43a_b");
+            RadioButton rdo_LA_43a_c = (RadioButton)upd_pnl.FindControl("LA_43a_c");
+
+            TextBox txt_LA_43a_a = (TextBox)upd_pnl.FindControl("LA_43a_a");
+
+            RadioButton rdo_LA_43b_a = (RadioButton)upd_pnl.FindControl("LA_43b_a");
+            RadioButton rdo_LA_43b_b = (RadioButton)upd_pnl.FindControl("LA_43b_b");
+            RadioButton rdo_LA_43b_c = (RadioButton)upd_pnl.FindControl("LA_43b_c");
+
+
+
+            RadioButton rdo_LA_44a_v = (RadioButton)upd_pnl.FindControl("LA_44a_v");
+            RadioButton rdo_LA_44a_b = (RadioButton)upd_pnl.FindControl("LA_44a_b");
+            RadioButton rdo_LA_44a_c = (RadioButton)upd_pnl.FindControl("LA_44a_c");
+
+            TextBox txt_LA_44a_a = (TextBox)upd_pnl.FindControl("LA_44a_a");
+
+            RadioButton rdo_LA_44b_a = (RadioButton)upd_pnl.FindControl("LA_44b_a");
+            RadioButton rdo_LA_44b_b = (RadioButton)upd_pnl.FindControl("LA_44b_b");
+            RadioButton rdo_LA_44b_c = (RadioButton)upd_pnl.FindControl("LA_44b_c");
+
+
+
+            RadioButton rdo_LA_45a_v = (RadioButton)upd_pnl.FindControl("LA_45a_v");
+            RadioButton rdo_LA_45a_b = (RadioButton)upd_pnl.FindControl("LA_45a_b");
+            RadioButton rdo_LA_45a_c = (RadioButton)upd_pnl.FindControl("LA_45a_c");
+
+            TextBox txt_LA_45a_a = (TextBox)upd_pnl.FindControl("LA_45a_a");
+
+            RadioButton rdo_LA_45b_a = (RadioButton)upd_pnl.FindControl("LA_45b_a");
+            RadioButton rdo_LA_45b_b = (RadioButton)upd_pnl.FindControl("LA_45b_b");
+            RadioButton rdo_LA_45b_c = (RadioButton)upd_pnl.FindControl("LA_45b_c");
+
+
+
+            RadioButton rdo_LA_46a_v = (RadioButton)upd_pnl.FindControl("LA_46a_v");
+            RadioButton rdo_LA_46a_b = (RadioButton)upd_pnl.FindControl("LA_46a_b");
+            RadioButton rdo_LA_46a_c = (RadioButton)upd_pnl.FindControl("LA_46a_c");
+
+            TextBox txt_LA_46a_a = (TextBox)upd_pnl.FindControl("LA_46a_a");
+
+            RadioButton rdo_LA_46b_a = (RadioButton)upd_pnl.FindControl("LA_46b_a");
+            RadioButton rdo_LA_46b_b = (RadioButton)upd_pnl.FindControl("LA_46b_b");
+            RadioButton rdo_LA_46b_c = (RadioButton)upd_pnl.FindControl("LA_46b_c");
+
+
+
+            RadioButton rdo_LA_47a_v = (RadioButton)upd_pnl.FindControl("LA_47a_v");
+            RadioButton rdo_LA_47a_b = (RadioButton)upd_pnl.FindControl("LA_47a_b");
+            RadioButton rdo_LA_47a_c = (RadioButton)upd_pnl.FindControl("LA_47a_c");
+
+            TextBox txt_LA_47a_a = (TextBox)upd_pnl.FindControl("LA_47a_a");
+
+            RadioButton rdo_LA_47b_a = (RadioButton)upd_pnl.FindControl("LA_47b_a");
+            RadioButton rdo_LA_47b_b = (RadioButton)upd_pnl.FindControl("LA_47b_b");
+            RadioButton rdo_LA_47b_c = (RadioButton)upd_pnl.FindControl("LA_47b_c");
+
+
+            RadioButton rdo_LA_48a_v = (RadioButton)upd_pnl.FindControl("LA_48a_v");
+            RadioButton rdo_LA_48a_b = (RadioButton)upd_pnl.FindControl("LA_48a_b");
+            RadioButton rdo_LA_48a_c = (RadioButton)upd_pnl.FindControl("LA_48a_c");
+
+            TextBox txt_LA_48a_a = (TextBox)upd_pnl.FindControl("LA_48a_a");
+
+            RadioButton rdo_LA_48b_a = (RadioButton)upd_pnl.FindControl("LA_48b_a");
+            RadioButton rdo_LA_48b_b = (RadioButton)upd_pnl.FindControl("LA_48b_b");
+            RadioButton rdo_LA_48b_c = (RadioButton)upd_pnl.FindControl("LA_48b_c");
+
+
+
+            RadioButton rdo_LA_49a_v = (RadioButton)upd_pnl.FindControl("LA_49a_v");
+            RadioButton rdo_LA_49a_b = (RadioButton)upd_pnl.FindControl("LA_49a_b");
+            RadioButton rdo_LA_49a_c = (RadioButton)upd_pnl.FindControl("LA_49a_c");
+
+            TextBox txt_LA_49a_a = (TextBox)upd_pnl.FindControl("LA_49a_a");
+
+            RadioButton rdo_LA_49b_a = (RadioButton)upd_pnl.FindControl("LA_49b_a");
+            RadioButton rdo_LA_49b_b = (RadioButton)upd_pnl.FindControl("LA_49b_b");
+            RadioButton rdo_LA_49b_c = (RadioButton)upd_pnl.FindControl("LA_49b_c");
+
+
+
+            RadioButton rdo_LA_50a_v = (RadioButton)upd_pnl.FindControl("LA_50a_v");
+            RadioButton rdo_LA_50a_b = (RadioButton)upd_pnl.FindControl("LA_50a_b");
+            RadioButton rdo_LA_50a_c = (RadioButton)upd_pnl.FindControl("LA_50a_c");
+
+            TextBox txt_LA_50a_a = (TextBox)upd_pnl.FindControl("LA_50a_a");
+
+            RadioButton rdo_LA_50b_a = (RadioButton)upd_pnl.FindControl("LA_50b_a");
+            RadioButton rdo_LA_50b_b = (RadioButton)upd_pnl.FindControl("LA_50b_b");
+            RadioButton rdo_LA_50b_c = (RadioButton)upd_pnl.FindControl("LA_50b_c");
+
+
+
+            RadioButton rdo_LA_51a_v = (RadioButton)upd_pnl.FindControl("LA_51a_v");
+            RadioButton rdo_LA_51a_b = (RadioButton)upd_pnl.FindControl("LA_51a_b");
+            RadioButton rdo_LA_51a_c = (RadioButton)upd_pnl.FindControl("LA_51a_c");
+
+            TextBox txt_LA_51a_a = (TextBox)upd_pnl.FindControl("LA_51a_a");
+
+            RadioButton rdo_LA_51b_a = (RadioButton)upd_pnl.FindControl("LA_51b_a");
+            RadioButton rdo_LA_51b_b = (RadioButton)upd_pnl.FindControl("LA_51b_b");
+            RadioButton rdo_LA_51b_c = (RadioButton)upd_pnl.FindControl("LA_51b_c");
+
+
+
+            RadioButton rdo_LA_52a_v = (RadioButton)upd_pnl.FindControl("LA_52a_v");
+            RadioButton rdo_LA_52a_b = (RadioButton)upd_pnl.FindControl("LA_52a_b");
+            RadioButton rdo_LA_52a_c = (RadioButton)upd_pnl.FindControl("LA_52a_c");
+
+            TextBox txt_LA_52a_a = (TextBox)upd_pnl.FindControl("LA_52a_a");
+
+            RadioButton rdo_LA_52b_a = (RadioButton)upd_pnl.FindControl("LA_52b_a");
+            RadioButton rdo_LA_52b_b = (RadioButton)upd_pnl.FindControl("LA_52b_b");
+            RadioButton rdo_LA_52b_c = (RadioButton)upd_pnl.FindControl("LA_52b_c");
+
+
+
+
+            if (rdo_LA_20a_v.Checked)
+            {
+                var_LA_20a_b = "";
+            }
+            else if (rdo_LA_20a_b.Checked)
+            {
+                var_LA_20a_b = "";
+            }
+            else if (rdo_LA_20a_c.Checked)
+            {
+                var_LA_20a_b = "";
+            }
+
+
+
+            if (string.IsNullOrEmpty(txt_LA_20a_a.Text))
+            {
+                string message = "alert('Zone diameter required');";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+                txt_LA_20a_a.Focus();
+                return;
+            }
+
+
+            if (rdo_LA_20b_a.Checked)
+            {
+                var_LA_20b_a = "1";
+            }
+            else if (rdo_LA_20b_b.Checked)
+            {
+                var_LA_20b_a = "2";
+            }
+            else if (rdo_LA_20b_c.Checked)
+            {
+                var_LA_20b_a = "3";
+            }
+
+
+
+
+
+
+            if (rdo_LA_21a_v.Checked)
+            {
+                var_LA_21a_b = "";
+            }
+            else if (rdo_LA_21a_b.Checked)
+            {
+                var_LA_21a_b = "";
+            }
+            else if (rdo_LA_21a_c.Checked)
+            {
+                var_LA_21a_b = "";
+            }
+
+
+
+            if (string.IsNullOrEmpty(txt_LA_21a_a.Text))
+            {
+                string message = "alert('Zone diameter required');";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+                txt_LA_21a_a.Focus();
+                return;
+            }
+
+
+            if (rdo_LA_21b_a.Checked)
+            {
+                var_LA_21b_a = "1";
+            }
+            else if (rdo_LA_21b_b.Checked)
+            {
+                var_LA_21b_a = "2";
+            }
+            else if (rdo_LA_21b_c.Checked)
+            {
+                var_LA_21b_a = "3";
+            }
+
+
+
+
+
+
+            if (rdo_LA_22a_v.Checked)
+            {
+                var_LA_22a_b = "";
+            }
+            else if (rdo_LA_22a_b.Checked)
+            {
+                var_LA_22a_b = "";
+            }
+            else if (rdo_LA_22a_c.Checked)
+            {
+                var_LA_22a_b = "";
+            }
+
+
+
+            if (string.IsNullOrEmpty(txt_LA_22a_a.Text))
+            {
+                string message = "alert('Zone diameter required');";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", message, true);
+                txt_LA_22a_a.Focus();
+                return;
+            }
+
+
+            if (rdo_LA_22b_a.Checked)
+            {
+                var_LA_22b_a = "1";
+            }
+            else if (rdo_LA_22b_b.Checked)
+            {
+                var_LA_22b_a = "2";
+            }
+            else if (rdo_LA_22b_c.Checked)
+            {
+                var_LA_22b_a = "3";
+            }
+
+
+
+
+
+
+            fillGrid_Multiple_BloodCulture_array(
+                var_LA_20a_b, txt_LA_20a_a.Text, var_LA_20b_a,
+                var_LA_21a_b, txt_LA_21a_a.Text, var_LA_21b_a,
+                var_LA_22a_b, txt_LA_22a_a.Text, var_LA_22b_a
+                );
+
+
+
+
+
+            Disable_RadioButton1(rdo_LA_20a_v);
+            Disable_RadioButton1(rdo_LA_20a_b);
+            Disable_RadioButton1(rdo_LA_20a_c);
+
+            DisableControls2(txt_LA_20a_a);
+
+            Disable_RadioButton1(rdo_LA_20b_a);
+            Disable_RadioButton1(rdo_LA_20b_b);
+            Disable_RadioButton1(rdo_LA_20b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_21a_v);
+            Disable_RadioButton1(rdo_LA_21a_b);
+            Disable_RadioButton1(rdo_LA_21a_c);
+
+            DisableControls2(txt_LA_21a_a);
+
+            Disable_RadioButton1(rdo_LA_21b_a);
+            Disable_RadioButton1(rdo_LA_21b_b);
+            Disable_RadioButton1(rdo_LA_21b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_22a_v);
+            Disable_RadioButton1(rdo_LA_22a_b);
+            Disable_RadioButton1(rdo_LA_22a_c);
+
+            DisableControls2(txt_LA_22a_a);
+
+            Disable_RadioButton1(rdo_LA_22b_a);
+            Disable_RadioButton1(rdo_LA_22b_b);
+            Disable_RadioButton1(rdo_LA_22b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_23a_v);
+            Disable_RadioButton1(rdo_LA_23a_b);
+            Disable_RadioButton1(rdo_LA_23a_c);
+
+            DisableControls2(txt_LA_23a_a);
+
+            Disable_RadioButton1(rdo_LA_23b_a);
+            Disable_RadioButton1(rdo_LA_23b_b);
+            Disable_RadioButton1(rdo_LA_23b_c);
+
+
+            Disable_RadioButton1(rdo_LA_24a_v);
+            Disable_RadioButton1(rdo_LA_24a_b);
+            Disable_RadioButton1(rdo_LA_24a_c);
+
+            DisableControls2(txt_LA_24a_a);
+
+            Disable_RadioButton1(rdo_LA_24b_a);
+            Disable_RadioButton1(rdo_LA_24b_b);
+            Disable_RadioButton1(rdo_LA_24b_c);
+
+
+            Disable_RadioButton1(rdo_LA_25a_v);
+            Disable_RadioButton1(rdo_LA_25a_b);
+            Disable_RadioButton1(rdo_LA_25a_c);
+
+            DisableControls2(txt_LA_25a_a);
+
+            Disable_RadioButton1(rdo_LA_25b_a);
+            Disable_RadioButton1(rdo_LA_25b_b);
+            Disable_RadioButton1(rdo_LA_25b_c);
+
+
+            Disable_RadioButton1(rdo_LA_26a_v);
+            Disable_RadioButton1(rdo_LA_26a_b);
+            Disable_RadioButton1(rdo_LA_26a_c);
+
+            DisableControls2(txt_LA_26a_a);
+
+            Disable_RadioButton1(rdo_LA_26b_a);
+            Disable_RadioButton1(rdo_LA_26b_b);
+            Disable_RadioButton1(rdo_LA_26b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_27a_v);
+            Disable_RadioButton1(rdo_LA_27a_b);
+            Disable_RadioButton1(rdo_LA_27a_c);
+
+            DisableControls2(txt_LA_27a_a);
+
+            Disable_RadioButton1(rdo_LA_27b_a);
+            Disable_RadioButton1(rdo_LA_27b_b);
+            Disable_RadioButton1(rdo_LA_27b_c);
+
+
+            Disable_RadioButton1(rdo_LA_28a_v);
+            Disable_RadioButton1(rdo_LA_28a_b);
+            Disable_RadioButton1(rdo_LA_28a_c);
+
+            DisableControls2(txt_LA_28a_a);
+
+            Disable_RadioButton1(rdo_LA_28b_a);
+            Disable_RadioButton1(rdo_LA_28b_b);
+            Disable_RadioButton1(rdo_LA_28b_c);
+
+
+            Disable_RadioButton1(rdo_LA_29a_v);
+            Disable_RadioButton1(rdo_LA_29a_b);
+            Disable_RadioButton1(rdo_LA_29a_c);
+
+            DisableControls2(txt_LA_29a_a);
+
+            Disable_RadioButton1(rdo_LA_29b_a);
+            Disable_RadioButton1(rdo_LA_29b_b);
+            Disable_RadioButton1(rdo_LA_29b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_30a_v);
+            Disable_RadioButton1(rdo_LA_30a_b);
+            Disable_RadioButton1(rdo_LA_30a_c);
+
+            DisableControls2(txt_LA_30a_a);
+
+            Disable_RadioButton1(rdo_LA_30b_a);
+            Disable_RadioButton1(rdo_LA_30b_b);
+            Disable_RadioButton1(rdo_LA_30b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_31a_v);
+            Disable_RadioButton1(rdo_LA_31a_b);
+            Disable_RadioButton1(rdo_LA_31a_c);
+
+            DisableControls2(txt_LA_31a_a);
+
+            Disable_RadioButton1(rdo_LA_31b_a);
+            Disable_RadioButton1(rdo_LA_31b_b);
+            Disable_RadioButton1(rdo_LA_31b_c);
+
+
+            Disable_RadioButton1(rdo_LA_32a_v);
+            Disable_RadioButton1(rdo_LA_32a_b);
+            Disable_RadioButton1(rdo_LA_32a_c);
+
+            DisableControls2(txt_LA_32a_a);
+
+            Disable_RadioButton1(rdo_LA_32b_a);
+            Disable_RadioButton1(rdo_LA_32b_b);
+            Disable_RadioButton1(rdo_LA_32b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_33a_v);
+            Disable_RadioButton1(rdo_LA_33a_b);
+            Disable_RadioButton1(rdo_LA_33a_c);
+
+            DisableControls2(txt_LA_33a_a);
+
+            Disable_RadioButton1(rdo_LA_33b_a);
+            Disable_RadioButton1(rdo_LA_33b_b);
+            Disable_RadioButton1(rdo_LA_33b_c);
+
+
+            Disable_RadioButton1(rdo_LA_34a_v);
+            Disable_RadioButton1(rdo_LA_34a_b);
+            Disable_RadioButton1(rdo_LA_34a_c);
+
+            DisableControls2(txt_LA_34a_a);
+
+            Disable_RadioButton1(rdo_LA_34b_a);
+            Disable_RadioButton1(rdo_LA_34b_b);
+            Disable_RadioButton1(rdo_LA_34b_c);
+
+
+            Disable_RadioButton1(rdo_LA_35a_v);
+            Disable_RadioButton1(rdo_LA_35a_b);
+            Disable_RadioButton1(rdo_LA_35a_c);
+
+            DisableControls2(txt_LA_35a_a);
+
+            Disable_RadioButton1(rdo_LA_35b_a);
+            Disable_RadioButton1(rdo_LA_35b_b);
+            Disable_RadioButton1(rdo_LA_35b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_36a_v);
+            Disable_RadioButton1(rdo_LA_36a_b);
+            Disable_RadioButton1(rdo_LA_36a_c);
+
+            DisableControls2(txt_LA_36a_a);
+
+            Disable_RadioButton1(rdo_LA_36b_a);
+            Disable_RadioButton1(rdo_LA_36b_b);
+            Disable_RadioButton1(rdo_LA_36b_c);
+
+
+            Disable_RadioButton1(rdo_LA_37a_v);
+            Disable_RadioButton1(rdo_LA_37a_b);
+            Disable_RadioButton1(rdo_LA_37a_c);
+
+            DisableControls2(txt_LA_37a_a);
+
+            Disable_RadioButton1(rdo_LA_37b_a);
+            Disable_RadioButton1(rdo_LA_37b_b);
+            Disable_RadioButton1(rdo_LA_37b_c);
+
+
+            Disable_RadioButton1(rdo_LA_38a_v);
+            Disable_RadioButton1(rdo_LA_38a_b);
+            Disable_RadioButton1(rdo_LA_38a_c);
+
+            DisableControls2(txt_LA_38a_a);
+
+            Disable_RadioButton1(rdo_LA_38b_a);
+            Disable_RadioButton1(rdo_LA_38b_b);
+            Disable_RadioButton1(rdo_LA_38b_c);
+
+
+            Disable_RadioButton1(rdo_LA_39a_v);
+            Disable_RadioButton1(rdo_LA_39a_b);
+            Disable_RadioButton1(rdo_LA_39a_c);
+
+            DisableControls2(txt_LA_39a_a);
+
+            Disable_RadioButton1(rdo_LA_39b_a);
+            Disable_RadioButton1(rdo_LA_39b_b);
+            Disable_RadioButton1(rdo_LA_39b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_40a_v);
+            Disable_RadioButton1(rdo_LA_40a_b);
+            Disable_RadioButton1(rdo_LA_40a_c);
+
+            DisableControls2(txt_LA_40a_a);
+
+            Disable_RadioButton1(rdo_LA_40b_a);
+            Disable_RadioButton1(rdo_LA_40b_b);
+            Disable_RadioButton1(rdo_LA_40b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_41a_v);
+            Disable_RadioButton1(rdo_LA_41a_b);
+            Disable_RadioButton1(rdo_LA_41a_c);
+
+            DisableControls2(txt_LA_41a_a);
+
+            Disable_RadioButton1(rdo_LA_41b_a);
+            Disable_RadioButton1(rdo_LA_41b_b);
+            Disable_RadioButton1(rdo_LA_41b_c);
+
+
+            Disable_RadioButton1(rdo_LA_42a_v);
+            Disable_RadioButton1(rdo_LA_42a_b);
+            Disable_RadioButton1(rdo_LA_42a_c);
+
+            DisableControls2(txt_LA_42a_a);
+
+            Disable_RadioButton1(rdo_LA_42b_a);
+            Disable_RadioButton1(rdo_LA_42b_b);
+            Disable_RadioButton1(rdo_LA_42b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_43a_v);
+            Disable_RadioButton1(rdo_LA_43a_b);
+            Disable_RadioButton1(rdo_LA_43a_c);
+
+            DisableControls2(txt_LA_43a_a);
+
+            Disable_RadioButton1(rdo_LA_43b_a);
+            Disable_RadioButton1(rdo_LA_43b_b);
+            Disable_RadioButton1(rdo_LA_43b_c);
+
+
+            Disable_RadioButton1(rdo_LA_44a_v);
+            Disable_RadioButton1(rdo_LA_44a_b);
+            Disable_RadioButton1(rdo_LA_44a_c);
+
+            DisableControls2(txt_LA_44a_a);
+
+            Disable_RadioButton1(rdo_LA_44b_a);
+            Disable_RadioButton1(rdo_LA_44b_b);
+            Disable_RadioButton1(rdo_LA_44b_c);
+
+
+            Disable_RadioButton1(rdo_LA_45a_v);
+            Disable_RadioButton1(rdo_LA_45a_b);
+            Disable_RadioButton1(rdo_LA_45a_c);
+
+            DisableControls2(txt_LA_45a_a);
+
+            Disable_RadioButton1(rdo_LA_45b_a);
+            Disable_RadioButton1(rdo_LA_45b_b);
+            Disable_RadioButton1(rdo_LA_45b_c);
+
+
+            Disable_RadioButton1(rdo_LA_46a_v);
+            Disable_RadioButton1(rdo_LA_46a_b);
+            Disable_RadioButton1(rdo_LA_46a_c);
+
+            DisableControls2(txt_LA_46a_a);
+
+            Disable_RadioButton1(rdo_LA_46b_a);
+            Disable_RadioButton1(rdo_LA_46b_b);
+            Disable_RadioButton1(rdo_LA_46b_c);
+
+
+            Disable_RadioButton1(rdo_LA_47a_v);
+            Disable_RadioButton1(rdo_LA_47a_b);
+            Disable_RadioButton1(rdo_LA_47a_c);
+
+            DisableControls2(txt_LA_47a_a);
+
+            Disable_RadioButton1(rdo_LA_47b_a);
+            Disable_RadioButton1(rdo_LA_47b_b);
+            Disable_RadioButton1(rdo_LA_47b_c);
+
+
+            Disable_RadioButton1(rdo_LA_48a_v);
+            Disable_RadioButton1(rdo_LA_48a_b);
+            Disable_RadioButton1(rdo_LA_48a_c);
+
+            DisableControls2(txt_LA_48a_a);
+
+            Disable_RadioButton1(rdo_LA_48b_a);
+            Disable_RadioButton1(rdo_LA_48b_b);
+            Disable_RadioButton1(rdo_LA_48b_c);
+
+
+            Disable_RadioButton1(rdo_LA_49a_v);
+            Disable_RadioButton1(rdo_LA_49a_b);
+            Disable_RadioButton1(rdo_LA_49a_c);
+
+            DisableControls2(txt_LA_49a_a);
+
+            Disable_RadioButton1(rdo_LA_49b_a);
+            Disable_RadioButton1(rdo_LA_49b_b);
+            Disable_RadioButton1(rdo_LA_49b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_50a_v);
+            Disable_RadioButton1(rdo_LA_50a_b);
+            Disable_RadioButton1(rdo_LA_50a_c);
+
+            DisableControls2(txt_LA_50a_a);
+
+            Disable_RadioButton1(rdo_LA_50b_a);
+            Disable_RadioButton1(rdo_LA_50b_b);
+            Disable_RadioButton1(rdo_LA_50b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_51a_v);
+            Disable_RadioButton1(rdo_LA_51a_b);
+            Disable_RadioButton1(rdo_LA_51a_c);
+
+            DisableControls2(txt_LA_51a_a);
+
+            Disable_RadioButton1(rdo_LA_51b_a);
+            Disable_RadioButton1(rdo_LA_51b_b);
+            Disable_RadioButton1(rdo_LA_51b_c);
+
+
+
+            Disable_RadioButton1(rdo_LA_52a_v);
+            Disable_RadioButton1(rdo_LA_52a_b);
+            Disable_RadioButton1(rdo_LA_52a_c);
+
+            DisableControls2(txt_LA_52a_a);
+
+            Disable_RadioButton1(rdo_LA_52b_a);
+            Disable_RadioButton1(rdo_LA_52b_b);
+            Disable_RadioButton1(rdo_LA_52b_c);
+
+
+            rdo_LA_20a_v.Focus();
+
+        }
+
+        catch (Exception ex)
+        {
+
+        }
+
+        finally
+        {
+
+        }
+
+    }
+
+
 }

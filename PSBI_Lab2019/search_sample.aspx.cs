@@ -43,7 +43,15 @@ public partial class search_sample : System.Web.UI.Page
                 }
                 else
                 {
-                    fillDropDown_sitewise();
+                    if (Request.Cookies["labid"].Value == "3")
+                    {
+                        fillDropDown_sitewise_physicians();
+                    }
+                    else
+                    {
+                        fillDropDown_sitewise();
+                    }
+
                 }
 
 
@@ -70,6 +78,53 @@ public partial class search_sample : System.Web.UI.Page
             lbl_testing.InnerText = "";
         }
     }
+
+
+    private void fillDropDown_sitewise_physicians()
+    {
+        CConnection cn = null;
+
+        try
+        {
+            cn = new CConnection();
+            string qry;
+
+            qry = "select distinct la_sno from sample_result where rdo_BloodCulture = 1 and SUBSTRING(la_sno, 4, 1) = '" + Request.Cookies["role"].Value + "'";
+
+
+            SqlDataAdapter da = new SqlDataAdapter(qry, cn.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            ddl_screeningid.DataTextField = ds.Tables[0].Columns["la_sno"].ToString();
+            ddl_screeningid.DataValueField = ds.Tables[0].Columns["la_sno"].ToString();
+
+            ddl_screeningid.DataSource = ds.Tables[0];
+            ddl_screeningid.DataBind();
+
+            ddl_screeningid.Items.Add(new ListItem("Select Screening ID", "0"));
+
+            for (int a = 0; a <= ddl_screeningid.Items.Count - 1; a++)
+            {
+                if (ddl_screeningid.Items[a].Value == "0")
+                {
+                    ddl_screeningid.SelectedIndex = a;
+                }
+            }
+
+        }
+
+        catch (Exception ex)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Exception Error", "alert('" + ex.Message.Replace("'", "") + "')", false);
+        }
+
+        finally
+        {
+            cn = null;
+        }
+    }
+
 
 
     private void fillDropDown_sitewise()
@@ -184,9 +239,19 @@ public partial class search_sample : System.Web.UI.Page
             else
             {
                 cn = new CConnection();
-                string qry;
+                string qry = "";
 
-                qry = "select b.ID, b.id id1, a.id id_sample_recv, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno and a.labid = 1 and b.labid = 1 ";
+                if (Request.Cookies["labid"].Value == "3")
+                {
+                    qry = "select b.ID, b.id id1, a.id id_sample_recv, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno " +
+                    " and a.labid = 1 and b.labid = 1 and b.rdo_BloodCulture = 1 ";
+                }
+                else
+                {
+                    qry = "select b.ID, b.id id1, a.id id_sample_recv, a.AS1_screening_ID, a.AS1_rand_id, a.AS1_name, a.AS1_age, a.AS1_mrno, a.AS1_lno from form1 a inner join sample_result b on a.AS1_screening_ID = b.la_sno " +
+                    " and a.labid = 1 and b.labid = 1 ";
+                }
+
                 qry = SearchingCriteria(qry);
 
 
